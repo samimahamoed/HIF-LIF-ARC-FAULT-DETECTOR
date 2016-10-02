@@ -1,0 +1,8 @@
+<map id="Slider::Slider" name="Slider::Slider">
+<area shape="rect" id="node2" href="$dc/de2/a00024.html#a521ac5143857dd652a0bafa77389fa81" title="Slider::adjust_value" alt="" coords="151,5,286,32"/>
+<area shape="rect" id="node3" href="$dc/de2/a00024.html#ae3010d3de02715db2f443560d7d2a27b" title="Slider::set_value" alt="" coords="336,56,453,83"/>
+<area shape="rect" id="node4" href="$dc/de2/a00024.html#a105dff1f3ae7cfdcfabacd013428a501" title="Slider::edit_point\l_deselection" alt="" coords="159,107,278,149"/>
+<area shape="rect" id="node5" href="$dc/de2/a00024.html#adeebaace74ff3add2acd9147e96fc0a6" title="Slider::edit_point\l_selection" alt="" coords="159,173,278,214"/>
+<area shape="rect" id="node6" href="$dc/de2/a00024.html#a567902754e43310fe921b74c9d1862dd" title="Slider::set_status" alt="" coords="157,239,281,265"/>
+<area shape="rect" id="node7" href="$dc/de2/a00024.html#a4f62a01554ee8d975abe0cb136937695" title="Slider::update_value" alt="" coords="149,289,288,316"/>
+</map>

@@ -1,0 +1,361 @@
+.TH "gprintf.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+gprintf.c \- 
+.PP
+\fBtfp_vsprintf()\fP - vsnprintf replacement for standard library function ( which takes too much resources)  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\includes\\gprintf\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPRINTF_LONG_SUPPORT\fP"
+.br
+.ti -1c
+.RI "#define \fBSTATIC\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef void(* \fBputcf\fP )(void *, char)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSTATIC\fP void \fBuli2a\fP (unsigned long int num, unsigned int base, int uc, char *bf)"
+.br
+.ti -1c
+.RI "\fBSTATIC\fP void \fBli2a\fP (long num, char *bf)"
+.br
+.ti -1c
+.RI "\fBSTATIC\fP void \fBui2a\fP (unsigned int num, unsigned int base, int uc, char *bf)"
+.br
+.ti -1c
+.RI "\fBSTATIC\fP void \fBi2a\fP (int num, char *bf)"
+.br
+.ti -1c
+.RI "\fBSTATIC\fP int \fBa2d\fP (char ch)"
+.br
+.ti -1c
+.RI "\fBSTATIC\fP char \fBa2i\fP (char ch, const char **src, int base, int *nump)"
+.br
+.ti -1c
+.RI "\fBSTATIC\fP void \fBputchw\fP (void *putp, \fBputcf\fP putf, int n, char z, char *bf)"
+.br
+.ti -1c
+.RI "void \fBtfp_format\fP (void *putp, \fBputcf\fP putf, const char *fmt, va_list va)"
+.br
+.ti -1c
+.RI "\fBSTATIC\fP void \fBputcp\fP (void *p, char c)"
+.br
+.ti -1c
+.RI "void \fBtfp_vsprintf\fP (char *s, const char *fmt, va_list va)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBtfp_vsprintf()\fP - vsnprintf replacement for standard library function ( which takes too much resources) 
+
+Note: LGPL license\&. Source: http://www.sparetimelabs.com/tinyprintf/index.html
+.PP
+Copyright (C) 2004 Kustaa Nyholm
+.PP
+This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2\&.1 of the License, or (at your option) any later version\&.
+.PP
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\&. See the GNU Lesser General Public License for more details\&.
+.PP
+You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc\&., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
+.PP
+Definition in file \fBgprintf\&.c\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define PRINTF_LONG_SUPPORT"
+
+.PP
+Definition at line 38 of file gprintf\&.c\&.
+.SS "#define STATIC"
+
+.PP
+Definition at line 42 of file gprintf\&.c\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef void(* putcf)(void *, char)"
+
+.PP
+Definition at line 34 of file gprintf\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBSTATIC\fP int a2d (charch)"
+
+.PP
+Definition at line 104 of file gprintf\&.c\&.
+.PP
+Referenced by a2i()\&.
+.PP
+.nf
+105     {
+106     if (ch>='0' && ch<='9') 
+107         return ch-'0';
+108     else if (ch>='a' && ch<='f')
+109         return ch-'a'+10;
+110     else if (ch>='A' && ch<='F')
+111         return ch-'A'+10;
+112     else return -1;
+113     }
+.fi
+.SS "\fBSTATIC\fP char a2i (charch, const char **src, intbase, int *nump)"
+
+.PP
+Definition at line 115 of file gprintf\&.c\&.
+.PP
+References a2d()\&.
+.PP
+Referenced by tfp_format()\&.
+.PP
+.nf
+116     {
+117     const char  * p= *src;
+118     int num=0;
+119     int digit;
+120     while ((digit=a2d(ch))>=0) {
+121         if (digit>base) break;
+122         num=num*base+digit;
+123         ch=*p++;
+124         }
+125     *src=p;
+126     *nump=num;
+127     return ch;
+128     }
+.fi
+.SS "\fBSTATIC\fP void i2a (intnum, char *bf)"
+
+.PP
+Definition at line 95 of file gprintf\&.c\&.
+.PP
+References ui2a()\&.
+.PP
+Referenced by tfp_format()\&.
+.PP
+.nf
+96     {
+97     if (num<0) {
+98         num=-num;
+99         *bf++ = '-';
+100         }
+101     ui2a(num,10,0,bf);
+102     }
+.fi
+.SS "\fBSTATIC\fP void li2a (longnum, char *bf)"
+
+.PP
+Definition at line 66 of file gprintf\&.c\&.
+.PP
+References uli2a()\&.
+.PP
+Referenced by tfp_format()\&.
+.PP
+.nf
+67     {
+68     if (num<0) {
+69         num=-num;
+70         *bf++ = '-';
+71         }
+72     uli2a(num,10,0,bf);
+73     }
+.fi
+.SS "\fBSTATIC\fP void putchw (void *putp, \fBputcf\fPputf, intn, charz, char *bf)"
+
+.PP
+Definition at line 130 of file gprintf\&.c\&.
+.PP
+Referenced by tfp_format()\&.
+.PP
+.nf
+131     {
+132     char fc=z? '0' : ' ';
+133     char ch;
+134     char* p=bf;
+135     while (*p++ && n > 0)
+136         n--;
+137     while (n-- > 0) 
+138         putf(putp,fc);
+139     while ((ch= *bf++))
+140         putf(putp,ch);
+141     }
+.fi
+.SS "\fBSTATIC\fP void putcp (void *p, charc)"
+
+.PP
+Definition at line 223 of file gprintf\&.c\&.
+.PP
+Referenced by tfp_vsprintf()\&.
+.PP
+.nf
+224     {
+225     *(*((char**)p))++ = c;
+226     }
+.fi
+.SS "void tfp_format (void *putp, \fBputcf\fPputf, const char *fmt, va_listva)"
+
+.PP
+Definition at line 143 of file gprintf\&.c\&.
+.PP
+References a2i(), i2a(), li2a(), putchw(), ui2a(), and uli2a()\&.
+.PP
+Referenced by tfp_vsprintf()\&.
+.PP
+.nf
+144     {
+145     char bf[12];
+146     
+147     char ch;
+148 
+149 
+150     while ((ch=*(fmt++))) {
+151         if (ch!='%') 
+152             putf(putp,ch);
+153         else {
+154             char lz=0;
+155 #ifdef  PRINTF_LONG_SUPPORT
+156             char lng=0;
+157 #endif
+158             int w=0;
+159             ch=*(fmt++);
+160             if (ch=='0') {
+161                 ch=*(fmt++);
+162                 lz=1;
+163                 }
+164             if (ch>='0' && ch<='9') {
+165                 ch=a2i(ch,&fmt,10,&w);
+166                 }
+167 #ifdef  PRINTF_LONG_SUPPORT
+168             if (ch=='l') {
+169                 ch=*(fmt++);
+170                 lng=1;
+171             }
+172 #endif
+173             switch (ch) {
+174                 case 0: 
+175                     goto abort;
+176                 case 'u' : {
+177 #ifdef  PRINTF_LONG_SUPPORT
+178                     if (lng)
+179                         uli2a(va_arg(va, unsigned long int),10,0,bf);
+180                     else
+181 #endif
+182                     ui2a(va_arg(va, unsigned int),10,0,bf);
+183                     putchw(putp,putf,w,lz,bf);
+184                     break;
+185                     }
+186                 case 'd' :  {
+187 #ifdef  PRINTF_LONG_SUPPORT
+188                     if (lng)
+189                         li2a(va_arg(va, unsigned long int),bf);
+190                     else
+191 #endif
+192                     i2a(va_arg(va, int),bf);
+193                     putchw(putp,putf,w,lz,bf);
+194                     break;
+195                     }
+196                 case 'x': case 'X' : 
+197 #ifdef  PRINTF_LONG_SUPPORT
+198                     if (lng)
+199                         uli2a(va_arg(va, unsigned long int),16,(ch=='X'),bf);
+200                     else
+201 #endif
+202                     ui2a(va_arg(va, unsigned int),16,(ch=='X'),bf);
+203                     putchw(putp,putf,w,lz,bf);
+204                     break;
+205                 case 'c' : 
+206                     putf(putp,(char)(va_arg(va, int)));
+207                     break;
+208                 case 's' : 
+209                     putchw(putp,putf,w,0,va_arg(va, char*));
+210                     break;
+211                 case '%' :
+212                     putf(putp,ch);
+213                 default:
+214                     break;
+215                 }
+216             }
+217         }
+218     abort:;
+219     }
+.fi
+.SS "void tfp_vsprintf (char *s, const char *fmt, va_listva)"
+
+.PP
+Definition at line 230 of file gprintf\&.c\&.
+.PP
+References putcp(), and tfp_format()\&.
+.PP
+.nf
+231     {
+232     tfp_format(&s,putcp,fmt,va);
+233     putcp(&s,0);
+234     }
+.fi
+.SS "\fBSTATIC\fP void ui2a (unsigned intnum, unsigned intbase, intuc, char *bf)"
+
+.PP
+Definition at line 77 of file gprintf\&.c\&.
+.PP
+Referenced by i2a(), and tfp_format()\&.
+.PP
+.nf
+78     {
+79     int n=0;
+80     unsigned int d=1;
+81     while (num/d >= base)
+82         d*=base;        
+83     while (d!=0) {
+84         int dgt = num / d;
+85         num%= d;
+86         d/=base;
+87         if (n || dgt>0 || d==0) {
+88             *bf++ = dgt+(dgt<10 ? '0' : (uc ? 'A' : 'a')-10);
+89             ++n;
+90             }
+91         }
+92     *bf=0;
+93     }
+.fi
+.SS "\fBSTATIC\fP void uli2a (unsigned long intnum, unsigned intbase, intuc, char *bf)"
+
+.PP
+Definition at line 48 of file gprintf\&.c\&.
+.PP
+Referenced by li2a(), and tfp_format()\&.
+.PP
+.nf
+49     {
+50     int n=0;
+51     unsigned long int d=1;
+52     while (num/d >= base)
+53         d*=base;         
+54     while (d!=0) {
+55         int dgt = num / d;
+56         num%=d;
+57         d/=base;
+58         if (n || dgt>0|| d==0) {
+59             *bf++ = dgt+(dgt<10 ? '0' : (uc ? 'A' : 'a')-10);
+60             ++n;
+61             }
+62         }
+63     *bf=0;
+64     }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

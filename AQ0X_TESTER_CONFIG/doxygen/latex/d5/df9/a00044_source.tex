@@ -1,0 +1,219 @@
+\hypertarget{a00044_source}{\section{settingsdialog.\+cpp}
+\label{a00044_source}\index{settingsdialog.\+cpp@{settingsdialog.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/****************************************************************************}
+00002 \textcolor{comment}{**}
+00003 \textcolor{comment}{** Copyright (C) 2012 Denis Shienkov <denis.shienkov@gmail.com>}
+00004 \textcolor{comment}{** Copyright (C) 2012 Laszlo Papp <lpapp@kde.org>}
+00005 \textcolor{comment}{** Contact: http://www.qt-project.org/legal}
+00006 \textcolor{comment}{**}
+00007 \textcolor{comment}{** This file is part of the QtSerialPort module of the Qt Toolkit.}
+00008 \textcolor{comment}{**}
+00009 \textcolor{comment}{** $QT\_BEGIN\_LICENSE:LGPL$}
+00010 \textcolor{comment}{** Commercial License Usage}
+00011 \textcolor{comment}{** Licensees holding valid commercial Qt licenses may use this file in}
+00012 \textcolor{comment}{** accordance with the commercial license agreement provided with the}
+00013 \textcolor{comment}{** Software or, alternatively, in accordance with the terms contained in}
+00014 \textcolor{comment}{** a written agreement between you and Digia.  For licensing terms and}
+00015 \textcolor{comment}{** conditions see http://qt.digia.com/licensing.  For further information}
+00016 \textcolor{comment}{** use the contact form at http://qt.digia.com/contact-us.}
+00017 \textcolor{comment}{**}
+00018 \textcolor{comment}{** GNU Lesser General Public License Usage}
+00019 \textcolor{comment}{** Alternatively, this file may be used under the terms of the GNU Lesser}
+00020 \textcolor{comment}{** General Public License version 2.1 as published by the Free Software}
+00021 \textcolor{comment}{** Foundation and appearing in the file LICENSE.LGPL included in the}
+00022 \textcolor{comment}{** packaging of this file.  Please review the following information to}
+00023 \textcolor{comment}{** ensure the GNU Lesser General Public License version 2.1 requirements}
+00024 \textcolor{comment}{** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.}
+00025 \textcolor{comment}{**}
+00026 \textcolor{comment}{** In addition, as a special exception, Digia gives you certain additional}
+00027 \textcolor{comment}{** rights.  These rights are described in the Digia Qt LGPL Exception}
+00028 \textcolor{comment}{** version 1.1, included in the file LGPL\_EXCEPTION.txt in this package.}
+00029 \textcolor{comment}{**}
+00030 \textcolor{comment}{** GNU General Public License Usage}
+00031 \textcolor{comment}{** Alternatively, this file may be used under the terms of the GNU}
+00032 \textcolor{comment}{** General Public License version 3.0 as published by the Free Software}
+00033 \textcolor{comment}{** Foundation and appearing in the file LICENSE.GPL included in the}
+00034 \textcolor{comment}{** packaging of this file.  Please review the following information to}
+00035 \textcolor{comment}{** ensure the GNU General Public License version 3.0 requirements will be}
+00036 \textcolor{comment}{** met: http://www.gnu.org/copyleft/gpl.html.}
+00037 \textcolor{comment}{**}
+00038 \textcolor{comment}{**}
+00039 \textcolor{comment}{** $QT\_END\_LICENSE$}
+00040 \textcolor{comment}{**}
+00041 \textcolor{comment}{****************************************************************************/}
+00042 
+00043 \textcolor{preprocessor}{#include "\hyperlink{a00045}{settingsdialog.h}"}
+00044 \textcolor{preprocessor}{#include "\hyperlink{a00054}{ui\_settingsdialog.h}"}
+00045 
+00046 \textcolor{preprocessor}{#include <QtSerialPort/QSerialPortInfo>}
+00047 \textcolor{preprocessor}{#include <QIntValidator>}
+00048 \textcolor{preprocessor}{#include <QLineEdit>}
+00049 
+00050 QT\_USE\_NAMESPACE
+00051 
+\hypertarget{a00044_source_l00052}{}\hyperlink{a00022_abf4568621eef32ca85b919f2209cdc42}{00052} \hyperlink{a00022_abf4568621eef32ca85b919f2209cdc42}{SettingsDialog::SettingsDialog}(QWidget *parent) :
+00053     \hyperlink{a00009}{QDialog}(parent),
+00054     ui(new \hyperlink{a00055}{Ui}::\hyperlink{a00022}{SettingsDialog})
+00055 \{
+00056     ui->\hyperlink{a00029_a4666ab89748eeb11cdb95d857bd02c6e}{setupUi}(\textcolor{keyword}{this});
+00057 
+00058     intValidator = \textcolor{keyword}{new} QIntValidator(0, 4000000, \textcolor{keyword}{this});
+00059 
+00060     ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->setInsertPolicy(QComboBox::NoInsert);
+00061 
+00062     connect(ui->\hyperlink{a00029_adc885543c05d0026019ec678b4d08c5c}{applyButton}, SIGNAL(clicked()),
+00063             \textcolor{keyword}{this}, SLOT(apply()));
+00064     connect(ui->\hyperlink{a00029_a323eca0d6d4b94d2d41c7737fe8b2282}{serialPortInfoListBox}, SIGNAL(currentIndexChanged(\textcolor{keywordtype}{int})),
+00065             \textcolor{keyword}{this}, SLOT(showPortInfo(\textcolor{keywordtype}{int})));
+00066     connect(ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}, SIGNAL(currentIndexChanged(\textcolor{keywordtype}{int})),
+00067             \textcolor{keyword}{this}, SLOT(checkCustomBaudRatePolicy(\textcolor{keywordtype}{int})));
+00068 
+00069     fillPortsParameters();
+00070     fillPortsInfo();
+00071 
+00072     updateSettings();
+00073 \}
+00074 
+\hypertarget{a00044_source_l00075}{}\hyperlink{a00022_ac48f54d4472902be0a3845a69167f068}{00075} \hyperlink{a00022_ac48f54d4472902be0a3845a69167f068}{SettingsDialog::~SettingsDialog}()
+00076 \{
+00077     \textcolor{keyword}{delete} ui;
+00078 \}
+00079 
+\hypertarget{a00044_source_l00080}{}\hyperlink{a00022_afeb533d711d0392b9856c63b40b65ad7}{00080} \hyperlink{a00022_dc/dfe/a00125}{SettingsDialog::Settings} \hyperlink{a00022_afeb533d711d0392b9856c63b40b65ad7}{SettingsDialog::settings}()\textcolor{keyword}{ const}
+00081 \textcolor{keyword}{}\{
+00082     \textcolor{keywordflow}{return} currentSettings;
+00083 \}
+00084 
+00085 \textcolor{keywordtype}{void} SettingsDialog::showPortInfo(\textcolor{keywordtype}{int} idx)
+00086 \{
+00087     \textcolor{keywordflow}{if} (idx != -1) \{
+00088         QStringList list = ui->\hyperlink{a00029_a323eca0d6d4b94d2d41c7737fe8b2282}{serialPortInfoListBox}->itemData(idx).toStringList();
+00089         ui->\hyperlink{a00029_aaf2756662f744e79aa3443f1e035870d}{descriptionLabel}->setText(tr(\textcolor{stringliteral}{"Description: %1"}).arg(list.at(1)));
+00090         ui->\hyperlink{a00029_afeadc7657c9eaa3103bd529342f5fe97}{manufacturerLabel}->setText(tr(\textcolor{stringliteral}{"Manufacturer: %1"}).arg(list.at(2)));
+00091         ui->\hyperlink{a00029_ad860892f11a79cb726643d3478078fcd}{locationLabel}->setText(tr(\textcolor{stringliteral}{"Location: %1"}).arg(list.at(3)));
+00092         ui->\hyperlink{a00029_a50c8fdd36faae6146740e37728af71f2}{vidLabel}->setText(tr(\textcolor{stringliteral}{"Vendor Identifier: %1"}).arg(list.at(4)));
+00093         ui->\hyperlink{a00029_a8ad53ddf3a11421d99dfa6fec8c92cfc}{pidLabel}->setText(tr(\textcolor{stringliteral}{"Product Identifier: %1"}).arg(list.at(5)));
+00094     \}
+00095 \}
+00096 
+00097 \textcolor{keywordtype}{void} SettingsDialog::apply()
+00098 \{
+00099     updateSettings();
+00100     hide();
+00101 \}
+00102 
+00103 \textcolor{keywordtype}{void} SettingsDialog::checkCustomBaudRatePolicy(\textcolor{keywordtype}{int} idx)
+00104 \{
+00105     \textcolor{keywordtype}{bool} isCustomBaudRate = !ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->itemData(idx).isValid();
+00106     ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->setEditable(isCustomBaudRate);
+00107     \textcolor{keywordflow}{if} (isCustomBaudRate) \{
+00108         ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->clearEditText();
+00109         QLineEdit *edit = ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->lineEdit();
+00110         edit->setValidator(intValidator);
+00111     \}
+00112 \}
+00113 
+00114 \textcolor{keywordtype}{void} SettingsDialog::fillPortsParameters()
+00115 \{
+00116     \textcolor{comment}{// fill baud rate (is not the entire list of available values,}
+00117     \textcolor{comment}{// desired values??, add your independently)}
+00118 
+00119     ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->addItem(QLatin1String(\textcolor{stringliteral}{"57600"}), QSerialPort::Baud57600);
+00120     ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->addItem(QLatin1String(\textcolor{stringliteral}{"9600"}), QSerialPort::Baud9600);
+00121     ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->addItem(QLatin1String(\textcolor{stringliteral}{"38400"}), QSerialPort::Baud38400);
+00122     ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->addItem(QLatin1String(\textcolor{stringliteral}{"115200"}), QSerialPort::Baud115200);
+00123     ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->addItem(QLatin1String(\textcolor{stringliteral}{"Custom"}));
+00124 
+00125     \textcolor{comment}{// fill data bits}
+00126     ui->\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox}->addItem(QLatin1String(\textcolor{stringliteral}{"5"}), QSerialPort::Data5);
+00127     ui->\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox}->addItem(QLatin1String(\textcolor{stringliteral}{"6"}), QSerialPort::Data6);
+00128     ui->\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox}->addItem(QLatin1String(\textcolor{stringliteral}{"7"}), QSerialPort::Data7);
+00129     ui->\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox}->addItem(QLatin1String(\textcolor{stringliteral}{"8"}), QSerialPort::Data8);
+00130     ui->\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox}->setCurrentIndex(3);
+00131 
+00132     \textcolor{comment}{// fill parity}
+00133     ui->\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox}->addItem(QLatin1String(\textcolor{stringliteral}{"None"}), QSerialPort::NoParity);
+00134     ui->\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox}->addItem(QLatin1String(\textcolor{stringliteral}{"Even"}), QSerialPort::EvenParity);
+00135     ui->\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox}->addItem(QLatin1String(\textcolor{stringliteral}{"Odd"}), QSerialPort::OddParity);
+00136     ui->\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox}->addItem(QLatin1String(\textcolor{stringliteral}{"Mark"}), QSerialPort::MarkParity);
+00137     ui->\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox}->addItem(QLatin1String(\textcolor{stringliteral}{"Space"}), QSerialPort::SpaceParity);
+00138 
+00139     \textcolor{comment}{// fill stop bits}
+00140     ui->\hyperlink{a00029_ad61890c5fd0acc9e72385efd02df90c0}{stopBitsBox}->addItem(QLatin1String(\textcolor{stringliteral}{"1"}), QSerialPort::OneStop);
+00141 \textcolor{preprocessor}{#ifdef Q\_OS\_WIN}
+00142     ui->\hyperlink{a00029_ad61890c5fd0acc9e72385efd02df90c0}{stopBitsBox}->addItem(QLatin1String(\textcolor{stringliteral}{"1.5"}), QSerialPort::OneAndHalfStop);
+00143 \textcolor{preprocessor}{#endif}
+00144     ui->\hyperlink{a00029_ad61890c5fd0acc9e72385efd02df90c0}{stopBitsBox}->addItem(QLatin1String(\textcolor{stringliteral}{"2"}), QSerialPort::TwoStop);
+00145 
+00146     \textcolor{comment}{// fill flow control}
+00147     ui->\hyperlink{a00029_a1ebdf5da704108eae1078cefc446fbef}{flowControlBox}->addItem(QLatin1String(\textcolor{stringliteral}{"None"}), QSerialPort::NoFlowControl);
+00148     ui->\hyperlink{a00029_a1ebdf5da704108eae1078cefc446fbef}{flowControlBox}->addItem(QLatin1String(\textcolor{stringliteral}{"RTS/CTS"}), QSerialPort::HardwareControl);
+00149     ui->\hyperlink{a00029_a1ebdf5da704108eae1078cefc446fbef}{flowControlBox}->addItem(QLatin1String(\textcolor{stringliteral}{"XON/XOFF"}), QSerialPort::SoftwareControl);
+00150 \}
+00151 
+00152 \textcolor{keywordtype}{void} SettingsDialog::fillPortsInfo()
+00153 \{
+00154     ui->\hyperlink{a00029_a323eca0d6d4b94d2d41c7737fe8b2282}{serialPortInfoListBox}->clear();
+00155     \textcolor{keywordflow}{foreach} (\textcolor{keyword}{const} QSerialPortInfo &info, QSerialPortInfo::availablePorts()) \{
+00156         QStringList list;
+00157         list << info.portName()
+00158              << info.description()
+00159              << info.manufacturer()
+00160              << info.systemLocation()
+00161              << (info.vendorIdentifier() ? QString::number(info.vendorIdentifier(), 16) : QString())
+00162              << (info.productIdentifier() ? QString::number(info.productIdentifier(), 16) : QString());
+00163 
+00164         ui->\hyperlink{a00029_a323eca0d6d4b94d2d41c7737fe8b2282}{serialPortInfoListBox}->addItem(list.first(), list);
+00165     \}
+00166 \}
+00167 
+00168 \textcolor{keywordtype}{void} SettingsDialog::updateSettings()
+00169 \{
+00170     currentSettings.\hyperlink{a00022_a973c8cfb942a512f34fc4227c0caa6dd}{name} = ui->\hyperlink{a00029_a323eca0d6d4b94d2d41c7737fe8b2282}{serialPortInfoListBox}->currentText();
+00171 
+00172     \textcolor{comment}{// Baud Rate}
+00173     \textcolor{keywordflow}{if} (ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->currentIndex() == 4) \{
+00174         \textcolor{comment}{// custom baud rate}
+00175         currentSettings.\hyperlink{a00022_ac19cc9431552857a75c657a464ba0700}{baudRate} = ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->currentText().toInt();
+00176     \} \textcolor{keywordflow}{else} \{
+00177         \textcolor{comment}{// standard baud rate}
+00178         currentSettings.\hyperlink{a00022_ac19cc9431552857a75c657a464ba0700}{baudRate} = \textcolor{keyword}{static\_cast<}QSerialPort::BaudRate\textcolor{keyword}{>}(
+00179                     ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->itemData(ui->\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox}->currentIndex()).toInt(
+      ));
+00180     \}
+00181     currentSettings.\hyperlink{a00022_a54e9d461f783386f314bc24b96665e53}{stringBaudRate} = QString::number(currentSettings.
+      \hyperlink{a00022_ac19cc9431552857a75c657a464ba0700}{baudRate});
+00182 
+00183     \textcolor{comment}{// Data bits}
+00184     currentSettings.\hyperlink{a00022_a7dcd85d028a09508cb4567cf631b40e9}{dataBits} = \textcolor{keyword}{static\_cast<}QSerialPort::DataBits\textcolor{keyword}{>}(
+00185                 ui->\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox}->itemData(ui->\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox}->currentIndex()).toInt());
+00186     currentSettings.\hyperlink{a00022_ab589b733b78af17744ab75067bfce051}{stringDataBits} = ui->\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox}->currentText();
+00187 
+00188     \textcolor{comment}{// Parity}
+00189     currentSettings.\hyperlink{a00022_ae08a00aa2e45218dade9046e3624cce7}{parity} = \textcolor{keyword}{static\_cast<}QSerialPort::Parity\textcolor{keyword}{>}(
+00190                 ui->\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox}->itemData(ui->\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox}->currentIndex()).toInt());
+00191     currentSettings.\hyperlink{a00022_aa2c662b2fb315f038e827d63d83b059b}{stringParity} = ui->\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox}->currentText();
+00192 
+00193     \textcolor{comment}{// Stop bits}
+00194     currentSettings.\hyperlink{a00022_ab88ff384f7c1127bcbe2dd97b49696a4}{stopBits} = \textcolor{keyword}{static\_cast<}QSerialPort::StopBits\textcolor{keyword}{>}(
+00195                 ui->\hyperlink{a00029_ad61890c5fd0acc9e72385efd02df90c0}{stopBitsBox}->itemData(ui->\hyperlink{a00029_ad61890c5fd0acc9e72385efd02df90c0}{stopBitsBox}->currentIndex()).toInt());
+00196     currentSettings.\hyperlink{a00022_abde3c8410f779688ce6c2fcbbbb84f10}{stringStopBits} = ui->\hyperlink{a00029_ad61890c5fd0acc9e72385efd02df90c0}{stopBitsBox}->currentText();
+00197 
+00198     \textcolor{comment}{// Flow control}
+00199     currentSettings.\hyperlink{a00022_aa962a6e7dbb8338af154305e4ff46cfc}{flowControl} = \textcolor{keyword}{static\_cast<}QSerialPort::FlowControl\textcolor{keyword}{>}(
+00200                 ui->\hyperlink{a00029_a1ebdf5da704108eae1078cefc446fbef}{flowControlBox}->itemData(ui->\hyperlink{a00029_a1ebdf5da704108eae1078cefc446fbef}{flowControlBox}->currentIndex()
+      ).toInt());
+00201     currentSettings.\hyperlink{a00022_a1b0a388ec5059bd2628acf9b7728f2f3}{stringFlowControl} = ui->\hyperlink{a00029_a1ebdf5da704108eae1078cefc446fbef}{flowControlBox}->currentText();
+00202 
+00203     \textcolor{comment}{// Additional options}
+00204     currentSettings.\hyperlink{a00022_ae1bfec3d6530f9791451d12aacfcb014}{localEchoEnabled} = ui->\hyperlink{a00029_a4cef19b8232e266ba202152ade600263}{localEchoCheckBox}->isChecked();
+00205 \}
+00206 
+00207 \textcolor{keywordtype}{void} SettingsDialog::on\_applyButton\_clicked()
+00208 \{
+00209 
+00210 \}
+\end{DoxyCode}

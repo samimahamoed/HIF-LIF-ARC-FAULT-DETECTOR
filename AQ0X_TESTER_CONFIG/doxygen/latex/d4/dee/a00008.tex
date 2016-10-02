@@ -1,0 +1,145 @@
+\hypertarget{a00008}{\section{module\+\_\+disturbance\+\_\+record\+\_\+t Struct Reference}
+\label{a00008}\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+}
+
+
+{\ttfamily \#include $<$storage\+\_\+structure.\+h$>$}
+
+
+
+Collaboration diagram for module\+\_\+disturbance\+\_\+record\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/dd4/a00291}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00008_a46ac54b65ed07bd2f401d22dd3fbf99b}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed, aligned(4)))
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00003_d4/d7d/a00093}{pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t} \hyperlink{a00008_ac8e7141463960fd1e27eb25547d02555}{pre\+\_\+act\+\_\+data}
+\item 
+\hyperlink{a00003_a826f1702f1b63c184df702204bea5122}{post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t} \hyperlink{a00008_a905fb7ebfe7134f1b9f55c92227b5d0c}{post\+\_\+act\+\_\+data}
+\item 
+\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} \hyperlink{a00008_a169929d0f7641ef80d509687de9717af}{observation\+\_\+cnt}
+\item 
+\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} \hyperlink{a00008_acafae5c73d08a20e06747c6929f9d628}{event\+\_\+positive\+\_\+cnt}
+\item 
+\hyperlink{a00008_a5a700ec4c240f4e86c5fb61aef8d983e}{event\+\_\+data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line \hyperlink{a00003_source_l00189}{189} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00008_a46ac54b65ed07bd2f401d22dd3fbf99b}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{\+\_\+\+\_\+attribute\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}struct module\+\_\+disturbance\+\_\+record\+\_\+t\+::\+\_\+\+\_\+attribute\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{(packed, aligned(4))}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{a00008_a46ac54b65ed07bd2f401d22dd3fbf99b}
+
+
+Definition at line \hyperlink{a00003_source_l00201}{201} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+\begin{DoxyCode}
+00202    \{
+00203      \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}                     initial\_amp;
+00204     \textcolor{keyword}{union}\{
+00205         \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} all;
+00206         \textcolor{keyword}{struct}\{
+00207             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} dfdt\_max:1;
+00208             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} amp\_max:1;
+00209             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} dfdt\_impulse:1;
+00210             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} dfdt\_min:1;
+00211         \}bits;
+00212     \}exceeded\_threshold;
+00213 
+00214 
+00215     \textcolor{keyword}{struct}\{
+00216     \textcolor{keyword}{union}\{
+00217         \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} all;
+00218         \textcolor{keyword}{struct}\{
+00219             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} initial  :4;
+00220             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} mid      :4;
+00221             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} \textcolor{keyword}{final}    :4;
+00222             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}          :4;
+00223 
+00224         \}bits;
+00225     \}history;
+00226 
+00227     \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} cnt;
+00228 
+00229     \}state\_transition;
+00230 
+00231 
+00232     \textcolor{keyword}{struct}\{
+00233      \hyperlink{a00001_ab56a7153a5b218eac7698ff141009735}{Uint32}                    event\_detected;
+00234      \hyperlink{a00001_ab56a7153a5b218eac7698ff141009735}{Uint32}                    module\_active;
+00235      \hyperlink{a00001_ab56a7153a5b218eac7698ff141009735}{Uint32}                    global\_active;
+00236     \}timestamp;
+00237 
+00238 
+00239 
+00240     \hyperlink{a00001_a87d38f886e617ced2698fc55afa07637}{Float32}                    event\_probability;
+00241 
+00242 
+00243 
+00244     \}\hyperlink{a00008_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data};
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00008_a5a700ec4c240f4e86c5fb61aef8d983e}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!event\+\_\+data@{event\+\_\+data}}
+\index{event\+\_\+data@{event\+\_\+data}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{event\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}module\+\_\+disturbance\+\_\+record\+\_\+t\+::event\+\_\+data}}\label{a00008_a5a700ec4c240f4e86c5fb61aef8d983e}
+
+
+Definition at line \hyperlink{a00003_source_l00244}{244} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00008_acafae5c73d08a20e06747c6929f9d628}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!event\+\_\+positive\+\_\+cnt@{event\+\_\+positive\+\_\+cnt}}
+\index{event\+\_\+positive\+\_\+cnt@{event\+\_\+positive\+\_\+cnt}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{event\+\_\+positive\+\_\+cnt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} module\+\_\+disturbance\+\_\+record\+\_\+t\+::event\+\_\+positive\+\_\+cnt}}\label{a00008_acafae5c73d08a20e06747c6929f9d628}
+
+
+Definition at line \hyperlink{a00003_source_l00198}{198} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00008_a169929d0f7641ef80d509687de9717af}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!observation\+\_\+cnt@{observation\+\_\+cnt}}
+\index{observation\+\_\+cnt@{observation\+\_\+cnt}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{observation\+\_\+cnt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} module\+\_\+disturbance\+\_\+record\+\_\+t\+::observation\+\_\+cnt}}\label{a00008_a169929d0f7641ef80d509687de9717af}
+
+
+Definition at line \hyperlink{a00003_source_l00196}{196} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00008_a905fb7ebfe7134f1b9f55c92227b5d0c}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!post\+\_\+act\+\_\+data@{post\+\_\+act\+\_\+data}}
+\index{post\+\_\+act\+\_\+data@{post\+\_\+act\+\_\+data}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{post\+\_\+act\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t} module\+\_\+disturbance\+\_\+record\+\_\+t\+::post\+\_\+act\+\_\+data}}\label{a00008_a905fb7ebfe7134f1b9f55c92227b5d0c}
+
+
+Definition at line \hyperlink{a00003_source_l00193}{193} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00008_ac8e7141463960fd1e27eb25547d02555}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!pre\+\_\+act\+\_\+data@{pre\+\_\+act\+\_\+data}}
+\index{pre\+\_\+act\+\_\+data@{pre\+\_\+act\+\_\+data}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{pre\+\_\+act\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t} module\+\_\+disturbance\+\_\+record\+\_\+t\+::pre\+\_\+act\+\_\+data}}\label{a00008_ac8e7141463960fd1e27eb25547d02555}
+
+
+Definition at line \hyperlink{a00003_source_l00192}{192} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00003}{storage\+\_\+structure.\+h}\end{DoxyCompactItemize}

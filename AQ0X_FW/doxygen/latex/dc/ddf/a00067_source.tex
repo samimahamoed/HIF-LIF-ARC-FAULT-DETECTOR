@@ -1,0 +1,36 @@
+\hypertarget{a00067_source}{\section{srv\+\_\+watchdog.\+h}
+\label{a00067_source}\index{srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef SRV\_WATCHDOG\_H}
+00002 \textcolor{preprocessor}{#define SRV\_WATCHDOG\_H}
+00003 
+\hypertarget{a00067_source_l00014}{}\hyperlink{a00067_afbfc46dbf4e78e184942fc2cbe77dbb3}{00014} \textcolor{preprocessor}{#define WATCHDOG\_PRODUCTION\_MODE     0}
+\hypertarget{a00067_source_l00015}{}\hyperlink{a00067_aaf1a99e6db8062353e5f10d1f7d02938}{00015} \textcolor{preprocessor}{#define WATCHDOG\_TUNNING\_TIMEOUT     3 }\textcolor{comment}{/* initial value in miliseconds */}\textcolor{preprocessor}{}
+00016 
+00017 
+00018 
+00019 
+00020 
+00021 \textcolor{preprocessor}{#if defined(\_\_DEBUG)|| (WATCHDOG\_PRODUCTION\_MODE == 0)}
+00022 
+00023 \textcolor{keywordtype}{void} \hyperlink{a00067_a37c35718860234f09b8cef8680e1cc09}{srv\_wdg\_init\_fn}(\textcolor{keywordtype}{void});
+00024 \textcolor{keywordtype}{void} \hyperlink{a00067_ac6f811346b702c404d5e6cdfb9262767}{srv\_wdg\_kick\_fn}(\textcolor{keywordtype}{void});
+00025 
+00026 
+\hypertarget{a00067_source_l00027}{}\hyperlink{a00067_a8a83a885a73db05d7faa34734d132644}{00027} \textcolor{preprocessor}{#define srv\_wdg\_init()  srv\_wdg\_init\_fn()}
+\hypertarget{a00067_source_l00028}{}\hyperlink{a00067_a710d148845397582739d170341f3d3d9}{00028} \textcolor{preprocessor}{#define srv\_wdg\_kick()  srv\_wdg\_kick\_fn()}
+00029 
+00030 
+00031 \textcolor{preprocessor}{#else}
+00032 
+00033 \textcolor{preprocessor}{#define srv\_wdg\_init()  }
+00034 \textcolor{preprocessor}{#define srv\_wdg\_kick()  \{ ClrWdt();\}}
+00035 
+00036 
+00037 \textcolor{preprocessor}{#endif}
+00038 
+00039 
+00040 \textcolor{preprocessor}{#endif //SRV\_WATCHDOG\_H}
+\end{DoxyCode}

@@ -1,0 +1,1040 @@
+.TH "QCPItemText" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemText \- 
+.PP
+A text label\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemText\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fICreates a text item and sets default values\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPItemText\fP ()"
+.br
+.ti -1c
+.RI "QColor \fBcolor\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBselectedColor\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBbrush\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBselectedBrush\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBfont\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBselectedFont\fP () const "
+.br
+.ti -1c
+.RI "QString \fBtext\fP () const "
+.br
+.ti -1c
+.RI "Qt::Alignment \fBpositionAlignment\fP () const "
+.br
+.ti -1c
+.RI "Qt::Alignment \fBtextAlignment\fP () const "
+.br
+.ti -1c
+.RI "double \fBrotation\fP () const "
+.br
+.ti -1c
+.RI "QMargins \fBpadding\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the color of the text\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the color of the text that will be used when the item is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used do draw a rectangular border around the text\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used do draw a rectangular border around the text, when the item is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fISets the brush that will be used do fill the background of the text\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fISets the brush that will be used do fill the background of the text, when the item is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetFont\fP (const QFont &\fBfont\fP)"
+.br
+.RI "\fISets the font of the text\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedFont\fP (const QFont &\fBfont\fP)"
+.br
+.RI "\fISets the font of the text that will be used when the item is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetText\fP (const QString &\fBtext\fP)"
+.br
+.RI "\fISets the text that will be displayed\&. \fP"
+.ti -1c
+.RI "void \fBsetPositionAlignment\fP (Qt::Alignment alignment)"
+.br
+.RI "\fISets which point of the text rect shall be aligned with \fIposition\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetTextAlignment\fP (Qt::Alignment alignment)"
+.br
+.RI "\fIControls how (multi-lined) text is aligned inside the text rect (typically Qt::AlignLeft, Qt::AlignCenter or Qt::AlignRight)\&. \fP"
+.ti -1c
+.RI "void \fBsetRotation\fP (double degrees)"
+.br
+.RI "\fISets the angle in degrees by which the text (and the text rectangle, if visible) will be rotated around \fIposition\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetPadding\fP (const QMargins &\fBpadding\fP)"
+.br
+.RI "\fISets the distance between the border of the text rectangle and the text\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits an item or not\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBposition\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBtopLeft\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBtop\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBtopRight\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBright\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBbottomRight\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBbottom\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBbottomLeft\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBleft\fP"
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAnchorIndex\fP { \fBaiTopLeft\fP, \fBaiTop\fP, \fBaiTopRight\fP, \fBaiRight\fP, \fBaiBottomRight\fP, \fBaiBottom\fP, \fBaiBottomLeft\fP, \fBaiLeft\fP }"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual QPointF \fBanchorPixelPoint\fP (int anchorId) const "
+.br
+.ti -1c
+.RI "QPointF \fBgetTextDrawPoint\fP (const QPointF &pos, const QRectF &rect, Qt::Alignment \fBpositionAlignment\fP) const "
+.br
+.ti -1c
+.RI "QFont \fBmainFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBmainColor\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBmainPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBmainBrush\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QColor \fBmColor\fP"
+.br
+.ti -1c
+.RI "QColor \fBmSelectedColor\fP"
+.br
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedPen\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmBrush\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmSelectedBrush\fP"
+.br
+.ti -1c
+.RI "QFont \fBmFont\fP"
+.br
+.ti -1c
+.RI "QFont \fBmSelectedFont\fP"
+.br
+.ti -1c
+.RI "QString \fBmText\fP"
+.br
+.ti -1c
+.RI "Qt::Alignment \fBmPositionAlignment\fP"
+.br
+.ti -1c
+.RI "Qt::Alignment \fBmTextAlignment\fP"
+.br
+.ti -1c
+.RI "double \fBmRotation\fP"
+.br
+.ti -1c
+.RI "QMargins \fBmPadding\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A text label\&. 
+
+Text example\&. Blue dotted circles are anchors, solid blue discs are positions\&. Its position is defined by the member \fIposition\fP and the setting of \fBsetPositionAlignment\fP\&. The latter controls which part of the text rect shall be aligned with \fIposition\fP\&.
+.PP
+The text alignment itself (i\&.e\&. left, center, right) can be controlled with \fBsetTextAlignment\fP\&.
+.PP
+The text may be rotated around the \fIposition\fP point with \fBsetRotation\fP\&. 
+.PP
+Definition at line 1109 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPItemText::AnchorIndex\fP\fC [protected]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIaiTopLeft \fP\fP
+.TP
+\fB\fIaiTop \fP\fP
+.TP
+\fB\fIaiTopRight \fP\fP
+.TP
+\fB\fIaiRight \fP\fP
+.TP
+\fB\fIaiBottomRight \fP\fP
+.TP
+\fB\fIaiBottom \fP\fP
+.TP
+\fB\fIaiBottomLeft \fP\fP
+.TP
+\fB\fIaiLeft \fP\fP
+.PP
+Definition at line 1160 of file qcustomplot\&.h\&.
+.PP
+.nf
+1160 {aiTopLeft, aiTop, aiTopRight, aiRight, aiBottomRight, aiBottom, aiBottomLeft, aiLeft};
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemText::QCPItemText (\fBQCustomPlot\fP *parentPlot)"
+
+.PP
+Creates a text item and sets default values\&. The constructed item can be added to the plot with QCustomPlot::addItem\&. 
+.PP
+Definition at line 12770 of file qcustomplot\&.cpp\&.
+.PP
+References position, setBrush(), setColor(), QCPItemPosition::setCoords(), setPen(), setPositionAlignment(), setRotation(), setSelectedBrush(), setSelectedColor(), setSelectedPen(), setText(), and setTextAlignment()\&.
+.PP
+.nf
+12770                                                 :
+12771   QCPAbstractItem(parentPlot),
+12772   position(createPosition("position")),
+12773   topLeft(createAnchor("topLeft", aiTopLeft)),
+12774   top(createAnchor("top", aiTop)),
+12775   topRight(createAnchor("topRight", aiTopRight)),
+12776   right(createAnchor("right", aiRight)),
+12777   bottomRight(createAnchor("bottomRight", aiBottomRight)),
+12778   bottom(createAnchor("bottom", aiBottom)),
+12779   bottomLeft(createAnchor("bottomLeft", aiBottomLeft)),
+12780   left(createAnchor("left", aiLeft))
+12781 {
+12782   position->setCoords(0, 0);
+12783   
+12784   setRotation(0);
+12785   setTextAlignment(Qt::AlignTop|Qt::AlignHCenter);
+12786   setPositionAlignment(Qt::AlignCenter);
+12787   setText("text");
+12788   
+12789   setPen(Qt::NoPen);
+12790   setSelectedPen(Qt::NoPen);
+12791   setBrush(Qt::NoBrush);
+12792   setSelectedBrush(Qt::NoBrush);
+12793   setColor(Qt::black);
+12794   setSelectedColor(Qt::blue);
+12795 }
+.fi
+.SS "QCPItemText::~QCPItemText ()\fC [virtual]\fP"
+
+.PP
+Definition at line 12797 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+12798 {
+12799 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "QPointF QCPItemText::anchorPixelPoint (intanchorId) const\fC [protected]\fP, \fC [virtual]\fP"
+Returns the pixel position of the anchor with Id \fIanchorId\fP\&. This function must be reimplemented in item subclasses if they want to provide anchors (\fBQCPItemAnchor\fP)\&.
+.PP
+For example, if the item has two anchors with id 0 and 1, this function takes one of these anchor ids and returns the respective pixel points of the specified anchor\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcreateAnchor\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12991 of file qcustomplot\&.cpp\&.
+.PP
+References aiBottom, aiBottomLeft, aiBottomRight, aiLeft, aiRight, aiTop, aiTopLeft, aiTopRight, getTextDrawPoint(), mainFont(), mPadding, mPositionAlignment, mRotation, mText, mTextAlignment, QCPItemPosition::pixelPoint(), and position\&.
+.PP
+.nf
+12992 {
+12993   // get actual rect points (pretty much copied from draw function):
+12994   QPointF pos(position->pixelPoint());
+12995   QTransform transform;
+12996   transform\&.translate(pos\&.x(), pos\&.y());
+12997   if (!qFuzzyIsNull(mRotation))
+12998     transform\&.rotate(mRotation);
+12999   QFontMetrics fontMetrics(mainFont());
+13000   QRect textRect = fontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip|mTextAlignment, mText);
+13001   QRectF textBoxRect = textRect\&.adjusted(-mPadding\&.left(), -mPadding\&.top(), mPadding\&.right(), mPadding\&.bottom());
+13002   QPointF textPos = getTextDrawPoint(QPointF(0, 0), textBoxRect, mPositionAlignment); // 0, 0 because the transform does the translation
+13003   textBoxRect\&.moveTopLeft(textPos\&.toPoint());
+13004   QPolygonF rectPoly = transform\&.map(QPolygonF(textBoxRect));
+13005   
+13006   switch (anchorId)
+13007   {
+13008     case aiTopLeft:     return rectPoly\&.at(0);
+13009     case aiTop:         return (rectPoly\&.at(0)+rectPoly\&.at(1))*0\&.5;
+13010     case aiTopRight:    return rectPoly\&.at(1);
+13011     case aiRight:       return (rectPoly\&.at(1)+rectPoly\&.at(2))*0\&.5;
+13012     case aiBottomRight: return rectPoly\&.at(2);
+13013     case aiBottom:      return (rectPoly\&.at(2)+rectPoly\&.at(3))*0\&.5;
+13014     case aiBottomLeft:  return rectPoly\&.at(3);
+13015     case aiLeft:        return (rectPoly\&.at(3)+rectPoly\&.at(0))*0\&.5;
+13016   }
+13017   
+13018   qDebug() << Q_FUNC_INFO << "invalid anchorId" << anchorId;
+13019   return QPointF();
+13020 }
+.fi
+.SS "QBrush QCPItemText::brush () const\fC [inline]\fP"
+
+.PP
+Definition at line 1121 of file qcustomplot\&.h\&.
+.PP
+Referenced by setBrush(), and setSelectedBrush()\&.
+.PP
+.nf
+1121 { return mBrush; }
+.fi
+.SS "QColor QCPItemText::color () const\fC [inline]\fP"
+
+.PP
+Definition at line 1117 of file qcustomplot\&.h\&.
+.PP
+References mColor\&.
+.PP
+Referenced by draw(), setColor(), and setSelectedColor()\&.
+.PP
+.nf
+1117 { return mColor; }
+.fi
+.SS "void QCPItemText::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this item with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible items\&.
+.PP
+The cliprect of the provided painter is set to the rect returned by \fBclipRect\fP before this function is called\&. For items this depends on the clipping settings defined by \fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12959 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::clipRect(), color(), getTextDrawPoint(), mainBrush(), mainColor(), mainFont(), mainPen(), mPadding, mPositionAlignment, mRotation, mText, mTextAlignment, QCPItemPosition::pixelPoint(), position, and QCPPainter::setPen()\&.
+.PP
+.nf
+12960 {
+12961   QPointF pos(position->pixelPoint());
+12962   QTransform transform;
+12963   transform\&.translate(pos\&.x(), pos\&.y());
+12964   if (!qFuzzyIsNull(mRotation))
+12965     transform\&.rotate(mRotation);
+12966   painter->setFont(mainFont());
+12967   QRect textRect = painter->fontMetrics()\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip|mTextAlignment, mText);
+12968   QRect textBoxRect = textRect\&.adjusted(-mPadding\&.left(), -mPadding\&.top(), mPadding\&.right(), mPadding\&.bottom());
+12969   QPointF textPos = getTextDrawPoint(QPointF(0, 0), textBoxRect, mPositionAlignment); // 0, 0 because the transform does the translation
+12970   textRect\&.moveTopLeft(textPos\&.toPoint()+QPoint(mPadding\&.left(), mPadding\&.top()));
+12971   textBoxRect\&.moveTopLeft(textPos\&.toPoint());
+12972   double clipPad = mainPen()\&.widthF();
+12973   QRect boundingRect = textBoxRect\&.adjusted(-clipPad, -clipPad, clipPad, clipPad);
+12974   if (transform\&.mapRect(boundingRect)\&.intersects(clipRect()))
+12975   {
+12976     painter->setTransform(transform);
+12977     if ((mainBrush()\&.style() != Qt::NoBrush && mainBrush()\&.color()\&.alpha() != 0) ||
+12978         (mainPen()\&.style() != Qt::NoPen && mainPen()\&.color()\&.alpha() != 0))
+12979     {
+12980       painter->setPen(mainPen());
+12981       painter->setBrush(mainBrush());
+12982       painter->drawRect(textBoxRect);
+12983     }
+12984     painter->setBrush(Qt::NoBrush);
+12985     painter->setPen(QPen(mainColor()));
+12986     painter->drawText(textRect, Qt::TextDontClip|mTextAlignment, mText);
+12987   }
+12988 }
+.fi
+.SS "QFont QCPItemText::font () const\fC [inline]\fP"
+
+.PP
+Definition at line 1123 of file qcustomplot\&.h\&.
+.PP
+Referenced by setFont(), and setSelectedFont()\&.
+.PP
+.nf
+1123 { return mFont; }
+.fi
+.SS "QPointF QCPItemText::getTextDrawPoint (const QPointF &pos, const QRectF &rect, Qt::AlignmentpositionAlignment) const\fC [protected]\fP"
+Returns the point that must be given to the QPainter::drawText function (which expects the top left point of the text rect), according to the position \fIpos\fP, the text bounding box \fIrect\fP and the requested \fIpositionAlignment\fP\&.
+.PP
+For example, if \fIpositionAlignment\fP is \fCQt::AlignLeft | Qt::AlignBottom\fP the returned point will be shifted upward by the height of \fIrect\fP, starting from \fIpos\fP\&. So if the text is finally drawn at that point, the lower left corner of the resulting text rect is at \fIpos\fP\&. 
+.PP
+Definition at line 13032 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), and selectTest()\&.
+.PP
+.nf
+13033 {
+13034   if (positionAlignment == 0 || positionAlignment == (Qt::AlignLeft|Qt::AlignTop))
+13035     return pos;
+13036   
+13037   QPointF result = pos; // start at top left
+13038   if (positionAlignment\&.testFlag(Qt::AlignHCenter))
+13039     result\&.rx() -= rect\&.width()/2\&.0;
+13040   else if (positionAlignment\&.testFlag(Qt::AlignRight))
+13041     result\&.rx() -= rect\&.width();
+13042   if (positionAlignment\&.testFlag(Qt::AlignVCenter))
+13043     result\&.ry() -= rect\&.height()/2\&.0;
+13044   else if (positionAlignment\&.testFlag(Qt::AlignBottom))
+13045     result\&.ry() -= rect\&.height();
+13046   return result;
+13047 }
+.fi
+.SS "QBrush QCPItemText::mainBrush () const\fC [protected]\fP"
+Returns the brush that should be used for drawing fills of the item\&. Returns mBrush when the item is not selected and mSelectedBrush when it is\&. 
+.PP
+Definition at line 13084 of file qcustomplot\&.cpp\&.
+.PP
+References mBrush, QCPAbstractItem::mSelected, and mSelectedBrush\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+13085 {
+13086   return mSelected ? mSelectedBrush : mBrush;
+13087 }
+.fi
+.SS "QColor QCPItemText::mainColor () const\fC [protected]\fP"
+Returns the color that should be used for drawing text\&. Returns mColor when the item is not selected and mSelectedColor when it is\&. 
+.PP
+Definition at line 13064 of file qcustomplot\&.cpp\&.
+.PP
+References mColor, QCPAbstractItem::mSelected, and mSelectedColor\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+13065 {
+13066   return mSelected ? mSelectedColor : mColor;
+13067 }
+.fi
+.SS "QFont QCPItemText::mainFont () const\fC [protected]\fP"
+Returns the font that should be used for drawing text\&. Returns mFont when the item is not selected and mSelectedFont when it is\&. 
+.PP
+Definition at line 13054 of file qcustomplot\&.cpp\&.
+.PP
+References mFont, QCPAbstractItem::mSelected, and mSelectedFont\&.
+.PP
+Referenced by anchorPixelPoint(), and draw()\&.
+.PP
+.nf
+13055 {
+13056   return mSelected ? mSelectedFont : mFont;
+13057 }
+.fi
+.SS "QPen QCPItemText::mainPen () const\fC [protected]\fP"
+Returns the pen that should be used for drawing lines\&. Returns mPen when the item is not selected and mSelectedPen when it is\&. 
+.PP
+Definition at line 13074 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, QCPAbstractItem::mSelected, and mSelectedPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+13075 {
+13076   return mSelected ? mSelectedPen : mPen;
+13077 }
+.fi
+.SS "QMargins QCPItemText::padding () const\fC [inline]\fP"
+
+.PP
+Definition at line 1129 of file qcustomplot\&.h\&.
+.PP
+Referenced by setPadding()\&.
+.PP
+.nf
+1129 { return mPadding; }
+.fi
+.SS "QPen QCPItemText::pen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1119 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by setPen(), and setSelectedPen()\&.
+.PP
+.nf
+1119 { return mPen; }
+.fi
+.SS "Qt::Alignment QCPItemText::positionAlignment () const\fC [inline]\fP"
+
+.PP
+Definition at line 1126 of file qcustomplot\&.h\&.
+.PP
+.nf
+1126 { return mPositionAlignment; }
+.fi
+.SS "double QCPItemText::rotation () const\fC [inline]\fP"
+
+.PP
+Definition at line 1128 of file qcustomplot\&.h\&.
+.PP
+.nf
+1128 { return mRotation; }
+.fi
+.SS "QBrush QCPItemText::selectedBrush () const\fC [inline]\fP"
+
+.PP
+Definition at line 1122 of file qcustomplot\&.h\&.
+.PP
+.nf
+1122 { return mSelectedBrush; }
+.fi
+.SS "QColor QCPItemText::selectedColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1118 of file qcustomplot\&.h\&.
+.PP
+.nf
+1118 { return mSelectedColor; }
+.fi
+.SS "QFont QCPItemText::selectedFont () const\fC [inline]\fP"
+
+.PP
+Definition at line 1124 of file qcustomplot\&.h\&.
+.PP
+.nf
+1124 { return mSelectedFont; }
+.fi
+.SS "QPen QCPItemText::selectedPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1120 of file qcustomplot\&.h\&.
+.PP
+.nf
+1120 { return mSelectedPen; }
+.fi
+.SS "double QCPItemText::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits an item or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the item\&. If the item is either invisible or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the item is represented not by single lines but by an area like \fBQCPItemRect\fP or \fBQCPItemText\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12936 of file qcustomplot\&.cpp\&.
+.PP
+References getTextDrawPoint(), mFont, mPadding, mPositionAlignment, mRotation, mText, mTextAlignment, QCPLayerable::mVisible, QCPItemPosition::pixelPoint(), position, and QCPAbstractItem::rectSelectTest()\&.
+.PP
+.nf
+12937 {
+12938   if (!mVisible)
+12939     return -1;
+12940   
+12941   // The rect may be rotated, so we transform the actual clicked pos to the rotated
+12942   // coordinate system, wo we can use the normal rectSelectTest function for non-rotated rects:
+12943   QPointF positionPixels(position->pixelPoint());
+12944   QTransform inputTransform;
+12945   inputTransform\&.translate(positionPixels\&.x(), positionPixels\&.y());
+12946   inputTransform\&.rotate(-mRotation);
+12947   inputTransform\&.translate(-positionPixels\&.x(), -positionPixels\&.y());
+12948   QPointF rotatedPos = inputTransform\&.map(pos);
+12949   QFontMetrics fontMetrics(mFont);
+12950   QRect textRect = fontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip|mTextAlignment, mText);
+12951   QRect textBoxRect = textRect\&.adjusted(-mPadding\&.left(), -mPadding\&.top(), mPadding\&.right(), mPadding\&.bottom());
+12952   QPointF textPos = getTextDrawPoint(positionPixels, textBoxRect, mPositionAlignment);
+12953   textBoxRect\&.moveTopLeft(textPos\&.toPoint());
+12954 
+12955   return rectSelectTest(textBoxRect, rotatedPos, true);
+12956 }
+.fi
+.SS "void QCPItemText::setBrush (const QBrush &brush)"
+
+.PP
+Sets the brush that will be used do fill the background of the text\&. To disable the background, set \fIbrush\fP to Qt::NoBrush\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedBrush\fP, \fBsetPen\fP, \fBsetPadding\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12845 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mBrush\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12846 {
+12847   mBrush = brush;
+12848 }
+.fi
+.SS "void QCPItemText::setColor (const QColor &color)"
+
+.PP
+Sets the color of the text\&. 
+.PP
+Definition at line 12804 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mColor\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12805 {
+12806   mColor = color;
+12807 }
+.fi
+.SS "void QCPItemText::setFont (const QFont &font)"
+
+.PP
+Sets the font of the text\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedFont\fP, \fBsetColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12866 of file qcustomplot\&.cpp\&.
+.PP
+References font(), and mFont\&.
+.PP
+.nf
+12867 {
+12868   mFont = font;
+12869 }
+.fi
+.SS "void QCPItemText::setPadding (const QMargins &padding)"
+
+.PP
+Sets the distance between the border of the text rectangle and the text\&. The appearance (and visibility) of the text rectangle can be controlled with \fBsetPen\fP and \fBsetBrush\fP\&. 
+.PP
+Definition at line 12930 of file qcustomplot\&.cpp\&.
+.PP
+References mPadding, and padding()\&.
+.PP
+.nf
+12931 {
+12932   mPadding = padding;
+12933 }
+.fi
+.SS "void QCPItemText::setPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used do draw a rectangular border around the text\&. To disable the border, set \fIpen\fP to Qt::NoPen\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedPen\fP, \fBsetBrush\fP, \fBsetPadding\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12823 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, and pen()\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12824 {
+12825   mPen = pen;
+12826 }
+.fi
+.SS "void QCPItemText::setPositionAlignment (Qt::Alignmentalignment)"
+
+.PP
+Sets which point of the text rect shall be aligned with \fIposition\fP\&. Examples: 
+.PD 0
+
+.IP "\(bu" 2
+If \fIalignment\fP is \fCQt::AlignHCenter | Qt::AlignTop\fP, the text will be positioned such that the top of the text rect will be horizontally centered on \fIposition\fP\&. 
+.IP "\(bu" 2
+If \fIalignment\fP is \fCQt::AlignLeft | Qt::AlignBottom\fP, \fIposition\fP will indicate the bottom left corner of the text rect\&.
+.PP
+If you want to control the alignment of (multi-lined) text within the text rect, use \fBsetTextAlignment\fP\&. 
+.PP
+Definition at line 12904 of file qcustomplot\&.cpp\&.
+.PP
+References mPositionAlignment\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12905 {
+12906   mPositionAlignment = alignment;
+12907 }
+.fi
+.SS "void QCPItemText::setRotation (doubledegrees)"
+
+.PP
+Sets the angle in degrees by which the text (and the text rectangle, if visible) will be rotated around \fIposition\fP\&. 
+.PP
+Definition at line 12921 of file qcustomplot\&.cpp\&.
+.PP
+References mRotation\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12922 {
+12923   mRotation = degrees;
+12924 }
+.fi
+.SS "void QCPItemText::setSelectedBrush (const QBrush &brush)"
+
+.PP
+Sets the brush that will be used do fill the background of the text, when the item is selected\&. To disable the background, set \fIbrush\fP to Qt::NoBrush\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetBrush\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12856 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mSelectedBrush\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12857 {
+12858   mSelectedBrush = brush;
+12859 }
+.fi
+.SS "void QCPItemText::setSelectedColor (const QColor &color)"
+
+.PP
+Sets the color of the text that will be used when the item is selected\&. 
+.PP
+Definition at line 12812 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mSelectedColor\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12813 {
+12814   mSelectedColor = color;
+12815 }
+.fi
+.SS "void QCPItemText::setSelectedFont (const QFont &font)"
+
+.PP
+Sets the font of the text that will be used when the item is selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12876 of file qcustomplot\&.cpp\&.
+.PP
+References font(), and mSelectedFont\&.
+.PP
+.nf
+12877 {
+12878   mSelectedFont = font;
+12879 }
+.fi
+.SS "void QCPItemText::setSelectedPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used do draw a rectangular border around the text, when the item is selected\&. To disable the border, set \fIpen\fP to Qt::NoPen\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12834 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedPen, and pen()\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12835 {
+12836   mSelectedPen = pen;
+12837 }
+.fi
+.SS "void QCPItemText::setText (const QString &text)"
+
+.PP
+Sets the text that will be displayed\&. Multi-line texts are supported by inserting a line break character, e\&.g\&. '
+.br
+'\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetFont\fP, \fBsetColor\fP, \fBsetTextAlignment\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12887 of file qcustomplot\&.cpp\&.
+.PP
+References mText, and text()\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12888 {
+12889   mText = text;
+12890 }
+.fi
+.SS "void QCPItemText::setTextAlignment (Qt::Alignmentalignment)"
+
+.PP
+Controls how (multi-lined) text is aligned inside the text rect (typically Qt::AlignLeft, Qt::AlignCenter or Qt::AlignRight)\&. 
+.PP
+Definition at line 12912 of file qcustomplot\&.cpp\&.
+.PP
+References mTextAlignment\&.
+.PP
+Referenced by QCPItemText()\&.
+.PP
+.nf
+12913 {
+12914   mTextAlignment = alignment;
+12915 }
+.fi
+.SS "QString QCPItemText::text () const\fC [inline]\fP"
+
+.PP
+Definition at line 1125 of file qcustomplot\&.h\&.
+.PP
+Referenced by setText()\&.
+.PP
+.nf
+1125 { return mText; }
+.fi
+.SS "Qt::Alignment QCPItemText::textAlignment () const\fC [inline]\fP"
+
+.PP
+Definition at line 1127 of file qcustomplot\&.h\&.
+.PP
+.nf
+1127 { return mTextAlignment; }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPItemAnchor\fP* const QCPItemText::bottom"
+
+.PP
+Definition at line 1155 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemText::bottomLeft"
+
+.PP
+Definition at line 1156 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemText::bottomRight"
+
+.PP
+Definition at line 1154 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemText::left"
+
+.PP
+Definition at line 1157 of file qcustomplot\&.h\&.
+.SS "QBrush QCPItemText::mBrush\fC [protected]\fP"
+
+.PP
+Definition at line 1163 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainBrush(), and setBrush()\&.
+.SS "QColor QCPItemText::mColor\fC [protected]\fP"
+
+.PP
+Definition at line 1161 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainColor(), and setColor()\&.
+.SS "QFont QCPItemText::mFont\fC [protected]\fP"
+
+.PP
+Definition at line 1164 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainFont(), selectTest(), and setFont()\&.
+.SS "QMargins QCPItemText::mPadding\fC [protected]\fP"
+
+.PP
+Definition at line 1169 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), selectTest(), and setPadding()\&.
+.SS "QPen QCPItemText::mPen\fC [protected]\fP"
+
+.PP
+Definition at line 1162 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setPen()\&.
+.SS "Qt::Alignment QCPItemText::mPositionAlignment\fC [protected]\fP"
+
+.PP
+Definition at line 1166 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), selectTest(), and setPositionAlignment()\&.
+.SS "double QCPItemText::mRotation\fC [protected]\fP"
+
+.PP
+Definition at line 1168 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), selectTest(), and setRotation()\&.
+.SS "QBrush QCPItemText::mSelectedBrush\fC [protected]\fP"
+
+.PP
+Definition at line 1163 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainBrush(), and setSelectedBrush()\&.
+.SS "QColor QCPItemText::mSelectedColor\fC [protected]\fP"
+
+.PP
+Definition at line 1161 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainColor(), and setSelectedColor()\&.
+.SS "QFont QCPItemText::mSelectedFont\fC [protected]\fP"
+
+.PP
+Definition at line 1164 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainFont(), and setSelectedFont()\&.
+.SS "QPen QCPItemText::mSelectedPen\fC [protected]\fP"
+
+.PP
+Definition at line 1162 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setSelectedPen()\&.
+.SS "QString QCPItemText::mText\fC [protected]\fP"
+
+.PP
+Definition at line 1165 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), selectTest(), and setText()\&.
+.SS "Qt::Alignment QCPItemText::mTextAlignment\fC [protected]\fP"
+
+.PP
+Definition at line 1167 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), selectTest(), and setTextAlignment()\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemText::position"
+
+.PP
+Definition at line 1149 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), QCPItemText(), and selectTest()\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemText::right"
+
+.PP
+Definition at line 1153 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemText::top"
+
+.PP
+Definition at line 1151 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemText::topLeft"
+
+.PP
+Definition at line 1150 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemText::topRight"
+
+.PP
+Definition at line 1152 of file qcustomplot\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

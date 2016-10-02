@@ -1,0 +1,159 @@
+\hypertarget{a00028}{\section{module\+\_\+disturbance\+\_\+record\+\_\+t Struct Reference}
+\label{a00028}\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+}
+
+
+{\ttfamily \#include $<$nov\+\_\+data.\+h$>$}
+
+
+
+Collaboration diagram for module\+\_\+disturbance\+\_\+record\+\_\+t\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00028_ad8187eb7fe09751a387e3dcb11c51565}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed, aligned(4)))
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00022_da/dc3/a00657}{pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t} \hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\+\_\+act\+\_\+data}
+\item 
+\hyperlink{a00022_a826f1702f1b63c184df702204bea5122}{post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t} \hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\+\_\+act\+\_\+data}
+\item 
+\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\+\_\+cnt}
+\item 
+\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\+\_\+positive\+\_\+cnt}
+\item 
+\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\+\_\+data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line \hyperlink{a00022_source_l00173}{173} of file \hyperlink{a00022_source}{nov\+\_\+data.\+h}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00028_ad8187eb7fe09751a387e3dcb11c51565}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{\+\_\+\+\_\+attribute\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}struct \+\_\+\+\_\+attribute\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{(packed, aligned(4))}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{a00028_ad8187eb7fe09751a387e3dcb11c51565}
+
+
+Definition at line \hyperlink{a00022_source_l00185}{185} of file \hyperlink{a00022_source}{nov\+\_\+data.\+h}.
+
+
+\begin{DoxyCode}
+00186    \{
+00187      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                     initial\_amp;
+00188     \textcolor{keyword}{union}\{
+00189         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} all;
+00190         \textcolor{keyword}{struct}\{
+00191             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} dfdt\_max:1;
+00192             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} amp\_max:1;
+00193             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} dfdt\_impulse:1;
+00194             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} dfdt\_min:1;
+00195         \}bits;
+00196     \}exceeded\_threshold;
+00197 
+00198 
+00199     \textcolor{keyword}{struct}\{
+00200     \textcolor{keyword}{union}\{
+00201         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} all;
+00202         \textcolor{keyword}{struct}\{
+00203             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} initial  :4;
+00204             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} mid      :4;
+00205             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \textcolor{keyword}{final}    :4;
+00206             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}          :4;
+00207   
+00208         \}bits;
+00209     \}history;
+00210 
+00211     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cnt;
+00212 
+00213     \}state\_transition;
+00214 
+00215 
+00216     \textcolor{keyword}{struct}\{
+00217      \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}                    event\_detected;
+00218      \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}                    module\_active;
+00219      \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}                    global\_active;
+00220     \}timestamp;
+00221 
+00222 
+00223 
+00224     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                    event\_probability;
+00225 
+00226     
+00227 
+00228     \}\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data};
+\end{DoxyCode}
+
+
+\subsection{Field Documentation}
+\hypertarget{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!event\+\_\+data@{event\+\_\+data}}
+\index{event\+\_\+data@{event\+\_\+data}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{event\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}event\+\_\+data}}\label{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}
+
+
+Definition at line \hyperlink{a00022_source_l00228}{228} of file \hyperlink{a00022_source}{nov\+\_\+data.\+h}.
+
+
+
+Referenced by \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00491}{light\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00053_source_l00747}{mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives()}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+
+\hypertarget{a00028_a7397b9d76d4b57500f27bb23d258a18a}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!event\+\_\+positive\+\_\+cnt@{event\+\_\+positive\+\_\+cnt}}
+\index{event\+\_\+positive\+\_\+cnt@{event\+\_\+positive\+\_\+cnt}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{event\+\_\+positive\+\_\+cnt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} event\+\_\+positive\+\_\+cnt}}\label{a00028_a7397b9d76d4b57500f27bb23d258a18a}
+
+
+Definition at line \hyperlink{a00022_source_l00182}{182} of file \hyperlink{a00022_source}{nov\+\_\+data.\+h}.
+
+
+
+Referenced by \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00184}{light\+\_\+sen\+\_\+calc\+\_\+probablity()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+
+\hypertarget{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!observation\+\_\+cnt@{observation\+\_\+cnt}}
+\index{observation\+\_\+cnt@{observation\+\_\+cnt}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{observation\+\_\+cnt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} observation\+\_\+cnt}}\label{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}
+
+
+Definition at line \hyperlink{a00022_source_l00180}{180} of file \hyperlink{a00022_source}{nov\+\_\+data.\+h}.
+
+
+
+Referenced by \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00184}{light\+\_\+sen\+\_\+calc\+\_\+probablity()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+
+\hypertarget{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!post\+\_\+act\+\_\+data@{post\+\_\+act\+\_\+data}}
+\index{post\+\_\+act\+\_\+data@{post\+\_\+act\+\_\+data}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{post\+\_\+act\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t} post\+\_\+act\+\_\+data}}\label{a00028_a9c699c0cc82d0baa6e49195f185ab34f}
+
+
+Definition at line \hyperlink{a00022_source_l00177}{177} of file \hyperlink{a00022_source}{nov\+\_\+data.\+h}.
+
+
+
+Referenced by \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+
+\hypertarget{a00028_aab01e8da056827bc5c9caff9b64c78be}{\index{module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}!pre\+\_\+act\+\_\+data@{pre\+\_\+act\+\_\+data}}
+\index{pre\+\_\+act\+\_\+data@{pre\+\_\+act\+\_\+data}!module\+\_\+disturbance\+\_\+record\+\_\+t@{module\+\_\+disturbance\+\_\+record\+\_\+t}}
+\subsubsection[{pre\+\_\+act\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t} pre\+\_\+act\+\_\+data}}\label{a00028_aab01e8da056827bc5c9caff9b64c78be}
+
+
+Definition at line \hyperlink{a00022_source_l00176}{176} of file \hyperlink{a00022_source}{nov\+\_\+data.\+h}.
+
+
+
+Referenced by \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00022}{nov\+\_\+data.\+h}\end{DoxyCompactItemize}

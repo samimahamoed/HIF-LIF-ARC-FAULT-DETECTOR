@@ -1,0 +1,980 @@
+.TH "QCPBars" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPBars \- 
+.PP
+A plottable representing a bar chart in a plot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractPlottable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPBars\fP (\fBQCPAxis\fP *\fBkeyAxis\fP, \fBQCPAxis\fP *\fBvalueAxis\fP)"
+.br
+.RI "\fIConstructs a bar chart which uses \fIkeyAxis\fP as its key axis ('x') and \fIvalueAxis\fP as its value axis ('y')\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPBars\fP ()"
+.br
+.ti -1c
+.RI "double \fBwidth\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPBars\fP * \fBbarBelow\fP () const "
+.br
+.RI "\fIReturns the bars plottable that is directly below this bars plottable\&. \fP"
+.ti -1c
+.RI "\fBQCPBars\fP * \fBbarAbove\fP () const "
+.br
+.RI "\fIReturns the bars plottable that is directly above this bars plottable\&. \fP"
+.ti -1c
+.RI "const \fBQCPBarDataMap\fP * \fBdata\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetWidth\fP (double \fBwidth\fP)"
+.br
+.RI "\fISets the width of the bars in plot (key) coordinates\&. \fP"
+.ti -1c
+.RI "void \fBsetData\fP (\fBQCPBarDataMap\fP *\fBdata\fP, bool copy=false)"
+.br
+.RI "\fIReplaces the current data with the provided \fIdata\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetData\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP tuples\&. \fP"
+.ti -1c
+.RI "void \fBmoveBelow\fP (\fBQCPBars\fP *bars)"
+.br
+.RI "\fIMoves this bars plottable below \fIbars\fP\&. \fP"
+.ti -1c
+.RI "void \fBmoveAbove\fP (\fBQCPBars\fP *bars)"
+.br
+.RI "\fIMoves this bars plottable above \fIbars\fP\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const \fBQCPBarDataMap\fP &dataMap)"
+.br
+.RI "\fIAdds the provided data points in \fIdataMap\fP to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const \fBQCPBarData\fP &\fBdata\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point in \fIdata\fP to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (double \fBkey\fP, double \fBvalue\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point as \fIkey\fP and \fIvalue\fP tuple to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const QVector< double > &keys, const QVector< double > &values)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided data points as \fIkey\fP and \fIvalue\fP tuples to the current data\&. \fP"
+.ti -1c
+.RI "void \fBremoveDataBefore\fP (double \fBkey\fP)"
+.br
+.RI "\fIRemoves all data points with key smaller than \fIkey\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveDataAfter\fP (double \fBkey\fP)"
+.br
+.RI "\fIRemoves all data points with key greater than \fIkey\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveData\fP (double fromKey, double toKey)"
+.br
+.RI "\fIRemoves all data points with key between \fIfromKey\fP and \fItoKey\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveData\fP (double \fBkey\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes a single data point at \fIkey\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBclearData\fP ()"
+.br
+.RI "\fIRemoves all data points\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits a plottable or not\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual void \fBdrawLegendIcon\fP (\fBQCPPainter\fP *painter, const QRect &rect) const "
+.br
+.ti -1c
+.RI "QPolygonF \fBgetBarPolygon\fP (double \fBkey\fP, double \fBvalue\fP) const "
+.br
+.ti -1c
+.RI "double \fBgetBaseValue\fP (double \fBkey\fP, bool positive) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetKeyRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetValueRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const "
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBconnectBars\fP (\fBQCPBars\fP *lower, \fBQCPBars\fP *upper)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPBarDataMap\fP * \fBmData\fP"
+.br
+.ti -1c
+.RI "double \fBmWidth\fP"
+.br
+.ti -1c
+.RI "\fBQCPBars\fP * \fBmBarBelow\fP"
+.br
+.ti -1c
+.RI "\fBQCPBars\fP * \fBmBarAbove\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCustomPlot\fP"
+.br
+.ti -1c
+.RI "class \fBQCPLegend\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plottable representing a bar chart in a plot\&. 
+
+To plot data, assign it with the \fBsetData\fP or \fBaddData\fP functions\&.
+.SH "Changing the appearance"
+.PP
+The appearance of the bars is determined by the pen and the brush (\fBsetPen\fP, \fBsetBrush\fP)\&.
+.PP
+Bar charts are stackable\&. This means, Two \fBQCPBars\fP plottables can be placed on top of each other (see \fBQCPBars::moveAbove\fP)\&. Then, when two bars are at the same key position, they will appear stacked\&.
+.SH "Usage"
+.PP
+Like all data representing objects in \fBQCustomPlot\fP, the \fBQCPBars\fP is a plottable (\fBQCPAbstractPlottable\fP)\&. So the plottable-interface of \fBQCustomPlot\fP applies (QCustomPlot::plottable, QCustomPlot::addPlottable, QCustomPlot::removePlottable, etc\&.)
+.PP
+Usually, you first create an instance: 
+.PP
+.nf
+QCPBars *newBars = new QCPBars(customPlot->xAxis, customPlot->yAxis);
+
+.fi
+.PP
+ add it to the customPlot with QCustomPlot::addPlottable: 
+.PP
+.nf
+customPlot->addPlottable(newBars);
+
+.fi
+.PP
+ and then modify the properties of the newly created plottable, e\&.g\&.: 
+.PP
+.nf
+newBars->setName("Country population");
+newBars->setData(xData, yData);
+
+.fi
+.PP
+ 
+.PP
+Definition at line 650 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPBars::QCPBars (\fBQCPAxis\fP *keyAxis, \fBQCPAxis\fP *valueAxis)\fC [explicit]\fP"
+
+.PP
+Constructs a bar chart which uses \fIkeyAxis\fP as its key axis ('x') and \fIvalueAxis\fP as its value axis ('y')\&. \fIkeyAxis\fP and \fIvalueAxis\fP must reside in the same \fBQCustomPlot\fP instance and not have the same orientation\&. If either of these restrictions is violated, a corresponding message is printed to the debug output (qDebug), the construction is not aborted, though\&.
+.PP
+The constructed \fBQCPBars\fP can be added to the plot with QCustomPlot::addPlottable, \fBQCustomPlot\fP then takes ownership of the bar chart\&. 
+.PP
+Definition at line 9889 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::mBrush, mData, QCPAbstractPlottable::mPen, QCPAbstractPlottable::mSelectedBrush, QCPAbstractPlottable::mSelectedPen, and mWidth\&.
+.PP
+.nf
+9889                                                      :
+9890   QCPAbstractPlottable(keyAxis, valueAxis),
+9891   mBarBelow(0),
+9892   mBarAbove(0)
+9893 {
+9894   mData = new QCPBarDataMap;
+9895   mPen\&.setColor(Qt::blue);
+9896   mPen\&.setStyle(Qt::SolidLine);
+9897   mBrush\&.setColor(QColor(40, 50, 255, 30));
+9898   mBrush\&.setStyle(Qt::SolidPattern);
+9899   mSelectedPen = mPen;
+9900   mSelectedPen\&.setWidthF(2\&.5);
+9901   mSelectedPen\&.setColor(QColor(80, 80, 255)); // lighter than Qt::blue of mPen
+9902   mSelectedBrush = mBrush;
+9903   
+9904   mWidth = 0\&.75;
+9905 }
+.fi
+.SS "QCPBars::~QCPBars ()\fC [virtual]\fP"
+
+.PP
+Definition at line 9907 of file qcustomplot\&.cpp\&.
+.PP
+References connectBars(), mBarAbove, mBarBelow, and mData\&.
+.PP
+.nf
+9908 {
+9909   if (mBarBelow || mBarAbove)
+9910     connectBars(mBarBelow, mBarAbove); // take this bar out of any stacking
+9911   delete mData;
+9912 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QCPBars::addData (const \fBQCPBarDataMap\fP &dataMap)"
+
+.PP
+Adds the provided data points in \fIdataMap\fP to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10031 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+10032 {
+10033   mData->unite(dataMap);
+10034 }
+.fi
+.SS "void QCPBars::addData (const \fBQCPBarData\fP &data)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point in \fIdata\fP to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10040 of file qcustomplot\&.cpp\&.
+.PP
+References QCPBarData::key, and mData\&.
+.PP
+.nf
+10041 {
+10042   mData->insertMulti(data\&.key, data);
+10043 }
+.fi
+.SS "void QCPBars::addData (doublekey, doublevalue)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point as \fIkey\fP and \fIvalue\fP tuple to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10049 of file qcustomplot\&.cpp\&.
+.PP
+References key, QCPBarData::key, mData, value, and QCPBarData::value\&.
+.PP
+.nf
+10050 {
+10051   QCPBarData newData;
+10052   newData\&.key = key;
+10053   newData\&.value = value;
+10054   mData->insertMulti(newData\&.key, newData);
+10055 }
+.fi
+.SS "void QCPBars::addData (const QVector< double > &keys, const QVector< double > &values)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided data points as \fIkey\fP and \fIvalue\fP tuples to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10061 of file qcustomplot\&.cpp\&.
+.PP
+References QCPBarData::key, and mData\&.
+.PP
+.nf
+10062 {
+10063   int n = keys\&.size();
+10064   n = qMin(n, values\&.size());
+10065   QCPBarData newData;
+10066   for (int i=0; i<n; ++i)
+10067   {
+10068     newData\&.key = keys[i];
+10069     newData\&.value = values[i];
+10070     mData->insertMulti(newData\&.key, newData);
+10071   }
+10072 }
+.fi
+.SS "\fBQCPBars\fP * QCPBars::barAbove () const\fC [inline]\fP"
+
+.PP
+Returns the bars plottable that is directly above this bars plottable\&. If there is no such plottable, returns 0\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBbarBelow\fP, \fBmoveBelow\fP, \fBmoveAbove\fP 
+.RE
+.PP
+
+.PP
+Definition at line 660 of file qcustomplot\&.h\&.
+.PP
+.nf
+660 { return mBarAbove; }
+.fi
+.SS "\fBQCPBars\fP * QCPBars::barBelow () const\fC [inline]\fP"
+
+.PP
+Returns the bars plottable that is directly below this bars plottable\&. If there is no such plottable, returns 0\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBbarAbove\fP, \fBmoveBelow\fP, \fBmoveAbove\fP 
+.RE
+.PP
+
+.PP
+Definition at line 659 of file qcustomplot\&.h\&.
+.PP
+.nf
+659 { return mBarBelow; }
+.fi
+.SS "void QCPBars::clearData ()\fC [virtual]\fP"
+
+.PP
+Removes all data points\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP, \fBremoveDataAfter\fP, \fBremoveDataBefore\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10130 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+10131 {
+10132   mData->clear();
+10133 }
+.fi
+.SS "void QCPBars::connectBars (\fBQCPBars\fP *lower, \fBQCPBars\fP *upper)\fC [static]\fP, \fC [protected]\fP"
+Connects \fIbelow\fP and \fIabove\fP to each other via their mBarAbove/mBarBelow properties\&. The bar(s) currently below lower and upper will become disconnected to lower/upper\&.
+.PP
+If lower is zero, upper will be disconnected at the bottom\&. If upper is zero, lower will be disconnected at the top\&. 
+.PP
+Definition at line 10248 of file qcustomplot\&.cpp\&.
+.PP
+References mBarAbove, and mBarBelow\&.
+.PP
+Referenced by moveAbove(), moveBelow(), and ~QCPBars()\&.
+.PP
+.nf
+10249 {
+10250   if (!lower && !upper) return;
+10251   
+10252   if (!lower) // disconnect upper at bottom
+10253   {
+10254     // disconnect old bar below upper:
+10255     if (upper->mBarBelow && upper->mBarBelow->mBarAbove == upper)
+10256       upper->mBarBelow->mBarAbove = 0;
+10257     upper->mBarBelow = 0;
+10258   } else if (!upper) // disconnect lower at top
+10259   {
+10260     // disconnect old bar above lower:
+10261     if (lower->mBarAbove && lower->mBarAbove->mBarBelow == lower)
+10262       lower->mBarAbove->mBarBelow = 0;
+10263     lower->mBarAbove = 0;
+10264   } else // connect lower and upper
+10265   {
+10266     // disconnect old bar above lower:
+10267     if (lower->mBarAbove && lower->mBarAbove->mBarBelow == lower)
+10268       lower->mBarAbove->mBarBelow = 0;
+10269     // disconnect old bar below upper:
+10270     if (upper->mBarBelow && upper->mBarBelow->mBarAbove == upper)
+10271       upper->mBarBelow->mBarAbove = 0;
+10272     lower->mBarAbove = upper;
+10273     upper->mBarBelow = lower;
+10274   }
+10275 }
+.fi
+.SS "const \fBQCPBarDataMap\fP* QCPBars::data () const\fC [inline]\fP"
+
+.PP
+Definition at line 661 of file qcustomplot\&.h\&.
+.PP
+Referenced by setData()\&.
+.PP
+.nf
+661 { return mData; }
+.fi
+.SS "void QCPBars::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this plottable with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible plottables\&.
+.PP
+The cliprect of the provided painter is set to the axis rect of the key/value axis of this plottable (what \fBclipRect\fP returns), before this function is called\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10153 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractPlottable::applyFillAntialiasingHint(), color(), getBarPolygon(), QCPRange::lower, QCPAbstractPlottable::mainBrush(), QCPAbstractPlottable::mainPen(), mData, QCPAbstractPlottable::mKeyAxis, mWidth, QCPAxis::range(), QCPPainter::setPen(), and QCPRange::upper\&.
+.PP
+.nf
+10154 {
+10155   if (mData->isEmpty()) return;
+10156   
+10157   QCPBarDataMap::const_iterator it;
+10158   for (it = mData->constBegin(); it != mData->constEnd(); ++it)
+10159   {
+10160     if (it\&.key()+mWidth*0\&.5 < mKeyAxis->range()\&.lower || it\&.key()-mWidth*0\&.5 > mKeyAxis->range()\&.upper)
+10161       continue;
+10162     QPolygonF barPolygon = getBarPolygon(it\&.key(), it\&.value()\&.value);
+10163     // draw bar fill:
+10164     if (mainBrush()\&.style() != Qt::NoBrush && mainBrush()\&.color()\&.alpha() != 0)
+10165     {
+10166       applyFillAntialiasingHint(painter);
+10167       painter->setPen(Qt::NoPen);
+10168       painter->setBrush(mainBrush());
+10169       painter->drawPolygon(barPolygon);
+10170     }
+10171     // draw bar line:
+10172     if (mainPen()\&.style() != Qt::NoPen && mainPen()\&.color()\&.alpha() != 0)
+10173     {
+10174       applyDefaultAntialiasingHint(painter);
+10175       painter->setPen(mainPen());
+10176       painter->setBrush(Qt::NoBrush);
+10177       painter->drawPolyline(barPolygon);
+10178     }
+10179   }
+10180 }
+.fi
+.SS "void QCPBars::drawLegendIcon (\fBQCPPainter\fP *painter, const QRect &rect) const\fC [protected]\fP, \fC [virtual]\fP"
+called by \fBQCPLegend::draw\fP (via \fBQCPPlottableLegendItem::draw\fP) to create a graphical representation of this plottable inside \fIrect\fP, next to the plottable name\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10183 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractPlottable::mBrush, QCPAbstractPlottable::mPen, and QCPPainter::setPen()\&.
+.PP
+.nf
+10184 {
+10185   // draw filled rect:
+10186   applyDefaultAntialiasingHint(painter);
+10187   painter->setBrush(mBrush);
+10188   painter->setPen(mPen);
+10189   QRectF r = QRectF(0, 0, rect\&.width()*0\&.67, rect\&.height()*0\&.67);
+10190   r\&.moveCenter(rect\&.center());
+10191   painter->drawRect(r);
+10192 }
+.fi
+.SS "QPolygonF QCPBars::getBarPolygon (doublekey, doublevalue) const\fC [protected]\fP"
+Returns the polygon of a single bar with \fIkey\fP and \fIvalue\fP\&. The Polygon is open at the bottom and shifted according to the bar stacking (see \fBmoveAbove\fP)\&. 
+.PP
+Definition at line 10199 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::coordsToPixels(), getBaseValue(), and mWidth\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+10200 {
+10201   QPolygonF result;
+10202   double baseValue = getBaseValue(key, value >= 0);
+10203   result << coordsToPixels(key-mWidth*0\&.5, baseValue);
+10204   result << coordsToPixels(key-mWidth*0\&.5, baseValue+value);
+10205   result << coordsToPixels(key+mWidth*0\&.5, baseValue+value);
+10206   result << coordsToPixels(key+mWidth*0\&.5, baseValue);
+10207   return result;
+10208 }
+.fi
+.SS "double QCPBars::getBaseValue (doublekey, boolpositive) const\fC [protected]\fP"
+This function is called to find at which value to start drawing the base of a bar at \fIkey\fP, when it is stacked on top of another \fBQCPBars\fP (e\&.g\&. with \fBmoveAbove\fP)\&.
+.PP
+positive and negative bars are separated per stack (positive are stacked above 0-value upwards, negative are stacked below 0-value downwards)\&. This can be indicated with \fIpositive\fP\&. So if the bar for which we need the base value is negative, set \fIpositive\fP to false\&. 
+.PP
+Definition at line 10219 of file qcustomplot\&.cpp\&.
+.PP
+References getBaseValue(), mBarBelow, mData, and mWidth\&.
+.PP
+Referenced by getBarPolygon(), getBaseValue(), getValueRange(), and selectTest()\&.
+.PP
+.nf
+10220 {
+10221   if (mBarBelow)
+10222   {
+10223     double max = 0;
+10224     // find bars of mBarBelow that are approximately at key and find largest one:
+10225     QCPBarDataMap::const_iterator it = mBarBelow->mData->lowerBound(key-mWidth*0\&.1);
+10226     QCPBarDataMap::const_iterator itEnd = mBarBelow->mData->upperBound(key+mWidth*0\&.1);
+10227     while (it != itEnd)
+10228     {
+10229       if ((positive && it\&.value()\&.value > max) ||
+10230           (!positive && it\&.value()\&.value < max))
+10231         max = it\&.value()\&.value;
+10232       ++it;
+10233     }
+10234     // recurse down the bar-stack to find the total height:
+10235     return max + mBarBelow->getBaseValue(key, positive);
+10236   } else
+10237     return 0;
+10238 }
+.fi
+.SS "\fBQCPRange\fP QCPBars::getKeyRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+called by rescaleAxes functions to get the full data key bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetValueRange\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10278 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mData, mWidth, QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, QCPAbstractPlottable::sdPositive, and QCPRange::upper\&.
+.PP
+.nf
+10279 {
+10280   QCPRange range;
+10281   bool haveLower = false;
+10282   bool haveUpper = false;
+10283   
+10284   double current;
+10285   double barWidthHalf = mWidth*0\&.5;
+10286   QCPBarDataMap::const_iterator it = mData->constBegin();
+10287   while (it != mData->constEnd())
+10288   {
+10289     current = it\&.value()\&.key;
+10290     if (inSignDomain == sdBoth || (inSignDomain == sdNegative && current+barWidthHalf < 0) || (inSignDomain == sdPositive && current-barWidthHalf > 0))
+10291     {
+10292       if (current-barWidthHalf < range\&.lower || !haveLower)
+10293       {
+10294         range\&.lower = current-barWidthHalf;
+10295         haveLower = true;
+10296       }
+10297       if (current+barWidthHalf > range\&.upper || !haveUpper)
+10298       {
+10299         range\&.upper = current+barWidthHalf;
+10300         haveUpper = true;
+10301       }
+10302     }
+10303     ++it;
+10304   }
+10305   
+10306   validRange = haveLower && haveUpper;
+10307   return range;
+10308 }
+.fi
+.SS "\fBQCPRange\fP QCPBars::getValueRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+called by rescaleAxes functions to get the full data value bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetKeyRange\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10311 of file qcustomplot\&.cpp\&.
+.PP
+References getBaseValue(), QCPRange::lower, mData, QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, QCPAbstractPlottable::sdPositive, and QCPRange::upper\&.
+.PP
+.nf
+10312 {
+10313   QCPRange range;
+10314   bool haveLower = true; // set to true, because 0 should always be visible in bar charts
+10315   bool haveUpper = true; // set to true, because 0 should always be visible in bar charts
+10316   
+10317   double current;
+10318   
+10319   QCPBarDataMap::const_iterator it = mData->constBegin();
+10320   while (it != mData->constEnd())
+10321   {
+10322     current = it\&.value()\&.value + getBaseValue(it\&.value()\&.key, it\&.value()\&.value >= 0);
+10323     if (inSignDomain == sdBoth || (inSignDomain == sdNegative && current < 0) || (inSignDomain == sdPositive && current > 0))
+10324     {
+10325       if (current < range\&.lower || !haveLower)
+10326       {
+10327         range\&.lower = current;
+10328         haveLower = true;
+10329       }
+10330       if (current > range\&.upper || !haveUpper)
+10331       {
+10332         range\&.upper = current;
+10333         haveUpper = true;
+10334       }
+10335     }
+10336     ++it;
+10337   }
+10338   
+10339   validRange = range\&.lower < range\&.upper;
+10340   return range;
+10341 }
+.fi
+.SS "void QCPBars::moveAbove (\fBQCPBars\fP *bars)"
+
+.PP
+Moves this bars plottable above \fIbars\fP\&. In other words, the bars of this plottable will appear above the bars of \fIbars\fP\&. The move target \fIbars\fP must use the same key and value axis as this plottable\&.
+.PP
+Inserting into and removing from existing bar stacking is handled gracefully\&. If \fIbars\fP already has a bars object below itself, this bars object is inserted between the two\&. If this bars object is already between two other bars, the two other bars will be stacked on top of each other after the operation\&.
+.PP
+To remove this bars plottable from any stacking, set \fIbars\fP to 0\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmoveBelow\fP, \fBbarBelow\fP, \fBbarAbove\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10008 of file qcustomplot\&.cpp\&.
+.PP
+References connectBars(), QCPAbstractPlottable::keyAxis(), mBarAbove, mBarBelow, QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, and QCPAbstractPlottable::valueAxis()\&.
+.PP
+.nf
+10009 {
+10010   if (bars == this) return;
+10011   if (bars && (bars->keyAxis() != mKeyAxis || bars->valueAxis() != mValueAxis))
+10012   {
+10013     qDebug() << Q_FUNC_INFO << "passed QCPBars* doesn't have same key and value axis as this QCPBars";
+10014     return;
+10015   }
+10016   // remove from stacking:
+10017   connectBars(mBarBelow, mBarAbove); // Note: also works if one (or both) of them is 0
+10018   // if new bar given, insert this bar above it:
+10019   if (bars)
+10020   {
+10021     if (bars->mBarAbove)
+10022       connectBars(this, bars->mBarAbove);
+10023     connectBars(bars, this);
+10024   }
+10025 }
+.fi
+.SS "void QCPBars::moveBelow (\fBQCPBars\fP *bars)"
+
+.PP
+Moves this bars plottable below \fIbars\fP\&. In other words, the bars of this plottable will appear below the bars of \fIbars\fP\&. The move target \fIbars\fP must use the same key and value axis as this plottable\&.
+.PP
+Inserting into and removing from existing bar stacking is handled gracefully\&. If \fIbars\fP already has a bars object below itself, this bars object is inserted between the two\&. If this bars object is already between two other bars, the two other bars will be stacked on top of each other after the operation\&.
+.PP
+To remove this bars plottable from any stacking, set \fIbars\fP to 0\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmoveBelow\fP, \fBbarAbove\fP, \fBbarBelow\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9975 of file qcustomplot\&.cpp\&.
+.PP
+References connectBars(), QCPAbstractPlottable::keyAxis(), mBarAbove, mBarBelow, QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, and QCPAbstractPlottable::valueAxis()\&.
+.PP
+.nf
+9976 {
+9977   if (bars == this) return;
+9978   if (bars->keyAxis() != mKeyAxis || bars->valueAxis() != mValueAxis)
+9979   {
+9980     qDebug() << Q_FUNC_INFO << "passed QCPBars* doesn't have same key and value axis as this QCPBars";
+9981     return;
+9982   }
+9983   // remove from stacking:
+9984   connectBars(mBarBelow, mBarAbove); // Note: also works if one (or both) of them is 0
+9985   // if new bar given, insert this bar below it:
+9986   if (bars)
+9987   {
+9988     if (bars->mBarBelow)
+9989       connectBars(bars->mBarBelow, this);
+9990     connectBars(this, bars);
+9991   }
+9992 }
+.fi
+.SS "void QCPBars::removeData (doublefromKey, doubletoKey)"
+
+.PP
+Removes all data points with key between \fIfromKey\fP and \fItoKey\fP\&. if \fIfromKey\fP is greater or equal to \fItoKey\fP, the function does nothing\&. To remove a single data point with known key, use \fBremoveData(double key)\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10104 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+10105 {
+10106   if (fromKey >= toKey || mData->isEmpty()) return;
+10107   QCPBarDataMap::iterator it = mData->upperBound(fromKey);
+10108   QCPBarDataMap::iterator itEnd = mData->upperBound(toKey);
+10109   while (it != itEnd)
+10110     it = mData->erase(it);
+10111 }
+.fi
+.SS "void QCPBars::removeData (doublekey)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes a single data point at \fIkey\fP\&. If the position is not known with absolute precision, consider using \fBremoveData(double fromKey, double toKey)\fP with a small fuzziness interval around the suspected position, depeding on the precision with which the key is known\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10121 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+10122 {
+10123   mData->remove(key);
+10124 }
+.fi
+.SS "void QCPBars::removeDataAfter (doublekey)"
+
+.PP
+Removes all data points with key greater than \fIkey\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10089 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+10090 {
+10091   if (mData->isEmpty()) return;
+10092   QCPBarDataMap::iterator it = mData->upperBound(key);
+10093   while (it != mData->end())
+10094     it = mData->erase(it);
+10095 }
+.fi
+.SS "void QCPBars::removeDataBefore (doublekey)"
+
+.PP
+Removes all data points with key smaller than \fIkey\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10078 of file qcustomplot\&.cpp\&.
+.PP
+References key, and mData\&.
+.PP
+.nf
+10079 {
+10080   QCPBarDataMap::iterator it = mData->begin();
+10081   while (it != mData->end() && it\&.key() < key)
+10082     it = mData->erase(it);
+10083 }
+.fi
+.SS "double QCPBars::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits a plottable or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the plottable (e\&.g\&. to the scatters/lines of a graph)\&. If the plottable is either invisible, contains no data or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the plottable is represented not by single lines but by an area like \fBQCPBars\fP or \fBQCPStatisticalBox\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10136 of file qcustomplot\&.cpp\&.
+.PP
+References getBaseValue(), mData, QCPLayerable::mParentPlot, mWidth, and QCPAbstractPlottable::pixelsToCoords()\&.
+.PP
+.nf
+10137 {
+10138   QCPBarDataMap::ConstIterator it;
+10139   double posKey, posValue;
+10140   pixelsToCoords(pos, posKey, posValue);
+10141   for (it = mData->constBegin(); it != mData->constEnd(); ++it)
+10142   {
+10143     double baseValue = getBaseValue(it\&.key(), it\&.value()\&.value >=0);
+10144     QCPRange keyRange(it\&.key()-mWidth*0\&.5, it\&.key()+mWidth*0\&.5);
+10145     QCPRange valueRange(baseValue, baseValue+it\&.value()\&.value);
+10146     if (keyRange\&.contains(posKey) && valueRange\&.contains(posValue))
+10147       return mParentPlot->selectionTolerance()*0\&.99;
+10148   }
+10149   return -1;
+10150 }
+.fi
+.SS "void QCPBars::setData (\fBQCPBarDataMap\fP *data, boolcopy = \fCfalse\fP)"
+
+.PP
+Replaces the current data with the provided \fIdata\fP\&. If \fIcopy\fP is set to true, data points in \fIdata\fP will only be copied\&. if false, the plottable takes ownership of the passed data and replaces the internal data pointer with it\&. This is significantly faster than copying for large datasets\&. 
+.PP
+Definition at line 9929 of file qcustomplot\&.cpp\&.
+.PP
+References data(), and mData\&.
+.PP
+.nf
+9930 {
+9931   if (copy)
+9932   {
+9933     *mData = *data;
+9934   } else
+9935   {
+9936     delete mData;
+9937     mData = data;
+9938   }
+9939 }
+.fi
+.SS "void QCPBars::setData (const QVector< double > &key, const QVector< double > &value)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP tuples\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&. 
+.PP
+Definition at line 9947 of file qcustomplot\&.cpp\&.
+.PP
+References QCPBarData::key, and mData\&.
+.PP
+.nf
+9948 {
+9949   mData->clear();
+9950   int n = key\&.size();
+9951   n = qMin(n, value\&.size());
+9952   QCPBarData newData;
+9953   for (int i=0; i<n; ++i)
+9954   {
+9955     newData\&.key = key[i];
+9956     newData\&.value = value[i];
+9957     mData->insertMulti(newData\&.key, newData);
+9958   }
+9959 }
+.fi
+.SS "void QCPBars::setWidth (doublewidth)"
+
+.PP
+Sets the width of the bars in plot (key) coordinates\&. 
+.PP
+Definition at line 9917 of file qcustomplot\&.cpp\&.
+.PP
+References mWidth, and width()\&.
+.PP
+.nf
+9918 {
+9919   mWidth = width;
+9920 }
+.fi
+.SS "double QCPBars::width () const\fC [inline]\fP"
+
+.PP
+Definition at line 658 of file qcustomplot\&.h\&.
+.PP
+Referenced by setWidth()\&.
+.PP
+.nf
+658 { return mWidth; }
+.fi
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBQCPLegend\fP\fC [friend]\fP"
+
+.PP
+Definition at line 697 of file qcustomplot\&.h\&.
+.SS "friend class \fBQCustomPlot\fP\fC [friend]\fP"
+
+.PP
+Definition at line 696 of file qcustomplot\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPBars\fP * QCPBars::mBarAbove\fC [protected]\fP"
+
+.PP
+Definition at line 685 of file qcustomplot\&.h\&.
+.PP
+Referenced by connectBars(), moveAbove(), moveBelow(), and ~QCPBars()\&.
+.SS "\fBQCPBars\fP* QCPBars::mBarBelow\fC [protected]\fP"
+
+.PP
+Definition at line 685 of file qcustomplot\&.h\&.
+.PP
+Referenced by connectBars(), getBaseValue(), moveAbove(), moveBelow(), and ~QCPBars()\&.
+.SS "\fBQCPBarDataMap\fP* QCPBars::mData\fC [protected]\fP"
+
+.PP
+Definition at line 683 of file qcustomplot\&.h\&.
+.PP
+Referenced by addData(), clearData(), draw(), getBaseValue(), getKeyRange(), getValueRange(), QCPBars(), removeData(), removeDataAfter(), removeDataBefore(), selectTest(), setData(), and ~QCPBars()\&.
+.SS "double QCPBars::mWidth\fC [protected]\fP"
+
+.PP
+Definition at line 684 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), getBarPolygon(), getBaseValue(), getKeyRange(), QCPBars(), selectTest(), and setWidth()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

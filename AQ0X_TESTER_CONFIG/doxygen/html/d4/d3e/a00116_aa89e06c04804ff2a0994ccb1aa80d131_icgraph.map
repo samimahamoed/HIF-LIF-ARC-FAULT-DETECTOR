@@ -1,0 +1,5 @@
+<map id="setTitleSelected" name="setTitleSelected">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a9d4808ab925b003054085246c92a257c" title="Deselects everything in the QCustomPlot (plottables, items, axes, legend and title). " alt="" coords="194,5,281,32"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#ae688ab743e775cd0c69941a082dd32e3" title="handleTitleSelection" alt="" coords="168,56,307,83"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="355,56,495,83"/>
+</map>

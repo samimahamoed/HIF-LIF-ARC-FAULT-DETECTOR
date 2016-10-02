@@ -1,0 +1,14 @@
+<map id="QCPAxis::scaleType" name="QCPAxis::scaleType">
+<area shape="rect" id="node2" href="$df/d61/a00031.html#a41f982e8ceaefe6a53eb7432f26d64b6" title="QCPGraph::lowerFillBasePoint" alt="" coords="197,187,397,214"/>
+<area shape="rect" id="node6" href="$dc/de2/a00024.html#a1acecfcca3e7fcda00fcbaa3c886386f" title="Rescales the key axis of the plottable so the whole plottable is visible. " alt="" coords="222,71,373,112"/>
+<area shape="rect" id="node8" href="$df/d61/a00031.html#a2108a729046b0ab6e0516afb249dab13" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="205,238,389,265"/>
+<area shape="rect" id="node10" href="$dc/de2/a00024.html#abfd0805eb1d955c0111a990246658324" title="Rescales the value axis of the plottable so the whole plottable is visible. " alt="" coords="222,5,373,47"/>
+<area shape="rect" id="node11" href="$df/d61/a00031.html#a2ba0e1df416486d7e74299ef8cf68bba" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="200,339,395,366"/>
+<area shape="rect" id="node12" href="$d4/d3e/a00116.html#ad27d34bcc9e68b5482d128e2f1e38f55" title="Convenience function to make the top and right axes visible and assign them the following properties ..." alt="" coords="233,289,361,315"/>
+<area shape="rect" id="node13" href="$df/d61/a00031.html#a363d066c179e0f46cc93c12bafb0bfba" title="QCPGraph::upperFillBasePoint" alt="" coords="196,137,399,163"/>
+<area shape="rect" id="node3" href="$df/d61/a00031.html#a5fa7884620d7c54b81dfbd255d97b636" title="QCPGraph::addFillBasePoints" alt="" coords="447,162,645,189"/>
+<area shape="rect" id="node4" href="$df/d61/a00031.html#ad6d07926e6d6b7cfa70258780d47b7a0" title="QCPGraph::drawFill" alt="" coords="693,162,831,189"/>
+<area shape="rect" id="node5" href="$df/d61/a00031.html#a659218cc62c2a7786213d9dd429c1c8d" title="QCPGraph::draw" alt="" coords="879,162,999,189"/>
+<area shape="rect" id="node7" href="$dc/de2/a00024.html#a7e8fc3be43c27ccacd70a7bf9d74a5cd" title="Rescales the key and value axes associated with this plottable to contain all displayed data..." alt="" coords="471,39,621,80"/>
+<area shape="rect" id="node9" href="$df/d61/a00031.html#aa35b75b9032800d783df749c8a004ee9" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="463,263,629,290"/>
+</map>

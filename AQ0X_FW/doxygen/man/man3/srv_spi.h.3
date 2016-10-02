@@ -1,0 +1,282 @@
+.TH "srv_spi.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srv_spi.h \- 
+.PP
+Header for spi port driver\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBSTATREG\fP"
+.br
+.ti -1c
+.RI "union \fB_EEPROMStatus_\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPOST_SCALER\fP   57600"
+.br
+.RI "\fIspi module clk rate post scaler value \fP"
+.ti -1c
+.RI "#define \fBPRE_SCALER\fP   57600"
+.br
+.RI "\fIspi module clk rate pre scaler value \fP"
+.ti -1c
+.RI "#define \fBSPI_SS_CTRL_LAT\fP   LATBbits\&.LATB12"
+.br
+.ti -1c
+.RI "#define \fBSPI_SS_TRIS\fP   TRISBbits\&.TRISB12"
+.br
+.ti -1c
+.RI "#define \fBSPI_SCK_TRIS\fP   TRISBbits\&.TRISB7"
+.br
+.ti -1c
+.RI "#define \fBSPI_SDO_TRIS\fP   TRISBbits\&.TRISB8"
+.br
+.ti -1c
+.RI "#define \fBSPI_SDO_ANSEL\fP   ANSELBbits\&.ANSB8"
+.br
+.ti -1c
+.RI "#define \fBSPI_SDI_TRIS\fP   TRISBbits\&.TRISB9"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUint8\fP \fBspi_put_data\fP (\fBUint8\fP data)"
+.br
+.RI "\fIsend one byte of data and receive one back at the same time \fP"
+.ti -1c
+.RI "void \fBspi_init\fP (void)"
+.br
+.RI "\fIInit function for srv_spi service\&. \fP"
+.ti -1c
+.RI "void \fBEEPROMInit\fP (void)"
+.br
+.ti -1c
+.RI "union \fB_EEPROMStatus_\fP \fBEEPROMReadStatus\fP (void)"
+.br
+.ti -1c
+.RI "void \fBEEPROMWriteByte\fP (unsigned char, unsigned int)"
+.br
+.ti -1c
+.RI "unsigned char \fBEEPROMReadByte\fP (unsigned int)"
+.br
+.ti -1c
+.RI "void \fBEEPROMWriteEnable\fP (void)"
+.br
+.ti -1c
+.RI "void \fBEEPROMWriteDisable\fP (void)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Header for spi port driver\&. 
+
+
+.PP
+Definition in file \fBsrv_spi\&.h\fP\&.
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct STATREG"
+.PP 
+Definition at line 137 of file srv_spi\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+unsigned \fIBP0:1\fP 
+.br
+.PP
+unsigned \fIBP1:1\fP 
+.br
+.PP
+unsigned \fIRESERVED:3\fP 
+.br
+.PP
+unsigned \fIWEL:1\fP 
+.br
+.PP
+unsigned \fIWIP:1\fP 
+.br
+.PP
+unsigned \fIWPEN:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union _EEPROMStatus_"
+.PP 
+Definition at line 146 of file srv_spi\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBSTATREG\fP \fIBits\fP 
+.br
+.PP
+unsigned char \fIChar\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define POST_SCALER   57600"
+
+.PP
+spi module clk rate post scaler value 
+.PP
+Definition at line 14 of file srv_spi\&.h\&.
+.SS "#define PRE_SCALER   57600"
+
+.PP
+spi module clk rate pre scaler value 
+.PP
+Definition at line 18 of file srv_spi\&.h\&.
+.SS "#define SPI_SCK_TRIS   TRISBbits\&.TRISB7"
+
+.PP
+Definition at line 113 of file srv_spi\&.h\&.
+.PP
+Referenced by spi_init()\&.
+.SS "#define SPI_SDI_TRIS   TRISBbits\&.TRISB9"
+
+.PP
+Definition at line 118 of file srv_spi\&.h\&.
+.PP
+Referenced by spi_init()\&.
+.SS "#define SPI_SDO_ANSEL   ANSELBbits\&.ANSB8"
+
+.PP
+Definition at line 116 of file srv_spi\&.h\&.
+.PP
+Referenced by spi_init()\&.
+.SS "#define SPI_SDO_TRIS   TRISBbits\&.TRISB8"
+
+.PP
+Definition at line 115 of file srv_spi\&.h\&.
+.PP
+Referenced by spi_init()\&.
+.SS "#define SPI_SS_CTRL_LAT   LATBbits\&.LATB12"
+
+.PP
+Definition at line 110 of file srv_spi\&.h\&.
+.PP
+Referenced by nov_byte_read(), nov_byte_write(), nov_get_status(), nov_memcpy(), nov_page_cpy(), nov_set_write_enable_latch(), nov_write_status(), and spi_init()\&.
+.SS "#define SPI_SS_TRIS   TRISBbits\&.TRISB12"
+
+.PP
+Definition at line 111 of file srv_spi\&.h\&.
+.PP
+Referenced by spi_init()\&.
+.SH "Function Documentation"
+.PP 
+.SS "void EEPROMInit (void)"
+
+.SS "unsigned char EEPROMReadByte (unsignedint)"
+
+.SS "union \fB_EEPROMStatus_\fP EEPROMReadStatus (void)"
+
+.SS "void EEPROMWriteByte (unsignedchar, unsignedint)"
+
+.SS "void EEPROMWriteDisable (void)"
+
+.SS "void EEPROMWriteEnable (void)"
+
+.SS "void spi_init (void)"
+
+.PP
+Init function for srv_spi service\&. 
+.PP
+Definition at line 30 of file srv_spi\&.c\&.
+.PP
+References NOV_HOLD_CTRL_LAT, NOV_HOLD_CTRL_TRIS, nov_wr_inprogress, SPI_SCK_TRIS, SPI_SDI_TRIS, SPI_SDO_ANSEL, SPI_SDO_TRIS, SPI_SS_CTRL_LAT, and SPI_SS_TRIS\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+31 {
+32 
+33 
+34     // setup the SPI1 port
+35     
+36             SPI_SCK_TRIS        = 0;
+37             SPI_SDO_TRIS        = 0;
+38             SPI_SDI_TRIS        = 1;
+39             SPI_SS_TRIS         = 0;
+40             SPI_SS_CTRL_LAT     = 1;
+41             SPI_SDO_ANSEL       = 0;
+42             
+43            NOV_HOLD_CTRL_TRIS   = 0;
+44            NOV_HOLD_CTRL_LAT    = 1;
+45            nov_wr_inprogress    = 0;
+46 
+47 
+48       //disable SPI module
+49        SPI1STATbits\&.SPIEN       = 0;
+50        SPI1STATbits\&.SPISIDL     = 0;
+51     
+52 
+53 // Configure SPI1CON register
+54     
+55         IFS0bits\&.SPI1IF         = 0;    // Clear the Interrupt flag
+56         IEC0bits\&.SPI1IE         = 0;    // Disable the interrupt
+57 
+58         SPI1CON1bits\&.MSTEN      = 1;   //Enable Master mode
+59 
+60         SPI1CON1bits\&.MODE16     = 0;  //Communication is byte-wide
+61         SPI1CON1bits\&.CKP        = 0;   //Idle state for clock is a high level
+62         SPI1CON1bits\&.CKE        = 1;   //Data out on Active to Idle Edge
+63 
+64         SPI1CON1bits\&.SMP        = 0;  /*Master mode => Input data is sampled at
+65                                         the middle of data output time */
+66 
+67         //TODO: Fsck = Fp/(Primary Prescaler * Secondary Prescaler)
+68         SPI1CON1bits\&.SPRE       = 6;     //Set Primary Pre-scalar for 4:1 ratio
+69         SPI1CON1bits\&.PPRE       = 2;     //Set Secondary Pre-scalar for 2:1 ratio
+70 
+71         SPI1CON1bits\&.DISSDO     = 0;     //Internal SPI clock is enabled
+72         SPI1CON1bits\&.DISSCK     = 0;     //SDOx pin is controlled by the module
+73 
+74         SPI1CON1bits\&.SSEN       = 0;     //SSx pin is not used by the module\&.
+75                                          //Pin is controlled by port function
+76 
+77         SPI1CON2                = 0;     //Framed SPI modes not used
+78 
+79 
+80         SPI1STATbits\&.SPIROV     = 0;
+81         //  Enable SPI module
+82         SPI1STATbits\&.SPIEN       = 1;
+83 
+84 
+85 }
+.fi
+.SS "\fBUint8\fP spi_put_data (\fBUint8\fPdata)"
+
+.PP
+send one byte of data and receive one back at the same time 
+.PP
+Definition at line 97 of file srv_spi\&.c\&.
+.PP
+Referenced by nov_byte_read(), nov_byte_write(), nov_get_status(), nov_memcpy(), nov_page_cpy(), nov_set_write_enable_latch(), and nov_write_status()\&.
+.PP
+.nf
+98 {
+99     SPI1BUF = data;                  // write to buffer for TX
+100     while(!SPI1STATbits\&.SPIRBF);          // wait for transfer to complete
+101     return SPI1BUF;                  // read the received value
+102 
+103 }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

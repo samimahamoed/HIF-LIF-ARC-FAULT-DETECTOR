@@ -1,0 +1,555 @@
+.TH "QCPItemBracket" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemBracket \- 
+.PP
+A bracket for referencing/highlighting certain parts in the plot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractItem\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBBracketStyle\fP { \fBbsSquare\fP, \fBbsRound\fP, \fBbsCurly\fP, \fBbsCalligraphic\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemBracket\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fICreates a bracket item and sets default values\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPItemBracket\fP ()"
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedPen\fP () const "
+.br
+.ti -1c
+.RI "double \fBlength\fP () const "
+.br
+.ti -1c
+.RI "\fBBracketStyle\fP \fBstyle\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the bracket\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the bracket when selected\&. \fP"
+.ti -1c
+.RI "void \fBsetLength\fP (double \fBlength\fP)"
+.br
+.RI "\fISets the \fIlength\fP in pixels how far the bracket extends in the direction towards the embraced span of the bracket (i\&.e\&. \fP"
+.ti -1c
+.RI "void \fBsetStyle\fP (\fBBracketStyle\fP \fBstyle\fP)"
+.br
+.RI "\fISets the style of the bracket, i\&.e\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits an item or not\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBleft\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBright\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBcenter\fP"
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAnchorIndex\fP { \fBaiCenter\fP }"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual QPointF \fBanchorPixelPoint\fP (int anchorId) const "
+.br
+.ti -1c
+.RI "QPen \fBmainPen\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedPen\fP"
+.br
+.ti -1c
+.RI "double \fBmLength\fP"
+.br
+.ti -1c
+.RI "\fBBracketStyle\fP \fBmStyle\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A bracket for referencing/highlighting certain parts in the plot\&. 
+
+Bracket example\&. Blue dotted circles are anchors, solid blue discs are positions\&. It has two positions, \fIleft\fP and \fIright\fP, which define the span of the bracket\&. If \fIleft\fP is actually farther to the left than \fIright\fP, the bracket is opened to the bottom, as shown in the example image\&.
+.PP
+The bracket supports multiple styles via \fBsetStyle\fP\&. The length, i\&.e\&. how far the bracket stretches away from the embraced span, can be controlled with \fBsetLength\fP\&.
+.PP
+ Demonstrating the effect of different values for \fBsetLength\fP, for styles \fBbsCalligraphic\fP and \fBbsSquare\fP\&. Anchors and positions are displayed for reference\&.
+.PP
+It provides an anchor \fIcenter\fP, to allow connection of other items, e\&.g\&. an arrow (\fBQCPItemLine\fP or \fBQCPItemCurve\fP) or a text label (\fBQCPItemText\fP), to the bracket\&. 
+.PP
+Definition at line 1219 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPItemBracket::AnchorIndex\fP\fC [protected]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIaiCenter \fP\fP
+.PP
+Definition at line 1252 of file qcustomplot\&.h\&.
+.PP
+.nf
+1252 {aiCenter};
+.fi
+.SS "enum \fBQCPItemBracket::BracketStyle\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIbsSquare \fP\fP
+A brace with angled edges\&. 
+.TP
+\fB\fIbsRound \fP\fP
+A brace with round edges\&. 
+.TP
+\fB\fIbsCurly \fP\fP
+A curly brace\&. 
+.TP
+\fB\fIbsCalligraphic \fP\fP
+A curly brace with varying stroke width giving a calligraphic impression\&. 
+.PP
+Definition at line 1223 of file qcustomplot\&.h\&.
+.PP
+.nf
+1223                     { bsSquare  
+1224                       ,bsRound  
+1225                       ,bsCurly  
+1226                       ,bsCalligraphic 
+1227   };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemBracket::QCPItemBracket (\fBQCustomPlot\fP *parentPlot)"
+
+.PP
+Creates a bracket item and sets default values\&. The constructed item can be added to the plot with QCustomPlot::addItem\&. 
+.PP
+Definition at line 14482 of file qcustomplot\&.cpp\&.
+.PP
+References bsCalligraphic, left, right, QCPItemPosition::setCoords(), setLength(), setPen(), setSelectedPen(), and setStyle()\&.
+.PP
+.nf
+14482                                                       :
+14483   QCPAbstractItem(parentPlot),
+14484   left(createPosition("left")),
+14485   right(createPosition("right")),
+14486   center(createAnchor("center", aiCenter))
+14487 {
+14488   left->setCoords(0, 0);
+14489   right->setCoords(1, 1);
+14490   
+14491   setPen(QPen(Qt::black));
+14492   setSelectedPen(QPen(Qt::blue, 2));
+14493   setLength(8);
+14494   setStyle(bsCalligraphic);
+14495 }
+.fi
+.SS "QCPItemBracket::~QCPItemBracket ()\fC [virtual]\fP"
+
+.PP
+Definition at line 14497 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+14498 {
+14499 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "QPointF QCPItemBracket::anchorPixelPoint (intanchorId) const\fC [protected]\fP, \fC [virtual]\fP"
+Returns the pixel position of the anchor with Id \fIanchorId\fP\&. This function must be reimplemented in item subclasses if they want to provide anchors (\fBQCPItemAnchor\fP)\&.
+.PP
+For example, if the item has two anchors with id 0 and 1, this function takes one of these anchor ids and returns the respective pixel points of the specified anchor\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcreateAnchor\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 14637 of file qcustomplot\&.cpp\&.
+.PP
+References aiCenter, left, mLength, QCPItemPosition::pixelPoint(), and right\&.
+.PP
+.nf
+14638 {
+14639   QVector2D leftVec(left->pixelPoint());
+14640   QVector2D rightVec(right->pixelPoint());
+14641   if (leftVec\&.toPoint() == rightVec\&.toPoint())
+14642     return leftVec\&.toPointF();
+14643   
+14644   QVector2D widthVec = (rightVec-leftVec)*0\&.5;
+14645   QVector2D lengthVec(-widthVec\&.y(), widthVec\&.x());
+14646   lengthVec = lengthVec\&.normalized()*mLength;
+14647   QVector2D centerVec = (rightVec+leftVec)*0\&.5-lengthVec;
+14648   
+14649   switch (anchorId)
+14650   {
+14651     case aiCenter:
+14652       return centerVec\&.toPointF();
+14653   }
+14654   qDebug() << Q_FUNC_INFO << "invalid anchorId" << anchorId;
+14655   return QPointF();
+14656 }
+.fi
+.SS "void QCPItemBracket::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this item with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible items\&.
+.PP
+The cliprect of the provided painter is set to the rect returned by \fBclipRect\fP before this function is called\&. For items this depends on the clipping settings defined by \fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 14568 of file qcustomplot\&.cpp\&.
+.PP
+References bsCalligraphic, bsCurly, bsRound, bsSquare, QCPAbstractItem::clipRect(), color(), QCPPainter::drawLine(), left, mainPen(), mLength, mStyle, QCPItemPosition::pixelPoint(), right, and QCPPainter::setPen()\&.
+.PP
+.nf
+14569 {
+14570   QVector2D leftVec(left->pixelPoint());
+14571   QVector2D rightVec(right->pixelPoint());
+14572   if (leftVec\&.toPoint() == rightVec\&.toPoint())
+14573     return;
+14574   
+14575   QVector2D widthVec = (rightVec-leftVec)*0\&.5;
+14576   QVector2D lengthVec(-widthVec\&.y(), widthVec\&.x());
+14577   lengthVec = lengthVec\&.normalized()*mLength;
+14578   QVector2D centerVec = (rightVec+leftVec)*0\&.5-lengthVec;
+14579 
+14580   QPolygon boundingPoly;
+14581   boundingPoly << leftVec\&.toPoint() << rightVec\&.toPoint()
+14582                << (rightVec-lengthVec)\&.toPoint() << (leftVec-lengthVec)\&.toPoint();
+14583   QRect clip = clipRect()\&.adjusted(-mainPen()\&.widthF(), -mainPen()\&.widthF(), mainPen()\&.widthF(), mainPen()\&.widthF());
+14584   if (clip\&.intersects(boundingPoly\&.boundingRect()))
+14585   {
+14586     painter->setPen(mainPen());
+14587     switch (mStyle)
+14588     {
+14589       case bsSquare:
+14590       {
+14591         painter->drawLine((centerVec+widthVec)\&.toPointF(), (centerVec-widthVec)\&.toPointF());
+14592         painter->drawLine((centerVec+widthVec)\&.toPointF(), (centerVec+widthVec+lengthVec)\&.toPointF());
+14593         painter->drawLine((centerVec-widthVec)\&.toPointF(), (centerVec-widthVec+lengthVec)\&.toPointF());
+14594         break;
+14595       }
+14596       case bsRound:
+14597       {
+14598         painter->setBrush(Qt::NoBrush);
+14599         QPainterPath path;
+14600         path\&.moveTo((centerVec+widthVec+lengthVec)\&.toPointF());
+14601         path\&.cubicTo((centerVec+widthVec)\&.toPointF(), (centerVec+widthVec)\&.toPointF(), centerVec\&.toPointF());
+14602         path\&.cubicTo((centerVec-widthVec)\&.toPointF(), (centerVec-widthVec)\&.toPointF(), (centerVec-widthVec+lengthVec)\&.toPointF());
+14603         painter->drawPath(path);
+14604         break;
+14605       }
+14606       case bsCurly:
+14607       {
+14608         painter->setBrush(Qt::NoBrush);
+14609         QPainterPath path;
+14610         path\&.moveTo((centerVec+widthVec+lengthVec)\&.toPointF());
+14611         path\&.cubicTo((centerVec+widthVec*1-lengthVec*0\&.8)\&.toPointF(), (centerVec+0\&.4*widthVec+1*lengthVec)\&.toPointF(), centerVec\&.toPointF());
+14612         path\&.cubicTo((centerVec-0\&.4*widthVec+1*lengthVec)\&.toPointF(), (centerVec-widthVec*1-lengthVec*0\&.8)\&.toPointF(), (centerVec-widthVec+lengthVec)\&.toPointF());
+14613         painter->drawPath(path);
+14614         break;
+14615       }
+14616       case bsCalligraphic:
+14617       {
+14618         painter->setPen(Qt::NoPen);
+14619         painter->setBrush(QBrush(mainPen()\&.color()));
+14620         QPainterPath path;
+14621         path\&.moveTo((centerVec+widthVec+lengthVec)\&.toPointF());
+14622         
+14623         path\&.cubicTo((centerVec+widthVec*1-lengthVec*0\&.8)\&.toPointF(), (centerVec+0\&.4*widthVec+0\&.8*lengthVec)\&.toPointF(), centerVec\&.toPointF());
+14624         path\&.cubicTo((centerVec-0\&.4*widthVec+0\&.8*lengthVec)\&.toPointF(), (centerVec-widthVec*1-lengthVec*0\&.8)\&.toPointF(), (centerVec-widthVec+lengthVec)\&.toPointF());
+14625         
+14626         path\&.cubicTo((centerVec-widthVec*1-lengthVec*0\&.5)\&.toPointF(), (centerVec-0\&.2*widthVec+1\&.2*lengthVec)\&.toPointF(), (centerVec+lengthVec*0\&.2)\&.toPointF());
+14627         path\&.cubicTo((centerVec+0\&.2*widthVec+1\&.2*lengthVec)\&.toPointF(), (centerVec+widthVec*1-lengthVec*0\&.5)\&.toPointF(), (centerVec+widthVec+lengthVec)\&.toPointF());
+14628         
+14629         painter->drawPath(path);
+14630         break;
+14631       }
+14632     }
+14633   }
+14634 }
+.fi
+.SS "double QCPItemBracket::length () const\fC [inline]\fP"
+
+.PP
+Definition at line 1235 of file qcustomplot\&.h\&.
+.PP
+Referenced by setLength()\&.
+.PP
+.nf
+1235 { return mLength; }
+.fi
+.SS "QPen QCPItemBracket::mainPen () const\fC [protected]\fP"
+Returns the pen that should be used for drawing lines\&. Returns mPen when the item is not selected and mSelectedPen when it is\&. 
+.PP
+Definition at line 14663 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, QCPAbstractItem::mSelected, and mSelectedPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+14664 {
+14665     return mSelected ? mSelectedPen : mPen;
+14666 }
+.fi
+.SS "QPen QCPItemBracket::pen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1233 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by setPen(), and setSelectedPen()\&.
+.PP
+.nf
+1233 { return mPen; }
+.fi
+.SS "QPen QCPItemBracket::selectedPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1234 of file qcustomplot\&.h\&.
+.PP
+.nf
+1234 { return mSelectedPen; }
+.fi
+.SS "double QCPItemBracket::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits an item or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the item\&. If the item is either invisible or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the item is represented not by single lines but by an area like \fBQCPItemRect\fP or \fBQCPItemText\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 14549 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::distSqrToLine(), left, mLength, QCPLayerable::mVisible, QCPItemPosition::pixelPoint(), and right\&.
+.PP
+.nf
+14550 {
+14551   if (!mVisible)
+14552     return -1;
+14553   
+14554   QVector2D leftVec(left->pixelPoint());
+14555   QVector2D rightVec(right->pixelPoint());
+14556   if (leftVec\&.toPoint() == rightVec\&.toPoint())
+14557     return -1;
+14558   
+14559   QVector2D widthVec = (rightVec-leftVec)*0\&.5;
+14560   QVector2D lengthVec(-widthVec\&.y(), widthVec\&.x());
+14561   lengthVec = lengthVec\&.normalized()*mLength;
+14562   QVector2D centerVec = (rightVec+leftVec)*0\&.5-lengthVec;
+14563   
+14564   return qSqrt(distSqrToLine((centerVec-widthVec)\&.toPointF(), (centerVec+widthVec)\&.toPointF(), pos));
+14565 }
+.fi
+.SS "void QCPItemBracket::setLength (doublelength)"
+
+.PP
+Sets the \fIlength\fP in pixels how far the bracket extends in the direction towards the embraced span of the bracket (i\&.e\&. perpendicular to the \fIleft\fP-\fIright\fP-direction)
+.PP
+ Demonstrating the effect of different values for \fBsetLength\fP, for styles \fBbsCalligraphic\fP and \fBbsSquare\fP\&. Anchors and positions are displayed for reference\&. 
+.PP
+Definition at line 14533 of file qcustomplot\&.cpp\&.
+.PP
+References length(), and mLength\&.
+.PP
+Referenced by QCPItemBracket()\&.
+.PP
+.nf
+14534 {
+14535   mLength = length;
+14536 }
+.fi
+.SS "void QCPItemBracket::setPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the bracket\&. Note that when the style is \fBbsCalligraphic\fP, only the color will be taken from the pen, the stroke and width are ignored\&. To change the apparent stroke width of a calligraphic bracket, use \fBsetLength\fP, which has a similar effect\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14510 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, and pen()\&.
+.PP
+Referenced by QCPItemBracket()\&.
+.PP
+.nf
+14511 {
+14512   mPen = pen;
+14513 }
+.fi
+.SS "void QCPItemBracket::setSelectedPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the bracket when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14520 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedPen, and pen()\&.
+.PP
+Referenced by QCPItemBracket()\&.
+.PP
+.nf
+14521 {
+14522   mSelectedPen = pen;
+14523 }
+.fi
+.SS "void QCPItemBracket::setStyle (\fBQCPItemBracket::BracketStyle\fPstyle)"
+
+.PP
+Sets the style of the bracket, i\&.e\&. the shape/visual appearance\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14543 of file qcustomplot\&.cpp\&.
+.PP
+References mStyle, and style()\&.
+.PP
+Referenced by QCPItemBracket()\&.
+.PP
+.nf
+14544 {
+14545   mStyle = style;
+14546 }
+.fi
+.SS "\fBBracketStyle\fP QCPItemBracket::style () const\fC [inline]\fP"
+
+.PP
+Definition at line 1236 of file qcustomplot\&.h\&.
+.PP
+Referenced by setStyle()\&.
+.PP
+.nf
+1236 { return mStyle; }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPItemAnchor\fP* const QCPItemBracket::center"
+
+.PP
+Definition at line 1249 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemBracket::left"
+
+.PP
+Definition at line 1247 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), QCPItemBracket(), and selectTest()\&.
+.SS "double QCPItemBracket::mLength\fC [protected]\fP"
+
+.PP
+Definition at line 1254 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), selectTest(), and setLength()\&.
+.SS "QPen QCPItemBracket::mPen\fC [protected]\fP"
+
+.PP
+Definition at line 1253 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setPen()\&.
+.SS "QPen QCPItemBracket::mSelectedPen\fC [protected]\fP"
+
+.PP
+Definition at line 1253 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setSelectedPen()\&.
+.SS "\fBBracketStyle\fP QCPItemBracket::mStyle\fC [protected]\fP"
+
+.PP
+Definition at line 1255 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and setStyle()\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemBracket::right"
+
+.PP
+Definition at line 1248 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), QCPItemBracket(), and selectTest()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

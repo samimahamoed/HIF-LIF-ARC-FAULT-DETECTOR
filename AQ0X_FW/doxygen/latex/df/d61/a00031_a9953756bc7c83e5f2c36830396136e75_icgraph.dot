@@ -1,0 +1,20 @@
+digraph "x_task_send_irq_sync"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="x_task_send_irq_sync",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="algorithm_message_arrived\l_ntf_isr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d87/a00032.html#a85471d58eae93d5d7e7e2b52e2b915d3",tooltip="Causes that system will send notification to the module as this cannot be done directly because the f..."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="__attribute__",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/de2/a00024.html#a2068c3c2584547dbc1c8b9bca2d55b18",tooltip="Serial port receive interrupt. "];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="algorithm_wake",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d87/a00032.html#a42ed16c7ef20e0c0031fe7ba7ae377b3",tooltip="Main processing loop for algorithm module. "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="__attribute__",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d8c/a00035.html#a2068c3c2584547dbc1c8b9bca2d55b18",tooltip="Fast timer interrupt to scan sensor element analog values. "];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="algorithm_notifyx",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d87/a00032.html#a93269cdec3e21934aa9395440a2de605",tooltip="Algorithm module notification function. "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/db6/a00042.html#a840291bc02cba5474a4cb46a9b9566fe",tooltip="System startup function. "];
+}

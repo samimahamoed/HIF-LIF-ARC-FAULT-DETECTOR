@@ -1,0 +1,10 @@
+.TH "hw" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hw \- Hardware driver module 
+The module is responsible for the device analog and digital input output operations\&.
+.PP
+Here, two interface helper functions are provided for analog level reading and digital input output operations\&. Thus, other modules with the privilege to ac-cess hardware functionality uses these functions to for such purpose (see \fBhwio_get_analog()\fP and \fBhwio_execute_gpio_task()\fP)\&.
+.PP
+The module also supports hardware reading redirection to allow testing firmware functionality\&. Thus, user can replace real hardware reading with values supplied by serial commands so as to validate the software operation\&. In the case of analog signal emulation the module can accept up to 400 byte (200 samples) data per input and sequentially supply the values in circular manner instead of real hardware reading, that is under the condition in which if the sensory module monitoring the signal is running in emulation mode (see \fBhwio_get_analog()\fP)\&. 

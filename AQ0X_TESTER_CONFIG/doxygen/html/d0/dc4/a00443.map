@@ -1,0 +1,7 @@
+<map id="QCPAbstractLegendItem" name="QCPAbstractLegendItem">
+<area shape="rect" id="node2" href="$d3/d8b/a00059.html" title="{QObject\n||}" alt="" coords="589,197,660,274"/>
+<area shape="rect" id="node7" href="$d5/df9/a00044.html" title="Base class for all objects that can be placed on layers. " alt="" coords="1271,403,1474,685"/>
+<area shape="rect" id="node6" href="$d6/d97/a00045.html" title="Manages a legend inside a QCustomPlot. " alt="" coords="942,895,1144,1236"/>
+<area shape="rect" id="node8" href="$d6/d42/a00043.html" title="A layer that may contain objects, to control the rendering order. " alt="" coords="1321,145,1432,325"/>
+<area shape="rect" id="node10" href="$d5/d79/a00030.html#d8/d00/a00186" title="The central class of the library, the QWidget which displays the plot and interacts with the user..." alt="" coords="1164,5,1264,83"/>
+</map>

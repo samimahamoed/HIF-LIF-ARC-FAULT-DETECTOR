@@ -1,0 +1,10 @@
+<map id="handlePlottableSelection" name="handlePlottableSelection">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#ac1d1bc6ae4e13616fb02cef6d9e2188e" title="Returns the plottable at the pixel position pos. " alt="" coords="252,166,336,193"/>
+<area shape="rect" id="node8" href="$dc/de2/a00024.html#ab901903adcb0e29467d63de72340ab29" title="QCPAbstractPlottable\l::selected" alt="" coords="417,319,568,360"/>
+<area shape="rect" id="node9" href="$dc/de2/a00024.html#afbd5428c2952f59d952e11ab5cd79176" title="Sets whether this plottable is selected or not. " alt="" coords="219,319,369,360"/>
+<area shape="rect" id="node3" href="$dc/de2/a00024.html#af895574da1ec0d050711b6c9deda296a" title="QCPAbstractPlottable\l::selectable" alt="" coords="417,5,568,47"/>
+<area shape="rect" id="node4" href="$dc/de2/a00024.html#a72c7a09c22963f2c943f07112b311103" title="QCPAbstractPlottable\l::keyAxis" alt="" coords="417,71,568,112"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a7fe5b84f4891838b63ed5181f5811dc5" title="QCPAxis::axisRect" alt="" coords="425,137,560,163"/>
+<area shape="rect" id="node6" href="$dc/de2/a00024.html#a3106f9d34d330a6097a8ec5905e5b519" title="QCPAbstractPlottable\l::valueAxis" alt="" coords="417,188,568,229"/>
+<area shape="rect" id="node7" href="$dc/de2/a00024.html#a0fd218d6c4974b6ab05bd2f688818556" title="This function is used to decide whether a click hits a plottable or not. " alt="" coords="417,253,568,295"/>
+</map>

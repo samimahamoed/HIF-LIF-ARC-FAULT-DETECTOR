@@ -1,0 +1,74 @@
+\hypertarget{a00018_source}{\section{light\+\_\+sensor.\+h}
+\label{a00018_source}\index{light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef LIGHT\_SEN\_H}
+00002 \textcolor{preprocessor}{#define LIGHT\_SEN\_H}
+00003 
+00012 \textcolor{preprocessor}{#define X\_NTF\_LIGHT\_SENSOR\_CONFIG                                  (X\_NTF\_FREE + 13)}
+00014 
+00015 
+00016 
+00017 \textcolor{comment}{//TODO:find out the gain HW task}
+\hypertarget{a00018_source_l00018}{}\hyperlink{a00018_a67d542941eaade236c5f5a224efc7653}{00018} \textcolor{preprocessor}{#define LIGHT\_SEN\_GAIN                                             1}
+00019 
+\hypertarget{a00018_source_l00020}{}\hyperlink{a00018}{00020} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00021 \{
+\hypertarget{a00018_source_l00022}{}\hyperlink{a00018_a891d4fcb12960785cecc1e688681b748}{00022}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}     \hyperlink{a00018_a891d4fcb12960785cecc1e688681b748}{adc\_val};
+\hypertarget{a00018_source_l00023}{}\hyperlink{a00018_a053a8ae0e59f7414929cd8ac3feeec7b}{00023}     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}    \hyperlink{a00018_a053a8ae0e59f7414929cd8ac3feeec7b}{ana\_val};
+00024 
+00025 \}\hyperlink{a00018_dd/d42/a00109}{analog\_sample\_light\_t};
+00026 
+00027 
+00028 
+00029 
+\hypertarget{a00018_source_l00031}{}\hyperlink{a00018}{00031} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\_x\_notify\_light\_sen\_configure
+00032 \{
+\hypertarget{a00018_source_l00033}{}\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{00033}     \hyperlink{a00036_df/d4c/a00851}{x\_notify}           \hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify};
+00034 
+\hypertarget{a00018_source_l00035}{}\hyperlink{a00018}{00035}     \textcolor{keyword}{struct}
+00036     \{
+00037        \hyperlink{a00021_d6/d9c/a00352}{configured\_t}  configured;
+00038        \hyperlink{a00028}{module\_disturbance\_record\_t}   *disturbance\_record;
+00039     \}message;
+00040 
+00041 
+00042 \}\hyperlink{a00018_da/de3/a00856}{x\_notify\_light\_sen\_configure};
+00043 
+00044 
+\hypertarget{a00018_source_l00046}{}\hyperlink{a00018}{00046} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\_x\_notify\_light\_sen\_sv\_report
+00047 \{
+\hypertarget{a00018_source_l00048}{}\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{00048}     \hyperlink{a00036_df/d4c/a00851}{x\_notify}            \hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify};
+00049 
+\hypertarget{a00018_source_l00050}{}\hyperlink{a00018}{00050}     \textcolor{keyword}{struct}
+00051     \{
+00052       \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}      error\_status\_flags;
+00053       \hyperlink{a00021_d6/d9c/a00352}{configured\_t}           config;
+00054     \}message;
+00055 
+00056 \}\hyperlink{a00018_d0/d66/a00858}{x\_notify\_light\_sen\_sv\_report};
+00057 
+00058 
+00059 
+00061 \textcolor{keyword}{extern} \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\_task\_id} \hyperlink{a00018_a757e7771170ace1d9f8519bd318ec64a}{light\_sen\_id};
+00062 
+00063 
+00064 \textcolor{keywordtype}{void} \hyperlink{a00018_ae9aa2f8b8e90a92755efbcd161c67bc0}{light\_sen\_taskx}(\hyperlink{a00036_de/d37/a00849}{x\_event} *event);
+00065 \textcolor{keywordtype}{void} \hyperlink{a00018_a317b03892739257278fd51ab8003962d}{light\_sen\_notifyx}(\hyperlink{a00036_df/d4c/a00851}{x\_notify} *notify);
+00066 
+00067 
+00068 \textcolor{preprocessor}{#endif   //LIGHT\_SEN\_H}
+00069 
+00070 
+00071 
+00072 
+00073 
+00074 
+00075 
+00076 
+00077 
+00078 
+00079 
+00080 
+\end{DoxyCode}

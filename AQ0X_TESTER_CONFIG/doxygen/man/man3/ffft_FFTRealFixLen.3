@@ -1,0 +1,345 @@
+.TH "ffft::FFTRealFixLen< LL2 >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::FFTRealFixLen< LL2 > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <FFTRealFixLen\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBFFT_LEN_L2\fP = LL2 }"
+.br
+.ti -1c
+.RI "enum { \fBFFT_LEN\fP = 1 << FFT_LEN_L2 }"
+.br
+.ti -1c
+.RI "typedef 
+.br
+\fBFFTRealFixLenParam::DataType\fP \fBDataType\fP"
+.br
+.ti -1c
+.RI "typedef \fBOscSinCos\fP< \fBDataType\fP > \fBOscType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFFTRealFixLen\fP ()"
+.br
+.ti -1c
+.RI "long \fBget_length\fP () const "
+.br
+.ti -1c
+.RI "void \fBdo_fft\fP (\fBDataType\fP f[], const \fBDataType\fP x[])"
+.br
+.ti -1c
+.RI "void \fBdo_ifft\fP (const \fBDataType\fP f[], \fBDataType\fP x[])"
+.br
+.ti -1c
+.RI "void \fBrescale\fP (\fBDataType\fP x[]) const "
+.br
+.ti -1c
+.RI "template<> void \fBdo_fft\fP (\fBDataType\fP f[], const \fBDataType\fP x[])"
+.br
+.ti -1c
+.RI "template<> void \fBdo_fft\fP (\fBDataType\fP f[], const \fBDataType\fP x[])"
+.br
+.ti -1c
+.RI "template<> void \fBdo_fft\fP (\fBDataType\fP f[], const \fBDataType\fP x[])"
+.br
+.ti -1c
+.RI "template<> void \fBdo_ifft\fP (const \fBDataType\fP f[], \fBDataType\fP x[])"
+.br
+.ti -1c
+.RI "template<> void \fBdo_ifft\fP (const \fBDataType\fP f[], \fBDataType\fP x[])"
+.br
+.ti -1c
+.RI "template<> void \fBdo_ifft\fP (const \fBDataType\fP f[], \fBDataType\fP x[])"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<int LL2>class ffft::FFTRealFixLen< LL2 >"
+
+.PP
+Definition at line 43 of file FFTRealFixLen\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<int LL2> typedef \fBFFTRealFixLenParam::DataType\fP \fBffft::FFTRealFixLen\fP< LL2 >::\fBDataType\fP"
+
+.PP
+Definition at line 52 of file FFTRealFixLen\&.h\&.
+.SS "template<int LL2> typedef \fBOscSinCos\fP<\fBDataType\fP> \fBffft::FFTRealFixLen\fP< LL2 >::\fBOscType\fP"
+
+.PP
+Definition at line 53 of file FFTRealFixLen\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "template<int LL2> anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFFT_LEN_L2 \fP\fP
+.PP
+Definition at line 55 of file FFTRealFixLen\&.h\&.
+.PP
+.nf
+55 {            FFT_LEN_L2  = LL2   };
+.fi
+.SS "template<int LL2> anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFFT_LEN \fP\fP
+.PP
+Definition at line 56 of file FFTRealFixLen\&.h\&.
+.PP
+.nf
+56 {           FFT_LEN     = 1 << FFT_LEN_L2   };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<int LL2> \fBffft::FFTRealFixLen\fP< LL2 >::\fBFFTRealFixLen\fP ()"
+
+.PP
+Definition at line 52 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+53 :   _buffer (FFT_LEN)
+54 ,   _br_data (BR_ARR_SIZE)
+55 ,   _trigo_data (TRIGO_TABLE_ARR_SIZE)
+56 ,   _trigo_osc ()
+57 {
+58     build_br_lut ();
+59     build_trigo_lut ();
+60     build_trigo_osc ();
+61 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int LL2> void \fBffft::FFTRealFixLen\fP< LL2 >::do_fft (\fBDataType\fPf[], const \fBDataType\fPx[])"
+
+.PP
+Definition at line 75 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+76 {
+77     assert (f != 0);
+78     assert (x != 0);
+79     assert (x != f);
+80     assert (FFT_LEN_L2 >= 3);
+81 
+82     // Do the transform in several passes
+83     const DataType  *   cos_ptr = &_trigo_data [0];
+84     const long *    br_ptr = &_br_data [0];
+85 
+86     FFTRealPassDirect <FFT_LEN_L2 - 1>::process (
+87         FFT_LEN,
+88         f,
+89         &_buffer [0],
+90         x,
+91         cos_ptr,
+92         TRIGO_TABLE_ARR_SIZE,
+93         br_ptr,
+94         &_trigo_osc [0]
+95     );
+96 }
+.fi
+.SS "template<> void \fBffft::FFTRealFixLen\fP< 2 >::do_fft (\fBDataType\fPf[], const \fBDataType\fPx[])\fC [inline]\fP"
+
+.PP
+Definition at line 100 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+101 {
+102     assert (f != 0);
+103     assert (x != 0);
+104     assert (x != f);
+105 
+106     f [1] = x [0] - x [2];
+107     f [3] = x [1] - x [3];
+108 
+109     const DataType  b_0 = x [0] + x [2];
+110     const DataType  b_2 = x [1] + x [3];
+111     
+112     f [0] = b_0 + b_2;
+113     f [2] = b_0 - b_2;
+114 }
+.fi
+.SS "template<> void \fBffft::FFTRealFixLen\fP< 1 >::do_fft (\fBDataType\fPf[], const \fBDataType\fPx[])\fC [inline]\fP"
+
+.PP
+Definition at line 118 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+119 {
+120     assert (f != 0);
+121     assert (x != 0);
+122     assert (x != f);
+123 
+124     f [0] = x [0] + x [1];
+125     f [1] = x [0] - x [1];
+126 }
+.fi
+.SS "template<> void \fBffft::FFTRealFixLen\fP< 0 >::do_fft (\fBDataType\fPf[], const \fBDataType\fPx[])\fC [inline]\fP"
+
+.PP
+Definition at line 130 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+131 {
+132     assert (f != 0);
+133     assert (x != 0);
+134 
+135     f [0] = x [0];
+136 }
+.fi
+.SS "template<int LL2> void \fBffft::FFTRealFixLen\fP< LL2 >::do_ifft (const \fBDataType\fPf[], \fBDataType\fPx[])"
+
+.PP
+Definition at line 142 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+143 {
+144     assert (f != 0);
+145     assert (x != 0);
+146     assert (x != f);
+147     assert (FFT_LEN_L2 >= 3);
+148 
+149     // Do the transform in several passes
+150     DataType *      s_ptr =
+151         FFTRealSelect <FFT_LEN_L2 & 1>::sel_bin (&_buffer [0], x);
+152     DataType *      d_ptr =
+153         FFTRealSelect <FFT_LEN_L2 & 1>::sel_bin (x, &_buffer [0]);
+154     const DataType  *   cos_ptr = &_trigo_data [0];
+155     const long *    br_ptr = &_br_data [0];
+156 
+157     FFTRealPassInverse <FFT_LEN_L2 - 1>::process (
+158         FFT_LEN,
+159         d_ptr,
+160         s_ptr,
+161         f,
+162         cos_ptr,
+163         TRIGO_TABLE_ARR_SIZE,
+164         br_ptr,
+165         &_trigo_osc [0]
+166     );
+167 }
+.fi
+.SS "template<> void \fBffft::FFTRealFixLen\fP< 2 >::do_ifft (const \fBDataType\fPf[], \fBDataType\fPx[])\fC [inline]\fP"
+
+.PP
+Definition at line 171 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+172 {
+173     assert (f != 0);
+174     assert (x != 0);
+175     assert (x != f);
+176 
+177     const DataType  b_0 = f [0] + f [2];
+178     const DataType  b_2 = f [0] - f [2];
+179 
+180     x [0] = b_0 + f [1] * 2;
+181     x [2] = b_0 - f [1] * 2;
+182     x [1] = b_2 + f [3] * 2;
+183     x [3] = b_2 - f [3] * 2;
+184 }
+.fi
+.SS "template<> void \fBffft::FFTRealFixLen\fP< 1 >::do_ifft (const \fBDataType\fPf[], \fBDataType\fPx[])\fC [inline]\fP"
+
+.PP
+Definition at line 188 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+189 {
+190     assert (f != 0);
+191     assert (x != 0);
+192     assert (x != f);
+193 
+194     x [0] = f [0] + f [1];
+195     x [1] = f [0] - f [1];
+196 }
+.fi
+.SS "template<> void \fBffft::FFTRealFixLen\fP< 0 >::do_ifft (const \fBDataType\fPf[], \fBDataType\fPx[])\fC [inline]\fP"
+
+.PP
+Definition at line 200 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+201 {
+202     assert (f != 0);
+203     assert (x != 0);
+204     assert (x != f);
+205 
+206     x [0] = f [0];
+207 }
+.fi
+.SS "template<int LL2> long \fBffft::FFTRealFixLen\fP< LL2 >::get_length () const\fC [inline]\fP"
+
+.PP
+Definition at line 66 of file FFTRealFixLen\&.hpp\&.
+.PP
+Referenced by QFourierFixedCalculator< T >::QFourierFixedCalculator()\&.
+.PP
+.nf
+67 {
+68     return (FFT_LEN);
+69 }
+.fi
+.SS "template<int LL2> void \fBffft::FFTRealFixLen\fP< LL2 >::rescale (\fBDataType\fPx[]) const"
+
+.PP
+Definition at line 213 of file FFTRealFixLen\&.hpp\&.
+.PP
+.nf
+214 {
+215     assert (x != 0);
+216 
+217     const DataType  mul = DataType (1\&.0 / FFT_LEN);
+218 
+219     if (FFT_LEN < 4)
+220     {
+221         long                i = FFT_LEN - 1;
+222         do
+223         {
+224             x [i] *= mul;
+225             --i;
+226         }
+227         while (i >= 0);
+228     }
+229 
+230     else
+231     {
+232         assert ((FFT_LEN & 3) == 0);
+233 
+234         // Could be optimized with SIMD instruction sets (needs alignment check)
+235         long                i = FFT_LEN - 4;
+236         do
+237         {
+238             x [i + 0] *= mul;
+239             x [i + 1] *= mul;
+240             x [i + 2] *= mul;
+241             x [i + 3] *= mul;
+242             i -= 4;
+243         }
+244         while (i >= 0);
+245     }
+246 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

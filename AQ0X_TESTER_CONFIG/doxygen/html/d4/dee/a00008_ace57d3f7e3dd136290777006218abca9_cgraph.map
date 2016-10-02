@@ -1,0 +1,16 @@
+<map id="emu_data_editor::emu_data_editor" name="emu_data_editor::emu_data_editor">
+<area shape="rect" id="node2" href="$d1/dea/a00054.html#a02bee79c9e9f978ed1fb012eda58ed5d" title="QFourierTransformer\l::forwardTransform" alt="" coords="206,90,346,131"/>
+<area shape="rect" id="node6" href="$d1/dea/a00054.html#aab762683a5ed505ed7be906c4340cb07" title="QFourierTransformer\l::setSize" alt="" coords="206,311,346,353"/>
+<area shape="rect" id="node12" href="$d1/d51/a00079.html#a33af8ac054888d9cc0833b699028b690" title="Ui_emu_data_editor\l::setupUi" alt="" coords="207,438,345,479"/>
+<area shape="rect" id="node14" href="$d1/dea/a00054.html#a8c8f0a2101aba7f6da70050c7ebdc36c" title="QFourierTransformer\l::setWindowFunction" alt="" coords="204,246,348,287"/>
+<area shape="rect" id="node3" href="$d0/d89/a00071.html#aa4a4f988e1f4b65e4181a0c8c3245a00" title="QWindowFunction::apply" alt="" coords="402,5,569,32"/>
+<area shape="rect" id="node4" href="$d1/d84/a00052.html#a2d48438c3ee2549f8bf0e1e8fc1c3f1d" title="QFourierCalculator\l::setData" alt="" coords="420,57,551,98"/>
+<area shape="rect" id="node5" href="$d1/d84/a00052.html#a77ef4fb3e16e1727a9d96ef5956c1885" title="QFourierCalculator\l::forward" alt="" coords="420,122,551,163"/>
+<area shape="rect" id="node7" href="$d1/dea/a00054.html#ac6ce59f26c2e51bc91f16ba42cf059a4" title="QFourierTransformer\l::isValidSize" alt="" coords="415,305,555,346"/>
+<area shape="rect" id="node8" href="$d0/d89/a00071.html#a23ec85a35c762367195a47898cc75380" title="QWindowFunction::create" alt="" coords="399,253,571,280"/>
+<area shape="rect" id="node9" href="$d1/dea/a00054.html#ae8918e95cfd4b0b65bae0947903918ac" title="QFourierTransformer\l::sizeToKey" alt="" coords="415,435,555,477"/>
+<area shape="rect" id="node10" href="$d1/d84/a00052.html#a8eef0ee0494f04e73191890de476795a" title="QFourierCalculator\l::setSize" alt="" coords="420,370,551,411"/>
+<area shape="rect" id="node11" href="$d1/d84/a00052.html#a76f0e0b1b3269d7267cd732b3e6ba3a5" title="QFourierCalculator\l::size" alt="" coords="623,370,753,411"/>
+<area shape="rect" id="node13" href="$d1/d51/a00079.html#a4118bb421fd84731231aa1429fedf5f8" title="Ui_emu_data_editor\l::retranslateUi" alt="" coords="417,501,554,542"/>
+<area shape="rect" id="node15" href="$d6/d2c/a00072.html#a3c72b178730b8731087337bcbfcbd4b7" title="QWindowFunctionManager\l::createFunction" alt="" coords="396,187,575,229"/>
+</map>

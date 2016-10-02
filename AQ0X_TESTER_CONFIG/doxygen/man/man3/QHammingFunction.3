@@ -1,0 +1,46 @@
+.TH "QHammingFunction< T >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QHammingFunction< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwindowfunction\&.h>\fP
+.PP
+Inherits \fBQWindowFunction< T >\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "T \fBcalculate\fP (int currentSample, int totalSamples)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>class QHammingFunction< T >"
+
+.PP
+Definition at line 113 of file qwindowfunction\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > T \fBQHammingFunction\fP< T >::calculate (intcurrentSample, inttotalSamples)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBQWindowFunction< T >\fP\&.
+.PP
+Definition at line 139 of file qwindowfunction\&.cpp\&.
+.PP
+.nf
+140 {
+141     return 0\&.54 + (0\&.46 * qCos((2 * M_PI * currentSample) / (totalSamples - 1)));
+142 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

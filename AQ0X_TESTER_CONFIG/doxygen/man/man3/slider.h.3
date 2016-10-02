@@ -1,0 +1,94 @@
+.TH "slider.h" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+slider.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <QSlider>\fP
+.br
+\fC#include 'typedef\&.h'\fP
+.br
+\fC#include 'emu_data_editor\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSlider\fP"
+.br
+.ti -1c
+.RI "union \fBSlider\&.flags\fP"
+.br
+.ti -1c
+.RI "struct \fBSlider\&.flags\&.bits\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBBG_STYLE_NORMAL\fP   'background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #8f8f8f, stop:1 #8f8f8f);'"
+.br
+.ti -1c
+.RI "#define \fBBG_STYLE__SELECTION_MODE\fP   'background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #3333FF, stop:1 #3333FF);'"
+.br
+.ti -1c
+.RI "#define \fBBG_STYLE__HAS_FOCUS\fP   'background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #75FF47, stop:1 #75FF47);'"
+.br
+.in -1c
+.SH "Class Documentation"
+.PP 
+.SH "union Slider\&.flags"
+.PP 
+Definition at line 68 of file slider\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+\fBflags\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct Slider\&.flags\&.bits"
+.PP 
+Definition at line 71 of file slider\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIpoint_deselection_mode:1\fP 
+.br
+.PP
+\fBUint8\fP \fIpoint_focuse_en:1\fP 
+.br
+.PP
+\fBUint8\fP \fIpoint_selected:1\fP 
+.br
+.PP
+\fBUint8\fP \fIpoint_selection_mode:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define BG_STYLE__HAS_FOCUS   'background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #75FF47, stop:1 #75FF47);'"
+
+.PP
+Definition at line 52 of file slider\&.h\&.
+.SS "#define BG_STYLE__SELECTION_MODE   'background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #3333FF, stop:1 #3333FF);'"
+
+.PP
+Definition at line 51 of file slider\&.h\&.
+.SS "#define BG_STYLE_NORMAL   'background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #8f8f8f, stop:1 #8f8f8f);'"
+
+.PP
+Definition at line 50 of file slider\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

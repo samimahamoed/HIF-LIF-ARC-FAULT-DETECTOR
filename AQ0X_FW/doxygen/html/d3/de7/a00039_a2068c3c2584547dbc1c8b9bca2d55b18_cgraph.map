@@ -1,0 +1,17 @@
+<map id="__attribute__" name="__attribute__">
+<area shape="rect" id="node2" href="$d2/de7/a00014.html#a42ed16c7ef20e0c0031fe7ba7ae377b3" title="Main processing loop for algorithm module. " alt="" coords="178,126,290,153"/>
+<area shape="rect" id="node9" href="$d9/d2e/a00056.html#a5770775aca185380868838e69ec20215" title="Retrives A/D hardware buffer value. " alt="" coords="175,210,293,237"/>
+<area shape="rect" id="node10" href="$dd/d1b/a00015.html#a5bba51487aeccd791ff56017124da833" title="Supervise the status of the ir sensor. " alt="" coords="171,261,297,287"/>
+<area shape="rect" id="node11" href="$d4/d51/a00017.html#a3a46d0e69b27b3566e6d8465cf7a8b0a" title="function used to identify the measured signal waveform " alt="" coords="151,311,317,338"/>
+<area shape="rect" id="node15" href="$d4/d51/a00017.html#ac7134882964fedc18be6c75547987a2c" title="mfield_y_sen_get_status" alt="" coords="151,362,317,389"/>
+<area shape="rect" id="node16" href="$d1/d2b/a00018.html#a354d25047e79397dbe5525178f19cae0" title="Supervise the status of the uv sensor. " alt="" coords="169,413,299,439"/>
+<area shape="rect" id="node3" href="$de/d8c/a00036.html#a85471d58eae93d5d7e7e2b52e2b915d3" title="Causes that system will send notification to the module as this cannot be done directly because the f..." alt="" coords="372,5,551,47"/>
+<area shape="rect" id="node5" href="$d9/d2e/a00056.html#a0af9eae455fbdf4e77def5bfffa109cb" title="gpio port control helper function " alt="" coords="379,71,543,98"/>
+<area shape="rect" id="node6" href="$dd/d1b/a00015.html#a1c9872e93491d95a24ab0bc723d39a74" title="ir_record_reset" alt="" coords="407,122,515,149"/>
+<area shape="rect" id="node7" href="$dd/d1b/a00015.html#a86870a0e00601a92277e689447739ce9" title="ir_sen_hif_check" alt="" coords="402,173,521,199"/>
+<area shape="rect" id="node8" href="$d0/d33/a00027.html#a90aef186f45a15d94bf0247122194991" title="Writes NOV storage to EEPROM. " alt="" coords="423,223,500,250"/>
+<area shape="rect" id="node4" href="$db/df3/a00034.html#a9953756bc7c83e5f2c36830396136e75" title="OS interrupt notification timer. " alt="" coords="605,13,757,39"/>
+<area shape="rect" id="node12" href="$d5/de0/a00050.html#af29e981d0d6b3a84d980170b43933dbc" title="Claculate first order derivative. " alt="" coords="398,275,525,316"/>
+<area shape="rect" id="node13" href="$d5/de0/a00050.html#adf290c10214480d55f3631c1760188b0" title="mfield_x_compare" alt="" coords="398,341,525,367"/>
+<area shape="rect" id="node14" href="$d5/de0/a00050.html#aeb1e6622fe9af5c31bd0d17ab01dd23a" title="Claculates the event probablity. " alt="" coords="365,391,557,418"/>
+</map>

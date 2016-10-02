@@ -1,0 +1,2301 @@
+.TH "QCPLegend" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPLegend \- 
+.PP
+Manages a legend inside a \fBQCustomPlot\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPLayerable\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPositionStyle\fP { \fBpsManual\fP, \fBpsTopLeft\fP, \fBpsTop\fP, \fBpsTopRight\fP, \fBpsRight\fP, \fBpsBottomRight\fP, \fBpsBottom\fP, \fBpsBottomLeft\fP, \fBpsLeft\fP }"
+.br
+.RI "\fIDefines where the legend is positioned inside the \fBQCustomPlot\fP axis rect\&. \fP"
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBselectionChanged\fP (QCPLegend::SelectableParts selection)"
+.br
+.RI "\fIThis signal is emitted when the selection state of this legend has changed\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQ_ENUMS\fP (\fBPositionStyle\fP) enum SelectablePart"
+.br
+.RI "\fIDefines the selectable parts of a legend\&. \fP"
+.ti -1c
+.RI "\fBQ_ENUMS\fP (SelectablePart) Q_DECLARE_FLAGS(SelectableParts"
+.br
+.ti -1c
+.RI "SelectablePart \fBQCPLegend\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fIConstructs a new \fBQCPLegend\fP instance with \fIparentPlot\fP as the containing plot and default values\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPLegend\fP ()"
+.br
+.ti -1c
+.RI "QPen \fBborderPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBbrush\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBfont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBtextColor\fP () const "
+.br
+.ti -1c
+.RI "\fBPositionStyle\fP \fBpositionStyle\fP () const "
+.br
+.ti -1c
+.RI "QPoint \fBposition\fP () const "
+.br
+.ti -1c
+.RI "bool \fBautoSize\fP () const "
+.br
+.ti -1c
+.RI "QSize \fBsize\fP () const "
+.br
+.ti -1c
+.RI "QSize \fBminimumSize\fP () const "
+.br
+.ti -1c
+.RI "int \fBpaddingLeft\fP () const "
+.br
+.ti -1c
+.RI "int \fBpaddingRight\fP () const "
+.br
+.ti -1c
+.RI "int \fBpaddingTop\fP () const "
+.br
+.ti -1c
+.RI "int \fBpaddingBottom\fP () const "
+.br
+.ti -1c
+.RI "int \fBmarginLeft\fP () const "
+.br
+.ti -1c
+.RI "int \fBmarginRight\fP () const "
+.br
+.ti -1c
+.RI "int \fBmarginTop\fP () const "
+.br
+.ti -1c
+.RI "int \fBmarginBottom\fP () const "
+.br
+.ti -1c
+.RI "int \fBitemSpacing\fP () const "
+.br
+.ti -1c
+.RI "QSize \fBiconSize\fP () const "
+.br
+.ti -1c
+.RI "int \fBiconTextPadding\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBiconBorderPen\fP () const "
+.br
+.ti -1c
+.RI "SelectableParts \fBselectable\fP () const "
+.br
+.ti -1c
+.RI "SelectableParts \fBselected\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedBorderPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedIconBorderPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBselectedBrush\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBselectedFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBselectedTextColor\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetBorderPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen, the border of the entire legend is drawn with\&. \fP"
+.ti -1c
+.RI "void \fBsetBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fISets the brush of the legend background\&. \fP"
+.ti -1c
+.RI "void \fBsetFont\fP (const QFont &\fBfont\fP)"
+.br
+.RI "\fISets the default font of legend text\&. \fP"
+.ti -1c
+.RI "void \fBsetTextColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the default color of legend text\&. \fP"
+.ti -1c
+.RI "void \fBsetPositionStyle\fP (\fBPositionStyle\fP legendPositionStyle)"
+.br
+.RI "\fISets the position style of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetPosition\fP (const QPoint &pixelPosition)"
+.br
+.RI "\fISets the exact pixel Position of the legend inside the \fBQCustomPlot\fP widget, if \fBsetPositionStyle\fP is set to \fBpsManual\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetAutoSize\fP (bool on)"
+.br
+.RI "\fISets whether the size of the legend should be calculated automatically to fit all the content (plus padding), or whether the size must be specified manually with \fBsetSize\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetSize\fP (const QSize &\fBsize\fP)"
+.br
+.RI "\fISets the size of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetSize\fP (int width, int height)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. \fP"
+.ti -1c
+.RI "void \fBsetMinimumSize\fP (const QSize &\fBsize\fP)"
+.br
+.RI "\fISets the minimum size of the legend when \fBsetAutoSize\fP is enabled\&. \fP"
+.ti -1c
+.RI "void \fBsetMinimumSize\fP (int width, int height)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. \fP"
+.ti -1c
+.RI "void \fBsetPaddingLeft\fP (int padding)"
+.br
+.RI "\fISets the left padding of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetPaddingRight\fP (int padding)"
+.br
+.RI "\fISets the right padding of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetPaddingTop\fP (int padding)"
+.br
+.RI "\fISets the top padding of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetPaddingBottom\fP (int padding)"
+.br
+.RI "\fISets the bottom padding of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetPadding\fP (int left, int right, int top, int bottom)"
+.br
+.RI "\fISets the padding of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetMarginLeft\fP (int margin)"
+.br
+.RI "\fISets the left margin of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetMarginRight\fP (int margin)"
+.br
+.RI "\fISets the right margin of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetMarginTop\fP (int margin)"
+.br
+.RI "\fISets the top margin of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetMarginBottom\fP (int margin)"
+.br
+.RI "\fISets the bottom margin of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetMargin\fP (int left, int right, int top, int bottom)"
+.br
+.RI "\fISets the margin of the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetItemSpacing\fP (int spacing)"
+.br
+.RI "\fISets the vertical space between two legend items in the legend\&. \fP"
+.ti -1c
+.RI "void \fBsetIconSize\fP (const QSize &\fBsize\fP)"
+.br
+.RI "\fISets the size of legend icons\&. \fP"
+.ti -1c
+.RI "void \fBsetIconSize\fP (int width, int height)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. \fP"
+.ti -1c
+.RI "void \fBsetIconTextPadding\fP (int padding)"
+.br
+.RI "\fISets the horizontal space in pixels between the legend icon and the text next to it\&. \fP"
+.ti -1c
+.RI "void \fBsetIconBorderPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen used to draw a border around each legend icon\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectable\fP (const SelectableParts &\fBselectable\fP)"
+.br
+.RI "\fISets whether the user can (de-)select the parts in \fIselectable\fP by clicking on the \fBQCustomPlot\fP surface\&. \fP"
+.ti -1c
+.RI "void \fBsetSelected\fP (const SelectableParts &\fBselected\fP)"
+.br
+.RI "\fISets the selected state of the respective legend parts described by \fBSelectablePart\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedBorderPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fIWhen the legend box is selected, this pen is used to draw the border instead of the normal pen set via \fBsetBorderPen\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedIconBorderPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen legend items will use to draw their icon borders, when they are selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fIWhen the legend box is selected, this brush is used to draw the legend background instead of the normal brush set via \fBsetBrush\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedFont\fP (const QFont &\fBfont\fP)"
+.br
+.RI "\fISets the default font that is used by legend items when they are selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedTextColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the default text color that is used by legend items when they are selected\&. \fP"
+.ti -1c
+.RI "\fBQCPAbstractLegendItem\fP * \fBitem\fP (int index) const "
+.br
+.RI "\fIReturns the item with index \fIi\fP\&. \fP"
+.ti -1c
+.RI "\fBQCPPlottableLegendItem\fP * \fBitemWithPlottable\fP (const \fBQCPAbstractPlottable\fP *\fBplottable\fP) const "
+.br
+.RI "\fIReturns the \fBQCPPlottableLegendItem\fP which is associated with \fIplottable\fP (e\&.g\&. \fP"
+.ti -1c
+.RI "int \fBitemCount\fP () const "
+.br
+.RI "\fIReturns the number of items currently in the legend\&. \fP"
+.ti -1c
+.RI "bool \fBhasItem\fP (\fBQCPAbstractLegendItem\fP *\fBitem\fP) const "
+.br
+.RI "\fIReturns whether the legend contains \fIitem\fP\&. \fP"
+.ti -1c
+.RI "bool \fBhasItemWithPlottable\fP (const \fBQCPAbstractPlottable\fP *\fBplottable\fP) const "
+.br
+.RI "\fIReturns whether the legend contains a \fBQCPPlottableLegendItem\fP which is associated with \fIplottable\fP (e\&.g\&. \fP"
+.ti -1c
+.RI "bool \fBaddItem\fP (\fBQCPAbstractLegendItem\fP *\fBitem\fP)"
+.br
+.RI "\fIAdds \fIitem\fP to the legend, if it's not present already\&. \fP"
+.ti -1c
+.RI "bool \fBremoveItem\fP (int index)"
+.br
+.RI "\fIRemoves the item with index \fIindex\fP from the legend\&. \fP"
+.ti -1c
+.RI "bool \fBremoveItem\fP (\fBQCPAbstractLegendItem\fP *\fBitem\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes \fIitem\fP from the legend\&. \fP"
+.ti -1c
+.RI "void \fBclearItems\fP ()"
+.br
+.RI "\fIRemoves all items from the legend\&. \fP"
+.ti -1c
+.RI "QList< \fBQCPAbstractLegendItem\fP * > \fBselectedItems\fP () const "
+.br
+.RI "\fIReturns the legend items that are currently selected\&. \fP"
+.ti -1c
+.RI "void \fBreArrange\fP ()"
+.br
+.RI "\fIIf \fBsetAutoSize\fP is true, the size needed to fit all legend contents is calculated and applied\&. \fP"
+.ti -1c
+.RI "bool \fBselectTestLegend\fP (const QPointF &pos) const "
+.br
+.RI "\fIReturns whether the point \fIpos\fP in pixels hits the legend rect\&. \fP"
+.ti -1c
+.RI "\fBQCPAbstractLegendItem\fP * \fBselectTestItem\fP (const QPoint pos) const "
+.br
+.RI "\fIWhen the point \fIpos\fP in pixels hits a legend item, the item is returned\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBupdateSelectionState\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBhandleLegendSelection\fP (QMouseEvent *event, bool additiveSelection, bool &modified)"
+.br
+.ti -1c
+.RI "virtual void \fBapplyDefaultAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual void \fBcalculateAutoSize\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBcalculateAutoPosition\fP ()"
+.br
+.ti -1c
+.RI "QPen \fBgetBorderPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBgetBrush\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPen \fBmBorderPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmIconBorderPen\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmBrush\fP"
+.br
+.ti -1c
+.RI "QFont \fBmFont\fP"
+.br
+.ti -1c
+.RI "QColor \fBmTextColor\fP"
+.br
+.ti -1c
+.RI "QPoint \fBmPosition\fP"
+.br
+.ti -1c
+.RI "QSize \fBmSize\fP"
+.br
+.ti -1c
+.RI "QSize \fBmMinimumSize\fP"
+.br
+.ti -1c
+.RI "QSize \fBmIconSize\fP"
+.br
+.ti -1c
+.RI "\fBPositionStyle\fP \fBmPositionStyle\fP"
+.br
+.ti -1c
+.RI "bool \fBmAutoSize\fP"
+.br
+.ti -1c
+.RI "int \fBmPaddingLeft\fP"
+.br
+.ti -1c
+.RI "int \fBmPaddingRight\fP"
+.br
+.ti -1c
+.RI "int \fBmPaddingTop\fP"
+.br
+.ti -1c
+.RI "int \fBmPaddingBottom\fP"
+.br
+.ti -1c
+.RI "int \fBmMarginLeft\fP"
+.br
+.ti -1c
+.RI "int \fBmMarginRight\fP"
+.br
+.ti -1c
+.RI "int \fBmMarginTop\fP"
+.br
+.ti -1c
+.RI "int \fBmMarginBottom\fP"
+.br
+.ti -1c
+.RI "int \fBmItemSpacing\fP"
+.br
+.ti -1c
+.RI "int \fBmIconTextPadding\fP"
+.br
+.ti -1c
+.RI "SelectableParts \fBmSelected\fP"
+.br
+.ti -1c
+.RI "SelectableParts \fBmSelectable\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedBorderPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedIconBorderPen\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmSelectedBrush\fP"
+.br
+.ti -1c
+.RI "QFont \fBmSelectedFont\fP"
+.br
+.ti -1c
+.RI "QColor \fBmSelectedTextColor\fP"
+.br
+.ti -1c
+.RI "QList< \fBQCPAbstractLegendItem\fP * > \fBmItems\fP"
+.br
+.ti -1c
+.RI "QMap< \fBQCPAbstractLegendItem\fP 
+.br
+*, QRect > \fBmItemBoundingBoxes\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCPAbstractLegendItem\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages a legend inside a \fBQCustomPlot\fP\&. 
+
+Doesn't need to be instantiated externally, rather access QCustomPlot::legend 
+.PP
+Definition at line 1421 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPLegend::PositionStyle\fP"
+
+.PP
+Defines where the legend is positioned inside the \fBQCustomPlot\fP axis rect\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIpsManual \fP\fP
+Position is not changed automatically\&. Set manually via \fBsetPosition\fP\&. 
+.TP
+\fB\fIpsTopLeft \fP\fP
+Legend is positioned in the top left corner of the axis rect with distance to the border corresponding to the currently set top and left margins\&. 
+.TP
+\fB\fIpsTop \fP\fP
+Legend is horizontally centered at the top of the axis rect with distance to the border corresponding to the currently set top margin\&. 
+.TP
+\fB\fIpsTopRight \fP\fP
+Legend is positioned in the top right corner of the axis rect with distance to the border corresponding to the currently set top and right margins\&. 
+.TP
+\fB\fIpsRight \fP\fP
+Legend is vertically centered at the right of the axis rect with distance to the border corresponding to the currently set right margin\&. 
+.TP
+\fB\fIpsBottomRight \fP\fP
+Legend is positioned in the bottom right corner of the axis rect with distance to the border corresponding to the currently set bottom and right margins\&. 
+.TP
+\fB\fIpsBottom \fP\fP
+Legend is horizontally centered at the bottom of the axis rect with distance to the border corresponding to the currently set bottom margin\&. 
+.TP
+\fB\fIpsBottomLeft \fP\fP
+Legend is positioned in the bottom left corner of the axis rect with distance to the border corresponding to the currently set bottom and left margins\&. 
+.TP
+\fB\fIpsLeft \fP\fP
+Legend is vertically centered at the left of the axis rect with distance to the border corresponding to the currently set left margin\&. 
+.PP
+Definition at line 1428 of file qcustomplot\&.h\&.
+.PP
+.nf
+1428                      { psManual       
+1429                       ,psTopLeft      
+1430                       ,psTop          
+1431                       ,psTopRight     
+1432                       ,psRight        
+1433                       ,psBottomRight  
+1434                       ,psBottom       
+1435                       ,psBottomLeft   
+1436                       ,psLeft         
+1437                      };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPLegend::QCPLegend (\fBQCustomPlot\fP *parentPlot)\fC [explicit]\fP"
+
+.PP
+Constructs a new \fBQCPLegend\fP instance with \fIparentPlot\fP as the containing plot and default values\&. Under normal usage, \fBQCPLegend\fP needn't be instantiated outside of \fBQCustomPlot\fP\&. Access QCustomPlot::legend to modify the legend (set to invisible by default, see \fBsetVisible\fP)\&. 
+.PP
+Definition at line 2589 of file qcustomplot\&.cpp\&.
+.PP
+References psTopRight, QCPLayerable::setAntialiased(), setAutoSize(), setBorderPen(), setBrush(), setFont(), setIconBorderPen(), setIconSize(), setIconTextPadding(), setItemSpacing(), setMargin(), setMinimumSize(), setPadding(), setPositionStyle(), setSelectable(), setSelected(), setSelectedBorderPen(), setSelectedBrush(), setSelectedFont(), setSelectedIconBorderPen(), setSelectedTextColor(), setSize(), and setTextColor()\&.
+.PP
+.nf
+2589                                             :
+2590   QCPLayerable(parentPlot)
+2591 {
+2592   setAntialiased(false);
+2593   setPositionStyle(psTopRight);
+2594   setSize(100, 28);
+2595   setMinimumSize(100, 0);
+2596   setIconSize(32, 18);
+2597   setAutoSize(true);
+2598   
+2599   setMargin(12, 12, 12, 12);
+2600   setPadding(8, 8, 3, 3);
+2601   setItemSpacing(3);
+2602   setIconTextPadding(7);
+2603   
+2604   setSelectable(spLegendBox | spItems);
+2605   setSelected(spNone);
+2606   
+2607   setBorderPen(QPen(Qt::black));
+2608   setSelectedBorderPen(QPen(Qt::blue, 2));
+2609   setIconBorderPen(Qt::NoPen);
+2610   setSelectedIconBorderPen(QPen(Qt::blue, 2));
+2611   setBrush(Qt::white);
+2612   setSelectedBrush(Qt::white);
+2613   setFont(parentPlot->font());
+2614   setSelectedFont(parentPlot->font());
+2615   setTextColor(Qt::black);
+2616   setSelectedTextColor(Qt::blue);
+2617 }
+.fi
+.SS "QCPLegend::~QCPLegend ()\fC [virtual]\fP"
+
+.PP
+Definition at line 2619 of file qcustomplot\&.cpp\&.
+.PP
+References clearItems()\&.
+.PP
+.nf
+2620 {
+2621   clearItems();
+2622 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QCPLegend::addItem (\fBQCPAbstractLegendItem\fP *item)"
+
+.PP
+Adds \fIitem\fP to the legend, if it's not present already\&. Returns true on sucess, i\&.e\&. if the item wasn't in the list already and has been successfuly added\&.
+.PP
+The legend takes ownership of the item\&. 
+.PP
+Definition at line 3083 of file qcustomplot\&.cpp\&.
+.PP
+References mItems\&.
+.PP
+.nf
+3084 {
+3085   if (!mItems\&.contains(item))
+3086   {
+3087     mItems\&.append(item);
+3088     return true;
+3089   } else
+3090     return false;
+3091 }
+.fi
+.SS "void QCPLegend::applyDefaultAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [virtual]\fP"
+A convenience function to easily set the QPainter::Antialiased hint on the provided \fIpainter\fP before drawing main legend elements\&.
+.PP
+This is the antialiasing state the painter passed to the \fBdraw\fP method is in by default\&.
+.PP
+This function takes into account the local setting of the antialiasing flag as well as the overrides set e\&.g\&. with \fBQCustomPlot::setNotAntialiasedElements\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiased\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPLayerable\fP\&.
+.PP
+Definition at line 3341 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeLegend, QCPLayerable::applyAntialiasingHint(), and QCPLayerable::mAntialiased\&.
+.PP
+.nf
+3342 {
+3343   applyAntialiasingHint(painter, mAntialiased, QCP::aeLegend);
+3344 }
+.fi
+.SS "bool QCPLegend::autoSize () const\fC [inline]\fP"
+
+.PP
+Definition at line 1460 of file qcustomplot\&.h\&.
+.PP
+.nf
+1460 { return mAutoSize; }
+.fi
+.SS "QPen QCPLegend::borderPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1454 of file qcustomplot\&.h\&.
+.PP
+.nf
+1454 { return mBorderPen; }
+.fi
+.SS "QBrush QCPLegend::brush () const\fC [inline]\fP"
+
+.PP
+Definition at line 1455 of file qcustomplot\&.h\&.
+.PP
+Referenced by setBrush(), and setSelectedBrush()\&.
+.PP
+.nf
+1455 { return mBrush; }
+.fi
+.SS "void QCPLegend::calculateAutoPosition ()\fC [protected]\fP, \fC [virtual]\fP"
+Sets the position dependant on the \fBsetPositionStyle\fP setting and the margins\&. 
+.PP
+Definition at line 3440 of file qcustomplot\&.cpp\&.
+.PP
+References mMarginBottom, mMarginLeft, mMarginRight, mMarginTop, QCPLayerable::mParentPlot, mPosition, mPositionStyle, mSize, psBottom, psBottomLeft, psBottomRight, psLeft, psManual, psRight, psTop, psTopLeft, and psTopRight\&.
+.PP
+Referenced by reArrange()\&.
+.PP
+.nf
+3441 {
+3442   switch (mPositionStyle)
+3443   {
+3444     case psTopLeft:
+3445       mPosition = mParentPlot->mAxisRect\&.topLeft() + QPoint(mMarginLeft, mMarginTop); break;
+3446     case psTop:
+3447       mPosition = mParentPlot->mAxisRect\&.topLeft() + QPoint(mParentPlot->mAxisRect\&.width()/2\&.0-mSize\&.width()/2\&.0, mMarginTop); break;
+3448     case psTopRight:
+3449       mPosition = mParentPlot->mAxisRect\&.topRight() + QPoint(-mMarginRight-mSize\&.width(), mMarginTop); break;
+3450     case psRight:
+3451       mPosition = mParentPlot->mAxisRect\&.topRight() + QPoint(-mMarginRight-mSize\&.width(), mParentPlot->mAxisRect\&.height()/2\&.0-mSize\&.height()/2\&.0); break;
+3452     case psBottomRight:
+3453       mPosition = mParentPlot->mAxisRect\&.bottomRight() + QPoint(-mMarginRight-mSize\&.width(), -mMarginBottom-mSize\&.height()); break;
+3454     case psBottom:
+3455       mPosition = mParentPlot->mAxisRect\&.bottomLeft() + QPoint(mParentPlot->mAxisRect\&.width()/2\&.0-mSize\&.width()/2\&.0, -mMarginBottom-mSize\&.height()); break;
+3456     case psBottomLeft:
+3457       mPosition = mParentPlot->mAxisRect\&.bottomLeft() + QPoint(mMarginLeft, -mMarginBottom-mSize\&.height()); break;
+3458     case psLeft:
+3459       mPosition = mParentPlot->mAxisRect\&.topLeft() + QPoint(mMarginLeft, mParentPlot->mAxisRect\&.height()/2\&.0-mSize\&.height()/2\&.0); break;
+3460     case psManual: break;
+3461   }
+3462 }
+.fi
+.SS "void QCPLegend::calculateAutoSize ()\fC [protected]\fP, \fC [virtual]\fP"
+Goes through similar steps as \fBdraw\fP and calculates the width and height needed to fit all items and padding in the legend\&. The new calculated size is then applied to the mSize of this legend\&. 
+.PP
+Definition at line 3400 of file qcustomplot\&.cpp\&.
+.PP
+References mItems, mItemSpacing, mMinimumSize, mPaddingBottom, mPaddingLeft, mPaddingRight, mPaddingTop, and mSize\&.
+.PP
+Referenced by reArrange()\&.
+.PP
+.nf
+3401 {
+3402   int width = mMinimumSize\&.width()-mPaddingLeft-mPaddingRight; // start with minimum width and only expand from there
+3403   int currentTop;
+3404   bool repeat = true;
+3405   int repeatCount = 0;
+3406   while (repeat && repeatCount < 3) // repeat until we find self-consistent width (usually 2 runs)
+3407   {
+3408     repeat = false;
+3409     currentTop = mPaddingTop;
+3410     for (int i=0; i<mItems\&.size(); ++i)
+3411     {
+3412       QSize s = mItems\&.at(i)->size(QSize(width, 0));
+3413       currentTop += s\&.height();
+3414       if (i < mItems\&.size()-1) // vertical spacer for all but last item
+3415         currentTop += mItemSpacing;
+3416       if (width < s\&.width())
+3417       {
+3418         width = s\&.width();
+3419         repeat = true; // changed width, so need a new run with new width to let other items adapt their height to that new width
+3420       }
+3421     }
+3422     repeatCount++;
+3423   }
+3424   if (repeat)
+3425     qDebug() << Q_FUNC_INFO << "hit repeat limit for iterative width calculation";
+3426   currentTop += mPaddingBottom;
+3427   width += mPaddingLeft+mPaddingRight;
+3428   
+3429   mSize\&.setWidth(width);
+3430   if (currentTop > mMinimumSize\&.height())
+3431     mSize\&.setHeight(currentTop);
+3432   else
+3433     mSize\&.setHeight(mMinimumSize\&.height());
+3434 }
+.fi
+.SS "void QCPLegend::clearItems ()"
+
+.PP
+Removes all items from the legend\&. 
+.PP
+Definition at line 3128 of file qcustomplot\&.cpp\&.
+.PP
+References mItemBoundingBoxes, and mItems\&.
+.PP
+Referenced by ~QCPLegend()\&.
+.PP
+.nf
+3129 {
+3130   qDeleteAll(mItems);
+3131   mItems\&.clear();
+3132   mItemBoundingBoxes\&.clear();
+3133 }
+.fi
+.SS "void QCPLegend::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws the legend with the provided \fIpainter\fP\&. 
+.PP
+Implements \fBQCPLayerable\fP\&.
+.PP
+Definition at line 3370 of file qcustomplot\&.cpp\&.
+.PP
+References getBorderPen(), getBrush(), mItemBoundingBoxes, mItems, mItemSpacing, mPaddingLeft, mPaddingTop, mPosition, mSize, QCPPainter::restore(), QCPPainter::save(), and QCPPainter::setPen()\&.
+.PP
+.nf
+3371 {
+3372   painter->setBrush(getBrush());
+3373   painter->setPen(getBorderPen());
+3374   // draw background rect:
+3375   painter->drawRect(QRect(mPosition, mSize));
+3376   // draw legend items:
+3377   painter->setClipRect(QRect(mPosition, mSize)\&.adjusted(1, 1, 0, 0));
+3378   painter->setPen(QPen());
+3379   painter->setBrush(Qt::NoBrush);
+3380   int currentTop = mPosition\&.y()+mPaddingTop;
+3381   for (int i=0; i<mItems\&.size(); ++i)
+3382   {
+3383     QSize itemSize = mItems\&.at(i)->size(QSize(mSize\&.width(), 0));
+3384     QRect itemRect = QRect(QPoint(mPosition\&.x()+mPaddingLeft, currentTop), itemSize);
+3385     mItemBoundingBoxes\&.insert(mItems\&.at(i), itemRect);
+3386     painter->save();
+3387     mItems\&.at(i)->applyAntialiasingHint(painter);
+3388     mItems\&.at(i)->draw(painter, itemRect);
+3389     painter->restore();
+3390     currentTop += itemSize\&.height()+mItemSpacing;
+3391   }
+3392 }
+.fi
+.SS "QFont QCPLegend::font () const\fC [inline]\fP"
+
+.PP
+Definition at line 1456 of file qcustomplot\&.h\&.
+.PP
+Referenced by setFont(), and setSelectedFont()\&.
+.PP
+.nf
+1456 { return mFont; }
+.fi
+.SS "QPen QCPLegend::getBorderPen () const\fC [protected]\fP"
+Returns the pen used to paint the border of the legend, taking into account the selection state of the legend box\&. 
+.PP
+Definition at line 3351 of file qcustomplot\&.cpp\&.
+.PP
+References mBorderPen, mSelected, and mSelectedBorderPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+3352 {
+3353   return mSelected\&.testFlag(spLegendBox) ? mSelectedBorderPen : mBorderPen;
+3354 }
+.fi
+.SS "QBrush QCPLegend::getBrush () const\fC [protected]\fP"
+Returns the brush used to paint the background of the legend, taking into account the selection state of the legend box\&. 
+.PP
+Definition at line 3361 of file qcustomplot\&.cpp\&.
+.PP
+References mBrush, mSelected, and mSelectedBrush\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+3362 {
+3363   return mSelected\&.testFlag(spLegendBox) ? mSelectedBrush : mBrush;
+3364 }
+.fi
+.SS "bool QCPLegend::handleLegendSelection (QMouseEvent *event, booladditiveSelection, bool &modified)\fC [protected]\fP, \fC [virtual]\fP"
+Handles the selection \fIevent\fP and returns true when the selection event hit any parts of the legend\&. If the selection state of any parts of the legend was changed, the output parameter \fImodified\fP is set to true\&.
+.PP
+When \fIadditiveSelecton\fP is true, any new selections become selected in addition to the recent selections\&. The recent selections are not cleared\&. Further, clicking on one object multiple times in additive selection mode, toggles the selection of that object on and off\&.
+.PP
+To indicate that an event deselects the legend (i\&.e\&. the parts that are deselectable by the user, see \fBsetSelectable\fP), pass 0 as \fIevent\fP\&. 
+.PP
+Definition at line 3244 of file qcustomplot\&.cpp\&.
+.PP
+References item(), itemCount(), QCPAbstractLegendItem::selectable(), selectable(), QCPAbstractLegendItem::selected(), selected(), selectTestItem(), selectTestLegend(), QCPAbstractLegendItem::setSelected(), and setSelected()\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+3245 {
+3246   modified = false;
+3247   bool selectionFound = false;
+3248   
+3249   if (event && selectTestLegend(event->pos())) // clicked inside legend somewhere
+3250   {
+3251     QCPAbstractLegendItem *ali = selectTestItem(event->pos());
+3252     if (selectable()\&.testFlag(QCPLegend::spItems) && ali && ali->selectable()) // items shall be selectable and item ali was clicked 
+3253     {
+3254       selectionFound = true;
+3255       // deselect legend box:
+3256       if (!additiveSelection && selected()\&.testFlag(QCPLegend::spLegendBox) && selectable()\&.testFlag(QCPLegend::spLegendBox))
+3257         setSelected(selected() & ~QCPLegend::spLegendBox);
+3258       // first select clicked item:
+3259       if (!ali->selected() || additiveSelection) // if additive selection, we toggle selection on and off per click
+3260       {
+3261         modified = true;
+3262         ali->setSelected(!ali->selected());
+3263       }
+3264       // finally, deselect all other items (if we had deselected all first, the selectionChanged signal of QCPLegend might have been emitted twice):
+3265       if (!additiveSelection)
+3266       {
+3267         for (int i=0; i<itemCount(); ++i)
+3268         {
+3269           if (item(i) != ali && item(i)->selected() && item(i)->selectable())
+3270           {
+3271             modified = true;
+3272             item(i)->setSelected(false);
+3273           }
+3274         }
+3275       }
+3276     } else // no specific item clicked or items not selectable
+3277     {
+3278       // if items actually were selectable, this means none were clicked, deselect them:
+3279       if (selectable()\&.testFlag(QCPLegend::spItems) && selected()\&.testFlag(QCPLegend::spItems) && !additiveSelection)
+3280       {
+3281         for (int i=0; i<itemCount(); ++i)
+3282         {
+3283           if (item(i)->selectable())
+3284             item(i)->setSelected(false);
+3285         }
+3286         modified = true;
+3287       }
+3288       // if legend box is selectable, select it:
+3289       if (selectable()\&.testFlag(QCPLegend::spLegendBox))
+3290       {
+3291         if (!selected()\&.testFlag(QCPLegend::spLegendBox) || additiveSelection)
+3292         {
+3293           selectionFound = true;
+3294           setSelected(selected() ^ QCPLegend::spLegendBox); // xor because we always toggle
+3295           modified = true;
+3296         }
+3297       }
+3298     }
+3299   } else if (selected() != QCPLegend::spNone && selectable() != QCPLegend::spNone && !additiveSelection) // legend not clicked, deselect it if selectable allows that (and all child items)
+3300   {
+3301     // only deselect parts that are allowed to be changed by user according to selectable()
+3302     // deselect child items (and automatically removes spItems from selected state of legend, if last item gets deselected):
+3303     if (selectable()\&.testFlag(spItems)) 
+3304     {
+3305       for (int i=0; i<itemCount(); ++i)
+3306       {
+3307         if (item(i)->selected() && item(i)->selectable())
+3308         {
+3309           item(i)->setSelected(false);
+3310           modified = true;
+3311         }
+3312       }
+3313     }
+3314     // only deselect parts that are allowed to be changed (are selectable)\&. Don't forcibly remove
+3315     // spItems, because some selected items might not be selectable, i\&.e\&. allowed to be deselected
+3316     // by user interaction\&. If that's not the case, spItems will have been removed from selected()
+3317     // state in previous loop by individual setSelected(false) calls on the items anyway\&.
+3318     QCPLegend::SelectableParts newState = selected() & ~(selectable()&~spItems);
+3319     if (newState != selected())
+3320     {
+3321       setSelected(newState);
+3322       modified = true;
+3323     }
+3324   }
+3325   
+3326   return selectionFound;
+3327 }
+.fi
+.SS "bool QCPLegend::hasItem (\fBQCPAbstractLegendItem\fP *item) const"
+
+.PP
+Returns whether the legend contains \fIitem\fP\&. 
+.PP
+Definition at line 3060 of file qcustomplot\&.cpp\&.
+.PP
+References mItems\&.
+.PP
+.nf
+3061 {
+3062   return mItems\&.contains(item);
+3063 }
+.fi
+.SS "bool QCPLegend::hasItemWithPlottable (const \fBQCPAbstractPlottable\fP *plottable) const"
+
+.PP
+Returns whether the legend contains a \fBQCPPlottableLegendItem\fP which is associated with \fIplottable\fP (e\&.g\&. a \fBQCPGraph\fP*)\&. If such an item isn't in the legend, returns false\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBitemWithPlottable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3071 of file qcustomplot\&.cpp\&.
+.PP
+References itemWithPlottable()\&.
+.PP
+.nf
+3072 {
+3073   return itemWithPlottable(plottable);
+3074 }
+.fi
+.SS "QPen QCPLegend::iconBorderPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1474 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::getIconBorderPen()\&.
+.PP
+.nf
+1474 { return mIconBorderPen; }
+.fi
+.SS "QSize QCPLegend::iconSize () const\fC [inline]\fP"
+
+.PP
+Definition at line 1472 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::draw(), and QCPPlottableLegendItem::size()\&.
+.PP
+.nf
+1472 { return mIconSize; }
+.fi
+.SS "int QCPLegend::iconTextPadding () const\fC [inline]\fP"
+
+.PP
+Definition at line 1473 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::draw(), and QCPPlottableLegendItem::size()\&.
+.PP
+.nf
+1473 { return mIconTextPadding; }
+.fi
+.SS "\fBQCPAbstractLegendItem\fP * QCPLegend::item (intindex) const"
+
+.PP
+Returns the item with index \fIi\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBitemCount\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3021 of file qcustomplot\&.cpp\&.
+.PP
+References mItems\&.
+.PP
+Referenced by handleLegendSelection()\&.
+.PP
+.nf
+3022 {
+3023   if (index >= 0 && index < mItems\&.size())
+3024     return mItems[index];
+3025   else
+3026     return 0;
+3027 }
+.fi
+.SS "int QCPLegend::itemCount () const"
+
+.PP
+Returns the number of items currently in the legend\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBitem\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3052 of file qcustomplot\&.cpp\&.
+.PP
+References mItems\&.
+.PP
+Referenced by handleLegendSelection()\&.
+.PP
+.nf
+3053 {
+3054   return mItems\&.size();
+3055 }
+.fi
+.SS "int QCPLegend::itemSpacing () const\fC [inline]\fP"
+
+.PP
+Definition at line 1471 of file qcustomplot\&.h\&.
+.PP
+.nf
+1471 { return mItemSpacing; }
+.fi
+.SS "\fBQCPPlottableLegendItem\fP * QCPLegend::itemWithPlottable (const \fBQCPAbstractPlottable\fP *plottable) const"
+
+.PP
+Returns the \fBQCPPlottableLegendItem\fP which is associated with \fIplottable\fP (e\&.g\&. a \fBQCPGraph\fP*)\&. If such an item isn't in the legend, returns 0\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBhasItemWithPlottable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3035 of file qcustomplot\&.cpp\&.
+.PP
+References mItems, and plottable()\&.
+.PP
+Referenced by hasItemWithPlottable()\&.
+.PP
+.nf
+3036 {
+3037   for (int i=0; i<mItems\&.size(); ++i)
+3038   {
+3039     if (QCPPlottableLegendItem *pli = qobject_cast<QCPPlottableLegendItem*>(mItems\&.at(i)))
+3040     {
+3041       if (pli->plottable() == plottable)
+3042         return pli;
+3043     }
+3044   }
+3045   return 0;
+3046 }
+.fi
+.SS "int QCPLegend::marginBottom () const\fC [inline]\fP"
+
+.PP
+Definition at line 1470 of file qcustomplot\&.h\&.
+.PP
+References mMarginBottom\&.
+.PP
+.nf
+1470 { return mMarginBottom; }
+.fi
+.SS "int QCPLegend::marginLeft () const\fC [inline]\fP"
+
+.PP
+Definition at line 1467 of file qcustomplot\&.h\&.
+.PP
+References mMarginLeft\&.
+.PP
+.nf
+1467 { return mMarginLeft; }
+.fi
+.SS "int QCPLegend::marginRight () const\fC [inline]\fP"
+
+.PP
+Definition at line 1468 of file qcustomplot\&.h\&.
+.PP
+References mMarginRight\&.
+.PP
+.nf
+1468 { return mMarginRight; }
+.fi
+.SS "int QCPLegend::marginTop () const\fC [inline]\fP"
+
+.PP
+Definition at line 1469 of file qcustomplot\&.h\&.
+.PP
+References mMarginTop\&.
+.PP
+.nf
+1469 { return mMarginTop; }
+.fi
+.SS "QSize QCPLegend::minimumSize () const\fC [inline]\fP"
+
+.PP
+Definition at line 1462 of file qcustomplot\&.h\&.
+.PP
+.nf
+1462 { return mMinimumSize; }
+.fi
+.SS "int QCPLegend::paddingBottom () const\fC [inline]\fP"
+
+.PP
+Definition at line 1466 of file qcustomplot\&.h\&.
+.PP
+.nf
+1466 { return mPaddingBottom; }
+.fi
+.SS "int QCPLegend::paddingLeft () const\fC [inline]\fP"
+
+.PP
+Definition at line 1463 of file qcustomplot\&.h\&.
+.PP
+.nf
+1463 { return mPaddingLeft; }
+.fi
+.SS "int QCPLegend::paddingRight () const\fC [inline]\fP"
+
+.PP
+Definition at line 1464 of file qcustomplot\&.h\&.
+.PP
+.nf
+1464 { return mPaddingRight; }
+.fi
+.SS "int QCPLegend::paddingTop () const\fC [inline]\fP"
+
+.PP
+Definition at line 1465 of file qcustomplot\&.h\&.
+.PP
+.nf
+1465 { return mPaddingTop; }
+.fi
+.SS "QPoint QCPLegend::position () const\fC [inline]\fP"
+
+.PP
+Definition at line 1459 of file qcustomplot\&.h\&.
+.PP
+.nf
+1459 { return mPosition; }
+.fi
+.SS "\fBPositionStyle\fP QCPLegend::positionStyle () const\fC [inline]\fP"
+
+.PP
+Definition at line 1458 of file qcustomplot\&.h\&.
+.PP
+.nf
+1458 { return mPositionStyle; }
+.fi
+.SS "QCPLegend::Q_ENUMS (\fBPositionStyle\fP)\fC [inline]\fP"
+
+.PP
+Defines the selectable parts of a legend\&. < None
+.PP
+< The legend box (frame)
+.PP
+< Legend items individually (see \fBselectedItems\fP) 
+.PP
+Definition at line 1438 of file qcustomplot\&.h\&.
+.PP
+.nf
+1443                       { spNone       = 0      
+1444                        ,spLegendBox  = 0x001  
+1445                        ,spItems      = 0x002  
+1446                       };
+.fi
+.SS "QCPLegend::Q_ENUMS (SelectablePart)"
+
+.SS "void QCPLegend::reArrange ()"
+
+.PP
+If \fBsetAutoSize\fP is true, the size needed to fit all legend contents is calculated and applied\&. Finally, the automatic positioning of the legend is performed, depending on the \fBsetPositionStyle\fP setting\&. 
+.PP
+Definition at line 3158 of file qcustomplot\&.cpp\&.
+.PP
+References calculateAutoPosition(), calculateAutoSize(), and mAutoSize\&.
+.PP
+.nf
+3159 {
+3160   if (mAutoSize)
+3161   {
+3162     calculateAutoSize();
+3163   }
+3164   calculateAutoPosition();
+3165 }
+.fi
+.SS "bool QCPLegend::removeItem (intindex)"
+
+.PP
+Removes the item with index \fIindex\fP from the legend\&. Returns true, if successful\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBitemCount\fP, \fBclearItems\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3100 of file qcustomplot\&.cpp\&.
+.PP
+References mItemBoundingBoxes, and mItems\&.
+.PP
+Referenced by removeItem()\&.
+.PP
+.nf
+3101 {
+3102   if (index >= 0 && index < mItems\&.size())
+3103   {
+3104     mItemBoundingBoxes\&.remove(mItems\&.at(index));
+3105     delete mItems\&.at(index);
+3106     mItems\&.removeAt(index);
+3107     return true;
+3108   } else
+3109     return false;
+3110 }
+.fi
+.SS "bool QCPLegend::removeItem (\fBQCPAbstractLegendItem\fP *item)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes \fIitem\fP from the legend\&. Returns true, if successful\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBclearItems\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3120 of file qcustomplot\&.cpp\&.
+.PP
+References mItems, and removeItem()\&.
+.PP
+.nf
+3121 {
+3122   return removeItem(mItems\&.indexOf(item));
+3123 }
+.fi
+.SS "SelectableParts QCPLegend::selectable () const\fC [inline]\fP"
+
+.PP
+Definition at line 1475 of file qcustomplot\&.h\&.
+.PP
+Referenced by handleLegendSelection(), and setSelectable()\&.
+.PP
+.nf
+1475 { return mSelectable; }
+.fi
+.SS "SelectableParts QCPLegend::selected () const\fC [inline]\fP"
+
+.PP
+Definition at line 1476 of file qcustomplot\&.h\&.
+.PP
+Referenced by handleLegendSelection(), selectedLegends(), and setSelected()\&.
+.PP
+.nf
+1476 { return mSelected; }
+.fi
+.SS "QPen QCPLegend::selectedBorderPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1477 of file qcustomplot\&.h\&.
+.PP
+.nf
+1477 { return mSelectedBorderPen; }
+.fi
+.SS "QBrush QCPLegend::selectedBrush () const\fC [inline]\fP"
+
+.PP
+Definition at line 1479 of file qcustomplot\&.h\&.
+.PP
+.nf
+1479 { return mSelectedBrush; }
+.fi
+.SS "QFont QCPLegend::selectedFont () const\fC [inline]\fP"
+
+.PP
+Definition at line 1480 of file qcustomplot\&.h\&.
+.PP
+.nf
+1480 { return mSelectedFont; }
+.fi
+.SS "QPen QCPLegend::selectedIconBorderPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1478 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::getIconBorderPen()\&.
+.PP
+.nf
+1478 { return mSelectedIconBorderPen; }
+.fi
+.SS "QList< \fBQCPAbstractLegendItem\fP * > QCPLegend::selectedItems () const"
+
+.PP
+Returns the legend items that are currently selected\&. If no items are selected, the list is empty\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBQCPAbstractLegendItem::setSelected\fP, \fBsetSelectable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3142 of file qcustomplot\&.cpp\&.
+.PP
+References mItems\&.
+.PP
+.nf
+3143 {
+3144   QList<QCPAbstractLegendItem*> result;
+3145   for (int i=0; i<mItems\&.size(); ++i)
+3146   {
+3147     if (mItems\&.at(i)->selected())
+3148       result\&.append(mItems\&.at(i));
+3149   }
+3150   return result;
+3151 }
+.fi
+.SS "QColor QCPLegend::selectedTextColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1481 of file qcustomplot\&.h\&.
+.PP
+.nf
+1481 { return mSelectedTextColor; }
+.fi
+.SS "void QCPLegend::selectionChanged (QCPLegend::SelectablePartsselection)\fC [signal]\fP"
+
+.PP
+This signal is emitted when the selection state of this legend has changed\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, \fBsetSelectable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1528 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by setSelected(), and updateSelectionState()\&.
+.PP
+.nf
+1529 {
+1530     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+1531     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+1532 }
+.fi
+.SS "\fBQCPAbstractLegendItem\fP * QCPLegend::selectTestItem (const QPointpos) const"
+
+.PP
+When the point \fIpos\fP in pixels hits a legend item, the item is returned\&. If no item is hit, 0 is returned\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBselectTestLegend\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3183 of file qcustomplot\&.cpp\&.
+.PP
+References mItemBoundingBoxes, and mItems\&.
+.PP
+Referenced by handleLegendSelection(), and mouseReleaseEvent()\&.
+.PP
+.nf
+3184 {
+3185   QMap<QCPAbstractLegendItem*, QRect>::const_iterator it;
+3186   for (it = mItemBoundingBoxes\&.constBegin(); it != mItemBoundingBoxes\&.constEnd(); ++it)
+3187   {
+3188     if (it\&.value()\&.contains(pos) && mItems\&.contains(it\&.key()))
+3189       return it\&.key();
+3190   }
+3191   return 0;
+3192 }
+.fi
+.SS "bool QCPLegend::selectTestLegend (const QPointF &pos) const"
+
+.PP
+Returns whether the point \fIpos\fP in pixels hits the legend rect\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBselectTestItem\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3172 of file qcustomplot\&.cpp\&.
+.PP
+References mPosition, and mSize\&.
+.PP
+Referenced by handleLegendSelection(), and mouseReleaseEvent()\&.
+.PP
+.nf
+3173 {
+3174   return QRect(mPosition, mSize)\&.contains(pos\&.toPoint());
+3175 }
+.fi
+.SS "void QCPLegend::setAutoSize (boolon)"
+
+.PP
+Sets whether the size of the legend should be calculated automatically to fit all the content (plus padding), or whether the size must be specified manually with \fBsetSize\fP\&. If the autoSize mechanism is enabled, the legend will have the smallest possible size to still display all its content\&. For items with text wrapping (\fBQCPPlottableLegendItem::setTextWrap\fP) this means, they would become very compressed, i\&.e\&. wrapped at every word\&. To prevent this, set a reasonable \fBsetMinimumSize\fP width\&. 
+.PP
+Definition at line 2702 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoSize\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2703 {
+2704   mAutoSize = on;
+2705 }
+.fi
+.SS "void QCPLegend::setBorderPen (const QPen &pen)"
+
+.PP
+Sets the pen, the border of the entire legend is drawn with\&. 
+.PP
+Definition at line 2627 of file qcustomplot\&.cpp\&.
+.PP
+References mBorderPen, and pen()\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2628 {
+2629   mBorderPen = pen;
+2630 }
+.fi
+.SS "void QCPLegend::setBrush (const QBrush &brush)"
+
+.PP
+Sets the brush of the legend background\&. 
+.PP
+Definition at line 2635 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mBrush\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2636 {
+2637   mBrush = brush;
+2638 }
+.fi
+.SS "void QCPLegend::setFont (const QFont &font)"
+
+.PP
+Sets the default font of legend text\&. Legend items that draw text (e\&.g\&. the name of a graph) will use this font by default\&. However, a different font can be specified on a per-item-basis by accessing the specific legend item\&.
+.PP
+This function will also set \fIfont\fP on all already existing legend items\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBQCPAbstractLegendItem::setFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2649 of file qcustomplot\&.cpp\&.
+.PP
+References font(), mFont, and mItems\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2650 {
+2651   mFont = font;
+2652   for (int i=0; i<mItems\&.size(); ++i)
+2653     mItems\&.at(i)->setFont(mFont);
+2654 }
+.fi
+.SS "void QCPLegend::setIconBorderPen (const QPen &pen)"
+
+.PP
+Sets the pen used to draw a border around each legend icon\&. Legend items that draw an icon (e\&.g\&. a visual representation of the graph) will use this pen by default\&.
+.PP
+If no border is wanted, set this to \fIQt::NoPen\fP\&. 
+.PP
+Definition at line 2897 of file qcustomplot\&.cpp\&.
+.PP
+References mIconBorderPen, and pen()\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2898 {
+2899   mIconBorderPen = pen;
+2900 }
+.fi
+.SS "void QCPLegend::setIconSize (const QSize &size)"
+
+.PP
+Sets the size of legend icons\&. Legend items that draw an icon (e\&.g\&. a visual representation of the graph) will use this size by default\&. 
+.PP
+Definition at line 2866 of file qcustomplot\&.cpp\&.
+.PP
+References mIconSize, and size()\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2867 {
+2868   mIconSize = size;
+2869 }
+.fi
+.SS "void QCPLegend::setIconSize (intwidth, intheight)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. 
+.PP
+Definition at line 2873 of file qcustomplot\&.cpp\&.
+.PP
+References mIconSize\&.
+.PP
+.nf
+2874 {
+2875   mIconSize\&.setWidth(width);
+2876   mIconSize\&.setHeight(height);
+2877 }
+.fi
+.SS "void QCPLegend::setIconTextPadding (intpadding)"
+
+.PP
+Sets the horizontal space in pixels between the legend icon and the text next to it\&. Legend items that draw an icon (e\&.g\&. a visual representation of the graph) and text (e\&.g\&. the name of the graph) will use this space by default\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetItemSpacing\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2886 of file qcustomplot\&.cpp\&.
+.PP
+References mIconTextPadding\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2887 {
+2888   mIconTextPadding = padding;
+2889 }
+.fi
+.SS "void QCPLegend::setItemSpacing (intspacing)"
+
+.PP
+Sets the vertical space between two legend items in the legend\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetIconTextPadding\fP, \fBsetPadding\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2857 of file qcustomplot\&.cpp\&.
+.PP
+References mItemSpacing\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2858 {
+2859   mItemSpacing = spacing;
+2860 }
+.fi
+.SS "void QCPLegend::setMargin (intleft, intright, inttop, intbottom)"
+
+.PP
+Sets the margin of the legend\&. Margins are the distances the legend will keep to the axis rect, when \fBsetPositionStyle\fP is not \fBpsManual\fP\&. 
+.PP
+Definition at line 2844 of file qcustomplot\&.cpp\&.
+.PP
+References mMarginBottom, mMarginLeft, mMarginRight, and mMarginTop\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2845 {
+2846   mMarginLeft = left;
+2847   mMarginRight = right;
+2848   mMarginTop = top;
+2849   mMarginBottom = bottom;
+2850 }
+.fi
+.SS "void QCPLegend::setMarginBottom (intmargin)"
+
+.PP
+Sets the bottom margin of the legend\&. Margins are the distances the legend will keep to the axis rect, when \fBsetPositionStyle\fP is not \fBpsManual\fP\&. 
+.PP
+Definition at line 2835 of file qcustomplot\&.cpp\&.
+.PP
+References mMarginBottom\&.
+.PP
+.nf
+2836 {
+2837   mMarginBottom = margin;
+2838 }
+.fi
+.SS "void QCPLegend::setMarginLeft (intmargin)"
+
+.PP
+Sets the left margin of the legend\&. Margins are the distances the legend will keep to the axis rect, when \fBsetPositionStyle\fP is not \fBpsManual\fP\&. 
+.PP
+Definition at line 2808 of file qcustomplot\&.cpp\&.
+.PP
+References mMarginLeft\&.
+.PP
+.nf
+2809 {
+2810   mMarginLeft = margin;
+2811 }
+.fi
+.SS "void QCPLegend::setMarginRight (intmargin)"
+
+.PP
+Sets the right margin of the legend\&. Margins are the distances the legend will keep to the axis rect, when \fBsetPositionStyle\fP is not \fBpsManual\fP\&. 
+.PP
+Definition at line 2817 of file qcustomplot\&.cpp\&.
+.PP
+References mMarginRight\&.
+.PP
+.nf
+2818 {
+2819   mMarginRight = margin;
+2820 }
+.fi
+.SS "void QCPLegend::setMarginTop (intmargin)"
+
+.PP
+Sets the top margin of the legend\&. Margins are the distances the legend will keep to the axis rect, when \fBsetPositionStyle\fP is not \fBpsManual\fP\&. 
+.PP
+Definition at line 2826 of file qcustomplot\&.cpp\&.
+.PP
+References mMarginTop\&.
+.PP
+.nf
+2827 {
+2828   mMarginTop = margin;
+2829 }
+.fi
+.SS "void QCPLegend::setMinimumSize (const QSize &size)"
+
+.PP
+Sets the minimum size of the legend when \fBsetAutoSize\fP is enabled\&. If text wrapping is enabled in the legend items (e\&.g\&. \fBQCPPlottableLegendItem::setTextWrap\fP), this minimum \fIsize\fP defines the width at which the wrapping will occur\&. Note that the wrapping will happen only at word boundaries, so the actual size might still be bigger than the \fIsize\fP given here, but not smaller\&.
+.PP
+If \fBsetAutoSize\fP is not enabled, the minimum \fIsize\fP is ignored\&. Setting a smaller legend size with \fBsetSize\fP manually, is not prevented\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAutoSize\fP, \fBsetSize\fP, \fBQCPPlottableLegendItem::setTextWrap\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2739 of file qcustomplot\&.cpp\&.
+.PP
+References mMinimumSize, and size()\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2740 {
+2741   mMinimumSize = size;
+2742 }
+.fi
+.SS "void QCPLegend::setMinimumSize (intwidth, intheight)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. 
+.PP
+Definition at line 2746 of file qcustomplot\&.cpp\&.
+.PP
+References mMinimumSize\&.
+.PP
+.nf
+2747 {
+2748   mMinimumSize = QSize(width, height);
+2749 }
+.fi
+.SS "void QCPLegend::setPadding (intleft, intright, inttop, intbottom)"
+
+.PP
+Sets the padding of the legend\&. Padding is the space by what the legend box is made larger than minimally needed for the content to fit\&. I\&.e\&. it's the space left blank on each side inside the legend\&. 
+.PP
+Definition at line 2796 of file qcustomplot\&.cpp\&.
+.PP
+References mPaddingBottom, mPaddingLeft, mPaddingRight, and mPaddingTop\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2797 {
+2798   mPaddingLeft = left;
+2799   mPaddingRight = right;
+2800   mPaddingTop = top;
+2801   mPaddingBottom = bottom;
+2802 }
+.fi
+.SS "void QCPLegend::setPaddingBottom (intpadding)"
+
+.PP
+Sets the bottom padding of the legend\&. Padding is the space by what the legend box is made larger than minimally needed for the content to fit\&. I\&.e\&. it's the space left blank on each side inside the legend\&. 
+.PP
+Definition at line 2786 of file qcustomplot\&.cpp\&.
+.PP
+References mPaddingBottom\&.
+.PP
+.nf
+2787 {
+2788   mPaddingBottom = padding;
+2789 }
+.fi
+.SS "void QCPLegend::setPaddingLeft (intpadding)"
+
+.PP
+Sets the left padding of the legend\&. Padding is the space by what the legend box is made larger than minimally needed for the content to fit\&. I\&.e\&. it's the space left blank on each side inside the legend\&. 
+.PP
+Definition at line 2756 of file qcustomplot\&.cpp\&.
+.PP
+References mPaddingLeft\&.
+.PP
+.nf
+2757 {
+2758   mPaddingLeft = padding;
+2759 }
+.fi
+.SS "void QCPLegend::setPaddingRight (intpadding)"
+
+.PP
+Sets the right padding of the legend\&. Padding is the space by what the legend box is made larger than minimally needed for the content to fit\&. I\&.e\&. it's the space left blank on each side inside the legend\&. 
+.PP
+Definition at line 2766 of file qcustomplot\&.cpp\&.
+.PP
+References mPaddingRight\&.
+.PP
+.nf
+2767 {
+2768   mPaddingRight = padding;
+2769 }
+.fi
+.SS "void QCPLegend::setPaddingTop (intpadding)"
+
+.PP
+Sets the top padding of the legend\&. Padding is the space by what the legend box is made larger than minimally needed for the content to fit\&. I\&.e\&. it's the space left blank on each side inside the legend\&. 
+.PP
+Definition at line 2776 of file qcustomplot\&.cpp\&.
+.PP
+References mPaddingTop\&.
+.PP
+.nf
+2777 {
+2778   mPaddingTop = padding;
+2779 }
+.fi
+.SS "void QCPLegend::setPosition (const QPoint &pixelPosition)"
+
+.PP
+Sets the exact pixel Position of the legend inside the \fBQCustomPlot\fP widget, if \fBsetPositionStyle\fP is set to \fBpsManual\fP\&. Margins have no effect in that case\&. 
+.PP
+Definition at line 2688 of file qcustomplot\&.cpp\&.
+.PP
+References mPosition\&.
+.PP
+.nf
+2689 {
+2690   mPosition = pixelPosition;
+2691 }
+.fi
+.SS "void QCPLegend::setPositionStyle (\fBPositionStyle\fPlegendPositionStyle)"
+
+.PP
+Sets the position style of the legend\&. If the \fIlegendPositionStyle\fP is not \fBpsManual\fP, the position is found automatically depending on the specific \fIlegendPositionStyle\fP and the legend margins\&. If \fIlegendPositionStyle\fP is \fBpsManual\fP, the exact pixel position of the legend must be specified via \fBsetPosition\fP\&. Margins have no effect in that case\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetMargin\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2679 of file qcustomplot\&.cpp\&.
+.PP
+References mPositionStyle\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2680 {
+2681   mPositionStyle = legendPositionStyle;
+2682 }
+.fi
+.SS "void QCPLegend::setSelectable (const SelectableParts &selectable)"
+
+.PP
+Sets whether the user can (de-)select the parts in \fIselectable\fP by clicking on the \fBQCustomPlot\fP surface\&. (When \fBQCustomPlot::setInteractions\fP contains iSelectLegend\&.)
+.PP
+However, even when \fIselectable\fP is set to a value not allowing the selection of a specific part, it is still possible to set the selection of this part manually, by calling \fBsetSelected\fP directly\&.
+.PP
+\fBSee also:\fP
+.RS 4
+SelectablePart, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2912 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectable, and selectable()\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2913 {
+2914   mSelectable = selectable;
+2915 }
+.fi
+.SS "void QCPLegend::setSelected (const SelectableParts &selected)"
+
+.PP
+Sets the selected state of the respective legend parts described by \fBSelectablePart\fP\&. When a part is selected, it uses a different pen/font and brush\&. If some legend items are selected and \fIselected\fP doesn't contain \fBspItems\fP, those items become deselected\&.
+.PP
+The entire selection mechanism is handled automatically when \fBQCustomPlot::setInteractions\fP contains iSelectLegend\&. You only need to call this function when you wish to change the selection state manually\&.
+.PP
+This function can change the selection state of a part even when \fBsetSelectable\fP was set to a value that actually excludes the part\&.
+.PP
+emits the \fBselectionChanged\fP signal when \fIselected\fP is different from the previous selection state\&.
+.PP
+Note that it doesn't make sense to set the selected state \fBspItems\fP here when it wasn't set before, because there's no way to specify which exact items to newly select\&. Do this by calling \fBQCPAbstractLegendItem::setSelected\fP directly on the legend item you wish to select\&.
+.PP
+\fBSee also:\fP
+.RS 4
+SelectablePart, \fBsetSelectable\fP, selectTest, \fBsetSelectedBorderPen\fP, \fBsetSelectedIconBorderPen\fP, \fBsetSelectedBrush\fP, \fBsetSelectedFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2938 of file qcustomplot\&.cpp\&.
+.PP
+References mItems, mSelected, selected(), and selectionChanged()\&.
+.PP
+Referenced by deselectAll(), handleLegendSelection(), and QCPLegend()\&.
+.PP
+.nf
+2939 {
+2940   if (mSelected != selected)
+2941   {
+2942     if (!selected\&.testFlag(spItems) && mSelected\&.testFlag(spItems)) // some items are selected, but new selection state doesn't contain spItems, so deselect them
+2943     {
+2944       for (int i=0; i<mItems\&.size(); ++i)
+2945         mItems\&.at(i)->setSelected(false);
+2946       mSelected = selected;
+2947       // not necessary to emit selectionChanged here because this will have happened for the last setSelected(false) on mItems already, via updateSelectionState()
+2948     } else
+2949     {
+2950       mSelected = selected;
+2951       emit selectionChanged(mSelected);
+2952     }
+2953   }
+2954 }
+.fi
+.SS "void QCPLegend::setSelectedBorderPen (const QPen &pen)"
+
+.PP
+When the legend box is selected, this pen is used to draw the border instead of the normal pen set via \fBsetBorderPen\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, \fBsetSelectable\fP, \fBsetSelectedBrush\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2962 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedBorderPen, and pen()\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2963 {
+2964   mSelectedBorderPen = pen;
+2965 }
+.fi
+.SS "void QCPLegend::setSelectedBrush (const QBrush &brush)"
+
+.PP
+When the legend box is selected, this brush is used to draw the legend background instead of the normal brush set via \fBsetBrush\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, \fBsetSelectable\fP, \fBsetSelectedBorderPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2983 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mSelectedBrush\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2984 {
+2985   mSelectedBrush = brush;
+2986 }
+.fi
+.SS "void QCPLegend::setSelectedFont (const QFont &font)"
+
+.PP
+Sets the default font that is used by legend items when they are selected\&. This function will also set \fIfont\fP on all already existing legend items\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetFont\fP, \fBQCPAbstractLegendItem::setSelectedFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2995 of file qcustomplot\&.cpp\&.
+.PP
+References font(), mItems, and mSelectedFont\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2996 {
+2997   mSelectedFont = font;
+2998   for (int i=0; i<mItems\&.size(); ++i)
+2999     mItems\&.at(i)->setSelectedFont(font);
+3000 }
+.fi
+.SS "void QCPLegend::setSelectedIconBorderPen (const QPen &pen)"
+
+.PP
+Sets the pen legend items will use to draw their icon borders, when they are selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, \fBsetSelectable\fP, \fBsetSelectedFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2972 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedIconBorderPen, and pen()\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2973 {
+2974   mSelectedIconBorderPen = pen;
+2975 }
+.fi
+.SS "void QCPLegend::setSelectedTextColor (const QColor &color)"
+
+.PP
+Sets the default text color that is used by legend items when they are selected\&. This function will also set \fIcolor\fP on all already existing legend items\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTextColor\fP, \fBQCPAbstractLegendItem::setSelectedTextColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3009 of file qcustomplot\&.cpp\&.
+.PP
+References color(), mItems, and mSelectedTextColor\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+3010 {
+3011   mSelectedTextColor = color;
+3012   for (int i=0; i<mItems\&.size(); ++i)
+3013     mItems\&.at(i)->setSelectedTextColor(color);
+3014 }
+.fi
+.SS "void QCPLegend::setSize (const QSize &size)"
+
+.PP
+Sets the size of the legend\&. Setting the size manually with this function only has an effect, if \fBsetAutoSize\fP is set to false\&.
+.PP
+If you want to control the minimum size (or the text-wrapping width) while still leaving the autoSize mechanism enabled, consider using \fBsetMinimumSize\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAutoSize\fP, \fBsetMinimumSize\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2716 of file qcustomplot\&.cpp\&.
+.PP
+References mSize, and size()\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2717 {
+2718   mSize = size;
+2719 }
+.fi
+.SS "void QCPLegend::setSize (intwidth, intheight)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. 
+.PP
+Definition at line 2723 of file qcustomplot\&.cpp\&.
+.PP
+References mSize\&.
+.PP
+.nf
+2724 {
+2725   mSize = QSize(width, height);
+2726 }
+.fi
+.SS "void QCPLegend::setTextColor (const QColor &color)"
+
+.PP
+Sets the default color of legend text\&. Legend items that draw text (e\&.g\&. the name of a graph) will use this color by default\&. However, a different colors can be specified on a per-item-basis by accessing the specific legend item\&.
+.PP
+This function will also set \fIcolor\fP on all already existing legend items\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBQCPAbstractLegendItem::setTextColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2665 of file qcustomplot\&.cpp\&.
+.PP
+References color(), mItems, and mTextColor\&.
+.PP
+Referenced by QCPLegend()\&.
+.PP
+.nf
+2666 {
+2667   mTextColor = color;
+2668   for (int i=0; i<mItems\&.size(); ++i)
+2669     mItems\&.at(i)->setTextColor(color);
+2670 }
+.fi
+.SS "QSize QCPLegend::size () const\fC [inline]\fP"
+
+.PP
+Definition at line 1461 of file qcustomplot\&.h\&.
+.PP
+Referenced by setIconSize(), setMinimumSize(), and setSize()\&.
+.PP
+.nf
+1461 { return mSize; }
+.fi
+.SS "QColor QCPLegend::textColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1457 of file qcustomplot\&.h\&.
+.PP
+.nf
+1457 { return mTextColor; }
+.fi
+.SS "void QCPLegend::updateSelectionState ()\fC [protected]\fP, \fC [virtual]\fP"
+Updates the spItems part of the selection state of this legend by going through all child items and checking their selected state\&.
+.PP
+If no items are selected and the current selected state contains spItems, it is removed and the \fBselectionChanged\fP signal is emitted\&. If at least one item is selected and the current selection state does not contain spItems, it is added and the signal is emitted, too\&.
+.PP
+This function is called in the \fBQCPAbstractLegendItem::setSelected\fP functions to propagate their change to the parent legend\&. 
+.PP
+Definition at line 3206 of file qcustomplot\&.cpp\&.
+.PP
+References mItems, mSelected, and selectionChanged()\&.
+.PP
+Referenced by QCPAbstractLegendItem::setSelected()\&.
+.PP
+.nf
+3207 {
+3208   bool hasSelections = false;
+3209   for (int i=0; i<mItems\&.size(); ++i)
+3210   {
+3211     if (mItems\&.at(i)->selected())
+3212     {
+3213       hasSelections = true;
+3214       break;
+3215     }
+3216   }
+3217   
+3218   // in the following we don't use setSelected because it would cause unnecessary
+3219   // logic looping through items if spItems isn't set in the new state\&. (look at setSelected and you'll understand)
+3220   if (hasSelections && !mSelected\&.testFlag(spItems))
+3221   {
+3222     mSelected |= spItems;
+3223     emit selectionChanged(mSelected);
+3224   } else if (!hasSelections && mSelected\&.testFlag(spItems))
+3225   {
+3226     mSelected &= ~spItems;
+3227     emit selectionChanged(mSelected);
+3228   }
+3229 }
+.fi
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBQCPAbstractLegendItem\fP\fC [friend]\fP"
+
+.PP
+Definition at line 1576 of file qcustomplot\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool QCPLegend::mAutoSize\fC [protected]\fP"
+
+.PP
+Definition at line 1546 of file qcustomplot\&.h\&.
+.PP
+Referenced by reArrange(), and setAutoSize()\&.
+.SS "QPen QCPLegend::mBorderPen\fC [protected]\fP"
+
+.PP
+Definition at line 1539 of file qcustomplot\&.h\&.
+.PP
+Referenced by getBorderPen(), and setBorderPen()\&.
+.SS "QBrush QCPLegend::mBrush\fC [protected]\fP"
+
+.PP
+Definition at line 1540 of file qcustomplot\&.h\&.
+.PP
+Referenced by getBrush(), and setBrush()\&.
+.SS "QFont QCPLegend::mFont\fC [protected]\fP"
+
+.PP
+Definition at line 1541 of file qcustomplot\&.h\&.
+.PP
+Referenced by setFont()\&.
+.SS "QPen QCPLegend::mIconBorderPen\fC [protected]\fP"
+
+.PP
+Definition at line 1539 of file qcustomplot\&.h\&.
+.PP
+Referenced by setIconBorderPen()\&.
+.SS "QSize QCPLegend::mIconSize\fC [protected]\fP"
+
+.PP
+Definition at line 1544 of file qcustomplot\&.h\&.
+.PP
+Referenced by setIconSize()\&.
+.SS "int QCPLegend::mIconTextPadding\fC [protected]\fP"
+
+.PP
+Definition at line 1549 of file qcustomplot\&.h\&.
+.PP
+Referenced by setIconTextPadding()\&.
+.SS "QMap<\fBQCPAbstractLegendItem\fP*, QRect> QCPLegend::mItemBoundingBoxes\fC [protected]\fP"
+
+.PP
+Definition at line 1558 of file qcustomplot\&.h\&.
+.PP
+Referenced by clearItems(), draw(), removeItem(), and selectTestItem()\&.
+.SS "QList<\fBQCPAbstractLegendItem\fP*> QCPLegend::mItems\fC [protected]\fP"
+
+.PP
+Definition at line 1557 of file qcustomplot\&.h\&.
+.PP
+Referenced by addItem(), calculateAutoSize(), clearItems(), draw(), hasItem(), item(), itemCount(), itemWithPlottable(), removeItem(), selectedItems(), selectTestItem(), setFont(), setSelected(), setSelectedFont(), setSelectedTextColor(), setTextColor(), and updateSelectionState()\&.
+.SS "int QCPLegend::mItemSpacing\fC [protected]\fP"
+
+.PP
+Definition at line 1549 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoSize(), draw(), and setItemSpacing()\&.
+.SS "int QCPLegend::mMarginBottom\fC [protected]\fP"
+
+.PP
+Definition at line 1548 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoPosition(), setMargin(), and setMarginBottom()\&.
+.SS "int QCPLegend::mMarginLeft\fC [protected]\fP"
+
+.PP
+Definition at line 1548 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoPosition(), setMargin(), and setMarginLeft()\&.
+.SS "int QCPLegend::mMarginRight\fC [protected]\fP"
+
+.PP
+Definition at line 1548 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoPosition(), setMargin(), and setMarginRight()\&.
+.SS "int QCPLegend::mMarginTop\fC [protected]\fP"
+
+.PP
+Definition at line 1548 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoPosition(), setMargin(), and setMarginTop()\&.
+.SS "QSize QCPLegend::mMinimumSize\fC [protected]\fP"
+
+.PP
+Definition at line 1544 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoSize(), and setMinimumSize()\&.
+.SS "int QCPLegend::mPaddingBottom\fC [protected]\fP"
+
+.PP
+Definition at line 1547 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoSize(), setPadding(), and setPaddingBottom()\&.
+.SS "int QCPLegend::mPaddingLeft\fC [protected]\fP"
+
+.PP
+Definition at line 1547 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoSize(), draw(), setPadding(), and setPaddingLeft()\&.
+.SS "int QCPLegend::mPaddingRight\fC [protected]\fP"
+
+.PP
+Definition at line 1547 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoSize(), setPadding(), and setPaddingRight()\&.
+.SS "int QCPLegend::mPaddingTop\fC [protected]\fP"
+
+.PP
+Definition at line 1547 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoSize(), draw(), setPadding(), and setPaddingTop()\&.
+.SS "QPoint QCPLegend::mPosition\fC [protected]\fP"
+
+.PP
+Definition at line 1543 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoPosition(), draw(), selectTestLegend(), and setPosition()\&.
+.SS "\fBPositionStyle\fP QCPLegend::mPositionStyle\fC [protected]\fP"
+
+.PP
+Definition at line 1545 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoPosition(), and setPositionStyle()\&.
+.SS "SelectableParts QCPLegend::mSelectable\fC [protected]\fP"
+
+.PP
+Definition at line 1550 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSelectable()\&.
+.SS "SelectableParts QCPLegend::mSelected\fC [protected]\fP"
+
+.PP
+Definition at line 1550 of file qcustomplot\&.h\&.
+.PP
+Referenced by getBorderPen(), getBrush(), setSelected(), and updateSelectionState()\&.
+.SS "QPen QCPLegend::mSelectedBorderPen\fC [protected]\fP"
+
+.PP
+Definition at line 1551 of file qcustomplot\&.h\&.
+.PP
+Referenced by getBorderPen(), and setSelectedBorderPen()\&.
+.SS "QBrush QCPLegend::mSelectedBrush\fC [protected]\fP"
+
+.PP
+Definition at line 1552 of file qcustomplot\&.h\&.
+.PP
+Referenced by getBrush(), and setSelectedBrush()\&.
+.SS "QFont QCPLegend::mSelectedFont\fC [protected]\fP"
+
+.PP
+Definition at line 1553 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSelectedFont()\&.
+.SS "QPen QCPLegend::mSelectedIconBorderPen\fC [protected]\fP"
+
+.PP
+Definition at line 1551 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSelectedIconBorderPen()\&.
+.SS "QColor QCPLegend::mSelectedTextColor\fC [protected]\fP"
+
+.PP
+Definition at line 1554 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSelectedTextColor()\&.
+.SS "QSize QCPLegend::mSize\fC [protected]\fP"
+
+.PP
+Definition at line 1544 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoPosition(), calculateAutoSize(), draw(), selectTestLegend(), and setSize()\&.
+.SS "QColor QCPLegend::mTextColor\fC [protected]\fP"
+
+.PP
+Definition at line 1542 of file qcustomplot\&.h\&.
+.PP
+Referenced by setTextColor()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

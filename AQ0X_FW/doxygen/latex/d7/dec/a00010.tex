@@ -1,0 +1,16 @@
+File \+: \hyperlink{a00048}{main.\+c} \begin{DoxyVerb}\end{DoxyVerb}
+
+
+The Watchdog Timer consists of a configurable prescaler and postscaler clocked with Low-\/\+Power R\+C (L\+P\+R\+C) 32k\+Hz oscillator. The watchdog time-\/out period is selected by configuring the prescaler and postscaler dividers.
+
+In release mode it is configured to \hyperlink{a00014_af24dea78c3111674d8bd9d621f1023ad}{\+\_\+\+F\+W\+D\+T(\+F\+W\+D\+T\+E\+N\+\_\+\+O\+N \& W\+I\+N\+D\+I\+S\+\_\+\+O\+F\+F \& W\+D\+T\+P\+O\+S\+T\+\_\+\+P\+S8 \& W\+D\+T\+P\+R\+E\+\_\+\+P\+R32)};-\/ to obtain 8ms overflow
+
+\begin{DoxyVerb}            TWTO = (N1)x(N2)x(TLPRC)
+
+            Where,
+            N1 = Prescaler divider ratio
+            N2 = Postscaler divider ratio
+            TLPRC = LPRC clock period (32 kHz)
+
+            TWTO = 32*8/(32*10E3) = 8ms\end{DoxyVerb}
+ 

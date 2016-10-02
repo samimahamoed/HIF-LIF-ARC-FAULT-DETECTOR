@@ -1,0 +1,623 @@
+.TH "QCPItemPixmap" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemPixmap \- 
+.PP
+An arbitrary pixmap\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPixmap\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fICreates a rectangle item and sets default values\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPItemPixmap\fP ()"
+.br
+.ti -1c
+.RI "QPixmap \fBpixmap\fP () const "
+.br
+.ti -1c
+.RI "bool \fBscaled\fP () const "
+.br
+.ti -1c
+.RI "Qt::AspectRatioMode \fBaspectRatioMode\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedPen\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetPixmap\fP (const QPixmap &\fBpixmap\fP)"
+.br
+.RI "\fISets the pixmap that will be displayed\&. \fP"
+.ti -1c
+.RI "void \fBsetScaled\fP (bool \fBscaled\fP, Qt::AspectRatioMode \fBaspectRatioMode\fP=Qt::KeepAspectRatio)"
+.br
+.RI "\fISets whether the pixmap will be scaled to fit the rectangle defined by the \fItopLeft\fP and \fIbottomRight\fP positions\&. \fP"
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw a border around the pixmap\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw a border around the pixmap when selected\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits an item or not\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBtopLeft\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBbottomRight\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBtop\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBtopRight\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBright\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBbottom\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBbottomLeft\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBleft\fP"
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAnchorIndex\fP { \fBaiTop\fP, \fBaiTopRight\fP, \fBaiRight\fP, \fBaiBottom\fP, \fBaiBottomLeft\fP, \fBaiLeft\fP }"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual QPointF \fBanchorPixelPoint\fP (int anchorId) const "
+.br
+.ti -1c
+.RI "void \fBupdateScaledPixmap\fP (QRect finalRect=QRect(), bool flipHorz=false, bool flipVert=false)"
+.br
+.ti -1c
+.RI "QRect \fBgetFinalRect\fP (bool *flippedHorz=0, bool *flippedVert=0) const "
+.br
+.ti -1c
+.RI "QPen \fBmainPen\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPixmap \fBmPixmap\fP"
+.br
+.ti -1c
+.RI "QPixmap \fBmScaledPixmap\fP"
+.br
+.ti -1c
+.RI "bool \fBmScaled\fP"
+.br
+.ti -1c
+.RI "Qt::AspectRatioMode \fBmAspectRatioMode\fP"
+.br
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedPen\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An arbitrary pixmap\&. 
+
+Pixmap example\&. Blue dotted circles are anchors, solid blue discs are positions\&. It has two positions, \fItopLeft\fP and \fIbottomRight\fP, which define the rectangle the pixmap will be drawn in\&. Depending on the scale setting (\fBsetScaled\fP), the pixmap will be either scaled to fit the rectangle or be drawn aligned to the topLeft position\&.
+.PP
+If scaling is enabled and \fItopLeft\fP is further to the bottom/right than \fIbottomRight\fP (as shown on the right side of the example image), the pixmap will be flipped in the respective orientations\&. 
+.PP
+Definition at line 1060 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPItemPixmap::AnchorIndex\fP\fC [protected]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIaiTop \fP\fP
+.TP
+\fB\fIaiTopRight \fP\fP
+.TP
+\fB\fIaiRight \fP\fP
+.TP
+\fB\fIaiBottom \fP\fP
+.TP
+\fB\fIaiBottomLeft \fP\fP
+.TP
+\fB\fIaiLeft \fP\fP
+.PP
+Definition at line 1093 of file qcustomplot\&.h\&.
+.PP
+.nf
+1093 {aiTop, aiTopRight, aiRight, aiBottom, aiBottomLeft, aiLeft};
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemPixmap::QCPItemPixmap (\fBQCustomPlot\fP *parentPlot)"
+
+.PP
+Creates a rectangle item and sets default values\&. The constructed item can be added to the plot with QCustomPlot::addItem\&. 
+.PP
+Definition at line 12534 of file qcustomplot\&.cpp\&.
+.PP
+References bottomRight, QCPItemPosition::setCoords(), setPen(), setScaled(), setSelectedPen(), and topLeft\&.
+.PP
+.nf
+12534                                                     :
+12535   QCPAbstractItem(parentPlot),
+12536   topLeft(createPosition("topLeft")),
+12537   bottomRight(createPosition("bottomRight")),
+12538   top(createAnchor("top", aiTop)),
+12539   topRight(createAnchor("topRight", aiTopRight)),
+12540   right(createAnchor("right", aiRight)),
+12541   bottom(createAnchor("bottom", aiBottom)),
+12542   bottomLeft(createAnchor("bottomLeft", aiBottomLeft)),
+12543   left(createAnchor("left", aiLeft))
+12544 {
+12545   topLeft->setCoords(0, 1);
+12546   bottomRight->setCoords(1, 0);
+12547   
+12548   setPen(Qt::NoPen);
+12549   setSelectedPen(QPen(Qt::blue));
+12550   setScaled(false, Qt::KeepAspectRatio);
+12551 }
+.fi
+.SS "QCPItemPixmap::~QCPItemPixmap ()\fC [virtual]\fP"
+
+.PP
+Definition at line 12553 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+12554 {
+12555 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "QPointF QCPItemPixmap::anchorPixelPoint (intanchorId) const\fC [protected]\fP, \fC [virtual]\fP"
+Returns the pixel position of the anchor with Id \fIanchorId\fP\&. This function must be reimplemented in item subclasses if they want to provide anchors (\fBQCPItemAnchor\fP)\&.
+.PP
+For example, if the item has two anchors with id 0 and 1, this function takes one of these anchor ids and returns the respective pixel points of the specified anchor\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcreateAnchor\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12628 of file qcustomplot\&.cpp\&.
+.PP
+References aiBottom, aiBottomLeft, aiLeft, aiRight, aiTop, aiTopRight, and getFinalRect()\&.
+.PP
+.nf
+12629 {
+12630   bool flipHorz;
+12631   bool flipVert;
+12632   QRect rect = getFinalRect(&flipHorz, &flipVert);
+12633   // we actually want denormal rects (negative width/height) here, so restore
+12634   // the flipped state:
+12635   if (flipHorz)
+12636     rect\&.adjust(rect\&.width(), 0, -rect\&.width(), 0);
+12637   if (flipVert)
+12638     rect\&.adjust(0, rect\&.height(), 0, -rect\&.height());
+12639   
+12640   switch (anchorId)
+12641   {
+12642     case aiTop:         return (rect\&.topLeft()+rect\&.topRight())*0\&.5;
+12643     case aiTopRight:    return rect\&.topRight();
+12644     case aiRight:       return (rect\&.topRight()+rect\&.bottomRight())*0\&.5;
+12645     case aiBottom:      return (rect\&.bottomLeft()+rect\&.bottomRight())*0\&.5;
+12646     case aiBottomLeft:  return rect\&.bottomLeft();
+12647     case aiLeft:        return (rect\&.topLeft()+rect\&.bottomLeft())*0\&.5;;
+12648   }
+12649   
+12650   qDebug() << Q_FUNC_INFO << "invalid anchorId" << anchorId;
+12651   return QPointF();
+12652 }
+.fi
+.SS "Qt::AspectRatioMode QCPItemPixmap::aspectRatioMode () const\fC [inline]\fP"
+
+.PP
+Definition at line 1070 of file qcustomplot\&.h\&.
+.PP
+Referenced by setScaled()\&.
+.PP
+.nf
+1070 { return mAspectRatioMode; }
+.fi
+.SS "void QCPItemPixmap::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this item with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible items\&.
+.PP
+The cliprect of the provided painter is set to the rect returned by \fBclipRect\fP before this function is called\&. For items this depends on the clipping settings defined by \fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12606 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::clipRect(), getFinalRect(), mainPen(), mPixmap, mScaled, mScaledPixmap, pen(), QCPPainter::setPen(), and updateScaledPixmap()\&.
+.PP
+.nf
+12607 {
+12608   bool flipHorz = false;
+12609   bool flipVert = false;
+12610   QRect rect = getFinalRect(&flipHorz, &flipVert);
+12611   double clipPad = mainPen()\&.style() == Qt::NoPen ? 0 : mainPen()\&.widthF();
+12612   QRect boundingRect = rect\&.adjusted(-clipPad, -clipPad, clipPad, clipPad);
+12613   if (boundingRect\&.intersects(clipRect()))
+12614   {
+12615     updateScaledPixmap(rect, flipHorz, flipVert);
+12616     painter->drawPixmap(rect\&.topLeft(), mScaled ? mScaledPixmap : mPixmap);
+12617     QPen pen = mainPen();
+12618     if (pen\&.style() != Qt::NoPen)
+12619     {
+12620       painter->setPen(pen);
+12621       painter->setBrush(Qt::NoBrush);
+12622       painter->drawRect(rect);
+12623     }
+12624   }
+12625 }
+.fi
+.SS "QRect QCPItemPixmap::getFinalRect (bool *flippedHorz = \fC0\fP, bool *flippedVert = \fC0\fP) const\fC [protected]\fP"
+Returns the final (tight) rect the pixmap is drawn in, depending on the current item positions and scaling settings\&.
+.PP
+The output parameters \fIflippedHorz\fP and \fIflippedVert\fP return whether the pixmap should be drawn flipped horizontally or vertically in the returned rect\&. (The returned rect itself is always normalized, i\&.e\&. the top left corner of the rect is actually further to the top/left than the bottom right corner)\&. This is the case when the item position \fItopLeft\fP is further to the bottom/right than \fIbottomRight\fP\&.
+.PP
+If scaling is disabled, returns a rect with size of the original pixmap and the top left corner aligned with the item position \fItopLeft\fP\&. The position \fIbottomRight\fP is ignored\&. 
+.PP
+Definition at line 12697 of file qcustomplot\&.cpp\&.
+.PP
+References bottomRight, mAspectRatioMode, mPixmap, mScaled, QCPItemPosition::pixelPoint(), and topLeft\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), selectTest(), and updateScaledPixmap()\&.
+.PP
+.nf
+12698 {
+12699   QRect result;
+12700   bool flipHorz = false;
+12701   bool flipVert = false;
+12702   QPoint p1 = topLeft->pixelPoint()\&.toPoint();
+12703   QPoint p2 = bottomRight->pixelPoint()\&.toPoint();
+12704   if (p1 == p2)
+12705     return QRect(p1, QSize(0, 0));
+12706   if (mScaled)
+12707   {
+12708     QSize newSize = QSize(p2\&.x()-p1\&.x(), p2\&.y()-p1\&.y());
+12709     QPoint topLeft = p1;
+12710     if (newSize\&.width() < 0)
+12711     {
+12712       flipHorz = true;
+12713       newSize\&.rwidth() *= -1;
+12714       topLeft\&.setX(p2\&.x());
+12715     }
+12716     if (newSize\&.height() < 0)
+12717     {
+12718       flipVert = true;
+12719       newSize\&.rheight() *= -1;
+12720       topLeft\&.setY(p2\&.y());
+12721     }
+12722     QSize scaledSize = mPixmap\&.size();
+12723     scaledSize\&.scale(newSize, mAspectRatioMode);
+12724     result = QRect(topLeft, scaledSize);
+12725   } else
+12726   {
+12727     result = QRect(p1, mPixmap\&.size());
+12728   }
+12729   if (flippedHorz)
+12730     *flippedHorz = flipHorz;
+12731   if (flippedVert)
+12732     *flippedVert = flipVert;
+12733   return result;
+12734 }
+.fi
+.SS "QPen QCPItemPixmap::mainPen () const\fC [protected]\fP"
+Returns the pen that should be used for drawing lines\&. Returns mPen when the item is not selected and mSelectedPen when it is\&. 
+.PP
+Definition at line 12741 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, QCPAbstractItem::mSelected, and mSelectedPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+12742 {
+12743   return mSelected ? mSelectedPen : mPen;
+12744 }
+.fi
+.SS "QPen QCPItemPixmap::pen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1071 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by draw(), setPen(), and setSelectedPen()\&.
+.PP
+.nf
+1071 { return mPen; }
+.fi
+.SS "QPixmap QCPItemPixmap::pixmap () const\fC [inline]\fP"
+
+.PP
+Definition at line 1068 of file qcustomplot\&.h\&.
+.PP
+Referenced by setPixmap()\&.
+.PP
+.nf
+1068 { return mPixmap; }
+.fi
+.SS "bool QCPItemPixmap::scaled () const\fC [inline]\fP"
+
+.PP
+Definition at line 1069 of file qcustomplot\&.h\&.
+.PP
+Referenced by setScaled()\&.
+.PP
+.nf
+1069 { return mScaled; }
+.fi
+.SS "QPen QCPItemPixmap::selectedPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1072 of file qcustomplot\&.h\&.
+.PP
+.nf
+1072 { return mSelectedPen; }
+.fi
+.SS "double QCPItemPixmap::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits an item or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the item\&. If the item is either invisible or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the item is represented not by single lines but by an area like \fBQCPItemRect\fP or \fBQCPItemText\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12597 of file qcustomplot\&.cpp\&.
+.PP
+References getFinalRect(), QCPLayerable::mVisible, and QCPAbstractItem::rectSelectTest()\&.
+.PP
+.nf
+12598 {
+12599   if (!mVisible)
+12600     return -1;
+12601   
+12602   return rectSelectTest(getFinalRect(), pos, true);
+12603 }
+.fi
+.SS "void QCPItemPixmap::setPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw a border around the pixmap\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedPen\fP, setBrush 
+.RE
+.PP
+
+.PP
+Definition at line 12581 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, and pen()\&.
+.PP
+Referenced by QCPItemPixmap()\&.
+.PP
+.nf
+12582 {
+12583   mPen = pen;
+12584 }
+.fi
+.SS "void QCPItemPixmap::setPixmap (const QPixmap &pixmap)"
+
+.PP
+Sets the pixmap that will be displayed\&. 
+.PP
+Definition at line 12560 of file qcustomplot\&.cpp\&.
+.PP
+References mPixmap, and pixmap()\&.
+.PP
+.nf
+12561 {
+12562   mPixmap = pixmap;
+12563 }
+.fi
+.SS "void QCPItemPixmap::setScaled (boolscaled, Qt::AspectRatioModeaspectRatioMode = \fCQt::KeepAspectRatio\fP)"
+
+.PP
+Sets whether the pixmap will be scaled to fit the rectangle defined by the \fItopLeft\fP and \fIbottomRight\fP positions\&. 
+.PP
+Definition at line 12569 of file qcustomplot\&.cpp\&.
+.PP
+References aspectRatioMode(), mAspectRatioMode, mScaled, scaled(), and updateScaledPixmap()\&.
+.PP
+Referenced by QCPItemPixmap()\&.
+.PP
+.nf
+12570 {
+12571   mScaled = scaled;
+12572   mAspectRatioMode = aspectRatioMode;
+12573   updateScaledPixmap();
+12574 }
+.fi
+.SS "void QCPItemPixmap::setSelectedPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw a border around the pixmap when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12591 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedPen, and pen()\&.
+.PP
+Referenced by QCPItemPixmap()\&.
+.PP
+.nf
+12592 {
+12593   mSelectedPen = pen;
+12594 }
+.fi
+.SS "void QCPItemPixmap::updateScaledPixmap (QRectfinalRect = \fCQRect()\fP, boolflipHorz = \fCfalse\fP, boolflipVert = \fCfalse\fP)\fC [protected]\fP"
+Creates the buffered scaled image (\fImScaledPixmap\fP) to fit the specified \fIfinalRect\fP\&. The parameters \fIflipHorz\fP and \fIflipVert\fP control whether the resulting image shall be flipped horizontally or vertically\&. (This is used when \fItopLeft\fP is further to the bottom/right than \fIbottomRight\fP\&.)
+.PP
+This function only creates the scaled pixmap when the buffered pixmap has a different size than the expected result, so calling this function repeatedly, e\&.g\&. in the \fBdraw\fP function, does not cause expensive rescaling every time\&.
+.PP
+If scaling is disabled, sets mScaledPixmap to a null QPixmap\&. 
+.PP
+Definition at line 12667 of file qcustomplot\&.cpp\&.
+.PP
+References getFinalRect(), mAspectRatioMode, mPixmap, mScaled, and mScaledPixmap\&.
+.PP
+Referenced by draw(), and setScaled()\&.
+.PP
+.nf
+12668 {
+12669   if (mScaled)
+12670   {
+12671     if (finalRect\&.isNull())
+12672       finalRect = getFinalRect(&flipHorz, &flipVert);
+12673     if (finalRect\&.size() != mScaledPixmap\&.size())
+12674     {
+12675       mScaledPixmap = mPixmap\&.scaled(finalRect\&.size(), mAspectRatioMode, Qt::SmoothTransformation);
+12676       if (flipHorz || flipVert)
+12677         mScaledPixmap = QPixmap::fromImage(mScaledPixmap\&.toImage()\&.mirrored(flipHorz, flipVert));
+12678     }
+12679   } else if (!mScaledPixmap\&.isNull())
+12680     mScaledPixmap = QPixmap();
+12681 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPItemAnchor\fP* const QCPItemPixmap::bottom"
+
+.PP
+Definition at line 1088 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemPixmap::bottomLeft"
+
+.PP
+Definition at line 1089 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemPixmap::bottomRight"
+
+.PP
+Definition at line 1084 of file qcustomplot\&.h\&.
+.PP
+Referenced by getFinalRect(), and QCPItemPixmap()\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemPixmap::left"
+
+.PP
+Definition at line 1090 of file qcustomplot\&.h\&.
+.SS "Qt::AspectRatioMode QCPItemPixmap::mAspectRatioMode\fC [protected]\fP"
+
+.PP
+Definition at line 1097 of file qcustomplot\&.h\&.
+.PP
+Referenced by getFinalRect(), setScaled(), and updateScaledPixmap()\&.
+.SS "QPen QCPItemPixmap::mPen\fC [protected]\fP"
+
+.PP
+Definition at line 1098 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setPen()\&.
+.SS "QPixmap QCPItemPixmap::mPixmap\fC [protected]\fP"
+
+.PP
+Definition at line 1094 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), getFinalRect(), setPixmap(), and updateScaledPixmap()\&.
+.SS "bool QCPItemPixmap::mScaled\fC [protected]\fP"
+
+.PP
+Definition at line 1096 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), getFinalRect(), setScaled(), and updateScaledPixmap()\&.
+.SS "QPixmap QCPItemPixmap::mScaledPixmap\fC [protected]\fP"
+
+.PP
+Definition at line 1095 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and updateScaledPixmap()\&.
+.SS "QPen QCPItemPixmap::mSelectedPen\fC [protected]\fP"
+
+.PP
+Definition at line 1098 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setSelectedPen()\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemPixmap::right"
+
+.PP
+Definition at line 1087 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemPixmap::top"
+
+.PP
+Definition at line 1085 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemPixmap::topLeft"
+
+.PP
+Definition at line 1083 of file qcustomplot\&.h\&.
+.PP
+Referenced by getFinalRect(), and QCPItemPixmap()\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemPixmap::topRight"
+
+.PP
+Definition at line 1086 of file qcustomplot\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

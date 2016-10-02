@@ -1,0 +1,179 @@
+.TH "System.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+System.h \- 
+.PP
+Generic project defines ( data types, basic hardware setting)  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPLL_PRESCALER_N1\fP   2"
+.br
+.ti -1c
+.RI "#define \fBPLL_POSTSCALER_N2\fP   3"
+.br
+.ti -1c
+.RI "#define \fBPLL_FEEDBACK_M\fP   65"
+.br
+.ti -1c
+.RI "#define \fBXTFREQ_CPU\fP   (7370000)"
+.br
+.RI "\fIOn-chip FRC oscillator used frequency\&. \fP"
+.ti -1c
+.RI "#define \fBPLLMODE_CPU\fP   (16)"
+.br
+.RI "\fIOn-chip PLL setting\&. \fP"
+.ti -1c
+.RI "#define \fBFOSC_CPU\fP   120000000"
+.br
+.RI "\fIInstruction Cycle Frequency\&. \fP"
+.ti -1c
+.RI "#define \fBFCY_CPU\fP   (\fBFOSC_CPU\fP/2)"
+.br
+.ti -1c
+.RI "#define \fBASSERT\fP(c_)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef unsigned char \fBUint8\fP"
+.br
+.ti -1c
+.RI "typedef unsigned int \fBUint16\fP"
+.br
+.ti -1c
+.RI "typedef unsigned long \fBUint32\fP"
+.br
+.ti -1c
+.RI "typedef unsigned long long \fBUint64\fP"
+.br
+.ti -1c
+.RI "typedef float \fBFloat32\fP"
+.br
+.ti -1c
+.RI "typedef signed char \fBInt8\fP"
+.br
+.ti -1c
+.RI "typedef signed int \fBInt16\fP"
+.br
+.ti -1c
+.RI "typedef signed long \fBInt32\fP"
+.br
+.ti -1c
+.RI "typedef signed long long \fBInt64\fP"
+.br
+.ti -1c
+.RI "typedef unsigned char \fBBool\fP"
+.br
+.ti -1c
+.RI "typedef const char \fBCChar\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Generic project defines ( data types, basic hardware setting) 
+
+
+.PP
+Definition in file \fBSystem\&.h\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ASSERT(c_)"
+
+.PP
+Definition at line 59 of file System\&.h\&.
+.PP
+Referenced by algorithm_notifyx(), algorithm_taskx(), algorithm_wake(), hwio_execute_gpio_task(), ir_sen_get_status(), ir_sen_notifyx(), ir_sen_taskx(), light_sen_get_status(), light_sen_notifyx(), light_sen_taskx(), mfield_x_sen_get_status(), mfield_x_sen_notifyx(), mfield_x_sen_taskx(), mfield_z_sen_notifyx(), mfield_z_sen_taskx(), nov_page_cpy(), serial_send_response(), uv_sen_get_status(), uv_sen_notifyx(), uv_sen_taskx(), x_delete_timer(), x_init_task(), and x_task_send_irq_sync()\&.
+.SS "#define FCY_CPU   (\fBFOSC_CPU\fP/2)"
+
+.PP
+Definition at line 36 of file System\&.h\&.
+.SS "#define FOSC_CPU   120000000"
+
+.PP
+Instruction Cycle Frequency\&. 
+.PP
+Definition at line 35 of file System\&.h\&.
+.PP
+Referenced by algorithm_sv_scan_timer_init(), srv_wdg_init_fn(), and x_init()\&.
+.SS "#define PLL_FEEDBACK_M   65"
+
+.PP
+Definition at line 24 of file System\&.h\&.
+.SS "#define PLL_POSTSCALER_N2   3"
+
+.PP
+Definition at line 22 of file System\&.h\&.
+.SS "#define PLL_PRESCALER_N1   2"
+
+.PP
+Definition at line 20 of file System\&.h\&.
+.SS "#define PLLMODE_CPU   (16)"
+
+.PP
+On-chip PLL setting\&. 
+.PP
+Definition at line 32 of file System\&.h\&.
+.SS "#define XTFREQ_CPU   (7370000)"
+
+.PP
+On-chip FRC oscillator used frequency\&. 
+.PP
+Definition at line 28 of file System\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef unsigned char \fBBool\fP"
+
+.PP
+Definition at line 50 of file System\&.h\&.
+.SS "typedef const char \fBCChar\fP"
+
+.PP
+Definition at line 51 of file System\&.h\&.
+.SS "typedef float \fBFloat32\fP"
+
+.PP
+Definition at line 45 of file System\&.h\&.
+.SS "typedef signed int \fBInt16\fP"
+
+.PP
+Definition at line 47 of file System\&.h\&.
+.SS "typedef signed long \fBInt32\fP"
+
+.PP
+Definition at line 48 of file System\&.h\&.
+.SS "typedef signed long long \fBInt64\fP"
+
+.PP
+Definition at line 49 of file System\&.h\&.
+.SS "typedef signed char \fBInt8\fP"
+
+.PP
+Definition at line 46 of file System\&.h\&.
+.SS "typedef unsigned int \fBUint16\fP"
+
+.PP
+Definition at line 41 of file System\&.h\&.
+.SS "typedef unsigned long \fBUint32\fP"
+
+.PP
+Definition at line 42 of file System\&.h\&.
+.SS "typedef unsigned long long \fBUint64\fP"
+
+.PP
+Definition at line 43 of file System\&.h\&.
+.SS "typedef unsigned char \fBUint8\fP"
+
+.PP
+Definition at line 40 of file System\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

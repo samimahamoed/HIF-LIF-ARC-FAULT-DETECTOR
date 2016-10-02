@@ -1,0 +1,13 @@
+<map id="QCPRange::normalize" name="QCPRange::normalize">
+<area shape="rect" id="node2" href="$d2/dee/a00049.html#a1d9d84d084c8f368fdedd42e0978d405" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="217,5,377,32"/>
+<area shape="rect" id="node3" href="$d2/dee/a00049.html#a1ff029704c29a75adbc1dc36cecaf44c" title="Returns a sanitized version of the range. " alt="" coords="206,57,389,98"/>
+<area shape="rect" id="node9" href="$d2/dee/a00049.html#aaf6a9046e78d91eeb8e89584fe46b034" title="Returns a sanitized version of the range. " alt="" coords="204,122,391,163"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#aebdfea5d44c3a0ad2b4700cd4d25b641" title="Sets the range of the axis. " alt="" coords="456,64,595,91"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#afcf51227d337db28d1a9ce9a4d1bc91a" title="Sets the lower bound of the axis range, independently of the upper bound. " alt="" coords="439,115,612,141"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#acd3ca1247aa867b540cd5ec30ccd3bef" title="Sets the upper bound of the axis range, independently of the lower bound. " alt="" coords="439,165,612,192"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#a7072ff96fe690148f1bbcdb4f773ea1c" title="Scales the range of this axis by factor around the coordinate center. " alt="" coords="449,13,601,40"/>
+<area shape="rect" id="node8" href="$d4/d3e/a00116.html#a7b8bd7e8d3a1d23a8595e9c6a6b76ef1" title="wheelEvent" alt="" coords="686,13,773,40"/>
+<area shape="rect" id="node10" href="$d3/dfe/a00025.html#adb6c5c45bdf899ea221881dd3b43b406" title="Sets whether the axis uses a linear scale or a logarithmic scale. " alt="" coords="444,216,607,243"/>
+<area shape="rect" id="node11" href="$d3/dfe/a00025.html#a5a34dafa051be08d03e89c163c507f90" title="Constructs an Axis instance of Type type inside parentPlot. " alt="" coords="660,241,799,268"/>
+<area shape="rect" id="node12" href="$d4/d3e/a00116.html#ad27d34bcc9e68b5482d128e2f1e38f55" title="Convenience function to make the top and right axes visible and assign them the following properties ..." alt="" coords="665,191,793,217"/>
+</map>

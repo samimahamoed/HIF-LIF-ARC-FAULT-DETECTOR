@@ -1,0 +1,11 @@
+<map id="QCPItemEllipse::QCPItemEllipse" name="QCPItemEllipse::QCPItemEllipse">
+<area shape="rect" id="node2" href="$d4/d8c/a00035.html#a49fc74e6965834e873d027d026def798" title="Sets the brush that will be used to fill the ellipse. " alt="" coords="288,5,463,32"/>
+<area shape="rect" id="node4" href="$d8/d41/a00038.html#aa988ba4e87ab684c9021017dcaba945f" title="Sets the coordinates of this QCPItemPosition. " alt="" coords="281,123,470,149"/>
+<area shape="rect" id="node7" href="$d4/d8c/a00035.html#adb81a663ed2420fcfa011e49f678d1a6" title="Sets the pen that will be used to draw the line of the ellipse. " alt="" coords="294,173,457,200"/>
+<area shape="rect" id="node9" href="$d4/d8c/a00035.html#a9693501cfaa43a099655c75bed0dab3f" title="Sets the brush that will be used to fill the ellipse when selected. " alt="" coords="280,57,471,98"/>
+<area shape="rect" id="node10" href="$d4/d8c/a00035.html#a6c542fba1dc918041c583f58a50dde99" title="Sets the pen that will be used to draw the line of the ellipse when selected. " alt="" coords="268,224,483,251"/>
+<area shape="rect" id="node3" href="$d4/d8c/a00035.html#ac012e4fd59fdb1afb6554937bae8f7e1" title="QCPItemEllipse::brush" alt="" coords="533,41,687,68"/>
+<area shape="rect" id="node5" href="$d8/d41/a00038.html#ac3cb2bddf5f89e5181830be30b93d090" title="QCPItemPosition::key" alt="" coords="535,96,685,123"/>
+<area shape="rect" id="node6" href="$d8/d41/a00038.html#a6817f7356d3a2b63e8446c6b6106dae1" title="QCPItemPosition::value" alt="" coords="531,147,689,173"/>
+<area shape="rect" id="node8" href="$d4/d8c/a00035.html#adb67471eabaf1214c99767f1653ca0ed" title="QCPItemEllipse::pen" alt="" coords="539,211,681,237"/>
+</map>

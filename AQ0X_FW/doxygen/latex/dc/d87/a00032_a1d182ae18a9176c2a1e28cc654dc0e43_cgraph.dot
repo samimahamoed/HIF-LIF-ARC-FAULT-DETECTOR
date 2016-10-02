@@ -1,0 +1,16 @@
+digraph "algorithm_taskx"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="algorithm_taskx",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="nov_store",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/d52/a00023.html#a90aef186f45a15d94bf0247122194991",tooltip="Writes NOV storage to EEPROM. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="x_delete_timer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d79/a00030.html#ab69e9af4cfa717e870d587906283635c",tooltip="OS timer delete request. "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="x_schedule_timer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d79/a00030.html#a9e3befaa21e83f196f74201deed85346",tooltip="OS timer configuration request. "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="x_send_notify",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d79/a00030.html#ae17b0bb16da3c471bb6074bb4c4d0fee",tooltip="OS notification processing request. "];
+}

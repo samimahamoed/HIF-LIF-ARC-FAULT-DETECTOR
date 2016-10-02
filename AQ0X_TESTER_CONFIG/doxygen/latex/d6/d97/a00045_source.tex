@@ -1,0 +1,110 @@
+\hypertarget{a00045_source}{\section{settingsdialog.\+h}
+\label{a00045_source}\index{settingsdialog.\+h@{settingsdialog.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/****************************************************************************}
+00002 \textcolor{comment}{**}
+00003 \textcolor{comment}{** Copyright (C) 2012 Denis Shienkov <denis.shienkov@gmail.com>}
+00004 \textcolor{comment}{** Copyright (C) 2012 Laszlo Papp <lpapp@kde.org>}
+00005 \textcolor{comment}{** Contact: http://www.qt-project.org/legal}
+00006 \textcolor{comment}{**}
+00007 \textcolor{comment}{** This file is part of the QtSerialPort module of the Qt Toolkit.}
+00008 \textcolor{comment}{**}
+00009 \textcolor{comment}{** $QT\_BEGIN\_LICENSE:LGPL$}
+00010 \textcolor{comment}{** Commercial License Usage}
+00011 \textcolor{comment}{** Licensees holding valid commercial Qt licenses may use this file in}
+00012 \textcolor{comment}{** accordance with the commercial license agreement provided with the}
+00013 \textcolor{comment}{** Software or, alternatively, in accordance with the terms contained in}
+00014 \textcolor{comment}{** a written agreement between you and Digia.  For licensing terms and}
+00015 \textcolor{comment}{** conditions see http://qt.digia.com/licensing.  For further information}
+00016 \textcolor{comment}{** use the contact form at http://qt.digia.com/contact-us.}
+00017 \textcolor{comment}{**}
+00018 \textcolor{comment}{** GNU Lesser General Public License Usage}
+00019 \textcolor{comment}{** Alternatively, this file may be used under the terms of the GNU Lesser}
+00020 \textcolor{comment}{** General Public License version 2.1 as published by the Free Software}
+00021 \textcolor{comment}{** Foundation and appearing in the file LICENSE.LGPL included in the}
+00022 \textcolor{comment}{** packaging of this file.  Please review the following information to}
+00023 \textcolor{comment}{** ensure the GNU Lesser General Public License version 2.1 requirements}
+00024 \textcolor{comment}{** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.}
+00025 \textcolor{comment}{**}
+00026 \textcolor{comment}{** In addition, as a special exception, Digia gives you certain additional}
+00027 \textcolor{comment}{** rights.  These rights are described in the Digia Qt LGPL Exception}
+00028 \textcolor{comment}{** version 1.1, included in the file LGPL\_EXCEPTION.txt in this package.}
+00029 \textcolor{comment}{**}
+00030 \textcolor{comment}{** GNU General Public License Usage}
+00031 \textcolor{comment}{** Alternatively, this file may be used under the terms of the GNU}
+00032 \textcolor{comment}{** General Public License version 3.0 as published by the Free Software}
+00033 \textcolor{comment}{** Foundation and appearing in the file LICENSE.GPL included in the}
+00034 \textcolor{comment}{** packaging of this file.  Please review the following information to}
+00035 \textcolor{comment}{** ensure the GNU General Public License version 3.0 requirements will be}
+00036 \textcolor{comment}{** met: http://www.gnu.org/copyleft/gpl.html.}
+00037 \textcolor{comment}{**}
+00038 \textcolor{comment}{**}
+00039 \textcolor{comment}{** $QT\_END\_LICENSE$}
+00040 \textcolor{comment}{**}
+00041 \textcolor{comment}{****************************************************************************/}
+00042 
+00043 \textcolor{preprocessor}{#ifndef SETTINGSDIALOG\_H}
+00044 \textcolor{preprocessor}{#define SETTINGSDIALOG\_H}
+00045 
+00046 \textcolor{preprocessor}{#include <QDialog>}
+00047 \textcolor{preprocessor}{#include <QtSerialPort/QSerialPort>}
+00048 
+00049 QT\_USE\_NAMESPACE
+00050 
+00051 QT\_BEGIN\_NAMESPACE
+00052 
+00053 \textcolor{keyword}{namespace }\hyperlink{a00055}{Ui} \{
+00054 \textcolor{keyword}{class }\hyperlink{a00022}{SettingsDialog};
+00055 \}
+00056 
+00057 \textcolor{keyword}{class }QIntValidator;
+00058 
+00059 QT\_END\_NAMESPACE
+00060 
+\hypertarget{a00045_source_l00061}{}\hyperlink{a00022}{00061} \textcolor{keyword}{class }\hyperlink{a00022}{SettingsDialog} : \textcolor{keyword}{public} \hyperlink{a00009}{QDialog}
+00062 \{
+00063     Q\_OBJECT
+00064 
+00065 \textcolor{keyword}{public}:
+\hypertarget{a00045_source_l00066}{}\hyperlink{a00022}{00066}     \textcolor{keyword}{struct }\hyperlink{a00022_dc/dfe/a00125}{Settings} \{
+\hypertarget{a00045_source_l00067}{}\hyperlink{a00022_a973c8cfb942a512f34fc4227c0caa6dd}{00067}         QString \hyperlink{a00022_a973c8cfb942a512f34fc4227c0caa6dd}{name};
+\hypertarget{a00045_source_l00068}{}\hyperlink{a00022_ac19cc9431552857a75c657a464ba0700}{00068}         qint32 \hyperlink{a00022_ac19cc9431552857a75c657a464ba0700}{baudRate};
+\hypertarget{a00045_source_l00069}{}\hyperlink{a00022_a54e9d461f783386f314bc24b96665e53}{00069}         QString \hyperlink{a00022_a54e9d461f783386f314bc24b96665e53}{stringBaudRate};
+\hypertarget{a00045_source_l00070}{}\hyperlink{a00022_a7dcd85d028a09508cb4567cf631b40e9}{00070}         QSerialPort::DataBits \hyperlink{a00022_a7dcd85d028a09508cb4567cf631b40e9}{dataBits};
+\hypertarget{a00045_source_l00071}{}\hyperlink{a00022_ab589b733b78af17744ab75067bfce051}{00071}         QString \hyperlink{a00022_ab589b733b78af17744ab75067bfce051}{stringDataBits};
+\hypertarget{a00045_source_l00072}{}\hyperlink{a00022_ae08a00aa2e45218dade9046e3624cce7}{00072}         QSerialPort::Parity \hyperlink{a00022_ae08a00aa2e45218dade9046e3624cce7}{parity};
+\hypertarget{a00045_source_l00073}{}\hyperlink{a00022_aa2c662b2fb315f038e827d63d83b059b}{00073}         QString \hyperlink{a00022_aa2c662b2fb315f038e827d63d83b059b}{stringParity};
+\hypertarget{a00045_source_l00074}{}\hyperlink{a00022_ab88ff384f7c1127bcbe2dd97b49696a4}{00074}         QSerialPort::StopBits \hyperlink{a00022_ab88ff384f7c1127bcbe2dd97b49696a4}{stopBits};
+\hypertarget{a00045_source_l00075}{}\hyperlink{a00022_abde3c8410f779688ce6c2fcbbbb84f10}{00075}         QString \hyperlink{a00022_abde3c8410f779688ce6c2fcbbbb84f10}{stringStopBits};
+\hypertarget{a00045_source_l00076}{}\hyperlink{a00022_aa962a6e7dbb8338af154305e4ff46cfc}{00076}         QSerialPort::FlowControl \hyperlink{a00022_aa962a6e7dbb8338af154305e4ff46cfc}{flowControl};
+\hypertarget{a00045_source_l00077}{}\hyperlink{a00022_a1b0a388ec5059bd2628acf9b7728f2f3}{00077}         QString \hyperlink{a00022_a1b0a388ec5059bd2628acf9b7728f2f3}{stringFlowControl};
+\hypertarget{a00045_source_l00078}{}\hyperlink{a00022_ae1bfec3d6530f9791451d12aacfcb014}{00078}         \textcolor{keywordtype}{bool} \hyperlink{a00022_ae1bfec3d6530f9791451d12aacfcb014}{localEchoEnabled};
+00079     \};
+00080 
+00081     \textcolor{keyword}{explicit} \hyperlink{a00022_abf4568621eef32ca85b919f2209cdc42}{SettingsDialog}(QWidget *parent = 0);
+00082     \hyperlink{a00022_ac48f54d4472902be0a3845a69167f068}{~SettingsDialog}();
+00083 
+00084     \hyperlink{a00022_dc/dfe/a00125}{Settings} \hyperlink{a00022_afeb533d711d0392b9856c63b40b65ad7}{settings}() \textcolor{keyword}{const};
+00085 
+00086 \textcolor{keyword}{private} slots:
+00087     \textcolor{keywordtype}{void} showPortInfo(\textcolor{keywordtype}{int} idx);
+00088     \textcolor{keywordtype}{void} apply();
+00089     \textcolor{keywordtype}{void} checkCustomBaudRatePolicy(\textcolor{keywordtype}{int} idx);
+00090 
+00091     \textcolor{keywordtype}{void} on\_applyButton\_clicked();
+00092 
+00093 \textcolor{keyword}{private}:
+00094     \textcolor{keywordtype}{void} fillPortsParameters();
+00095     \textcolor{keywordtype}{void} fillPortsInfo();
+00096     \textcolor{keywordtype}{void} updateSettings();
+00097 
+00098 \textcolor{keyword}{private}:
+00099     \hyperlink{a00023}{Ui::SettingsDialog} *ui;
+00100     \hyperlink{a00022_dc/dfe/a00125}{Settings} currentSettings;
+00101     QIntValidator *intValidator;
+00102 \};
+00103 
+00104 \textcolor{preprocessor}{#endif // SETTINGSDIALOG\_H}
+\end{DoxyCode}

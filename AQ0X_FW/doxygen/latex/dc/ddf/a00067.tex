@@ -1,0 +1,169 @@
+\hypertarget{a00067}{\section{srv\+\_\+watchdog.\+h File Reference}
+\label{a00067}\index{srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}}
+}
+
+
+File with support for watchdog( for release version) and watchdog tunning (debug/release)  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{d4/d26/a01700}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00067_afbfc46dbf4e78e184942fc2cbe77dbb3}{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+P\+R\+O\+D\+U\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E}~0
+\item 
+\#define \hyperlink{a00067_aaf1a99e6db8062353e5f10d1f7d02938}{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}~3 /$\ast$ initial value in miliseconds $\ast$/
+\item 
+\#define \hyperlink{a00067_a8a83a885a73db05d7faa34734d132644}{srv\+\_\+wdg\+\_\+init}()~\hyperlink{a00066_a37c35718860234f09b8cef8680e1cc09}{srv\+\_\+wdg\+\_\+init\+\_\+fn}()
+\item 
+\#define \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\+\_\+wdg\+\_\+kick}()~\hyperlink{a00066_ac6f811346b702c404d5e6cdfb9262767}{srv\+\_\+wdg\+\_\+kick\+\_\+fn}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00067_a37c35718860234f09b8cef8680e1cc09}{srv\+\_\+wdg\+\_\+init\+\_\+fn} (void)
+\begin{DoxyCompactList}\small\item\em Watchdog tunning init function. \end{DoxyCompactList}\item 
+void \hyperlink{a00067_ac6f811346b702c404d5e6cdfb9262767}{srv\+\_\+wdg\+\_\+kick\+\_\+fn} (void)
+\begin{DoxyCompactList}\small\item\em Watchdog tunning kick function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+File with support for watchdog( for release version) and watchdog tunning (debug/release) 
+
+
+
+Definition in file \hyperlink{a00067_source}{srv\+\_\+watchdog.\+h}.
+
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00067_a8a83a885a73db05d7faa34734d132644}{\index{srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}!srv\+\_\+wdg\+\_\+init@{srv\+\_\+wdg\+\_\+init}}
+\index{srv\+\_\+wdg\+\_\+init@{srv\+\_\+wdg\+\_\+init}!srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}}
+\subsubsection[{srv\+\_\+wdg\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}\#define srv\+\_\+wdg\+\_\+init(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf srv\+\_\+wdg\+\_\+init\+\_\+fn}()}}\label{a00067_a8a83a885a73db05d7faa34734d132644}
+
+
+Definition at line \hyperlink{a00067_source_l00027}{27} of file \hyperlink{a00067_source}{srv\+\_\+watchdog.\+h}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+\hypertarget{a00067_a710d148845397582739d170341f3d3d9}{\index{srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}!srv\+\_\+wdg\+\_\+kick@{srv\+\_\+wdg\+\_\+kick}}
+\index{srv\+\_\+wdg\+\_\+kick@{srv\+\_\+wdg\+\_\+kick}!srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}}
+\subsubsection[{srv\+\_\+wdg\+\_\+kick}]{\setlength{\rightskip}{0pt plus 5cm}\#define srv\+\_\+wdg\+\_\+kick(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf srv\+\_\+wdg\+\_\+kick\+\_\+fn}()}}\label{a00067_a710d148845397582739d170341f3d3d9}
+
+
+Definition at line \hyperlink{a00067_source_l00028}{28} of file \hyperlink{a00067_source}{srv\+\_\+watchdog.\+h}.
+
+
+
+Referenced by \hyperlink{a00030_source_l00658}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, \hyperlink{a00045_source_l00069}{ir\+\_\+sen\+\_\+taskx()}, \hyperlink{a00048_source_l00080}{main()}, \hyperlink{a00050_source_l00071}{mfield\+\_\+x\+\_\+sen\+\_\+taskx()}, \hyperlink{a00073_source_l00069}{uv\+\_\+sen\+\_\+taskx()}, \hyperlink{a00037_source_l00231}{x\+\_\+loop()}, and \hyperlink{a00037_source_l00196}{x\+\_\+start()}.
+
+\hypertarget{a00067_afbfc46dbf4e78e184942fc2cbe77dbb3}{\index{srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}!W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+P\+R\+O\+D\+U\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E@{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+P\+R\+O\+D\+U\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E}}
+\index{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+P\+R\+O\+D\+U\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E@{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+P\+R\+O\+D\+U\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E}!srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}}
+\subsubsection[{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+P\+R\+O\+D\+U\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+P\+R\+O\+D\+U\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E~0}}\label{a00067_afbfc46dbf4e78e184942fc2cbe77dbb3}
+
+
+Definition at line \hyperlink{a00067_source_l00014}{14} of file \hyperlink{a00067_source}{srv\+\_\+watchdog.\+h}.
+
+\hypertarget{a00067_aaf1a99e6db8062353e5f10d1f7d02938}{\index{srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}!W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T@{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}}
+\index{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T@{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}!srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}}
+\subsubsection[{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T~3 /$\ast$ initial value in miliseconds $\ast$/}}\label{a00067_aaf1a99e6db8062353e5f10d1f7d02938}
+
+
+Definition at line \hyperlink{a00067_source_l00015}{15} of file \hyperlink{a00067_source}{srv\+\_\+watchdog.\+h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00067_a37c35718860234f09b8cef8680e1cc09}{\index{srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}!srv\+\_\+wdg\+\_\+init\+\_\+fn@{srv\+\_\+wdg\+\_\+init\+\_\+fn}}
+\index{srv\+\_\+wdg\+\_\+init\+\_\+fn@{srv\+\_\+wdg\+\_\+init\+\_\+fn}!srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}}
+\subsubsection[{srv\+\_\+wdg\+\_\+init\+\_\+fn}]{\setlength{\rightskip}{0pt plus 5cm}void srv\+\_\+wdg\+\_\+init\+\_\+fn (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00067_a37c35718860234f09b8cef8680e1cc09}
+
+
+Watchdog tunning init function. 
+
+
+
+Definition at line \hyperlink{a00066_source_l00096}{96} of file \hyperlink{a00066_source}{srv\+\_\+watchdog.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00035}{F\+O\+S\+C\+\_\+\+C\+P\+U}, and \hyperlink{a00066_source_l00055}{watchdog\+\_\+timeout}.
+
+
+
+Referenced by \hyperlink{a00066_source_l00066}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}.
+
+
+\begin{DoxyCode}
+00097 \{
+00098 
+00099     \textcolor{comment}{// Setup tunning timer}
+00100     
+00101     T4CON = 0;                    \textcolor{comment}{// Clear the register}
+00102     T4CONbits.TCS    = 0;         \textcolor{comment}{// Internal clock Fosc/4   }
+00103     T4CONbits.TCKPS = 1;          \textcolor{comment}{//    1:8 prescaling    }
+00104 
+00105 
+00106 
+00107     PR4 = (((\hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{FOSC\_CPU}/2L)/8)*\hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\_timeout})/(1000L); 
+00108     
+00109     IPC6bits.T4IP = 1;            \textcolor{comment}{// Set Timer4 Interrupt Priority Level}
+00110     IFS1bits.T4IF = 0;            \textcolor{comment}{//Clear the Timer4 Interrupt Flag}
+00111     IEC1bits.T4IE = 1;            \textcolor{comment}{//Enable Timer4I nterrupt Service Routine}
+00112     T4CONbits.TON = 1;            \textcolor{comment}{//Start Timer 4}
+00113 
+00114 
+00115 
+00116 
+00117     
+00118 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 0
+
+
+\hypertarget{a00067_ac6f811346b702c404d5e6cdfb9262767}{\index{srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}!srv\+\_\+wdg\+\_\+kick\+\_\+fn@{srv\+\_\+wdg\+\_\+kick\+\_\+fn}}
+\index{srv\+\_\+wdg\+\_\+kick\+\_\+fn@{srv\+\_\+wdg\+\_\+kick\+\_\+fn}!srv\+\_\+watchdog.\+h@{srv\+\_\+watchdog.\+h}}
+\subsubsection[{srv\+\_\+wdg\+\_\+kick\+\_\+fn}]{\setlength{\rightskip}{0pt plus 5cm}void srv\+\_\+wdg\+\_\+kick\+\_\+fn (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00067_ac6f811346b702c404d5e6cdfb9262767}
+
+
+Watchdog tunning kick function. 
+
+
+
+Definition at line \hyperlink{a00066_source_l00126}{126} of file \hyperlink{a00066_source}{srv\+\_\+watchdog.\+c}.
+
+
+\begin{DoxyCode}
+00127 \{
+00128     T4CONbits.TON = 0;
+00129     TMR4 = 0;
+00130     T4CONbits.TON = 1;
+00131 \}
+\end{DoxyCode}

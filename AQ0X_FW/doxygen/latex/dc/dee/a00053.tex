@@ -1,0 +1,675 @@
+\hypertarget{a00053}{\section{mfield\+\_\+z\+\_\+sensor.\+c File Reference}
+\label{a00053}\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+}
+
+
+Module responsible for mfield x axis sensor element supervision.  
+
+
+{\ttfamily \#include \char`\"{}..\textbackslash{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}..\textbackslash{}..\textbackslash{}includes\+\_\+prv\textbackslash{}aq0\+X\textbackslash{}mfield\+\_\+z\+\_\+sensor\+\_\+prv.\+h\char`\"{}}\\*
+Include dependency graph for mfield\+\_\+z\+\_\+sensor.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/dfd/a00969}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00053_a7ef08302978421a5dc004f06aab80a8a}{mfield\+\_\+z\+\_\+sen\+\_\+taskx} (\hyperlink{a00036_de/d37/a00849}{x\+\_\+event} $\ast$event)
+\begin{DoxyCompactList}\small\item\em mfield sensor module task function. \end{DoxyCompactList}\item 
+void \hyperlink{a00053_a2008fa1563c740e4f6c7e1179675f1f7}{mfield\+\_\+z\+\_\+sen\+\_\+notifyx} (\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify} $\ast$notify)
+\begin{DoxyCompactList}\small\item\em mfield module notification function. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00053_a82939d05c14b8ab80cacc21b7a1b8d3e}{mfield\+\_\+z\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative} (\hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} final\+\_\+val, \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} init\+\_\+val, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} period)
+\begin{DoxyCompactList}\small\item\em Claculate first order derivative. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00053_a8a5c3986dbe778d199b6e3b485f7a34b}{mfield\+\_\+z\+\_\+sen\+\_\+calc\+\_\+probablity} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} event, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} obs)
+\begin{DoxyCompactList}\small\item\em Claculates the event probablity. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} \hyperlink{a00053_a8830f50d7a451bec0a7d61c44d5cd98b}{mfield\+\_\+z\+\_\+zero\+\_\+cross} (void)
+\begin{DoxyCompactList}\small\item\em Claculate. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8} \hyperlink{a00053_a1dac7e7549c1a5b33e90e7a53f63bf5b}{mfield\+\_\+z\+\_\+compare} (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} num, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} given\+\_\+num, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} tolerance)
+\begin{DoxyCompactList}\small\item\em Claculate. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} \hyperlink{a00053_a8d1f1b622ef0081218e8f64cd9a44e59}{mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired} (void)
+\begin{DoxyCompactList}\small\item\em Claculate. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00053_a30e963041fabe45400803a40cc920b85}{mfield\+\_\+z\+\_\+input\+\_\+signal} (void)
+\begin{DoxyCompactList}\small\item\em Claculate. \end{DoxyCompactList}\item 
+void \hyperlink{a00053_ab3b441646e86a6cf6ddfe83c1af4e075}{mfield\+\_\+z\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task} (void)
+\begin{DoxyCompactList}\small\item\em Supervise the status of the mfield sensor. \end{DoxyCompactList}\item 
+void \hyperlink{a00053_a36a65e3e838c4f7be43267a10532d318}{mfield\+\_\+z\+\_\+sen\+\_\+false\+\_\+positive\+\_\+correction\+\_\+task} (void)
+\begin{DoxyCompactList}\small\item\em checks the number of false positives within supervision time window \end{DoxyCompactList}\item 
+void \hyperlink{a00053_acd2adf617d062b1d3dfc9df79aa2ad32}{mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives} (void)
+\begin{DoxyCompactList}\small\item\em checks the number of false positives within supervision (100ms $\vert$ 5 cycle) time window \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00027_d8/dbd/a00597}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t} \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\+\_\+z\+\_\+sen\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Internal mfield\+\_\+z\+\_\+sen module data. \end{DoxyCompactList}\item 
+\hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\+\_\+task\+\_\+id} \hyperlink{a00053_a8b08b70b0141a3a5c4b0f6097b49d437}{mfield\+\_\+z\+\_\+sen\+\_\+id}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Module responsible for mfield x axis sensor element supervision. 
+
+
+
+Definition in file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00053_a1dac7e7549c1a5b33e90e7a53f63bf5b}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+compare@{mfield\+\_\+z\+\_\+compare}}
+\index{mfield\+\_\+z\+\_\+compare@{mfield\+\_\+z\+\_\+compare}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+compare}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int8} mfield\+\_\+z\+\_\+compare (
+\begin{DoxyParamCaption}
+\item[{{\bf Float32}}]{num, }
+\item[{{\bf Float32}}]{given\+\_\+num, }
+\item[{{\bf Float32}}]{tolerance}
+\end{DoxyParamCaption}
+)}}\label{a00053_a1dac7e7549c1a5b33e90e7a53f63bf5b}
+
+
+Claculate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ad\+\_\+value} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00053_source_l00223}{223} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+Referenced by \hyperlink{a00053_source_l00255}{mfield\+\_\+z\+\_\+input\+\_\+signal()}.
+
+
+\begin{DoxyCode}
+00223                                                                         \{
+00224 
+00225    \textcolor{keywordflow}{if}(((given\_num-given\_num*tolerance) <= num) && (num <= (given\_num + given\_num*tolerance)))
+00226        \textcolor{keywordflow}{return} 0;
+00227    \textcolor{keywordflow}{if}(num < (given\_num-given\_num*tolerance))
+00228        \textcolor{keywordflow}{return} -1;
+00229    \textcolor{keywordflow}{if}(num > (given\_num+given\_num*tolerance))
+00230        \textcolor{keywordflow}{return} 1;
+00231    \textcolor{keywordflow}{return} -2;
+00232 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{dc/dee/a00053_a1dac7e7549c1a5b33e90e7a53f63bf5b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00053_a30e963041fabe45400803a40cc920b85}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+input\+\_\+signal@{mfield\+\_\+z\+\_\+input\+\_\+signal}}
+\index{mfield\+\_\+z\+\_\+input\+\_\+signal@{mfield\+\_\+z\+\_\+input\+\_\+signal}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+input\+\_\+signal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Float32} mfield\+\_\+z\+\_\+input\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00053_a30e963041fabe45400803a40cc920b85}
+
+
+Claculate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ad\+\_\+value} & \\
+\hline
+\end{DoxyParams}
+T\+O\+D\+O\+: determine the frquency type and 
+
+Definition at line \hyperlink{a00053_source_l00255}{255} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+References \hyperlink{a00019_source_l00102}{state\+\_\+data\+\_\+mfield\+\_\+t\+::change\+\_\+per\+\_\+time}, \hyperlink{a00019_source_l00108}{module\+\_\+status\+\_\+mfield\+\_\+t\+::current}, \hyperlink{a00053_source_l00223}{mfield\+\_\+z\+\_\+compare()}, \hyperlink{a00027_source_l00047}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::module\+\_\+status}, \hyperlink{a00019_af2267fb093fb5dcaa006a570a6da3b6b}{module\+\_\+status\+\_\+mfield\+\_\+t\+::projected}, and \hyperlink{a00019_source_l00101}{state\+\_\+data\+\_\+mfield\+\_\+t\+::signal\+\_\+level}.
+
+
+\begin{DoxyCode}
+00255                                    \{
+00256 
+00257     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} result;
+00258     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} current\_signal\_level = 0;
+00260               \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_af2267fb093fb5dcaa006a570a6da3b6b}{projected}.amplitude
+00261               = \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{current}.\hyperlink{a00019_a0f645dd76b41adc6a966feba8e4bff8c}{change\_per\_time}/
+00262                      (\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_af2267fb093fb5dcaa006a570a6da3b6b}{projected}.angular\_freq
+00263                       *cos(\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_af2267fb093fb5dcaa006a570a6da3b6b}{projected}.angular\_freq*\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{current}.time)
+00264                       );
+00265 
+00266              current\_signal\_level = \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.\hyperlink{a00019_af2267fb093fb5dcaa006a570a6da3b6b}{projected}.amplitude
+00267                *sin(\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_af2267fb093fb5dcaa006a570a6da3b6b}{projected}.angular\_freq*\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{current}.time);
+00268 
+00269           result =  \hyperlink{a00053_a1dac7e7549c1a5b33e90e7a53f63bf5b}{mfield\_z\_compare}((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})(
+      \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.\hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{current}.
+      \hyperlink{a00019_a4070db8eab0ff93e3fbc1df59872f117}{signal\_level})
+00270                   ,current\_signal\_level,0.05\textcolor{comment}{/*TODO: user configurable*/});
+00271 
+00272           \textcolor{keywordflow}{if}(result == 0)
+00273               \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_af2267fb093fb5dcaa006a570a6da3b6b}{projected}.positive\_cnt++;
+00274 
+00275           \textcolor{keywordflow}{return} result;
+00276 
+00277 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{dc/dee/a00053_a30e963041fabe45400803a40cc920b85_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00053_a8d1f1b622ef0081218e8f64cd9a44e59}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired@{mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired}}
+\index{mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired@{mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bool} mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00053_a8d1f1b622ef0081218e8f64cd9a44e59}
+
+
+Claculate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ad\+\_\+value} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00053_source_l00241}{241} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+References \hyperlink{a00019_source_l00108}{module\+\_\+status\+\_\+mfield\+\_\+t\+::current}, \hyperlink{a00040_source_l00086}{F\+A\+L\+S\+E}, \hyperlink{a00027_source_l00047}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::module\+\_\+status}, \hyperlink{a00019_source_l00046}{O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+T\+I\+M\+E\+\_\+\+W\+I\+N\+D\+O\+W}, and \hyperlink{a00040_source_l00084}{T\+R\+U\+E}.
+
+
+\begin{DoxyCode}
+00241                                                    \{
+00242 
+00243     \textcolor{keywordflow}{return} (\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{current}.time <= \hyperlink{a00019_a2fb6f38d16f4ccb6a19773d6a254f512}{OBSERVATION\_TIME\_WINDOW})?\hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}:
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00244 \}
+\end{DoxyCode}
+\hypertarget{a00053_a8a5c3986dbe778d199b6e3b485f7a34b}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+calc\+\_\+probablity@{mfield\+\_\+z\+\_\+sen\+\_\+calc\+\_\+probablity}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+calc\+\_\+probablity@{mfield\+\_\+z\+\_\+sen\+\_\+calc\+\_\+probablity}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+calc\+\_\+probablity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Float32} mfield\+\_\+z\+\_\+sen\+\_\+calc\+\_\+probablity (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{event, }
+\item[{{\bf Uint16}}]{obs}
+\end{DoxyParamCaption}
+)}}\label{a00053_a8a5c3986dbe778d199b6e3b485f7a34b}
+
+
+Claculates the event probablity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ad\+\_\+value} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00053_source_l00191}{191} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+\begin{DoxyCode}
+00191                                                              \{
+00192     \textcolor{keywordflow}{return} (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\textcolor{keyword}{event}/(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})obs;
+00193 \}
+\end{DoxyCode}
+\hypertarget{a00053_a36a65e3e838c4f7be43267a10532d318}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+false\+\_\+positive\+\_\+correction\+\_\+task@{mfield\+\_\+z\+\_\+sen\+\_\+false\+\_\+positive\+\_\+correction\+\_\+task}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+false\+\_\+positive\+\_\+correction\+\_\+task@{mfield\+\_\+z\+\_\+sen\+\_\+false\+\_\+positive\+\_\+correction\+\_\+task}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+false\+\_\+positive\+\_\+correction\+\_\+task}]{\setlength{\rightskip}{0pt plus 5cm}void mfield\+\_\+z\+\_\+sen\+\_\+false\+\_\+positive\+\_\+correction\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00053_a36a65e3e838c4f7be43267a10532d318}
+
+
+checks the number of false positives within supervision time window 
+
+
+
+Definition at line \hyperlink{a00053_source_l00733}{733} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+Referenced by \hyperlink{a00053_source_l00073}{mfield\+\_\+z\+\_\+sen\+\_\+taskx()}.
+
+
+\begin{DoxyCode}
+00733                                                       \{
+00734 
+00735 
+00736 
+00737 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{dc/dee/a00053_a36a65e3e838c4f7be43267a10532d318_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00053_a82939d05c14b8ab80cacc21b7a1b8d3e}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative@{mfield\+\_\+z\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative@{mfield\+\_\+z\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Float32} mfield\+\_\+z\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative (
+\begin{DoxyParamCaption}
+\item[{{\bf Int16}}]{final\+\_\+val, }
+\item[{{\bf Int16}}]{init\+\_\+val, }
+\item[{{\bf Float32}}]{period}
+\end{DoxyParamCaption}
+)}}\label{a00053_a82939d05c14b8ab80cacc21b7a1b8d3e}
+
+
+Claculate first order derivative. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ad\+\_\+value} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00053_source_l00179}{179} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+\begin{DoxyCode}
+00179                                                                                           \{
+00180     \textcolor{keywordflow}{return} (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})(final\_val-init\_val)/period;
+00181 \}
+\end{DoxyCode}
+\hypertarget{a00053_acd2adf617d062b1d3dfc9df79aa2ad32}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives@{mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives@{mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives}]{\setlength{\rightskip}{0pt plus 5cm}void mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00053_acd2adf617d062b1d3dfc9df79aa2ad32}
+
+
+checks the number of false positives within supervision (100ms $\vert$ 5 cycle) time window 
+
+
+
+Definition at line \hyperlink{a00053_source_l00747}{747} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+References \hyperlink{a00027_source_l00038}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::configured}, \hyperlink{a00021_source_l00190}{configured\+\_\+t\+::dfdt\+\_\+treshold\+\_\+max}, \hyperlink{a00027_source_l00050}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::diagonesis\+\_\+records}, \hyperlink{a00027_source_l00043}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::disturbance\+\_\+record}, \hyperlink{a00022_source_l00228}{module\+\_\+disturbance\+\_\+record\+\_\+t\+::event\+\_\+data}, \hyperlink{a00019_source_l00036}{E\+X\+C\+E\+D\+E\+D\+\_\+\+A\+M\+P\+\_\+\+T\+H}, \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{diagonesis\+\_\+records\+\_\+mfield\+\_\+t\+::false\+\_\+alarm}, \hyperlink{a00021_source_l00015}{R\+A\+N\+G\+E\+\_\+\+M\+A\+X\+\_\+32\+B\+I\+T}, and \hyperlink{a00021_source_l00013}{R\+A\+N\+G\+E\+\_\+\+M\+A\+X\+\_\+8\+B\+I\+T}.
+
+
+
+Referenced by \hyperlink{a00053_source_l00114}{mfield\+\_\+z\+\_\+sen\+\_\+notifyx()}.
+
+
+\begin{DoxyCode}
+00747                                            \{
+00748         \textcolor{keywordflow}{if}(\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.event\_history == \hyperlink{a00019_a9c5372190518a7d696da393f1a9a5fb9}{EXCEDED\_AMP\_TH})\{
+00749                \textcolor{keywordflow}{if}(
+00750                 (\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.amp\_max\_exceded.cnt < \hyperlink{a00021_ae0c75a1cb44e5d3f00ec7c9e40acfda8}{RANGE\_MAX\_8BIT})
+00751                 &
+00752                 (\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.amp\_max\_exceded.accumulated\_value < \hyperlink{a00021_a334bd006b6d2b397dbfc620d62c3c35c}{RANGE\_MAX\_32BIT})
+00753                )
+00754                \{
+00755                      \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.amp\_max\_exceded.cnt++;
+00756                      \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.amp\_max\_exceded.accumulated\_value
+00757                      +=(\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.buffer.signal\_level[0]-\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.amp\_treshold\_max);
+00758                      \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.amp\_max\_exceded.recorded\_avg
+00759                      = \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.amp\_max\_exceded.accumulated\_value/
+00760                              (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.\hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.amp\_max\_exceded.cnt;
+00761               \}
+00762 
+00763              \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.event\_history > \hyperlink{a00019_a9c5372190518a7d696da393f1a9a5fb9}{EXCEDED\_AMP\_TH})\{
+00764              \textcolor{keywordflow}{if}(
+00765                 (\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.dfdt\_max\_exceded.cnt < \hyperlink{a00021_ae0c75a1cb44e5d3f00ec7c9e40acfda8}{RANGE\_MAX\_8BIT})
+00766                 &
+00767                 (\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.dfdt\_max\_exceded.accumulated\_value < \hyperlink{a00021_a334bd006b6d2b397dbfc620d62c3c35c}{RANGE\_MAX\_32BIT})
+00768                )
+00769              \{
+00770 
+00771                  \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.dfdt\_max\_exceded.cnt++;
+00772                  \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.dfdt\_max\_exceded.accumulated\_value
+00773                  +=(\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.buffer.change\_per\_time[0]-\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_adf9a37828e447378b1d533185213316d}{dfdt\_treshold\_max});
+00774                  \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.dfdt\_max\_exceded.recorded\_avg
+00775                  = \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.
+      \hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.dfdt\_max\_exceded.accumulated\_value/
+00776                     (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records}.\hyperlink{a00019_a55109284fe950025b5d9f3dde60d4553}{false\_alarm}.dfdt\_max\_exceded.cnt;
+00777 
+00778              \}
+00779 
+00780              \}
+00781 
+00782 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{dc/dee/a00053_acd2adf617d062b1d3dfc9df79aa2ad32_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00053_a2008fa1563c740e4f6c7e1179675f1f7}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+notifyx@{mfield\+\_\+z\+\_\+sen\+\_\+notifyx}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+notifyx@{mfield\+\_\+z\+\_\+sen\+\_\+notifyx}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+notifyx}]{\setlength{\rightskip}{0pt plus 5cm}void mfield\+\_\+z\+\_\+sen\+\_\+notifyx (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+notify} $\ast$}]{notify}
+\end{DoxyParamCaption}
+)}}\label{a00053_a2008fa1563c740e4f6c7e1179675f1f7}
+
+
+mfield module notification function. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em notify} & -\/ system distributed notification \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00053_source_l00114}{114} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00027_source_l00038}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::configured}, \hyperlink{a00019_source_l00108}{module\+\_\+status\+\_\+mfield\+\_\+t\+::current}, \hyperlink{a00027_source_l00043}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::disturbance\+\_\+record}, \hyperlink{a00021_source_l00205}{configured\+\_\+t\+::element\+\_\+status\+\_\+sv\+\_\+en}, \hyperlink{a00022_source_l00044}{sv\+\_\+error\+\_\+flags\+\_\+ut\+::flags\+\_\+all}, \hyperlink{a00036_source_l00075}{x\+\_\+notify\+::message}, \hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{x\+\_\+notify\+\_\+mfield\+\_\+sen\+\_\+configure\+::message}, \hyperlink{a00053_source_l00747}{mfield\+\_\+z\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives()}, \hyperlink{a00027_source_l00047}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::module\+\_\+status}, \hyperlink{a00019_source_l00103}{state\+\_\+data\+\_\+mfield\+\_\+t\+::state}, \hyperlink{a00021_source_l00149}{S\+T\+A\+T\+E\+\_\+0}, \hyperlink{a00027_source_l00053}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+errors\+\_\+flags}, \hyperlink{a00027_source_l00031}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+task\+\_\+event}, \hyperlink{a00027_source_l00034}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+timer\+\_\+ntf}, \hyperlink{a00023_source_l00020}{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}, \hyperlink{a00037_source_l00482}{x\+\_\+delete\+\_\+timer()}, \hyperlink{a00036_source_l00048}{X\+\_\+\+M\+S2\+T\+I\+C\+K}, \hyperlink{a00036_source_l00030}{X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T}, \hyperlink{a00025_source_l00015}{X\+\_\+\+N\+T\+F\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}, \hyperlink{a00037_source_l00456}{x\+\_\+schedule\+\_\+timer()}, and \hyperlink{a00037_source_l00381}{x\+\_\+send\+\_\+event()}.
+
+
+\begin{DoxyCode}
+00115 \{
+00116 
+00117 
+00118     \textcolor{keywordflow}{switch}(notify->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message})
+00119     \{
+00120         \textcolor{keywordflow}{case} \hyperlink{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}{X\_NTF\_INIT}:
+00121         \{
+00122             mfield\_z\_sen\_init();
+00123         \}\textcolor{keywordflow}{break};
+00124 
+00125 
+00126         \textcolor{keywordflow}{case} X\_NTF\_MFIELD\_Z\_SENSOR\_CONFIG:
+00127         \{
+00128 
+00129               \textcolor{comment}{// Algorithm module configuration reading}
+00130               \hyperlink{a00019_d2/d5e/a00860}{x\_notify\_mfield\_sen\_configure} * notify\_configure = (
+      \hyperlink{a00019_d2/d5e/a00860}{x\_notify\_mfield\_sen\_configure} *)notify;
+00131 
+00132               \textcolor{comment}{// Module configuration}
+00133               \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a94b2d1f6ea4ab334c74d24984dd27843}{configured} = notify\_configure->
+      \hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured;
+00134               \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record} = notify\_configure->
+      \hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.disturbance\_record;
+00135 
+00136               \textcolor{comment}{// Clear supervison state ( so errors will be reported if module have internal error )}
+00137               \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.
+      \hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all} = 0;
+00138 
+00139               \hyperlink{a00036_ab69e9af4cfa717e870d587906283635c}{x\_delete\_timer}(&\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf});
+00140 
+00141               \textcolor{keywordflow}{if}(\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_afeb3f74725269028a60926f98890c22b}{element\_status\_sv\_en})
+00142               \hyperlink{a00036_a9e3befaa21e83f196f74201deed85346}{x\_schedule\_timer}(&\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf},\hyperlink{a00036_a1732cd929c486b3a225824bb2b3dba36}{X\_MS2TICK}(\hyperlink{a00023_a8a535456285f4602701c814d7b69cc68}{SV\_TIMER\_PERIOD}));
+00143 
+00144         \}\textcolor{keywordflow}{break};
+00145 
+00146          \textcolor{keywordflow}{case} X\_NTF\_CLR\_ALARM:
+00147         \{
+00148            \textcolor{comment}{// Algorithm module alarm reset request}
+00149              \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{current}.\hyperlink{a00019_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0};
+00150              \hyperlink{a00053_acd2adf617d062b1d3dfc9df79aa2ad32}{mfield\_z\_sen\_mark\_false\_postives}();
+00151 
+00152 
+00153 
+00154         \}\textcolor{keywordflow}{break};
+00155 
+00156 
+00157         \textcolor{keywordflow}{case} \hyperlink{a00025_ad9eede821e7c65d58f1806af4bd6bf29}{X\_NTF\_MFIELD\_SENSOR\_SV\_TIMER}:
+00158         \{
+00159            \hyperlink{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\_send\_event}(&\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_a43c345f39ea3aefbb60ef1ef57fe5d83}{sv\_task\_event});
+00160         \}\textcolor{keywordflow}{break};
+00161 
+00162 
+00163         \textcolor{keywordflow}{default}:
+00164         \{
+00165             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00166         \}
+00167     \}
+00168 
+00169 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{dc/dee/a00053_a2008fa1563c740e4f6c7e1179675f1f7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00053_ab3b441646e86a6cf6ddfe83c1af4e075}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task@{mfield\+\_\+z\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task@{mfield\+\_\+z\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task}]{\setlength{\rightskip}{0pt plus 5cm}void mfield\+\_\+z\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00053_ab3b441646e86a6cf6ddfe83c1af4e075}
+
+
+Supervise the status of the mfield sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ad\+\_\+value} & \\
+\hline
+\end{DoxyParams}
+Supervises mfield sensors element by measuring sensor respond for different illumination level 
+
+Definition at line \hyperlink{a00053_source_l00721}{721} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+Referenced by \hyperlink{a00053_source_l00073}{mfield\+\_\+z\+\_\+sen\+\_\+taskx()}.
+
+
+\begin{DoxyCode}
+00722 \{
+00723 
+00724 
+00725 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{dc/dee/a00053_ab3b441646e86a6cf6ddfe83c1af4e075_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00053_a7ef08302978421a5dc004f06aab80a8a}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+taskx@{mfield\+\_\+z\+\_\+sen\+\_\+taskx}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+taskx@{mfield\+\_\+z\+\_\+sen\+\_\+taskx}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+taskx}]{\setlength{\rightskip}{0pt plus 5cm}void mfield\+\_\+z\+\_\+sen\+\_\+taskx (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+event} $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{a00053_a7ef08302978421a5dc004f06aab80a8a}
+
+
+mfield sensor module task function. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event} & -\/ system distributed event \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00053_source_l00073}{73} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00022_source_l00044}{sv\+\_\+error\+\_\+flags\+\_\+ut\+::flags\+\_\+all}, \hyperlink{a00036_source_l00064}{x\+\_\+event\+::message}, \hyperlink{a00019_a946af134546e64739ccfd37633480dc2}{x\+\_\+notify\+\_\+mfield\+\_\+sen\+\_\+sv\+\_\+report\+::message}, \hyperlink{a00053_source_l00733}{mfield\+\_\+z\+\_\+sen\+\_\+false\+\_\+positive\+\_\+correction\+\_\+task()}, \hyperlink{a00053_source_l00721}{mfield\+\_\+z\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task()}, \hyperlink{a00019_source_l00090}{x\+\_\+notify\+\_\+mfield\+\_\+sen\+\_\+sv\+\_\+report\+::notify}, \hyperlink{a00027_source_l00053}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+errors\+\_\+flags}, \hyperlink{a00027_source_l00028}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+status\+\_\+ntf}, \hyperlink{a00025_source_l00012}{X\+\_\+\+M\+S\+G\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}, and \hyperlink{a00037_source_l00435}{x\+\_\+send\+\_\+notify()}.
+
+
+\begin{DoxyCode}
+00074 \{
+00075     \textcolor{keywordflow}{switch}(event->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message})
+00076     \{
+00077 
+00078         \textcolor{keywordflow}{case} \hyperlink{a00025_a510020575747f82c587c5485b8619f78}{X\_MSG\_MFIELD\_SENSOR\_SV}:
+00079         \{
+00080             \hyperlink{a00053_ab3b441646e86a6cf6ddfe83c1af4e075}{mfield\_z\_sen\_sensor\_element\_sv\_task}();
+00081             \hyperlink{a00053_a36a65e3e838c4f7be43267a10532d318}{mfield\_z\_sen\_false\_positive\_correction\_task}();
+00082 
+00083             \textcolor{keywordflow}{if}(\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.
+      \hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all}!=0)\{
+00084              \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_a752b00333ec308e07c6bd41aa9a01e73}{sv\_status\_ntf}.
+      \hyperlink{a00019_a946af134546e64739ccfd37633480dc2}{message}.error\_status\_flags = \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags};
+00085              \textcolor{comment}{// Send notification to Algorithm module about error}
+00086              \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.
+      \hyperlink{a00027_a752b00333ec308e07c6bd41aa9a01e73}{sv\_status\_ntf}.\hyperlink{a00019_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify});
+00087              \hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.
+      \hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all} =0;
+00088             \}
+00089 
+00090         \}\textcolor{keywordflow}{break};
+00091 
+00092 
+00093 
+00094 
+00095 
+00096 
+00097         \textcolor{keywordflow}{default}:
+00098         \{
+00099             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00100         \}
+00101     \}
+00102 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{dc/dee/a00053_a7ef08302978421a5dc004f06aab80a8a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00053_a8830f50d7a451bec0a7d61c44d5cd98b}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+zero\+\_\+cross@{mfield\+\_\+z\+\_\+zero\+\_\+cross}}
+\index{mfield\+\_\+z\+\_\+zero\+\_\+cross@{mfield\+\_\+z\+\_\+zero\+\_\+cross}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+zero\+\_\+cross}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bool} mfield\+\_\+z\+\_\+zero\+\_\+cross (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00053_a8830f50d7a451bec0a7d61c44d5cd98b}
+
+
+Claculate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+T\+O\+D\+O\+: angular freq = 2$\ast$\+P\+I/(this\+\_\+time -\/ last\+\_\+cross\+\_\+time) 
+
+Definition at line \hyperlink{a00053_source_l00203}{203} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+
+
+References \hyperlink{a00019_source_l00108}{module\+\_\+status\+\_\+mfield\+\_\+t\+::current}, \hyperlink{a00040_source_l00086}{F\+A\+L\+S\+E}, \hyperlink{a00027_source_l00047}{mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t\+::module\+\_\+status}, \hyperlink{a00019_source_l00104}{state\+\_\+data\+\_\+mfield\+\_\+t\+::polarity}, \hyperlink{a00019_source_l00110}{module\+\_\+status\+\_\+mfield\+\_\+t\+::previous}, and \hyperlink{a00040_source_l00084}{T\+R\+U\+E}.
+
+
+\begin{DoxyCode}
+00203                               \{
+00204 
+00205     \textcolor{keywordflow}{if}((\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.\hyperlink{a00019_adcb859b2f3983a9c58deab28e59c333f}{previous}.
+      \hyperlink{a00019_a45152a3cd909463d7c924c30b575a073}{polarity}*\hyperlink{a00053_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data}.\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status}.
+      \hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{current}.\hyperlink{a00019_a45152a3cd909463d7c924c30b575a073}{polarity})<=0)
+00207     \textcolor{keywordflow}{return} \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00208     \textcolor{keywordflow}{else}
+00209     \textcolor{keywordflow}{return} \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00210 
+00211 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00053_ae42bea09c571df9fad890518725d5cf4}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+data@{mfield\+\_\+z\+\_\+sen\+\_\+data}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+data@{mfield\+\_\+z\+\_\+sen\+\_\+data}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mfield\+\_\+z\+\_\+sen\+\_\+data\+\_\+t} mfield\+\_\+z\+\_\+sen\+\_\+data}}\label{a00053_ae42bea09c571df9fad890518725d5cf4}
+
+
+Internal mfield\+\_\+z\+\_\+sen module data. 
+
+
+
+Definition at line \hyperlink{a00053_source_l00022}{22} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+
+\hypertarget{a00053_a8b08b70b0141a3a5c4b0f6097b49d437}{\index{mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}!mfield\+\_\+z\+\_\+sen\+\_\+id@{mfield\+\_\+z\+\_\+sen\+\_\+id}}
+\index{mfield\+\_\+z\+\_\+sen\+\_\+id@{mfield\+\_\+z\+\_\+sen\+\_\+id}!mfield\+\_\+z\+\_\+sensor.\+c@{mfield\+\_\+z\+\_\+sensor.\+c}}
+\subsubsection[{mfield\+\_\+z\+\_\+sen\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf x\+\_\+task\+\_\+id} mfield\+\_\+z\+\_\+sen\+\_\+id}}\label{a00053_a8b08b70b0141a3a5c4b0f6097b49d437}
+
+
+Definition at line \hyperlink{a00053_source_l00023}{23} of file \hyperlink{a00053_source}{mfield\+\_\+z\+\_\+sensor.\+c}.
+

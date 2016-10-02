@@ -1,0 +1,113 @@
+\hypertarget{a00111_source}{\section{Osc\+Sin\+Cos.\+h}
+\label{a00111_source}\index{Osc\+Sin\+Cos.\+h@{Osc\+Sin\+Cos.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*****************************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{        OscSinCos.h}
+00004 \textcolor{comment}{        By Laurent de Soras}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{--- Legal stuff ---}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{This program is free software. It comes without any warranty, to}
+00009 \textcolor{comment}{the extent permitted by applicable law. You can redistribute it}
+00010 \textcolor{comment}{and/or modify it under the terms of the Do What The Fuck You Want}
+00011 \textcolor{comment}{To Public License, Version 2, as published by Sam Hocevar. See}
+00012 \textcolor{comment}{http://sam.zoy.org/wtfpl/COPYING for more details.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{*Tab=3***********************************************************************/}
+00015 
+00016 
+00017 
+00018 \textcolor{preprocessor}{#if ! defined (ffft\_OscSinCos\_HEADER\_INCLUDED)}
+00019 \textcolor{preprocessor}{#define ffft\_OscSinCos\_HEADER\_INCLUDED}
+00020 
+00021 \textcolor{preprocessor}{#if defined (\_MSC\_VER)}
+00022 \textcolor{preprocessor}{    #pragma once}
+00023 \textcolor{preprocessor}{    #pragma warning (4 : 4250) // "Inherits via dominance."}
+00024 \textcolor{preprocessor}{#endif}
+00025 
+00026 
+00027 
+00028 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) INCLUDE FILES \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00029 
+00030 \textcolor{preprocessor}{#include    "\hyperlink{a00089}{def.h}"}
+00031 
+00032 
+00033 
+00034 \textcolor{keyword}{namespace }\hyperlink{a00142}{ffft}
+00035 \{
+00036 
+00037 
+00038 
+00039 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>
+\hypertarget{a00111_source_l00040}{}\hyperlink{a00020}{00040} \textcolor{keyword}{class }\hyperlink{a00020}{OscSinCos}
+00041 \{
+00042 
+00043 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PUBLIC \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00044 
+00045 \textcolor{keyword}{public}:
+00046 
+\hypertarget{a00111_source_l00047}{}\hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{00047}     \textcolor{keyword}{typedef} T   \hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{DataType};
+00048 
+00049                         \hyperlink{a00020_aed332791021f51d86b05594629244f1e}{OscSinCos} ();
+00050 
+00051     \hyperlink{a00089_a31b2ada863c9efa7455efae4e13661f3}{ffft\_FORCEINLINE} \textcolor{keywordtype}{void}
+00052                         \hyperlink{a00020_ad41139a76b16a5af136d1e730a9143dc}{set\_step} (\textcolor{keywordtype}{double} angle\_rad);
+00053 
+00054     \hyperlink{a00089_a31b2ada863c9efa7455efae4e13661f3}{ffft\_FORCEINLINE} DataType
+00055                         \hyperlink{a00020_aa903b64bed3d46a27aeb5af7d7154eb3}{get\_cos} () \textcolor{keyword}{const};
+00056     \hyperlink{a00089_a31b2ada863c9efa7455efae4e13661f3}{ffft\_FORCEINLINE} DataType
+00057                         \hyperlink{a00020_a3e336802d9e10288483d477bfdf50c20}{get\_sin} () \textcolor{keyword}{const};
+00058     \hyperlink{a00089_a31b2ada863c9efa7455efae4e13661f3}{ffft\_FORCEINLINE} \textcolor{keywordtype}{void}
+00059                         \hyperlink{a00020_a442975ce6388271ea78998c080364e08}{step} ();
+00060     \hyperlink{a00089_a31b2ada863c9efa7455efae4e13661f3}{ffft\_FORCEINLINE} \textcolor{keywordtype}{void}
+00061                         \hyperlink{a00020_a1be4a9ec10517ae2615d2925c05d7d29}{clear\_buffers} ();
+00062 
+00063 
+00064 
+00065 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PROTECTED \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00066 
+00067 \textcolor{keyword}{protected}:
+00068 
+00069 
+00070 
+00071 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PRIVATE \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00072 
+00073 \textcolor{keyword}{private}:
+00074 
+00075     DataType            \_pos\_cos;       \textcolor{comment}{// Current phase expressed with sin and cos. [-1 ; 1]}
+00076     DataType            \_pos\_sin;       \textcolor{comment}{// -}
+00077     DataType            \_step\_cos;      \textcolor{comment}{// Phase increment per step, [-1 ; 1]}
+00078     DataType            \_step\_sin;      \textcolor{comment}{// -}
+00079 
+00080 
+00081 
+00082 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) FORBIDDEN MEMBER FUNCTIONS \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00083 
+00084 \textcolor{keyword}{private}:
+00085 
+00086                         \hyperlink{a00020_aed332791021f51d86b05594629244f1e}{OscSinCos} (\textcolor{keyword}{const} \hyperlink{a00020}{OscSinCos} &other);
+00087     \hyperlink{a00020}{OscSinCos} &        operator = (\textcolor{keyword}{const} \hyperlink{a00020}{OscSinCos} &other);
+00088     \textcolor{keywordtype}{bool}                operator == (\textcolor{keyword}{const} \hyperlink{a00020}{OscSinCos} &other);
+00089     \textcolor{keywordtype}{bool}                operator != (\textcolor{keyword}{const} \hyperlink{a00020}{OscSinCos} &other);
+00090 
+00091 \};  \textcolor{comment}{// class OscSinCos}
+00092 
+00093 
+00094 
+00095 \}   \textcolor{comment}{// namespace ffft}
+00096 
+00097 
+00098 
+00099 \textcolor{preprocessor}{#include    "\hyperlink{a00112}{OscSinCos.hpp}"}
+00100 
+00101 
+00102 
+00103 \textcolor{preprocessor}{#endif  // ffft\_OscSinCos\_HEADER\_INCLUDED}
+00104 
+00105 
+00106 
+00107 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) EOF \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+\end{DoxyCode}

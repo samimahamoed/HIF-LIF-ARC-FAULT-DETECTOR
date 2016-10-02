@@ -1,0 +1,51 @@
+<map id="mouseReleaseEvent" name="mouseReleaseEvent">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#abf635f8b56ab5c16d5de9f358543e82b" title="This signal is emitted when an axis is clicked. " alt="" coords="273,77,348,104"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a6085478fe8ba07b2a192cf8217133cb3" title="handleAxisSelection" alt="" coords="241,128,381,155"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#aa1ad9839539b4cdf9f7da768336650f2" title="handleItemSelection" alt="" coords="241,229,380,256"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a793e4b04e0ede11a733021907368fa83" title="Returns the item at the pixel position pos. " alt="" coords="547,107,607,133"/>
+<area shape="rect" id="node13" href="$d6/d97/a00045.html#a44cdc6af6cd6e62a2bd827c3236c7261" title="QCPLegend::handleLegendSelection" alt="" coords="193,528,428,555"/>
+<area shape="rect" id="node14" href="$d6/d97/a00045.html#a6388446e0906b21ebf3a92310570e73e" title="Returns whether the point pos in pixels hits the legend rect. " alt="" coords="476,259,679,285"/>
+<area shape="rect" id="node15" href="$d6/d97/a00045.html#a8bbb0b003cc93f07dff1d69416b606f0" title="When the point pos in pixels hits a legend item, the item is returned. " alt="" coords="485,309,670,336"/>
+<area shape="rect" id="node24" href="$d4/d3e/a00116.html#a881c8652ebb912345de27687817845cf" title="handlePlottableSelection" alt="" coords="228,805,393,832"/>
+<area shape="rect" id="node25" href="$d4/d3e/a00116.html#ac1d1bc6ae4e13616fb02cef6d9e2188e" title="Returns the plottable at the pixel position pos. " alt="" coords="535,797,619,824"/>
+<area shape="rect" id="node32" href="$d4/d3e/a00116.html#ae688ab743e775cd0c69941a082dd32e3" title="handleTitleSelection" alt="" coords="241,907,380,933"/>
+<area shape="rect" id="node33" href="$d4/d3e/a00116.html#a2a2d01a092840ac01b16104f7973f831" title="selectTestTitle" alt="" coords="524,965,631,992"/>
+<area shape="rect" id="node36" href="$d4/d3e/a00116.html#ae16b51f52d2b7aebbc7e3e74e6ff2e4b" title="This signal is emitted when an item is clicked. " alt="" coords="273,957,349,984"/>
+<area shape="rect" id="node37" href="$d4/d3e/a00116.html#a79cff0baafbca10a3aaf694d2d3b9ab3" title="This signal is emitted when a legend (item) is clicked. " alt="" coords="266,1008,355,1035"/>
+<area shape="rect" id="node38" href="$d4/d3e/a00116.html#ac8dc0ee6bb98e923c00b4ebafbe6134d" title="This signal is emitted when the QCustomPlot receives a mouse release event. " alt="" coords="257,1059,365,1085"/>
+<area shape="rect" id="node39" href="$d4/d3e/a00116.html#a57e5efa8a854620e9bf62d31fc139f53" title="This signal is emitted when a plottable is clicked. " alt="" coords="261,1109,361,1136"/>
+<area shape="rect" id="node40" href="$d4/d3e/a00116.html#a563540b54b2a09c8ef092d42e9621f42" title="Causes a complete replot (axes, labels, graphs, etc.) into the internal buffer. " alt="" coords="283,1160,338,1187"/>
+<area shape="rect" id="node44" href="$d4/d3e/a00116.html#a500c64a109bc773c973ad274f2fa4190" title="This signal is emitted after the user has changed the selection in the QCustomPlot, e.g. " alt="" coords="227,1211,395,1237"/>
+<area shape="rect" id="node45" href="$d3/dfe/a00025.html#a940be5ef61f4fa0dc21e4f4c7a5875c2" title="Returns the part of the axis that is hit by pos (in pixels). " alt="" coords="239,1261,383,1288"/>
+<area shape="rect" id="node46" href="$d4/d3e/a00116.html#af6f91e5eab1be85f67c556e98c3745e8" title="Sets which elements are forcibly drawn antialiased as an or combination of QCP::AntialiasedElement. " alt="" coords="231,1312,390,1339"/>
+<area shape="rect" id="node48" href="$d4/d3e/a00116.html#ae10d685b5eabea2999fb8775ca173c24" title="Sets which elements are forcibly drawn not antialiased as an or combination of QCP::AntialiasedElemen..." alt="" coords="221,1363,400,1389"/>
+<area shape="rect" id="node50" href="$d4/d3e/a00116.html#a969beb5e4b7e8864e5e349fcda4ce45b" title="This signal is emitted when the plot title is clicked. " alt="" coords="275,1413,347,1440"/>
+<area shape="rect" id="node11" href="$d7/de0/a00022.html#a225865808640d8d9a7dd19f09a2e93f2" title="QCPAbstractItem::selected" alt="" coords="745,208,927,235"/>
+<area shape="rect" id="node12" href="$d7/de0/a00022.html#a203de94ad586cc44d16c9565f49d3378" title="Sets whether this item is selected or not. " alt="" coords="477,208,678,235"/>
+<area shape="rect" id="node6" href="$d7/de0/a00022.html#a538e25ff8856534582f5b2b400a46405" title="QCPAbstractItem::clipRect" alt="" coords="747,157,925,184"/>
+<area shape="rect" id="node8" href="$d7/de0/a00022.html#a5b0ea171823033bcb8aee81f4a034871" title="QCPAbstractItem::clipToAxisRect" alt="" coords="727,56,945,83"/>
+<area shape="rect" id="node9" href="$d7/de0/a00022.html#a9189e752025533e1595eaade0009a3bc" title="QCPAbstractItem::selectable" alt="" coords="741,107,931,133"/>
+<area shape="rect" id="node10" href="$d7/de0/a00022.html#a2e19e88f67f4ba9c13b7e33bd447c075" title="This function is used to decide whether a click hits an item or not. " alt="" coords="740,5,932,32"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#a7fe5b84f4891838b63ed5181f5811dc5" title="QCPAxis::axisRect" alt="" coords="993,391,1128,417"/>
+<area shape="rect" id="node16" href="$d6/d97/a00045.html#a459f39581d1eba9ee80557837601e21c" title="QCPLegend::selectable" alt="" coords="498,360,657,387"/>
+<area shape="rect" id="node17" href="$d3/d52/a00023.html#a0a0205f33f37edae50826c24cb8f1983" title="QCPAbstractLegendItem\l::selectable" alt="" coords="494,411,661,453"/>
+<area shape="rect" id="node18" href="$d6/d97/a00045.html#a10948e896935ad14f374e6f712afaae9" title="QCPLegend::selected" alt="" coords="761,492,911,519"/>
+<area shape="rect" id="node19" href="$d6/d97/a00045.html#a752c48b30f8ba870b55e79659385f107" title="Sets the selected state of the respective legend parts described by SelectablePart. " alt="" coords="493,528,662,555"/>
+<area shape="rect" id="node20" href="$d3/d52/a00023.html#ac776e68e3367704452131c6aa9908bb9" title="QCPAbstractLegendItem\l::selected" alt="" coords="753,557,919,598"/>
+<area shape="rect" id="node21" href="$d3/d52/a00023.html#a6eed93b0ab99cb3eabb043fb08179c2b" title="Sets whether this specific legend item is selected. " alt="" coords="494,630,661,671"/>
+<area shape="rect" id="node22" href="$d6/d97/a00045.html#a198228e9cdc78d3a3c306fa6763d0404" title="Returns the number of items currently in the legend. " alt="" coords="498,696,657,723"/>
+<area shape="rect" id="node23" href="$d6/d97/a00045.html#a454272d7094437beb3278a2294006da5" title="Returns the item with index i. " alt="" coords="515,747,640,773"/>
+<area shape="rect" id="node30" href="$dc/de2/a00024.html#ab901903adcb0e29467d63de72340ab29" title="QCPAbstractPlottable\l::selected" alt="" coords="761,935,911,977"/>
+<area shape="rect" id="node31" href="$dc/de2/a00024.html#afbd5428c2952f59d952e11ab5cd79176" title="Sets whether this plottable is selected or not. " alt="" coords="502,899,653,941"/>
+<area shape="rect" id="node26" href="$dc/de2/a00024.html#af895574da1ec0d050711b6c9deda296a" title="QCPAbstractPlottable\l::selectable" alt="" coords="761,739,911,781"/>
+<area shape="rect" id="node27" href="$dc/de2/a00024.html#a72c7a09c22963f2c943f07112b311103" title="QCPAbstractPlottable\l::keyAxis" alt="" coords="761,805,911,846"/>
+<area shape="rect" id="node28" href="$dc/de2/a00024.html#a3106f9d34d330a6097a8ec5905e5b519" title="QCPAbstractPlottable\l::valueAxis" alt="" coords="761,870,911,911"/>
+<area shape="rect" id="node29" href="$dc/de2/a00024.html#a0fd218d6c4974b6ab05bd2f688818556" title="This function is used to decide whether a click hits a plottable or not. " alt="" coords="761,674,911,715"/>
+<area shape="rect" id="node34" href="$d4/d3e/a00116.html#aa89e06c04804ff2a0994ccb1aa80d131" title="Sets whether the plot title is selected. " alt="" coords="520,1016,635,1043"/>
+<area shape="rect" id="node35" href="$d4/d3e/a00116.html#a23f3f4b312d1d78837f2a3602792d8e3" title="titleSelected" alt="" coords="530,1067,625,1093"/>
+<area shape="rect" id="node41" href="$d4/d3e/a00116.html#a0cd30e29b73efd6afe096e44bc5956f5" title="This signal is emitted immediately before a replot takes place (caused by a call to the slot replot)..." alt="" coords="530,1117,625,1144"/>
+<area shape="rect" id="node42" href="$d4/d3e/a00116.html#a2e9b3d14dffa43c79835869d488936c9" title="draw" alt="" coords="553,1168,602,1195"/>
+<area shape="rect" id="node43" href="$d4/d3e/a00116.html#a6f4fa624af060bc5919c5f266cf426a0" title="This signal is emitted immediately after a replot has taken place (caused by a call to the slot replo..." alt="" coords="535,1219,619,1245"/>
+<area shape="rect" id="node47" href="$d4/d3e/a00116.html#acc24388098ddb95f5a651cede3f34b99" title="antialiasedElements" alt="" coords="508,1312,647,1339"/>
+<area shape="rect" id="node49" href="$d4/d3e/a00116.html#ad611ed86732d07774545f5bd4b7f18b7" title="notAntialiasedElements" alt="" coords="498,1363,657,1389"/>
+</map>

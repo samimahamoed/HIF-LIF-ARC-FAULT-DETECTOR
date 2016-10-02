@@ -1,0 +1,127 @@
+.TH "module_disturbance_record_t" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+module_disturbance_record_t \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <nov_data\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "struct \fB__attribute__\fP ((packed, aligned(4)))"
+.br
+.in -1c
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "\fBpre_act_record_buffer_t\fP \fBpre_act_data\fP"
+.br
+.ti -1c
+.RI "\fBpost_act_record_buffer_t\fP \fBpost_act_data\fP"
+.br
+.ti -1c
+.RI "\fBUint16\fP \fBobservation_cnt\fP"
+.br
+.ti -1c
+.RI "\fBUint16\fP \fBevent_positive_cnt\fP"
+.br
+.ti -1c
+.RI "\fBevent_data\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 173 of file nov_data\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "struct __attribute__ ((packed, aligned(4)))\fC [inline]\fP"
+
+.PP
+Definition at line 185 of file nov_data\&.h\&.
+.PP
+.nf
+186    {
+187      Uint16                     initial_amp;
+188     union{
+189         Uint16 all;
+190         struct{
+191             Uint16 dfdt_max:1;
+192             Uint16 amp_max:1;
+193             Uint16 dfdt_impulse:1;
+194             Uint16 dfdt_min:1;
+195         }bits;
+196     }exceeded_threshold;
+197 
+198 
+199     struct{
+200     union{
+201         Uint16 all;
+202         struct{
+203             Uint16 initial  :4;
+204             Uint16 mid      :4;
+205             Uint16 final    :4;
+206             Uint16          :4;
+207   
+208         }bits;
+209     }history;
+210 
+211     Uint16 cnt;
+212 
+213     }state_transition;
+214 
+215 
+216     struct{
+217      Uint32                    event_detected;
+218      Uint32                    module_active;
+219      Uint32                    global_active;
+220     }timestamp;
+221 
+222 
+223 
+224     Float32                    event_probability;
+225 
+226     
+227 
+228     }event_data;
+.fi
+.SH "Field Documentation"
+.PP 
+.SS "event_data"
+
+.PP
+Definition at line 228 of file nov_data\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), light_sen_get_status(), light_sen_mark_false_postives(), mfield_x_sen_get_status(), mfield_z_sen_mark_false_postives(), and uv_sen_get_status()\&.
+.SS "\fBUint16\fP event_positive_cnt"
+
+.PP
+Definition at line 182 of file nov_data\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), light_sen_calc_probablity(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "\fBUint16\fP observation_cnt"
+
+.PP
+Definition at line 180 of file nov_data\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), light_sen_calc_probablity(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "\fBpost_act_record_buffer_t\fP post_act_data"
+
+.PP
+Definition at line 177 of file nov_data\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "\fBpre_act_record_buffer_t\fP pre_act_data"
+
+.PP
+Definition at line 176 of file nov_data\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

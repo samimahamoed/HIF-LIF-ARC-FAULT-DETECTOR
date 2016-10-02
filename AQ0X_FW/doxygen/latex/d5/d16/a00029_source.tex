@@ -1,0 +1,95 @@
+\hypertarget{a00029_source}{\section{srv\+\_\+nov.\+h}
+\label{a00029_source}\index{srv\+\_\+nov.\+h@{srv\+\_\+nov.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef SRV\_NOV\_H}
+00002 \textcolor{preprocessor}{#define SRV\_NOV\_H}
+00003 
+\hypertarget{a00029_source_l00011}{}\hyperlink{a00029_a5fadc1fcee76b0cab65e127bcd21b314}{00011} \textcolor{preprocessor}{#define lo(\_x)   (unsigned char)(\_x&0x00ff)}
+\hypertarget{a00029_source_l00012}{}\hyperlink{a00029_ad27bf81761e0eaf90d05c3eb4d343d5a}{00012} \textcolor{preprocessor}{#define hi(\_x)   (unsigned char)((\_x>>8)&0x00ff)}
+00013 
+00014 \textcolor{comment}{//type specifier}
+\hypertarget{a00029_source_l00015}{}\hyperlink{a00029_ad8a20d143f6a7579ed227578aeddec21}{00015} \textcolor{preprocessor}{#define SERIAL\_NUMBER                          0}
+\hypertarget{a00029_source_l00016}{}\hyperlink{a00029_a457be1c5e5fee67ed7d01f5887c2d656}{00016} \textcolor{preprocessor}{#define DEVICE\_ADDRESS                         1}
+00017 
+00018 
+\hypertarget{a00029_source_l00019}{}\hyperlink{a00029_aa3471d8e4814035dc24211c0890899bb}{00019} \textcolor{preprocessor}{#define NOV\_OVERWRITE\_ALL                                      0xED}
+00020 
+\hypertarget{a00029_source_l00022}{}\hyperlink{a00029_acbac04a78072f0322171ea94017f246e}{00022} \textcolor{preprocessor}{#define NOV\_CHIP\_SIZE                                          16384}
+00023 \textcolor{preprocessor}{#define NOV\_PAGE\_SIZE                                          64}
+00025 
+00026 
+00028 
+\hypertarget{a00029_source_l00029}{}\hyperlink{a00029_ab7dc1ea8a7f6e16cf27fbfe88efd7285}{00029} \textcolor{preprocessor}{#define NOV\_SERIAL\_NUMBER\_MEM\_ADDRESS                          0}
+00030 
+\hypertarget{a00029_source_l00031}{}\hyperlink{a00029_a3ddbe5b40319c96bfe46429e902f8d33}{00031} \textcolor{preprocessor}{#define NOV\_DEVICE\_ID\_MEM\_ADDRESS                              NOV\_SERIAL\_NUMBER\_MEM\_ADDRESS +
+       sizeof(Uint32)}
+00032 
+\hypertarget{a00029_source_l00033}{}\hyperlink{a00029_a3d5917eef9709c44acd2e6314619f440}{00033} \textcolor{preprocessor}{#define NOV\_FIRST\_DATA\_SET\_ADDRESS                             NOV\_PAGE\_SIZE}
+00034 
+\hypertarget{a00029_source_l00035}{}\hyperlink{a00029_ab062741a69ee7156fbdf317ec627b4ca}{00035} \textcolor{preprocessor}{#define NOV\_SECOND\_DATA\_SET\_ADDRESS                            ((NOV\_CHIP\_SIZE - 20*NOV\_PAGE\_SIZE))  //sets
+       1280 byte}
+00036 
+00037 
+00038 \textcolor{comment}{/* 25AA640A/25LC640A serial eeprom interface commands */}
+00039 
+00040 \textcolor{preprocessor}{#define NOV\_HOLD\_CTRL\_TRIS                                     TRISBbits.TRISB13}
+00041 \textcolor{preprocessor}{#define NOV\_HOLD\_CTRL\_LAT                                      LATBbits.LATB13}
+\hypertarget{a00029_source_l00042}{}\hyperlink{a00029_a9d4dca4a65e8cabd1d733922725309e4}{00042} \textcolor{preprocessor}{#define NOV\_CMD\_READ                                          (Uint8)0b00000011}
+\hypertarget{a00029_source_l00043}{}\hyperlink{a00029_a031aab76ddb1258273541a65d70acbe1}{00043} \textcolor{preprocessor}{#define NOV\_CMD\_WRITE                                         (Uint8)0b00000010}
+\hypertarget{a00029_source_l00044}{}\hyperlink{a00029_a3924df5fbf1e1ff642a9bde06e17b69d}{00044} \textcolor{preprocessor}{#define NOV\_CMD\_WRDI                                          (Uint8)0b00000100}
+\hypertarget{a00029_source_l00045}{}\hyperlink{a00029_acc9f91a7c7d40a32755560dda080cf98}{00045} \textcolor{preprocessor}{#define NOV\_CMD\_WREN                                          (Uint8)0b00000110}
+\hypertarget{a00029_source_l00046}{}\hyperlink{a00029_a55309727a3055fdebf8df6e9d0f72fea}{00046} \textcolor{preprocessor}{#define NOV\_CMD\_RDSR                                          (Uint8)0b00000101}
+\hypertarget{a00029_source_l00047}{}\hyperlink{a00029_a8e00cafebecc8bdde750bb02e504b124}{00047} \textcolor{preprocessor}{#define NOV\_CMD\_WRSR                                          (Uint8)0b00000001}
+00048 
+00049 
+00050 \textcolor{comment}{/* the mask size depends on page size */}
+00051 \textcolor{preprocessor}{#if   NOV\_PAGE\_SIZE == 16}
+00052 \textcolor{preprocessor}{#define NOV\_PAGE\_MASK         0xf}
+00053 \textcolor{preprocessor}{#elif NOV\_PAGE\_SIZE == 32}
+00054 \textcolor{preprocessor}{#define NOV\_PAGE\_MASK         0x1f}
+00055 \textcolor{preprocessor}{#elif NOV\_PAGE\_SIZE == 64}
+\hypertarget{a00029_source_l00056}{}\hyperlink{a00029_a9eddef3795715df4279af5e0ddd92a87}{00056} \textcolor{preprocessor}{#define NOV\_PAGE\_MASK         0x003f}
+00057 \textcolor{preprocessor}{#endif}
+00058 
+00059 
+\hypertarget{a00029_source_l00061}{}\hyperlink{a00029}{00061} \textcolor{keyword}{typedef} \textcolor{keyword}{union}\{
+\hypertarget{a00029_source_l00062}{}\hyperlink{a00029_a2625a533c46821f49caaf4dcc77316b1}{00062}     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00029_a2625a533c46821f49caaf4dcc77316b1}{all};
+\hypertarget{a00029_source_l00063}{}\hyperlink{a00029}{00063}     \textcolor{keyword}{struct}\{
+00064     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}    WIP:1;
+00065     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}    WEL:1;
+00066     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}    BP0:1;
+00067     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}    BP1:1;
+00068     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}    RESERVED:3;
+00069     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}    WPEN:1;
+00070     \}bits;
+00071 \}\hyperlink{a00029_d0/d1c/a00605}{NOV\_STATREG};
+00072 
+00073 \textcolor{keyword}{extern} \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}     \hyperlink{a00029_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress};
+00074 
+00075 
+00076 \textcolor{keywordtype}{void}             \hyperlink{a00029_a9aa94b184db1bd55b6a4a61a34c14c8d}{nov\_store\_device\_id}(\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32} \textcolor{keywordtype}{id},\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} type);
+00077 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}            \hyperlink{a00029_a8ad2f815848f1668763c01ff9d45a01b}{nov\_init}(\textcolor{keywordtype}{void});
+00078 \textcolor{keywordtype}{void}             \hyperlink{a00029_a90aef186f45a15d94bf0247122194991}{nov\_store}(\textcolor{keywordtype}{void});
+00079 \textcolor{keywordtype}{void}             \hyperlink{a00029_ada4ee53cb163a9ed3e2b4a5c7192690a}{nov\_set\_default}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} overwrite);
+00080 \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}           \hyperlink{a00029_a86b863ea185628aff5a00b4defbbb6e1}{nov\_get\_serial\_number}(\textcolor{keywordtype}{void});
+00081 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}            \hyperlink{a00029_aeb181884e4c104cd984afdd6eb2a2782}{nov\_destroy}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} copy);
+00082 \textcolor{keywordtype}{void}             \hyperlink{a00029_a7b698f4b0088c4e28951c2204b7b821e}{nov\_set\_write\_enable\_latch}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cmd);
+00083 \hyperlink{a00029_d0/d1c/a00605}{NOV\_STATREG}      \hyperlink{a00029_af9ccbc198ed63feb4fd6c18dd934590d}{nov\_get\_status}();
+00084 \textcolor{keywordtype}{void}             \hyperlink{a00029_a495e93d64734be469f6725de24dd44e1}{nov\_write\_status}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} value);
+00085 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}            \hyperlink{a00029_a3f47e1f5179297e173ae8508c7185632}{nov\_byte\_write}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} data,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} address);
+00086 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}            \hyperlink{a00029_adf5af9eb34f1cd301648dfa3c71fe392}{nov\_byte\_read}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} address);
+00087 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}            \hyperlink{a00029_aeb021b0e002db120ad733c24f3e179bc}{nov\_page\_cpy}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} page\_address, \textcolor{keywordtype}{void} * src,
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length);
+00088 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}            \hyperlink{a00029_a3ff681f3af83ec441535611dac6ada16}{nov\_memcpy}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} starting\_address,\textcolor{keywordtype}{void} * dest, 
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length);
+00089 
+00090 
+00091 \textcolor{preprocessor}{#endif //SRV\_NOV\_H}
+00092 
+00093 
+00094 
+00095 
+00096 
+\end{DoxyCode}

@@ -1,0 +1,10 @@
+<map id="QCPItemLine::selectTest" name="QCPItemLine::selectTest">
+<area shape="rect" id="node2" href="$d7/de0/a00022.html#acdca343717d625b8abb3c3e38c0ed39d" title="QCPAbstractItem::distSqr\lToLine" alt="" coords="227,5,400,47"/>
+<area shape="rect" id="node3" href="$d8/d41/a00038.html#ae490f9c76ee2ba33752c495d3b6e8fb5" title="Returns the final absolute pixel position of the QCPItemPosition on the QCustomPlot surface..." alt="" coords="220,71,407,98"/>
+<area shape="rect" id="node4" href="$dc/d87/a00032.html#ae92def8f9297c5d73f5806c586517bb3" title="Returns the final absolute pixel position of the QCPItemAnchor on the QCustomPlot surface..." alt="" coords="455,17,636,43"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#a57483f2f60145ddc9e63f3af53959265" title="Returns the orientation of the axis. " alt="" coords="712,71,856,98"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#a985ae693b842fb0422b4390fe36d299a" title="Transforms value (in coordinates of the axis) to pixel coordinates of the QCustomPlot widget..." alt="" coords="466,122,625,149"/>
+<area shape="rect" id="node5" href="$d7/de0/a00022.html#a94bde62b8a2fc133666dcbb8035deeed" title="QCPAbstractItem::anchorPixel\lPoint" alt="" coords="684,5,884,47"/>
+<area shape="rect" id="node8" href="$d3/dfe/a00025.html#a1385765db2419ee5fb5505a6cf9130fb" title="QCPAxis::baseLog" alt="" coords="717,122,851,149"/>
+<area shape="rect" id="node9" href="$d2/dee/a00049.html#afa57c13049b965edb6fd1c00ac56338a" title="Returns the size of the range, i.e. " alt="" coords="725,173,843,199"/>
+</map>

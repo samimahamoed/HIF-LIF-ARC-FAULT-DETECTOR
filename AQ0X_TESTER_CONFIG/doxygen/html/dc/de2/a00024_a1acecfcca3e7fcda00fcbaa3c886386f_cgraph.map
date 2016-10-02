@@ -1,0 +1,10 @@
+<map id="QCPAbstractPlottable::rescaleKeyAxis" name="QCPAbstractPlottable::rescaleKeyAxis">
+<area shape="rect" id="node2" href="$dc/de2/a00024.html#a7aa24ed0b3c39bd99338c7b9f145a71b" title="QCPAbstractPlottable\l::getKeyRange" alt="" coords="204,5,355,47"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#ab1ea79a4f5ea4cf42620f8f51c477ac4" title="QCPAxis::range" alt="" coords="221,71,337,98"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#a8563e13407bc0616da7f7c84e02de170" title="QCPAxis::scaleType" alt="" coords="208,122,351,149"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a57d6ee9e9009fe88cb19db476ec70bca" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="210,173,349,199"/>
+<area shape="rect" id="node6" href="$d2/dee/a00049.html#ab38bd4841c77c7bb86c9eea0f142dcc0" title="Checks, whether the specified range is within valid bounds, which are defined as QCPRange::maxRange a..." alt="" coords="417,114,575,141"/>
+<area shape="rect" id="node7" href="$d2/dee/a00049.html#aaf6a9046e78d91eeb8e89584fe46b034" title="Returns a sanitized version of the range. " alt="" coords="403,165,589,207"/>
+<area shape="rect" id="node9" href="$d2/dee/a00049.html#a1ff029704c29a75adbc1dc36cecaf44c" title="Returns a sanitized version of the range. " alt="" coords="405,231,587,272"/>
+<area shape="rect" id="node8" href="$d2/dee/a00049.html#af914a7740269b0604d0827c634a878a9" title="Makes sure lower is numerically smaller than upper. " alt="" coords="637,206,788,233"/>
+</map>

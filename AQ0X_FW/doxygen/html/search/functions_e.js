@@ -1,0 +1,13 @@
+var searchData=
+[
+  ['x_5fdelete_5ftimer',['x_delete_timer',['../de/d8c/a00036.html#ab69e9af4cfa717e870d587906283635c',1,'x_delete_timer(x_notify *timer):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#ab69e9af4cfa717e870d587906283635c',1,'x_delete_timer(x_notify *timer):&#160;sys_eventx.c']]],
+  ['x_5finit',['x_init',['../de/d8c/a00036.html#a05f27d3148e368ee84a448f3c4b083dd',1,'x_init(void):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#a05f27d3148e368ee84a448f3c4b083dd',1,'x_init(void):&#160;sys_eventx.c']]],
+  ['x_5finit_5ftask',['x_init_task',['../de/d8c/a00036.html#a1e79db5ed3ab326586129eb4d7b63d46',1,'x_init_task(x_task_fn task_fn, x_notify_fn notify_fn, x_task_id *pHandle_id, const char *task_name):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#a1e79db5ed3ab326586129eb4d7b63d46',1,'x_init_task(x_task_fn task_fn, x_notify_fn notify_fn, x_task_id *pHandle_id, const char *task_name):&#160;sys_eventx.c']]],
+  ['x_5floop',['x_loop',['../de/d8c/a00036.html#a4bb7a012be733e061c913e7b98df642b',1,'x_loop(void):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#a4bb7a012be733e061c913e7b98df642b',1,'x_loop(void):&#160;sys_eventx.c']]],
+  ['x_5fschedule_5ftimer',['x_schedule_timer',['../de/d8c/a00036.html#a9e3befaa21e83f196f74201deed85346',1,'x_schedule_timer(x_notify *timer, Uint16 ticks):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#a9e3befaa21e83f196f74201deed85346',1,'x_schedule_timer(x_notify *timer, Uint16 ticks):&#160;sys_eventx.c']]],
+  ['x_5fsend_5fevent',['x_send_event',['../de/d8c/a00036.html#a4bc3d03c8d62c8237329ed4e969fbc1b',1,'x_send_event(x_event *event):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#a4bc3d03c8d62c8237329ed4e969fbc1b',1,'x_send_event(x_event *event):&#160;sys_eventx.c']]],
+  ['x_5fsend_5fnotify',['x_send_notify',['../de/d8c/a00036.html#ae17b0bb16da3c471bb6074bb4c4d0fee',1,'x_send_notify(x_notify *notify):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#ae17b0bb16da3c471bb6074bb4c4d0fee',1,'x_send_notify(x_notify *notify):&#160;sys_eventx.c']]],
+  ['x_5fstart',['x_start',['../de/d8c/a00036.html#aea907663ecaf77bacfb9f0bfdc11f900',1,'x_start(void):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#aea907663ecaf77bacfb9f0bfdc11f900',1,'x_start(void):&#160;sys_eventx.c']]],
+  ['x_5ftask_5fsend_5firq_5fsync',['x_task_send_irq_sync',['../de/d8c/a00036.html#a9953756bc7c83e5f2c36830396136e75',1,'x_task_send_irq_sync(x_task_id task_id):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#a9953756bc7c83e5f2c36830396136e75',1,'x_task_send_irq_sync(x_task_id task_id):&#160;sys_eventx.c']]],
+  ['x_5ftick',['x_tick',['../de/d8c/a00036.html#acc618db6c04f9d2dce6d3b14b5294e51',1,'x_tick(void):&#160;sys_eventx.c'],['../d1/dc6/a00037.html#acc618db6c04f9d2dce6d3b14b5294e51',1,'x_tick(void):&#160;sys_eventx.c']]]
+];

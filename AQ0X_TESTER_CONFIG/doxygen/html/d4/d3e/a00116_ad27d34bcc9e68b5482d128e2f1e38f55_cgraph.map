@@ -1,0 +1,28 @@
+<map id="setupFullAxesBox" name="setupFullAxesBox">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#ab9a950e16f373fe5c4b79078bb97c171" title="QCPAxis::autoSubTicks" alt="" coords="196,5,359,32"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#ac87454a1342f5d2939ab59e68b4d515b" title="QCPAxis::autoTickCount" alt="" coords="194,56,361,83"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#ae762920261b0c24beb56b893e5a2471d" title="QCPAxis::autoTickStep" alt="" coords="197,107,357,133"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#ab1ea79a4f5ea4cf42620f8f51c477ac4" title="QCPAxis::range" alt="" coords="219,157,335,184"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#ade26dc7994ccd8a11f64fd83377ee021" title="QCPAxis::rangeReversed" alt="" coords="193,208,362,235"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#ac937d2a602f865aff2ab6c1e288739f6" title="QCPAxis::scaleLogBase" alt="" coords="194,259,361,285"/>
+<area shape="rect" id="node8" href="$d3/dfe/a00025.html#a8563e13407bc0616da7f7c84e02de170" title="QCPAxis::scaleType" alt="" coords="206,309,349,336"/>
+<area shape="rect" id="node9" href="$d3/dfe/a00025.html#adcbdec7a60054b88571e89599f4a45bf" title="Sets whether the number of sub ticks in one tick interval is determined automatically. " alt="" coords="186,360,369,387"/>
+<area shape="rect" id="node10" href="$d3/dfe/a00025.html#a7c7111cbeac9ec5fcb40f93a1ef51a0b" title="When setAutoTickStep is true, approximateCount determines how many ticks should be generated in the v..." alt="" coords="184,411,371,437"/>
+<area shape="rect" id="node11" href="$d3/dfe/a00025.html#a99fe77b034e06f5b723995beab96e741" title="Sets whether the tick step, i.e. " alt="" coords="187,461,367,488"/>
+<area shape="rect" id="node12" href="$d3/dfe/a00025.html#a57d6ee9e9009fe88cb19db476ec70bca" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="208,512,347,539"/>
+<area shape="rect" id="node17" href="$d3/dfe/a00025.html#a2172fdb196b1a0dc3f40992fcad8e9e1" title="Sets whether the axis range (direction) is displayed reversed. " alt="" coords="181,563,373,589"/>
+<area shape="rect" id="node18" href="$d3/dfe/a00025.html#a726186054be90487885a748aa1b42188" title="If setScaleType is set to stLogarithmic, base will be the logarithm base of the scaling. " alt="" coords="184,613,371,640"/>
+<area shape="rect" id="node19" href="$d3/dfe/a00025.html#adb6c5c45bdf899ea221881dd3b43b406" title="Sets whether the axis uses a linear scale or a logarithmic scale. " alt="" coords="196,664,359,691"/>
+<area shape="rect" id="node20" href="$d3/dfe/a00025.html#a4b1554ead9d7f9799650d51383e326dd" title="Sets the number of sub ticks in one (major) tick step. " alt="" coords="186,715,369,741"/>
+<area shape="rect" id="node21" href="$d3/dfe/a00025.html#a04ba16e1f6f78d70f938519576ed32c8" title="Sets whether tick labels are displayed. " alt="" coords="195,765,359,792"/>
+<area shape="rect" id="node22" href="$d3/dfe/a00025.html#ac891409315bc379e3b1abdb162c1a011" title="Sets whether tick marks are displayed. " alt="" coords="211,816,344,843"/>
+<area shape="rect" id="node23" href="$d3/dfe/a00025.html#af727db0acc6492c4c774c0700e738205" title="If setAutoTickStep is set to false, use this function to set the tick step manually. " alt="" coords="201,867,354,893"/>
+<area shape="rect" id="node24" href="$d5/df9/a00044.html#a3bed99ddc396b48ce3ebfdc0418744f8" title="Sets the visibility of this layerable object. " alt="" coords="192,917,363,944"/>
+<area shape="rect" id="node25" href="$d3/dfe/a00025.html#a290b4c1375476826daa10e914cb71dab" title="QCPAxis::subTickCount" alt="" coords="196,968,359,995"/>
+<area shape="rect" id="node26" href="$d3/dfe/a00025.html#a61c504ec7c5bed9a63edf45345995d10" title="QCPAxis::ticks" alt="" coords="221,1019,333,1045"/>
+<area shape="rect" id="node27" href="$d3/dfe/a00025.html#a0e6120d24266544441ab691f316a1b03" title="QCPAxis::tickStep" alt="" coords="211,1069,343,1096"/>
+<area shape="rect" id="node13" href="$d2/dee/a00049.html#ab38bd4841c77c7bb86c9eea0f142dcc0" title="Checks, whether the specified range is within valid bounds, which are defined as QCPRange::maxRange a..." alt="" coords="436,483,593,509"/>
+<area shape="rect" id="node14" href="$d2/dee/a00049.html#aaf6a9046e78d91eeb8e89584fe46b034" title="Returns a sanitized version of the range. " alt="" coords="421,599,608,641"/>
+<area shape="rect" id="node16" href="$d2/dee/a00049.html#a1ff029704c29a75adbc1dc36cecaf44c" title="Returns a sanitized version of the range. " alt="" coords="423,534,606,575"/>
+<area shape="rect" id="node15" href="$d2/dee/a00049.html#af914a7740269b0604d0827c634a878a9" title="Makes sure lower is numerically smaller than upper. " alt="" coords="656,575,807,601"/>
+</map>

@@ -1,0 +1,117 @@
+.TH "module_disturbance_record_t" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+module_disturbance_record_t \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <storage_structure\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "struct \fB__attribute__\fP ((packed, aligned(4)))"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBpre_act_record_buffer_t\fP \fBpre_act_data\fP"
+.br
+.ti -1c
+.RI "\fBpost_act_record_buffer_t\fP \fBpost_act_data\fP"
+.br
+.ti -1c
+.RI "\fBUint16\fP \fBobservation_cnt\fP"
+.br
+.ti -1c
+.RI "\fBUint16\fP \fBevent_positive_cnt\fP"
+.br
+.ti -1c
+.RI "\fBevent_data\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 189 of file storage_structure\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "struct module_disturbance_record_t::__attribute__ ((packed, aligned(4)))\fC [inline]\fP"
+
+.PP
+Definition at line 201 of file storage_structure\&.h\&.
+.PP
+.nf
+202    {
+203      Uint16                     initial_amp;
+204     union{
+205         Uint16 all;
+206         struct{
+207             Uint16 dfdt_max:1;
+208             Uint16 amp_max:1;
+209             Uint16 dfdt_impulse:1;
+210             Uint16 dfdt_min:1;
+211         }bits;
+212     }exceeded_threshold;
+213 
+214 
+215     struct{
+216     union{
+217         Uint16 all;
+218         struct{
+219             Uint16 initial  :4;
+220             Uint16 mid      :4;
+221             Uint16 final    :4;
+222             Uint16          :4;
+223 
+224         }bits;
+225     }history;
+226 
+227     Uint16 cnt;
+228 
+229     }state_transition;
+230 
+231 
+232     struct{
+233      Uint32                    event_detected;
+234      Uint32                    module_active;
+235      Uint32                    global_active;
+236     }timestamp;
+237 
+238 
+239 
+240     Float32                    event_probability;
+241 
+242 
+243 
+244     }event_data;
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "module_disturbance_record_t::event_data"
+
+.PP
+Definition at line 244 of file storage_structure\&.h\&.
+.SS "\fBUint16\fP module_disturbance_record_t::event_positive_cnt"
+
+.PP
+Definition at line 198 of file storage_structure\&.h\&.
+.SS "\fBUint16\fP module_disturbance_record_t::observation_cnt"
+
+.PP
+Definition at line 196 of file storage_structure\&.h\&.
+.SS "\fBpost_act_record_buffer_t\fP module_disturbance_record_t::post_act_data"
+
+.PP
+Definition at line 193 of file storage_structure\&.h\&.
+.SS "\fBpre_act_record_buffer_t\fP module_disturbance_record_t::pre_act_data"
+
+.PP
+Definition at line 192 of file storage_structure\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

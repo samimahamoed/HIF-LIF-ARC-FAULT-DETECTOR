@@ -1,0 +1,174 @@
+.TH "main.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+main.c \- 
+.PP
+Low-level startup , calls OS initalization\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP (void)"
+.br
+.RI "\fISystem startup function\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBsqtp_t\fP \fBsqtp_info\fP"
+.br
+.RI "\fIOscilator setting Run this project using an internal FRC\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Low-level startup , calls OS initalization\&. 
+
+
+.PP
+Definition in file \fBmain\&.c\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "int main (void)"
+
+.PP
+System startup function\&. Configures operating system and basic system independent services Configure Oscillator to operate the device at 60MIPS Fpll_out= Fin*M/(N1*N2)=Fin*(PLLDIV+2)/((PLLPRE+2)+(PLLPOST+1)), Fcy=Fosc/2 Fvco = Fin*M/N1 = Fin*(PLLDIV+2)/(PLLPRE+2) Fpll_out = 7\&.37M*65/(2*3) = 80Mhz for 7\&.37MHz FRC input clock
+.PP
+Init watchdog\&. Initial kick\&.
+.PP
+Watchdog kick - before OS starts
+.PP
+Definition at line 80 of file main\&.c\&.
+.PP
+References algorithm_id, algorithm_notifyx(), algorithm_taskx(), data_non_volatile, hwio_configure_init(), hwio_execute_gpio_task(), hwio_get_analog(), HWIO_SV_LED_OFF, HWIO_SV_LED_ON, ir_sen_id, ir_sen_notifyx(), ir_sen_taskx(), light_sen_id, light_sen_notifyx(), light_sen_taskx(), mfield_x_sen_id, mfield_x_sen_notifyx(), mfield_x_sen_taskx(), mfield_y_sen_id, mfield_y_sen_notifyx(), mfield_y_sen_taskx(), nov_get_serial_number(), RANGE_MAX_8BIT, serial_init(), sqtp_t::serial_number, spi_init(), srv_wdg_init, srv_wdg_kick, SV_CURREN_OUTPUT_LEVEL, uv_sen_id, uv_sen_notifyx(), uv_sen_taskx(), x_init(), x_init_task(), x_loop(), and x_start()\&.
+.PP
+.nf
+81 {
+90 // Configure PLL prescaler, PLL postscaler, PLL divisor
+91 PLLFBD=63;                                           // M=65
+92 CLKDIVbits\&.PLLPOST=0;                                // N2=2
+93 CLKDIVbits\&.PLLPRE =0;                                // N1=3 //TODO: other option set to N1 = 2
+94 // Initiate Clock Switch to FRC oscillator with PLL (NOSC=0b001)
+95 __builtin_write_OSCCONH(0x01);
+96 __builtin_write_OSCCONL(OSCCON | 0x01);
+97 // Wait for Clock switch to occur
+98 while (OSCCONbits\&.COSC!= 0b001);
+99 // Wait for PLL to lock
+100 while (OSCCONbits\&.LOCK!= 1);
+101 
+102 
+103 
+104 
+105 #if !defined(__DEBUG)
+106    // _SWDTEN = 1;
+107 #endif
+108 
+113     srv_wdg_init();
+114     srv_wdg_kick();
+115         
+116 
+117   
+118     // Init hwio
+119     hwio_configure_init();
+120     
+121 
+122 
+123     {
+124     hwio_execute_gpio_task(HWIO_SV_LED_ON);
+125     if(RCONbits\&.WDTO)
+126         while(1);
+127      #if (DEVICE == AQ0X_V1)
+128     Uint16 sv_current_level = hwio_get_analog(ANA_INDEX_SV_CURRENT);
+129     Uint8  cc = 1;
+130     Uint16 single_sensor_output =  SV_CURREN_OUTPUT_LEVEL;
+131 
+132 
+133 
+134    
+135             while(1){
+138                  if(cc++ < RANGE_MAX_8BIT){
+139                      if(sv_current_level <= single_sensor_output){
+140                          data_non_volatile\&.device_data\&.installation\&.device_address = cc;
+141                          break;
+142                      }else
+143                         single_sensor_output +=SV_CURREN_OUTPUT_LEVEL;
+144                  }
+145               srv_wdg_kick();
+146         
+147             }
+148     #endif
+149 
+150     hwio_execute_gpio_task(HWIO_SV_LED_OFF);
+151     }
+152 
+153        
+154  
+155     // Init serial port communication
+156     serial_init();
+157    
+158 
+159     spi_init();
+160 
+161 
+162   
+163     sqtp_info\&.serial_number = 0;
+164     // Initialize SQPT production info
+165     sqtp_info\&.serial_number = nov_get_serial_number();
+166     //TODO:what to do if empty
+167  
+168     // Init operating system internal structures
+169     x_init();        
+170     
+171     
+172 
+173     // Init modules
+174     x_init_task(algorithm_taskx,algorithm_notifyx,&algorithm_id,"algorithm");
+175     x_init_task(ir_sen_taskx,ir_sen_notifyx,&ir_sen_id,"ir");
+176     x_init_task(uv_sen_taskx,uv_sen_notifyx,&uv_sen_id,"uv");
+177     #if(DEVICE == AQ0X_V1)
+178     x_init_task(light_sen_taskx,light_sen_notifyx,&light_sen_id,"light");
+179     #endif
+180     x_init_task(mfield_x_sen_taskx,mfield_x_sen_notifyx,&mfield_x_sen_id,"mfield_x");
+181      
+182 #ifdef MFIELD_Y
+183     x_init_task(mfield_y_sen_taskx,mfield_y_sen_notifyx,&mfield_y_sen_id,"mfield_y");
+184 #endif
+185    
+186    
+187     // Send startup notifications to modules
+188     x_start();        
+189 
+190      
+198     srv_wdg_kick();
+199 
+200 
+201     while (1)             
+202     {
+203          
+204         // Execute operating system loop
+205         // The operating system takes care over watchdog bites
+206         x_loop();
+207 
+208     }
+209     return 0;             
+210 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBsqtp_t\fP sqtp_info"
+
+.PP
+Oscilator setting Run this project using an internal FRC\&. Disable Code Protection Select PGD/PGC as debugging channel Communicate on PGEC2 and PGED2 Enable MCLR reset pin and turn off the power-up timers\&. Disable memory security 
+.PP
+Definition at line 68 of file main\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

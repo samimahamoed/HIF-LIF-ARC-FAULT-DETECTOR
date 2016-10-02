@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['manufacturerlabel',['manufacturerLabel',['../d5/d16/a00029.html#afeadc7657c9eaa3103bd529342f5fe97',1,'Ui_SettingsDialog']]],
+  ['menubar',['menubar',['../d6/d5b/a00026.html#af09fe2fe1f34525f5caeb5ada7d297bf',1,'Ui_emu_data_editor::menubar()'],['../dc/d3c/a00028.html#adddc4285028693f10dfd49cd08276e83',1,'Ui_recordPreview::menubar()'],['../d0/d33/a00027.html#a2be1c24ec9adfca18e1dcc951931457f',1,'Ui_MainWindow::menuBar()']]],
+  ['menuconnection',['menuConnection',['../d0/d33/a00027.html#a08372e1c0820afb98e2cdf98d1738036',1,'Ui_MainWindow']]],
+  ['menuhelp',['menuHelp',['../d0/d33/a00027.html#ab95dbfbb0550206aeac76db36f491548',1,'Ui_MainWindow']]],
+  ['menuimage',['menuImage',['../dc/d3c/a00028.html#af1ff1ecbe6ea007cfeda320cca9865b7',1,'Ui_recordPreview']]],
+  ['menupdf',['menuPDF',['../dc/d3c/a00028.html#a4cdb6b113583d4ef43a08b5526c13e3a',1,'Ui_recordPreview']]],
+  ['menusave',['menuSave',['../d6/d5b/a00026.html#a36a184d4c55f5de1b542257cbe23adaf',1,'Ui_emu_data_editor::menuSave()'],['../dc/d3c/a00028.html#a5ef77bf8c78c201d83049ee8b40cf345',1,'Ui_recordPreview::menuSave()']]],
+  ['menusave_5fas',['menuSave_As',['../dc/d3c/a00028.html#aaf69c873ec3bf0ea397829122ca4a224',1,'Ui_recordPreview']]],
+  ['menusaveas',['menuSaveAs',['../d6/d5b/a00026.html#a2568794cbc6cc9907104efbfd79eba7d',1,'Ui_emu_data_editor']]],
+  ['menutools',['menuTools',['../d0/d33/a00027.html#a552c7b6d729252c2768c9a077679fef7',1,'Ui_MainWindow']]],
+  ['menuwindows',['menuWindows',['../d6/d5b/a00026.html#a0c7cba2d30d21689f48f1981e976c0b6',1,'Ui_emu_data_editor::menuWindows()'],['../dc/d3c/a00028.html#afd93511da273fc2c6a88472d154cb176',1,'Ui_recordPreview::menuWindows()']]],
+  ['mfield_5fx',['mfield_x',['../d1/d7c/a00003.html#a241d2538d580d57649cce4000fc4c743',1,'disturbance_record_t']]],
+  ['modes',['modes',['../d8/d84/a00001.html#aa87fcb49ea0b9d74644322832af7720d',1,'operation']]],
+  ['msg_5fall',['msg_all',['../d8/d84/a00001.html#a2763c4336b9376a5385ff279ba0a6591',1,'msg_u']]],
+  ['msg_5ffields',['msg_fields',['../d8/d84/a00001.html#afe8839ab9699466e2c9efd2327606b8e',1,'msg_u']]],
+  ['multi_5faddress',['multi_address',['../d8/d84/a00001.html#a8e69b971c61ced27a7567efd2bf0db59',1,'serial_msg_t']]]
+];

@@ -1,0 +1,220 @@
+.TH "QCPItemAnchor" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemAnchor \- 
+.PP
+An anchor of an item to which positions can be attached to\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherited by \fBQCPItemPosition\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemAnchor\fP (\fBQCustomPlot\fP *parentPlot, \fBQCPAbstractItem\fP *parentItem, const QString \fBname\fP, int anchorId=-1)"
+.br
+.RI "\fICreates a new \fBQCPItemAnchor\fP\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPItemAnchor\fP ()"
+.br
+.ti -1c
+.RI "QString \fBname\fP () const "
+.br
+.ti -1c
+.RI "virtual QPointF \fBpixelPoint\fP () const "
+.br
+.RI "\fIReturns the final absolute pixel position of the \fBQCPItemAnchor\fP on the \fBQCustomPlot\fP surface\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBaddChild\fP (\fBQCPItemPosition\fP *pos)"
+.br
+.ti -1c
+.RI "void \fBremoveChild\fP (\fBQCPItemPosition\fP *pos)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCustomPlot\fP * \fBmParentPlot\fP"
+.br
+.ti -1c
+.RI "\fBQCPAbstractItem\fP * \fBmParentItem\fP"
+.br
+.ti -1c
+.RI "int \fBmAnchorId\fP"
+.br
+.ti -1c
+.RI "QString \fBmName\fP"
+.br
+.ti -1c
+.RI "QSet< \fBQCPItemPosition\fP * > \fBmChildren\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An anchor of an item to which positions can be attached to\&. 
+
+An item (\fBQCPAbstractItem\fP) may have one or more anchors\&. Unlike \fBQCPItemPosition\fP, an anchor doesn't control anything on its item, but provides a way to tie other items via their positions to the anchor\&.
+.PP
+For example, a \fBQCPItemRect\fP is defined by its positions \fItopLeft\fP and \fIbottomRight\fP\&. Additionally it has various anchors like \fItop\fP, \fItopRight\fP or \fIbottomLeft\fP etc\&. So you can attach the \fIstart\fP (which is a \fBQCPItemPosition\fP) of a \fBQCPItemLine\fP to one of the anchors by calling \fBQCPItemPosition::setParentAnchor\fP on \fIstart\fP, passing the wanted anchor of the \fBQCPItemRect\fP\&. This way the start of the line will now always follow the respective anchor location on the rect item\&.
+.PP
+Note that \fBQCPItemPosition\fP derives from \fBQCPItemAnchor\fP, so every position can also serve as an anchor to other positions\&.
+.PP
+To learn how to provide anchors in your own item subclasses, see the subclassing section of the \fBQCPAbstractItem\fP documentation\&. 
+.PP
+Definition at line 769 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemAnchor::QCPItemAnchor (\fBQCustomPlot\fP *parentPlot, \fBQCPAbstractItem\fP *parentItem, const QStringname, intanchorId = \fC-1\fP)"
+
+.PP
+Creates a new \fBQCPItemAnchor\fP\&. You shouldn't create \fBQCPItemAnchor\fP instances directly, even if you want to make a new item subclass\&. Use \fBQCPAbstractItem::createAnchor\fP instead, as explained in the subclassing section of the \fBQCPAbstractItem\fP documentation\&. 
+.PP
+Definition at line 14384 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+14384                                                                                                                    :
+14385   mParentPlot(parentPlot),
+14386   mParentItem(parentItem),
+14387   mAnchorId(anchorId),
+14388   mName(name)
+14389 {
+14390 }
+.fi
+.SS "QCPItemAnchor::~QCPItemAnchor ()\fC [virtual]\fP"
+
+.PP
+Definition at line 14392 of file qcustomplot\&.cpp\&.
+.PP
+References mChildren\&.
+.PP
+.nf
+14393 {
+14394   // unregister as parent at children:
+14395   QList<QCPItemPosition*> currentChildren(mChildren\&.toList());
+14396   for (int i=0; i<currentChildren\&.size(); ++i)
+14397     currentChildren\&.at(i)->setParentAnchor(0); // this acts back on this anchor and child removes itself from mChildren
+14398 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QCPItemAnchor::addChild (\fBQCPItemPosition\fP *pos)\fC [protected]\fP"
+Adds \fIpos\fP to the child list of this anchor\&. This is necessary to notify the children prior to destruction of the anchor\&.
+.PP
+Note that this function does not change the parent setting in \fIpos\fP\&. 
+.PP
+Definition at line 14432 of file qcustomplot\&.cpp\&.
+.PP
+References mChildren\&.
+.PP
+Referenced by QCPItemPosition::setParentAnchor()\&.
+.PP
+.nf
+14433 {
+14434   if (!mChildren\&.contains(pos))
+14435     mChildren\&.insert(pos);
+14436   else
+14437     qDebug() << Q_FUNC_INFO << "provided pos is child already" << reinterpret_cast<quintptr>(pos);
+14438 }
+.fi
+.SS "QString QCPItemAnchor::name () const\fC [inline]\fP"
+
+.PP
+Definition at line 775 of file qcustomplot\&.h\&.
+.PP
+.nf
+775 { return mName; }
+.fi
+.SS "QPointF QCPItemAnchor::pixelPoint () const\fC [virtual]\fP"
+
+.PP
+Returns the final absolute pixel position of the \fBQCPItemAnchor\fP on the \fBQCustomPlot\fP surface\&. The pixel information is internally retrieved via QCPAbstractItem::anchorPixelPosition of the parent item, \fBQCPItemAnchor\fP is just an intermediary\&. 
+.PP
+Reimplemented in \fBQCPItemPosition\fP\&.
+.PP
+Definition at line 14406 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::anchorPixelPoint(), mAnchorId, and mParentItem\&.
+.PP
+Referenced by QCPItemPosition::pixelPoint(), and QCPItemPosition::setPixelPoint()\&.
+.PP
+.nf
+14407 {
+14408   if (mParentItem)
+14409   {
+14410     if (mAnchorId > -1)
+14411     {
+14412       return mParentItem->anchorPixelPoint(mAnchorId);
+14413     } else
+14414     {
+14415       qDebug() << Q_FUNC_INFO << "no valid anchor id set:" << mAnchorId;
+14416       return QPointF();
+14417     }
+14418   } else
+14419   {
+14420     qDebug() << Q_FUNC_INFO << "no parent item set";
+14421     return QPointF();
+14422   }
+14423 }
+.fi
+.SS "void QCPItemAnchor::removeChild (\fBQCPItemPosition\fP *pos)\fC [protected]\fP"
+Removes \fIpos\fP from the child list of this anchor\&.
+.PP
+Note that this function does not change the parent setting in \fIpos\fP\&. 
+.PP
+Definition at line 14446 of file qcustomplot\&.cpp\&.
+.PP
+References mChildren\&.
+.PP
+Referenced by QCPItemPosition::setParentAnchor(), and QCPItemPosition::~QCPItemPosition()\&.
+.PP
+.nf
+14447 {
+14448   if (!mChildren\&.remove(pos))
+14449     qDebug() << Q_FUNC_INFO << "provided pos isn't child" << reinterpret_cast<quintptr>(pos);
+14450 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "int QCPItemAnchor::mAnchorId\fC [protected]\fP"
+
+.PP
+Definition at line 781 of file qcustomplot\&.h\&.
+.PP
+Referenced by pixelPoint()\&.
+.SS "QSet<\fBQCPItemPosition\fP*> QCPItemAnchor::mChildren\fC [protected]\fP"
+
+.PP
+Definition at line 784 of file qcustomplot\&.h\&.
+.PP
+Referenced by addChild(), removeChild(), ~QCPItemAnchor(), and QCPItemPosition::~QCPItemPosition()\&.
+.SS "QString QCPItemAnchor::mName\fC [protected]\fP"
+
+.PP
+Definition at line 782 of file qcustomplot\&.h\&.
+.SS "\fBQCPAbstractItem\fP* QCPItemAnchor::mParentItem\fC [protected]\fP"
+
+.PP
+Definition at line 780 of file qcustomplot\&.h\&.
+.PP
+Referenced by pixelPoint(), and QCPItemPosition::setParentAnchor()\&.
+.SS "\fBQCustomPlot\fP* QCPItemAnchor::mParentPlot\fC [protected]\fP"
+
+.PP
+Definition at line 779 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPItemPosition::pixelPoint(), and QCPItemPosition::setPixelPoint()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

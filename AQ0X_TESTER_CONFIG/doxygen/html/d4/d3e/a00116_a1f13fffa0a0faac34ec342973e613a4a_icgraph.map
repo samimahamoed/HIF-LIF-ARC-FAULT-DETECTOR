@@ -1,0 +1,50 @@
+<map id="pen" name="pen">
+<area shape="rect" id="node2" href="$d6/d2d/a00047.html#a3aa145eb9865752d583c40ef995c5049" title="Draws a single scatter point with the specified style and size in pixels at the pixel position x and ..." alt="" coords="376,132,544,159"/>
+<area shape="rect" id="node11" href="$d6/d2d/a00047.html#a27af07a62c335faf79191b797306b218" title="Provides a workaround for a QPainter bug that prevents scaling of pen widths for pens with width 0..." alt="" coords="124,721,299,748"/>
+<area shape="rect" id="node38" href="$d3/dfe/a00025.html#a778d45fb71b3c7ab3bb7079e18b058e4" title="Sets the pen, the axis base line is drawn with. " alt="" coords="134,991,289,1017"/>
+<area shape="rect" id="node40" href="$d6/d97/a00045.html#a866a9e3f5267de7430a6c7f26a61db9f" title="Sets the pen, the border of the entire legend is drawn with. " alt="" coords="122,772,301,799"/>
+<area shape="rect" id="node42" href="$d6/d97/a00045.html#a2f2c93d18a651f4ff294bb3f026f49b8" title="Sets the pen used to draw a border around each legend icon. " alt="" coords="110,823,313,849"/>
+<area shape="rect" id="node43" href="$d3/dfe/a00025.html#aeb917a909215605b95ef2be843de1ee8" title="Sets the pen that is used to draw the axis base line when selected. " alt="" coords="108,1041,315,1068"/>
+<area shape="rect" id="node44" href="$d6/d97/a00045.html#a2c35d262953a25d96b6112653fbefc88" title="When the legend box is selected, this pen is used to draw the border instead of the normal pen set vi..." alt="" coords="96,873,327,900"/>
+<area shape="rect" id="node45" href="$d6/d97/a00045.html#ade93aabe9bcccaf9cf46cec22c658027" title="Sets the pen legend items will use to draw their icon borders, when they are selected. " alt="" coords="115,925,308,966"/>
+<area shape="rect" id="node46" href="$d3/dfe/a00025.html#a2a00a7166600155eac26843132eb9576" title="Sets the pen that is used to draw the subticks when selected. " alt="" coords="100,1092,323,1119"/>
+<area shape="rect" id="node47" href="$d3/dfe/a00025.html#a8360502685eb782edbf04019c9345cdc" title="Sets the pen that is used to draw the (major) ticks when selected. " alt="" coords="111,1143,311,1169"/>
+<area shape="rect" id="node48" href="$d3/dfe/a00025.html#aede4028ae7516bd51a60618a8233f9cf" title="Sets the pen, subtick marks will be drawn with. " alt="" coords="125,1193,297,1220"/>
+<area shape="rect" id="node49" href="$d3/dfe/a00025.html#ad80923bcc1c5da4c4db602c5325e797e" title="Sets the pen, tick marks will be drawn with. " alt="" coords="137,1244,286,1271"/>
+<area shape="rect" id="node3" href="$df/d61/a00031.html#a9a1a3d937a35368c421657860aa5a173" title="QCPGraph::drawLegendIcon" alt="" coords="594,5,781,32"/>
+<area shape="rect" id="node4" href="$df/d61/a00031.html#af1872a60bed7acb3f3b17bfae3f4764c" title="QCPGraph::drawScatterPlot" alt="" coords="595,107,780,133"/>
+<area shape="rect" id="node6" href="$dc/d3c/a00028.html#a8e9b46de865a9f07cc9d62c904ab8198" title="QCPCurve::drawLegendIcon" alt="" coords="596,157,779,184"/>
+<area shape="rect" id="node7" href="$dc/d3c/a00028.html#a45593f30b81beec4b6130b6b53306087" title="QCPCurve::drawScatterPlot" alt="" coords="596,56,779,83"/>
+<area shape="rect" id="node9" href="$d5/de0/a00050.html#a60ebb332a497f51ace837767db5105b9" title="QCPStatisticalBox::\ldrawOutliers" alt="" coords="618,310,757,351"/>
+<area shape="rect" id="node5" href="$df/d61/a00031.html#a659218cc62c2a7786213d9dd429c1c8d" title="QCPGraph::draw" alt="" coords="853,317,973,344"/>
+<area shape="rect" id="node8" href="$dc/d3c/a00028.html#a2361302d2fc6ec669849bd3bca00c4b2" title="QCPCurve::draw" alt="" coords="854,132,971,159"/>
+<area shape="rect" id="node10" href="$d5/de0/a00050.html#a753b62761217dd6b92f8a29e286a1317" title="QCPStatisticalBox::draw" alt="" coords="829,823,996,849"/>
+<area shape="rect" id="node12" href="$d6/d2d/a00047.html#af9c7a4cd1791403901f8c5b82a150195" title="Sets the pen of the painter and applies certain fixes to it, depending on the mode of this QCPPainter..." alt="" coords="390,747,530,773"/>
+<area shape="rect" id="node13" href="$df/d61/a00031.html#ad6d07926e6d6b7cfa70258780d47b7a0" title="QCPGraph::drawFill" alt="" coords="619,376,756,403"/>
+<area shape="rect" id="node14" href="$df/d61/a00031.html#acebc22c3385829b19a87e6281fe6ade2" title="QCPGraph::drawLinePlot" alt="" coords="604,629,771,656"/>
+<area shape="rect" id="node15" href="$df/d61/a00031.html#abc01180629621f1e47e94559227d3d8c" title="QCPGraph::drawImpulsePlot" alt="" coords="593,259,781,285"/>
+<area shape="rect" id="node16" href="$d6/d97/a00045.html#a4462151bf875ca85fa3815457c683fdc" title="QCPLegend::draw" alt="" coords="624,1081,751,1108"/>
+<area shape="rect" id="node17" href="$d3/dfe/a00025.html#a258b1e783eda5cd14ec5552c696a424e" title="QCPAxis::draw" alt="" coords="632,1132,743,1159"/>
+<area shape="rect" id="node18" href="$d4/dca/a00048.html#ad5f15d26b1c7e2532455528a4c3c578b" title="QCPPlottableLegendItem\l::draw" alt="" coords="603,1183,771,1225"/>
+<area shape="rect" id="node19" href="$d0/d33/a00027.html#a42b894e34dac799f90ff3700706b31df" title="QCPBars::draw" alt="" coords="631,1249,743,1276"/>
+<area shape="rect" id="node20" href="$d0/d33/a00027.html#af54543a87581003b3176d8b2931754c5" title="QCPBars::drawLegendIcon" alt="" coords="598,1300,777,1327"/>
+<area shape="rect" id="node21" href="$d5/de0/a00050.html#af010b2f9e32b8183984486e4d66e46c4" title="QCPStatisticalBox::\ldrawLegendIcon" alt="" coords="618,1351,757,1393"/>
+<area shape="rect" id="node22" href="$d5/de0/a00050.html#a9ad0abdb154fefb04e9872f0db8e2ec7" title="QCPStatisticalBox::\ldrawQuartileBox" alt="" coords="618,681,757,722"/>
+<area shape="rect" id="node23" href="$d5/de0/a00050.html#a16fef8bc19e5a09d82033edcfe919495" title="QCPStatisticalBox::\ldrawMedian" alt="" coords="618,950,757,991"/>
+<area shape="rect" id="node24" href="$d5/de0/a00050.html#a6f8d093ec7e404529388d02da4c72b34" title="QCPStatisticalBox::\ldrawWhiskers" alt="" coords="618,1015,757,1057"/>
+<area shape="rect" id="node25" href="$db/d3a/a00040.html#a2daa1e1253216c26565d56a2d5530170" title="QCPItemStraightLine\l::draw" alt="" coords="615,1519,759,1561"/>
+<area shape="rect" id="node26" href="$de/d8c/a00036.html#a1fc045dd33919f8006df0692aeb0e84a" title="QCPItemLine::draw" alt="" coords="845,1552,980,1579"/>
+<area shape="rect" id="node27" href="$d4/d8c/a00035.html#afe97ec827adb05f000fe007783faae3c" title="QCPItemEllipse::draw" alt="" coords="613,427,762,453"/>
+<area shape="rect" id="node28" href="$d3/de7/a00039.html#a18cd583638b876cdd50f1a155ec182aa" title="QCPItemRect::draw" alt="" coords="619,477,756,504"/>
+<area shape="rect" id="node29" href="$d1/dc6/a00037.html#a879e8076c2db01a38b34cfa73ec95d2f" title="QCPItemPixmap::draw" alt="" coords="610,528,765,555"/>
+<area shape="rect" id="node30" href="$dd/d32/a00041.html#a8793adb271ab79b4cf391dc55e9987f1" title="QCPItemText::draw" alt="" coords="620,579,755,605"/>
+<area shape="rect" id="node31" href="$d3/dea/a00046.html#ac4b2fa94bd27b2f008b5fc090fcd7c0b" title="QCPLineEnding::draw" alt="" coords="613,1468,762,1495"/>
+<area shape="rect" id="node33" href="$db/df3/a00034.html#a56cb5b72cd02db2eda598274a39839a9" title="QCPItemCurve::draw" alt="" coords="841,1417,984,1444"/>
+<area shape="rect" id="node34" href="$d4/d3e/a00116.html#a3aff10e993f6625e255c19e4f97a09d8" title="drawGridLines" alt="" coords="635,747,739,773"/>
+<area shape="rect" id="node35" href="$d4/d3e/a00116.html#afa5d9d12de419e881f381f2ab7cb414d" title="drawSubGridLines" alt="" coords="624,797,751,824"/>
+<area shape="rect" id="node36" href="$d0/dc0/a00033.html#a8343cf0559c64886add7aa7f4b22f1a6" title="QCPItemBracket::draw" alt="" coords="610,848,765,875"/>
+<area shape="rect" id="node37" href="$d5/db6/a00042.html#aaaf49b48382c730ec9be0e74c2538315" title="QCPItemTracer::draw" alt="" coords="614,899,761,925"/>
+<area shape="rect" id="node32" href="$d3/dea/a00046.html#a05c143b1f66cb68d746c309523c45e3e" title="QCPLineEnding::draw" alt="" coords="838,1468,987,1495"/>
+<area shape="rect" id="node39" href="$d3/dfe/a00025.html#a5a34dafa051be08d03e89c163c507f90" title="Constructs an Axis instance of Type type inside parentPlot. " alt="" coords="391,1117,529,1144"/>
+<area shape="rect" id="node41" href="$d6/d97/a00045.html#a5dc42d73df80e7294414aee1170c4d2b" title="Constructs a new QCPLegend instance with parentPlot as the containing plot and default values..." alt="" coords="375,848,545,875"/>
+</map>

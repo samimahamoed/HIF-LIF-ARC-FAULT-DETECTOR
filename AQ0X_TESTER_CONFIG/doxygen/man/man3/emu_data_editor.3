@@ -1,0 +1,641 @@
+.TH "emu_data_editor" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+emu_data_editor \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <emu_data_editor\&.h>\fP
+.PP
+Inherits \fBQMainWindow\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBupdate_curve\fP ()"
+.br
+.ti -1c
+.RI "void \fBselection\fP (bool clear)"
+.br
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBedit_point_selection\fP (bool status)"
+.br
+.ti -1c
+.RI "void \fBedit_point_deselection\fP (bool status)"
+.br
+.ti -1c
+.RI "void \fBadjust_value\fP (\fBInt16\fP val)"
+.br
+.ti -1c
+.RI "void \fBset_value\fP (\fBInt16\fP val, \fBUint16\fP waveform)"
+.br
+.ti -1c
+.RI "void \fBaction_set_value\fP (double val, \fBUint8\fP type)"
+.br
+.ti -1c
+.RI "void \fBupdate_curve_signal\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdate_value\fP ()"
+.br
+.ti -1c
+.RI "void \fBset_status\fP (\fBUint8\fP select)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBemu_data_editor\fP (QString type, QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fB~emu_data_editor\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "QString \fBwin_title\fP"
+.br
+.ti -1c
+.RI "\fBUint8\fP \fBsignal_type\fP"
+.br
+.ti -1c
+.RI "double \fBsignal_freq\fP"
+.br
+.ti -1c
+.RI "double \fBsignal_phase\fP"
+.br
+.ti -1c
+.RI "double \fBsignal_amplitude\fP"
+.br
+.ti -1c
+.RI "QVector< \fBemu_data_edit_point_t\fP > \fBedit_point_sets\fP"
+.br
+.ti -1c
+.RI "QFourierTransformer \fBtransformer\fP"
+.br
+.ti -1c
+.RI "QVector< double > \fBemu_data_yvalue\fP"
+.br
+.ti -1c
+.RI "QVector< double > \fBemu_data_xvalue\fP"
+.br
+.ti -1c
+.RI "float \fBfft_result\fP [\fBFFT_SIZE\fP]"
+.br
+.ti -1c
+.RI "float \fBfft_inputs\fP [\fBFFT_SIZE\fP]"
+.br
+.ti -1c
+.RI "QVector< double > \fBemu_data_freq_value\fP"
+.br
+.ti -1c
+.RI "QVector< double > \fBemu_data_spectrum_magnitude\fP"
+.br
+.ti -1c
+.RI "float \fBspectrum_magnitude_max\fP"
+.br
+.ti -1c
+.RI "float \fBspectrum_magnitude_min\fP"
+.br
+.ti -1c
+.RI "QString \fBdir_default\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBeventFilter\fP (QObject *obj, QEvent *ev)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 19 of file emu_data_editor\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "emu_data_editor::emu_data_editor (QStringtype, QWidget *parent = \fC0\fP)\fC [explicit]\fP"
+defalt values 
+.PP
+Definition at line 12 of file emu_data_editor\&.cpp\&.
+.PP
+References Ui_emu_data_editor::actionWinEditor, Ui_emu_data_editor::actionWinPlot, Ui_emu_data_editor::centralwidget, CONFIG_DEFAULT_FREQ, dir_default, Ui_emu_data_editor::dockWidgetCurve_plot, Ui_emu_data_editor::dockWidgetCurve_plot_fft, emu_data_freq_value, emu_data_spectrum_magnitude, emu_data_xvalue, emu_data_yvalue, EMU_MODE_DATA_LENGTH, fft_inputs, fft_result, FFT_SIZE, Ui_emu_data_editor::plot_curve, Ui_emu_data_editor::plot_curve_fft, Ui_emu_data_editor::setupUi(), signal_amplitude, signal_freq, signal_phase, signal_type, spectrum_magnitude_max, spectrum_magnitude_min, transformer, WAVEFORM_0_TO_3_3, WAVEFORM_PLUS_MINUS_1_65, and win_title\&.
+.PP
+.nf
+12                                                                :
+13     QMainWindow(parent),
+14     ui(new Ui::emu_data_editor )
+15 {
+16 
+17     ui->setupUi(this);
+18     this->setWindowTitle(type);
+19 
+20     dir_default = ((MainWindow *)parent)->dir_default;
+21 
+22     win_title = type;
+23     if(type\&.contains("MAGNETIC FIELD")){
+24         signal_type = WAVEFORM_PLUS_MINUS_1_65;
+25         signal_amplitude = 1\&.65;
+26     }else{
+27         signal_type = WAVEFORM_0_TO_3_3;
+28         signal_amplitude = 3\&.3;
+29     }
+30 
+31     signal_freq      = CONFIG_DEFAULT_FREQ;
+32     signal_phase     = 0;
+33 
+34 
+35     ui->centralwidget->setVisible(false);
+36     ui->dockWidgetCurve_plot->setWidget(ui->plot_curve);
+37     ui->dockWidgetCurve_plot_fft->setWidget(ui->plot_curve_fft);
+38 
+39     this->addDockWidget(Qt::TopDockWidgetArea,ui->dockWidgetCurve_plot_fft);
+40 
+41 
+42     ui->actionWinEditor->setChecked(true);
+43     ui->actionWinPlot->setChecked(true);
+44 
+45 
+46 
+47     for (int var = 0; var < EMU_MODE_DATA_LENGTH; ++var) {
+48         emu_data_xvalue\&.append(var);
+49         emu_data_yvalue\&.append(0);
+50     }
+51 
+52     plot_curve(emu_data_xvalue,emu_data_yvalue);
+53 
+54     memset(fft_result,0,FFT_SIZE);
+55     memset(fft_inputs,0,FFT_SIZE);
+56 
+57 
+58     transformer\&.setSize(FFT_SIZE);
+59     if(!transformer\&.setWindowFunction("Rectangular"))
+60         qCritical()<<"unable to set window funtion : emu_data_editor";
+61 
+62     transformer\&.forwardTransform(fft_inputs,fft_result);
+63 
+64 
+65     spectrum_magnitude_max = 0;
+66     spectrum_magnitude_min = 0;
+67 
+68 
+69 
+70     for (int var = 0; var < FFT_SIZE; ++var) {
+71 
+72         emu_data_freq_value\&.append(
+73                     (var)*signal_freq*
+74                     ((signal_type == WAVEFORM_PLUS_MINUS_1_65)?1:2));
+75 
+76         qDebug()<<"f("<<var<<") = "<< emu_data_freq_value[var]<<";";
+77         emu_data_spectrum_magnitude\&.append((double)fft_result[var]);
+78 
+79         if(fft_result[var] > spectrum_magnitude_max)
+80             spectrum_magnitude_max = fft_result[var];
+81         if(fft_result[var] < spectrum_magnitude_min)
+82             spectrum_magnitude_min = fft_result[var];
+83 
+84     }
+85 
+86 
+87 
+88 
+89 
+90 
+91 
+92     plot_curve_fft(emu_data_freq_value,emu_data_spectrum_magnitude);
+93     installEventFilter(this);
+94     gui_init(EMU_MODE_DATA_LENGTH/2);
+95 
+96 
+97 
+98 }
+.fi
+.SS "emu_data_editor::~emu_data_editor ()"
+
+.PP
+Definition at line 101 of file emu_data_editor\&.cpp\&.
+.PP
+.nf
+102 {
+103     delete ui;
+104 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void emu_data_editor::action_set_value (doubleval, \fBUint8\fPtype)\fC [signal]\fP"
+
+.PP
+Definition at line 277 of file moc_emu_data_editor\&.cpp\&.
+.PP
+.nf
+278 {
+279     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+280     QMetaObject::activate(this, &staticMetaObject, 4, _a);
+281 }
+.fi
+.SS "void emu_data_editor::adjust_value (\fBInt16\fPval)\fC [signal]\fP"
+
+.PP
+Definition at line 263 of file moc_emu_data_editor\&.cpp\&.
+.PP
+Referenced by eventFilter()\&.
+.PP
+.nf
+264 {
+265     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+266     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+267 }
+.fi
+.SS "void emu_data_editor::edit_point_deselection (boolstatus)\fC [signal]\fP"
+
+.PP
+Definition at line 256 of file moc_emu_data_editor\&.cpp\&.
+.PP
+Referenced by eventFilter()\&.
+.PP
+.nf
+257 {
+258     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+259     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+260 }
+.fi
+.SS "void emu_data_editor::edit_point_selection (boolstatus)\fC [signal]\fP"
+
+.PP
+Definition at line 249 of file moc_emu_data_editor\&.cpp\&.
+.PP
+Referenced by eventFilter()\&.
+.PP
+.nf
+250 {
+251     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+252     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+253 }
+.fi
+.SS "bool emu_data_editor::eventFilter (QObject *obj, QEvent *ev)\fC [protected]\fP"
+
+.PP
+Definition at line 107 of file emu_data_editor\&.cpp\&.
+.PP
+References adjust_value(), edit_point_deselection(), edit_point_selection(), and update_curve()\&.
+.PP
+.nf
+108 {
+109 
+110 
+111     if(obj!=this)
+112         return false;
+113 
+114         if (event->type() == QEvent::KeyPress) {
+115             QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
+116             switch (keyEvent->key()) {
+117             case Qt::Key_Shift:
+118                     emit edit_point_selection(true);
+119                   return false;
+120                  break;
+121 
+122 
+123             case Qt::Key_Plus:
+124 
+125                     emit adjust_value(10);
+126                     update_curve();
+127                     return false;
+128                  break;
+129 
+130             case Qt::Key_Minus:
+131 
+132                     emit adjust_value(-10);
+133                     update_curve();
+134                     return false;
+135                 break;
+136             case Qt::Key_Left:
+137 
+138 
+139                     return false;
+140                 break;
+141 
+142             case Qt::Key_Clear:
+143                     emit edit_point_deselection(true);
+144                     return false;
+145                      break;
+146 
+147 
+148             case Qt::Key_Control:
+149                     emit edit_point_deselection(true);
+150                     return false;
+151                  break;
+152 
+153 
+154             case Qt::Key_Right:
+155 
+156 
+157             case Qt::Key_Enter:
+158 
+159                  return true;
+160                 break;
+161             case Qt::Key_Return:
+162 
+163 
+164                  return true;
+165                 break;
+166 
+167             default:
+168 
+169 
+170                 return false;
+171 
+172                break;
+173 
+174             }
+175 
+176         } else  if (event->type() == QEvent::KeyRelease) {
+177             QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
+178 
+179 
+180             switch (keyEvent->key()) {
+181 
+182             case Qt::Key_Shift:
+183                    emit edit_point_selection(false);
+184                   return false;
+185                  break;
+186 
+187             case Qt::Key_Clear:
+188                     emit edit_point_deselection(false);
+189                     return false;
+190                      break;
+191 
+192 
+193             case Qt::Key_Control:
+194                     emit edit_point_deselection(false);
+195                     return false;
+196                      break;
+197 
+198             case Qt::Key_Delete:
+199 
+200                     return false;
+201                      break;
+202             case Qt::Key_Left:
+203 
+204             case Qt::Key_Right:
+205             case Qt::Key_Up:
+206             case Qt::Key_Down:
+207                 // skip processing
+208                 break;
+209             case Qt::Key_Enter:
+210 
+211                  return true;
+212                 break;
+213             case Qt::Key_Return:
+214 
+215 
+216                  return true;
+217                 break;
+218 
+219             default:
+220 
+221 
+222                 return false;
+223 
+224                break;
+225 
+226             }
+227 
+228         } else {
+229             return false;
+230         }
+231 
+232         return false;
+233 }
+.fi
+.SS "void emu_data_editor::selection (boolclear)\fC [slot]\fP"
+
+.PP
+Definition at line 340 of file emu_data_editor\&.cpp\&.
+.PP
+References set_status()\&.
+.PP
+.nf
+341 {
+342 
+343     emit set_status(clear?2/*deselect action*/:1/*select action*/);
+344 
+345 }
+.fi
+.SS "void emu_data_editor::set_status (\fBUint8\fPselect)\fC [signal]\fP"
+
+.PP
+Definition at line 296 of file moc_emu_data_editor\&.cpp\&.
+.PP
+Referenced by selection()\&.
+.PP
+.nf
+297 {
+298     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+299     QMetaObject::activate(this, &staticMetaObject, 7, _a);
+300 }
+.fi
+.SS "void emu_data_editor::set_value (\fBInt16\fPval, \fBUint16\fPwaveform)\fC [signal]\fP"
+
+.PP
+Definition at line 270 of file moc_emu_data_editor\&.cpp\&.
+.PP
+.nf
+271 {
+272     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+273     QMetaObject::activate(this, &staticMetaObject, 3, _a);
+274 }
+.fi
+.SS "void emu_data_editor::update_curve ()\fC [slot]\fP"
+
+.PP
+Definition at line 284 of file emu_data_editor\&.cpp\&.
+.PP
+References emu_data_freq_value, emu_data_spectrum_magnitude, emu_data_xvalue, emu_data_yvalue, EMU_MODE_DATA_LENGTH, fft_inputs, fft_result, FFT_SIZE, Ui_emu_data_editor::plot_curve, Ui_emu_data_editor::plot_curve_fft, spectrum_magnitude_max, spectrum_magnitude_min, and transformer\&.
+.PP
+Referenced by eventFilter(), and Slider::keyPressEvent()\&.
+.PP
+.nf
+284                                    {
+285 
+286      ui->plot_curve->graph(0)->setData(emu_data_xvalue, emu_data_yvalue);
+287 
+288      Int16 head = 0;
+289 
+290      for (int var = 0; var < FFT_SIZE; ++var) {
+291          fft_inputs[var] = (float)emu_data_yvalue[head];
+292          head = (head + 1)%EMU_MODE_DATA_LENGTH;
+293      }
+294 
+295      transformer\&.forwardTransform(fft_inputs, fft_result);
+296 
+297      emu_data_spectrum_magnitude\&.clear();
+298 
+299 
+300      spectrum_magnitude_max = 0;
+301      spectrum_magnitude_min = 0;
+302 
+303      for (int var = 0; var < FFT_SIZE; ++var) {
+304 
+305          emu_data_spectrum_magnitude\&.append((float)fft_result[var]);
+306 
+307 
+308          if(fft_result[var] > spectrum_magnitude_max)
+309              spectrum_magnitude_max = fft_result[var];
+310          if(fft_result[var] < spectrum_magnitude_min)
+311              spectrum_magnitude_min = fft_result[var];
+312      }
+313 
+314 #if(0)
+315 
+316      for (int var = 0; var < FFT_SIZE; ++var) {
+317           qDebug()<<"A("<<var+1<<") = "<< fft_result[var]<<";";
+318      }
+319 
+320      for (int var = 0; var < FFT_SIZE; ++var) {
+321           qDebug()<<"B("<<var+1<<") = "<< fft_inputs[var];
+322      }
+323 #endif
+324 
+325 
+326 
+327      ui->plot_curve_fft->graph(0)->setData(emu_data_freq_value,emu_data_spectrum_magnitude);
+328      ui->plot_curve_fft->yAxis->setRange(spectrum_magnitude_min - 2,
+329                                          spectrum_magnitude_max + 2);
+330 
+331 
+332 
+333      ui->plot_curve->setColor(QColor("black"));
+334      ui->plot_curve->replot();
+335      ui->plot_curve_fft->replot();
+336 
+337 
+338 }
+.fi
+.SS "void emu_data_editor::update_curve_signal ()\fC [signal]\fP"
+
+.PP
+Definition at line 284 of file moc_emu_data_editor\&.cpp\&.
+.PP
+.nf
+285 {
+286     QMetaObject::activate(this, &staticMetaObject, 5, 0);
+287 }
+.fi
+.SS "void emu_data_editor::update_value ()\fC [signal]\fP"
+
+.PP
+Definition at line 290 of file moc_emu_data_editor\&.cpp\&.
+.PP
+.nf
+291 {
+292     QMetaObject::activate(this, &staticMetaObject, 6, 0);
+293 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "QString emu_data_editor::dir_default"
+
+.PP
+Definition at line 55 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor()\&.
+.SS "QVector<\fBemu_data_edit_point_t\fP> emu_data_editor::edit_point_sets"
+
+.PP
+Definition at line 43 of file emu_data_editor\&.h\&.
+.SS "QVector<double> emu_data_editor::emu_data_freq_value"
+
+.PP
+Definition at line 51 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and update_curve()\&.
+.SS "QVector<double> emu_data_editor::emu_data_spectrum_magnitude"
+
+.PP
+Definition at line 52 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and update_curve()\&.
+.SS "QVector<double> emu_data_editor::emu_data_xvalue"
+
+.PP
+Definition at line 46 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and update_curve()\&.
+.SS "QVector<double> emu_data_editor::emu_data_yvalue"
+
+.PP
+Definition at line 45 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), Slider::set_value(), and update_curve()\&.
+.SS "float emu_data_editor::fft_inputs[\fBFFT_SIZE\fP]"
+
+.PP
+Definition at line 50 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and update_curve()\&.
+.SS "float emu_data_editor::fft_result[\fBFFT_SIZE\fP]"
+
+.PP
+Definition at line 49 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and update_curve()\&.
+.SS "double emu_data_editor::signal_amplitude"
+
+.PP
+Definition at line 42 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and Slider::set_value()\&.
+.SS "double emu_data_editor::signal_freq"
+
+.PP
+Definition at line 40 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and Slider::set_value()\&.
+.SS "double emu_data_editor::signal_phase"
+
+.PP
+Definition at line 41 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and Slider::set_value()\&.
+.SS "\fBUint8\fP emu_data_editor::signal_type"
+
+.PP
+Definition at line 39 of file emu_data_editor\&.h\&.
+.PP
+Referenced by Slider::contextMenuEvent(), emu_data_editor(), Slider::keyPressEvent(), and Slider::set_value()\&.
+.SS "float emu_data_editor::spectrum_magnitude_max"
+
+.PP
+Definition at line 53 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and update_curve()\&.
+.SS "float emu_data_editor::spectrum_magnitude_min"
+
+.PP
+Definition at line 54 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and update_curve()\&.
+.SS "QFourierTransformer emu_data_editor::transformer"
+
+.PP
+Definition at line 44 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor(), and update_curve()\&.
+.SS "QString emu_data_editor::win_title"
+
+.PP
+Definition at line 38 of file emu_data_editor\&.h\&.
+.PP
+Referenced by emu_data_editor()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

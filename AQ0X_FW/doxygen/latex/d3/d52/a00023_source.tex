@@ -1,0 +1,65 @@
+\hypertarget{a00023_source}{\section{ir\+\_\+sensor\+\_\+prv.\+h}
+\label{a00023_source}\index{ir\+\_\+sensor\+\_\+prv.\+h@{ir\+\_\+sensor\+\_\+prv.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef IR\_SEN\_PRV\_H}
+00002 \textcolor{preprocessor}{#define IR\_SEN\_PRV\_H}
+00003 
+00010 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\(\backslash\)allheaders.h"} 
+00011 
+\hypertarget{a00023_source_l00013}{}\hyperlink{a00023_a16b09a45fdc504b8b00d634b49c820b4}{00013} \textcolor{preprocessor}{#define X\_MSG\_IR\_SENSOR\_SV                                          (X\_MSG\_FREE + 2)}
+00014 
+\hypertarget{a00023_source_l00016}{}\hyperlink{a00023_a3b0f15b601361fafa871c5e49df7842d}{00016} \textcolor{preprocessor}{#define X\_NTF\_IR\_SENSOR\_SV\_TIMER                                    (X\_NTF\_FREE + 12)}
+00017 
+00018 
+\hypertarget{a00023_source_l00020}{}\hyperlink{a00023_a8a535456285f4602701c814d7b69cc68}{00020} \textcolor{preprocessor}{#define SV\_TIMER\_PERIOD                                             1000  //2 sec}
+\hypertarget{a00023_source_l00021}{}\hyperlink{a00023_a44e4917fdf9d2a3574a3dd34537d97a7}{00021} \textcolor{preprocessor}{#define SV\_TIMER\_LED\_ON\_PERIOD                                      10    //10 ms}
+00022 
+00023 
+00024 
+00025 
+00026 
+\hypertarget{a00023_source_l00027}{}\hyperlink{a00023}{00027} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00028 \{
+00029 
+\hypertarget{a00023_source_l00030}{}\hyperlink{a00023_afdc0e2c51e8e301d264700f4f9c10740}{00030}       \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t}         
+      \hyperlink{a00023_afdc0e2c51e8e301d264700f4f9c10740}{sv\_status\_ntf};
+00031 
+\hypertarget{a00023_source_l00033}{}\hyperlink{a00023_a43c345f39ea3aefbb60ef1ef57fe5d83}{00033}       \hyperlink{a00036_de/d37/a00849}{x\_event}                         \hyperlink{a00023_a43c345f39ea3aefbb60ef1ef57fe5d83}{sv\_task\_event};
+00034 
+\hypertarget{a00023_source_l00036}{}\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{00036}       \hyperlink{a00036_df/d4c/a00851}{x\_notify}                                   \hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf};
+00037 
+00038 
+\hypertarget{a00023_source_l00040}{}\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{00040}       \hyperlink{a00021_d6/d9c/a00352}{configured\_t}                               \hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured};
+00041 
+\hypertarget{a00023_source_l00045}{}\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{00045}       \hyperlink{a00028}{module\_disturbance\_record\_t}                *
+      \hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record};
+00046 
+00047 
+\hypertarget{a00023_source_l00049}{}\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{00049}       \hyperlink{a00017_de/d94/a00603}{module\_status\_t}                            \hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status};
+00050 
+00051 
+\hypertarget{a00023_source_l00053}{}\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{00053}       \hyperlink{a00017_dd/dcb/a00375}{diagonesis\_records\_light\_t}                 
+      \hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records};
+00054 
+\hypertarget{a00023_source_l00056}{}\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{00056}       \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}                          
+      \hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags};
+00057 
+00058 \}\hyperlink{a00023_d6/d21/a00573}{ir\_sen\_data\_t};
+00059 
+00060 
+00061 \textcolor{keyword}{extern} \hyperlink{a00023_d6/d21/a00573}{ir\_sen\_data\_t} \hyperlink{a00023_a73dfacb46242746440accc76c7ef710d}{ir\_sen\_data};
+00062 
+00063 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}         \hyperlink{a00023_a1bff969fa2162ccb9701f6e88e8c912e}{ir\_sen\_first\_order\_derivative}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} final\_val,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} init\_val);
+00064 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}         \hyperlink{a00023_a4a7227cd7b902e9a53daa10ddd05bbbf}{ir\_sen\_calc\_probablity}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} event,
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} obs);
+00065 \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8}            \hyperlink{a00023_a5c2c051f3b2d6fc8651e0e7750e455c2}{ir\_compare}(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} num, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} given\_num, 
+      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} tolerance);
+00066 
+00067 
+00068 
+00069 \textcolor{preprocessor}{#endif //IR\_SEN\_PRV\_H}
+00070 
+\end{DoxyCode}

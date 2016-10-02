@@ -1,0 +1,192 @@
+\hypertarget{a00032}{\section{srv\+\_\+spi.\+c File Reference}
+\label{a00032}\index{srv\+\_\+spi.\+c@{srv\+\_\+spi.\+c}}
+}
+
+
+spi port driver  
+
+
+{\ttfamily \#include \char`\"{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+Include dependency graph for srv\+\_\+spi.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{d4/d8e/a01694}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00032_d6/d17/a00778}{spi\+\_\+data\+\_\+t}
+\begin{DoxyCompactList}\small\item\em spi port internal data  \hyperlink{a00032_d6/d17/a00778}{More...}\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00032_ae909944aa85ae98323073c628be541aa}{spi\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Init function for srv\+\_\+spi service. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00032_a19e2dff580e4d1b2198fa9108fca81ac}{spi\+\_\+put\+\_\+data} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} data)
+\begin{DoxyCompactList}\small\item\em send one byte of data and receive one back at the same time \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+spi port driver 
+
+
+
+Definition in file \hyperlink{a00032_source}{srv\+\_\+spi.\+c}.
+
+
+
+\subsection{Data Structure Documentation}
+\index{spi\+\_\+data\+\_\+t@{spi\+\_\+data\+\_\+t}}\label{d6/d17/a00778}
+\hypertarget{a00032_d6/d17/a00778}{}
+\subsubsection{struct spi\+\_\+data\+\_\+t}
+spi port internal data 
+
+Definition at line \hyperlink{a00032_source_l00017}{17} of file \hyperlink{a00032_source}{srv\+\_\+spi.\+c}.
+
+
+
+Collaboration diagram for spi\+\_\+data\+\_\+t\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/dc8/a01695}
+\end{center}
+\end{figure}
+
+
+\subsection{Function Documentation}
+\hypertarget{a00032_ae909944aa85ae98323073c628be541aa}{\index{srv\+\_\+spi.\+c@{srv\+\_\+spi.\+c}!spi\+\_\+init@{spi\+\_\+init}}
+\index{spi\+\_\+init@{spi\+\_\+init}!srv\+\_\+spi.\+c@{srv\+\_\+spi.\+c}}
+\subsubsection[{spi\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void spi\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00032_ae909944aa85ae98323073c628be541aa}
+
+
+Init function for srv\+\_\+spi service. 
+
+
+
+Definition at line \hyperlink{a00032_source_l00030}{30} of file \hyperlink{a00032_source}{srv\+\_\+spi.\+c}.
+
+
+
+References \hyperlink{a00013_source_l00122}{N\+O\+V\+\_\+\+H\+O\+L\+D\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}, \hyperlink{a00013_source_l00121}{N\+O\+V\+\_\+\+H\+O\+L\+D\+\_\+\+C\+T\+R\+L\+\_\+\+T\+R\+I\+S}, \hyperlink{a00060_source_l00019}{nov\+\_\+wr\+\_\+inprogress}, \hyperlink{a00013_source_l00113}{S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S}, \hyperlink{a00013_source_l00118}{S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S}, \hyperlink{a00013_source_l00116}{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L}, \hyperlink{a00013_source_l00115}{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S}, \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}, and \hyperlink{a00013_source_l00111}{S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00031 \{
+00032 
+00033 
+00034     \textcolor{comment}{// setup the SPI1 port}
+00035     
+00036             \hyperlink{a00013_a98c4bd0ee0f76eb205e874355bf9cd33}{SPI\_SCK\_TRIS}        = 0;
+00037             \hyperlink{a00013_aa171067a2f57d1555ab4449c78847c72}{SPI\_SDO\_TRIS}        = 0;
+00038             \hyperlink{a00013_a40c85fd42ffb12b326b7cb9ee48f2ffb}{SPI\_SDI\_TRIS}        = 1;
+00039             \hyperlink{a00013_a1424f86a2482cfbcf68f709ce542e262}{SPI\_SS\_TRIS}         = 0;
+00040             \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT}     = 1;
+00041             \hyperlink{a00013_a11571727bdbc21b0bfb7c701599e759b}{SPI\_SDO\_ANSEL}       = 0;
+00042             
+00043            \hyperlink{a00029_a37dc9980ee3379d4bd3a66f7cf9d761e}{NOV\_HOLD\_CTRL\_TRIS}   = 0;
+00044            \hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT}    = 1;
+00045            \hyperlink{a00029_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress}    = 0;
+00046 
+00047 
+00048       \textcolor{comment}{//disable SPI module}
+00049        SPI1STATbits.SPIEN       = 0;
+00050        SPI1STATbits.SPISIDL     = 0;
+00051     
+00052 
+00053 \textcolor{comment}{// Configure SPI1CON register}
+00054     
+00055         IFS0bits.SPI1IF         = 0;    \textcolor{comment}{// Clear the Interrupt flag}
+00056         IEC0bits.SPI1IE         = 0;    \textcolor{comment}{// Disable the interrupt}
+00057 
+00058         SPI1CON1bits.MSTEN      = 1;   \textcolor{comment}{//Enable Master mode}
+00059 
+00060         SPI1CON1bits.MODE16     = 0;  \textcolor{comment}{//Communication is byte-wide}
+00061         SPI1CON1bits.CKP        = 0;   \textcolor{comment}{//Idle state for clock is a high level}
+00062         SPI1CON1bits.CKE        = 1;   \textcolor{comment}{//Data out on Active to Idle Edge}
+00063 
+00064         SPI1CON1bits.SMP        = 0;  \textcolor{comment}{/*Master mode => Input data is sampled at}
+00065 \textcolor{comment}{                                        the middle of data output time */}
+00066 
+00067         \textcolor{comment}{//TODO: Fsck = Fp/(Primary Prescaler * Secondary Prescaler)}
+00068         SPI1CON1bits.SPRE       = 6;     \textcolor{comment}{//Set Primary Pre-scalar for 4:1 ratio}
+00069         SPI1CON1bits.PPRE       = 2;     \textcolor{comment}{//Set Secondary Pre-scalar for 2:1 ratio}
+00070 
+00071         SPI1CON1bits.DISSDO     = 0;     \textcolor{comment}{//Internal SPI clock is enabled}
+00072         SPI1CON1bits.DISSCK     = 0;     \textcolor{comment}{//SDOx pin is controlled by the module}
+00073 
+00074         SPI1CON1bits.SSEN       = 0;     \textcolor{comment}{//SSx pin is not used by the module.}
+00075                                          \textcolor{comment}{//Pin is controlled by port function}
+00076 
+00077         SPI1CON2                = 0;     \textcolor{comment}{//Framed SPI modes not used}
+00078 
+00079 
+00080         SPI1STATbits.SPIROV     = 0;
+00081         \textcolor{comment}{//  Enable SPI module}
+00082         SPI1STATbits.SPIEN       = 1;
+00083 
+00084 
+00085 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{dc/d87/a00032_ae909944aa85ae98323073c628be541aa_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00032_a19e2dff580e4d1b2198fa9108fca81ac}{\index{srv\+\_\+spi.\+c@{srv\+\_\+spi.\+c}!spi\+\_\+put\+\_\+data@{spi\+\_\+put\+\_\+data}}
+\index{spi\+\_\+put\+\_\+data@{spi\+\_\+put\+\_\+data}!srv\+\_\+spi.\+c@{srv\+\_\+spi.\+c}}
+\subsubsection[{spi\+\_\+put\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} spi\+\_\+put\+\_\+data (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{data}
+\end{DoxyParamCaption}
+)}}\label{a00032_a19e2dff580e4d1b2198fa9108fca81ac}
+
+
+send one byte of data and receive one back at the same time 
+
+
+
+Definition at line \hyperlink{a00032_source_l00097}{97} of file \hyperlink{a00032_source}{srv\+\_\+spi.\+c}.
+
+
+
+Referenced by \hyperlink{a00060_source_l00633}{nov\+\_\+byte\+\_\+read()}, \hyperlink{a00060_source_l00608}{nov\+\_\+byte\+\_\+write()}, \hyperlink{a00060_source_l00567}{nov\+\_\+get\+\_\+status()}, \hyperlink{a00060_source_l00723}{nov\+\_\+memcpy()}, \hyperlink{a00060_source_l00663}{nov\+\_\+page\+\_\+cpy()}, \hyperlink{a00060_source_l00553}{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch()}, and \hyperlink{a00060_source_l00586}{nov\+\_\+write\+\_\+status()}.
+
+
+\begin{DoxyCode}
+00098 \{
+00099     SPI1BUF = data;                  \textcolor{comment}{// write to buffer for TX}
+00100     \textcolor{keywordflow}{while}(!SPI1STATbits.SPIRBF);             \textcolor{comment}{// wait for transfer to complete}
+00101     \textcolor{keywordflow}{return} SPI1BUF;                  \textcolor{comment}{// read the received value}
+00102 
+00103 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d87/a00032_a19e2dff580e4d1b2198fa9108fca81ac_icgraph}
+\end{center}
+\end{figure}
+
+

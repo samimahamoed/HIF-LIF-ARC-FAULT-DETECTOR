@@ -1,0 +1,119 @@
+\hypertarget{a00072}{\section{Q\+Window\+Function\+Manager$<$ T $>$ Class Template Reference}
+\label{a00072}\index{Q\+Window\+Function\+Manager$<$ T $>$@{Q\+Window\+Function\+Manager$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$qwindowfunction.\+h$>$}
+
+
+
+Collaboration diagram for Q\+Window\+Function\+Manager$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{d0/d79/a00553}
+\end{center}
+\end{figure}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{a00071}{Q\+Window\+Function}$<$ T $>$ $\ast$ \hyperlink{a00072_a3c72b178730b8731087337bcbfcbd4b7}{create\+Function} (Q\+String function\+Name)
+\item 
+static Q\+String\+List \hyperlink{a00072_ae0508780c15f6c28fb566dfe76c9a082}{functions} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class Q\+Window\+Function\+Manager$<$ T $>$}
+
+
+
+Definition at line \hyperlink{a00128_source_l00084}{84} of file \hyperlink{a00128_source}{qwindowfunction.\+h}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00072_a3c72b178730b8731087337bcbfcbd4b7}{\index{Q\+Window\+Function\+Manager@{Q\+Window\+Function\+Manager}!create\+Function@{create\+Function}}
+\index{create\+Function@{create\+Function}!Q\+Window\+Function\+Manager@{Q\+Window\+Function\+Manager}}
+\subsubsection[{create\+Function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf Q\+Window\+Function}$<$ T $>$ $\ast$ {\bf Q\+Window\+Function\+Manager}$<$ T $>$\+::create\+Function (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{function\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00072_a3c72b178730b8731087337bcbfcbd4b7}
+
+
+Definition at line \hyperlink{a00127_source_l00090}{90} of file \hyperlink{a00127_source}{qwindowfunction.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00121_source_l00092}{Q\+Fourier\+Transformer\+::set\+Window\+Function()}.
+
+
+\begin{DoxyCode}
+00091 \{
+00092     functionName = functionName.trimmed().toLower().replace(\textcolor{stringliteral}{"function"}, \textcolor{stringliteral}{""});
+00093     \textcolor{keywordflow}{if}(functionName == \textcolor{stringliteral}{"hamming"})
+00094     \{
+00095         \textcolor{keywordflow}{return} \textcolor{keyword}{new} \hyperlink{a00056}{QHammingFunction<T>};
+00096     \}
+00097     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(functionName == \textcolor{stringliteral}{"hann"})
+00098     \{
+00099         \textcolor{keywordflow}{return} \textcolor{keyword}{new} \hyperlink{a00057}{QHannFunction<T>};
+00100     \}
+00101     \textcolor{keywordflow}{return} NULL;
+00102 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d6/d2c/a00072_a3c72b178730b8731087337bcbfcbd4b7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00072_ae0508780c15f6c28fb566dfe76c9a082}{\index{Q\+Window\+Function\+Manager@{Q\+Window\+Function\+Manager}!functions@{functions}}
+\index{functions@{functions}!Q\+Window\+Function\+Manager@{Q\+Window\+Function\+Manager}}
+\subsubsection[{functions}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ Q\+String\+List {\bf Q\+Window\+Function\+Manager}$<$ T $>$\+::functions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{a00072_ae0508780c15f6c28fb566dfe76c9a082}
+
+
+Definition at line \hyperlink{a00127_source_l00105}{105} of file \hyperlink{a00127_source}{qwindowfunction.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00121_source_l00045}{Q\+Fourier\+Transformer\+::\+Q\+Fourier\+Transformer()}.
+
+
+\begin{DoxyCode}
+00106 \{
+00107     QStringList result;
+00108     result << \textcolor{stringliteral}{"Rectangular"} << \textcolor{stringliteral}{"Hamming"} << \textcolor{stringliteral}{"Hann"};
+00109     \textcolor{keywordflow}{return} result;
+00110 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d6/d2c/a00072_ae0508780c15f6c28fb566dfe76c9a082_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00128}{qwindowfunction.\+h}\item 
+\hyperlink{a00127}{qwindowfunction.\+cpp}\end{DoxyCompactItemize}

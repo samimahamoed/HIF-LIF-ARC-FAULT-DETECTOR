@@ -1,0 +1,153 @@
+.TH "QFourierVariableCalculator" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QFourierVariableCalculator \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qfouriervariablecalculator\&.h>\fP
+.PP
+Inherits \fBQFourierCalculator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQFourierVariableCalculator\fP ()"
+.br
+.ti -1c
+.RI "\fB~QFourierVariableCalculator\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetSize\fP (int \fBsize\fP)"
+.br
+.ti -1c
+.RI "void \fBforward\fP ()"
+.br
+.ti -1c
+.RI "void \fBinverse\fP ()"
+.br
+.ti -1c
+.RI "void \fBrescale\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBffft::FFTReal\fP< float > * \fBmFourierTransform\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 48 of file qfouriervariablecalculator\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QFourierVariableCalculator::QFourierVariableCalculator ()"
+
+.PP
+Definition at line 44 of file qfouriervariablecalculator\&.cpp\&.
+.PP
+References mFourierTransform\&.
+.PP
+.nf
+45     : QFourierCalculator()
+46 {
+47     mFourierTransform = 0;
+48 }
+.fi
+.SS "QFourierVariableCalculator::~QFourierVariableCalculator ()"
+
+.PP
+Definition at line 50 of file qfouriervariablecalculator\&.cpp\&.
+.PP
+References mFourierTransform\&.
+.PP
+.nf
+51 {
+52     if(mFourierTransform != 0)
+53     {
+54         delete mFourierTransform;
+55     }
+56 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QFourierVariableCalculator::forward ()\fC [virtual]\fP"
+
+.PP
+Implements \fBQFourierCalculator\fP\&.
+.PP
+Definition at line 72 of file qfouriervariablecalculator\&.cpp\&.
+.PP
+References ffft::FFTReal< DT >::do_fft(), mFourierTransform, QFourierCalculator::mInput, and QFourierCalculator::mOutput\&.
+.PP
+.nf
+73 {
+74     mFourierTransform->do_fft(mOutput, mInput);
+75 }
+.fi
+.SS "void QFourierVariableCalculator::inverse ()\fC [virtual]\fP"
+
+.PP
+Implements \fBQFourierCalculator\fP\&.
+.PP
+Definition at line 77 of file qfouriervariablecalculator\&.cpp\&.
+.PP
+References ffft::FFTReal< DT >::do_ifft(), mFourierTransform, QFourierCalculator::mInput, and QFourierCalculator::mOutput\&.
+.PP
+.nf
+78 {
+79     mFourierTransform->do_ifft(mInput, mOutput);
+80 }
+.fi
+.SS "void QFourierVariableCalculator::rescale ()\fC [virtual]\fP"
+
+.PP
+Implements \fBQFourierCalculator\fP\&.
+.PP
+Definition at line 82 of file qfouriervariablecalculator\&.cpp\&.
+.PP
+References mFourierTransform, QFourierCalculator::mInput, and ffft::FFTReal< DT >::rescale()\&.
+.PP
+.nf
+83 {
+84     mFourierTransform->rescale(mInput);
+85 }
+.fi
+.SS "void QFourierVariableCalculator::setSize (intsize)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBQFourierCalculator\fP\&.
+.PP
+Definition at line 58 of file qfouriervariablecalculator\&.cpp\&.
+.PP
+References ffft::FFTReal< DT >::get_length(), mFourierTransform, QFourierCalculator::mSize, and QFourierCalculator::setSize()\&.
+.PP
+.nf
+59 {
+60     QFourierCalculator::setSize(size);
+61     if(mFourierTransform == 0)
+62     {
+63         mFourierTransform = new ffft::FFTReal<float>(mSize);
+64     }
+65     else if(mFourierTransform->get_length() != mSize)
+66     {
+67         delete mFourierTransform;
+68         mFourierTransform = new ffft::FFTReal<float>(mSize);
+69     }
+70 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBffft::FFTReal\fP<float>* QFourierVariableCalculator::mFourierTransform\fC [protected]\fP"
+
+.PP
+Definition at line 62 of file qfouriervariablecalculator\&.h\&.
+.PP
+Referenced by forward(), inverse(), QFourierVariableCalculator(), rescale(), setSize(), and ~QFourierVariableCalculator()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

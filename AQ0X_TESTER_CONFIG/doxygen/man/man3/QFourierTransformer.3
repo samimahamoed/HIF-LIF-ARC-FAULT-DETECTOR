@@ -1,0 +1,382 @@
+.TH "QFourierTransformer" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QFourierTransformer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qfouriertransformer\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDirection\fP { \fBForward\fP = 0, \fBInverse\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBInitialization\fP { \fBVariableSize\fP = 0, \fBFixedSize\fP = 1, \fBInvalidSize\fP = 2 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQFourierTransformer\fP (int size=0, QString functionName='')"
+.br
+.ti -1c
+.RI "\fB~QFourierTransformer\fP ()"
+.br
+.ti -1c
+.RI "\fBInitialization\fP \fBsetSize\fP (int size)"
+.br
+.ti -1c
+.RI "bool \fBsetWindowFunction\fP (QString functionName)"
+.br
+.ti -1c
+.RI "QStringList \fBwindowFunctions\fP ()"
+.br
+.ti -1c
+.RI "void \fBtransform\fP (float input[], float output[], \fBDirection\fP direction=\fBQFourierTransformer::Forward\fP)"
+.br
+.ti -1c
+.RI "void \fBforwardTransform\fP (float *input, float *output)"
+.br
+.ti -1c
+.RI "void \fBinverseTransform\fP (float input[], float output[])"
+.br
+.ti -1c
+.RI "void \fBrescale\fP (float input[])"
+.br
+.ti -1c
+.RI "void \fBconjugate\fP (float input[])"
+.br
+.ti -1c
+.RI "\fBQComplexVector\fP \fBtoComplex\fP (float input[])"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinitialize\fP ()"
+.br
+.ti -1c
+.RI "int \fBsizeToKey\fP (int size)"
+.br
+.ti -1c
+.RI "bool \fBisValidSize\fP (int \fBvalue\fP)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 51 of file qfouriertransformer\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQFourierTransformer::Direction\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIForward \fP\fP
+.TP
+\fB\fIInverse \fP\fP
+.PP
+Definition at line 56 of file qfouriertransformer\&.h\&.
+.PP
+.nf
+57         {
+58             Forward = 0,
+59             Inverse = 1
+60         };
+.fi
+.SS "enum \fBQFourierTransformer::Initialization\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIVariableSize \fP\fP
+.TP
+\fB\fIFixedSize \fP\fP
+.TP
+\fB\fIInvalidSize \fP\fP
+.PP
+Definition at line 62 of file qfouriertransformer\&.h\&.
+.PP
+.nf
+63         {
+64             VariableSize = 0,
+65             FixedSize = 1,
+66             InvalidSize = 2
+67         };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QFourierTransformer::QFourierTransformer (intsize = \fC0\fP, QStringfunctionName = \fC''\fP)"
+
+.PP
+Definition at line 45 of file qfouriertransformer\&.cpp\&.
+.PP
+References QWindowFunctionManager< T >::functions(), initialize(), setSize(), and setWindowFunction()\&.
+.PP
+.nf
+46 {
+47     mWindowFunctions = QWindowFunctionManager<float>::functions();
+48     mWindowFunction = 0;
+49     mCalculator = 0;
+50     initialize();
+51     setSize(size);
+52     setWindowFunction(functionName);
+53 }
+.fi
+.SS "QFourierTransformer::~QFourierTransformer ()"
+
+.PP
+Definition at line 55 of file qfouriertransformer\&.cpp\&.
+.PP
+.nf
+56 {
+57     qDeleteAll(mFixedCalculators\&.begin(), mFixedCalculators\&.end());
+58     mFixedCalculators\&.clear();
+59     delete mVariableCalculator;
+60     if(mWindowFunction != 0)
+61     {
+62         delete mWindowFunction;
+63     }
+64 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QFourierTransformer::conjugate (floatinput[])"
+
+.PP
+Definition at line 185 of file qfouriertransformer\&.cpp\&.
+.PP
+.nf
+186 {
+187     for(int i = mSize / 2 + 1; i < mSize; ++i)
+188     {
+189         input[i] = -input[i];
+190     }
+191 }
+.fi
+.SS "void QFourierTransformer::forwardTransform (float *input, float *output)"
+
+.PP
+Definition at line 130 of file qfouriertransformer\&.cpp\&.
+.PP
+References QWindowFunction< T >::apply(), QFourierCalculator::forward(), and QFourierCalculator::setData()\&.
+.PP
+Referenced by emu_data_editor::emu_data_editor(), transform(), and emu_data_editor::update_curve()\&.
+.PP
+.nf
+131 {
+132     if(mWindowFunction != 0)
+133     {
+134         mWindowFunction->apply(input, mSize);
+135     }
+136     mCalculator->setData(input, output);
+137     mCalculator->forward();
+138 }
+.fi
+.SS "void QFourierTransformer::initialize ()\fC [protected]\fP"
+
+.PP
+Definition at line 152 of file qfouriertransformer\&.cpp\&.
+.PP
+Referenced by QFourierTransformer()\&.
+.PP
+.nf
+153 {
+154     mFixedCalculators\&.insert(3, new QFourierFixedCalculator<3>());
+155     mFixedCalculators\&.insert(4, new QFourierFixedCalculator<4>());
+156     mFixedCalculators\&.insert(5, new QFourierFixedCalculator<5>());
+157     mFixedCalculators\&.insert(6, new QFourierFixedCalculator<6>());
+158     mFixedCalculators\&.insert(7, new QFourierFixedCalculator<7>());
+159     mFixedCalculators\&.insert(8, new QFourierFixedCalculator<8>());
+160     mFixedCalculators\&.insert(9, new QFourierFixedCalculator<9>());
+161     mFixedCalculators\&.insert(10, new QFourierFixedCalculator<10>());
+162     mFixedCalculators\&.insert(11, new QFourierFixedCalculator<11>());
+163     mFixedCalculators\&.insert(12, new QFourierFixedCalculator<12>());
+164     mFixedCalculators\&.insert(13, new QFourierFixedCalculator<13>());
+165     mFixedCalculators\&.insert(14, new QFourierFixedCalculator<14>());
+166 
+167     mVariableCalculator = new QFourierVariableCalculator();
+168 }
+.fi
+.SS "void QFourierTransformer::inverseTransform (floatinput[], floatoutput[])"
+
+.PP
+Definition at line 140 of file qfouriertransformer\&.cpp\&.
+.PP
+References QFourierCalculator::inverse(), and QFourierCalculator::setData()\&.
+.PP
+Referenced by transform()\&.
+.PP
+.nf
+141 {
+142     mCalculator->setData(input, output);
+143     mCalculator->inverse();
+144 }
+.fi
+.SS "bool QFourierTransformer::isValidSize (intvalue)\fC [protected]\fP"
+
+.PP
+Definition at line 180 of file qfouriertransformer\&.cpp\&.
+.PP
+Referenced by setSize(), and setWindowFunction()\&.
+.PP
+.nf
+181 {
+182     return ((value > 0) && ((value & (~value + 1)) == value));
+183 }
+.fi
+.SS "void QFourierTransformer::rescale (floatinput[])"
+
+.PP
+Definition at line 146 of file qfouriertransformer\&.cpp\&.
+.PP
+References QFourierCalculator::rescale(), and QFourierCalculator::setData()\&.
+.PP
+.nf
+147 {
+148     mCalculator->setData(input);
+149     mCalculator->rescale();
+150 }
+.fi
+.SS "\fBQFourierTransformer::Initialization\fP QFourierTransformer::setSize (intsize)"
+
+.PP
+Definition at line 66 of file qfouriertransformer\&.cpp\&.
+.PP
+References QWindowFunction< T >::create(), FixedSize, InvalidSize, isValidSize(), key, QFourierCalculator::setSize(), sizeToKey(), and VariableSize\&.
+.PP
+Referenced by emu_data_editor::emu_data_editor(), and QFourierTransformer()\&.
+.PP
+.nf
+67 {
+68     if(isValidSize(size))
+69     {
+70         mSize = size;
+71         if(mWindowFunction != 0)
+72         {
+73             mWindowFunction->create(mSize);
+74         }
+75         int key = sizeToKey(mSize);
+76         if(mFixedCalculators\&.contains(key))
+77         {
+78             mCalculator = mFixedCalculators[key];
+79             return QFourierTransformer::FixedSize;
+80         }
+81         else
+82         {
+83             mCalculator = mVariableCalculator;
+84             mCalculator->setSize(mSize);
+85             return QFourierTransformer::VariableSize;
+86         }
+87     }
+88     mSize = 0;
+89     return QFourierTransformer::InvalidSize;
+90 }
+.fi
+.SS "bool QFourierTransformer::setWindowFunction (QStringfunctionName)"
+
+.PP
+Definition at line 92 of file qfouriertransformer\&.cpp\&.
+.PP
+References QWindowFunction< T >::create(), QWindowFunctionManager< T >::createFunction(), and isValidSize()\&.
+.PP
+Referenced by emu_data_editor::emu_data_editor(), and QFourierTransformer()\&.
+.PP
+.nf
+93 {
+94     for(int i = 0; i < mWindowFunctions\&.size(); ++i)
+95     {
+96         if(functionName\&.trimmed()\&.toLower()\&.replace("function", "") == mWindowFunctions[i]\&.trimmed()\&.toLower()\&.replace("function", ""))
+97         {
+98             if(mWindowFunction != 0)
+99             {
+100                 delete mWindowFunction;
+101             }
+102             mWindowFunction = QWindowFunctionManager<float>::createFunction(functionName);
+103             if(mWindowFunction != 0 && isValidSize(mSize))
+104             {
+105                 mWindowFunction->create(mSize);
+106             }
+107             return true;
+108         }
+109     }
+110     return false;
+111 }
+.fi
+.SS "int QFourierTransformer::sizeToKey (intsize)\fC [protected]\fP"
+
+.PP
+Definition at line 170 of file qfouriertransformer\&.cpp\&.
+.PP
+Referenced by setSize()\&.
+.PP
+.nf
+171 {
+172     float result = log(float(size)) / log(2\&.0);
+173     if(result == float(int(result)))
+174     {
+175         return result;
+176     }
+177     return -1;
+178 }
+.fi
+.SS "\fBQComplexVector\fP QFourierTransformer::toComplex (floatinput[])"
+
+.PP
+Definition at line 193 of file qfouriertransformer\&.cpp\&.
+.PP
+.nf
+194 {
+195     int last = mSize / 2;
+196     QVector<QComplexFloat> result(last + 1);
+197     result[0] = QComplexFloat(input[0], 0);
+198     for(int i = 1; i < last; ++i)
+199     {
+200         result[i] = QComplexFloat(input[i], -input[last + i]);
+201     }
+202     result[last] = QComplexFloat(input[last], 0);
+203     return result;
+204 }
+.fi
+.SS "void QFourierTransformer::transform (floatinput[], floatoutput[], \fBDirection\fPdirection = \fC\fBQFourierTransformer::Forward\fP\fP)"
+
+.PP
+Definition at line 118 of file qfouriertransformer\&.cpp\&.
+.PP
+References Forward, forwardTransform(), and inverseTransform()\&.
+.PP
+.nf
+119 {
+120     if(direction == QFourierTransformer::Forward)
+121     {
+122         forwardTransform(input, output);
+123     }
+124     else
+125     {
+126         inverseTransform(input, output);
+127     }
+128 }
+.fi
+.SS "QStringList QFourierTransformer::windowFunctions ()"
+
+.PP
+Definition at line 113 of file qfouriertransformer\&.cpp\&.
+.PP
+.nf
+114 {
+115     return mWindowFunctions;
+116 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

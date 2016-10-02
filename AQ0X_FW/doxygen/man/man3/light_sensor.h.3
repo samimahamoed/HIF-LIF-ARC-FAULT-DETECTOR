@@ -1,0 +1,290 @@
+.TH "light_sensor.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+light_sensor.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBanalog_sample_light_t\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_light_sen_configure\fP"
+.br
+.RI "\fINotification containing module operation configuration details ( from Algorithm module) \fP"
+.ti -1c
+.RI "struct \fBx_notify_light_sen_sv_report\fP"
+.br
+.RI "\fINotification structure from light_sen module to Algorithm module about supervision result\&. \fP"
+.ti -1c
+.RI "struct \fBx_notify_light_sen_configure\&.message\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_light_sen_sv_report\&.message\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_NTF_LIGHT_SENSOR_CONFIG\fP   (\fBX_NTF_FREE\fP + 13)"
+.br
+.RI "\fINotification from Algorithm module\&. \fP"
+.ti -1c
+.RI "#define \fBLIGHT_SEN_GAIN\fP   1"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlight_sen_taskx\fP (\fBx_event\fP *event)"
+.br
+.RI "\fIlight sensor module task function\&. \fP"
+.ti -1c
+.RI "void \fBlight_sen_notifyx\fP (\fBx_notify\fP *notify)"
+.br
+.RI "\fIlight module notification function\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBx_task_id\fP \fBlight_sen_id\fP"
+.br
+.RI "\fIir_sen module handle \fP"
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct analog_sample_light_t"
+.PP 
+Definition at line 20 of file light_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIadc_val\fP 
+.br
+.PP
+\fBFloat32\fP \fIana_val\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_light_sen_configure"
+.PP 
+Notification containing module operation configuration details ( from Algorithm module) 
+.PP
+Definition at line 31 of file light_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_light_sen_configure\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_light_sen_sv_report"
+.PP 
+Notification structure from light_sen module to Algorithm module about supervision result\&. 
+.PP
+Definition at line 46 of file light_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_light_sen_sv_report\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_light_sen_configure\&.message"
+.PP 
+Definition at line 35 of file light_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfigured\fP 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP * \fIdisturbance_record\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_light_sen_sv_report\&.message"
+.PP 
+Definition at line 50 of file light_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfig\fP 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fIerror_status_flags\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define LIGHT_SEN_GAIN   1"
+
+.PP
+Definition at line 18 of file light_sensor\&.h\&.
+.SS "#define X_NTF_LIGHT_SENSOR_CONFIG   (\fBX_NTF_FREE\fP + 13)"
+
+.PP
+Notification from Algorithm module\&. 
+.PP
+Definition at line 13 of file light_sensor\&.h\&.
+.PP
+Referenced by light_sen_notifyx()\&.
+.SH "Function Documentation"
+.PP 
+.SS "void light_sen_notifyx (\fBx_notify\fP *notify)"
+
+.PP
+light module notification function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP - system distributed notification 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file light_sensor\&.c\&.
+.PP
+References ASSERT, light_sen_data_t::configured, module_status_t::current, light_sen_data_t::disturbance_record, configured_t::element_status_sv_en, sv_error_flags_ut::flags_all, light_sen_mark_false_postives(), x_notify_light_sen_configure::message, x_notify::message, light_sen_data_t::module_status, state_data_light_t::state, STATE_0, light_sen_data_t::sv_errors_flags, light_sen_data_t::sv_task_event, light_sen_data_t::sv_timer_ntf, SV_TIMER_PERIOD, x_delete_timer(), X_MS2TICK, X_NTF_INIT, X_NTF_LIGHT_SENSOR_CONFIG, X_NTF_LIGHT_SENSOR_SV_TIMER, x_schedule_timer(), and x_send_event()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+107 {
+108 
+109     
+110     switch(notify->message)
+111     {    
+112         case X_NTF_INIT:
+113         {
+114             light_sen_init();
+115         }break;
+116 
+117 
+118         case X_NTF_LIGHT_SENSOR_CONFIG:
+119         {
+120 
+121             // configuration details from algorithm module
+122             x_notify_light_sen_configure * notify_configure = (x_notify_light_sen_configure *)notify;
+123 
+124            
+125             light_sen_data\&.configured = notify_configure->message\&.configured;
+126             light_sen_data\&.disturbance_record = notify_configure->message\&.disturbance_record;
+127 
+128             // Clear supervison state ( so errors will be reported if module have internal error )
+129              light_sen_data\&.sv_errors_flags\&.flags_all = 0;
+130 
+131           x_delete_timer(&light_sen_data\&.sv_timer_ntf);
+132 
+133           if(light_sen_data\&.configured\&.element_status_sv_en)
+134           x_schedule_timer(&light_sen_data\&.sv_timer_ntf,X_MS2TICK(SV_TIMER_PERIOD));
+135 
+136         }break;
+137 
+138 
+139          case X_NTF_CLR_ALARM:
+140         {
+141 
+142            // Algorithm module alarm reset request
+143              light_sen_data\&.module_status\&.current\&.state = STATE_0;
+144              light_sen_mark_false_postives();
+145 
+146 
+147         }break;
+148 
+149         
+150         case X_NTF_LIGHT_SENSOR_SV_TIMER:
+151         {
+152            x_send_event(&light_sen_data\&.sv_task_event);
+153         }break;
+154         
+155        
+156         default:
+157         {
+158             ASSERT(0);
+159         }
+160     }
+161 
+162 }
+.fi
+.SS "void light_sen_taskx (\fBx_event\fP *event)"
+
+.PP
+light sensor module task function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP - system distributed event 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file light_sensor\&.c\&.
+.PP
+References ASSERT, sv_error_flags_ut::flags_all, light_sen_false_positive_adjustment_task(), light_sen_sensor_element_sv_task(), x_notify_light_sen_sv_report::message, x_event::message, x_notify_light_sen_sv_report::notify, light_sen_data_t::sv_errors_flags, light_sen_data_t::sv_status_ntf, X_MSG_LIGHT_SENSOR_SV, and x_send_notify()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+66 {
+67     switch(event->message)
+68     {
+69 
+70     
+71         case X_MSG_LIGHT_SENSOR_SV:
+72         {
+73 
+74             light_sen_sensor_element_sv_task();
+75 
+76             light_sen_false_positive_adjustment_task();
+77 
+78             if(light_sen_data\&.sv_errors_flags\&.flags_all!=0){
+79              light_sen_data\&.sv_status_ntf\&.message\&.error_status_flags\&.flags_all = light_sen_data\&.sv_errors_flags\&.flags_all;
+80              // Send notification to Algorithm module about detected error
+81              x_send_notify(&light_sen_data\&.sv_status_ntf\&.notify);
+82              light_sen_data\&.sv_errors_flags\&.flags_all =0;
+83             }
+84             
+85         }break;
+86       
+87 
+88         
+89         default:
+90         {
+91             ASSERT(0);
+92         }        
+93     }
+94 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBx_task_id\fP light_sen_id"
+
+.PP
+ir_sen module handle 
+.PP
+Definition at line 15 of file light_sensor\&.c\&.
+.PP
+Referenced by main()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

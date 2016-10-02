@@ -1,0 +1,6 @@
+<map id="QCPGraph::data" name="QCPGraph::data">
+<area shape="rect" id="node2" href="$df/d61/a00031.html#a1df2fd710545c8ba3b2c99a39a27bf8b" title="Replaces the current data with the provided data. " alt="" coords="205,5,344,32"/>
+<area shape="rect" id="node3" href="$d5/db6/a00042.html#a5b90296109e36384aedbc8908a670413" title="If the tracer is connected with a graph (setGraph), this function updates the tracer&#39;s position to re..." alt="" coords="172,56,377,83"/>
+<area shape="rect" id="node4" href="$d5/db6/a00042.html#af5886f4ded8dd68cb4f3388f390790c0" title="Sets the QCPGraph this tracer sticks to. " alt="" coords="425,31,597,57"/>
+<area shape="rect" id="node5" href="$d5/db6/a00042.html#aaaf49b48382c730ec9be0e74c2538315" title="QCPItemTracer::draw" alt="" coords="438,81,585,108"/>
+</map>

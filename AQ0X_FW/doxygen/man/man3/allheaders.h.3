@@ -1,0 +1,207 @@
+.TH "allheaders.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+allheaders.h \- 
+.PP
+All project header files together so modules can include just this one\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'string\&.h'\fP
+.br
+\fC#include 'stdlib\&.h'\fP
+.br
+\fC#include 'stddef\&.h'\fP
+.br
+\fC#include 'stdarg\&.h'\fP
+.br
+\fC#include 'stdio\&.h'\fP
+.br
+\fC#include <math\&.h>\fP
+.br
+\fC#include 'libpic30\&.h'\fP
+.br
+\fC#include 'p33EP128MC202\&.h'\fP
+.br
+\fC#include 'System\&.h'\fP
+.br
+\fC#include 'srv_watchdog\&.h'\fP
+.br
+\fC#include 'sys_eventx\&.h'\fP
+.br
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'nov_data\&.h'\fP
+.br
+\fC#include 'srv_serial\&.h'\fP
+.br
+\fC#include 'srv_nov\&.h'\fP
+.br
+\fC#include 'srv_spi\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBDBG_SHOW_INIT\fP   0"
+.br
+.RI "\fIOS debug - print init phase\&. \fP"
+.ti -1c
+.RI "#define \fBDBG_SHOW_TIMERS\fP   0"
+.br
+.RI "\fIOS debug - print timer notifications\&. \fP"
+.ti -1c
+.RI "#define \fBDBG_SHOW_EVENTS\fP   0"
+.br
+.RI "\fIOS debug - print event notifications\&. \fP"
+.ti -1c
+.RI "#define \fBDBG_SHOW_NOTIFY\fP   0"
+.br
+.RI "\fIOS debug - print standard notifications\&. \fP"
+.ti -1c
+.RI "#define \fBDBG_TEST_POINT\fP   0"
+.br
+.RI "\fIdebug - print test point message \fP"
+.ti -1c
+.RI "#define \fBD_I\fP(x_)"
+.br
+.ti -1c
+.RI "#define \fBD_T\fP(x_)"
+.br
+.ti -1c
+.RI "#define \fBD_E\fP(x_)"
+.br
+.ti -1c
+.RI "#define \fBD_N\fP(x_)"
+.br
+.ti -1c
+.RI "#define \fBD_P\fP(x_)"
+.br
+.ti -1c
+.RI "#define \fBTRUE\fP   1"
+.br
+.ti -1c
+.RI "#define \fBFALSE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBTEST_MODE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBAQ0X_V0\fP   0"
+.br
+.RI "\fIDevice version 0 , include 3 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor, and 1 light sensor\&. \fP"
+.ti -1c
+.RI "#define \fBAQ0X_V1\fP   1"
+.br
+.RI "\fIDevice version 1 , include 2 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor\&. \fP"
+.ti -1c
+.RI "#define \fBDEVICE\fP   \fBAQ0X_V0\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+All project header files together so modules can include just this one\&. 
+
+
+.PP
+Definition in file \fBallheaders\&.h\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define AQ0X_V0   0"
+
+.PP
+Device version 0 , include 3 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor, and 1 light sensor\&. 
+.PP
+Definition at line 92 of file allheaders\&.h\&.
+.SS "#define AQ0X_V1   1"
+
+.PP
+Device version 1 , include 2 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor\&. 
+.PP
+Definition at line 94 of file allheaders\&.h\&.
+.SS "#define D_E(x_)"
+
+.PP
+Definition at line 66 of file allheaders\&.h\&.
+.PP
+Referenced by x_loop(), and x_send_event()\&.
+.SS "#define D_I(x_)"
+
+.PP
+Definition at line 53 of file allheaders\&.h\&.
+.PP
+Referenced by x_start()\&.
+.SS "#define D_N(x_)"
+
+.PP
+Definition at line 73 of file allheaders\&.h\&.
+.PP
+Referenced by x_send_notify()\&.
+.SS "#define D_P(x_)"
+
+.PP
+Definition at line 80 of file allheaders\&.h\&.
+.PP
+Referenced by x_send_event()\&.
+.SS "#define D_T(x_)"
+
+.PP
+Definition at line 59 of file allheaders\&.h\&.
+.PP
+Referenced by x_loop()\&.
+.SS "#define DBG_SHOW_EVENTS   0"
+
+.PP
+OS debug - print event notifications\&. 
+.PP
+Definition at line 40 of file allheaders\&.h\&.
+.SS "#define DBG_SHOW_INIT   0"
+
+.PP
+OS debug - print init phase\&. 
+.PP
+Definition at line 34 of file allheaders\&.h\&.
+.SS "#define DBG_SHOW_NOTIFY   0"
+
+.PP
+OS debug - print standard notifications\&. 
+.PP
+Definition at line 43 of file allheaders\&.h\&.
+.SS "#define DBG_SHOW_TIMERS   0"
+
+.PP
+OS debug - print timer notifications\&. 
+.PP
+Definition at line 37 of file allheaders\&.h\&.
+.SS "#define DBG_TEST_POINT   0"
+
+.PP
+debug - print test point message 
+.PP
+Definition at line 46 of file allheaders\&.h\&.
+.SS "#define DEVICE   \fBAQ0X_V0\fP"
+
+.PP
+Definition at line 96 of file allheaders\&.h\&.
+.SS "#define FALSE   0"
+
+.PP
+Definition at line 86 of file allheaders\&.h\&.
+.PP
+Referenced by __attribute__(), algorithm_signal_proportionality(), algorithm_wake(), ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_calc_probablity(), mfield_x_sen_get_status(), mfield_z_observation_time_window_expired(), mfield_z_zero_cross(), nov_set_default(), serial_init(), serial_send(), and uv_sen_get_status()\&.
+.SS "#define TEST_MODE   0"
+
+.PP
+Definition at line 89 of file allheaders\&.h\&.
+.SS "#define TRUE   1"
+
+.PP
+Definition at line 84 of file allheaders\&.h\&.
+.PP
+Referenced by __attribute__(), algorithm_signal_proportionality(), algorithm_taskx(), algorithm_wake(), ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_calc_probablity(), mfield_x_sen_get_status(), mfield_z_observation_time_window_expired(), mfield_z_zero_cross(), nov_set_default(), serial_init(), serial_send(), and uv_sen_get_status()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

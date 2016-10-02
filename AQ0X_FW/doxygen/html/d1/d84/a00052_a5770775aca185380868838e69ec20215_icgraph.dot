@@ -1,0 +1,12 @@
+digraph "hwio_get_analog"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="hwio_get_analog",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="__attribute__",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d8c/a00035.html#a2068c3c2584547dbc1c8b9bca2d55b18",tooltip="Fast timer interrupt to scan sensor element analog values. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/db6/a00042.html#a840291bc02cba5474a4cb46a9b9566fe",tooltip="System startup function. "];
+}

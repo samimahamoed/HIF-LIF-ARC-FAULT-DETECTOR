@@ -1,0 +1,34 @@
+.TH "os_design" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+os_design \- Operating system design 
+This is simple event based OS\&.
+.PP
+Rather scheduler then real operating system\&.
+.PP
+.IP "\(bu" 2
+Each module has to provide:
+.IP "  1." 6
+Task event function
+.IP "  2." 6
+Task notification function
+.IP "  3." 6
+Variable for module handle\&.
+.PP
+.PP
+Task event function will receive synchronous calls with events distributed by OS\&. Task notification function will receive asynchronous calls from other modules ( routed through notification distribution function)\&. Notification functions are not allowed to call other notification functions, they are allowed to schedule events only ( if the operation cannot be executed immediately)\&.
+.IP "\(bu" 2
+There is no preemption, everything is voulntary\&. There is only one common stack\&. There is no need for synchronisation in event tasks ( as only one is run at once)\&. Only notification function have to be designed with care as they are called while other module is running\&.
+.IP "\(bu" 2
+The system provides timer scheduling - on expiration notification will be sent\&. Such timer can be rearmed to get periodical operation\&.
+.IP "\(bu" 2
+Interrupt functions can schedule special notification to be sent to notification function\&. Such function must determine itself cause of the interrupt ( nothing extra is passed)
+.IP "\(bu" 2
+The system sends initial notification to each module
+.IP "\(bu" 2
+Typical init - see \fBmain\&.c\fP file
+.IP "\(bu" 2
+typical module - see \fBalgorithm\&.c\fP file 
+.PP
+

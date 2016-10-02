@@ -1,0 +1,5 @@
+<map id="serial_get_command" name="serial_get_command">
+<area shape="rect" id="node2" href="$d4/d51/a00017.html#a6553827687db2137ee550ad6e1d2f316" title="Standard CRC16 routine. " alt="" coords="254,5,309,32"/>
+<area shape="rect" id="node3" href="$d6/d5b/a00026.html#a7fc7421ed15d6e4516e9878e7455d715" title="Function which marks serial buffer as processed, so new command can be taken. " alt="" coords="196,56,367,83"/>
+<area shape="rect" id="node4" href="$d6/d5b/a00026.html#abc17de32f14103a5be219df0d4ad9176" title="Function converting characters to 16 bit value. " alt="" coords="228,107,335,133"/>
+</map>

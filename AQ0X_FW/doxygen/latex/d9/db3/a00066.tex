@@ -1,0 +1,172 @@
+\hypertarget{a00066}{\section{srv\+\_\+watchdog.\+c File Reference}
+\label{a00066}\index{srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}}
+}
+{\ttfamily \#include \char`\"{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+Include dependency graph for srv\+\_\+watchdog.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/df7/a01699}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00066_a2068c3c2584547dbc1c8b9bca2d55b18}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((\+\_\+\+\_\+interrupt\+\_\+\+\_\+, auto\+\_\+psv))
+\begin{DoxyCompactList}\small\item\em Watchdog tunning timeout function. \end{DoxyCompactList}\item 
+void \hyperlink{a00066_a37c35718860234f09b8cef8680e1cc09}{srv\+\_\+wdg\+\_\+init\+\_\+fn} (void)
+\begin{DoxyCompactList}\small\item\em Watchdog tunning init function. \end{DoxyCompactList}\item 
+void \hyperlink{a00066_ac6f811346b702c404d5e6cdfb9262767}{srv\+\_\+wdg\+\_\+kick\+\_\+fn} (void)
+\begin{DoxyCompactList}\small\item\em Watchdog tunning kick function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32} \hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\+\_\+timeout} = \hyperlink{a00067_aaf1a99e6db8062353e5f10d1f7d02938}{W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}
+\begin{DoxyCompactList}\small\item\em Turns off the Watch-\/\+Dog Timer in debug mode. Turns on the Watch-\/\+Dog Timer in release mode. Watchdog set to 10ms (2ms x W\+D\+T\+P\+S\+A x W\+D\+T\+P\+S\+A ) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{a00066_a2068c3c2584547dbc1c8b9bca2d55b18}{\index{srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}}
+\subsubsection[{\+\_\+\+\_\+attribute\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+\+\_\+attribute\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{(\+\_\+\+\_\+interrupt\+\_\+\+\_\+, auto\+\_\+psv)}]{}
+\end{DoxyParamCaption}
+)}}\label{a00066_a2068c3c2584547dbc1c8b9bca2d55b18}
+
+
+Watchdog tunning timeout function. 
+
+Serial port transmit interrupt.req R\+E\+Q-\/8a\+: \char`\"{}\+Read the sensor inputs \char`\"{} Sensors and inputs are read and filtered.
+
+Definition at line \hyperlink{a00066_source_l00066}{66} of file \hyperlink{a00066_source}{srv\+\_\+watchdog.\+c}.
+
+
+
+References \hyperlink{a00066_source_l00096}{srv\+\_\+wdg\+\_\+init\+\_\+fn()}, and \hyperlink{a00066_source_l00055}{watchdog\+\_\+timeout}.
+
+
+\begin{DoxyCode}
+00068 \{
+00069 
+00070     \textcolor{comment}{// Ack interrupt}
+00071     IFS1bits.T4IF = 0;
+00072 
+00073 
+00074     \textcolor{comment}{// Stop timer}
+00075     T4CONbits.TON = 0;
+00076     TMR4          = 0;  
+00077     
+00078     \textcolor{comment}{// Increase watchdog timeout}
+00079     \textcolor{keywordflow}{if}(\hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\_timeout}< 1000)
+00080     \{
+00081         \hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\_timeout}++;
+00082     \}
+00083 
+00084     \textcolor{comment}{// Reinitialize tunning timer}
+00085     \hyperlink{a00066_a37c35718860234f09b8cef8680e1cc09}{srv\_wdg\_init\_fn}();
+00086 
+00087     
+00088 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+\hypertarget{a00066_a37c35718860234f09b8cef8680e1cc09}{\index{srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}!srv\+\_\+wdg\+\_\+init\+\_\+fn@{srv\+\_\+wdg\+\_\+init\+\_\+fn}}
+\index{srv\+\_\+wdg\+\_\+init\+\_\+fn@{srv\+\_\+wdg\+\_\+init\+\_\+fn}!srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}}
+\subsubsection[{srv\+\_\+wdg\+\_\+init\+\_\+fn}]{\setlength{\rightskip}{0pt plus 5cm}void srv\+\_\+wdg\+\_\+init\+\_\+fn (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00066_a37c35718860234f09b8cef8680e1cc09}
+
+
+Watchdog tunning init function. 
+
+
+
+Definition at line \hyperlink{a00066_source_l00096}{96} of file \hyperlink{a00066_source}{srv\+\_\+watchdog.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00035}{F\+O\+S\+C\+\_\+\+C\+P\+U}, and \hyperlink{a00066_source_l00055}{watchdog\+\_\+timeout}.
+
+
+
+Referenced by \hyperlink{a00066_source_l00066}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}.
+
+
+\begin{DoxyCode}
+00097 \{
+00098 
+00099     \textcolor{comment}{// Setup tunning timer}
+00100     
+00101     T4CON = 0;                    \textcolor{comment}{// Clear the register}
+00102     T4CONbits.TCS    = 0;         \textcolor{comment}{// Internal clock Fosc/4   }
+00103     T4CONbits.TCKPS = 1;          \textcolor{comment}{//    1:8 prescaling    }
+00104 
+00105 
+00106 
+00107     PR4 = (((\hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{FOSC\_CPU}/2L)/8)*\hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\_timeout})/(1000L); 
+00108     
+00109     IPC6bits.T4IP = 1;            \textcolor{comment}{// Set Timer4 Interrupt Priority Level}
+00110     IFS1bits.T4IF = 0;            \textcolor{comment}{//Clear the Timer4 Interrupt Flag}
+00111     IEC1bits.T4IE = 1;            \textcolor{comment}{//Enable Timer4I nterrupt Service Routine}
+00112     T4CONbits.TON = 1;            \textcolor{comment}{//Start Timer 4}
+00113 
+00114 
+00115 
+00116 
+00117     
+00118 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{a00066_ac6f811346b702c404d5e6cdfb9262767}{\index{srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}!srv\+\_\+wdg\+\_\+kick\+\_\+fn@{srv\+\_\+wdg\+\_\+kick\+\_\+fn}}
+\index{srv\+\_\+wdg\+\_\+kick\+\_\+fn@{srv\+\_\+wdg\+\_\+kick\+\_\+fn}!srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}}
+\subsubsection[{srv\+\_\+wdg\+\_\+kick\+\_\+fn}]{\setlength{\rightskip}{0pt plus 5cm}void srv\+\_\+wdg\+\_\+kick\+\_\+fn (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00066_ac6f811346b702c404d5e6cdfb9262767}
+
+
+Watchdog tunning kick function. 
+
+
+
+Definition at line \hyperlink{a00066_source_l00126}{126} of file \hyperlink{a00066_source}{srv\+\_\+watchdog.\+c}.
+
+
+\begin{DoxyCode}
+00127 \{
+00128     T4CONbits.TON = 0;
+00129     TMR4 = 0;
+00130     T4CONbits.TON = 1;
+00131 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00066_a159d343205105c86a6dec5da26cfdfe0}{\index{srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}!watchdog\+\_\+timeout@{watchdog\+\_\+timeout}}
+\index{watchdog\+\_\+timeout@{watchdog\+\_\+timeout}!srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}}
+\subsubsection[{watchdog\+\_\+timeout}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint32} watchdog\+\_\+timeout = {\bf W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+U\+N\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}}}\label{a00066_a159d343205105c86a6dec5da26cfdfe0}
+
+
+Turns off the Watch-\/\+Dog Timer in debug mode. Turns on the Watch-\/\+Dog Timer in release mode. Watchdog set to 10ms (2ms x W\+D\+T\+P\+S\+A x W\+D\+T\+P\+S\+A ) 
+
+
+
+Definition at line \hyperlink{a00066_source_l00055}{55} of file \hyperlink{a00066_source}{srv\+\_\+watchdog.\+c}.
+
+
+
+Referenced by \hyperlink{a00066_source_l00066}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, and \hyperlink{a00066_source_l00096}{srv\+\_\+wdg\+\_\+init\+\_\+fn()}.
+

@@ -1,0 +1,884 @@
+\hypertarget{a00047_source}{\section{srv\+\_\+commands.\+cpp}
+\label{a00047_source}\index{srv\+\_\+commands.\+cpp@{srv\+\_\+commands.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{a00039}{mainwindow.h}"}
+00002 \textcolor{preprocessor}{#include "\hyperlink{a00052}{ui\_mainwindow.h}"}
+00003 \textcolor{preprocessor}{#include "\hyperlink{a00001}{typedef.h}"}
+00004 \textcolor{preprocessor}{#include "\hyperlink{a00043}{recordpreview.h}"}
+00005 
+00006 
+00007 \textcolor{preprocessor}{#include <QMessageBox>}
+00008 \textcolor{preprocessor}{#include <QFileDialog>}
+00009 
+00010 \textcolor{preprocessor}{#include <QDebug>}
+00011 \textcolor{preprocessor}{#include <QProgressBar>}
+00012 \textcolor{preprocessor}{#include <QDesktopWidget>}
+00013 \textcolor{preprocessor}{#include <QDateTime>}
+00014 \textcolor{preprocessor}{#include <QTimer>}
+00015 
+00023 \textcolor{keywordtype}{void} MainWindow::map\_keys()
+00024 \{
+00025 
+00026     map\_cmd.insert(\textcolor{stringliteral}{"CONFIG"},\hyperlink{a00031_aa87bfa4fccf7f7a4fc45afb1966a655f}{CMD\_CONFIG});
+00027     map\_cmd.insert(\textcolor{stringliteral}{"DEVICE ADDRESS"},\hyperlink{a00031_a7c6a5f4023cb02d02f2ded23147be425}{CMD\_DEVICE\_ADDRESS});
+00028     map\_cmd.insert(\textcolor{stringliteral}{"INSTALLATION DITAILS"},\hyperlink{a00031_af91ff280feea1f52e3bdd7f0f556d153}{CMD\_INSTALLATION\_DITAILS});
+00029     map\_cmd.insert(\textcolor{stringliteral}{"SIGNAL THRESHOLDS"},\hyperlink{a00031_ac361dc1b32c1036394be0fd7de1182ca}{CMD\_SIGNAL\_THRESHOLDS});
+00030     map\_cmd.insert(\textcolor{stringliteral}{"EVENT ANALYSIS OPTIONS"},\hyperlink{a00031_a3a15793e3ab7817f2429edf04de693a0}{CMD\_EVENT\_ANALYSIS});
+00031     map\_cmd.insert(\textcolor{stringliteral}{"RUN TIME OPTIONS"},\hyperlink{a00031_a1d8673a7ca545f3e382fc538f543ab72}{CMD\_RUN\_TIME\_OPTIONS});
+00032     map\_cmd.insert(\textcolor{stringliteral}{"LOAD HIF REFERENCE DATA"},\hyperlink{a00031_afc4f83cb04e57ee185a039b10e19e297}{CMD\_LOAD\_HIF\_REFERENCE\_DATA});
+00033     map\_cmd.insert(\textcolor{stringliteral}{"FACTORY DEFAULT"},\hyperlink{a00031_a8ad7dae51114833acbb665d703d8ffeb}{CMD\_FACTORY\_DEFAULT});
+00034     map\_cmd.insert(\textcolor{stringliteral}{"COMMIT"},\hyperlink{a00031_a7df85bf97a6a032220d7a71c78be5206}{CMD\_COMMIT});
+00035     map\_cmd.insert(\textcolor{stringliteral}{"EMULATION SETTING"},\hyperlink{a00031_a230386ac00f9c01793857101e1680324}{CMD\_EMULATION\_SETTING});
+00036     map\_cmd.insert(\textcolor{stringliteral}{"LOAD IR DATA"},\hyperlink{a00031_a8c7ce698ee79d20e30eb0ac08f0d9abc}{CMD\_LOAD\_IR\_DATA});
+00037     map\_cmd.insert(\textcolor{stringliteral}{"LOAD UV DATA"},\hyperlink{a00031_a8904f57ef5850374dbcdbe67eb8a5543}{CMD\_LOAD\_UV\_DATA});
+00038     map\_cmd.insert(\textcolor{stringliteral}{"LOAD MAGNETIC FIELD X DATA"},\hyperlink{a00031_a9e5d9d302e44daccbe233d321696b12c}{CMD\_LOAD\_MAGNETIC\_FIELD\_X\_DATA}
+      );
+00039     map\_cmd.insert(\textcolor{stringliteral}{"LOAD MAGNETIC FIELD Y DATA"},\hyperlink{a00031_ace011e2ba41b184650e8bd0ddbfa00d2}{CMD\_LOAD\_MAGNETIC\_FIELD\_Y\_DATA}
+      );
+00040     map\_cmd.insert(\textcolor{stringliteral}{"EMU MODE SET"},\hyperlink{a00031_ac80fdfdbada05f61256bef39c2064330}{CMD\_EMU\_MODE\_SET});
+00041     map\_cmd.insert(\textcolor{stringliteral}{"EMU MODE RESET"},\hyperlink{a00031_a48532ee6ce8c4c41bc6a972f66998ca6}{CMD\_EMU\_MODE\_RESET});
+00042     map\_cmd.insert(\textcolor{stringliteral}{"CLEAR EMU DATA"},\hyperlink{a00031_aa5f71f685588bc4e978cd6d595a5ea81}{CMD\_CLEAR\_EMU\_DATA});
+00043     map\_cmd.insert(\textcolor{stringliteral}{"GET DATA"},\hyperlink{a00031_af89ae6f2252e558fc6e54ea9b452bf0e}{CMD\_GET\_DATA});
+00044     map\_cmd.insert(\textcolor{stringliteral}{"DEVICE DATA"},\hyperlink{a00031_a4412fcb90fb9171d432a624428881e70}{CMD\_DEVICE\_DATA});
+00045     map\_cmd.insert(\textcolor{stringliteral}{"IR DISTURBANCE RECORD"},\hyperlink{a00031_ad37cd290161f0a245d189c3f4e014d4e}{CMD\_IR\_DISTURBANCE\_RECORD});
+00046     map\_cmd.insert(\textcolor{stringliteral}{"UV DISTURBANCE RECORD"},\hyperlink{a00031_ae45bb46748497c6a117beb1e93072d83}{CMD\_UV\_DISTURBANCE\_RECORD});
+00047     map\_cmd.insert(\textcolor{stringliteral}{"HIF\_DIAGNOSIS\_RECORD"},\hyperlink{a00031_a185ed5442d69c7c8abba13323a8e8187}{CMD\_HIF\_DIAGNOSIS\_RECORD});
+00048     map\_cmd.insert(\textcolor{stringliteral}{"MFIELD X  DISTURBANCE RECORD"},
+      \hyperlink{a00031_ab84aea346a3f75b58f8bda67b8ae9be0}{CMD\_MFIELD\_X\_DISTURBANCE\_RECORD});
+00049     map\_cmd.insert(\textcolor{stringliteral}{"MFIELD Y  DISTURBANCE RECORD"},
+      \hyperlink{a00031_af77e9c0ad32b3cc50d61992d4b64a831}{CMD\_MFIELD\_Y\_DISTURBANCE\_RECORD});
+00050     map\_cmd.insert(\textcolor{stringliteral}{"IR CURRENT RECORD"},\hyperlink{a00031_a4dcce4fd3ff29eb6782f3228901f99cf}{CMD\_IR\_CURRENT\_RECORD});
+00051     map\_cmd.insert(\textcolor{stringliteral}{"UV CURRENT RECORD"},\hyperlink{a00031_ab0e0364ddc2d95d1e5b51a3e3ff50918}{CMD\_UV\_CURRENT\_RECORD});
+00052     map\_cmd.insert(\textcolor{stringliteral}{"MFIELD X  CURRENT RECORD"},\hyperlink{a00031_ab796345ffdbc6a240b67b56583bb77c6}{CMD\_MFIELD\_X\_CURRENT\_RECORD});
+00053     map\_cmd.insert(\textcolor{stringliteral}{"MFIELD Y  CURRENT RECORD"},\hyperlink{a00031_a8ddac7f7a2a90f2d8535af02e338b1bf}{CMD\_MFIELD\_Y\_CURRENT\_RECORD});
+00054     map\_cmd.insert(\textcolor{stringliteral}{"MISCELLANEOUS"},\hyperlink{a00031_a1c028104d44ece3aca38373da0345c04}{CMD\_MISCELLANEOUS});
+00055     map\_cmd.insert(\textcolor{stringliteral}{"DEVICE RESET"},\hyperlink{a00031_ac4c8a78ea50054745a0ac0792baa7657}{CMD\_DEVICE\_RESET});
+00056     map\_cmd.insert(\textcolor{stringliteral}{"CLEAR EEPROM"},\hyperlink{a00031_a9084e0a84e73318b6fad9841fb4d4f98}{CMD\_CLEAR\_EEPROM});
+00057     map\_cmd.insert(\textcolor{stringliteral}{"SUPERVISION STATUS"},\hyperlink{a00031_ad6af9210ac0903986f3ac3e55c6816a3}{CMD\_SUPERVISION\_STATUS});
+00058 
+00059 
+00060     map\_size.insert(\hyperlink{a00031_a4412fcb90fb9171d432a624428881e70}{CMD\_DEVICE\_DATA},\textcolor{keyword}{sizeof}(\hyperlink{a00003_a95029dff9c90f6a6907353ba86eb3f33}{device\_data\_t}));
+00061     map\_size.insert(\hyperlink{a00031_ad37cd290161f0a245d189c3f4e014d4e}{CMD\_IR\_DISTURBANCE\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00008}{module\_disturbance\_record\_t}));
+00062     map\_size.insert(\hyperlink{a00031_ae45bb46748497c6a117beb1e93072d83}{CMD\_UV\_DISTURBANCE\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00008}{module\_disturbance\_record\_t}));
+00063     map\_size.insert(\hyperlink{a00031_ab84aea346a3f75b58f8bda67b8ae9be0}{CMD\_MFIELD\_X\_DISTURBANCE\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00008}{module\_disturbance\_record\_t}));
+00064     map\_size.insert(\hyperlink{a00031_af77e9c0ad32b3cc50d61992d4b64a831}{CMD\_MFIELD\_Y\_DISTURBANCE\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00008}{module\_disturbance\_record\_t}));
+00065     map\_size.insert(\hyperlink{a00031_a4dcce4fd3ff29eb6782f3228901f99cf}{CMD\_IR\_CURRENT\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00003_d4/d7d/a00093}{pre\_act\_record\_buffer\_t}));
+00066     map\_size.insert(\hyperlink{a00031_ab0e0364ddc2d95d1e5b51a3e3ff50918}{CMD\_UV\_CURRENT\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00003_d4/d7d/a00093}{pre\_act\_record\_buffer\_t}));
+00067     map\_size.insert(\hyperlink{a00031_ab796345ffdbc6a240b67b56583bb77c6}{CMD\_MFIELD\_X\_CURRENT\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00003_d4/d7d/a00093}{pre\_act\_record\_buffer\_t}));
+00068     map\_size.insert(\hyperlink{a00031_a8ddac7f7a2a90f2d8535af02e338b1bf}{CMD\_MFIELD\_Y\_CURRENT\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00003_d4/d7d/a00093}{pre\_act\_record\_buffer\_t}));
+00069     map\_size.insert(\hyperlink{a00031_a185ed5442d69c7c8abba13323a8e8187}{CMD\_HIF\_DIAGNOSIS\_RECORD},\textcolor{keyword}{sizeof}(
+      \hyperlink{a00003_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t}));
+00070 
+00071 
+00072 
+00073 \}
+00074 
+00075 
+00076 
+00077 \textcolor{keywordtype}{void} MainWindow::on\_btn\_execute\_cmd\_clicked(\textcolor{keywordtype}{bool} checked)
+00078 \{
+00079 
+00080 
+00081 
+00082     \hyperlink{a00001_df/dc8/a00122}{serial\_msg\_t}     current\_cmd;
+00083 
+00084 
+00085     memset(&current\_cmd,0,\textcolor{keyword}{sizeof}(current\_cmd));
+00086     current\_cmd.\hyperlink{a00001_a0b844fe783d7e252159a9641b949e83c}{attachment} = NULL;
+00087     current\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address} = \textcolor{keyword}{false};
+00088     current\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} = 0;
+00089 
+00090     \textcolor{keywordflow}{if}( ui->\hyperlink{a00027_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd}->text().contains(\textcolor{stringliteral}{"Reset"}))\{
+00091 
+00092 
+00093         \textcolor{keywordflow}{if}(!last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed})\{
+00094             \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_a1ddcc97224a95cec04b38b0ac866fa19}{MSG\_INFO},\textcolor{stringliteral}{"Please wait, while previous command is processing"});
+00095             \textcolor{keywordflow}{return};
+00096         \}
+00097 
+00098         cancel\_processing\_cmd(\textcolor{keyword}{true});
+00099         \textcolor{keywordflow}{return};
+00100     \}\textcolor{keywordflow}{else}\{
+00101 
+00102         \textcolor{keywordflow}{if}(!last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed})\{
+00103             \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_a1ddcc97224a95cec04b38b0ac866fa19}{MSG\_INFO},\textcolor{stringliteral}{"Please wait, while previous command is processing"});
+00104             \textcolor{keywordflow}{return};
+00105         \}
+00106 
+00107     \}
+00108 
+00109     \textcolor{keywordflow}{if}(
+00110        ui->\hyperlink{a00027_a263fb43f2eff37a44ff7359ba41e2eeb}{combo\_Ch}->currentText().contains(\textcolor{stringliteral}{"-"})
+00111     ||
+00112        ui->\hyperlink{a00027_ad95005b5fcac8126171019298147b285}{combo\_Sen}->currentText().contains(\textcolor{stringliteral}{"-"})
+00113     )
+00114     \{
+00115         \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Incomplete command, All fields are required "});
+00116         \textcolor{keywordflow}{return};
+00117     \}
+00118 
+00119 
+00120 
+00121 
+00122     current\_cmd.\hyperlink{a00001_af20664dc9ca2b752c73d524edee0e07a}{cmd}= map\_cmd[ui->\hyperlink{a00027_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->currentItem()->text(0)];
+00123 
+00124     current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0]= ui->\hyperlink{a00027_a263fb43f2eff37a44ff7359ba41e2eeb}{combo\_Ch}->currentText().toShort();
+00125     current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1]= ui->\hyperlink{a00027_ad95005b5fcac8126171019298147b285}{combo\_Sen}->currentText().toShort();
+00126 
+00127     \textcolor{keywordflow}{try}\{
+00128        \textcolor{keywordflow}{if}(current\_cmd.\hyperlink{a00001_af20664dc9ca2b752c73d524edee0e07a}{cmd}==\hyperlink{a00031_a7c6a5f4023cb02d02f2ded23147be425}{CMD\_DEVICE\_ADDRESS})\{
+00129 
+00130            \textcolor{keywordflow}{if}(ui->\hyperlink{a00027_ad95005b5fcac8126171019298147b285}{combo\_Sen}->currentText().contains(\textcolor{stringliteral}{"Multiple Address"}))\{
+00131                \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"The slelected command can not be used for multiple address"});
+00132                \textcolor{keywordflow}{return};
+00133            \}
+00134 
+00135            QString Question =
+00136                    QString(\textcolor{stringliteral}{"The command sets the address of any sensor connected to the selected channel,"})
+00137                    +QString(\textcolor{stringliteral}{"please make sure only a single sensor is "})
+00138                    +QString(\textcolor{stringliteral}{"connected to the channel unless otherwise required.\(\backslash\)n"})
+00139                    +QString(\textcolor{stringliteral}{"Are you sure you want to continue with this action?"});
+00140 
+00141            QMessageBox msgBox;
+00142            msgBox.setWindowIcon(QMainWindow::windowIcon());
+00143            msgBox.setWindowTitle(QMainWindow::windowTitle());
+00144            msgBox.setText(Question);
+00145            msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00146            \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)\textcolor{keywordflow}{return};
+00147 
+00148        \}
+00149 
+00150 
+00151    \} \textcolor{keywordflow}{catch} (...) \{
+00152         \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Unknown command, Make sure you have selected the command correctly "});
+00153    \}
+00154 
+00155 
+00156     \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} cmd = (((current\_cmd.\hyperlink{a00001_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x00F0)>>4)==0xE)?0xE:
+00157                  (((current\_cmd.\hyperlink{a00001_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x0F00)>>8)==1)?1:
+00158                  (((current\_cmd.\hyperlink{a00001_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x0F00)>>8)==6)?6:                
+00159                  current\_cmd.\hyperlink{a00001_af20664dc9ca2b752c73d524edee0e07a}{cmd};
+00160 
+00161 
+00162 
+00163 
+00164 
+00165     strcpy(current\_cmd.\hyperlink{a00001_a217dc0db956d3bb46d8573960cb7359a}{cmd\_type},ui->\hyperlink{a00027_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->currentItem()->text(0).toLatin1());
+00166 
+00167     \textcolor{keywordflow}{switch} (cmd) \{
+00168     \textcolor{keywordflow}{case} \hyperlink{a00031_af91ff280feea1f52e3bdd7f0f556d153}{CMD\_INSTALLATION\_DITAILS}:
+00169 
+00170 
+00171             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]         |= ui->\hyperlink{a00027_af4863849ff58931ae3a38aa5b40b8158}{cb\_config\_rated\_current}->isChecked(
+      )?0x0001:0;
+00172             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]         |= ui->\hyperlink{a00027_a541de6e510677e572ab233f7ecc25e2c}{cb\_config\_sh\_ckt\_current}->
+      isChecked()?0x0002:0;
+00173             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]         |= ui->\hyperlink{a00027_a8f501acefacd6343a4ec99a67172f256}{cb\_config\_freq}->isChecked()?0x0004:0;
+00174             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]         |= ui->\hyperlink{a00027_a6b0d09f3b380fdb810d3da3f5208ccf5}{cb\_config\_min\_distance}->isChecked()?
+      0x0008:0;
+00175 
+00176             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]          = 4;
+00177 
+00178             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4]          = ui->\hyperlink{a00027_ab6d7c3a292c79cd73aff8735df48d30e}{dSB\_rated\_current}->value();
+00179             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[5]          = ui->\hyperlink{a00027_aab5fcfd5ceedb9c4e853139113f5c753}{dSB\_sh\_ckt\_current}->value();
+00180             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[6]          = ui->\hyperlink{a00027_abd528de839feccc001dc62b3aecddc9f}{dSB\_freq}->value();
+00181             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[7]          = ui->\hyperlink{a00027_a01c23085590f4947828948bbd9f50cc7}{dSB\_min\_distance}->value();
+00182 
+00183             current\_cmd.\hyperlink{a00001_affcea772a1bc5362ebbc274b6166f81b}{arg\_cnt}         = 8;
+00184 
+00185             current\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}   =\textcolor{stringliteral}{"1srv\_cmds\_general\_msg\_handler(QString)"};
+00186 
+00187             \textcolor{keywordflow}{if}(!QString(last\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}).isNull())
+00188             disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, last\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00189 
+00190             connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, current\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00191 
+00192         \textcolor{keywordflow}{break};
+00193 
+00194 
+00195     \textcolor{keywordflow}{case} \hyperlink{a00031_ac361dc1b32c1036394be0fd7de1182ca}{CMD\_SIGNAL\_THRESHOLDS}:
+00196 
+00197 
+00198             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2] |= ui->\hyperlink{a00027_ae78fd3c777d081ab1ec1d0142bec3320}{cb\_config\_ir\_max}->isChecked()?0x0001:0;
+00199             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2] |= ui->\hyperlink{a00027_a13ce5fddc83683d7b8b717f0b9a4e2cf}{cb\_config\_uv\_max}->isChecked()?0x0002:0;
+00200 
+00201             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]  = 2;
+00202 
+00203             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4]  = ui->\hyperlink{a00027_a220706f1fd93857145032c897e55d9e3}{dSB\_ir\_max}->value();
+00204             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[5]  = ui->\hyperlink{a00027_aa2872ada374dace81c4f1cc41d8e244d}{dSB\_uv\_max}->value();
+00205 
+00206             current\_cmd.\hyperlink{a00001_affcea772a1bc5362ebbc274b6166f81b}{arg\_cnt} = 6;
+00207 
+00208             current\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot} =\textcolor{stringliteral}{"1srv\_cmds\_general\_msg\_handler(QString)"};
+00209 
+00210             \textcolor{keywordflow}{if}(!QString(last\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}).isNull())
+00211             disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, last\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00212 
+00213             connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, current\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00214 
+00215         \textcolor{keywordflow}{break};
+00216 
+00217 
+00218     \textcolor{keywordflow}{case} \hyperlink{a00031_a3a15793e3ab7817f2429edf04de693a0}{CMD\_EVENT\_ANALYSIS}:
+00219 
+00220 
+00221             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]     |= ui->\hyperlink{a00027_ae9e8f3f0d147a4cd21c8f36ffb3bd81f}{cb\_config\_observation\_length}->
+      isChecked()?0x0001:0;
+00222             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]     |= ui->\hyperlink{a00027_ad0a7ea02564c112595f0d30efa75eef2}{cb\_config\_probablity\_max}->isChecked()?
+      0x0002:0;
+00223             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]     |= ui->\hyperlink{a00027_a6e32cc42adcf308df94cbbc9ac226f50}{cb\_config\_probablity\_min}->isChecked()?
+      0x0004:0;
+00224             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]     |= ui->\hyperlink{a00027_a89574c631636929702a5928b2a159892}{cb\_config\_criteria}->isChecked()?0x0008:0;
+00225 
+00226             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]      = 4;
+00227 
+00228             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4]      = ui->\hyperlink{a00027_a1fe1bf902f2a365c4c94612d2a2ffbcc}{dSB\_observation\_length}->value();
+00229             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[5]      = ui->\hyperlink{a00027_a137b79e810736643ac4b15e221909871}{dSB\_probablity\_max}->value();
+00230             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[6]      = ui->\hyperlink{a00027_adfd6cf470c736f358c6982f9a635f04f}{dSB\_probablity\_min}->value();
+00231 
+00232             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[7]     |= ui->\hyperlink{a00027_abef4ef3d5d03026de5d5e172eb0335a6}{cb\_config\_active\_modules\_ir}->
+      isChecked()?0x0001:0;
+00233             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[7]     |= ui->\hyperlink{a00027_a72ad8a6b100948f9b1438cf3b949be5e}{cb\_config\_active\_modules\_uv}->
+      isChecked()?0x0002:0;
+00234             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[7]     |= ui->\hyperlink{a00027_abc96d02b5b7a9480a2a142008e99a100}{cb\_config\_active\_modules\_mf}->
+      isChecked()?0x0004:0;
+00235             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[8]      = ui->\hyperlink{a00027_a2af463e4a88fddd219f2e41a386fbd68}{combo\_alarm\_condition}->currentText().
+      toInt();
+00236 
+00237 
+00238 
+00239             current\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}   =\textcolor{stringliteral}{"1srv\_cmds\_general\_msg\_handler(QString)"};
+00240 
+00241             current\_cmd.\hyperlink{a00001_affcea772a1bc5362ebbc274b6166f81b}{arg\_cnt}     = 9;
+00242 
+00243 
+00244             \textcolor{keywordflow}{if}(!QString(last\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}).isNull())
+00245             disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, last\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00246 
+00247             connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, current\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00248 
+00249         \textcolor{keywordflow}{break};
+00250 
+00251 
+00252     \textcolor{keywordflow}{case} \hyperlink{a00031_a1d8673a7ca545f3e382fc538f543ab72}{CMD\_RUN\_TIME\_OPTIONS}:
+00253 
+00254 
+00255             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]   = 0xFFFF;\textcolor{comment}{//dummy data}
+00256             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]   = 1;
+00257 
+00258             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4]  |= ui->\hyperlink{a00027_a433ffc427e1103e6c2939f949ee5e5b5}{cb\_config\_threshold\_adjust}->isChecked()
+      ?0x0001:0;
+00259             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4]  |= ui->\hyperlink{a00027_a4db3ccfbbf8c5222dd2f042d3073bbe8}{cb\_config\_sv\_ir}->isChecked()?0x0002:0;
+00260             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4]  |= ui->\hyperlink{a00027_a3a93cd0a3f3738aad252d063a8677839}{cb\_config\_sv\_uv}->isChecked()?0x0004:0;
+00261             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4]  |= ui->\hyperlink{a00027_a0a83284035ab2dbaeb39946522434986}{cb\_config\_sv\_mfield}->isChecked()?0x0008:0;
+00262 
+00263             current\_cmd.\hyperlink{a00001_affcea772a1bc5362ebbc274b6166f81b}{arg\_cnt}  = 1 ;
+00264             current\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot} =\textcolor{stringliteral}{"1srv\_cmds\_general\_msg\_handler(QString)"};
+00265 
+00266             \textcolor{keywordflow}{if}(!QString(last\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}).isNull())
+00267             disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, last\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00268 
+00269             connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, current\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00270 
+00271         \textcolor{keywordflow}{break};
+00272 
+00273    \{
+00274     \textcolor{keywordflow}{case} 0xE\textcolor{comment}{/*data fetching or request msg*/}:
+00275 
+00276             current\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset = 0;
+00277             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2] = current\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset;
+00278 
+00279             current\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied = 0;
+00280 
+00281             current\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected = map\_size[current\_cmd.
+      \hyperlink{a00001_af20664dc9ca2b752c73d524edee0e07a}{cmd}];
+00282 
+00283             current\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.storage\_location =
+00284                     (\textcolor{keywordtype}{void} *)malloc(current\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected);
+00285 
+00286 
+00287             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]
+00288                     = ((\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(current\_cmd.
+      \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected))<0)?
+00289                         \hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:current\_cmd.
+      \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected;
+00290 
+00291             current\_cmd.\hyperlink{a00001_affcea772a1bc5362ebbc274b6166f81b}{arg\_cnt}    = 4;
+00292 
+00293             current\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot} =\textcolor{stringliteral}{"1srv\_cmds\_data\_download\_msg\_handler(QString)"};
+00294 
+00295             \textcolor{keywordflow}{if}(!QString(last\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}).isNull())
+00296             disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, last\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00297 
+00298             connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, current\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00299 
+00300     \textcolor{keywordflow}{break};
+00301 \}
+00302 
+00303 \{
+00304     \textcolor{keywordflow}{case} 6\textcolor{comment}{/*data transfer messages*/}:
+00305 
+00306             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]              = 0; \textcolor{comment}{//Inital offset}
+00307             current\_cmd.\hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length}   = 
+      \hyperlink{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}*\textcolor{keyword}{sizeof}(\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16});
+00308             current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]              = ((\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(current\_cmd.
+      \hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length}))<0)?
+00309                                                \hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:current\_cmd.
+      \hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length};
+00310 
+00311             \textcolor{keywordflow}{if}(emu\_data\_buffer.valid == \textcolor{keyword}{true})\{
+00312 
+00313             current\_cmd.\hyperlink{a00001_a0b844fe783d7e252159a9641b949e83c}{attachment} = (\textcolor{keywordtype}{void} *)emu\_data\_buffer.data;
+00314             \}\textcolor{keywordflow}{else}\{
+00315 
+00316                 qCritical() <<\textcolor{stringliteral}{"Unexpected result considered emulation data validation error "}
+00317                             <<\textcolor{stringliteral}{"in MainWindow::on\_btn\_execute\_cmd\_clicked"};
+00318 
+00319             \textcolor{keywordflow}{return};
+00320             \}
+00321 
+00322             current\_cmd.\hyperlink{a00001_affcea772a1bc5362ebbc274b6166f81b}{arg\_cnt}  = 4;
+00323 
+00324             current\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}   =\textcolor{stringliteral}{"1srv\_cmds\_data\_transfer\_msg\_handler(QString)"};
+00325 
+00326             \textcolor{keywordflow}{if}(!QString(last\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}).isNull())
+00327             disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, last\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00328 
+00329             connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, current\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00330 
+00331     \textcolor{keywordflow}{break};
+00332  \}
+00333  \{
+00334 
+00335     \textcolor{keywordflow}{case} 1\textcolor{comment}{/*zero argument messages*/}:
+00336 
+00337             current\_cmd.\hyperlink{a00001_affcea772a1bc5362ebbc274b6166f81b}{arg\_cnt}  = 2;
+00338 
+00339             current\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot} =\textcolor{stringliteral}{"1srv\_cmds\_general\_msg\_handler(QString)"};
+00340 
+00341             \textcolor{keywordflow}{if}(!QString(last\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot}).isNull())
+00342             disconnect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, last\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00343 
+00344             connect(\textcolor{keyword}{this}, SIGNAL(\hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString)), \textcolor{keyword}{this}, current\_cmd.
+      \hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot});
+00345 
+00346     \textcolor{keywordflow}{break};
+00347 \}
+00348     \textcolor{keywordflow}{default}:
+00349 
+00350         \textcolor{keywordflow}{break};
+00351     \}
+00352 
+00353 
+00354 
+00355 
+00356 
+00357 
+00358     \textcolor{keywordflow}{if}(ui->\hyperlink{a00027_ad95005b5fcac8126171019298147b285}{combo\_Sen}->currentText().contains(\textcolor{stringliteral}{"Multiple Address"}))\{
+00359 
+00360 
+00361           qint8 start\_address = ui->\hyperlink{a00027_acb4d6609c580645dac5aee1f1ad59d01}{spinBox\_start}->value();
+00362           qint8 end\_address   = ui->\hyperlink{a00027_a8ebeb5caa10878d7806d1f548913b449}{spinBox\_end}->value();
+00363           QString data\_dir\_name = QDateTime::currentDateTime().toString(Qt::SystemLocaleLongDate);
+00365 
+00366           data\_dir\_name.replace(\textcolor{charliteral}{':'},\textcolor{stringliteral}{"-"}).replace(\textcolor{charliteral}{' '},\textcolor{stringliteral}{"\_"}).replace(\textcolor{charliteral}{','},\textcolor{stringliteral}{""});
+00367           \textcolor{keywordflow}{if}((end\_address-start\_address) < 0)\{
+00368               \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"  Incorrect sensor address range, acceptable range is between 1
+       and 255"});
+00369              \textcolor{keywordflow}{return};
+00370           \}
+00371 
+00372           multi\_cmds.clear();
+00373 
+00374           \textcolor{comment}{//ui->sAreaVLayout->addWidget(ui->label\_Separator);}
+00375 
+00376           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = start\_address; var <= end\_address; ++var) \{
+00377 
+00378            \hyperlink{a00001_db/ddf/a00088}{mult\_sen\_t} target\_sen;
+00379            \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} width = 40;                   
+00380            target\_sen.\hyperlink{a00001_acc8ad431836f7b42742eda4fd49385b2}{address} = var;
+00381 
+00382            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.label = \textcolor{keyword}{new} QLabel(\textcolor{stringliteral}{"SEN "} + QString::number(var));
+00383            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.label->setFixedWidth(width);
+00384 
+00385 
+00386 
+00387            \textcolor{keywordflow}{if}(cmd == 0xE)\{
+00388            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.btn = \textcolor{keyword}{new} QPushButton(\textcolor{stringliteral}{"Open"});
+00389            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.btn->setEnabled(\textcolor{keyword}{false});
+00390            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.btn->setFixedWidth(40 \textcolor{comment}{/*btn width*/});
+00391            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.btn->setCheckable(\textcolor{keyword}{true});
+00392            connect(target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.btn, SIGNAL(clicked(\textcolor{keywordtype}{bool})), \textcolor{keyword}{this}, SLOT(
+      \hyperlink{a00006_a35b895072769864ac42f8cd732267e4b}{data\_open}(\textcolor{keywordtype}{bool})));
+00393            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.btnCreated = \textcolor{keyword}{true};
+00394            width +=40;
+00395            \}\textcolor{keywordflow}{else}\{
+00396                target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.btnCreated=\textcolor{keyword}{false};
+00397            \}
+00398 
+00399 
+00400 
+00401            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.pBar  = \textcolor{keyword}{new} QProgressBar();
+00402            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.pBar->setTextVisible(\textcolor{keyword}{false});
+00403            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.pBar->setMaximumWidth(ui->\hyperlink{a00027_a3c12d0504a310784c3820d1a9ad469c2}{gBox\_range}->width() - width);
+00404            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.hLayout = \textcolor{keyword}{new} QHBoxLayout();
+00405            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.hLayout->addWidget(target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.label);
+00406            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.hLayout->addWidget(target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.pBar);
+00407 
+00408           \textcolor{keywordflow}{if}(cmd == 0xE)
+00409            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.hLayout->addWidget(target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.btn);
+00410 
+00411            target\_sen.\hyperlink{a00001_a0438d70fa5f3dd26987180982ee28352}{varified} = \textcolor{keyword}{false};
+00412            target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.hLayout->sizeHint();
+00413            target\_sen.\hyperlink{a00001_ab96a1a110eea887a27173c37866e876e}{data\_dir\_name} = data\_dir\_name;
+00414            target\_sen.\hyperlink{a00001_a76c985468c91b36f693cbaf858297d9f}{data\_file\_name} = \textcolor{stringliteral}{""};
+00415            multi\_cmds.append(target\_sen);
+00416 
+00417            ui->\hyperlink{a00027_a2bdce9ad313cd4ee575613f36cbc4678}{sAreaVLayout}->addLayout(target\_sen.\hyperlink{a00001_a7758f566562596be39abf215046e32f0}{gui}.hLayout);
+00418 
+00419            \textcolor{comment}{/*ui->dockWidget\_sen\_cmd->resize(ui->dockWidget\_sen\_cmd->width(),}
+00420 \textcolor{comment}{                                        600}
+00421 \textcolor{comment}{                                         );*/}
+00422 
+00423 
+00424 
+00425           \}
+00426 
+00427           current\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address} = \textcolor{keyword}{true};
+00428           current\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} = 0;
+00429 
+00430           multi\_cmds[current\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00431 
+00432           current\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = start\_address;
+00433 
+00434      \}\textcolor{keywordflow}{else}\{
+00435 
+00436         last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address} = \textcolor{keyword}{false};
+00437         last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} = 0;
+00438      \}
+00439 
+00440 
+00441 
+00442        \textcolor{keywordflow}{if}(srv\_cmds\_execute(current\_cmd))
+00443           ui->\hyperlink{a00027_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd}->setText(\textcolor{stringliteral}{"Reset"});
+00444 
+00445     \textcolor{keywordflow}{return};
+00446 
+00447 \}
+00448 
+00449 
+\hypertarget{a00047_source_l00450}{}\hyperlink{a00006_a35b895072769864ac42f8cd732267e4b}{00450} \textcolor{keywordtype}{void} \hyperlink{a00006_a35b895072769864ac42f8cd732267e4b}{MainWindow::data\_open}(\textcolor{keywordtype}{bool} checked)\{
+00451 
+00452     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < multi\_cmds.length(); ++var)
+00453         \textcolor{keywordflow}{if}(multi\_cmds[var].gui.btn->isChecked())
+00454             loadFile(multi\_cmds[var].data\_file\_name);
+00455 
+00456 
+00457     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < multi\_cmds.length(); ++var)
+00458         multi\_cmds[var].gui.btn->setChecked(\textcolor{keyword}{false});
+00459 
+00460 
+00461 
+00462 \}
+00463 
+00464 
+00465 
+00466 \textcolor{keywordtype}{void} MainWindow::on\_dockWidget\_sen\_cmd\_destroyed(QObject *arg1)
+00467 \{
+00468   reset\_form();
+00469 \}
+00470 
+00471 \textcolor{keywordtype}{void} MainWindow::reset\_form()\{
+00472 
+00473     \textcolor{keywordflow}{if}(multi\_cmds.length()>0)\{
+00474         last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address}=\textcolor{keyword}{false};
+00475         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < multi\_cmds.length(); ++var) \{
+00476             multi\_cmds[var].gui.hLayout->removeWidget(multi\_cmds[var].gui.label);
+00477             \textcolor{keyword}{delete} multi\_cmds[var].gui.label;
+00478 
+00479             multi\_cmds[var].gui.hLayout->removeWidget(multi\_cmds[var].gui.pBar);
+00480             \textcolor{keyword}{delete} multi\_cmds[var].gui.pBar;
+00481 
+00482             \textcolor{keywordflow}{if}(multi\_cmds[var].gui.btnCreated)\{
+00483             multi\_cmds[var].gui.hLayout->removeWidget(multi\_cmds[var].gui.btn);
+00484             \textcolor{keyword}{delete} multi\_cmds[var].gui.btn;
+00485             \}
+00486 
+00487             \textcolor{keyword}{delete} multi\_cmds[var].gui.hLayout;
+00488 
+00489         \}
+00490 
+00491 
+00492     ui->\hyperlink{a00027_a2bdce9ad313cd4ee575613f36cbc4678}{sAreaVLayout}->removeWidget(ui->\hyperlink{a00027_a3c12d0504a310784c3820d1a9ad469c2}{gBox\_range});
+00493     ui->\hyperlink{a00027_acb4d6609c580645dac5aee1f1ad59d01}{spinBox\_start}->setValue(1);
+00494     ui->\hyperlink{a00027_a8ebeb5caa10878d7806d1f548913b449}{spinBox\_end}->setValue(255);
+00495 
+00496     ui->\hyperlink{a00027_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view}->parentWidget()->adjustSize();
+00497     ui->\hyperlink{a00027_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view}->setVisible(\textcolor{keyword}{false});
+00498     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->adjustSize();
+00499     \}
+00500     ui->\hyperlink{a00027_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd}->setText(\textcolor{stringliteral}{"Execute Command"});
+00501 \}
+00502 
+00503 \textcolor{keywordtype}{void} MainWindow::on\_cmd\_list\_itemSelectionChanged()
+00504 \{
+00505 
+00506     ui->\hyperlink{a00027_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->setCurrentIndex(((map\_cmd[ui->
+      \hyperlink{a00027_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->currentItem()->text(0)])&0x0F00)>>8);
+00507 
+00508     \textcolor{keywordflow}{if}(emu\_data\_buffer.valid == \textcolor{keyword}{false} || ui->\hyperlink{a00027_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->currentIndex()!=1)
+00509     emu\_data\_buffer.current\_editor = NULL;
+00510 
+00511     ui->\hyperlink{a00027_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data}->setStyleSheet(\hyperlink{a00034_a1291f416b069313021b519eea62d5bf1}{NORMAL});
+00512     ui->\hyperlink{a00027_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data}->setText(\textcolor{stringliteral}{"Add Data"});
+00513 
+00514 
+00515 
+00516 \}
+00517 
+00518 
+00519 \textcolor{keywordtype}{void} MainWindow::on\_stacked\_widget\_views\_currentChanged(\textcolor{keywordtype}{int} arg1)
+00520 \{
+00521 
+00522     \textcolor{keywordflow}{if}(arg1 < 2 || arg1 > 5)
+00523         \textcolor{keywordflow}{return};
+00524 
+00525     \textcolor{keywordflow}{switch} (arg1) \{
+00526         \textcolor{keywordflow}{case} 3\textcolor{comment}{/*INSTALLATION DITAILS*/}:
+00527 
+00528              ui->\hyperlink{a00027_ab6d7c3a292c79cd73aff8735df48d30e}{dSB\_rated\_current}->setValue(
+      \hyperlink{a00031_ae329eb408f386777cbb443c27ca7c1c5}{CONFIG\_DEFAULT\_RATED\_CURRENT});
+00529              ui->\hyperlink{a00027_aab5fcfd5ceedb9c4e853139113f5c753}{dSB\_sh\_ckt\_current}->setValue(
+      \hyperlink{a00031_a9b142f2e7d26511af74c411c0e524384}{CONFIG\_DEFAULT\_SHORT\_CKT\_CURRENT});
+00530              ui->\hyperlink{a00027_abd528de839feccc001dc62b3aecddc9f}{dSB\_freq}->setValue(\hyperlink{a00031_a985a153b3edd3d7d638137ae0b9e5e67}{CONFIG\_DEFAULT\_FREQ});
+00531              ui->\hyperlink{a00027_a01c23085590f4947828948bbd9f50cc7}{dSB\_min\_distance}->setValue(
+      \hyperlink{a00031_aad4ef21bb535ed8bbba5a4f2d0451711}{CONFIG\_DEFAULT\_MIN\_INSTALLATION\_DISTANCE});
+00532 
+00533              ui->\hyperlink{a00027_af4863849ff58931ae3a38aa5b40b8158}{cb\_config\_rated\_current}->setChecked(\textcolor{keyword}{true});
+00534              ui->\hyperlink{a00027_a541de6e510677e572ab233f7ecc25e2c}{cb\_config\_sh\_ckt\_current}->setChecked(\textcolor{keyword}{true});
+00535              ui->\hyperlink{a00027_a8f501acefacd6343a4ec99a67172f256}{cb\_config\_freq}->setChecked(\textcolor{keyword}{true});
+00536              ui->\hyperlink{a00027_a6b0d09f3b380fdb810d3da3f5208ccf5}{cb\_config\_min\_distance}->setChecked(\textcolor{keyword}{true});
+00537         \textcolor{keywordflow}{break};
+00538 
+00539         \textcolor{keywordflow}{case} 2\textcolor{comment}{/*SIGNAL THRESHOLDS*/}:
+00540             ui->\hyperlink{a00027_a220706f1fd93857145032c897e55d9e3}{dSB\_ir\_max}->setValue(100);
+00541             ui->\hyperlink{a00027_aa2872ada374dace81c4f1cc41d8e244d}{dSB\_uv\_max}->setValue(100);
+00542         \textcolor{keywordflow}{break};
+00543 
+00544         \textcolor{keywordflow}{case} 4\textcolor{comment}{/*EVENT ANALYSIS OPTIONS*/}:
+00545             ui->\hyperlink{a00027_a1fe1bf902f2a365c4c94612d2a2ffbcc}{dSB\_observation\_length}->setValue(
+      \hyperlink{a00031_af69b35a9f07bfcfe500538565d898c65}{CONFIG\_DEFAULT\_NO\_OF\_OBSERVATION});
+00546             ui->\hyperlink{a00027_a137b79e810736643ac4b15e221909871}{dSB\_probablity\_max}->setValue(
+      \hyperlink{a00031_a96cf926b530a1d5968881620d2f10445}{CONFIG\_DEFAULT\_PROBABLITY\_MAX});
+00547             ui->\hyperlink{a00027_adfd6cf470c736f358c6982f9a635f04f}{dSB\_probablity\_min}->setValue(
+      \hyperlink{a00031_a599be42d4b357badb7c9b16a124a186a}{CONFIG\_DEFAULT\_PROBABLITY\_MIN});
+00548             ui->\hyperlink{a00027_a2af463e4a88fddd219f2e41a386fbd68}{combo\_alarm\_condition}->setCurrentIndex(0);
+00549             ui->\hyperlink{a00027_abef4ef3d5d03026de5d5e172eb0335a6}{cb\_config\_active\_modules\_ir}->setChecked(\textcolor{keyword}{true});
+00550             ui->\hyperlink{a00027_a72ad8a6b100948f9b1438cf3b949be5e}{cb\_config\_active\_modules\_uv}->setChecked(\textcolor{keyword}{true});
+00551             ui->\hyperlink{a00027_abc96d02b5b7a9480a2a142008e99a100}{cb\_config\_active\_modules\_mf}->setChecked(\textcolor{keyword}{true});
+00552         \textcolor{keywordflow}{break};
+00553 
+00554         \textcolor{keywordflow}{case} 5 \textcolor{comment}{/*RUN TIME OPTIONS*/}:
+00555              ui->\hyperlink{a00027_a433ffc427e1103e6c2939f949ee5e5b5}{cb\_config\_threshold\_adjust}->setChecked(\textcolor{keyword}{false});
+00556              ui->\hyperlink{a00027_a4db3ccfbbf8c5222dd2f042d3073bbe8}{cb\_config\_sv\_ir}->setChecked(\textcolor{keyword}{false});
+00557              ui->\hyperlink{a00027_a3a93cd0a3f3738aad252d063a8677839}{cb\_config\_sv\_uv}->setChecked(\textcolor{keyword}{false});
+00558              ui->\hyperlink{a00027_a0a83284035ab2dbaeb39946522434986}{cb\_config\_sv\_mfield}->setChecked(\textcolor{keyword}{false});
+00559         \textcolor{keywordflow}{break};
+00560 
+00561 
+00562     \textcolor{keywordflow}{default}:
+00563         \textcolor{keywordflow}{break};
+00564     \}
+00565 
+00566     \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} \textcolor{comment}{/*TODO:?*/})\{
+00567     ui->\hyperlink{a00027_ad95005b5fcac8126171019298147b285}{combo\_Sen}->setCurrentIndex(0);
+00568     ui->\hyperlink{a00027_a263fb43f2eff37a44ff7359ba41e2eeb}{combo\_Ch}->setCurrentIndex(0);
+00569     ui->\hyperlink{a00027_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd}->setText(\textcolor{stringliteral}{"Execute Command"});
+00570     \}
+00571 \}
+00572 
+00573 
+00574 
+00575 \textcolor{keywordtype}{void} MainWindow::on\_btn\_set\_emu\_data\_clicked()
+00576 \{
+00577 
+00578     \textcolor{keywordflow}{if}(ui->\hyperlink{a00027_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data}->text().contains(\textcolor{stringliteral}{"Add Data"}))\{
+00579     \hyperlink{a00004}{emu\_data\_editor}* editor = \textcolor{keyword}{new} \hyperlink{a00004}{emu\_data\_editor}(ui->
+      \hyperlink{a00027_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->currentItem()->text(0),\textcolor{keyword}{this});
+00580 
+00581     this->emu\_data\_buffer.current\_editor = editor;
+00582     this->emu\_data\_buffer.valid          = \textcolor{keyword}{false};
+00583 
+00584     editor->show();
+00585     editor->raise();
+00586     editor->activateWindow();
+00587 
+00588 
+00589 
+00590     \textcolor{keywordflow}{if}(this->x() < (QApplication::desktop()->rect().width()/2))
+00591     editor->move((this->x()+this->width()+ 50),50);
+00592     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(this->x() > (QApplication::desktop()->rect().width()/2))
+00593     editor->move((this->x()-this->width()-editor->width()- 10),50);
+00594 
+00595 
+00596  \}\textcolor{keywordflow}{else}\{
+00597       emu\_data\_buffer.current\_editor->show();
+00598       emu\_data\_buffer.current\_editor->raise();
+00599       emu\_data\_buffer.current\_editor->activateWindow();
+00600  \}
+00601 
+00602 
+00603 \}
+00604 
+00605 
+\hypertarget{a00047_source_l00606}{}\hyperlink{a00006_ae9bed0c4d2f2c63c95a68f53f65f4359}{00606} \textcolor{keywordtype}{void} \hyperlink{a00006_ae9bed0c4d2f2c63c95a68f53f65f4359}{MainWindow::set\_emu\_data}(\hyperlink{a00004}{emu\_data\_editor} *editor,
+      \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}* data,\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} size)
+00607 
+00608 \{
+00609     \textcolor{keywordflow}{if}(editor != this->emu\_data\_buffer.current\_editor)\{
+00610       \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_a1ddcc97224a95cec04b38b0ac866fa19}{MSG\_INFO},
+00611           QString(\textcolor{stringliteral}{"The selected editor is not valid."})+
+00612           QString(\textcolor{stringliteral}{"\(\backslash\)nYou must save the data to a file"} )+
+00613           QString(\textcolor{stringliteral}{" to open it again with a new editor"}));
+00614 
+00615         \textcolor{keywordflow}{return};\textcolor{comment}{//this is zambi editor}
+00616     \}
+00617 
+00618 
+00619 
+00620     memmove(this->emu\_data\_buffer.data,data,size);
+00621 
+00622 
+00623     this->emu\_data\_buffer.processed = \textcolor{keyword}{false};
+00624     this->emu\_data\_buffer.valid = \textcolor{keyword}{false};
+00625     this->emu\_data\_buffer.current\_editor = editor;
+00626     ui->\hyperlink{a00027_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data}->setStyleSheet(\hyperlink{a00034_a3a6d3cd70078e6046471ec528a09cd19}{ACTIVE});
+00627     ui->\hyperlink{a00027_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data}->setText(\textcolor{stringliteral}{"Edit Data"});
+00628 
+00629     this->show();
+00630     this->\textcolor{keyword}{raise}();
+00631     this->activateWindow();
+00632 
+00633     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->setWindowFlags(Qt::Window);
+00634     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->show();
+00635     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->raise();
+00636     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->activateWindow();
+00637 
+00638 \}
+00639 
+00640 \textcolor{keywordtype}{void} MainWindow::cmd\_cancel()\{
+00641     ui->\hyperlink{a00027_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->setCurrentIndex(0);
+00642     QModelIndex index = ui->\hyperlink{a00027_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->model()->index(0,0,QModelIndex());
+00643     ui->\hyperlink{a00027_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->setCurrentIndex(index);
+00644 
+00645 \}
+00646 
+00647 
+00648 
+00649 \textcolor{keywordtype}{void} MainWindow::on\_btn\_cancel\_clicked()
+00650 \{
+00651     cmd\_cancel();
+00652 \}
+00653 
+00654 \textcolor{keywordtype}{void} MainWindow::on\_btn\_back\_thresholds\_clicked()
+00655 \{
+00656     cmd\_cancel();
+00657 \}
+00658 
+00659 \textcolor{keywordtype}{void} MainWindow::on\_btn\_cancel\_sys\_info\_clicked()
+00660 \{
+00661     cmd\_cancel();
+00662 \}
+00663 
+00664 \textcolor{keywordtype}{void} MainWindow::on\_btn\_back\_analisis\_clicked()
+00665 \{
+00666     cmd\_cancel();
+00667 \}
+00668 
+00669 \textcolor{keywordtype}{void} MainWindow::on\_btn\_cancel\_options\_clicked()
+00670 \{
+00671     cmd\_cancel();
+00672 \}
+00673 
+00674 \textcolor{keywordtype}{void} MainWindow::on\_btn\_back\_emu\_data\_clicked()
+00675 \{
+00676     cmd\_cancel();
+00677 
+00678 \}
+00679 \textcolor{keywordtype}{void} MainWindow::on\_btn\_save\_thresholds\_clicked()
+00680 \{
+00681      ui->\hyperlink{a00027_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->setCurrentIndex(1);
+00682 \}
+00683 
+00684 \textcolor{keywordtype}{void} MainWindow::on\_btn\_save\_sys\_info\_clicked()
+00685 \{
+00686     ui->\hyperlink{a00027_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->setCurrentIndex(1);
+00687 \}
+00688 
+00689 
+00690 \textcolor{keywordtype}{void} MainWindow::on\_btn\_save\_analisis\_clicked()
+00691 \{
+00692     ui->\hyperlink{a00027_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->setCurrentIndex(1);
+00693 \}
+00694 
+00695 \textcolor{keywordtype}{void} MainWindow::on\_btn\_save\_options\_clicked()
+00696 \{
+00697     ui->\hyperlink{a00027_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->setCurrentIndex(1);
+00698 \}
+00699 
+00700 \textcolor{keywordtype}{void} MainWindow::on\_btn\_nxt\_emu\_data\_clicked()
+00701 \{
+00702     \textcolor{keywordflow}{if}(ui->\hyperlink{a00027_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data}->text().contains(\textcolor{stringliteral}{"Add Data"}))\{
+00703         \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Data is not yet added.\(\backslash\)nyou can’t continue with this action"});
+00704         \textcolor{keywordflow}{return};
+00705     \}
+00706 
+00707     \textcolor{keywordflow}{if}(emu\_data\_buffer.current\_editor != NULL)
+00708         this->emu\_data\_buffer.valid = \textcolor{keyword}{true};
+00709      ui->\hyperlink{a00027_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->setCurrentIndex(1);
+00710 \}
+00711 
+00712 
+00713 
+00714 \textcolor{keywordtype}{void} MainWindow::cancel\_processing\_cmd(\textcolor{keywordtype}{bool} checked)
+00715 \{
+00716     \textcolor{keywordflow}{if}(!checked)\{
+00717         \textcolor{keywordflow}{return};
+00718     \}
+00719     \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00720     \textcolor{keywordflow}{if}(multi\_cmds.length()>0)\{
+00721         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < multi\_cmds.length(); ++var) \{
+00722             multi\_cmds[var].gui.hLayout->removeWidget(multi\_cmds[var].gui.label);
+00723             \textcolor{keyword}{delete} multi\_cmds[var].gui.label;
+00724 
+00725             multi\_cmds[var].gui.hLayout->removeWidget(multi\_cmds[var].gui.pBar);
+00726             \textcolor{keyword}{delete} multi\_cmds[var].gui.pBar;
+00727 
+00728             \textcolor{keywordflow}{if}(multi\_cmds[var].gui.btnCreated)\{
+00729             multi\_cmds[var].gui.hLayout->removeWidget(multi\_cmds[var].gui.btn);
+00730             \textcolor{keyword}{delete} multi\_cmds[var].gui.btn;
+00731             \}
+00732 
+00733             ui->\hyperlink{a00027_a2bdce9ad313cd4ee575613f36cbc4678}{sAreaVLayout}->removeItem(multi\_cmds[var].gui.hLayout);
+00734 
+00735             \textcolor{keyword}{delete} multi\_cmds[var].gui.hLayout;
+00736 
+00737         \}
+00738     ui->\hyperlink{a00027_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view}->parentWidget()->adjustSize();
+00739     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->adjustSize();
+00740 
+00741     \}
+00742 
+00743     last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address}=\textcolor{keyword}{false};
+00744    \}
+00745 
+00746     last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00747     ui->\hyperlink{a00027_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd}->setText(\textcolor{stringliteral}{"Execute Command"});
+00748 
+00749 
+00750 \}
+00751 
+00752 
+00753 \textcolor{keywordtype}{bool} MainWindow::srv\_cmds\_execute(\hyperlink{a00001_df/dc8/a00122}{serial\_msg\_t} current\_cmd, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} *resp, 
+      \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} wait\_resp)
+00754 \{
+00755 
+00756       \textcolor{keywordflow}{if}(protocol\_send\_cmd(current\_cmd,resp,wait\_resp) == 0)
+00757       \{
+00758 
+00759       ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"Selected sensor\(\backslash\)t- > "}) +
+00760                                             QString(\textcolor{stringliteral}{"Channel "}) + QString::number(current\_cmd.
+      \hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0]) +
+00761                                             QString(\textcolor{stringliteral}{", Address "}) + QString::number(current\_cmd.
+      \hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00762                                             );
+00763       ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"\(\backslash\)nCommand \(\backslash\)t\(\backslash\)t- > "}) +
+00764                                             ui->\hyperlink{a00027_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->currentItem()->text(0)
+00765 
+00766                                             );
+00767 
+00768       ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"\(\backslash\)nWaiting for response...\(\backslash\)n "}));
+00769 
+00770       \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address} == \textcolor{keyword}{true})
+00771       multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(
+00772               multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->value() +
+00773               20);
+00774 
+00775 
+00776       last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed}           = \textcolor{keyword}{false};
+00777       last\_cmd.\hyperlink{a00001_a2b37e66e2555cf1dc26439ad7c30ea78}{device\_response\_cnt} = 0;
+00778       last\_cmd.\hyperlink{a00001_a44be27a056581b6e706ec1ab28ce46e0}{last\_response\_cnt}   = 0;
+00779       QTimer::singleShot(30000, \textcolor{keyword}{this}, SLOT(serial\_supervisor()));
+00780 
+00781       \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00782       \}
+00783       \textcolor{keywordflow}{else}
+00784       \{
+00785          ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(
+00786         QString(\textcolor{stringliteral}{"\(\backslash\)nCommunication error: serial connection problem "}));
+00787         cancel\_processing\_cmd(\textcolor{keyword}{true});
+00788 
+00789        \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00790       \}
+00791 
+00792 
+00793 \}
+00794 
+00795 
+00796 \textcolor{keywordtype}{void} MainWindow::on\_combo\_Sen\_activated(\textcolor{keyword}{const} QString &arg1)
+00797 \{
+00798     \textcolor{keywordflow}{if}(arg1.compare(QString(\textcolor{stringliteral}{"Multiple Address"})) == 0)\{
+00799 
+00800         \textcolor{keywordflow}{if}(ui->\hyperlink{a00027_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view}->isVisible())
+00801               \textcolor{keywordflow}{return};
+00802 
+00803 
+00804         ui->\hyperlink{a00027_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view}->setVisible(\textcolor{keyword}{true});
+00805         ui->\hyperlink{a00027_a2bdce9ad313cd4ee575613f36cbc4678}{sAreaVLayout}->addWidget(ui->\hyperlink{a00027_a3c12d0504a310784c3820d1a9ad469c2}{gBox\_range});
+00806 
+00807 
+00808         ui->\hyperlink{a00027_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view}->setMinimumHeight(450);
+00809 
+00810        \}\textcolor{keywordflow}{else}\{
+00811 
+00812         ui->\hyperlink{a00027_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view}->setVisible(\textcolor{keyword}{false});
+00813 
+00814 
+00815        \}
+00816 
+00817 
+00818 
+00819 \}
+00820 
+00821 
+00822 
+00823 
+00824 
+00825 
+00826 
+00827 
+00828 
+\end{DoxyCode}

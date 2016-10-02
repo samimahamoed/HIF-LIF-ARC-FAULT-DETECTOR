@@ -1,0 +1,14 @@
+digraph "serial_get_command"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="serial_get_command",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="crc16",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d1b/a00015.html#a6553827687db2137ee550ad6e1d2f316",tooltip="Standard CRC16 routine. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="serial_get_command_ack",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/de2/a00024.html#a7fc7421ed15d6e4516e9878e7455d715",tooltip="Function which marks serial buffer as processed, so new command can be taken. "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="serial_make16",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/de2/a00024.html#abc17de32f14103a5be219df0d4ad9176",tooltip="Function converting characters to 16 bit value. "];
+}

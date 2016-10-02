@@ -1,0 +1,1237 @@
+\hypertarget{a00006}{\section{Main\+Window Class Reference}
+\label{a00006}\index{Main\+Window@{Main\+Window}}
+}
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+
+
+Inheritance diagram for Main\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{da/ddc/a00288}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Main\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{d4/d66/a00289}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00006_a35b895072769864ac42f8cd732267e4b}{data\+\_\+open} (bool checked)
+\item 
+void \hyperlink{a00006_ac84167866950dd1eb9a29a5293546c1a}{srv\+\_\+cmds\+\_\+data\+\_\+download\+\_\+msg\+\_\+handler} (Q\+String data)
+\item 
+void \hyperlink{a00006_ae19ec21c1009c81700a8ad2e1f81be07}{srv\+\_\+cmds\+\_\+data\+\_\+transfer\+\_\+msg\+\_\+handler} (Q\+String data)
+\item 
+void \hyperlink{a00006_a8a8cd34488e8ee213350afb5b2261677}{srv\+\_\+cmds\+\_\+general\+\_\+msg\+\_\+handler} (Q\+String data)
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\+\_\+ready} (Q\+String)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00006_a8b244be8b7b7db1b08de2a2acb9409db}{Main\+Window} (Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{a00006_ae98d00a93bc118200eeef9f9bba1dba7}{$\sim$\+Main\+Window} ()
+\item 
+void \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg} (\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} type, Q\+String msg)
+\item 
+Q\+String \hyperlink{a00006_a8821556476f5a88c107f21d7db14e49c}{uint8\+\_\+to\+\_\+str} (\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} val)
+\item 
+void \hyperlink{a00006_a61e2ba77e381cae572eec854b6510b81}{List\+Files} ()
+\item 
+qint8 \hyperlink{a00006_aebce94d5e6af7afff661daf74b208de1}{make8} (Q\+String buf, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} idx)
+\item 
+qint16 \hyperlink{a00006_afcb06d9f3a6a555df9355af1dfbb4e21}{make16} (Q\+String buf, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} idx)
+\item 
+\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} \hyperlink{a00006_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16} (\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} $\ast$puch\+Msg, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} us\+Data\+Len)
+\item 
+void \hyperlink{a00006_ae9bed0c4d2f2c63c95a68f53f65f4359}{set\+\_\+emu\+\_\+data} (\hyperlink{a00004}{emu\+\_\+data\+\_\+editor} $\ast$editor, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} $\ast$data, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} size)
+\item 
+Q\+String \hyperlink{a00006_a0114355b9f626345cf77d6f714f51468}{save\+\_\+to\+\_\+file} (Q\+String dir, Q\+String type, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} offset, Q\+Vector$<$ double $>$ $\ast$data1, Q\+Vector$<$ double $>$ $\ast$data2=N\+U\+L\+L, Q\+Vector$<$ double $>$ $\ast$data3=N\+U\+L\+L)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+String \hyperlink{a00006_a773de5ed6b1b522f94b0347ef556137d}{event\+Recored\+List}
+\item 
+Q\+String \hyperlink{a00006_a2e107e43aeaccaf4c9a42254f13122c8}{dir\+\_\+default}
+\end{DoxyCompactItemize}
+\subsection*{Protected Slots}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{a00006_a91df90bb5045775882c062cefdf903e9}{event\+Filter} (Q\+Object $\ast$object, Q\+Event $\ast$event)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line \hyperlink{a00039_source_l00034}{34} of file \hyperlink{a00039_source}{mainwindow.\+h}.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{a00006_a8b244be8b7b7db1b08de2a2acb9409db}{\index{Main\+Window@{Main\+Window}!Main\+Window@{Main\+Window}}
+\index{Main\+Window@{Main\+Window}!Main\+Window@{Main\+Window}}
+\subsubsection[{Main\+Window}]{\setlength{\rightskip}{0pt plus 5cm}Main\+Window\+::\+Main\+Window (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{a00006_a8b244be8b7b7db1b08de2a2acb9409db}
+
+
+Definition at line \hyperlink{a00038_source_l00024}{24} of file \hyperlink{a00038_source}{mainwindow.\+cpp}.
+
+
+
+References \hyperlink{a00052_source_l00048}{Ui\+\_\+\+Main\+Window\+::action\+Clear}, \hyperlink{a00052_source_l00047}{Ui\+\_\+\+Main\+Window\+::action\+Configure}, \hyperlink{a00052_source_l00044}{Ui\+\_\+\+Main\+Window\+::action\+Connect}, \hyperlink{a00052_source_l00045}{Ui\+\_\+\+Main\+Window\+::action\+Disconnect}, \hyperlink{a00052_source_l00046}{Ui\+\_\+\+Main\+Window\+::action\+Quit}, \hyperlink{a00052_source_l00052}{Ui\+\_\+\+Main\+Window\+::central\+Widget}, \hyperlink{a00039_source_l00020}{D\+E\+F\+A\+U\+L\+T\+\_\+\+D\+I\+R}, \hyperlink{a00039_source_l00063}{dir\+\_\+default}, \hyperlink{a00052_source_l00185}{Ui\+\_\+\+Main\+Window\+::dock\+\_\+central}, \hyperlink{a00052_source_l00176}{Ui\+\_\+\+Main\+Window\+::dock\+Widget}, \hyperlink{a00001_source_l00496}{serial\+\_\+msg\+\_\+t\+::listener\+\_\+slot}, \hyperlink{a00001_source_l00494}{serial\+\_\+msg\+\_\+t\+::processed}, and \hyperlink{a00052_source_l00192}{Ui\+\_\+\+Main\+Window\+::setup\+Ui()}.
+
+
+\begin{DoxyCode}
+00024                                       :
+00025     \hyperlink{a00010}{QMainWindow}(parent),
+00026     ui(\textcolor{keyword}{new} \hyperlink{a00007}{Ui::MainWindow})
+00027 \{
+00028 
+00029 
+00030     ui->\hyperlink{a00027_acf4a0872c4c77d8f43a2ec66ed849b58}{setupUi}(\textcolor{keyword}{this});
+00031 
+00032 
+00033     this->move(QApplication::desktop()->rect().x() + 10,this->y()+2);
+00034 
+00035 
+00036         console = \textcolor{keyword}{new} \hyperlink{a00002}{Console};
+00037         console->setEnabled(\textcolor{keyword}{false});
+00038 
+00039 
+00040         serial = \textcolor{keyword}{new} QSerialPort(\textcolor{keyword}{this});
+00041         settings = \textcolor{keyword}{new} \hyperlink{a00022}{SettingsDialog};
+00042 
+00043           ui->\hyperlink{a00027_aa0785566311fc48271690fb68b1d4c5f}{actionConnect}->setEnabled(\textcolor{keyword}{true});
+00044           ui->\hyperlink{a00027_a8a16b3aef75b279eaaa887152d2f746b}{actionDisconnect}->setEnabled(\textcolor{keyword}{false});
+00045           ui->\hyperlink{a00027_a188c243f36a2dbc10e4e2a0ad94273b1}{actionQuit}->setEnabled(\textcolor{keyword}{true});
+00046           ui->\hyperlink{a00027_a3860abde3cfd3f6170e28fddde73f11e}{actionConfigure}->setEnabled(\textcolor{keyword}{true});
+00047 
+00048 
+00049           initActionsConnections();
+00050 
+00051             connect(serial, SIGNAL(error(QSerialPort::SerialPortError)), \textcolor{keyword}{this},
+00052             SLOT(handleError(QSerialPort::SerialPortError)));
+00053 
+00054             connect(serial, SIGNAL(readyRead()), \textcolor{keyword}{this}, SLOT(incoming\_data\_listener()));
+00055 
+00056 
+00057 
+00058 
+00059 
+00060 
+00061            ui->\hyperlink{a00027_ac8a083c4b66fb317a9b538409ce412e2}{dockWidget}->setVisible(\textcolor{keyword}{false});
+00062 
+00063            ui->\hyperlink{a00027_a30075506c2116c3ed4ff25e07ae75f81}{centralWidget}->setVisible(\textcolor{keyword}{false});
+00064 
+00065            ui->\hyperlink{a00027_ac8539dcd87955047877cb256aff60453}{actionClear}->setVisible(\textcolor{keyword}{false});
+00066 
+00067           this->addDockWidget(Qt::RightDockWidgetArea,ui->\hyperlink{a00027_a19105d0d919fa33b5f29f7677bbab054}{dock\_central});
+00068 
+00069 
+00070           last\_cmd.\hyperlink{a00001_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot} = NULL;
+00071           \textcolor{comment}{//serial rc buffer start frash}
+00072           last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed}=\textcolor{keyword}{true};
+00073           rc\_buffer.clear();
+00074 
+00075           cmd\_line\_separator=\textcolor{stringliteral}{"\(\backslash\)n>> "};
+00076 
+00077 
+00078 
+00079           \hyperlink{a00006_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default} = \hyperlink{a00039_a63ec0cea9c1f0ca8a7893c2c53d2fd81}{DEFAULT\_DIR};
+00080 
+00081           QDir dir;
+00082 
+00083           \textcolor{keywordflow}{if}(!dir.exists(dir.toNativeSeparators(\hyperlink{a00006_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default})))
+00084               dir.mkdir(dir.toNativeSeparators(\hyperlink{a00006_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default}));
+00085 
+00086           map\_keys();
+00087 
+00088           installEventFilter(\textcolor{keyword}{this});
+00089 
+00090 
+00091 
+00092 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/d21/a00006_a8b244be8b7b7db1b08de2a2acb9409db_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00006_ae98d00a93bc118200eeef9f9bba1dba7}{\index{Main\+Window@{Main\+Window}!````~Main\+Window@{$\sim$\+Main\+Window}}
+\index{````~Main\+Window@{$\sim$\+Main\+Window}!Main\+Window@{Main\+Window}}
+\subsubsection[{$\sim$\+Main\+Window}]{\setlength{\rightskip}{0pt plus 5cm}Main\+Window\+::$\sim$\+Main\+Window (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00006_ae98d00a93bc118200eeef9f9bba1dba7}
+
+
+Definition at line \hyperlink{a00038_source_l00094}{94} of file \hyperlink{a00038_source}{mainwindow.\+cpp}.
+
+
+\begin{DoxyCode}
+00095 \{
+00096     \textcolor{keyword}{delete} ui;
+00097 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00006_a09ae3cafdd3692fb9fb93bb90a0348d2}{\index{Main\+Window@{Main\+Window}!crc16@{crc16}}
+\index{crc16@{crc16}!Main\+Window@{Main\+Window}}
+\subsubsection[{crc16}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} Main\+Window\+::crc16 (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8} $\ast$}]{puch\+Msg, }
+\item[{{\bf Uint16}}]{us\+Data\+Len}
+\end{DoxyParamCaption}
+)}}\label{a00006_a09ae3cafdd3692fb9fb93bb90a0348d2}
+
+
+Definition at line \hyperlink{a00050_source_l00298}{298} of file \hyperlink{a00050_source}{srv\+\_\+serial.\+cpp}.
+
+
+\begin{DoxyCode}
+00299 \{
+00300     \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} crc\_hi = 0xFF ;        \textcolor{comment}{/* high byte of CRC initialized */}
+00301     \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} crc\_lo = 0xFF ;        \textcolor{comment}{/* low byte of CRC initialized */}
+00302     \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} table\_index ;            \textcolor{comment}{/* index into CRC lookup table */}
+00303 
+00304     \textcolor{keywordflow}{while} (usDataLen--)
+00305     \{
+00306         table\_index = crc\_hi ^ *puchMsg++ ;            \textcolor{comment}{/* calculate the CRC */}
+00307         crc\_hi = crc\_lo ^ table\_crc\_hi[table\_index] ;
+00308         crc\_lo = table\_crc\_lo[table\_index] ;
+00309     \}
+00310     \textcolor{keywordflow}{return} (crc\_hi << 8 | crc\_lo) ;
+00311 \}
+\end{DoxyCode}
+\hypertarget{a00006_a35b895072769864ac42f8cd732267e4b}{\index{Main\+Window@{Main\+Window}!data\+\_\+open@{data\+\_\+open}}
+\index{data\+\_\+open@{data\+\_\+open}!Main\+Window@{Main\+Window}}
+\subsubsection[{data\+\_\+open}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::data\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{bool}]{checked}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{a00006_a35b895072769864ac42f8cd732267e4b}
+
+
+Definition at line \hyperlink{a00047_source_l00450}{450} of file \hyperlink{a00047_source}{srv\+\_\+commands.\+cpp}.
+
+
+\begin{DoxyCode}
+00450                                       \{
+00451 
+00452     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < multi\_cmds.length(); ++var)
+00453         \textcolor{keywordflow}{if}(multi\_cmds[var].gui.btn->isChecked())
+00454             loadFile(multi\_cmds[var].data\_file\_name);
+00455 
+00456 
+00457     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < multi\_cmds.length(); ++var)
+00458         multi\_cmds[var].gui.btn->setChecked(\textcolor{keyword}{false});
+00459 
+00460 
+00461 
+00462 \}
+\end{DoxyCode}
+\hypertarget{a00006_a91df90bb5045775882c062cefdf903e9}{\index{Main\+Window@{Main\+Window}!event\+Filter@{event\+Filter}}
+\index{event\+Filter@{event\+Filter}!Main\+Window@{Main\+Window}}
+\subsubsection[{event\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}bool Main\+Window\+::event\+Filter (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{object, }
+\item[{Q\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [slot]}}}\label{a00006_a91df90bb5045775882c062cefdf903e9}
+
+
+Definition at line \hyperlink{a00038_source_l00100}{100} of file \hyperlink{a00038_source}{mainwindow.\+cpp}.
+
+
+
+References \hyperlink{a00052_source_l00053}{Ui\+\_\+\+Main\+Window\+::dock\+Widget\+\_\+sen\+\_\+cmd}.
+
+
+\begin{DoxyCode}
+00101 \{
+00102 
+00103 
+00104     \textcolor{keywordflow}{if} (event->type() == QEvent::FocusOut)
+00105     \{
+00106         \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object} == \textcolor{keyword}{this})
+00107         \{
+00108 
+00109         \}
+00110     \}
+00111 
+00112 
+00113     \textcolor{keywordflow}{if} (event->type() == QEvent::FocusIn)
+00114     \{
+00115         \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object} == ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd})
+00116         \{
+00117 
+00118         \}
+00119 
+00120     \}
+00121     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00122 \}
+\end{DoxyCode}
+\hypertarget{a00006_a61e2ba77e381cae572eec854b6510b81}{\index{Main\+Window@{Main\+Window}!List\+Files@{List\+Files}}
+\index{List\+Files@{List\+Files}!Main\+Window@{Main\+Window}}
+\subsubsection[{List\+Files}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+List\+Files (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00006_a61e2ba77e381cae572eec854b6510b81}
+
+
+Definition at line \hyperlink{a00038_source_l00308}{308} of file \hyperlink{a00038_source}{mainwindow.\+cpp}.
+
+
+
+References \hyperlink{a00039_source_l00063}{dir\+\_\+default}, \hyperlink{a00038_source_l00145}{msg()}, and \hyperlink{a00034_source_l00055}{M\+S\+G\+\_\+\+E\+R\+R\+O\+R}.
+
+
+\begin{DoxyCode}
+00308                           \{
+00309 
+00310     QStringList nameFilter(\textcolor{stringliteral}{"*.csv"});
+00311 
+00312     QDir directory;
+00313     directory.setPath(directory.toNativeSeparators(\hyperlink{a00006_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default}));
+00314 
+00315     \textcolor{keywordflow}{if}(!directory.exists())\{
+00316         \textcolor{keywordflow}{if}(!directory.mkdir(directory.toNativeSeparators(\hyperlink{a00006_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default})))\{
+00317             \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Couldn't open the Directory "} + directory.absolutePath() + \textcolor{stringliteral}{"for
+       reading"});
+00318         \textcolor{keywordflow}{return};
+00319         \}
+00320     \}
+00321 
+00322     QStringList eventFiles = directory.entryList(nameFilter);
+00323     model->setStringList(eventFiles);
+00324 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{de/d21/a00006_a61e2ba77e381cae572eec854b6510b81_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00006_afcb06d9f3a6a555df9355af1dfbb4e21}{\index{Main\+Window@{Main\+Window}!make16@{make16}}
+\index{make16@{make16}!Main\+Window@{Main\+Window}}
+\subsubsection[{make16}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int16} Main\+Window\+::make16 (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{buf, }
+\item[{{\bf Uint16}}]{idx}
+\end{DoxyParamCaption}
+)}}\label{a00006_afcb06d9f3a6a555df9355af1dfbb4e21}
+
+
+Definition at line \hyperlink{a00048_source_l00013}{13} of file \hyperlink{a00048_source}{srv\+\_\+miscellaneous.\+cpp}.
+
+
+
+References \hyperlink{a00034_source_l00008}{H\+E\+X2\+V\+A\+L}.
+
+
+\begin{DoxyCode}
+00014 \{
+00015     qint16 result = ((\hyperlink{a00034_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint16)buf[idx+0].toLatin1())<<12)|
+00016             (\hyperlink{a00034_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint16)buf[idx+1].toLatin1())<<8)|
+00017             (\hyperlink{a00034_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint16)buf[idx+2].toLatin1())<<4)|
+00018             (\hyperlink{a00034_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint16)buf[idx+3].toLatin1())<<0));
+00019 
+00020     \textcolor{keywordflow}{return} result;
+00021 \}
+\end{DoxyCode}
+\hypertarget{a00006_aebce94d5e6af7afff661daf74b208de1}{\index{Main\+Window@{Main\+Window}!make8@{make8}}
+\index{make8@{make8}!Main\+Window@{Main\+Window}}
+\subsubsection[{make8}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int8} Main\+Window\+::make8 (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{buf, }
+\item[{{\bf Uint16}}]{idx}
+\end{DoxyParamCaption}
+)}}\label{a00006_aebce94d5e6af7afff661daf74b208de1}
+
+
+Definition at line \hyperlink{a00048_source_l00005}{5} of file \hyperlink{a00048_source}{srv\+\_\+miscellaneous.\+cpp}.
+
+
+
+References \hyperlink{a00034_source_l00008}{H\+E\+X2\+V\+A\+L}.
+
+
+\begin{DoxyCode}
+00006 \{
+00007     qint8 result;
+00008     result = ((\hyperlink{a00034_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint8)buf[idx+0].toLatin1())<<4)|(\hyperlink{a00034_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint8)buf[idx+1].toLatin1(
+      )))<<0);
+00009     \textcolor{keywordflow}{return} result;
+00010 \}
+\end{DoxyCode}
+\hypertarget{a00006_a6134b74dbfffbaf333e169bd09597b53}{\index{Main\+Window@{Main\+Window}!msg@{msg}}
+\index{msg@{msg}!Main\+Window@{Main\+Window}}
+\subsubsection[{msg}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::msg (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{type, }
+\item[{Q\+String}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00006_a6134b74dbfffbaf333e169bd09597b53}
+
+
+Definition at line \hyperlink{a00038_source_l00145}{145} of file \hyperlink{a00038_source}{mainwindow.\+cpp}.
+
+
+
+References \hyperlink{a00034_source_l00055}{M\+S\+G\+\_\+\+E\+R\+R\+O\+R}, and \hyperlink{a00034_source_l00056}{M\+S\+G\+\_\+\+I\+N\+F\+O}.
+
+
+
+Referenced by \hyperlink{a00038_source_l00308}{List\+Files()}, and \hyperlink{a00047_source_l00606}{set\+\_\+emu\+\_\+data()}.
+
+
+\begin{DoxyCode}
+00146 \{
+00147     QString title;
+00148 
+00149     QMessageBox msgBox;
+00150     msgBox.setWindowIcon(QMainWindow::windowIcon());
+00151     msgBox.setWindowTitle(QMainWindow::windowTitle());
+00152 
+00153     \textcolor{keywordflow}{switch} (type) \{
+00154     \textcolor{keywordflow}{case} \hyperlink{a00034_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR}:
+00155         msgBox.setText(tr(\textcolor{stringliteral}{"Error"}));
+00156         msgBox.setIcon(QMessageBox::Critical);
+00157         \textcolor{keywordflow}{break};
+00158     \textcolor{keywordflow}{case} \hyperlink{a00034_a1ddcc97224a95cec04b38b0ac866fa19}{MSG\_INFO}:
+00159         msgBox.setText(tr(\textcolor{stringliteral}{"Information"}));
+00160         msgBox.setIcon(QMessageBox::Information);
+00161     \textcolor{keywordflow}{default}:
+00162 
+00163         \textcolor{keywordflow}{break};
+00164     \}
+00165 
+00166 
+00167 
+00168  msgBox.setInformativeText(\hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg});
+00169 
+00170  msgBox.exec();
+00171 
+00172 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/d21/a00006_a6134b74dbfffbaf333e169bd09597b53_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00006_a3f6396874778799cf07a7a0149e54977}{\index{Main\+Window@{Main\+Window}!response\+\_\+ready@{response\+\_\+ready}}
+\index{response\+\_\+ready@{response\+\_\+ready}!Main\+Window@{Main\+Window}}
+\subsubsection[{response\+\_\+ready}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::response\+\_\+ready (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{\+\_\+t1}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00006_a3f6396874778799cf07a7a0149e54977}
+
+
+Definition at line \hyperlink{a00015_source_l00289}{289} of file \hyperlink{a00015_source}{moc\+\_\+mainwindow.\+cpp}.
+
+
+\begin{DoxyCode}
+00290 \{
+00291     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+00292     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, \_a);
+00293 \}
+\end{DoxyCode}
+\hypertarget{a00006_a0114355b9f626345cf77d6f714f51468}{\index{Main\+Window@{Main\+Window}!save\+\_\+to\+\_\+file@{save\+\_\+to\+\_\+file}}
+\index{save\+\_\+to\+\_\+file@{save\+\_\+to\+\_\+file}!Main\+Window@{Main\+Window}}
+\subsubsection[{save\+\_\+to\+\_\+file}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Main\+Window\+::save\+\_\+to\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{dir, }
+\item[{Q\+String}]{type, }
+\item[{{\bf Uint16}}]{offset, }
+\item[{Q\+Vector$<$ double $>$ $\ast$}]{data1, }
+\item[{Q\+Vector$<$ double $>$ $\ast$}]{data2 = {\ttfamily NULL}, }
+\item[{Q\+Vector$<$ double $>$ $\ast$}]{data3 = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}}\label{a00006_a0114355b9f626345cf77d6f714f51468}
+
+
+Definition at line \hyperlink{a00038_source_l00706}{706} of file \hyperlink{a00038_source}{mainwindow.\+cpp}.
+
+
+
+References \hyperlink{a00003_source_l00029}{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}.
+
+
+\begin{DoxyCode}
+00708 \{
+00709 
+00710 
+00711     \textcolor{keywordtype}{bool} disturbance\_record = (data1->length() == \hyperlink{a00003_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE})?\textcolor{keyword}{false}:\textcolor{keyword}{
+      true};
+00712 
+00713     QString file\_name = type;
+00714 
+00715     file\_name.replace(\textcolor{charliteral}{':'},\textcolor{stringliteral}{"-"}).replace(\textcolor{charliteral}{' '},\textcolor{stringliteral}{"\_"}).replace(\textcolor{charliteral}{','},\textcolor{stringliteral}{""}).replace(\textcolor{charliteral}{'.'},\textcolor{stringliteral}{"\_"});
+00716 
+00717     file\_name = dir + file\_name + \textcolor{stringliteral}{".csv"};
+00718 
+00719     \textcolor{keywordflow}{if} (file\_name.isEmpty()) \textcolor{keywordflow}{return} NULL;
+00720     \textcolor{keywordflow}{else} \{
+00721         QFile file(file\_name);
+00722         \textcolor{keywordflow}{if} (!file.open(QIODevice::WriteOnly)) \{
+00723             QMessageBox::information(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Unable to open file"}), file.errorString());
+00724             \textcolor{keywordflow}{return} NULL;
+00725         \}
+00726 
+00727         QTextStream stream(&file);
+00728 
+00729         stream << \textcolor{stringliteral}{"Title,"}+type+\textcolor{stringliteral}{"\(\backslash\)n"};
+00730         stream << \textcolor{stringliteral}{"Record length,"}+QString::number(data1->length())+\textcolor{stringliteral}{"\(\backslash\)n"};
+00731         \textcolor{keywordflow}{if}(disturbance\_record)\{
+00732         stream << \textcolor{stringliteral}{"Event offset,"}+QString::number(offset)+\textcolor{stringliteral}{"\(\backslash\)n"};
+00733         stream << \textcolor{stringliteral}{"TIME, MEASURED DATA,EVENT\_AMP,EVENT\_DFDT\(\backslash\)n"};
+00734         \}\textcolor{keywordflow}{else}
+00735         stream << \textcolor{stringliteral}{"TIME, DATA\(\backslash\)n"};
+00736 
+00737         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii=0;ii< data1->length();ii++)
+00738            stream << QString::number(ii) +\textcolor{stringliteral}{","}+QString::number(data1->value(ii))
+00739                      +
+00740                      ((disturbance\_record)?(
+00741                      \textcolor{stringliteral}{","}+ QString::number(data2->value(ii))
+00742                      + \textcolor{stringliteral}{","}+ QString::number(data3->value(ii))
+00743                      ):\textcolor{stringliteral}{""})
+00744                      +\textcolor{stringliteral}{"\(\backslash\)n"};
+00745 
+00746 
+00747 
+00748         file.flush();
+00749 
+00750      \}
+00751 
+00752     \textcolor{keywordflow}{return} file\_name;
+00753 
+00754 \}
+\end{DoxyCode}
+\hypertarget{a00006_ae9bed0c4d2f2c63c95a68f53f65f4359}{\index{Main\+Window@{Main\+Window}!set\+\_\+emu\+\_\+data@{set\+\_\+emu\+\_\+data}}
+\index{set\+\_\+emu\+\_\+data@{set\+\_\+emu\+\_\+data}!Main\+Window@{Main\+Window}}
+\subsubsection[{set\+\_\+emu\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::set\+\_\+emu\+\_\+data (
+\begin{DoxyParamCaption}
+\item[{{\bf emu\+\_\+data\+\_\+editor} $\ast$}]{editor, }
+\item[{{\bf Uint16} $\ast$}]{data, }
+\item[{{\bf Uint16}}]{size}
+\end{DoxyParamCaption}
+)}}\label{a00006_ae9bed0c4d2f2c63c95a68f53f65f4359}
+
+
+Definition at line \hyperlink{a00047_source_l00606}{606} of file \hyperlink{a00047_source}{srv\+\_\+commands.\+cpp}.
+
+
+
+References \hyperlink{a00034_source_l00022}{A\+C\+T\+I\+V\+E}, \hyperlink{a00052_source_l00162}{Ui\+\_\+\+Main\+Window\+::btn\+\_\+set\+\_\+emu\+\_\+data}, \hyperlink{a00052_source_l00053}{Ui\+\_\+\+Main\+Window\+::dock\+Widget\+\_\+sen\+\_\+cmd}, \hyperlink{a00038_source_l00145}{msg()}, and \hyperlink{a00034_source_l00056}{M\+S\+G\+\_\+\+I\+N\+F\+O}.
+
+
+\begin{DoxyCode}
+00608 \{
+00609     \textcolor{keywordflow}{if}(editor != this->emu\_data\_buffer.current\_editor)\{
+00610       \hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00034_a1ddcc97224a95cec04b38b0ac866fa19}{MSG\_INFO},
+00611           QString(\textcolor{stringliteral}{"The selected editor is not valid."})+
+00612           QString(\textcolor{stringliteral}{"\(\backslash\)nYou must save the data to a file"} )+
+00613           QString(\textcolor{stringliteral}{" to open it again with a new editor"}));
+00614 
+00615         \textcolor{keywordflow}{return};\textcolor{comment}{//this is zambi editor}
+00616     \}
+00617 
+00618 
+00619 
+00620     memmove(this->emu\_data\_buffer.data,data,size);
+00621 
+00622 
+00623     this->emu\_data\_buffer.processed = \textcolor{keyword}{false};
+00624     this->emu\_data\_buffer.valid = \textcolor{keyword}{false};
+00625     this->emu\_data\_buffer.current\_editor = editor;
+00626     ui->\hyperlink{a00027_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data}->setStyleSheet(\hyperlink{a00034_a3a6d3cd70078e6046471ec528a09cd19}{ACTIVE});
+00627     ui->\hyperlink{a00027_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data}->setText(\textcolor{stringliteral}{"Edit Data"});
+00628 
+00629     this->show();
+00630     this->\textcolor{keyword}{raise}();
+00631     this->activateWindow();
+00632 
+00633     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->setWindowFlags(Qt::Window);
+00634     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->show();
+00635     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->raise();
+00636     ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->activateWindow();
+00637 
+00638 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/d21/a00006_ae9bed0c4d2f2c63c95a68f53f65f4359_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00006_ac84167866950dd1eb9a29a5293546c1a}{\index{Main\+Window@{Main\+Window}!srv\+\_\+cmds\+\_\+data\+\_\+download\+\_\+msg\+\_\+handler@{srv\+\_\+cmds\+\_\+data\+\_\+download\+\_\+msg\+\_\+handler}}
+\index{srv\+\_\+cmds\+\_\+data\+\_\+download\+\_\+msg\+\_\+handler@{srv\+\_\+cmds\+\_\+data\+\_\+download\+\_\+msg\+\_\+handler}!Main\+Window@{Main\+Window}}
+\subsubsection[{srv\+\_\+cmds\+\_\+data\+\_\+download\+\_\+msg\+\_\+handler}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::srv\+\_\+cmds\+\_\+data\+\_\+download\+\_\+msg\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{a00006_ac84167866950dd1eb9a29a5293546c1a}
+T\+O\+D\+O\+: clean up procedure
+
+T\+O\+D\+O\+: clean up procedure 
+
+Definition at line \hyperlink{a00049_source_l00588}{588} of file \hyperlink{a00049_source}{srv\+\_\+protocol.\+cpp}.
+
+
+
+References \hyperlink{a00001_source_l00474}{serial\+\_\+msg\+\_\+t\+::arg}, \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{serial\+\_\+msg\+\_\+t\+::data\+\_\+download}, \hyperlink{a00031_source_l00077}{M\+A\+X\+\_\+\+A\+T\+T\+A\+C\+H\+M\+E\+N\+T\+\_\+\+L\+E\+N\+G\+T\+H}, \hyperlink{a00001_source_l00488}{serial\+\_\+msg\+\_\+t\+::multi\+\_\+address}, \hyperlink{a00034_source_l00030}{P\+B\+A\+R\+\_\+\+F\+A\+I\+L\+U\+R\+E}, \hyperlink{a00001_source_l00494}{serial\+\_\+msg\+\_\+t\+::processed}, \hyperlink{a00052_source_l00178}{Ui\+\_\+\+Main\+Window\+::terminal}, and \hyperlink{a00001_source_l00489}{serial\+\_\+msg\+\_\+t\+::v\+Pos}.
+
+
+\begin{DoxyCode}
+00588                                                                \{
+00589 
+00590     
+00591     uint  channel              = 0;
+00592     uint  sensor\_id            = 0;
+00593     uint  arg                  = 0;
+00594     uint  copied\_data\_length   = 0;
+00595     \textcolor{keywordtype}{char} attachment[2*\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}];
+00596 
+00597     memset(attachment,0,\textcolor{keyword}{sizeof}(attachment));
+00598 
+00599         \textcolor{keywordflow}{if}(data.contains(\textcolor{stringliteral}{"#Error"}))
+00600         \{
+00601              \textcolor{keywordtype}{bool} repeat = \textcolor{keyword}{true};
+00602              QString result =  QString(\textcolor{stringliteral}{"\(\backslash\)n#Error: data verification error \(\backslash\)n "});
+00603              ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result+\textcolor{stringliteral}{"\(\backslash\)n"}+data);
+00604 
+00605              QString Question =
+00606                      QString(\textcolor{stringliteral}{"The response from the selected sensor (SEN address = "})
+00607                      +QString::number(last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00608                      +QString(\textcolor{stringliteral}{") contains error .\(\backslash\)n"})
+00609                      +QString(\textcolor{stringliteral}{"Do you want to run the command again ?"});
+00610 
+00611              QMessageBox msgBox;
+00612              msgBox.setWindowIcon(QMainWindow::windowIcon());
+00613              msgBox.setWindowTitle(QMainWindow::windowTitle());
+00614              msgBox.setText(Question);
+00615              msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00616 
+00617 
+00618              \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)
+00619                       repeat = \textcolor{keyword}{false};
+00620 
+00621                  \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00622 
+00623                      \textcolor{keywordflow}{if}(!repeat)\{
+00624                      last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00625                      multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00626                      multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setStyleSheet(
+      \hyperlink{a00034_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00627                      
+00628                      last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]=0;\textcolor{comment}{//reset offset to zero for new data transmission}
+00629                        
+00630                      last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied       = 0;
+00631                      
+00632                      last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset                  = 0;
+00633                      
+00634                      last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]              
+00635                              = ((\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected))<0)?
+00636                                  \hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected;
+00637                      
+00638                      \textcolor{keywordflow}{if}((last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length() - 1)))
+00639                          last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00640                      \textcolor{keywordflow}{else}\{
+00642                          \textcolor{keywordflow}{return};
+00643                       \}
+00644                      \}
+00645 
+00646 
+00647                      last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00648 
+00649                      multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00650 
+00651                      srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00652 
+00653                  \}\textcolor{keywordflow}{else}\{
+00654 
+00655                      \textcolor{keywordflow}{if}(repeat)\{
+00656                         \textcolor{comment}{//simply repeat the previous command}
+00657                         srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00658                         \textcolor{keywordflow}{return};
+00659                      \}
+00660 
+00661 
+00662                      last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00663 
+00665                  \}
+00666 
+00667 
+00668             \textcolor{keywordflow}{return};
+00669          \}
+00670 
+00671         \textcolor{keywordflow}{if}((data.length() == 8) && sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X"},&channel,&sensor\_id,&arg) == 3)
+00672         \{
+00673 
+00674             \hyperlink{a00006_a8a8cd34488e8ee213350afb5b2261677}{srv\_cmds\_general\_msg\_handler}(data);
+00675             \textcolor{keywordflow}{return};
+00676         \}
+00677        
+00678         
+00679 
+00680         \textcolor{keywordflow}{if}(sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X%04X%s"},&channel,&sensor\_id,&arg,&copied\_data\_length,
+      attachment) == 5)
+00681         \{
+00682 
+00683             \textcolor{comment}{//TODO:}
+00684            \textcolor{comment}{/*}
+00685 \textcolor{comment}{           if(copied\_data\_length != sizeof(attachment))\{}
+00686 \textcolor{comment}{}
+00687 \textcolor{comment}{               retransmission("#Error: Received data  validation ");}
+00688 \textcolor{comment}{               return;}
+00689 \textcolor{comment}{           \}*/}
+00690 
+00691 
+00692            \textcolor{keywordflow}{if}(arg == \hyperlink{a00034_a6f6489887e08bff4887d0bc5dcf214d8}{ACK})\{
+00693 
+00694                \textcolor{keywordflow}{if}(copied\_data\_length-last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset == last\_cmd.
+      \hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]\textcolor{comment}{/*requested data length*/})
+00695                \{
+00696                \textcolor{keywordflow}{if}(msg\_to\_mem(
+00697                       attachment,
+00698                       (((\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} *)last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.storage\_location)+last\_cmd.
+      \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset),
+00699                       last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]
+00700                           ))\{
+00701                    last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied = copied\_data\_length;
+00702 
+00703                   \}\textcolor{keywordflow}{else}
+00704                   \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied+last\_cmd.
+      \hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3] != copied\_data\_length)\{
+00705                     Failure();
+00706                   \}\textcolor{keywordflow}{else}\{
+00707                    
+00708                    qCritical() <<\textcolor{stringliteral}{"Unable to copy received data to memory "}
+00709                                <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_download\_msg\_handler"};
+00710                 
+00711                    exit(1);
+00712                    
+00713                   \}
+00714                \}\textcolor{keywordflow}{else}\{
+00715                    
+00716                   retransmission(\textcolor{stringliteral}{"#Error: Received data  validation "});
+00717                   \textcolor{keywordflow}{return};
+00718                \}
+00719                
+00720                \textcolor{keywordflow}{if}(copied\_data\_length == last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected)\{
+00721                    last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00722                    QString result =  QString(\textcolor{stringliteral}{"Command execution verified\(\backslash\)n"});
+00723                    ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result);
+00724 
+00725                    
+00726                    record\_preview(last\_cmd);
+00727                    
+00728                    \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00729                         multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(100);
+00730                         multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00731                     \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length()-1))\{
+00732                        last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00733                        last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00734                        last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2] = 0;\textcolor{comment}{//data transfer starts fresh}
+00735                        
+00736                        last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied     = 0;
+00737                        
+00738                        last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset                = 0;
+00739                        
+00740                        last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]              
+00741                                = ((\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected))<0)?
+00742                                    \hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected;
+00743 
+00744                        srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00745                    \}\textcolor{keywordflow}{else}
+00746                        ui->\hyperlink{a00027_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd}->setEnabled(\textcolor{keyword}{true});
+00747 
+00748                    \}
+00749 
+00750                \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(copied\_data\_length < last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected)\{
+00751                    \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} remaining\_data\_length 
+00752                            = last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected 
+00753                            - last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied;
+00754 
+00755                    last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset = last\_cmd.
+      \hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied;
+00756                    last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2] = last\_cmd.\hyperlink{a00001_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset;  \textcolor{comment}{//sets current offset}
+00757 
+00758                    last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3] = ((\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-remaining\_data\_length)
+      <0)?
+00759                                           \hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:remaining\_data\_length;
+00760 
+00761                    srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00762                \}\textcolor{keywordflow}{else}\{
+00763 
+00764                    
+00765                    qWarning() <<\textcolor{stringliteral}{"Unexpected result, considered as data transfer error"}
+00766                               <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_transfer\_msg\_handler"};
+00767                    
+00768                    
+00769                    retransmission(\textcolor{stringliteral}{"#Error: Received data  validation"});
+00770                    \textcolor{keywordflow}{return};
+00771                \}
+00772 
+00773            \}\textcolor{keywordflow}{else}\{
+00774 
+00775                qWarning() <<\textcolor{stringliteral}{"Unexpected argument received, considered as data transfer error"}
+00776                           <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_transfer\_msg\_handler"};
+00777                
+00778                
+00779                retransmission(\textcolor{stringliteral}{"#Error: Received data  validation"});
+00780                \textcolor{keywordflow}{return};
+00781 
+00782            \}
+00783 
+00784 
+00785 
+00786          \}
+00787 
+00788 
+00789     
+00790 
+00791 \}
+\end{DoxyCode}
+\hypertarget{a00006_ae19ec21c1009c81700a8ad2e1f81be07}{\index{Main\+Window@{Main\+Window}!srv\+\_\+cmds\+\_\+data\+\_\+transfer\+\_\+msg\+\_\+handler@{srv\+\_\+cmds\+\_\+data\+\_\+transfer\+\_\+msg\+\_\+handler}}
+\index{srv\+\_\+cmds\+\_\+data\+\_\+transfer\+\_\+msg\+\_\+handler@{srv\+\_\+cmds\+\_\+data\+\_\+transfer\+\_\+msg\+\_\+handler}!Main\+Window@{Main\+Window}}
+\subsubsection[{srv\+\_\+cmds\+\_\+data\+\_\+transfer\+\_\+msg\+\_\+handler}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::srv\+\_\+cmds\+\_\+data\+\_\+transfer\+\_\+msg\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{a00006_ae19ec21c1009c81700a8ad2e1f81be07}
+T\+O\+D\+O\+: clean up procedure 
+
+Definition at line \hyperlink{a00049_source_l00437}{437} of file \hyperlink{a00049_source}{srv\+\_\+protocol.\+cpp}.
+
+
+
+References \hyperlink{a00001_source_l00474}{serial\+\_\+msg\+\_\+t\+::arg}, \hyperlink{a00001_source_l00500}{serial\+\_\+msg\+\_\+t\+::attachment\+\_\+length}, \hyperlink{a00031_source_l00077}{M\+A\+X\+\_\+\+A\+T\+T\+A\+C\+H\+M\+E\+N\+T\+\_\+\+L\+E\+N\+G\+T\+H}, \hyperlink{a00001_source_l00488}{serial\+\_\+msg\+\_\+t\+::multi\+\_\+address}, \hyperlink{a00034_source_l00030}{P\+B\+A\+R\+\_\+\+F\+A\+I\+L\+U\+R\+E}, \hyperlink{a00001_source_l00494}{serial\+\_\+msg\+\_\+t\+::processed}, \hyperlink{a00052_source_l00178}{Ui\+\_\+\+Main\+Window\+::terminal}, and \hyperlink{a00001_source_l00489}{serial\+\_\+msg\+\_\+t\+::v\+Pos}.
+
+
+\begin{DoxyCode}
+00437                                                                \{
+00438 
+00439     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  channel               = 0;
+00440     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  sensor\_id             = 0;
+00441     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  arg                   = 0;
+00442     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  copied\_data\_length    = 0;
+00443 
+00444         \textcolor{keywordflow}{if}(data.contains(\textcolor{stringliteral}{"#Error"}))
+00445         \{
+00446              \textcolor{keywordtype}{bool} repeat = \textcolor{keyword}{true};
+00447              QString result =  QString(\textcolor{stringliteral}{"\(\backslash\)n#Error: data verification error \(\backslash\)n "});
+00448              ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result+\textcolor{stringliteral}{"\(\backslash\)n"}+data);
+00449 
+00450              QString Question =
+00451                      QString(\textcolor{stringliteral}{"The response from the selected sensor (SEN address = "})
+00452                      +QString::number(last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00453                      +QString(\textcolor{stringliteral}{") contains error .\(\backslash\)n"})
+00454                      +QString(\textcolor{stringliteral}{"Do you want to run the command again ?"});
+00455 
+00456              QMessageBox msgBox;
+00457              msgBox.setWindowIcon(QMainWindow::windowIcon());
+00458              msgBox.setWindowTitle(QMainWindow::windowTitle());
+00459              msgBox.setText(Question);
+00460              msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00461 
+00462 
+00463              \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)
+00464                       repeat = \textcolor{keyword}{false};
+00465 
+00466                  \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00467 
+00468                      \textcolor{keywordflow}{if}(!repeat)\{
+00469                      last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00470                      multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00471                      multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setStyleSheet(
+      \hyperlink{a00034_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00472                      last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]=0;\textcolor{comment}{//reset offset to zero for new data transmission}
+00473                      last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]= ((\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      \hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length}))<0)?
+00474                                           \hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      \hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length};
+00475                      \textcolor{keywordflow}{if}((last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length() - 1)))
+00476                          last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00477                      \textcolor{keywordflow}{else}\{
+00478 
+00479                          \textcolor{keywordflow}{return};
+00480                       \}
+00481                      \}
+00482 
+00483 
+00484                      last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00485 
+00486                      multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00487 
+00488                      srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00489 
+00490                  \}\textcolor{keywordflow}{else}\{
+00491 
+00492                      \textcolor{keywordflow}{if}(repeat)\{
+00493                         \textcolor{comment}{//simply repeat the previous command}
+00494                         srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00495                         \textcolor{keywordflow}{return};
+00496                      \}
+00497 
+00498 
+00499                      last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00500 
+00502                  \}
+00503 
+00504 
+00505             \textcolor{keywordflow}{return};
+00506          \}
+00507 
+00508         \textcolor{keywordflow}{if}(data.length() == 8 && sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X"},&channel,&sensor\_id,&arg) == 3)
+00509         \{
+00510 
+00511             \hyperlink{a00006_a8a8cd34488e8ee213350afb5b2261677}{srv\_cmds\_general\_msg\_handler}(data);
+00512             \textcolor{keywordflow}{return};
+00513         \}
+00514 
+00515 
+00516         \textcolor{keywordflow}{if}(sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X%04X"},&channel,&sensor\_id,&arg,&copied\_data\_length) == 4)
+00517         \{
+00518 
+00519            \textcolor{keywordflow}{if}(arg == \hyperlink{a00034_a6f6489887e08bff4887d0bc5dcf214d8}{ACK})\{
+00520 
+00521                \textcolor{keywordflow}{if}(copied\_data\_length == last\_cmd.\hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length})\{
+00522                    last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00523                    QString result =  QString(\textcolor{stringliteral}{"Command execution verified\(\backslash\)n"});
+00524                    ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result);
+00525 
+00526                    \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00527                         multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(100);
+00528                         multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00529                     \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length()-1))\{
+00530                        last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00531                        last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00532                        last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2] = 0;\textcolor{comment}{//data transfer starts fresh}
+00533                        last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]= ((\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      \hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length}))<0)?
+00534                                           \hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      \hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length};
+00535                        srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00536                    \}\textcolor{keywordflow}{else}
+00537                        ui->\hyperlink{a00027_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd}->setEnabled(\textcolor{keyword}{true});
+00538 
+00539                    \}
+00540 
+00541 
+00542                \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(copied\_data\_length < last\_cmd.\hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length})\{
+00543                    \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} remaining\_data\_length = last\_cmd.
+      \hyperlink{a00001_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length} - copied\_data\_length;
+00544 
+00545                    QString result =  QString(\textcolor{stringliteral}{"data transfer verification\(\backslash\)n"});
+00546                    ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result);
+00547 
+00548                    result =  QString(\textcolor{stringliteral}{"Copied data length :"}+QString::number(copied\_data\_length)+\textcolor{stringliteral}{" byte\(\backslash\)n"});
+00549                    ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result);
+00550 
+00551                    result =  QString(\textcolor{stringliteral}{"Remaining data length "}+QString::number(remaining\_data\_length)+\textcolor{stringliteral}{" byte
+      \(\backslash\)n"});
+00552                    ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result);
+00553 
+00554 
+00555 
+00556 
+00557                    \textcolor{comment}{//TODO: check copid data length is valid  (very important)}
+00558 
+00559                    last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2] = copied\_data\_length;  \textcolor{comment}{//sets current offset}
+00560 
+00561                    last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3] = ((\hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-remaining\_data\_length)
+      <0)?
+00562                                           \hyperlink{a00031_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:remaining\_data\_length;
+00563 
+00564                    srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00565                \}\textcolor{keywordflow}{else}\{
+00566 
+00567 
+00568                    qWarning() <<\textcolor{stringliteral}{"Unexpected result, considered as data transfer error"}
+00569                               <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_transfer\_msg\_handler"};
+00570                \}
+00571 
+00572            \}\textcolor{keywordflow}{else}\{
+00573 
+00574                qWarning() <<\textcolor{stringliteral}{"Unexpected argument received, considered as data transfer error"}
+00575                           <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_transfer\_msg\_handler"};
+00576 
+00577            \}
+00578 
+00579 
+00580 
+00581          \}
+00582 
+00583 
+00584 
+00585 \}
+\end{DoxyCode}
+\hypertarget{a00006_a8a8cd34488e8ee213350afb5b2261677}{\index{Main\+Window@{Main\+Window}!srv\+\_\+cmds\+\_\+general\+\_\+msg\+\_\+handler@{srv\+\_\+cmds\+\_\+general\+\_\+msg\+\_\+handler}}
+\index{srv\+\_\+cmds\+\_\+general\+\_\+msg\+\_\+handler@{srv\+\_\+cmds\+\_\+general\+\_\+msg\+\_\+handler}!Main\+Window@{Main\+Window}}
+\subsubsection[{srv\+\_\+cmds\+\_\+general\+\_\+msg\+\_\+handler}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::srv\+\_\+cmds\+\_\+general\+\_\+msg\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{a00006_a8a8cd34488e8ee213350afb5b2261677}
+
+
+Definition at line \hyperlink{a00049_source_l00293}{293} of file \hyperlink{a00049_source}{srv\+\_\+protocol.\+cpp}.
+
+
+
+References \hyperlink{a00001_source_l00474}{serial\+\_\+msg\+\_\+t\+::arg}, \hyperlink{a00001_source_l00488}{serial\+\_\+msg\+\_\+t\+::multi\+\_\+address}, \hyperlink{a00034_source_l00030}{P\+B\+A\+R\+\_\+\+F\+A\+I\+L\+U\+R\+E}, \hyperlink{a00001_source_l00494}{serial\+\_\+msg\+\_\+t\+::processed}, \hyperlink{a00052_source_l00178}{Ui\+\_\+\+Main\+Window\+::terminal}, and \hyperlink{a00001_source_l00489}{serial\+\_\+msg\+\_\+t\+::v\+Pos}.
+
+
+\begin{DoxyCode}
+00293                                                          \{
+00294 
+00295 uint  channel   = 0;
+00296 uint  sensor\_id = 0;
+00297 uint  arg       = 0;
+00298 
+00299     \textcolor{keywordflow}{if}(data.contains(\textcolor{stringliteral}{"#Error"}))
+00300     \{
+00301 
+00302          QString result =  QString(\textcolor{stringliteral}{"\(\backslash\)n#Error: data verification error \(\backslash\)n "});
+00303          ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result+\textcolor{stringliteral}{"\(\backslash\)n"}+data);
+00304 
+00305 
+00306              \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00307 
+00308                  QString Question =
+00309                          QString(\textcolor{stringliteral}{"The response from the selected sensor (SEN address = "})
+00310                          +QString::number(last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00311                          +QString(\textcolor{stringliteral}{") contains error .\(\backslash\)n"})
+00312                          +QString(\textcolor{stringliteral}{"Do you want to run the command again ?"});
+00313 
+00314                  QMessageBox msgBox;
+00315                  msgBox.setWindowIcon(QMainWindow::windowIcon());
+00316                  msgBox.setWindowTitle(QMainWindow::windowTitle());
+00317                  msgBox.setText(Question);
+00318                  msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00319 
+00320 
+00321                  \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)\{
+00322                  last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00323                  multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00324                  multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setStyleSheet(
+      \hyperlink{a00034_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00325                  \textcolor{keywordflow}{if}((last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length() - 1)))
+00326                      last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00327                  \textcolor{keywordflow}{else}\{
+00328 
+00329                      \textcolor{keywordflow}{return};
+00330                   \}
+00331                  \}
+00332 
+00333 
+00334                  last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00335 
+00336 
+00337                  multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00338 
+00339                  srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00340 
+00341              \}\textcolor{keywordflow}{else}\{
+00342                  last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00343              \}
+00344 
+00345              \textcolor{keywordflow}{return};
+00346      \}
+00347 
+00348 
+00349 
+00350     \textcolor{keywordflow}{if}(sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X"},&channel,&sensor\_id,&arg) == 3)\{
+00351 
+00352        \textcolor{keywordflow}{if}(arg == \hyperlink{a00034_a6f6489887e08bff4887d0bc5dcf214d8}{ACK})\{
+00353 
+00354                     last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00355                     QString result =  QString(\textcolor{stringliteral}{"Command execution verified\(\backslash\)n"});
+00356                     ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result);
+00357 
+00358                     \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00359                          multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(100);
+00360                          multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00361                      \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length()-1))\{
+00362                         last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00363                         last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00364                         srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00365                     \}\textcolor{keywordflow}{else}
+00366                         ui->\hyperlink{a00027_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd}->setEnabled(\textcolor{keyword}{true});
+00367 
+00368                     \}
+00369 
+00370 
+00371 
+00372 
+00373        \}
+00374        \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(arg == \hyperlink{a00034_a89228259ebf351e938853637ef163a1b}{ARG\_PROCESSING\_CMD\_WAIT\_MSG})
+00375        \{
+00376 
+00377                 QString result =  QString(\textcolor{stringliteral}{"Processing command, Please Wait ...\(\backslash\)n "});
+00378                 ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result);
+00379 
+00380        \}
+00381        \textcolor{keywordflow}{if}(arg == \hyperlink{a00034_a5f745a08fe4d5a8336a8fd62c30e0642}{ARG\_SEN\_COMM\_ERROR\_NO\_RESPONSE})
+00382        \{
+00383 
+00384             QString result =  QString(\textcolor{stringliteral}{"#Communication Error, Sensor not responding\(\backslash\)n "});
+00385             ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result);
+00386 
+00387 
+00388                 \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00389 
+00390                     QString Question =
+00391                             QString(\textcolor{stringliteral}{"Communication error, the selected sensor (SEN address = "})
+00392                             +QString::number(multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address)
+00393                             +QString(\textcolor{stringliteral}{") is not responding.\(\backslash\)n"})
+00394                             +QString(\textcolor{stringliteral}{"Do you want to try again ?"});
+00395 
+00396                     QMessageBox msgBox;
+00397                     msgBox.setWindowIcon(QMainWindow::windowIcon());
+00398                     msgBox.setWindowTitle(QMainWindow::windowTitle());
+00399                     msgBox.setText(Question);
+00400                     msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00401 
+00402 
+00403                     \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)\{
+00404                     last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00405                     multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00406                     multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setStyleSheet(
+      \hyperlink{a00034_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00407                     \textcolor{keywordflow}{if}((last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length() - 1)))
+00408                         last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00409                     \textcolor{keywordflow}{else}\{
+00410 
+00411                         \textcolor{keywordflow}{return};
+00412                      \}
+00413                     \}
+00414 
+00415 
+00416                     last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00417 
+00418 
+00419                     multi\_cmds[last\_cmd.\hyperlink{a00001_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00420 
+00421                     srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00422 
+00423                 \}\textcolor{keywordflow}{else}\{
+00424                     last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00425                 \}
+00426         \}
+00427 
+00428 
+00429 
+00430 
+00431      \}
+00432 
+00433 
+00434 \}
+\end{DoxyCode}
+\hypertarget{a00006_a8821556476f5a88c107f21d7db14e49c}{\index{Main\+Window@{Main\+Window}!uint8\+\_\+to\+\_\+str@{uint8\+\_\+to\+\_\+str}}
+\index{uint8\+\_\+to\+\_\+str@{uint8\+\_\+to\+\_\+str}!Main\+Window@{Main\+Window}}
+\subsubsection[{uint8\+\_\+to\+\_\+str}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Main\+Window\+::uint8\+\_\+to\+\_\+str (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{val}
+\end{DoxyParamCaption}
+)}}\label{a00006_a8821556476f5a88c107f21d7db14e49c}
+
+
+Definition at line \hyperlink{a00038_source_l00174}{174} of file \hyperlink{a00038_source}{mainwindow.\+cpp}.
+
+
+\begin{DoxyCode}
+00175 \{
+00176     \textcolor{keyword}{const} \textcolor{keywordtype}{char} cnv[] = \textcolor{stringliteral}{"0123456789ABCDEF"};
+00177 
+00178     \textcolor{keywordflow}{return} QString(cnv[(val>>4)&0x0F]) + QString(cnv[(val>>0)&0x0F]);
+00179 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00006_a2e107e43aeaccaf4c9a42254f13122c8}{\index{Main\+Window@{Main\+Window}!dir\+\_\+default@{dir\+\_\+default}}
+\index{dir\+\_\+default@{dir\+\_\+default}!Main\+Window@{Main\+Window}}
+\subsubsection[{dir\+\_\+default}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Main\+Window\+::dir\+\_\+default}}\label{a00006_a2e107e43aeaccaf4c9a42254f13122c8}
+
+
+Definition at line \hyperlink{a00039_source_l00063}{63} of file \hyperlink{a00039_source}{mainwindow.\+h}.
+
+
+
+Referenced by \hyperlink{a00038_source_l00308}{List\+Files()}, and \hyperlink{a00038_source_l00024}{Main\+Window()}.
+
+\hypertarget{a00006_a773de5ed6b1b522f94b0347ef556137d}{\index{Main\+Window@{Main\+Window}!event\+Recored\+List@{event\+Recored\+List}}
+\index{event\+Recored\+List@{event\+Recored\+List}!Main\+Window@{Main\+Window}}
+\subsubsection[{event\+Recored\+List}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Main\+Window\+::event\+Recored\+List}}\label{a00006_a773de5ed6b1b522f94b0347ef556137d}
+
+
+Definition at line \hyperlink{a00039_source_l00061}{61} of file \hyperlink{a00039_source}{mainwindow.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00039}{mainwindow.\+h}\item 
+\hyperlink{a00038}{mainwindow.\+cpp}\item 
+\hyperlink{a00015}{moc\+\_\+mainwindow.\+cpp}\item 
+\hyperlink{a00047}{srv\+\_\+commands.\+cpp}\item 
+\hyperlink{a00048}{srv\+\_\+miscellaneous.\+cpp}\item 
+\hyperlink{a00049}{srv\+\_\+protocol.\+cpp}\item 
+\hyperlink{a00050}{srv\+\_\+serial.\+cpp}\end{DoxyCompactItemize}

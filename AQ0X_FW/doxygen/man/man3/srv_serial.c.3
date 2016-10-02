@@ -1,0 +1,769 @@
+.TH "srv_serial.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srv_serial.c \- 
+.PP
+Serial port driver\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBserial_data_t\fP"
+.br
+.RI "\fISerial port internal data\&. \fP"
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBBRGVAL\fP   ((\fBFCY_CPU\fP/\fBBAUDRATE\fP)/16)-1"
+.br
+.RI "\fIFormula for U1BRG register ( baudrate control) \fP"
+.ti -1c
+.RI "#define \fBHEX2VAL\fP(cc)   (((cc >= '0' ) && (cc <= '9' )) ? (cc - '0') : (cc - 'A' + 10) )"
+.br
+.RI "\fICharcter to hex value conversion\&. \fP"
+.ti -1c
+.RI "#define \fBCMD_RESPONSE_MSG_HEADER_SIZE\fP   10"
+.br
+.ti -1c
+.RI "#define \fBDATA_TX_MSG_HEADER_SIZE\fP   21"
+.br
+.ti -1c
+.RI "#define \fBTX_MSG_HEADER_FRAME_CHAR\fP   '{'"
+.br
+.ti -1c
+.RI "#define \fBRC_MSG_HEADER_FRAME_CHAR\fP   '['"
+.br
+.ti -1c
+.RI "#define \fBACK_CHAR\fP   '06'"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBserial_init\fP (void)"
+.br
+.RI "\fIInit function for srv_serial service\&. \fP"
+.ti -1c
+.RI "void \fBserial_enable_blocking\fP (int enable)"
+.br
+.RI "\fIInit function for srv_serial service\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBserial_get_command\fP (\fBUint16\fP *cmd, \fBUint8\fP **argStrPtr, \fBUint16\fP *argLength)"
+.br
+.RI "\fIFunction for retriving serial message\&. \fP"
+.ti -1c
+.RI "void \fBserial_get_command_ack\fP (void)"
+.br
+.RI "\fIFunction which marks serial buffer as processed, so new command can be taken\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBserial_make8\fP (\fBUint8\fP *buf, \fBUint16\fP idx)"
+.br
+.RI "\fIFunction converting characters to 8 bit value\&. \fP"
+.ti -1c
+.RI "\fBUint16\fP \fBserial_make16\fP (\fBUint8\fP *buf, \fBUint16\fP idx)"
+.br
+.RI "\fIFunction converting characters to 16 bit value\&. \fP"
+.ti -1c
+.RI "void \fBserial_send_response\fP (\fBserial_msg_t\fP msg)"
+.br
+.RI "\fIFunction sending command responses on serial line\&. \fP"
+.ti -1c
+.RI "void \fBserial_send\fP (void *msg, \fBUint16\fP length)"
+.br
+.RI "\fIFunction sending buffers over serial port\&. \fP"
+.ti -1c
+.RI "void \fB__attribute__\fP ((__interrupt__, auto_psv))"
+.br
+.RI "\fISerial port receive interrupt\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBpre_act_record_buffer_t\fP \fBpre_data\fP"
+.br
+.ti -1c
+.RI "volatile \fBserial_data_t\fP \fBserial_data\fP"
+.br
+.RI "\fIsrv_serial service internal data \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Serial port driver\&. 
+
+
+.PP
+Definition in file \fBsrv_serial\&.c\fP\&.
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct serial_data_t"
+.PP 
+Serial port internal data\&. 
+.PP
+Definition at line 28 of file srv_serial\&.c\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+int \fIblocking_mode\fP If set, then serial sending is blocking ( no data lost) Otherwise, characters which do not fit into buffer are ignored\&. 
+.br
+.PP
+\fBUint16\fP \fIirq_cnt\fP 
+.br
+.PP
+\fBUint8\fP \fImsg_ready\fP If set, received message was collected\&. 
+.br
+.PP
+\fBUint8\fP \fIrc_buffer[\fBRECEIVE_BUFFER_SIZE\fP]\fP Receive buffer\&. 
+.br
+.PP
+\fBUint16\fP \fIrc_cnt\fP Diagnostic counter - received message count\&. 
+.br
+.PP
+\fBUint16\fP \fIrc_data_length\fP Recevied message length\&. 
+.br
+.PP
+\fBUint16\fP \fItx_buff_head\fP Transmit buffer head\&. 
+.br
+.PP
+\fBUint16\fP \fItx_buff_tail\fP Transmit buffer tail\&. 
+.br
+.PP
+\fBUint8\fP \fItx_buffer[\fBTRANSMIT_BUFFER_SIZE\fP]\fP Transmit buffer ( circular) 
+.br
+.PP
+\fBUint16\fP \fItx_cnt\fP Diagnostic counter - transmit message count\&. 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ACK_CHAR   '06'"
+
+.PP
+Definition at line 22 of file srv_serial\&.c\&.
+.SS "#define BRGVAL   ((\fBFCY_CPU\fP/\fBBAUDRATE\fP)/16)-1"
+
+.PP
+Formula for U1BRG register ( baudrate control) 
+.PP
+Definition at line 13 of file srv_serial\&.c\&.
+.PP
+Referenced by serial_init()\&.
+.SS "#define CMD_RESPONSE_MSG_HEADER_SIZE   10"
+
+.PP
+Definition at line 18 of file srv_serial\&.c\&.
+.SS "#define DATA_TX_MSG_HEADER_SIZE   21"
+
+.PP
+Definition at line 19 of file srv_serial\&.c\&.
+.SS "#define HEX2VAL(cc)   (((cc >= '0' ) && (cc <= '9' )) ? (cc - '0') : (cc - 'A' + 10) )"
+
+.PP
+Charcter to hex value conversion\&. 
+.PP
+Definition at line 16 of file srv_serial\&.c\&.
+.PP
+Referenced by serial_make16(), and serial_make8()\&.
+.SS "#define RC_MSG_HEADER_FRAME_CHAR   '['"
+
+.PP
+Definition at line 21 of file srv_serial\&.c\&.
+.SS "#define TX_MSG_HEADER_FRAME_CHAR   '{'"
+
+.PP
+Definition at line 20 of file srv_serial\&.c\&.
+.SH "Function Documentation"
+.PP 
+.SS "void __attribute__ ((__interrupt__, auto_psv))"
+
+.PP
+Serial port receive interrupt\&. Serial port transmit interrupt\&.req REQ-8a: 'Read the sensor inputs ' Sensors and inputs are read and filtered\&.
+.PP
+Definition at line 658 of file srv_serial\&.c\&.
+.PP
+References algorithm_message_arrived_ntf_isr(), serial_data_t::irq_cnt, IRQ_SOURCE_SERIAL, serial_data_t::msg_ready, serial_data_t::rc_buffer, serial_data_t::rc_data_length, SET_CPU_IPL, and srv_wdg_kick\&.
+.PP
+.nf
+660 {
+661      
+662 
+663      
+664     Uint8 cc;
+665     
+666     
+667    srv_wdg_kick();
+668    
+669 
+670 
+671    
+672   while (U1STAbits\&.URXDA != 0)
+673     {
+674         
+675         if( (U1STAbits\&.FERR)||(U1STAbits\&.PERR))
+676         {
+677             cc = U1RXREG;
+678             continue;
+679         }
+680 
+681      
+682         cc = U1RXREG;
+683     
+684       
+685 
+686         if(serial_data\&.msg_ready != 0)
+687         {
+688             // Ignore messages until the old one is processed
+689             continue;
+690         }
+691 
+692         if(serial_data\&.rc_data_length >= sizeof(serial_data\&.rc_buffer))
+693         {
+694             serial_data\&.rc_data_length = 0;
+695         }
+696 
+697    
+698         if(cc == '[' )
+699         {
+700             serial_data\&.rc_data_length = 0;
+701             serial_data\&.rc_buffer[serial_data\&.rc_data_length++] = cc;
+702         }
+703         else if (cc == ']')
+704         {
+705             serial_data\&.rc_buffer[serial_data\&.rc_data_length++] = cc;
+706 
+707             // Full message arrived
+708             serial_data\&.msg_ready = 1;
+709             serial_data\&.irq_cnt++;
+710         }
+711         else
+712         {        
+713             if ( ((cc >= '0')&&(cc <= '9')) || ((cc >= 'A')&&(cc <= 'F')) || ( cc == ':') )
+714             {
+715                 serial_data\&.rc_buffer[serial_data\&.rc_data_length++] = cc;
+716             }
+717             else
+718             {
+719                 serial_data\&.rc_data_length = 0;
+720             }                          
+721         }
+722     
+723     }
+724     
+725     // Clear errors
+726     if(U1STAbits\&.OERR)
+727     {
+728         U1STAbits\&.OERR = 0;
+729     }
+730          
+731 
+732 
+733 
+734 
+735 
+736 
+737 
+738     if((serial_data\&.msg_ready == 1)&&(serial_data\&.rc_buffer[0]=='['))
+739          algorithm_message_arrived_ntf_isr(IRQ_SOURCE_SERIAL);
+740            
+741   
+742  
+743     
+744     IFS0bits\&.U1RXIF = 0;  
+745 
+746     SET_CPU_IPL(7);
+747 }
+.fi
+.SS "void serial_enable_blocking (intenable)"
+
+.PP
+Init function for srv_serial service\&. 
+.PP
+Definition at line 219 of file srv_serial\&.c\&.
+.PP
+References serial_data_t::blocking_mode\&.
+.PP
+Referenced by serial_init()\&.
+.PP
+.nf
+220 {
+221         serial_data\&.blocking_mode = enable;
+222 }
+.fi
+.SS "\fBUint8\fP serial_get_command (\fBUint16\fP *cmd, \fBUint8\fP **argStrPtr, \fBUint16\fP *argLength)"
+
+.PP
+Function for retriving serial message\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP response command 
+.br
+\fIargStrPtr\fP pointer to be updated with argument buffer 
+.br
+\fIargLength\fP pointer for argument buffer length 
+.RE
+.PP
+
+.PP
+Definition at line 263 of file srv_serial\&.c\&.
+.PP
+References crc16(), serial_data_t::msg_ready, serial_data_t::rc_buffer, serial_data_t::rc_data_length, serial_get_command_ack(), and serial_make16()\&.
+.PP
+.nf
+264 {
+265     Uint8 result = 1;
+266     Uint16 crc,calc_crc = 0;
+267    
+268 
+269     
+270 
+271     if(serial_data\&.msg_ready != 0)
+272     {
+273 
+274         // Minimal message - 16 characters
+275         // [0000:000000:00]
+276         // 01234567890123
+277         // 00000000001111
+278         // Longer messages look like
+279         // [0000:000000000000000  \&.\&.\&. 00000000000:00]
+280 
+281 
+282         if(serial_data\&.rc_data_length >= 14 )
+283         {
+284 
+285             *cmd = serial_make16((Uint8*)serial_data\&.rc_buffer,1);
+286 
+287             if( (serial_data\&.rc_buffer[serial_data\&.rc_data_length-5]=='C') && (serial_data\&.rc_buffer[serial_data\&.rc_data_length-4]=='C'))
+288             {
+289                 // Manual mode, "CCCC" charaters instead of checksum
+290                 result = 0;
+291             }
+292             else
+293             {
+294 
+295                 
+296                 crc  = serial_make16((Uint8*)serial_data\&.rc_buffer,serial_data\&.rc_data_length-5);
+297                 
+298            
+299                 calc_crc = crc16((unsigned char*)serial_data\&.rc_buffer,serial_data\&.rc_data_length-6);
+300               /*
+301                 for(ii = 0; ii < 11;ii++)
+302                 {
+303                     calc_crc = calc_crc ^serial_data\&.rc_buffer[ii];
+304                 }
+305               */
+306                 if(crc == calc_crc)
+307                 {
+308                     result = 0;
+309                 }
+310             }
+311 
+312             *argStrPtr =  ((Uint8*)&serial_data\&.rc_buffer[6]);
+313             *argLength = serial_data\&.rc_data_length - 12;
+314 
+315        }
+316 
+317        if(result != 0)
+318        {
+319             // Faulty message, internmal ack
+320             serial_get_command_ack();
+321        }
+322 
+323     }
+324 
+325 
+326 
+327 
+328     IEC0bits\&.U1RXIE = 1;
+329 
+330 
+331     return result;
+332 }
+.fi
+.SS "void serial_get_command_ack (void)"
+
+.PP
+Function which marks serial buffer as processed, so new command can be taken\&. 
+.PP
+Definition at line 343 of file srv_serial\&.c\&.
+.PP
+References serial_data_t::msg_ready, and serial_data_t::rc_data_length\&.
+.PP
+Referenced by serial_get_command(), and serial_init()\&.
+.PP
+.nf
+344 {
+345     IEC0bits\&.U1RXIE = 0;
+346     serial_data\&.rc_data_length = 0;
+347     serial_data\&.msg_ready = 0;
+348     IEC0bits\&.U1RXIE = 1;
+349 }
+.fi
+.SS "void serial_init (void)"
+
+.PP
+Init function for srv_serial service\&. 
+.PP
+Definition at line 159 of file srv_serial\&.c\&.
+.PP
+References BRGVAL, FALSE, serial_data_t::rc_data_length, serial_enable_blocking(), serial_get_command_ack(), TRUE, serial_data_t::tx_buff_head, and serial_data_t::tx_buff_tail\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+160 {
+161 
+162     //gpio configuration and peripheral mapping procedure
+163          __builtin_write_OSCCONL(OSCCON & 0xbf);
+164              TRISBbits\&.TRISB10 = 1;
+165              ODCBbits\&.ODCB11   = 0;
+166              TRISBbits\&.TRISB11 = 0;
+167       
+168         
+169              RPOR4bits\&.RP43R   = 1; //TX1
+170              RPINR18bits\&.U1RXR = 0x2A;
+171          __builtin_write_OSCCONL(OSCCON | 0x40);
+172 
+173 
+174     U1MODE = 0x0000;            //Clear UART1 registers
+175     U1STA  = 0x0000;
+176 
+177     U1MODEbits\&.UARTEN = 1;      //Enable UART1 module
+178     U1MODEbits\&.PDSEL  = 0;      // 8 bits, no parity
+179     U1MODEbits\&.STSEL  = 0;      // 1 stop bit
+180 
+181     U1BRG = BRGVAL;             //Load UART1 Baud Rate Generator
+182 
+183     IFS0bits\&.U1RXIF   = 0;      //Clear UART1 Receiver Interrupt Flag
+184     IFS0bits\&.U1TXIF   = 0;      //Clear UART1 Transmitter Interrupt Flag
+185     IEC0bits\&.U1RXIE   = 1;      //Enable UART1 Receiver Interrupt
+186     IEC0bits\&.U1TXIE   = 1;      //Enable UART1 Transmitter Interrupt
+187 
+188     U1STAbits\&.UTXISEL0 = 0;     // Interrupt after one TX character is transmitted
+189     U1STAbits\&.UTXISEL1 = 0;
+190     U1STAbits\&.UTXINV   = 0;     // U1TX Idle state high
+191 
+192     U1STAbits\&.URXISEL  = 1;     //Setup UART1  receiver to interrupt after character received
+193     IPC2bits\&.U1RXIP    = 0x07;
+194     
+195 
+196     U1MODEbits\&.UARTEN  = 1;     // Enable UART
+197 
+198     serial_enable_transmitter(FALSE);
+199     
+200 
+201     serial_data\&.rc_data_length = 0;
+202     serial_data\&.tx_buff_head = serial_data\&.tx_buff_tail = 0;
+203 
+204     serial_enable_blocking(TRUE);
+205     serial_get_command_ack();
+206 
+207 
+208 
+209 }
+.fi
+.SS "\fBUint16\fP serial_make16 (\fBUint8\fP *buf, \fBUint16\fPidx)"
+
+.PP
+Function converting characters to 16 bit value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP buffer with characters 
+.br
+\fIidx\fP index to first character of 16 bit hex number string ( four charaters used) 
+.RE
+.PP
+
+.PP
+Definition at line 381 of file srv_serial\&.c\&.
+.PP
+References HEX2VAL\&.
+.PP
+Referenced by msg_to_mem(), and serial_get_command()\&.
+.PP
+.nf
+382 {
+383     return ((HEX2VAL(buf[idx+0])<<12)|(HEX2VAL(buf[idx+1])<<8)|(HEX2VAL(buf[idx+2])<<4)|(HEX2VAL(buf[idx+3])<<0));
+384 
+385 }
+.fi
+.SS "\fBUint8\fP serial_make8 (\fBUint8\fP *buf, \fBUint16\fPidx)"
+
+.PP
+Function converting characters to 8 bit value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuf\fP buffer with characters 
+.br
+\fIidx\fP index to first character of 8 bit hex number string ( two characters used ) 
+.RE
+.PP
+
+.PP
+Definition at line 367 of file srv_serial\&.c\&.
+.PP
+References HEX2VAL\&.
+.PP
+Referenced by msg_to_mem()\&.
+.PP
+.nf
+368 {
+369     return ((HEX2VAL(buf[idx+0])<<4)|(HEX2VAL(buf[idx+1]))<<0);
+370 }
+.fi
+.SS "void serial_send (void *msg, \fBUint16\fPlength)"
+
+.PP
+Function sending buffers over serial port\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP character buffer to be sent 
+.br
+\fIlength\fP buffer length 
+.RE
+.PP
+
+.PP
+Definition at line 577 of file srv_serial\&.c\&.
+.PP
+References serial_data_t::blocking_mode, Delay5us(), FALSE, TRANSMIT_BUFFER_SIZE, TRUE, serial_data_t::tx_buff_head, serial_data_t::tx_buff_tail, and serial_data_t::tx_buffer\&.
+.PP
+Referenced by serial_send_response()\&.
+.PP
+.nf
+578 {
+579   
+580     Uint16 TrNewHead;
+581     Uint8  dummy;
+582 
+583     CChar * buffer = (CChar *)msg;
+584 
+585 
+586     IEC0bits\&.U1TXIE    = 0;
+587 
+588     serial_enable_transmitter(TRUE);
+589 
+590     Delay5us(100);
+591     
+592     while((U1STAbits\&.URXDA != 0))dummy = U1RXREG;
+593     
+594 
+595 
+596     if(length > 0)
+597     {
+598         if(serial_data\&.tx_buff_tail == serial_data\&.tx_buff_head)
+599         {
+600             // Launch transmission ( if not already in progress )
+601             while(U1STAbits\&.UTXBF!=0)continue; // wait unitl FIFO is available
+602             U1TXREG = *buffer;
+603             buffer++;
+604             length--;
+605         }
+606     }
+607 
+608     while (length > 0)
+609     {
+610         TrNewHead = (serial_data\&.tx_buff_head + 1)%TRANSMIT_BUFFER_SIZE;
+611 
+612         if(TrNewHead != serial_data\&.tx_buff_tail)
+613         {
+614             serial_data\&.tx_buffer[serial_data\&.tx_buff_head] = *buffer;
+615             buffer++;
+616             length--;
+617             serial_data\&.tx_buff_head = TrNewHead;
+618         }
+619         else
+620         {
+621             if(serial_data\&.blocking_mode == 0)
+622             {
+623                 // Cut the message - does not fit into buffer :-(
+624                 length = 0;
+625             }
+626             else
+627             {
+628                 IEC0bits\&.U1TXIE   = 1;
+629                 serial_wait_sent();
+630                 IEC0bits\&.U1TXIE   = 0;
+631 
+632                 serial_enable_transmitter(FALSE);
+633 
+634                 while((U1STAbits\&.URXDA != 0))dummy = U1RXREG;
+635                 IEC0bits\&.U1RXIE   = 1;
+636                 length = 0;
+637             }
+638         }
+639 
+640     }
+641 
+642     IEC0bits\&.U1TXIE   = 1;
+643 
+644 }
+.fi
+.SS "void serial_send_response (\fBserial_msg_t\fPmsg)"
+
+.PP
+Function sending command responses on serial line\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP response command 
+.br
+\fIarg\fP response argument
+.RE
+.PP
+Function sending command responses on serial line\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP response command 
+.br
+\fIarg\fP response argument 
+.RE
+.PP
+
+.PP
+Definition at line 412 of file srv_serial\&.c\&.
+.PP
+References serial_msg_t::arg, serial_msg_t::arg_cnt, ASSERT, serial_msg_t::attachment, serial_msg_t::cmd, crc16(), serial_data_t::rc_buffer, and serial_send()\&.
+.PP
+.nf
+413 {
+414   
+415     // {CMD:CHSN00000000\&.\&.\&.\&.:crc}
+416     // 0123456789012345
+417     // 0000000000111111
+418 
+419 
+420 
+421    //during this time i\&.e\&. while processing command, all incoming messages are ignored
+422    //hence, the receive buffer will be used temporarily while preparing response msg
+423 
+424    char   *message = (char *)(serial_data\&.rc_buffer);
+425 
+426    Uint16  length = 0;
+427 
+428 
+429   Uint16 type =  (((msg\&.cmd&0x00F0)>>4)== 0xE)?0xE:
+430                  ((((msg\&.cmd&0x0F00)>>8)==6)?6:3);
+431 
+432  if(msg\&.attachment\&.length > 0)type = 0xE; else type = msg\&.arg_cnt;
+433 
+434  switch(type)
+435    {
+436        case 3/*3 arg msg*/:
+437        {
+438 
+439        sprintf(message,"{%04X:%02X%02X%04X:",msg\&.cmd,msg\&.arg[0],msg\&.arg[1],msg\&.arg[2]);
+440 
+441        sprintf(message+15,"%04X}",crc16((Uint8*)message,14));
+442 
+443        length = 20;
+444        }break;
+445 
+446 
+447        case 4/*4 arg msg*/:
+448        {    sprintf(message,"{%04X:%02X%02X%04X%04X:",msg\&.cmd,msg\&.arg[0],msg\&.arg[1],msg\&.arg[2],msg\&.arg[3]);
+449 
+450        sprintf(message+19,"%04X}",crc16((Uint8*)message,18));
+451 
+452        length = 24;
+453 
+454        }break;
+455 
+456 
+457        case 0xE /*data transfer*/:
+458        {
+459 
+460        const char cnv[] = "0123456789ABCDEF";
+461 
+462        memset(message,0,sizeof(message));
+463 
+464        sprintf(message,"{%04X:%02X%02X%04X%04X",msg\&.cmd,
+465                                             msg\&.arg[0],msg\&.arg[1],
+466                                             msg\&.arg[2],msg\&.arg[3]);
+467 
+468        //if(msg\&.attachment\&.offset == 0)
+469        //  memcpy((void *)((void *)&pre_data + msg\&.attachment\&.offset),(void *)(msg\&.attachment\&.location + msg\&.attachment\&.offset),sizeof(pre_act_record_buffer_t));
+470 
+471        Uint16 var;
+472        Uint16 cc = 0;
+473 /*
+474        for (var = 18; cc < msg\&.attachment\&.length; ) {
+475 
+476                    message[var]   =
+477                     cnv[(*((((Uint8 *)&pre_data + msg\&.attachment\&.offset))+(cc))>>4)&0x0F];
+478 
+479                    message[var+1]   =
+480                     cnv[(*((((Uint8 *)&pre_data + msg\&.attachment\&.offset))+(cc++))>>0)&0x0F];
+481 
+482                    var+=2;
+483        }
+484 */
+485    
+486        for (var = 18; cc < msg\&.attachment\&.length; ) {
+487 
+488                    message[var]   =
+489                     cnv[(*((((Uint8 *)msg\&.attachment\&.location + msg\&.attachment\&.offset))+(cc))>>4)&0x0F];
+490 
+491                    message[var+1]   =
+492                     cnv[(*((((Uint8 *)msg\&.attachment\&.location + msg\&.attachment\&.offset))+(cc++))>>0)&0x0F];
+493 
+494                    var+=2;
+495        }
+496 
+497   
+498      
+499 
+500        message[var++]=':';
+501 
+502        sprintf(message+var,"%04X}",crc16((Uint8*)message,var-1));
+503 
+504        length = var+5;
+505        
+506        }break;
+507 
+508 
+509         default:
+510         {
+511 
+512             ASSERT(0);
+513         }
+514 
+515  }
+516 
+517 
+518 
+519     serial_send(message,length);
+520 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBpre_act_record_buffer_t\fP pre_data"
+
+.PP
+Definition at line 25 of file srv_serial\&.c\&.
+.SS "volatile \fBserial_data_t\fP serial_data"
+
+.PP
+srv_serial service internal data 
+.PP
+Definition at line 78 of file srv_serial\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

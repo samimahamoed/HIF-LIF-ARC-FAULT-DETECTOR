@@ -1,0 +1,3056 @@
+.TH "QCPGraph" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPGraph \- 
+.PP
+A plottable representing a graph in a plot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractPlottable\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBLineStyle\fP { \fBlsNone\fP, \fBlsLine\fP, \fBlsStepLeft\fP, \fBlsStepRight\fP, \fBlsStepCenter\fP, \fBlsImpulse\fP }"
+.br
+.RI "\fIDefines how the graph's line is represented visually in the plot\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQ_ENUMS\fP (\fBLineStyle\fP) enum ErrorType"
+.br
+.RI "\fIDefines what kind of error bars are drawn for each data point\&. \fP"
+.ti -1c
+.RI "\fBQ_ENUMS\fP (ErrorType) explicit \fBQCPGraph\fP(\fBQCPAxis\fP *\fBkeyAxis\fP"
+.br
+.ti -1c
+.RI "virtual \fB~QCPGraph\fP ()"
+.br
+.ti -1c
+.RI "const \fBQCPDataMap\fP * \fBdata\fP () const "
+.br
+.ti -1c
+.RI "\fBLineStyle\fP \fBlineStyle\fP () const "
+.br
+.ti -1c
+.RI "\fBQCP::ScatterStyle\fP \fBscatterStyle\fP () const "
+.br
+.ti -1c
+.RI "double \fBscatterSize\fP () const "
+.br
+.ti -1c
+.RI "const QPixmap \fBscatterPixmap\fP () const "
+.br
+.ti -1c
+.RI "ErrorType \fBerrorType\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBerrorPen\fP () const "
+.br
+.ti -1c
+.RI "double \fBerrorBarSize\fP () const "
+.br
+.ti -1c
+.RI "bool \fBerrorBarSkipSymbol\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPGraph\fP * \fBchannelFillGraph\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetData\fP (\fBQCPDataMap\fP *\fBdata\fP, bool copy=false)"
+.br
+.RI "\fIReplaces the current data with the provided \fIdata\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetData\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. \fP"
+.ti -1c
+.RI "void \fBsetDataKeyError\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP, const QVector< double > &keyError)"
+.br
+.RI "\fIReplaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. \fP"
+.ti -1c
+.RI "void \fBsetDataKeyError\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP, const QVector< double > &\fBkeyErrorMinus\fP, const QVector< double > &\fBkeyErrorPlus\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. \fP"
+.ti -1c
+.RI "void \fBsetDataValueError\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP, const QVector< double > &valueError)"
+.br
+.RI "\fIReplaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. \fP"
+.ti -1c
+.RI "void \fBsetDataValueError\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP, const QVector< double > &\fBvalueErrorMinus\fP, const QVector< double > &\fBvalueErrorPlus\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. \fP"
+.ti -1c
+.RI "void \fBsetDataBothError\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP, const QVector< double > &keyError, const QVector< double > &valueError)"
+.br
+.RI "\fIReplaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. \fP"
+.ti -1c
+.RI "void \fBsetDataBothError\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP, const QVector< double > &\fBkeyErrorMinus\fP, const QVector< double > &\fBkeyErrorPlus\fP, const QVector< double > &\fBvalueErrorMinus\fP, const QVector< double > &\fBvalueErrorPlus\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. \fP"
+.ti -1c
+.RI "void \fBsetLineStyle\fP (\fBLineStyle\fP ls)"
+.br
+.RI "\fISets how the single data points are connected in the plot or how they are represented visually apart from the scatter symbol\&. \fP"
+.ti -1c
+.RI "void \fBsetScatterStyle\fP (\fBQCP::ScatterStyle\fP ss)"
+.br
+.RI "\fISets the visual appearance of single data points in the plot\&. \fP"
+.ti -1c
+.RI "void \fBsetScatterSize\fP (double size)"
+.br
+.RI "\fIThis defines how big (in pixels) single scatters are drawn, if scatter style (\fBsetScatterStyle\fP) isn't \fBQCP::ssNone\fP, \fBQCP::ssDot\fP or \fBQCP::ssPixmap\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetScatterPixmap\fP (const QPixmap &pixmap)"
+.br
+.RI "\fIIf the scatter style (\fBsetScatterStyle\fP) is set to ssPixmap, this function defines the QPixmap that will be drawn centered on the data point coordinate\&. \fP"
+.ti -1c
+.RI "void \fBsetErrorType\fP (ErrorType \fBerrorType\fP)"
+.br
+.RI "\fISets which kind of error bars (Key Error, Value Error or both) should be drawn on each data point\&. \fP"
+.ti -1c
+.RI "void \fBsetErrorPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen with which the error bars will be drawn\&. \fP"
+.ti -1c
+.RI "void \fBsetErrorBarSize\fP (double size)"
+.br
+.RI "\fISets the width of the handles at both ends of an error bar in pixels\&. \fP"
+.ti -1c
+.RI "void \fBsetErrorBarSkipSymbol\fP (bool enabled)"
+.br
+.RI "\fIIf \fIenabled\fP is set to true, the error bar will not be drawn as a solid line under the scatter symbol but leave some free space around the symbol\&. \fP"
+.ti -1c
+.RI "void \fBsetChannelFillGraph\fP (\fBQCPGraph\fP *targetGraph)"
+.br
+.RI "\fISets the target graph for filling the area between this graph and \fItargetGraph\fP with the current brush (\fBsetBrush\fP)\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const \fBQCPDataMap\fP &dataMap)"
+.br
+.RI "\fIAdds the provided data points in \fIdataMap\fP to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const \fBQCPData\fP &\fBdata\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point in \fIdata\fP to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (double \fBkey\fP, double \fBvalue\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point as \fIkey\fP and \fIvalue\fP pair to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const QVector< double > &keys, const QVector< double > &values)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided data points as \fIkey\fP and \fIvalue\fP pairs to the current data\&. \fP"
+.ti -1c
+.RI "void \fBremoveDataBefore\fP (double \fBkey\fP)"
+.br
+.RI "\fIRemoves all data points with keys smaller than \fIkey\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveDataAfter\fP (double \fBkey\fP)"
+.br
+.RI "\fIRemoves all data points with keys greater than \fIkey\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveData\fP (double fromKey, double toKey)"
+.br
+.RI "\fIRemoves all data points with keys between \fIfromKey\fP and \fItoKey\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveData\fP (double \fBkey\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes a single data point at \fIkey\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBclearData\fP ()"
+.br
+.RI "\fIRemoves all data points\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits a plottable or not\&. \fP"
+.ti -1c
+.RI "virtual void \fBrescaleAxes\fP (bool onlyEnlarge, bool includeErrorBars) const "
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Allows to define whether error bars are taken into consideration when determining the new axis range\&. \fP"
+.ti -1c
+.RI "virtual void \fBrescaleKeyAxis\fP (bool onlyEnlarge, bool includeErrorBars) const "
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Allows to define whether error bars (of kind \fBQCPGraph::etKey\fP) are taken into consideration when determining the new axis range\&. \fP"
+.ti -1c
+.RI "virtual void \fBrescaleValueAxis\fP (bool onlyEnlarge, bool includeErrorBars) const "
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Allows to define whether error bars (of kind \fBQCPGraph::etValue\fP) are taken into consideration when determining the new axis range\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBvalueAxis\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual void \fBdrawLegendIcon\fP (\fBQCPPainter\fP *painter, const QRect &rect) const "
+.br
+.ti -1c
+.RI "void \fBgetPlotData\fP (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBgetScatterPlotData\fP (QVector< \fBQCPData\fP > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBgetLinePlotData\fP (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBgetStepLeftPlotData\fP (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBgetStepRightPlotData\fP (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBgetStepCenterPlotData\fP (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBgetImpulsePlotData\fP (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBdrawFill\fP (\fBQCPPainter\fP *painter, QVector< QPointF > *lineData) const "
+.br
+.ti -1c
+.RI "void \fBdrawScatterPlot\fP (\fBQCPPainter\fP *painter, QVector< \fBQCPData\fP > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBdrawLinePlot\fP (\fBQCPPainter\fP *painter, QVector< QPointF > *lineData) const "
+.br
+.ti -1c
+.RI "void \fBdrawImpulsePlot\fP (\fBQCPPainter\fP *painter, QVector< QPointF > *lineData) const "
+.br
+.ti -1c
+.RI "void \fBdrawError\fP (\fBQCPPainter\fP *painter, double x, double y, const \fBQCPData\fP &\fBdata\fP) const "
+.br
+.ti -1c
+.RI "void \fBgetVisibleDataBounds\fP (QCPDataMap::const_iterator &lower, QCPDataMap::const_iterator &upper, int &count) const "
+.br
+.ti -1c
+.RI "void \fBaddFillBasePoints\fP (QVector< QPointF > *lineData) const "
+.br
+.ti -1c
+.RI "void \fBremoveFillBasePoints\fP (QVector< QPointF > *lineData) const "
+.br
+.ti -1c
+.RI "QPointF \fBlowerFillBasePoint\fP (double lowerKey) const "
+.br
+.ti -1c
+.RI "QPointF \fBupperFillBasePoint\fP (double upperKey) const "
+.br
+.ti -1c
+.RI "const QPolygonF \fBgetChannelFillPolygon\fP (const QVector< QPointF > *lineData) const "
+.br
+.ti -1c
+.RI "int \fBfindIndexBelowX\fP (const QVector< QPointF > *\fBdata\fP, double x) const "
+.br
+.ti -1c
+.RI "int \fBfindIndexAboveX\fP (const QVector< QPointF > *\fBdata\fP, double x) const "
+.br
+.ti -1c
+.RI "int \fBfindIndexBelowY\fP (const QVector< QPointF > *\fBdata\fP, double y) const "
+.br
+.ti -1c
+.RI "int \fBfindIndexAboveY\fP (const QVector< QPointF > *\fBdata\fP, double y) const "
+.br
+.ti -1c
+.RI "double \fBpointDistance\fP (const QPointF &pixelPoint) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetKeyRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetValueRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetKeyRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain, bool includeErrors) const "
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Allows to specify whether the error bars should be included in the range calculation\&. \fP"
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetValueRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain, bool includeErrors) const "
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Allows to specify whether the error bars should be included in the range calculation\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPDataMap\fP * \fBmData\fP"
+.br
+.ti -1c
+.RI "QPen \fBmErrorPen\fP"
+.br
+.ti -1c
+.RI "\fBLineStyle\fP \fBmLineStyle\fP"
+.br
+.ti -1c
+.RI "\fBQCP::ScatterStyle\fP \fBmScatterStyle\fP"
+.br
+.ti -1c
+.RI "double \fBmScatterSize\fP"
+.br
+.ti -1c
+.RI "QPixmap \fBmScatterPixmap\fP"
+.br
+.ti -1c
+.RI "ErrorType \fBmErrorType\fP"
+.br
+.ti -1c
+.RI "double \fBmErrorBarSize\fP"
+.br
+.ti -1c
+.RI "bool \fBmErrorBarSkipSymbol\fP"
+.br
+.ti -1c
+.RI "\fBQCPGraph\fP * \fBmChannelFillGraph\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCustomPlot\fP"
+.br
+.ti -1c
+.RI "class \fBQCPLegend\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plottable representing a graph in a plot\&. 
+
+Usually \fBQCustomPlot\fP creates it internally via QCustomPlot::addGraph and the resulting instance is accessed via QCustomPlot::graph\&.
+.PP
+To plot data, assign it with the \fBsetData\fP or \fBaddData\fP functions\&.
+.SH "Changing the appearance"
+.PP
+The appearance of the graph is mainly determined by the line style, scatter style, brush and pen of the graph (\fBsetLineStyle\fP, \fBsetScatterStyle\fP, \fBsetBrush\fP, \fBsetPen\fP)\&.
+.SS "Filling under or between graphs"
+\fBQCPGraph\fP knows two types of fills: Normal graph fills towards the zero-value-line parallel to the key axis of the graph, and fills between two graphs, called channel fills\&. To enable a fill, just set a brush with \fBsetBrush\fP which is neither Qt::NoBrush nor fully transparent\&.
+.PP
+By default, a normal fill towards the zero-value-line will be drawn\&. To set up a channel fill between this graph and another one, call \fBsetChannelFillGraph\fP with the other graph as parameter\&.
+.PP
+\fBSee also:\fP
+.RS 4
+QCustomPlot::addGraph, QCustomPlot::graph, QCPLegend::addGraph 
+.RE
+.PP
+
+.PP
+Definition at line 449 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPGraph::LineStyle\fP"
+
+.PP
+Defines how the graph's line is represented visually in the plot\&. The line is drawn with the current pen of the graph (\fBsetPen\fP)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLineStyle\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIlsNone \fP\fP
+data points are not connected with any lines (e\&.g\&. data only represented < with symbols according to the scatter style, see \fBsetScatterStyle\fP) 
+.TP
+\fB\fIlsLine \fP\fP
+data points are connected by a straight line 
+.TP
+\fB\fIlsStepLeft \fP\fP
+line is drawn as steps where the step height is the value of the left data point 
+.TP
+\fB\fIlsStepRight \fP\fP
+line is drawn as steps where the step height is the value of the right data point 
+.TP
+\fB\fIlsStepCenter \fP\fP
+line is drawn as steps where the step is in between two data points 
+.TP
+\fB\fIlsImpulse \fP\fP
+each data point is represented by a line parallel to the value axis, which reaches from the data point to the zero-value-line 
+.PP
+Definition at line 458 of file qcustomplot\&.h\&.
+.PP
+.nf
+458                  { lsNone        
+459                   ,lsLine        
+461                   ,lsStepLeft    
+462                   ,lsStepRight   
+463                   ,lsStepCenter  
+464                   ,lsImpulse     
+465                  };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPGraph::~QCPGraph ()\fC [virtual]\fP"
+
+.PP
+Definition at line 352 of file qcustomplot\&.cpp\&.
+.PP
+References mData, and QCPLayerable::mParentPlot\&.
+.PP
+.nf
+353 {
+354   if (mParentPlot)
+355   {
+356     // if another graph has a channel fill towards this graph, set it to zero
+357     for (int i=0; i<mParentPlot->graphCount(); ++i)
+358     {
+359       if (mParentPlot->graph(i)->channelFillGraph() == this)
+360         mParentPlot->graph(i)->setChannelFillGraph(0);
+361     }
+362   }
+363   delete mData;
+364 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QCPGraph::addData (const \fBQCPDataMap\fP &dataMap)"
+
+.PP
+Adds the provided data points in \fIdataMap\fP to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 695 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+696 {
+697   mData->unite(dataMap);
+698 }
+.fi
+.SS "void QCPGraph::addData (const \fBQCPData\fP &data)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point in \fIdata\fP to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 704 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+705 {
+706   mData->insertMulti(data\&.key, data);
+707 }
+.fi
+.SS "void QCPGraph::addData (doublekey, doublevalue)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point as \fIkey\fP and \fIvalue\fP pair to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 713 of file qcustomplot\&.cpp\&.
+.PP
+References key, mData, and value\&.
+.PP
+.nf
+714 {
+715   QCPData newData;
+716   newData\&.key = key;
+717   newData\&.value = value;
+718   mData->insertMulti(newData\&.key, newData);
+719 }
+.fi
+.SS "void QCPGraph::addData (const QVector< double > &keys, const QVector< double > &values)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided data points as \fIkey\fP and \fIvalue\fP pairs to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 725 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+726 {
+727   int n = qMin(keys\&.size(), values\&.size());
+728   QCPData newData;
+729   for (int i=0; i<n; ++i)
+730   {
+731     newData\&.key = keys[i];
+732     newData\&.value = values[i];
+733     mData->insertMulti(newData\&.key, newData);
+734   }
+735 }
+.fi
+.SS "void QCPGraph::addFillBasePoints (QVector< QPointF > *lineData) const\fC [protected]\fP"
+The line data vector generated by e\&.g\&. getLinePlotData contains only the line that connects the data points\&. If the graph needs to be filled, two additional points need to be added at the value-zero-line in the lower and upper key positions, the graph reaches\&. This function calculates these points and adds them to the end of \fIlineData\fP\&. Since the fill is typically drawn before the line stroke, these added points need to be removed again after the fill is done, with the removeFillBasePoints function\&.
+.PP
+The expanding of \fIlineData\fP by two points will not cause unnecessary memory reallocations, because the data vector generation functions (getLinePlotData etc\&.) reserve two extra points when they allocate memory for \fIlineData\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveFillBasePoints\fP, \fBlowerFillBasePoint\fP, \fBupperFillBasePoint\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1696 of file qcustomplot\&.cpp\&.
+.PP
+References lowerFillBasePoint(), QCPAbstractPlottable::mKeyAxis, QCPAxis::orientation(), and upperFillBasePoint()\&.
+.PP
+Referenced by drawFill()\&.
+.PP
+.nf
+1697 {
+1698   // append points that close the polygon fill at the key axis:
+1699   if (mKeyAxis->orientation() == Qt::Vertical)
+1700   {
+1701     *lineData << upperFillBasePoint(lineData->last()\&.y());
+1702     *lineData << lowerFillBasePoint(lineData->first()\&.y());
+1703   } else
+1704   {
+1705     *lineData << upperFillBasePoint(lineData->last()\&.x());
+1706     *lineData << lowerFillBasePoint(lineData->first()\&.x());
+1707   }
+1708 }
+.fi
+.SS "\fBQCPGraph\fP* QCPGraph::channelFillGraph () const\fC [inline]\fP"
+
+.PP
+Definition at line 490 of file qcustomplot\&.h\&.
+.PP
+.nf
+490 { return mChannelFillGraph; }
+.fi
+.SS "void QCPGraph::clearData ()\fC [virtual]\fP"
+
+.PP
+Removes all data points\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP, \fBremoveDataAfter\fP, \fBremoveDataBefore\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 793 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+794 {
+795   mData->clear();
+796 }
+.fi
+.SS "const \fBQCPDataMap\fP* QCPGraph::data () const\fC [inline]\fP"
+
+.PP
+Definition at line 481 of file qcustomplot\&.h\&.
+.PP
+Referenced by setData(), and QCPItemTracer::updatePosition()\&.
+.PP
+.nf
+481 { return mData; }
+.fi
+.SS "void QCPGraph::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this plottable with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible plottables\&.
+.PP
+The cliprect of the provided painter is set to the axis rect of the key/value axis of this plottable (what \fBclipRect\fP returns), before this function is called\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 881 of file qcustomplot\&.cpp\&.
+.PP
+References drawFill(), drawImpulsePlot(), drawLinePlot(), drawScatterPlot(), getPlotData(), lsImpulse, lsNone, mData, QCPAbstractPlottable::mKeyAxis, mLineStyle, mScatterStyle, QCPAxis::range(), QCPRange::size(), and QCP::ssNone\&.
+.PP
+.nf
+882 {
+883   if (mKeyAxis->range()\&.size() <= 0 || mData->isEmpty()) return;
+884   if (mLineStyle == lsNone && mScatterStyle == QCP::ssNone) return;
+885   
+886   // allocate line and (if necessary) point vectors:
+887   QVector<QPointF> *lineData = new QVector<QPointF>;
+888   QVector<QCPData> *pointData = 0;
+889   if (mScatterStyle != QCP::ssNone)
+890     pointData = new QVector<QCPData>;
+891   
+892   // fill vectors with data appropriate to plot style:
+893   getPlotData(lineData, pointData);
+894 
+895   // draw fill of graph:
+896   drawFill(painter, lineData);
+897   
+898   // draw line:
+899   if (mLineStyle == lsImpulse)
+900     drawImpulsePlot(painter, lineData);
+901   else if (mLineStyle != lsNone)
+902     drawLinePlot(painter, lineData); // also step plots can be drawn as a line plot
+903   
+904   // draw scatters:
+905   if (pointData)
+906     drawScatterPlot(painter, pointData);
+907   
+908   // free allocated line and point vectors:
+909   delete lineData;
+910   if (pointData)
+911     delete pointData;
+912 }
+.fi
+.SS "void QCPGraph::drawError (\fBQCPPainter\fP *painter, doublex, doubley, const \fBQCPData\fP &data) const\fC [protected]\fP"
+called by the scatter drawing function (\fBdrawScatterPlot\fP) to draw the error bars on one data point\&. \fIx\fP and \fIy\fP pixel positions of the data point are passed since they are already known in pixel coordinates in the drawing function, so we save some extra coordToPixel transforms here\&. \fIdata\fP is therefore only used for the errors, not key and value\&. 
+.PP
+Definition at line 1558 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), QCPPainter::drawLine(), mErrorBarSize, mErrorBarSkipSymbol, mErrorType, QCPAbstractPlottable::mKeyAxis, mScatterSize, QCPAbstractPlottable::mValueAxis, QCPAxis::orientation(), and QCPAxis::rangeReversed()\&.
+.PP
+Referenced by drawScatterPlot()\&.
+.PP
+.nf
+1559 {
+1560   double a, b; // positions of error bar bounds in pixels
+1561   double barWidthHalf = mErrorBarSize*0\&.5;
+1562   double skipSymbolMargin = mScatterSize*1\&.25; // pixels left blank per side, when mErrorBarSkipSymbol is true
+1563 
+1564   if (mKeyAxis->orientation() == Qt::Vertical)
+1565   {
+1566     // draw key error vertically and value error horizontally
+1567     if (mErrorType == etKey || mErrorType == etBoth)
+1568     {
+1569       a = mKeyAxis->coordToPixel(data\&.key-data\&.keyErrorMinus);
+1570       b = mKeyAxis->coordToPixel(data\&.key+data\&.keyErrorPlus);
+1571       if (mKeyAxis->rangeReversed())
+1572         qSwap(a,b);
+1573       // draw spine:
+1574       if (mErrorBarSkipSymbol)
+1575       {
+1576         if (a-y > skipSymbolMargin) // don't draw spine if error is so small it's within skipSymbolmargin
+1577           painter->drawLine(QLineF(x, a, x, y+skipSymbolMargin));
+1578         if (y-b > skipSymbolMargin) 
+1579           painter->drawLine(QLineF(x, y-skipSymbolMargin, x, b));
+1580       } else
+1581         painter->drawLine(QLineF(x, a, x, b));
+1582       // draw handles:
+1583       painter->drawLine(QLineF(x-barWidthHalf, a, x+barWidthHalf, a));
+1584       painter->drawLine(QLineF(x-barWidthHalf, b, x+barWidthHalf, b));
+1585     }
+1586     if (mErrorType == etValue || mErrorType == etBoth)
+1587     {
+1588       a = mValueAxis->coordToPixel(data\&.value-data\&.valueErrorMinus);
+1589       b = mValueAxis->coordToPixel(data\&.value+data\&.valueErrorPlus);
+1590       if (mValueAxis->rangeReversed())
+1591         qSwap(a,b);
+1592       // draw spine:
+1593       if (mErrorBarSkipSymbol)
+1594       {
+1595         if (x-a > skipSymbolMargin) // don't draw spine if error is so small it's within skipSymbolmargin
+1596           painter->drawLine(QLineF(a, y, x-skipSymbolMargin, y));
+1597         if (b-x > skipSymbolMargin)
+1598           painter->drawLine(QLineF(x+skipSymbolMargin, y, b, y));
+1599       } else
+1600         painter->drawLine(QLineF(a, y, b, y));
+1601       // draw handles:
+1602       painter->drawLine(QLineF(a, y-barWidthHalf, a, y+barWidthHalf));
+1603       painter->drawLine(QLineF(b, y-barWidthHalf, b, y+barWidthHalf));
+1604     }
+1605   } else // mKeyAxis->orientation() is Qt::Horizontal
+1606   {
+1607     // draw value error vertically and key error horizontally
+1608     if (mErrorType == etKey || mErrorType == etBoth)
+1609     {
+1610       a = mKeyAxis->coordToPixel(data\&.key-data\&.keyErrorMinus);
+1611       b = mKeyAxis->coordToPixel(data\&.key+data\&.keyErrorPlus);
+1612       if (mKeyAxis->rangeReversed())
+1613         qSwap(a,b);
+1614       // draw spine:
+1615       if (mErrorBarSkipSymbol)
+1616       {
+1617         if (x-a > skipSymbolMargin) // don't draw spine if error is so small it's within skipSymbolmargin
+1618           painter->drawLine(QLineF(a, y, x-skipSymbolMargin, y));
+1619         if (b-x > skipSymbolMargin)
+1620           painter->drawLine(QLineF(x+skipSymbolMargin, y, b, y));
+1621       } else
+1622         painter->drawLine(QLineF(a, y, b, y));
+1623       // draw handles:
+1624       painter->drawLine(QLineF(a, y-barWidthHalf, a, y+barWidthHalf));
+1625       painter->drawLine(QLineF(b, y-barWidthHalf, b, y+barWidthHalf));
+1626     }
+1627     if (mErrorType == etValue || mErrorType == etBoth)
+1628     {
+1629       a = mValueAxis->coordToPixel(data\&.value-data\&.valueErrorMinus);
+1630       b = mValueAxis->coordToPixel(data\&.value+data\&.valueErrorPlus);
+1631       if (mValueAxis->rangeReversed())
+1632         qSwap(a,b);
+1633       // draw spine:
+1634       if (mErrorBarSkipSymbol)
+1635       {
+1636         if (a-y > skipSymbolMargin) // don't draw spine if error is so small it's within skipSymbolmargin
+1637           painter->drawLine(QLineF(x, a, x, y+skipSymbolMargin));
+1638         if (y-b > skipSymbolMargin)
+1639           painter->drawLine(QLineF(x, y-skipSymbolMargin, x, b));
+1640       } else
+1641         painter->drawLine(QLineF(x, a, x, b));
+1642       // draw handles:
+1643       painter->drawLine(QLineF(x-barWidthHalf, a, x+barWidthHalf, a));
+1644       painter->drawLine(QLineF(x-barWidthHalf, b, x+barWidthHalf, b));
+1645     }
+1646   }
+1647 }
+.fi
+.SS "void QCPGraph::drawFill (\fBQCPPainter\fP *painter, QVector< QPointF > *lineData) const\fC [protected]\fP"
+Draws the fill of the graph with the specified brush\&. If the fill is a normal 'base' fill, i\&.e\&. under the graph toward the zero-value-line, only the \fIlineData\fP is required (and two extra points at the zero-value-line, which are added by \fBaddFillBasePoints\fP and removed by \fBremoveFillBasePoints\fP after the fill drawing is done)\&.
+.PP
+If the fill is a channel fill between this graph and another graph (mChannelFillGraph), the more complex polygon is calculated with the \fBgetChannelFillPolygon\fP function\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawLinePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1421 of file qcustomplot\&.cpp\&.
+.PP
+References addFillBasePoints(), QCPAbstractPlottable::applyFillAntialiasingHint(), color(), getChannelFillPolygon(), lsImpulse, QCPAbstractPlottable::mainBrush(), mChannelFillGraph, mLineStyle, removeFillBasePoints(), and QCPPainter::setPen()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+1422 {
+1423   if (mLineStyle == lsImpulse) return; // fill doesn't make sense for impulse plot
+1424   if (mainBrush()\&.style() == Qt::NoBrush || mainBrush()\&.color()\&.alpha() == 0) return;
+1425   
+1426   applyFillAntialiasingHint(painter);
+1427   if (!mChannelFillGraph)
+1428   {
+1429     // draw base fill under graph, fill goes all the way to the zero-value-line:
+1430     addFillBasePoints(lineData);
+1431     painter->setPen(Qt::NoPen);
+1432     painter->setBrush(mainBrush());
+1433     painter->drawPolygon(QPolygonF(*lineData));
+1434     removeFillBasePoints(lineData);
+1435   } else
+1436   {
+1437     // draw channel fill between this graph and mChannelFillGraph:
+1438     painter->setPen(Qt::NoPen);
+1439     painter->setBrush(mainBrush());
+1440     painter->drawPolygon(getChannelFillPolygon(lineData));
+1441   }
+1442 }
+.fi
+.SS "void QCPGraph::drawImpulsePlot (\fBQCPPainter\fP *painter, QVector< QPointF > *lineData) const\fC [protected]\fP"
+Draws impulses graphs from the provided data, i\&.e\&. it connects all line pairs in \fIlineData\fP, which was created by \fBgetImpulsePlotData\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawScatterPlot\fP, \fBdrawLinePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1537 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), color(), QCPAbstractPlottable::mainPen(), QCPAbstractPlottable::pen(), and QCPPainter::setPen()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+1538 {
+1539   // draw impulses:
+1540   if (mainPen()\&.style() != Qt::NoPen && mainPen()\&.color()\&.alpha() != 0)
+1541   {
+1542     applyDefaultAntialiasingHint(painter);
+1543     QPen pen = mainPen();
+1544     pen\&.setCapStyle(Qt::FlatCap); // so impulse line doesn't reach beyond zero-line
+1545     painter->setPen(pen);
+1546     painter->setBrush(Qt::NoBrush);
+1547     painter->drawLines(*lineData);
+1548   }
+1549 }
+.fi
+.SS "void QCPGraph::drawLegendIcon (\fBQCPPainter\fP *painter, const QRect &rect) const\fC [protected]\fP, \fC [virtual]\fP"
+called by \fBQCPLegend::draw\fP (via \fBQCPPlottableLegendItem::draw\fP) to create a graphical representation of this plottable inside \fIrect\fP, next to the plottable name\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 915 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractPlottable::applyFillAntialiasingHint(), QCPAbstractPlottable::applyScattersAntialiasingHint(), QCPPainter::drawLine(), QCPPainter::drawScatter(), lsNone, QCPAbstractPlottable::mBrush, mLineStyle, QCPAbstractPlottable::mPen, mScatterPixmap, mScatterSize, mScatterStyle, QCPPainter::setPen(), QCP::ssNone, and QCP::ssPixmap\&.
+.PP
+.nf
+916 {
+917   // draw fill:
+918   if (mBrush\&.style() != Qt::NoBrush)
+919   {
+920     applyFillAntialiasingHint(painter);
+921     painter->fillRect(QRectF(rect\&.left(), rect\&.top()+rect\&.height()/2\&.0, rect\&.width(), rect\&.height()/3\&.0), mBrush);
+922   }
+923   // draw line vertically centered:
+924   if (mLineStyle != lsNone)
+925   {
+926     applyDefaultAntialiasingHint(painter);
+927     painter->setPen(mPen);
+928     painter->drawLine(QLineF(rect\&.left(), rect\&.top()+rect\&.height()/2\&.0, rect\&.right()+5, rect\&.top()+rect\&.height()/2\&.0)); // +5 on x2 else last segment is missing from dashed/dotted pens
+929   }
+930   // draw scatter symbol:
+931   if (mScatterStyle != QCP::ssNone)
+932   {
+933     if (mScatterStyle == QCP::ssPixmap && (mScatterPixmap\&.size()\&.width() > rect\&.width() || mScatterPixmap\&.size()\&.height() > rect\&.height()))
+934     {
+935       // handle pixmap scatters that are larger than legend icon rect separately\&.
+936       // We resize them and draw them manually, instead of calling drawScatter:
+937       QSize newSize = mScatterPixmap\&.size();
+938       newSize\&.scale(rect\&.size(), Qt::KeepAspectRatio);
+939       QRect targetRect;
+940       targetRect\&.setSize(newSize);
+941       targetRect\&.moveCenter(rect\&.center());
+942       bool smoothBackup = painter->testRenderHint(QPainter::SmoothPixmapTransform);
+943       painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+944       painter->drawPixmap(targetRect, mScatterPixmap);
+945       painter->setRenderHint(QPainter::SmoothPixmapTransform, smoothBackup);
+946     } else
+947     {
+948       applyScattersAntialiasingHint(painter);
+949       painter->setPen(mPen);
+950       painter->drawScatter(QRectF(rect)\&.center()\&.x(), QRectF(rect)\&.center()\&.y(), mScatterSize, mScatterStyle);
+951     }
+952   }
+953 }
+.fi
+.SS "void QCPGraph::drawLinePlot (\fBQCPPainter\fP *painter, QVector< QPointF > *lineData) const\fC [protected]\fP"
+Draws line graphs from the provided data\&. It connects all points in \fIlineData\fP, which was created by one of the 'get(\&.\&.\&.)PlotData' functions for line styles that require simple line connections between the point vector they create\&. These are for example \fBgetLinePlotData\fP, \fBgetStepLeftPlotData\fP, \fBgetStepRightPlotData\fP and \fBgetStepCenterPlotData\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawScatterPlot\fP, \fBdrawImpulsePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1493 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), color(), QCPPainter::drawLine(), QCPAbstractPlottable::mainPen(), QCPLayerable::mParentPlot, QCPPainter::pdfExportMode(), and QCPPainter::setPen()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+1494 {
+1495   // draw line of graph:
+1496   if (mainPen()\&.style() != Qt::NoPen && mainPen()\&.color()\&.alpha() != 0)
+1497   {
+1498     applyDefaultAntialiasingHint(painter);
+1499     painter->setPen(mainPen());
+1500     painter->setBrush(Qt::NoBrush);
+1501     
+1502     /* Draws polyline in batches, currently not used:
+1503     int p = 0;
+1504     while (p < lineData->size())
+1505     {
+1506       int batch = qMin(25, lineData->size()-p);
+1507       if (p != 0)
+1508       {
+1509         ++batch;
+1510         --p; // to draw the connection lines between two batches
+1511       }
+1512       painter->drawPolyline(lineData->constData()+p, batch);
+1513       p += batch;
+1514     }
+1515     */
+1516     
+1517     // if drawing solid line and not in PDF, use much faster line drawing instead of polyline:
+1518     if (mParentPlot->plottingHints()\&.testFlag(QCP::phFastPolylines) &&
+1519         painter->pen()\&.style() == Qt::SolidLine &&
+1520         !painter->pdfExportMode())
+1521     {
+1522       for (int i=1; i<lineData->size(); ++i)
+1523         painter->drawLine(lineData->at(i-1), lineData->at(i));
+1524     } else
+1525     {  
+1526       painter->drawPolyline(QPolygonF(*lineData));
+1527     }
+1528   }
+1529 }
+.fi
+.SS "void QCPGraph::drawScatterPlot (\fBQCPPainter\fP *painter, QVector< \fBQCPData\fP > *pointData) const\fC [protected]\fP"
+Draws scatter symbols at every data point passed in \fIpointData\fP\&. scatter symbols are independent of the line style and are always drawn if scatter style is not \fBQCP::ssNone\fP\&. Hence, the \fIpointData\fP vector is outputted by all 'get(\&.\&.\&.)PlotData' functions, together with the (line style dependent) line data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawLinePlot\fP, \fBdrawImpulsePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1451 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyErrorBarsAntialiasingHint(), QCPAbstractPlottable::applyScattersAntialiasingHint(), QCPAxis::coordToPixel(), drawError(), QCPPainter::drawScatter(), QCPAbstractPlottable::mainBrush(), QCPAbstractPlottable::mainPen(), mErrorPen, mErrorType, QCPAbstractPlottable::mKeyAxis, mScatterPixmap, mScatterSize, mScatterStyle, QCPAbstractPlottable::mValueAxis, QCPAxis::orientation(), QCPPainter::setPen(), and QCPPainter::setScatterPixmap()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+1452 {
+1453   // draw error bars:
+1454   if (mErrorType != etNone)
+1455   {
+1456     applyErrorBarsAntialiasingHint(painter);
+1457     painter->setPen(mErrorPen);
+1458     if (mKeyAxis->orientation() == Qt::Vertical)
+1459     {
+1460       for (int i=0; i<pointData->size(); ++i)
+1461         drawError(painter, mValueAxis->coordToPixel(pointData->at(i)\&.value), mKeyAxis->coordToPixel(pointData->at(i)\&.key), pointData->at(i));
+1462     } else
+1463     {
+1464       for (int i=0; i<pointData->size(); ++i)
+1465         drawError(painter, mKeyAxis->coordToPixel(pointData->at(i)\&.key), mValueAxis->coordToPixel(pointData->at(i)\&.value), pointData->at(i));
+1466     }
+1467   }
+1468   
+1469   // draw scatter point symbols:
+1470   applyScattersAntialiasingHint(painter);
+1471   painter->setPen(mainPen());
+1472   painter->setBrush(mainBrush());
+1473   painter->setScatterPixmap(mScatterPixmap);
+1474   if (mKeyAxis->orientation() == Qt::Vertical)
+1475   {
+1476     for (int i=0; i<pointData->size(); ++i)
+1477       painter->drawScatter(mValueAxis->coordToPixel(pointData->at(i)\&.value), mKeyAxis->coordToPixel(pointData->at(i)\&.key), mScatterSize, mScatterStyle);
+1478   } else
+1479   {
+1480     for (int i=0; i<pointData->size(); ++i)
+1481       painter->drawScatter(mKeyAxis->coordToPixel(pointData->at(i)\&.key), mValueAxis->coordToPixel(pointData->at(i)\&.value), mScatterSize, mScatterStyle);
+1482   }
+1483 }
+.fi
+.SS "double QCPGraph::errorBarSize () const\fC [inline]\fP"
+
+.PP
+Definition at line 488 of file qcustomplot\&.h\&.
+.PP
+.nf
+488 { return mErrorBarSize; }
+.fi
+.SS "bool QCPGraph::errorBarSkipSymbol () const\fC [inline]\fP"
+
+.PP
+Definition at line 489 of file qcustomplot\&.h\&.
+.PP
+.nf
+489 { return mErrorBarSkipSymbol; }
+.fi
+.SS "QPen QCPGraph::errorPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 487 of file qcustomplot\&.h\&.
+.PP
+.nf
+487 { return mErrorPen; }
+.fi
+.SS "ErrorType QCPGraph::errorType () const\fC [inline]\fP"
+
+.PP
+Definition at line 486 of file qcustomplot\&.h\&.
+.PP
+Referenced by setErrorType()\&.
+.PP
+.nf
+486 { return mErrorType; }
+.fi
+.SS "int QCPGraph::findIndexAboveX (const QVector< QPointF > *data, doublex) const\fC [protected]\fP"
+Finds the smallest index of \fIdata\fP, whose points x value is just above \fIx\fP\&. Assumes x values in \fIdata\fP points are ordered ascending, as is the case when plotting with horizontal key axis\&. Used to calculate the channel fill polygon, see \fBgetChannelFillPolygon\fP\&. 
+.PP
+Definition at line 1983 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by getChannelFillPolygon()\&.
+.PP
+.nf
+1984 {
+1985   for (int i=data->size()-1; i>=0; --i)
+1986   {
+1987     if (data->at(i)\&.x() < x)
+1988     {
+1989       if (i<data->size()-1)
+1990         return i+1;
+1991       else
+1992         return data->size()-1;
+1993     }
+1994   }
+1995   return -1;
+1996 }
+.fi
+.SS "int QCPGraph::findIndexAboveY (const QVector< QPointF > *data, doubley) const\fC [protected]\fP"
+Finds the smallest index of \fIdata\fP, whose points y value is just above \fIy\fP\&. Assumes y values in \fIdata\fP points are ordered descending, as is the case when plotting with vertical key axis\&. Used to calculate the channel fill polygon, see \fBgetChannelFillPolygon\fP\&. 
+.PP
+Definition at line 2027 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by getChannelFillPolygon()\&.
+.PP
+.nf
+2028 {
+2029   for (int i=0; i<data->size(); ++i)
+2030   {
+2031     if (data->at(i)\&.y() < y)
+2032     {
+2033       if (i>0)
+2034         return i-1;
+2035       else
+2036         return 0;
+2037     }
+2038   }
+2039   return -1;
+2040 }
+.fi
+.SS "int QCPGraph::findIndexBelowX (const QVector< QPointF > *data, doublex) const\fC [protected]\fP"
+Finds the greatest index of \fIdata\fP, whose points x value is just below \fIx\fP\&. Assumes x values in \fIdata\fP points are ordered ascending, as is the case when plotting with horizontal key axis\&. Used to calculate the channel fill polygon, see \fBgetChannelFillPolygon\fP\&. 
+.PP
+Definition at line 2005 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by getChannelFillPolygon()\&.
+.PP
+.nf
+2006 {
+2007   for (int i=0; i<data->size(); ++i)
+2008   {
+2009     if (data->at(i)\&.x() > x)
+2010     {
+2011       if (i>0)
+2012         return i-1;
+2013       else
+2014         return 0;
+2015     }
+2016   }
+2017   return -1;
+2018 }
+.fi
+.SS "int QCPGraph::findIndexBelowY (const QVector< QPointF > *data, doubley) const\fC [protected]\fP"
+Finds the greatest index of \fIdata\fP, whose points y value is just below \fIy\fP\&. Assumes y values in \fIdata\fP points are ordered descending, as is the case when plotting with vertical key axis (since keys are ordered ascending)\&. Used to calculate the channel fill polygon, see \fBgetChannelFillPolygon\fP\&. 
+.PP
+Definition at line 2120 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by getChannelFillPolygon()\&.
+.PP
+.nf
+2121 {
+2122   for (int i=data->size()-1; i>=0; --i)
+2123   {
+2124     if (data->at(i)\&.y() > y)
+2125     {
+2126       if (i<data->size()-1)
+2127         return i+1;
+2128       else
+2129         return data->size()-1;
+2130     }
+2131   }
+2132   return -1;
+2133 }
+.fi
+.SS "const QPolygonF QCPGraph::getChannelFillPolygon (const QVector< QPointF > *lineData) const\fC [protected]\fP"
+Generates the polygon needed for drawing channel fills between this graph (data passed via \fIlineData\fP) and the graph specified by mChannelFillGraph (data generated by calling its \fBgetPlotData\fP function)\&. May return an empty polygon if the key ranges have no overlap or fill target graph and this graph don't have same orientation (i\&.e\&. both key axes horizontal or both key axes vertical)\&. For increased performance (due to implicit sharing), keep the returned QPolygonF const\&. 
+.PP
+Definition at line 1849 of file qcustomplot\&.cpp\&.
+.PP
+References findIndexAboveX(), findIndexAboveY(), findIndexBelowX(), findIndexBelowY(), getPlotData(), mChannelFillGraph, QCPAbstractPlottable::mKeyAxis, and QCPAxis::orientation()\&.
+.PP
+Referenced by drawFill()\&.
+.PP
+.nf
+1850 {
+1851   if (mChannelFillGraph->mKeyAxis->orientation() != mKeyAxis->orientation())
+1852     return QPolygonF(); // don't have same axis orientation, can't fill that (Note: if keyAxis fits, valueAxis will fit too, because it's always orthogonal to keyAxis)
+1853   
+1854   if (lineData->isEmpty()) return QPolygonF();
+1855   QVector<QPointF> otherData;
+1856   mChannelFillGraph->getPlotData(&otherData, 0);
+1857   if (otherData\&.isEmpty()) return QPolygonF();
+1858   QVector<QPointF> thisData;
+1859   thisData\&.reserve(lineData->size()+otherData\&.size()); // because we will join both vectors at end of this function
+1860   for (int i=0; i<lineData->size(); ++i) // don't use the vector<<(vector),  it squeezes internally, which ruins the performance tuning with reserve()
+1861     thisData << lineData->at(i);
+1862   
+1863   // pointers to be able to swap them, depending which data range needs cropping:
+1864   QVector<QPointF> *staticData = &thisData;
+1865   QVector<QPointF> *croppedData = &otherData;
+1866   
+1867   // crop both vectors to ranges in which the keys overlap (which coord is key, depends on axisType):
+1868   if (mKeyAxis->orientation() == Qt::Horizontal)
+1869   {
+1870     // x is key
+1871     // if an axis range is reversed, the data point keys will be descending\&. Reverse them, since following algorithm assumes ascending keys:
+1872     if (staticData->first()\&.x() > staticData->last()\&.x())
+1873     {
+1874       int size = staticData->size();
+1875       for (int i=0; i<size/2; ++i)
+1876         qSwap((*staticData)[i], (*staticData)[size-1-i]);
+1877     }
+1878     if (croppedData->first()\&.x() > croppedData->last()\&.x())
+1879     {
+1880       int size = croppedData->size();
+1881       for (int i=0; i<size/2; ++i)
+1882         qSwap((*croppedData)[i], (*croppedData)[size-1-i]);
+1883     }
+1884     // crop lower bound:
+1885     if (staticData->first()\&.x() < croppedData->first()\&.x()) // other one must be cropped
+1886       qSwap(staticData, croppedData);
+1887     int lowBound = findIndexBelowX(croppedData, staticData->first()\&.x());
+1888     if (lowBound == -1) return QPolygonF(); // key ranges have no overlap
+1889     croppedData->remove(0, lowBound);
+1890     // set lowest point of cropped data to fit exactly key position of first static data
+1891     // point via linear interpolation:
+1892     if (croppedData->size() < 2) return QPolygonF(); // need at least two points for interpolation
+1893     double slope;
+1894     if (croppedData->at(1)\&.x()-croppedData->at(0)\&.x() != 0)
+1895       slope = (croppedData->at(1)\&.y()-croppedData->at(0)\&.y())/(croppedData->at(1)\&.x()-croppedData->at(0)\&.x());
+1896     else
+1897       slope = 0;
+1898     (*croppedData)[0]\&.setY(croppedData->at(0)\&.y()+slope*(staticData->first()\&.x()-croppedData->at(0)\&.x()));
+1899     (*croppedData)[0]\&.setX(staticData->first()\&.x());
+1900     
+1901     // crop upper bound:
+1902     if (staticData->last()\&.x() > croppedData->last()\&.x()) // other one must be cropped
+1903       qSwap(staticData, croppedData);
+1904     int highBound = findIndexAboveX(croppedData, staticData->last()\&.x());
+1905     if (highBound == -1) return QPolygonF(); // key ranges have no overlap
+1906     croppedData->remove(highBound+1, croppedData->size()-(highBound+1));
+1907     // set highest point of cropped data to fit exactly key position of last static data
+1908     // point via linear interpolation:
+1909     if (croppedData->size() < 2) return QPolygonF(); // need at least two points for interpolation
+1910     int li = croppedData->size()-1; // last index
+1911     if (croppedData->at(li)\&.x()-croppedData->at(li-1)\&.x() != 0)
+1912       slope = (croppedData->at(li)\&.y()-croppedData->at(li-1)\&.y())/(croppedData->at(li)\&.x()-croppedData->at(li-1)\&.x());
+1913     else
+1914       slope = 0;
+1915     (*croppedData)[li]\&.setY(croppedData->at(li-1)\&.y()+slope*(staticData->last()\&.x()-croppedData->at(li-1)\&.x()));
+1916     (*croppedData)[li]\&.setX(staticData->last()\&.x());
+1917   } else // mKeyAxis->orientation() == Qt::Vertical
+1918   {
+1919     // y is key
+1920     // similar to "x is key" but switched x,y\&. Further, lower/upper meaning is inverted compared to x,
+1921     // because in pixel coordinates, y increases from top to bottom, not bottom to top like data coordinate\&.
+1922     // if an axis range is reversed, the data point keys will be descending\&. Reverse them, since following algorithm assumes ascending keys:
+1923     if (staticData->first()\&.y() < staticData->last()\&.y())
+1924     {
+1925       int size = staticData->size();
+1926       for (int i=0; i<size/2; ++i)
+1927         qSwap((*staticData)[i], (*staticData)[size-1-i]);
+1928     }
+1929     if (croppedData->first()\&.y() < croppedData->last()\&.y())
+1930     {
+1931       int size = croppedData->size();
+1932       for (int i=0; i<size/2; ++i)
+1933         qSwap((*croppedData)[i], (*croppedData)[size-1-i]);
+1934     }
+1935     // crop lower bound:
+1936     if (staticData->first()\&.y() > croppedData->first()\&.y()) // other one must be cropped
+1937       qSwap(staticData, croppedData);
+1938     int lowBound = findIndexAboveY(croppedData, staticData->first()\&.y());
+1939     if (lowBound == -1) return QPolygonF(); // key ranges have no overlap
+1940     croppedData->remove(0, lowBound);
+1941     // set lowest point of cropped data to fit exactly key position of first static data
+1942     // point via linear interpolation:
+1943     if (croppedData->size() < 2) return QPolygonF(); // need at least two points for interpolation
+1944     double slope;
+1945     if (croppedData->at(1)\&.y()-croppedData->at(0)\&.y() != 0) // avoid division by zero in step plots
+1946       slope = (croppedData->at(1)\&.x()-croppedData->at(0)\&.x())/(croppedData->at(1)\&.y()-croppedData->at(0)\&.y());
+1947     else
+1948       slope = 0;
+1949     (*croppedData)[0]\&.setX(croppedData->at(0)\&.x()+slope*(staticData->first()\&.y()-croppedData->at(0)\&.y()));
+1950     (*croppedData)[0]\&.setY(staticData->first()\&.y());
+1951     
+1952     // crop upper bound:
+1953     if (staticData->last()\&.y() < croppedData->last()\&.y()) // other one must be cropped
+1954       qSwap(staticData, croppedData);
+1955     int highBound = findIndexBelowY(croppedData, staticData->last()\&.y());
+1956     if (highBound == -1) return QPolygonF(); // key ranges have no overlap
+1957     croppedData->remove(highBound+1, croppedData->size()-(highBound+1));
+1958     // set highest point of cropped data to fit exactly key position of last static data
+1959     // point via linear interpolation:
+1960     if (croppedData->size() < 2) return QPolygonF(); // need at least two points for interpolation
+1961     int li = croppedData->size()-1; // last index
+1962     if (croppedData->at(li)\&.y()-croppedData->at(li-1)\&.y() != 0) // avoid division by zero in step plots
+1963       slope = (croppedData->at(li)\&.x()-croppedData->at(li-1)\&.x())/(croppedData->at(li)\&.y()-croppedData->at(li-1)\&.y());
+1964     else
+1965       slope = 0;
+1966     (*croppedData)[li]\&.setX(croppedData->at(li-1)\&.x()+slope*(staticData->last()\&.y()-croppedData->at(li-1)\&.y()));
+1967     (*croppedData)[li]\&.setY(staticData->last()\&.y());
+1968   }
+1969   
+1970   // return joined:
+1971   for (int i=otherData\&.size()-1; i>=0; --i) // insert reversed, otherwise the polygon will be twisted
+1972     thisData << otherData\&.at(i);
+1973   return QPolygonF(thisData);
+1974 }
+.fi
+.SS "void QCPGraph::getImpulsePlotData (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const\fC [protected]\fP"
+Places the raw data points needed for an impulse plot in \fIlineData\fP\&.
+.PP
+As for all plot data retrieval functions, \fIpointData\fP just contains all unaltered data (scatter) points that are visible, for drawing scatter points, if necessary\&. If drawing scatter points is disabled (i\&.e\&. scatter style \fBQCP::ssNone\fP), pass 0 as \fIpointData\fP, and the function will skip filling the vector\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawImpulsePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1347 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), getVisibleDataBounds(), key, QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, and QCPAxis::orientation()\&.
+.PP
+Referenced by getPlotData()\&.
+.PP
+.nf
+1348 {
+1349   // get visible data range:
+1350   QCPDataMap::const_iterator lower, upper;
+1351   int dataCount;
+1352   getVisibleDataBounds(lower, upper, dataCount);
+1353   // prepare vectors:
+1354   if (lineData)
+1355   {
+1356     // no need to reserve 2 extra points, because there is no fill for impulse plot
+1357     lineData->resize(dataCount*2);
+1358   }
+1359   if (pointData)
+1360     pointData->resize(dataCount);
+1361   
+1362   // position data points:
+1363   QCPDataMap::const_iterator it = lower;
+1364   QCPDataMap::const_iterator upperEnd = upper+1;
+1365   int i = 0;
+1366   int ipoint = 0;
+1367   if (mKeyAxis->orientation() == Qt::Vertical)
+1368   {
+1369     double zeroPointX = mValueAxis->coordToPixel(0);
+1370     double key;
+1371     while (it != upperEnd)
+1372     {
+1373       if (pointData)
+1374       {
+1375         (*pointData)[ipoint] = it\&.value();
+1376         ++ipoint;
+1377       }
+1378       key = mKeyAxis->coordToPixel(it\&.key());
+1379       (*lineData)[i]\&.setX(zeroPointX);
+1380       (*lineData)[i]\&.setY(key);
+1381       ++i;
+1382       (*lineData)[i]\&.setX(mValueAxis->coordToPixel(it\&.value()\&.value));
+1383       (*lineData)[i]\&.setY(key);
+1384       ++i;
+1385       ++it;
+1386     }
+1387   } else // key axis is horizontal
+1388   {
+1389     double zeroPointY = mValueAxis->coordToPixel(0);
+1390     double key;
+1391     while (it != upperEnd)
+1392     {
+1393       if (pointData)
+1394       {
+1395         (*pointData)[ipoint] = it\&.value();
+1396         ++ipoint;
+1397       }
+1398       key = mKeyAxis->coordToPixel(it\&.key());
+1399       (*lineData)[i]\&.setX(key);
+1400       (*lineData)[i]\&.setY(zeroPointY);
+1401       ++i;
+1402       (*lineData)[i]\&.setX(key);
+1403       (*lineData)[i]\&.setY(mValueAxis->coordToPixel(it\&.value()\&.value));
+1404       ++i;
+1405       ++it;
+1406     }
+1407   }
+1408 }
+.fi
+.SS "\fBQCPRange\fP QCPGraph::getKeyRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+called by rescaleAxes functions to get the full data key bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetValueRange\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 2136 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by rescaleKeyAxis()\&.
+.PP
+.nf
+2137 {
+2138   // just call the specialized version which takes an additional argument whether error bars
+2139   // should also be taken into consideration for range calculation\&. We set this to true here\&.
+2140   return getKeyRange(validRange, inSignDomain, true);
+2141 }
+.fi
+.SS "\fBQCPRange\fP QCPGraph::getKeyRange (bool &validRange, \fBSignDomain\fPinSignDomain, boolincludeErrors) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Allows to specify whether the error bars should be included in the range calculation\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+getKeyRange(bool &validRange, SignDomain inSignDomain) 
+.RE
+.PP
+
+.PP
+Definition at line 2156 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mData, QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, QCPAbstractPlottable::sdPositive, and QCPRange::upper\&.
+.PP
+.nf
+2157 {
+2158   QCPRange range;
+2159   bool haveLower = false;
+2160   bool haveUpper = false;
+2161   
+2162   double current, currentErrorMinus, currentErrorPlus;
+2163   
+2164   if (inSignDomain == sdBoth) // range may be anywhere
+2165   {
+2166     QCPDataMap::const_iterator it = mData->constBegin();
+2167     while (it != mData->constEnd())
+2168     {
+2169       current = it\&.value()\&.key;
+2170       currentErrorMinus = (includeErrors ? it\&.value()\&.keyErrorMinus : 0);
+2171       currentErrorPlus = (includeErrors ? it\&.value()\&.keyErrorPlus : 0);
+2172       if (current-currentErrorMinus < range\&.lower || !haveLower)
+2173       {
+2174         range\&.lower = current-currentErrorMinus;
+2175         haveLower = true;
+2176       }
+2177       if (current+currentErrorPlus > range\&.upper || !haveUpper)
+2178       {
+2179         range\&.upper = current+currentErrorPlus;
+2180         haveUpper = true;
+2181       }
+2182       ++it;
+2183     }
+2184   } else if (inSignDomain == sdNegative) // range may only be in the negative sign domain
+2185   {
+2186     QCPDataMap::const_iterator it = mData->constBegin();
+2187     while (it != mData->constEnd())
+2188     {
+2189       current = it\&.value()\&.key;
+2190       currentErrorMinus = (includeErrors ? it\&.value()\&.keyErrorMinus : 0);
+2191       currentErrorPlus = (includeErrors ? it\&.value()\&.keyErrorPlus : 0);
+2192       if ((current-currentErrorMinus < range\&.lower || !haveLower) && current-currentErrorMinus < 0)
+2193       {
+2194         range\&.lower = current-currentErrorMinus;
+2195         haveLower = true;
+2196       }
+2197       if ((current+currentErrorPlus > range\&.upper || !haveUpper) && current+currentErrorPlus < 0)
+2198       {
+2199         range\&.upper = current+currentErrorPlus;
+2200         haveUpper = true;
+2201       }
+2202       if (includeErrors) // in case point is in valid sign domain but errobars stretch beyond it, we still want to geht that point\&.
+2203       {
+2204         if ((current < range\&.lower || !haveLower) && current < 0)
+2205         {
+2206           range\&.lower = current;
+2207           haveLower = true;
+2208         }
+2209         if ((current > range\&.upper || !haveUpper) && current < 0)
+2210         {
+2211           range\&.upper = current;
+2212           haveUpper = true;
+2213         }
+2214       }
+2215       ++it;
+2216     }
+2217   } else if (inSignDomain == sdPositive) // range may only be in the positive sign domain
+2218   {
+2219     QCPDataMap::const_iterator it = mData->constBegin();
+2220     while (it != mData->constEnd())
+2221     {
+2222       current = it\&.value()\&.key;
+2223       currentErrorMinus = (includeErrors ? it\&.value()\&.keyErrorMinus : 0);
+2224       currentErrorPlus = (includeErrors ? it\&.value()\&.keyErrorPlus : 0);
+2225       if ((current-currentErrorMinus < range\&.lower || !haveLower) && current-currentErrorMinus > 0)
+2226       {
+2227         range\&.lower = current-currentErrorMinus;
+2228         haveLower = true;
+2229       }
+2230       if ((current+currentErrorPlus > range\&.upper || !haveUpper) && current+currentErrorPlus > 0)
+2231       {
+2232         range\&.upper = current+currentErrorPlus;
+2233         haveUpper = true;
+2234       }
+2235       if (includeErrors) // in case point is in valid sign domain but errobars stretch beyond it, we still want to get that point\&.
+2236       {
+2237         if ((current < range\&.lower || !haveLower) && current > 0)
+2238         {
+2239           range\&.lower = current;
+2240           haveLower = true;
+2241         }
+2242         if ((current > range\&.upper || !haveUpper) && current > 0)
+2243         {
+2244           range\&.upper = current;
+2245           haveUpper = true;
+2246         }
+2247       }
+2248       ++it;
+2249     }
+2250   }
+2251   
+2252   validRange = haveLower && haveUpper;
+2253   return range;
+2254 }
+.fi
+.SS "void QCPGraph::getLinePlotData (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const\fC [protected]\fP"
+Places the raw data points needed for a normal linearly connected plot in \fIlineData\fP\&.
+.PP
+As for all plot data retrieval functions, \fIpointData\fP just contains all unaltered data (scatter) points that are visible, for drawing scatter points, if necessary\&. If drawing scatter points is disabled (i\&.e\&. scatter style \fBQCP::ssNone\fP), pass 0 as \fIpointData\fP, and the function will skip filling the vector\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawLinePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1035 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), getVisibleDataBounds(), QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, and QCPAxis::orientation()\&.
+.PP
+Referenced by getPlotData()\&.
+.PP
+.nf
+1036 {
+1037   // get visible data range:
+1038   QCPDataMap::const_iterator lower, upper;
+1039   int dataCount;
+1040   getVisibleDataBounds(lower, upper, dataCount);
+1041   // prepare vectors:
+1042   if (lineData)
+1043   { 
+1044     // added 2 to reserve memory for lower/upper fill base points that might be needed for fill
+1045     lineData->reserve(dataCount+2);
+1046     lineData->resize(dataCount);
+1047   }
+1048   if (pointData)
+1049     pointData->resize(dataCount);
+1050 
+1051   // position data points:
+1052   QCPDataMap::const_iterator it = lower;
+1053   QCPDataMap::const_iterator upperEnd = upper+1;
+1054   int i = 0;
+1055   if (mKeyAxis->orientation() == Qt::Vertical)
+1056   {
+1057     while (it != upperEnd)
+1058     {
+1059       if (pointData)
+1060         (*pointData)[i] = it\&.value();
+1061       (*lineData)[i]\&.setX(mValueAxis->coordToPixel(it\&.value()\&.value));
+1062       (*lineData)[i]\&.setY(mKeyAxis->coordToPixel(it\&.key()));
+1063       ++i;
+1064       ++it;
+1065     }
+1066   } else // key axis is horizontal
+1067   {
+1068     while (it != upperEnd)
+1069     {
+1070       if (pointData)
+1071         (*pointData)[i] = it\&.value();
+1072       (*lineData)[i]\&.setX(mKeyAxis->coordToPixel(it\&.key()));
+1073       (*lineData)[i]\&.setY(mValueAxis->coordToPixel(it\&.value()\&.value));
+1074       ++i;
+1075       ++it;
+1076     }
+1077   }
+1078 }
+.fi
+.SS "void QCPGraph::getPlotData (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const\fC [protected]\fP"
+This function branches out to the line style specific 'get(\&.\&.\&.)PlotData' functions, according to the line style of the graph\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlineData\fP will be filled with raw points that will be drawn with the according draw functions, e\&.g\&. \fBdrawLinePlot\fP and \fBdrawImpulsePlot\fP\&. These aren't necessarily the original data points, since for step plots for example, additional points are needed for drawing lines that make up steps\&. If the line style of the graph is \fBlsNone\fP, the \fIlineData\fP vector will be left untouched\&. 
+.br
+\fIpointData\fP will be filled with the original data points so \fBdrawScatterPlot\fP can draw the scatter symbols accordingly\&. If no scatters need to be drawn, i\&.e\&. scatter style is \fBQCP::ssNone\fP, pass 0 as \fIpointData\fP, and this step will be skipped\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBgetScatterPlotData\fP, \fBgetLinePlotData\fP, \fBgetStepLeftPlotData\fP, \fBgetStepRightPlotData\fP, \fBgetStepCenterPlotData\fP, \fBgetImpulsePlotData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 967 of file qcustomplot\&.cpp\&.
+.PP
+References getImpulsePlotData(), getLinePlotData(), getScatterPlotData(), getStepCenterPlotData(), getStepLeftPlotData(), getStepRightPlotData(), lsImpulse, lsLine, lsNone, lsStepCenter, lsStepLeft, lsStepRight, and mLineStyle\&.
+.PP
+Referenced by draw(), getChannelFillPolygon(), and pointDistance()\&.
+.PP
+.nf
+968 {
+969   switch(mLineStyle)
+970   {
+971     case lsNone: getScatterPlotData(pointData); break;
+972     case lsLine: getLinePlotData(lineData, pointData); break;
+973     case lsStepLeft: getStepLeftPlotData(lineData, pointData); break;
+974     case lsStepRight: getStepRightPlotData(lineData, pointData); break;
+975     case lsStepCenter: getStepCenterPlotData(lineData, pointData); break;
+976     case lsImpulse: getImpulsePlotData(lineData, pointData); break;
+977   }
+978 }
+.fi
+.SS "void QCPGraph::getScatterPlotData (QVector< \fBQCPData\fP > *pointData) const\fC [protected]\fP"
+If line style is \fBlsNone\fP and scatter style is not \fBQCP::ssNone\fP, this function serves at providing the visible data points in \fIpointData\fP, so the \fBdrawScatterPlot\fP function can draw the scatter points accordingly\&.
+.PP
+If line style is not \fBlsNone\fP, this function is not called and the data for the scatter points are (if needed) calculated inside the corresponding other 'get(\&.\&.\&.)PlotData' functions\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawScatterPlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 990 of file qcustomplot\&.cpp\&.
+.PP
+References getVisibleDataBounds(), QCPAbstractPlottable::mKeyAxis, and QCPAxis::orientation()\&.
+.PP
+Referenced by getPlotData(), and pointDistance()\&.
+.PP
+.nf
+991 {
+992   if (!pointData) return;
+993   
+994   // get visible data range:
+995   QCPDataMap::const_iterator lower, upper;
+996   int dataCount;
+997   getVisibleDataBounds(lower, upper, dataCount);
+998   // prepare vectors:
+999   if (pointData)
+1000     pointData->resize(dataCount);
+1001 
+1002   // position data points:
+1003   QCPDataMap::const_iterator it = lower;
+1004   QCPDataMap::const_iterator upperEnd = upper+1;
+1005   int i = 0;
+1006   if (mKeyAxis->orientation() == Qt::Vertical)
+1007   {
+1008     while (it != upperEnd)
+1009     {
+1010       (*pointData)[i] = it\&.value();
+1011       ++i;
+1012       ++it;
+1013     }
+1014   } else // key axis is horizontal
+1015   {
+1016     while (it != upperEnd)
+1017     {
+1018       (*pointData)[i] = it\&.value();
+1019       ++i;
+1020       ++it;
+1021     }
+1022   }
+1023 }
+.fi
+.SS "void QCPGraph::getStepCenterPlotData (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const\fC [protected]\fP"
+Places the raw data points needed for a step plot with centered steps in \fIlineData\fP\&.
+.PP
+As for all plot data retrieval functions, \fIpointData\fP just contains all unaltered data (scatter) points that are visible, for drawing scatter points, if necessary\&. If drawing scatter points is disabled (i\&.e\&. scatter style \fBQCP::ssNone\fP), pass 0 as \fIpointData\fP, and the function will skip filling the vector\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawLinePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1244 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), getVisibleDataBounds(), key, QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, and QCPAxis::orientation()\&.
+.PP
+Referenced by getPlotData()\&.
+.PP
+.nf
+1245 {
+1246   // get visible data range:
+1247   QCPDataMap::const_iterator lower, upper;
+1248   int dataCount;
+1249   getVisibleDataBounds(lower, upper, dataCount);
+1250   // prepare vectors:
+1251   if (lineData)
+1252   {
+1253     // added 2 to reserve memory for lower/upper fill base points that might be needed for base fill
+1254     // multiplied by 2 because step plot needs two polyline points per one actual data point
+1255     lineData->reserve(dataCount*2+2);
+1256     lineData->resize(dataCount*2);
+1257   }
+1258   if (pointData)
+1259     pointData->resize(dataCount);
+1260   
+1261   // position points:
+1262   QCPDataMap::const_iterator it = lower;
+1263   QCPDataMap::const_iterator upperEnd = upper+1;
+1264   int i = 0;
+1265   int ipoint = 0;
+1266   if (mKeyAxis->orientation() == Qt::Vertical)
+1267   {
+1268     double lastKey = mKeyAxis->coordToPixel(it\&.key());
+1269     double lastValue = mValueAxis->coordToPixel(it\&.value()\&.value);
+1270     double key;
+1271     if (pointData)
+1272     {
+1273       (*pointData)[ipoint] = it\&.value();
+1274       ++ipoint;
+1275     }
+1276     (*lineData)[i]\&.setX(lastValue);
+1277     (*lineData)[i]\&.setY(lastKey);
+1278     ++it;
+1279     ++i;
+1280     while (it != upperEnd)
+1281     {
+1282       if (pointData)
+1283       {
+1284         (*pointData)[ipoint] = it\&.value();
+1285         ++ipoint;
+1286       }
+1287       key = (mKeyAxis->coordToPixel(it\&.key())-lastKey)*0\&.5 + lastKey;
+1288       (*lineData)[i]\&.setX(lastValue);
+1289       (*lineData)[i]\&.setY(key);
+1290       ++i;
+1291       lastValue = mValueAxis->coordToPixel(it\&.value()\&.value);
+1292       lastKey = mKeyAxis->coordToPixel(it\&.key());
+1293       (*lineData)[i]\&.setX(lastValue);
+1294       (*lineData)[i]\&.setY(key);
+1295       ++it;
+1296       ++i;
+1297     }
+1298     (*lineData)[i]\&.setX(lastValue);
+1299     (*lineData)[i]\&.setY(lastKey);
+1300   } else // key axis is horizontal
+1301   {
+1302     double lastKey = mKeyAxis->coordToPixel(it\&.key());
+1303     double lastValue = mValueAxis->coordToPixel(it\&.value()\&.value);
+1304     double key;
+1305     if (pointData)
+1306     {
+1307       (*pointData)[ipoint] = it\&.value();
+1308       ++ipoint;
+1309     }
+1310     (*lineData)[i]\&.setX(lastKey);
+1311     (*lineData)[i]\&.setY(lastValue);
+1312     ++it;
+1313     ++i;
+1314     while (it != upperEnd)
+1315     {
+1316       if (pointData)
+1317       {
+1318         (*pointData)[ipoint] = it\&.value();
+1319         ++ipoint;
+1320       }
+1321       key = (mKeyAxis->coordToPixel(it\&.key())-lastKey)*0\&.5 + lastKey;
+1322       (*lineData)[i]\&.setX(key);
+1323       (*lineData)[i]\&.setY(lastValue);
+1324       ++i;
+1325       lastValue = mValueAxis->coordToPixel(it\&.value()\&.value);
+1326       lastKey = mKeyAxis->coordToPixel(it\&.key());
+1327       (*lineData)[i]\&.setX(key);
+1328       (*lineData)[i]\&.setY(lastValue);
+1329       ++it;
+1330       ++i;
+1331     }
+1332     (*lineData)[i]\&.setX(lastKey);
+1333     (*lineData)[i]\&.setY(lastValue);
+1334   }
+1335 }
+.fi
+.SS "void QCPGraph::getStepLeftPlotData (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const\fC [protected]\fP"
+Places the raw data points needed for a step plot with left oriented steps in \fIlineData\fP\&.
+.PP
+As for all plot data retrieval functions, \fIpointData\fP just contains all unaltered data (scatter) points that are visible, for drawing scatter points, if necessary\&. If drawing scatter points is disabled (i\&.e\&. scatter style \fBQCP::ssNone\fP), pass 0 as \fIpointData\fP, and the function will skip filling the vector\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawLinePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1090 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), getVisibleDataBounds(), key, QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, and QCPAxis::orientation()\&.
+.PP
+Referenced by getPlotData()\&.
+.PP
+.nf
+1091 {
+1092   // get visible data range:
+1093   QCPDataMap::const_iterator lower, upper;
+1094   int dataCount;
+1095   getVisibleDataBounds(lower, upper, dataCount);
+1096   // prepare vectors:
+1097   if (lineData)
+1098   {
+1099     // added 2 to reserve memory for lower/upper fill base points that might be needed for fill
+1100     // multiplied by 2 because step plot needs two polyline points per one actual data point
+1101     lineData->reserve(dataCount*2+2);
+1102     lineData->resize(dataCount*2);
+1103   }
+1104   if (pointData)
+1105     pointData->resize(dataCount);
+1106   
+1107   // position data points:
+1108   QCPDataMap::const_iterator it = lower;
+1109   QCPDataMap::const_iterator upperEnd = upper+1;
+1110   int i = 0;
+1111   int ipoint = 0;
+1112   if (mKeyAxis->orientation() == Qt::Vertical)
+1113   {
+1114     double lastValue = mValueAxis->coordToPixel(it\&.value()\&.value);
+1115     double key;
+1116     while (it != upperEnd)
+1117     {
+1118       if (pointData)
+1119       {
+1120         (*pointData)[ipoint] = it\&.value();
+1121         ++ipoint;
+1122       }
+1123       key = mKeyAxis->coordToPixel(it\&.key());
+1124       (*lineData)[i]\&.setX(lastValue);
+1125       (*lineData)[i]\&.setY(key);
+1126       ++i;
+1127       lastValue = mValueAxis->coordToPixel(it\&.value()\&.value);
+1128       (*lineData)[i]\&.setX(lastValue);
+1129       (*lineData)[i]\&.setY(key);
+1130       ++i;
+1131       ++it;
+1132     }
+1133   } else // key axis is horizontal
+1134   {
+1135     double lastValue = mValueAxis->coordToPixel(it\&.value()\&.value);
+1136     double key;
+1137     while (it != upperEnd)
+1138     {
+1139       if (pointData)
+1140       {
+1141         (*pointData)[ipoint] = it\&.value();
+1142         ++ipoint;
+1143       }
+1144       key = mKeyAxis->coordToPixel(it\&.key());
+1145       (*lineData)[i]\&.setX(key);
+1146       (*lineData)[i]\&.setY(lastValue);
+1147       ++i;
+1148       lastValue = mValueAxis->coordToPixel(it\&.value()\&.value);
+1149       (*lineData)[i]\&.setX(key);
+1150       (*lineData)[i]\&.setY(lastValue);
+1151       ++i;
+1152       ++it;
+1153     }
+1154   }
+1155 }
+.fi
+.SS "void QCPGraph::getStepRightPlotData (QVector< QPointF > *lineData, QVector< \fBQCPData\fP > *pointData) const\fC [protected]\fP"
+Places the raw data points needed for a step plot with right oriented steps in \fIlineData\fP\&.
+.PP
+As for all plot data retrieval functions, \fIpointData\fP just contains all unaltered data (scatter) points that are visible, for drawing scatter points, if necessary\&. If drawing scatter points is disabled (i\&.e\&. scatter style \fBQCP::ssNone\fP), pass 0 as \fIpointData\fP, and the function will skip filling the vector\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdrawLinePlot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1167 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), getVisibleDataBounds(), QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, QCPAxis::orientation(), and value\&.
+.PP
+Referenced by getPlotData()\&.
+.PP
+.nf
+1168 {
+1169   // get visible data range:
+1170   QCPDataMap::const_iterator lower, upper;
+1171   int dataCount;
+1172   getVisibleDataBounds(lower, upper, dataCount);
+1173   // prepare vectors:
+1174   if (lineData)
+1175   {
+1176     // added 2 to reserve memory for lower/upper fill base points that might be needed for fill
+1177     // multiplied by 2 because step plot needs two polyline points per one actual data point
+1178     lineData->reserve(dataCount*2+2);
+1179     lineData->resize(dataCount*2);
+1180   }
+1181   if (pointData)
+1182     pointData->resize(dataCount);
+1183   
+1184   // position points:
+1185   QCPDataMap::const_iterator it = lower;
+1186   QCPDataMap::const_iterator upperEnd = upper+1;
+1187   int i = 0;
+1188   int ipoint = 0;
+1189   if (mKeyAxis->orientation() == Qt::Vertical)
+1190   {
+1191     double lastKey = mKeyAxis->coordToPixel(it\&.key());
+1192     double value;
+1193     while (it != upperEnd)
+1194     {
+1195       if (pointData)
+1196       {
+1197         (*pointData)[ipoint] = it\&.value();
+1198         ++ipoint;
+1199       }
+1200       value = mValueAxis->coordToPixel(it\&.value()\&.value);
+1201       (*lineData)[i]\&.setX(value);
+1202       (*lineData)[i]\&.setY(lastKey);
+1203       ++i;
+1204       lastKey = mKeyAxis->coordToPixel(it\&.key());
+1205       (*lineData)[i]\&.setX(value);
+1206       (*lineData)[i]\&.setY(lastKey);
+1207       ++i;
+1208       ++it;
+1209     }
+1210   } else // key axis is horizontal
+1211   {
+1212     double lastKey = mKeyAxis->coordToPixel(it\&.key());
+1213     double value;
+1214     while (it != upperEnd)
+1215     {
+1216       if (pointData)
+1217       {
+1218         (*pointData)[ipoint] = it\&.value();
+1219         ++ipoint;
+1220       }
+1221       value = mValueAxis->coordToPixel(it\&.value()\&.value);
+1222       (*lineData)[i]\&.setX(lastKey);
+1223       (*lineData)[i]\&.setY(value);
+1224       ++i;
+1225       lastKey = mKeyAxis->coordToPixel(it\&.key());
+1226       (*lineData)[i]\&.setX(lastKey);
+1227       (*lineData)[i]\&.setY(value);
+1228       ++i;
+1229       ++it;
+1230     }
+1231   }
+1232 }
+.fi
+.SS "\fBQCPRange\fP QCPGraph::getValueRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+called by rescaleAxes functions to get the full data value bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetKeyRange\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 2144 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by rescaleValueAxis()\&.
+.PP
+.nf
+2145 {
+2146   // just call the specialized version which takes an additional argument whether error bars
+2147   // should also be taken into consideration for range calculation\&. We set this to true here\&.
+2148   return getValueRange(validRange, inSignDomain, true);
+2149 }
+.fi
+.SS "\fBQCPRange\fP QCPGraph::getValueRange (bool &validRange, \fBSignDomain\fPinSignDomain, boolincludeErrors) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Allows to specify whether the error bars should be included in the range calculation\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+getValueRange(bool &validRange, SignDomain inSignDomain) 
+.RE
+.PP
+
+.PP
+Definition at line 2261 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mData, QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, QCPAbstractPlottable::sdPositive, and QCPRange::upper\&.
+.PP
+.nf
+2262 {
+2263   QCPRange range;
+2264   bool haveLower = false;
+2265   bool haveUpper = false;
+2266   
+2267   double current, currentErrorMinus, currentErrorPlus;
+2268   
+2269   if (inSignDomain == sdBoth) // range may be anywhere
+2270   {
+2271     QCPDataMap::const_iterator it = mData->constBegin();
+2272     while (it != mData->constEnd())
+2273     {
+2274       current = it\&.value()\&.value;
+2275       currentErrorMinus = (includeErrors ? it\&.value()\&.valueErrorMinus : 0);
+2276       currentErrorPlus = (includeErrors ? it\&.value()\&.valueErrorPlus : 0);
+2277       if (current-currentErrorMinus < range\&.lower || !haveLower)
+2278       {
+2279         range\&.lower = current-currentErrorMinus;
+2280         haveLower = true;
+2281       }
+2282       if (current+currentErrorPlus > range\&.upper || !haveUpper)
+2283       {
+2284         range\&.upper = current+currentErrorPlus;
+2285         haveUpper = true;
+2286       }
+2287       ++it;
+2288     }
+2289   } else if (inSignDomain == sdNegative) // range may only be in the negative sign domain
+2290   {
+2291     QCPDataMap::const_iterator it = mData->constBegin();
+2292     while (it != mData->constEnd())
+2293     {
+2294       current = it\&.value()\&.value;
+2295       currentErrorMinus = (includeErrors ? it\&.value()\&.valueErrorMinus : 0);
+2296       currentErrorPlus = (includeErrors ? it\&.value()\&.valueErrorPlus : 0);
+2297       if ((current-currentErrorMinus < range\&.lower || !haveLower) && current-currentErrorMinus < 0)
+2298       {
+2299         range\&.lower = current-currentErrorMinus;
+2300         haveLower = true;
+2301       }
+2302       if ((current+currentErrorPlus > range\&.upper || !haveUpper) && current+currentErrorPlus < 0)
+2303       {
+2304         range\&.upper = current+currentErrorPlus;
+2305         haveUpper = true;
+2306       }
+2307       if (includeErrors) // in case point is in valid sign domain but errobars stretch beyond it, we still want to get that point\&.
+2308       {
+2309         if ((current < range\&.lower || !haveLower) && current < 0)
+2310         {
+2311           range\&.lower = current;
+2312           haveLower = true;
+2313         }
+2314         if ((current > range\&.upper || !haveUpper) && current < 0)
+2315         {
+2316           range\&.upper = current;
+2317           haveUpper = true;
+2318         }
+2319       }
+2320       ++it;
+2321     }
+2322   } else if (inSignDomain == sdPositive) // range may only be in the positive sign domain
+2323   {
+2324     QCPDataMap::const_iterator it = mData->constBegin();
+2325     while (it != mData->constEnd())
+2326     {
+2327       current = it\&.value()\&.value;
+2328       currentErrorMinus = (includeErrors ? it\&.value()\&.valueErrorMinus : 0);
+2329       currentErrorPlus = (includeErrors ? it\&.value()\&.valueErrorPlus : 0);
+2330       if ((current-currentErrorMinus < range\&.lower || !haveLower) && current-currentErrorMinus > 0)
+2331       {
+2332         range\&.lower = current-currentErrorMinus;
+2333         haveLower = true;
+2334       }
+2335       if ((current+currentErrorPlus > range\&.upper || !haveUpper) && current+currentErrorPlus > 0)
+2336       {
+2337         range\&.upper = current+currentErrorPlus;
+2338         haveUpper = true;
+2339       }
+2340       if (includeErrors) // in case point is in valid sign domain but errobars stretch beyond it, we still want to geht that point\&.
+2341       {
+2342         if ((current < range\&.lower || !haveLower) && current > 0)
+2343         {
+2344           range\&.lower = current;
+2345           haveLower = true;
+2346         }
+2347         if ((current > range\&.upper || !haveUpper) && current > 0)
+2348         {
+2349           range\&.upper = current;
+2350           haveUpper = true;
+2351         }
+2352       }
+2353       ++it;
+2354     }
+2355   }
+2356   
+2357   validRange = haveLower && haveUpper;
+2358   return range;
+2359 }
+.fi
+.SS "void QCPGraph::getVisibleDataBounds (QCPDataMap::const_iterator &lower, QCPDataMap::const_iterator &upper, int &count) const\fC [protected]\fP"
+called by the specific plot data generating functions 'get(\&.\&.\&.)PlotData' to determine which data range is visible, so only that needs to be processed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlower\fP returns an iterator to the lowest data point that needs to be taken into account when plotting\&. Note that in order to get a clean plot all the way to the edge of the axes, \fIlower\fP may still be outside the visible range\&. 
+.br
+\fIupper\fP returns an iterator to the highest data point\&. Same as before, \fIupper\fP may also lie outside of the visible range\&. 
+.br
+\fIcount\fP number of data points that need plotting, i\&.e\&. points between \fIlower\fP and \fIupper\fP, including them\&. This is useful for allocating the array of QPointFs in the specific drawing functions\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1662 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mData, QCPAbstractPlottable::mKeyAxis, QCPAxis::range(), and QCPRange::upper\&.
+.PP
+Referenced by getImpulsePlotData(), getLinePlotData(), getScatterPlotData(), getStepCenterPlotData(), getStepLeftPlotData(), and getStepRightPlotData()\&.
+.PP
+.nf
+1663 {
+1664   // get visible data range as QMap iterators
+1665   QCPDataMap::const_iterator lbound = mData->lowerBound(mKeyAxis->range()\&.lower);
+1666   QCPDataMap::const_iterator ubound = mData->upperBound(mKeyAxis->range()\&.upper)-1;
+1667   bool lowoutlier = lbound != mData->constBegin(); // indicates whether there exist points below axis range
+1668   bool highoutlier = ubound+1 != mData->constEnd(); // indicates whether there exist points above axis range
+1669   lower = (lowoutlier ? lbound-1 : lbound); // data pointrange that will be actually drawn
+1670   upper = (highoutlier ? ubound+1 : ubound); // data pointrange that will be actually drawn
+1671   
+1672   // count number of points in range lower to upper (including them), so we can allocate array for them in draw functions:
+1673   QCPDataMap::const_iterator it = lower;
+1674   count = 1;
+1675   while (it != upper)
+1676   {
+1677     ++it;
+1678     ++count;
+1679   }
+1680 }
+.fi
+.SS "\fBLineStyle\fP QCPGraph::lineStyle () const\fC [inline]\fP"
+
+.PP
+Definition at line 482 of file qcustomplot\&.h\&.
+.PP
+.nf
+482 { return mLineStyle; }
+.fi
+.SS "QPointF QCPGraph::lowerFillBasePoint (doublelowerKey) const\fC [protected]\fP"
+called by addFillBasePoints to conveniently assign the point which closes the fill polygon on the lower side of the zero-value-line parallel to the key axis\&. The logarithmic axis scale case is a bit special, since the zero-value-line in pixel coordinates is in positive or negative infinity\&. So this case is handled separately by just closing the fill polygon on the axis which lies in the direction towards the zero value\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlowerKey\fP pixel position of the lower key of the point\&. Depending on whether the key axis is horizontal or vertical, \fIlowerKey\fP will end up as the x or y value of the returned point, respectively\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBupperFillBasePoint\fP, \fBaddFillBasePoints\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1733 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::atBottom, QCPAxis::atLeft, QCPAxis::atRight, QCPAxis::atTop, QCPAxis::axisRect(), QCPAxis::axisType(), QCPAxis::coordToPixel(), QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, QCPAxis::orientation(), QCPAxis::range(), QCPAxis::rangeReversed(), QCPAxis::scaleType(), and QCPRange::upper\&.
+.PP
+Referenced by addFillBasePoints()\&.
+.PP
+.nf
+1734 {
+1735   QPointF point;
+1736   if (mValueAxis->scaleType() == QCPAxis::stLinear)
+1737   {
+1738     if (mKeyAxis->axisType() == QCPAxis::atLeft)
+1739     {
+1740       point\&.setX(mValueAxis->coordToPixel(0));
+1741       point\&.setY(lowerKey);
+1742     } else if (mKeyAxis->axisType() == QCPAxis::atRight)
+1743     {
+1744       point\&.setX(mValueAxis->coordToPixel(0));
+1745       point\&.setY(lowerKey);
+1746     } else if (mKeyAxis->axisType() == QCPAxis::atTop)
+1747     {
+1748       point\&.setX(lowerKey);
+1749       point\&.setY(mValueAxis->coordToPixel(0));
+1750     } else if (mKeyAxis->axisType() == QCPAxis::atBottom)
+1751     {
+1752       point\&.setX(lowerKey);
+1753       point\&.setY(mValueAxis->coordToPixel(0));
+1754     }
+1755   } else // mValueAxis->mScaleType == QCPAxis::stLogarithmic
+1756   {
+1757     // In logarithmic scaling we can't just draw to value zero so we just fill all the way
+1758     // to the axis which is in the direction towards zero
+1759     if (mKeyAxis->orientation() == Qt::Vertical)
+1760     {
+1761       if ((mValueAxis->range()\&.upper < 0 && !mValueAxis->rangeReversed()) ||
+1762           (mValueAxis->range()\&.upper > 0 && mValueAxis->rangeReversed())) // if range is negative, zero is on opposite side of key axis
+1763         point\&.setX(mKeyAxis->axisRect()\&.right());
+1764       else
+1765         point\&.setX(mKeyAxis->axisRect()\&.left());
+1766       point\&.setY(lowerKey);
+1767     } else if (mKeyAxis->axisType() == QCPAxis::atTop || mKeyAxis->axisType() == QCPAxis::atBottom)
+1768     {
+1769       point\&.setX(lowerKey);
+1770       if ((mValueAxis->range()\&.upper < 0 && !mValueAxis->rangeReversed()) ||
+1771           (mValueAxis->range()\&.upper > 0 && mValueAxis->rangeReversed())) // if range is negative, zero is on opposite side of key axis
+1772         point\&.setY(mKeyAxis->axisRect()\&.top());
+1773       else
+1774         point\&.setY(mKeyAxis->axisRect()\&.bottom());
+1775     }
+1776   }
+1777   return point;
+1778 }
+.fi
+.SS "double QCPGraph::pointDistance (const QPointF &pixelPoint) const\fC [protected]\fP"
+Calculates the (minimum) distance (in pixels) the graph's representation has from the given \fIpixelPoint\fP in pixels\&. This is used to determine whether the graph was clicked or not, e\&.g\&. in \fBselectTest\fP\&. 
+.PP
+Definition at line 2048 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::coordsToPixels(), QCPAbstractPlottable::distSqrToLine(), getPlotData(), getScatterPlotData(), lsImpulse, lsNone, mData, mLineStyle, QCPAbstractPlottable::mName, mScatterStyle, and QCP::ssNone\&.
+.PP
+Referenced by selectTest()\&.
+.PP
+.nf
+2049 {
+2050   if (mData->isEmpty())
+2051   {
+2052     qDebug() << Q_FUNC_INFO << "requested point distance on graph" << mName << "without data";
+2053     return 500;
+2054   }
+2055   if (mData->size() == 1)
+2056   {
+2057     QPointF dataPoint = coordsToPixels(mData->constBegin()\&.key(), mData->constBegin()\&.value()\&.value);
+2058     return QVector2D(dataPoint-pixelPoint)\&.length();
+2059   }
+2060   
+2061   if (mLineStyle == lsNone && mScatterStyle == QCP::ssNone)
+2062     return 500;
+2063   
+2064   // calculate minimum distances to graph representation:
+2065   if (mLineStyle == lsNone)
+2066   {
+2067     // no line displayed, only calculate distance to scatter points:
+2068     QVector<QCPData> *pointData = new QVector<QCPData>;
+2069     getScatterPlotData(pointData);
+2070     double minDistSqr = std::numeric_limits<double>::max();
+2071     QPointF ptA;
+2072     QPointF ptB = coordsToPixels(pointData->at(0)\&.key, pointData->at(0)\&.value); // getScatterPlotData returns in plot coordinates, so transform to pixels
+2073     for (int i=1; i<pointData->size(); ++i)
+2074     {
+2075       ptA = ptB;
+2076       ptB = coordsToPixels(pointData->at(i)\&.key, pointData->at(i)\&.value);
+2077       double currentDistSqr = distSqrToLine(ptA, ptB, pixelPoint);
+2078       if (currentDistSqr < minDistSqr)
+2079         minDistSqr = currentDistSqr;
+2080     }
+2081     delete pointData;
+2082     return sqrt(minDistSqr);
+2083   } else
+2084   {
+2085     // line displayed calculate distance to line segments:
+2086     QVector<QPointF> *lineData = new QVector<QPointF>;
+2087     getPlotData(lineData, 0); // unlike with getScatterPlotData we get pixel coordinates here
+2088     double minDistSqr = std::numeric_limits<double>::max();
+2089     if (mLineStyle == lsImpulse)
+2090     {
+2091       // impulse plot differs from other line styles in that the lineData points are only pairwise connected:
+2092       for (int i=0; i<lineData->size()-1; i+=2) // iterate pairs
+2093       {
+2094         double currentDistSqr = distSqrToLine(lineData->at(i), lineData->at(i+1), pixelPoint);
+2095         if (currentDistSqr < minDistSqr)
+2096           minDistSqr = currentDistSqr;
+2097       }
+2098     } else 
+2099     {
+2100       // all other line plots (line and step) connect points directly:
+2101       for (int i=0; i<lineData->size()-1; ++i)
+2102       {
+2103         double currentDistSqr = distSqrToLine(lineData->at(i), lineData->at(i+1), pixelPoint);
+2104         if (currentDistSqr < minDistSqr)
+2105           minDistSqr = currentDistSqr;
+2106       }
+2107     }
+2108     delete lineData;
+2109     return sqrt(minDistSqr);
+2110   }
+2111 }
+.fi
+.SS "QCPGraph::Q_ENUMS (\fBLineStyle\fP)\fC [inline]\fP"
+
+.PP
+Defines what kind of error bars are drawn for each data point\&. < No error bars are shown
+.PP
+< Error bars for the key dimension of the data point are shown
+.PP
+< Error bars for the value dimension of the data point are shown
+.PP
+< Error bars for both key and value dimensions of the data point are shown 
+.PP
+Definition at line 466 of file qcustomplot\&.h\&.
+.PP
+.nf
+470                  { etNone   
+471                   ,etKey    
+472                   ,etValue  
+473                   ,etBoth   
+474                  };
+.fi
+.SS "QCPGraph::Q_ENUMS (ErrorType)"
+
+.SS "void QCPGraph::removeData (doublefromKey, doubletoKey)"
+
+.PP
+Removes all data points with keys between \fIfromKey\fP and \fItoKey\fP\&. if \fIfromKey\fP is greater or equal to \fItoKey\fP, the function does nothing\&. To remove a single data point with known key, use \fBremoveData(double key)\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 767 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+768 {
+769   if (fromKey >= toKey || mData->isEmpty()) return;
+770   QCPDataMap::iterator it = mData->upperBound(fromKey);
+771   QCPDataMap::iterator itEnd = mData->upperBound(toKey);
+772   while (it != itEnd)
+773     it = mData->erase(it);
+774 }
+.fi
+.SS "void QCPGraph::removeData (doublekey)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes a single data point at \fIkey\fP\&. If the position is not known with absolute precision, consider using \fBremoveData(double fromKey, double toKey)\fP with a small fuzziness interval around the suspected position, depeding on the precision with which the key is known\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 784 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+785 {
+786   mData->remove(key);
+787 }
+.fi
+.SS "void QCPGraph::removeDataAfter (doublekey)"
+
+.PP
+Removes all data points with keys greater than \fIkey\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 752 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+753 {
+754   if (mData->isEmpty()) return;
+755   QCPDataMap::iterator it = mData->upperBound(key);
+756   while (it != mData->end())
+757     it = mData->erase(it);
+758 }
+.fi
+.SS "void QCPGraph::removeDataBefore (doublekey)"
+
+.PP
+Removes all data points with keys smaller than \fIkey\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 741 of file qcustomplot\&.cpp\&.
+.PP
+References key, and mData\&.
+.PP
+.nf
+742 {
+743   QCPDataMap::iterator it = mData->begin();
+744   while (it != mData->end() && it\&.key() < key)
+745     it = mData->erase(it);
+746 }
+.fi
+.SS "void QCPGraph::removeFillBasePoints (QVector< QPointF > *lineData) const\fC [protected]\fP"
+removes the two points from \fIlineData\fP that were added by addFillBasePoints\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddFillBasePoints\fP, \fBlowerFillBasePoint\fP, \fBupperFillBasePoint\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1715 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by drawFill()\&.
+.PP
+.nf
+1716 {
+1717   lineData->remove(lineData->size()-2, 2);
+1718 }
+.fi
+.SS "void QCPGraph::rescaleAxes (boolonlyEnlarge, boolincludeErrorBars) const\fC [virtual]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Allows to define whether error bars are taken into consideration when determining the new axis range\&. 
+.PP
+Definition at line 812 of file qcustomplot\&.cpp\&.
+.PP
+References rescaleKeyAxis(), and rescaleValueAxis()\&.
+.PP
+.nf
+813 {
+814   rescaleKeyAxis(onlyEnlarge, includeErrorBars);
+815   rescaleValueAxis(onlyEnlarge, includeErrorBars);
+816 }
+.fi
+.SS "void QCPGraph::rescaleKeyAxis (boolonlyEnlarge, boolincludeErrorBars) const\fC [virtual]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Allows to define whether error bars (of kind \fBQCPGraph::etKey\fP) are taken into consideration when determining the new axis range\&. 
+.PP
+Definition at line 823 of file qcustomplot\&.cpp\&.
+.PP
+References getKeyRange(), QCPRange::lower, mData, QCPAbstractPlottable::mKeyAxis, QCPAxis::range(), QCPAxis::scaleType(), QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, QCPAbstractPlottable::sdPositive, QCPAxis::setRange(), and QCPRange::upper\&.
+.PP
+Referenced by rescaleAxes()\&.
+.PP
+.nf
+824 {
+825   // this code is a copy of QCPAbstractPlottable::rescaleKeyAxis with the only change
+826   // that getKeyRange is passed the includeErrorBars value\&.
+827   if (mData->isEmpty()) return;
+828 
+829   SignDomain signDomain = sdBoth;
+830   if (mKeyAxis->scaleType() == QCPAxis::stLogarithmic)
+831     signDomain = (mKeyAxis->range()\&.upper < 0 ? sdNegative : sdPositive);
+832   
+833   bool validRange;
+834   QCPRange newRange = getKeyRange(validRange, signDomain, includeErrorBars);
+835   
+836   if (validRange)
+837   {
+838     if (onlyEnlarge)
+839     {
+840       if (mKeyAxis->range()\&.lower < newRange\&.lower)
+841         newRange\&.lower = mKeyAxis->range()\&.lower;
+842       if (mKeyAxis->range()\&.upper > newRange\&.upper)
+843         newRange\&.upper = mKeyAxis->range()\&.upper;
+844     }
+845     mKeyAxis->setRange(newRange);
+846   }
+847 }
+.fi
+.SS "void QCPGraph::rescaleValueAxis (boolonlyEnlarge, boolincludeErrorBars) const\fC [virtual]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Allows to define whether error bars (of kind \fBQCPGraph::etValue\fP) are taken into consideration when determining the new axis range\&. 
+.PP
+Definition at line 854 of file qcustomplot\&.cpp\&.
+.PP
+References getValueRange(), QCPRange::lower, mData, QCPAbstractPlottable::mValueAxis, QCPAxis::range(), QCPAxis::scaleType(), QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, QCPAbstractPlottable::sdPositive, QCPAxis::setRange(), and QCPRange::upper\&.
+.PP
+Referenced by rescaleAxes()\&.
+.PP
+.nf
+855 {
+856   // this code is a copy of QCPAbstractPlottable::rescaleValueAxis with the only change
+857   // is that getValueRange is passed the includeErrorBars value\&.
+858   if (mData->isEmpty()) return;
+859 
+860   SignDomain signDomain = sdBoth;
+861   if (mValueAxis->scaleType() == QCPAxis::stLogarithmic)
+862     signDomain = (mValueAxis->range()\&.upper < 0 ? sdNegative : sdPositive);
+863   
+864   bool validRange;
+865   QCPRange newRange = getValueRange(validRange, signDomain, includeErrorBars);
+866   
+867   if (validRange)
+868   {
+869     if (onlyEnlarge)
+870     {
+871       if (mValueAxis->range()\&.lower < newRange\&.lower)
+872         newRange\&.lower = mValueAxis->range()\&.lower;
+873       if (mValueAxis->range()\&.upper > newRange\&.upper)
+874         newRange\&.upper = mValueAxis->range()\&.upper;
+875     }
+876     mValueAxis->setRange(newRange);
+877   }
+878 }
+.fi
+.SS "const QPixmap QCPGraph::scatterPixmap () const\fC [inline]\fP"
+
+.PP
+Definition at line 485 of file qcustomplot\&.h\&.
+.PP
+.nf
+485 { return mScatterPixmap; }
+.fi
+.SS "double QCPGraph::scatterSize () const\fC [inline]\fP"
+
+.PP
+Definition at line 484 of file qcustomplot\&.h\&.
+.PP
+.nf
+484 { return mScatterSize; }
+.fi
+.SS "\fBQCP::ScatterStyle\fP QCPGraph::scatterStyle () const\fC [inline]\fP"
+
+.PP
+Definition at line 483 of file qcustomplot\&.h\&.
+.PP
+.nf
+483 { return mScatterStyle; }
+.fi
+.SS "double QCPGraph::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits a plottable or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the plottable (e\&.g\&. to the scatters/lines of a graph)\&. If the plottable is either invisible, contains no data or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the plottable is represented not by single lines but by an area like \fBQCPBars\fP or \fBQCPStatisticalBox\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 799 of file qcustomplot\&.cpp\&.
+.PP
+References mData, QCPLayerable::mVisible, and pointDistance()\&.
+.PP
+.nf
+800 {
+801   if (mData->isEmpty() || !mVisible)
+802     return -1;
+803   
+804   return pointDistance(pos);
+805 }
+.fi
+.SS "void QCPGraph::setChannelFillGraph (\fBQCPGraph\fP *targetGraph)"
+
+.PP
+Sets the target graph for filling the area between this graph and \fItargetGraph\fP with the current brush (\fBsetBrush\fP)\&. When \fItargetGraph\fP is set to 0, a normal graph fill will be produced\&. This means, when the brush is not Qt::NoBrush or fully transparent, a fill all the way to the zero-value-line parallel to the key axis of this graph will be drawn\&. To disable any filling, set the brush to Qt::NoBrush\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetBrush\fP 
+.RE
+.PP
+
+.PP
+Definition at line 671 of file qcustomplot\&.cpp\&.
+.PP
+References mChannelFillGraph, and QCPLayerable::mParentPlot\&.
+.PP
+.nf
+672 {
+673   // prevent setting channel target to this graph itself:
+674   if (targetGraph == this)
+675   {
+676     qDebug() << Q_FUNC_INFO << "targetGraph is this graph itself";
+677     mChannelFillGraph = 0;
+678     return;
+679   }
+680   // prevent setting channel target to a graph not in the plot:
+681   if (targetGraph && targetGraph->mParentPlot != mParentPlot)
+682   {
+683     qDebug() << Q_FUNC_INFO << "targetGraph not in same plot";
+684     mChannelFillGraph = 0;
+685     return;
+686   }
+687   
+688   mChannelFillGraph = targetGraph;
+689 }
+.fi
+.SS "void QCPGraph::setData (\fBQCPDataMap\fP *data, boolcopy = \fCfalse\fP)"
+
+.PP
+Replaces the current data with the provided \fIdata\fP\&. If \fIcopy\fP is set to true, data points in \fIdata\fP will only be copied\&. if false, the graph takes ownership of the passed data and replaces the internal data pointer with it\&. This is significantly faster than copying for large datasets\&. 
+.PP
+Definition at line 373 of file qcustomplot\&.cpp\&.
+.PP
+References data(), and mData\&.
+.PP
+.nf
+374 {
+375   if (copy)
+376   {
+377     *mData = *data;
+378   } else
+379   {
+380     delete mData;
+381     mData = data;
+382   }
+383 }
+.fi
+.SS "void QCPGraph::setData (const QVector< double > &key, const QVector< double > &value)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&. 
+.PP
+Definition at line 391 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+392 {
+393   mData->clear();
+394   int n = key\&.size();
+395   n = qMin(n, value\&.size());
+396   QCPData newData;
+397   for (int i=0; i<n; ++i)
+398   {
+399     newData\&.key = key[i];
+400     newData\&.value = value[i];
+401     mData->insertMulti(newData\&.key, newData);
+402   }
+403 }
+.fi
+.SS "void QCPGraph::setDataBothError (const QVector< double > &key, const QVector< double > &value, const QVector< double > &keyError, const QVector< double > &valueError)"
+
+.PP
+Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. Additionally the symmetrical key and value errors of the data points are set to the values in \fIkeyError\fP and \fIvalueError\fP\&. For error bars to show appropriately, see \fBsetErrorType\fP\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&.
+.PP
+For asymmetrical errors (plus different from minus), see the overloaded version of this function\&. 
+.PP
+Definition at line 520 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+521 {
+522   mData->clear();
+523   int n = key\&.size();
+524   n = qMin(n, value\&.size());
+525   n = qMin(n, valueError\&.size());
+526   n = qMin(n, keyError\&.size());
+527   QCPData newData;
+528   for (int i=0; i<n; ++i)
+529   {
+530     newData\&.key = key[i];
+531     newData\&.value = value[i];
+532     newData\&.keyErrorMinus = keyError[i];
+533     newData\&.keyErrorPlus = keyError[i];
+534     newData\&.valueErrorMinus = valueError[i];
+535     newData\&.valueErrorPlus = valueError[i];
+536     mData->insertMulti(key[i], newData);
+537   }
+538 }
+.fi
+.SS "void QCPGraph::setDataBothError (const QVector< double > &key, const QVector< double > &value, const QVector< double > &keyErrorMinus, const QVector< double > &keyErrorPlus, const QVector< double > &valueErrorMinus, const QVector< double > &valueErrorPlus)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. Additionally the negative key and value errors of the data points are set to the values in \fIkeyErrorMinus\fP and \fIvalueErrorMinus\fP\&. The positive key and value errors are set to the values in \fIkeyErrorPlus\fP \fIvalueErrorPlus\fP\&. For error bars to show appropriately, see \fBsetErrorType\fP\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&. 
+.PP
+Definition at line 549 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+550 {
+551   mData->clear();
+552   int n = key\&.size();
+553   n = qMin(n, value\&.size());
+554   n = qMin(n, valueErrorMinus\&.size());
+555   n = qMin(n, valueErrorPlus\&.size());
+556   n = qMin(n, keyErrorMinus\&.size());
+557   n = qMin(n, keyErrorPlus\&.size());
+558   QCPData newData;
+559   for (int i=0; i<n; ++i)
+560   {
+561     newData\&.key = key[i];
+562     newData\&.value = value[i];
+563     newData\&.keyErrorMinus = keyErrorMinus[i];
+564     newData\&.keyErrorPlus = keyErrorPlus[i];
+565     newData\&.valueErrorMinus = valueErrorMinus[i];
+566     newData\&.valueErrorPlus = valueErrorPlus[i];
+567     mData->insertMulti(key[i], newData);
+568   }
+569 }
+.fi
+.SS "void QCPGraph::setDataKeyError (const QVector< double > &key, const QVector< double > &value, const QVector< double > &keyError)"
+
+.PP
+Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. Additionally the symmetrical key error of the data points are set to the values in \fIkeyError\fP\&. For error bars to show appropriately, see \fBsetErrorType\fP\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&.
+.PP
+For asymmetrical errors (plus different from minus), see the overloaded version of this function\&. 
+.PP
+Definition at line 467 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+468 {
+469   mData->clear();
+470   int n = key\&.size();
+471   n = qMin(n, value\&.size());
+472   n = qMin(n, keyError\&.size());
+473   QCPData newData;
+474   for (int i=0; i<n; ++i)
+475   {
+476     newData\&.key = key[i];
+477     newData\&.value = value[i];
+478     newData\&.keyErrorMinus = keyError[i];
+479     newData\&.keyErrorPlus = keyError[i];
+480     mData->insertMulti(key[i], newData);
+481   }
+482 }
+.fi
+.SS "void QCPGraph::setDataKeyError (const QVector< double > &key, const QVector< double > &value, const QVector< double > &keyErrorMinus, const QVector< double > &keyErrorPlus)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. Additionally the negative key error of the data points are set to the values in \fIkeyErrorMinus\fP, the positive key error to \fIkeyErrorPlus\fP\&. For error bars to show appropriately, see \fBsetErrorType\fP\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&. 
+.PP
+Definition at line 493 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+494 {
+495   mData->clear();
+496   int n = key\&.size();
+497   n = qMin(n, value\&.size());
+498   n = qMin(n, keyErrorMinus\&.size());
+499   n = qMin(n, keyErrorPlus\&.size());
+500   QCPData newData;
+501   for (int i=0; i<n; ++i)
+502   {
+503     newData\&.key = key[i];
+504     newData\&.value = value[i];
+505     newData\&.keyErrorMinus = keyErrorMinus[i];
+506     newData\&.keyErrorPlus = keyErrorPlus[i];
+507     mData->insertMulti(key[i], newData);
+508   }
+509 }
+.fi
+.SS "void QCPGraph::setDataValueError (const QVector< double > &key, const QVector< double > &value, const QVector< double > &valueError)"
+
+.PP
+Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. Additionally the symmetrical value error of the data points are set to the values in \fIvalueError\fP\&. For error bars to show appropriately, see \fBsetErrorType\fP\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&.
+.PP
+For asymmetrical errors (plus different from minus), see the overloaded version of this function\&. 
+.PP
+Definition at line 414 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+415 {
+416   mData->clear();
+417   int n = key\&.size();
+418   n = qMin(n, value\&.size());
+419   n = qMin(n, valueError\&.size());
+420   QCPData newData;
+421   for (int i=0; i<n; ++i)
+422   {
+423     newData\&.key = key[i];
+424     newData\&.value = value[i];
+425     newData\&.valueErrorMinus = valueError[i];
+426     newData\&.valueErrorPlus = valueError[i];
+427     mData->insertMulti(key[i], newData);
+428   }
+429 }
+.fi
+.SS "void QCPGraph::setDataValueError (const QVector< double > &key, const QVector< double > &value, const QVector< double > &valueErrorMinus, const QVector< double > &valueErrorPlus)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Replaces the current data with the provided points in \fIkey\fP and \fIvalue\fP pairs\&. Additionally the negative value error of the data points are set to the values in \fIvalueErrorMinus\fP, the positive value error to \fIvalueErrorPlus\fP\&. For error bars to show appropriately, see \fBsetErrorType\fP\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&. 
+.PP
+Definition at line 440 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+441 {
+442   mData->clear();
+443   int n = key\&.size();
+444   n = qMin(n, value\&.size());
+445   n = qMin(n, valueErrorMinus\&.size());
+446   n = qMin(n, valueErrorPlus\&.size());
+447   QCPData newData;
+448   for (int i=0; i<n; ++i)
+449   {
+450     newData\&.key = key[i];
+451     newData\&.value = value[i];
+452     newData\&.valueErrorMinus = valueErrorMinus[i];
+453     newData\&.valueErrorPlus = valueErrorPlus[i];
+454     mData->insertMulti(key[i], newData);
+455   }
+456 }
+.fi
+.SS "void QCPGraph::setErrorBarSize (doublesize)"
+
+.PP
+Sets the width of the handles at both ends of an error bar in pixels\&. 
+.PP
+Definition at line 643 of file qcustomplot\&.cpp\&.
+.PP
+References mErrorBarSize\&.
+.PP
+.nf
+644 {
+645   mErrorBarSize = size;
+646 }
+.fi
+.SS "void QCPGraph::setErrorBarSkipSymbol (boolenabled)"
+
+.PP
+If \fIenabled\fP is set to true, the error bar will not be drawn as a solid line under the scatter symbol but leave some free space around the symbol\&. This feature uses the current scatter size (\fBsetScatterSize\fP) to determine the size of the area to leave blank\&. So when drawing Pixmaps as scatter points (\fBQCP::ssPixmap\fP), the scatter size must be set manually to a value corresponding to the size of the Pixmap, if the error bars should leave gaps to its boundaries\&. 
+.PP
+Definition at line 657 of file qcustomplot\&.cpp\&.
+.PP
+References mErrorBarSkipSymbol\&.
+.PP
+.nf
+658 {
+659   mErrorBarSkipSymbol = enabled;
+660 }
+.fi
+.SS "void QCPGraph::setErrorPen (const QPen &pen)"
+
+.PP
+Sets the pen with which the error bars will be drawn\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetErrorBarSize\fP, \fBsetErrorType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 635 of file qcustomplot\&.cpp\&.
+.PP
+References mErrorPen, and QCPAbstractPlottable::pen()\&.
+.PP
+.nf
+636 {
+637   mErrorPen = pen;
+638 }
+.fi
+.SS "void QCPGraph::setErrorType (ErrorTypeerrorType)"
+
+.PP
+Sets which kind of error bars (Key Error, Value Error or both) should be drawn on each data point\&. If you set \fIerrorType\fP to something other than \fBetNone\fP, make sure to actually pass error data via the specific setData functions along with the data points (e\&.g\&. \fBsetDataValueError\fP, \fBsetDataKeyError\fP, \fBsetDataBothError\fP)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+ErrorType 
+.RE
+.PP
+
+.PP
+Definition at line 626 of file qcustomplot\&.cpp\&.
+.PP
+References errorType(), and mErrorType\&.
+.PP
+.nf
+627 {
+628   mErrorType = errorType;
+629 }
+.fi
+.SS "void QCPGraph::setLineStyle (\fBLineStyle\fPls)"
+
+.PP
+Sets how the single data points are connected in the plot or how they are represented visually apart from the scatter symbol\&. For scatter-only plots, set \fIls\fP to \fBlsNone\fP and \fBsetScatterStyle\fP to the desired scatter style\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetScatterStyle\fP 
+.RE
+.PP
+
+.PP
+Definition at line 579 of file qcustomplot\&.cpp\&.
+.PP
+References mLineStyle\&.
+.PP
+.nf
+580 {
+581   mLineStyle = ls;
+582 }
+.fi
+.SS "void QCPGraph::setScatterPixmap (const QPixmap &pixmap)"
+
+.PP
+If the scatter style (\fBsetScatterStyle\fP) is set to ssPixmap, this function defines the QPixmap that will be drawn centered on the data point coordinate\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+ScatterStyle 
+.RE
+.PP
+
+.PP
+Definition at line 613 of file qcustomplot\&.cpp\&.
+.PP
+References mScatterPixmap\&.
+.PP
+.nf
+614 {
+615   mScatterPixmap = pixmap;
+616 }
+.fi
+.SS "void QCPGraph::setScatterSize (doublesize)"
+
+.PP
+This defines how big (in pixels) single scatters are drawn, if scatter style (\fBsetScatterStyle\fP) isn't \fBQCP::ssNone\fP, \fBQCP::ssDot\fP or \fBQCP::ssPixmap\fP\&. Floating point values are allowed for fine grained control over optical appearance with antialiased painting\&.
+.PP
+\fBSee also:\fP
+.RS 4
+ScatterStyle 
+.RE
+.PP
+
+.PP
+Definition at line 602 of file qcustomplot\&.cpp\&.
+.PP
+References mScatterSize\&.
+.PP
+.nf
+603 {
+604   mScatterSize = size;
+605 }
+.fi
+.SS "void QCPGraph::setScatterStyle (\fBQCP::ScatterStyle\fPss)"
+
+.PP
+Sets the visual appearance of single data points in the plot\&. If set to \fBQCP::ssNone\fP, no scatter points are drawn (e\&.g\&. for line-only-plots with appropriate line style)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+ScatterStyle, \fBsetLineStyle\fP 
+.RE
+.PP
+
+.PP
+Definition at line 590 of file qcustomplot\&.cpp\&.
+.PP
+References mScatterStyle\&.
+.PP
+.nf
+591 {
+592   mScatterStyle = ss;
+593 }
+.fi
+.SS "QPointF QCPGraph::upperFillBasePoint (doubleupperKey) const\fC [protected]\fP"
+called by addFillBasePoints to conveniently assign the point which closes the fill polygon on the upper side of the zero-value-line parallel to the key axis\&. The logarithmic axis scale case is a bit special, since the zero-value-line in pixel coordinates is in positive or negative infinity\&. So this case is handled separately by just closing the fill polygon on the axis which lies in the direction towards the zero value\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIupperKey\fP pixel position of the upper key of the point\&. Depending on whether the key axis is horizontal or vertical, \fIupperKey\fP will end up as the x or y value of the returned point, respectively\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBlowerFillBasePoint\fP, \fBaddFillBasePoints\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1793 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::atBottom, QCPAxis::atLeft, QCPAxis::atRight, QCPAxis::atTop, QCPAxis::axisRect(), QCPAxis::axisType(), QCPAxis::coordToPixel(), QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, QCPAxis::orientation(), QCPAxis::range(), QCPAxis::rangeReversed(), QCPAxis::scaleType(), and QCPRange::upper\&.
+.PP
+Referenced by addFillBasePoints()\&.
+.PP
+.nf
+1794 {
+1795   QPointF point;
+1796   if (mValueAxis->scaleType() == QCPAxis::stLinear)
+1797   {
+1798     if (mKeyAxis->axisType() == QCPAxis::atLeft)
+1799     {
+1800       point\&.setX(mValueAxis->coordToPixel(0));
+1801       point\&.setY(upperKey);
+1802     } else if (mKeyAxis->axisType() == QCPAxis::atRight)
+1803     {
+1804       point\&.setX(mValueAxis->coordToPixel(0));
+1805       point\&.setY(upperKey);
+1806     } else if (mKeyAxis->axisType() == QCPAxis::atTop)
+1807     {
+1808       point\&.setX(upperKey);
+1809       point\&.setY(mValueAxis->coordToPixel(0));
+1810     } else if (mKeyAxis->axisType() == QCPAxis::atBottom)
+1811     {
+1812       point\&.setX(upperKey);
+1813       point\&.setY(mValueAxis->coordToPixel(0));
+1814     }
+1815   } else // mValueAxis->mScaleType == QCPAxis::stLogarithmic
+1816   {
+1817     // In logarithmic scaling we can't just draw to value 0 so we just fill all the way
+1818     // to the axis which is in the direction towards 0
+1819     if (mKeyAxis->orientation() == Qt::Vertical)
+1820     {
+1821       if ((mValueAxis->range()\&.upper < 0 && !mValueAxis->rangeReversed()) ||
+1822           (mValueAxis->range()\&.upper > 0 && mValueAxis->rangeReversed())) // if range is negative, zero is on opposite side of key axis
+1823         point\&.setX(mKeyAxis->axisRect()\&.right());
+1824       else
+1825         point\&.setX(mKeyAxis->axisRect()\&.left());
+1826       point\&.setY(upperKey);
+1827     } else if (mKeyAxis->axisType() == QCPAxis::atTop || mKeyAxis->axisType() == QCPAxis::atBottom)
+1828     {
+1829       point\&.setX(upperKey);
+1830       if ((mValueAxis->range()\&.upper < 0 && !mValueAxis->rangeReversed()) ||
+1831           (mValueAxis->range()\&.upper > 0 && mValueAxis->rangeReversed())) // if range is negative, zero is on opposite side of key axis
+1832         point\&.setY(mKeyAxis->axisRect()\&.top());
+1833       else
+1834         point\&.setY(mKeyAxis->axisRect()\&.bottom());
+1835     }
+1836   }
+1837   return point;
+1838 }
+.fi
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBQCPLegend\fP\fC [friend]\fP"
+
+.PP
+Definition at line 579 of file qcustomplot\&.h\&.
+.SS "friend class \fBQCustomPlot\fP\fC [friend]\fP"
+
+.PP
+Definition at line 578 of file qcustomplot\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPGraph\fP* QCPGraph::mChannelFillGraph\fC [protected]\fP"
+
+.PP
+Definition at line 539 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawFill(), getChannelFillPolygon(), and setChannelFillGraph()\&.
+.SS "\fBQCPDataMap\fP* QCPGraph::mData\fC [protected]\fP"
+
+.PP
+Definition at line 530 of file qcustomplot\&.h\&.
+.PP
+Referenced by addData(), clearData(), draw(), getKeyRange(), getValueRange(), getVisibleDataBounds(), pointDistance(), removeData(), removeDataAfter(), removeDataBefore(), rescaleKeyAxis(), rescaleValueAxis(), selectTest(), setData(), setDataBothError(), setDataKeyError(), setDataValueError(), and ~QCPGraph()\&.
+.SS "double QCPGraph::mErrorBarSize\fC [protected]\fP"
+
+.PP
+Definition at line 537 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawError(), and setErrorBarSize()\&.
+.SS "bool QCPGraph::mErrorBarSkipSymbol\fC [protected]\fP"
+
+.PP
+Definition at line 538 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawError(), and setErrorBarSkipSymbol()\&.
+.SS "QPen QCPGraph::mErrorPen\fC [protected]\fP"
+
+.PP
+Definition at line 531 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawScatterPlot(), and setErrorPen()\&.
+.SS "ErrorType QCPGraph::mErrorType\fC [protected]\fP"
+
+.PP
+Definition at line 536 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawError(), drawScatterPlot(), and setErrorType()\&.
+.SS "\fBLineStyle\fP QCPGraph::mLineStyle\fC [protected]\fP"
+
+.PP
+Definition at line 532 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawFill(), drawLegendIcon(), getPlotData(), pointDistance(), and setLineStyle()\&.
+.SS "QPixmap QCPGraph::mScatterPixmap\fC [protected]\fP"
+
+.PP
+Definition at line 535 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawLegendIcon(), drawScatterPlot(), and setScatterPixmap()\&.
+.SS "double QCPGraph::mScatterSize\fC [protected]\fP"
+
+.PP
+Definition at line 534 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawError(), drawLegendIcon(), drawScatterPlot(), and setScatterSize()\&.
+.SS "\fBQCP::ScatterStyle\fP QCPGraph::mScatterStyle\fC [protected]\fP"
+
+.PP
+Definition at line 533 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawLegendIcon(), drawScatterPlot(), pointDistance(), and setScatterStyle()\&.
+.SS "\fBQCPAxis\fP* QCPGraph::valueAxis"
+
+.PP
+Definition at line 477 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPItemTracer::setGraph()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

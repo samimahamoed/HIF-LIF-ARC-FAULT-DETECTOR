@@ -1,0 +1,19 @@
+<map id="QCPItemText::QCPItemText" name="QCPItemText::QCPItemText">
+<area shape="rect" id="node2" href="$dd/d32/a00041.html#a1c7e131516df2ed8d941ef31240ded8e" title="Sets the brush that will be used do fill the background of the text. " alt="" coords="265,148,425,175"/>
+<area shape="rect" id="node4" href="$dd/d32/a00041.html#aa51efc0841fe52da9eaf8aff6fc8a8b2" title="Sets the color of the text. " alt="" coords="267,199,423,225"/>
+<area shape="rect" id="node6" href="$d8/d41/a00038.html#aa988ba4e87ab684c9021017dcaba945f" title="Sets the coordinates of this QCPItemPosition. " alt="" coords="250,31,439,57"/>
+<area shape="rect" id="node9" href="$dd/d32/a00041.html#a9b9ec6eea0eb0603977ff84d4c78d0a3" title="Sets the pen that will be used do draw a rectangular border around the text. " alt="" coords="270,484,419,511"/>
+<area shape="rect" id="node11" href="$dd/d32/a00041.html#a781cdf8c640fc6a055dcff1e675c8c7a" title="Sets which point of the text rect shall be aligned with position. " alt="" coords="258,250,431,291"/>
+<area shape="rect" id="node12" href="$dd/d32/a00041.html#a4bcc10cd97952c3f749d75824b5077f0" title="Sets the angle in degrees by which the text (and the text rectangle, if visible) will be rotated arou..." alt="" coords="257,316,432,343"/>
+<area shape="rect" id="node13" href="$dd/d32/a00041.html#a6b8377eeb2af75eb9528422671ac16cb" title="Sets the brush that will be used do fill the background of the text, when the item is selected..." alt="" coords="256,82,433,123"/>
+<area shape="rect" id="node14" href="$dd/d32/a00041.html#ae7ba0bdb75c897b028388e45bfd435fa" title="Sets the color of the text that will be used when the item is selected. " alt="" coords="256,367,433,409"/>
+<area shape="rect" id="node15" href="$dd/d32/a00041.html#a291febe586f0da3f1c392e77bef4aa20" title="Sets the pen that will be used do draw a rectangular border around the text, when the item is selecte..." alt="" coords="245,433,445,460"/>
+<area shape="rect" id="node16" href="$dd/d32/a00041.html#a3dacdda0ac88f99a05b333b977c48747" title="Sets the text that will be displayed. " alt="" coords="269,535,420,561"/>
+<area shape="rect" id="node18" href="$dd/d32/a00041.html#ab5bc0684c4d1bed81949a11b34dba478" title="Controls how (multi&#45;lined) text is aligned inside the text rect (typically Qt::AlignLeft, Qt::AlignCenter or Qt::AlignRight). " alt="" coords="240,585,449,612"/>
+<area shape="rect" id="node3" href="$dd/d32/a00041.html#a38b981dfacb703efa8e27346eebcb5a2" title="QCPItemText::brush" alt="" coords="507,128,647,155"/>
+<area shape="rect" id="node5" href="$dd/d32/a00041.html#ac9cb0a8a27f64d1b40855910ea9ebd03" title="QCPItemText::color" alt="" coords="509,287,645,313"/>
+<area shape="rect" id="node7" href="$d8/d41/a00038.html#ac3cb2bddf5f89e5181830be30b93d090" title="QCPItemPosition::key" alt="" coords="501,5,652,32"/>
+<area shape="rect" id="node8" href="$d8/d41/a00038.html#a6817f7356d3a2b63e8446c6b6106dae1" title="QCPItemPosition::value" alt="" coords="497,56,656,83"/>
+<area shape="rect" id="node10" href="$dd/d32/a00041.html#a552bd02f46dbcb4b4812559036893352" title="QCPItemText::pen" alt="" coords="512,459,641,485"/>
+<area shape="rect" id="node17" href="$dd/d32/a00041.html#a9547f7832010486abed0837e75db5330" title="QCPItemText::text" alt="" coords="511,535,642,561"/>
+</map>

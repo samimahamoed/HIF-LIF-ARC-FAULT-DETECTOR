@@ -1,0 +1,73 @@
+\hypertarget{a00057}{\section{Q\+Hann\+Function$<$ T $>$ Class Template Reference}
+\label{a00057}\index{Q\+Hann\+Function$<$ T $>$@{Q\+Hann\+Function$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$qwindowfunction.\+h$>$}
+
+
+
+Inheritance diagram for Q\+Hann\+Function$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{dc/d20/a00534}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+Hann\+Function$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{d7/d84/a00535}
+\end{center}
+\end{figure}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{a00057_a4c93ae740237871fc75e3bea81521f35}{calculate} (int current\+Sample, int total\+Samples)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class Q\+Hann\+Function$<$ T $>$}
+
+
+
+Definition at line \hyperlink{a00128_source_l00127}{127} of file \hyperlink{a00128_source}{qwindowfunction.\+h}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00057_a4c93ae740237871fc75e3bea81521f35}{\index{Q\+Hann\+Function@{Q\+Hann\+Function}!calculate@{calculate}}
+\index{calculate@{calculate}!Q\+Hann\+Function@{Q\+Hann\+Function}}
+\subsubsection[{calculate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T {\bf Q\+Hann\+Function}$<$ T $>$\+::calculate (
+\begin{DoxyParamCaption}
+\item[{int}]{current\+Sample, }
+\item[{int}]{total\+Samples}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00057_a4c93ae740237871fc75e3bea81521f35}
+
+
+Implements \hyperlink{a00071_ad58fa8c208b487dc2cbe765053228068}{Q\+Window\+Function$<$ T $>$}.
+
+
+
+Definition at line \hyperlink{a00127_source_l00155}{155} of file \hyperlink{a00127_source}{qwindowfunction.\+cpp}.
+
+
+\begin{DoxyCode}
+00156 \{
+00157     \textcolor{keywordflow}{return} 0.5 * (1 - qCos((2 * M\_PI * currentSample) / (totalSamples - 1)));
+00158 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00128}{qwindowfunction.\+h}\item 
+\hyperlink{a00127}{qwindowfunction.\+cpp}\end{DoxyCompactItemize}

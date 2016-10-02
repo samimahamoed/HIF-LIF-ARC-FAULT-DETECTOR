@@ -1,0 +1,118 @@
+.TH "analog_sv_scan.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+analog_sv_scan.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+\fC#include '\&.\&.\\\&.\&.\\includes_prv\\aq0X\\algorithm_prv\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB__attribute__\fP ((__interrupt__, auto_psv))"
+.br
+.RI "\fIFast timer interrupt to scan sensor element analog values\&. \fP"
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void __attribute__ ((__interrupt__, auto_psv))"
+
+.PP
+Fast timer interrupt to scan sensor element analog values\&. Serial port transmit interrupt\&.
+.PP
+Processe also delay blocks from concerned modules req REQ-8a: 'Read the sensor inputs ' Sensors and inputs are read and filtered\&.
+.PP
+Definition at line 25 of file analog_sv_scan\&.c\&.
+.PP
+References algorithm_data, algorithm_wake(), ANA_INDEX_IR, ANA_INDEX_MFIELD_X, ANA_INDEX_MFIELD_Y, ANA_INDEX_UV, data_non_volatile, algorithm_data_t::diagnosis, DIG_TEST_LED_LAT, EVENT_CLEARED, EVENT_SV_ALARM, HOT, hwio_get_analog(), ir_sen_get_status(), IRQ_CTX_T, IRQ_DISABLE, IRQ_ENABLE, logv, mfield_x_sen_get_status(), mfield_y_sen_get_status(), algorithm_data_t::modules_state_sv, NOV_HOLD_CTRL_LAT, nov_wr_inprogress, SET_CPU_IPL, logv_t::sv_delay, logv_t::tick, logv_t::trip_active, TRUE, and uv_sen_get_status()\&.
+.PP
+.nf
+26 {
+27         
+28   IRQ_CTX_T   irq_ctx;
+29   IRQ_DISABLE(irq_ctx); 
+30 
+31 
+32 
+33     if(nov_wr_inprogress==TRUE)
+34         //If nov operation is on progress suspend for a moment
+35         NOV_HOLD_CTRL_LAT = 0;
+36 
+37   // Increment tick - used as fast timestamp
+38     logv\&.tick++;
+39 
+47 #if(TEST_MODE)
+48     //For timing measurements only - prolog
+49     DIG_TEST_LED_LAT =1;
+50 #endif
+51     if(data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.ir)
+52          algorithm_data\&.modules_state_sv\&.ir_sen = ir_sen_get_status(hwio_get_analog(ANA_INDEX_IR),0);
+53 
+54     if(data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.uv)
+55           algorithm_data\&.modules_state_sv\&.uv_sen = uv_sen_get_status(hwio_get_analog(ANA_INDEX_UV),0);
+56 
+57     if(data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.mfield_x)
+58           algorithm_data\&.modules_state_sv\&.mfield_x_sen = mfield_x_sen_get_status(hwio_get_analog(ANA_INDEX_MFIELD_X),0);
+59 
+60   #if(DEVICE == AQ0X_V1)
+61     if(data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.mfield_y)
+62          algorithm_data\&.modules_state_sv\&.mfield_y_sen = mfield_y_sen_get_status(hwio_get_analog(ANA_INDEX_MFIELD_Y),0);
+63   #endif
+64 
+65 
+66 
+67      if(
+68         (algorithm_data\&.modules_state_sv\&.ir_sen\&.fields\&.state == HOT)
+69        || (algorithm_data\&.modules_state_sv\&.uv_sen\&.fields\&.state == HOT)
+70        )
+71        algorithm_wake(EVENT_SV_ALARM);
+72      else if(logv\&.trip_active == TRUE)
+73           algorithm_wake(EVENT_CLEARED);
+74     
+75 
+76 
+77      if(logv\&.sv_delay\&.cnt > 0)
+78          if((--logv\&.sv_delay\&.cnt) == 0)
+79              algorithm_wake(logv\&.sv_delay\&.type);
+80 
+81 
+82      if(algorithm_data\&.diagnosis\&.false_alarm\&.ir\&.delay > 0)
+83         algorithm_data\&.diagnosis\&.false_alarm\&.ir\&.delay--;
+84 
+85      if(algorithm_data\&.diagnosis\&.false_alarm\&.uv\&.delay > 0)
+86         algorithm_data\&.diagnosis\&.false_alarm\&.uv\&.delay--;
+87 
+88     
+89      
+90 
+91 
+92 #if(TEST_MODE)
+93     //For timing measurements only - prolog
+94     DIG_TEST_LED_LAT =0;     
+95 #endif
+96 
+97 
+98 
+99      
+100   
+101     if((nov_wr_inprogress==1) && (NOV_HOLD_CTRL_LAT == 0))
+102         //Restart suspended nov operation
+103     NOV_HOLD_CTRL_LAT = 1;
+104 
+105     IFS0bits\&.T1IF = 0;    // Clear Timer1 Interrupt Flag
+106     
+107    IRQ_ENABLE(irq_ctx);
+108    SET_CPU_IPL(6);       // Fix for core interrupt in-interupt issue
+109 
+110 
+111 }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

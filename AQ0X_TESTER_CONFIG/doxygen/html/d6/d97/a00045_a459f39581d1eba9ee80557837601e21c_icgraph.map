@@ -1,0 +1,6 @@
+<map id="QCPLegend::selectable" name="QCPLegend::selectable">
+<area shape="rect" id="node2" href="$d6/d97/a00045.html#a44cdc6af6cd6e62a2bd827c3236c7261" title="QCPLegend::handleLegendSelection" alt="" coords="212,5,447,32"/>
+<area shape="rect" id="node4" href="$d6/d97/a00045.html#aae042f6211e39305d13f7b18c1c301d9" title="Sets whether the user can (de&#45;)select the parts in selectable by clicking on the QCustomPlot surface..." alt="" coords="240,56,419,83"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="510,5,650,32"/>
+<area shape="rect" id="node5" href="$d6/d97/a00045.html#a5dc42d73df80e7294414aee1170c4d2b" title="Constructs a new QCPLegend instance with parentPlot as the containing plot and default values..." alt="" coords="495,56,665,83"/>
+</map>

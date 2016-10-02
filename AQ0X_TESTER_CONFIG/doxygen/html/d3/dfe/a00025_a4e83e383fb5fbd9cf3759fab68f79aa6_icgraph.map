@@ -1,0 +1,5 @@
+<map id="QCPAxis::selectable" name="QCPAxis::selectable">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#ac68d1c81004fded1f3c4ca95879a445d" title="QCPAxis::handleAxisSelection" alt="" coords="196,5,399,32"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#afa988209bf6519f63d6ef2e615dbe1ea" title="Sets whether the user can (de&#45;)select the parts in selectable by clicking on the QCustomPlot surface..." alt="" coords="216,56,379,83"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#a5a34dafa051be08d03e89c163c507f90" title="Constructs an Axis instance of Type type inside parentPlot. " alt="" coords="447,56,585,83"/>
+</map>

@@ -1,0 +1,1323 @@
+.TH "QCPAbstractPlottable" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPAbstractPlottable \- 
+.PP
+The abstract base class for all data representing objects in a plot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPLayerable\fP\&.
+.PP
+Inherited by \fBQCPBars\fP, \fBQCPCurve\fP, \fBQCPGraph\fP, and \fBQCPStatisticalBox\fP\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBselectionChanged\fP (bool \fBselected\fP)"
+.br
+.RI "\fIThis signal is emitted when the selection state of this plottable has changed, either by user interaction or by a direct call to \fBsetSelected\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPAbstractPlottable\fP (\fBQCPAxis\fP *\fBkeyAxis\fP, \fBQCPAxis\fP *\fBvalueAxis\fP)"
+.br
+.RI "\fIConstructs an abstract plottable which uses \fIkeyAxis\fP as its key axis ('x') and \fIvalueAxis\fP as its value axis ('y')\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPAbstractPlottable\fP ()"
+.br
+.ti -1c
+.RI "QString \fBname\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasedFill\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasedScatters\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasedErrorBars\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBbrush\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBselectedBrush\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBkeyAxis\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBvalueAxis\fP () const "
+.br
+.ti -1c
+.RI "bool \fBselectable\fP () const "
+.br
+.ti -1c
+.RI "bool \fBselected\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetName\fP (const QString &\fBname\fP)"
+.br
+.RI "\fIThe name is the textual representation of this plottable as it is displayed in the \fBQCPLegend\fP of the parent \fBQCustomPlot\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedFill\fP (bool enabled)"
+.br
+.RI "\fISets whether fills of this plottable is drawn antialiased or not\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedScatters\fP (bool enabled)"
+.br
+.RI "\fISets whether the scatter symbols of this plottable are drawn antialiased or not\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedErrorBars\fP (bool enabled)"
+.br
+.RI "\fISets whether the error bars of this plottable are drawn antialiased or not\&. \fP"
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fIThe pen is used to draw basic lines that make up the plottable representation in the plot\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fIWhen the plottable is selected, this pen is used to draw basic lines instead of the normal pen set via \fBsetPen\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fIThe brush is used to draw basic fills of the plottable representation in the plot\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fIWhen the plottable is selected, this brush is used to draw fills instead of the normal brush set via \fBsetBrush\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetKeyAxis\fP (\fBQCPAxis\fP *axis)"
+.br
+.RI "\fIThe key axis of a plottable can be set to any axis of a \fBQCustomPlot\fP, as long as it is orthogonal to the plottable's value axis\&. \fP"
+.ti -1c
+.RI "void \fBsetValueAxis\fP (\fBQCPAxis\fP *axis)"
+.br
+.RI "\fIThe value axis of a plottable can be set to any axis of a \fBQCustomPlot\fP, as long as it is orthogonal to the plottable's key axis\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectable\fP (bool \fBselectable\fP)"
+.br
+.RI "\fISets whether the user can (de-)select this plottable by clicking on the \fBQCustomPlot\fP surface\&. \fP"
+.ti -1c
+.RI "void \fBsetSelected\fP (bool \fBselected\fP)"
+.br
+.RI "\fISets whether this plottable is selected or not\&. \fP"
+.ti -1c
+.RI "void \fBrescaleAxes\fP (bool onlyEnlarge=false) const "
+.br
+.RI "\fIRescales the key and value axes associated with this plottable to contain all displayed data, so the whole plottable is visible\&. \fP"
+.ti -1c
+.RI "void \fBrescaleKeyAxis\fP (bool onlyEnlarge=false) const "
+.br
+.RI "\fIRescales the key axis of the plottable so the whole plottable is visible\&. \fP"
+.ti -1c
+.RI "void \fBrescaleValueAxis\fP (bool onlyEnlarge=false) const "
+.br
+.RI "\fIRescales the value axis of the plottable so the whole plottable is visible\&. \fP"
+.ti -1c
+.RI "virtual void \fBclearData\fP ()=0"
+.br
+.RI "\fIClears all data in the plottable\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const =0"
+.br
+.RI "\fIThis function is used to decide whether a click hits a plottable or not\&. \fP"
+.ti -1c
+.RI "virtual bool \fBaddToLegend\fP ()"
+.br
+.RI "\fIAdds this plottable to the legend of the parent \fBQCustomPlot\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBremoveFromLegend\fP () const "
+.br
+.RI "\fIRemoves the plottable from the legend of the parent \fBQCustomPlot\fP\&. \fP"
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSignDomain\fP { \fBsdNegative\fP, \fBsdBoth\fP, \fBsdPositive\fP }"
+.br
+.RI "\fIRepresents negative and positive sign domain for passing to \fBgetKeyRange\fP and \fBgetValueRange\fP\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual QRect \fBclipRect\fP () const "
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)=0"
+.br
+.ti -1c
+.RI "virtual void \fBdrawLegendIcon\fP (\fBQCPPainter\fP *painter, const QRect &rect) const =0"
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetKeyRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const =0"
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetValueRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const =0"
+.br
+.ti -1c
+.RI "void \fBcoordsToPixels\fP (double \fBkey\fP, double \fBvalue\fP, double &x, double &y) const "
+.br
+.ti -1c
+.RI "const QPointF \fBcoordsToPixels\fP (double \fBkey\fP, double \fBvalue\fP) const "
+.br
+.ti -1c
+.RI "void \fBpixelsToCoords\fP (double x, double y, double &\fBkey\fP, double &\fBvalue\fP) const "
+.br
+.ti -1c
+.RI "void \fBpixelsToCoords\fP (const QPointF &pixelPos, double &\fBkey\fP, double &\fBvalue\fP) const "
+.br
+.ti -1c
+.RI "QPen \fBmainPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBmainBrush\fP () const "
+.br
+.ti -1c
+.RI "void \fBapplyDefaultAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "void \fBapplyFillAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "void \fBapplyScattersAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "void \fBapplyErrorBarsAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "double \fBdistSqrToLine\fP (const QPointF &start, const QPointF &end, const QPointF &point) const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QString \fBmName\fP"
+.br
+.ti -1c
+.RI "bool \fBmAntialiasedFill\fP"
+.br
+.ti -1c
+.RI "bool \fBmAntialiasedScatters\fP"
+.br
+.ti -1c
+.RI "bool \fBmAntialiasedErrorBars\fP"
+.br
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedPen\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmBrush\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmSelectedBrush\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmKeyAxis\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmValueAxis\fP"
+.br
+.ti -1c
+.RI "bool \fBmSelected\fP"
+.br
+.ti -1c
+.RI "bool \fBmSelectable\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCPPlottableLegendItem\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The abstract base class for all data representing objects in a plot\&. 
+
+It defines a very basic interface like name, pen, brush, visibility etc\&. Since this class is abstract, it can't be instantiated\&. Use one of the subclasses or create a subclass yourself (see below), to create new ways of displaying data\&.
+.PP
+All further specifics are in the subclasses, for example: 
+.PD 0
+
+.IP "\(bu" 2
+A normal graph with possibly a line, scatter points and error bars is displayed by \fBQCPGraph\fP (typically created with \fBQCustomPlot::addGraph\fP)\&. 
+.IP "\(bu" 2
+A parametric curve can be displayed with \fBQCPCurve\fP\&. 
+.IP "\(bu" 2
+A stackable bar chart can be achieved with \fBQCPBars\fP\&. 
+.IP "\(bu" 2
+A box of a statistical box plot is created with \fBQCPStatisticalBox\fP\&.
+.PP
+.SH "Creating own plottables"
+.PP
+To create an own plottable, you implement a subclass of \fBQCPAbstractPlottable\fP\&. These are the pure virtual functions, you must implement: 
+.PD 0
+
+.IP "\(bu" 2
+\fBclearData\fP 
+.IP "\(bu" 2
+\fBselectTest\fP 
+.IP "\(bu" 2
+\fBdraw\fP 
+.IP "\(bu" 2
+\fBdrawLegendIcon\fP 
+.IP "\(bu" 2
+\fBgetKeyRange\fP 
+.IP "\(bu" 2
+\fBgetValueRange\fP
+.PP
+See the documentation of those functions for what they need to do\&.
+.PP
+For drawing your plot, you can use the \fBcoordsToPixels\fP functions to translate a point in plot coordinates to pixel coordinates\&. This function is quite convenient, because it takes the orientation of the key and value axes into account for you (x and y are swapped when the key axis is vertical and the value axis horizontal)\&. If you are worried about performance (i\&.e\&. you need to translate many points in a loop like \fBQCPGraph\fP), you can directly use \fBQCPAxis::coordToPixel\fP\&. However, you must then take care about the orientation of the axis yourself\&.
+.PP
+From \fBQCPAbstractPlottable\fP you inherit the following members you may use: \fBQCustomPlot\fP *\fBmParentPlot\fP  A pointer to the parent \fBQCustomPlot\fP instance\&. This is adopted from the axes that are passed in the constructor\&. QString \fBmName\fP  The name of the plottable\&. bool \fBmVisible\fP  Whether the plot is visible or not\&. When this is false, you shouldn't draw the data in the \fBdraw\fP function (\fBdraw\fP is always called, no matter what mVisible is)\&. QPen \fBmPen\fP  The generic pen of the plottable\&. You should use this pen for the most prominent data representing lines in the plottable (e\&.g \fBQCPGraph\fP uses this pen for its graph lines and scatters) QPen \fBmSelectedPen\fP  The generic pen that should be used when the plottable is selected (hint: \fBmainPen\fP gives you the right pen, depending on selection state)\&. QBrush \fBmBrush\fP  The generic brush of the plottable\&. You should use this brush for the most prominent fillable structures in the plottable (e\&.g\&. \fBQCPGraph\fP uses this brush to control filling under the graph) QBrush \fBmSelectedBrush\fP  The generic brush that should be used when the plottable is selected (hint: \fBmainBrush\fP gives you the right brush, depending on selection state)\&. \fBQCPAxis\fP *\fBmKeyAxis\fP, *\fBmValueAxis\fP  The key and value axes this plottable is attached to\&. Call their \fBQCPAxis::coordToPixel\fP functions to translate coordinates to pixels in either the key or value dimension\&. bool \fBmSelected\fP  indicates whether the plottable is selected or not\&.  
+.PP
+Definition at line 359 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPAbstractPlottable::SignDomain\fP\fC [protected]\fP"
+
+.PP
+Represents negative and positive sign domain for passing to \fBgetKeyRange\fP and \fBgetValueRange\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIsdNegative \fP\fP
+The negative sign domain, i\&.e\&. numbers smaller than zero\&. 
+.TP
+\fB\fIsdBoth \fP\fP
+Both sign domains, including zero, i\&.e\&. all (rational) numbers\&. 
+.TP
+\fB\fIsdPositive \fP\fP
+The positive sign domain, i\&.e\&. numbers greater than zero\&. 
+.PP
+Definition at line 410 of file qcustomplot\&.h\&.
+.PP
+.nf
+410                   { sdNegative  
+411                     ,sdBoth     
+412                     ,sdPositive 
+413                   };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPAbstractPlottable::QCPAbstractPlottable (\fBQCPAxis\fP *keyAxis, \fBQCPAxis\fP *valueAxis)"
+
+.PP
+Constructs an abstract plottable which uses \fIkeyAxis\fP as its key axis ('x') and \fIvalueAxis\fP as its value axis ('y')\&. \fIkeyAxis\fP and \fIvalueAxis\fP must reside in the same \fBQCustomPlot\fP instance and not have the same orientation\&. If either of these restrictions is violated, a corresponding message is printed to the debug output (qDebug), the construction is not aborted, though\&.
+.PP
+Since \fBQCPAbstractPlottable\fP is an abstract class that defines the basic interface to plottables (i\&.e\&. any form of data representation inside a plot, like graphs, curves etc\&.), it can't be directly instantiated\&.
+.PP
+You probably want one of the subclasses like \fBQCPGraph\fP and \fBQCPCurve\fP instead\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetKeyAxis\fP, \fBsetValueAxis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8353 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::orientation(), and QCPLayerable::parentPlot()\&.
+.PP
+.nf
+8353                                                                                :
+8354   QCPLayerable(keyAxis->parentPlot()),
+8355   mName(""),
+8356   mAntialiasedFill(true),
+8357   mAntialiasedScatters(true),
+8358   mAntialiasedErrorBars(false),
+8359   mPen(Qt::black),
+8360   mSelectedPen(Qt::black),
+8361   mBrush(Qt::NoBrush),
+8362   mSelectedBrush(Qt::NoBrush),
+8363   mKeyAxis(keyAxis),
+8364   mValueAxis(valueAxis),
+8365   mSelected(false),
+8366   mSelectable(true)
+8367 {
+8368   if (keyAxis->parentPlot() != valueAxis->parentPlot())
+8369     qDebug() << Q_FUNC_INFO << "Parent plot of keyAxis is not the same as that of valueAxis\&.";
+8370   if (keyAxis->orientation() == valueAxis->orientation())
+8371     qDebug() << Q_FUNC_INFO << "keyAxis and valueAxis must be orthogonal to each other\&.";
+8372 }
+.fi
+.SS "virtual QCPAbstractPlottable::~QCPAbstractPlottable ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 364 of file qcustomplot\&.h\&.
+.PP
+.nf
+364 {}
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QCPAbstractPlottable::addToLegend ()\fC [virtual]\fP"
+
+.PP
+Adds this plottable to the legend of the parent \fBQCustomPlot\fP\&. Normally, a \fBQCPPlottableLegendItem\fP is created and inserted into the legend\&. If the plottable needs a more specialized representation in the plot, this function will take this into account and instead create the specialized subclass of \fBQCPAbstractLegendItem\fP\&.
+.PP
+Returns true on success, i\&.e\&. when a legend item associated with this plottable isn't already in the legend\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveFromLegend\fP, \fBQCPLegend::addItem\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8618 of file qcustomplot\&.cpp\&.
+.PP
+References QCPLayerable::mParentPlot, and QCPPlottableLegendItem\&.
+.PP
+Referenced by addPlottable()\&.
+.PP
+.nf
+8619 {
+8620   if (!mParentPlot->legend->hasItemWithPlottable(this))
+8621   {
+8622     mParentPlot->legend->addItem(new QCPPlottableLegendItem(mParentPlot->legend, this));
+8623     return true;
+8624   } else
+8625     return false;
+8626 }
+.fi
+.SS "bool QCPAbstractPlottable::antialiasedErrorBars () const\fC [inline]\fP"
+
+.PP
+Definition at line 370 of file qcustomplot\&.h\&.
+.PP
+.nf
+370 { return mAntialiasedErrorBars; }
+.fi
+.SS "bool QCPAbstractPlottable::antialiasedFill () const\fC [inline]\fP"
+
+.PP
+Definition at line 368 of file qcustomplot\&.h\&.
+.PP
+.nf
+368 { return mAntialiasedFill; }
+.fi
+.SS "bool QCPAbstractPlottable::antialiasedScatters () const\fC [inline]\fP"
+
+.PP
+Definition at line 369 of file qcustomplot\&.h\&.
+.PP
+.nf
+369 { return mAntialiasedScatters; }
+.fi
+.SS "void QCPAbstractPlottable::applyDefaultAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [virtual]\fP"
+A convenience function to easily set the QPainter::Antialiased hint on the provided \fIpainter\fP before drawing plottable lines\&.
+.PP
+This is the antialiasing state the painter passed to the \fBdraw\fP method is in by default\&.
+.PP
+This function takes into account the local setting of the antialiasing flag as well as the overrides set e\&.g\&. with \fBQCustomPlot::setNotAntialiasedElements\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiased\fP, \fBapplyFillAntialiasingHint\fP, \fBapplyScattersAntialiasingHint\fP, \fBapplyErrorBarsAntialiasingHint\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPLayerable\fP\&.
+.PP
+Definition at line 8753 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aePlottables, QCPLayerable::applyAntialiasingHint(), and QCPLayerable::mAntialiased\&.
+.PP
+Referenced by QCPCurve::draw(), QCPBars::draw(), QCPGraph::drawImpulsePlot(), QCPGraph::drawLegendIcon(), QCPCurve::drawLegendIcon(), QCPBars::drawLegendIcon(), QCPStatisticalBox::drawLegendIcon(), QCPGraph::drawLinePlot(), QCPStatisticalBox::drawMedian(), and QCPStatisticalBox::drawQuartileBox()\&.
+.PP
+.nf
+8754 {
+8755   applyAntialiasingHint(painter, mAntialiased, QCP::aePlottables);
+8756 }
+.fi
+.SS "void QCPAbstractPlottable::applyErrorBarsAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP"
+A convenience function to easily set the QPainter::Antialiased hint on the provided \fIpainter\fP before drawing plottable error bars\&.
+.PP
+This function takes into account the local setting of the error bars antialiasing flag as well as the overrides set e\&.g\&. with \fBQCustomPlot::setNotAntialiasedElements\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiased\fP, \fBapplyFillAntialiasingHint\fP, \fBapplyScattersAntialiasingHint\fP, \fBapplyDefaultAntialiasingHint\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8798 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeErrorBars, QCPLayerable::applyAntialiasingHint(), and mAntialiasedErrorBars\&.
+.PP
+Referenced by QCPGraph::drawScatterPlot(), and QCPStatisticalBox::drawWhiskers()\&.
+.PP
+.nf
+8799 {
+8800   applyAntialiasingHint(painter, mAntialiasedErrorBars, QCP::aeErrorBars);
+8801 }
+.fi
+.SS "void QCPAbstractPlottable::applyFillAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP"
+A convenience function to easily set the QPainter::Antialiased hint on the provided \fIpainter\fP before drawing plottable fills\&.
+.PP
+This function takes into account the local setting of the fill antialiasing flag as well as the overrides set e\&.g\&. with \fBQCustomPlot::setNotAntialiasedElements\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiased\fP, \fBapplyDefaultAntialiasingHint\fP, \fBapplyScattersAntialiasingHint\fP, \fBapplyErrorBarsAntialiasingHint\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8768 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeFills, QCPLayerable::applyAntialiasingHint(), and mAntialiasedFill\&.
+.PP
+Referenced by QCPCurve::draw(), QCPBars::draw(), QCPGraph::drawFill(), QCPGraph::drawLegendIcon(), and QCPCurve::drawLegendIcon()\&.
+.PP
+.nf
+8769 {
+8770   applyAntialiasingHint(painter, mAntialiasedFill, QCP::aeFills);
+8771 }
+.fi
+.SS "void QCPAbstractPlottable::applyScattersAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP"
+A convenience function to easily set the QPainter::Antialiased hint on the provided \fIpainter\fP before drawing plottable scatter points\&.
+.PP
+This function takes into account the local setting of the scatters antialiasing flag as well as the overrides set e\&.g\&. with \fBQCustomPlot::setNotAntialiasedElements\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiased\fP, \fBapplyFillAntialiasingHint\fP, \fBapplyDefaultAntialiasingHint\fP, \fBapplyErrorBarsAntialiasingHint\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8783 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeScatters, QCPLayerable::applyAntialiasingHint(), and mAntialiasedScatters\&.
+.PP
+Referenced by QCPGraph::drawLegendIcon(), QCPCurve::drawLegendIcon(), QCPStatisticalBox::drawOutliers(), QCPGraph::drawScatterPlot(), and QCPCurve::drawScatterPlot()\&.
+.PP
+.nf
+8784 {
+8785   applyAntialiasingHint(painter, mAntialiasedScatters, QCP::aeScatters);
+8786 }
+.fi
+.SS "QBrush QCPAbstractPlottable::brush () const\fC [inline]\fP"
+
+.PP
+Definition at line 373 of file qcustomplot\&.h\&.
+.PP
+Referenced by setBrush(), and setSelectedBrush()\&.
+.PP
+.nf
+373 { return mBrush; }
+.fi
+.SS "void QCPAbstractPlottable::clearData ()\fC [pure virtual]\fP"
+
+.PP
+Clears all data in the plottable\&. 
+.PP
+Implemented in \fBQCPStatisticalBox\fP, \fBQCPBars\fP, \fBQCPCurve\fP, and \fBQCPGraph\fP\&.
+.SS "QRect QCPAbstractPlottable::clipRect () const\fC [protected]\fP, \fC [virtual]\fP"
+Returns the clipping rectangle of this layerable object\&. By default, this is the viewport of the parent \fBQCustomPlot\fP\&. Specific subclasses may reimplement this function to provide different clipping rects\&.
+.PP
+The returned clipping rect is set on the painter before the draw function of the respective object is called\&. 
+.PP
+Reimplemented from \fBQCPLayerable\fP\&.
+.PP
+Definition at line 8647 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::axisRect(), mKeyAxis, and mValueAxis\&.
+.PP
+.nf
+8648 {
+8649   return mKeyAxis->axisRect() | mValueAxis->axisRect();
+8650 }
+.fi
+.SS "void QCPAbstractPlottable::coordsToPixels (doublekey, doublevalue, double &x, double &y) const\fC [protected]\fP"
+Convenience function for transforming a key/value pair to pixels on the \fBQCustomPlot\fP surface, taking the orientations of the axes associated with this plottable into account (e\&.g\&. whether key represents x or y)\&.
+.PP
+\fIkey\fP and \fIvalue\fP are transformed to the coodinates in pixels and are written to \fIx\fP and \fIy\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBpixelsToCoords\fP, \fBQCPAxis::coordToPixel\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8662 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), mKeyAxis, mValueAxis, and QCPAxis::orientation()\&.
+.PP
+Referenced by QCPStatisticalBox::drawMedian(), QCPStatisticalBox::drawOutliers(), QCPStatisticalBox::drawQuartileBox(), QCPStatisticalBox::drawWhiskers(), QCPBars::getBarPolygon(), QCPCurve::getCurveData(), QCPCurve::outsideCoordsToPixels(), QCPGraph::pointDistance(), and QCPCurve::pointDistance()\&.
+.PP
+.nf
+8663 {
+8664   if (mKeyAxis->orientation() == Qt::Horizontal)
+8665   {
+8666     x = mKeyAxis->coordToPixel(key);
+8667     y = mValueAxis->coordToPixel(value);
+8668   } else
+8669   {
+8670     y = mKeyAxis->coordToPixel(key);
+8671     x = mValueAxis->coordToPixel(value);
+8672   }
+8673 }
+.fi
+.SS "const QPointF QCPAbstractPlottable::coordsToPixels (doublekey, doublevalue) const\fC [protected]\fP"
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Returns the input as pixel coordinates in a QPointF\&. 
+.PP
+Definition at line 8680 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), mKeyAxis, mValueAxis, and QCPAxis::orientation()\&.
+.PP
+.nf
+8681 {
+8682   if (mKeyAxis->orientation() == Qt::Horizontal)
+8683     return QPointF(mKeyAxis->coordToPixel(key), mValueAxis->coordToPixel(value));
+8684   else
+8685     return QPointF(mValueAxis->coordToPixel(value), mKeyAxis->coordToPixel(key));
+8686 }
+.fi
+.SS "double QCPAbstractPlottable::distSqrToLine (const QPointF &start, const QPointF &end, const QPointF &point) const\fC [protected]\fP"
+Finds the shortest squared distance of \fIpoint\fP to the line segment defined by \fIstart\fP and \fIend\fP\&.
+.PP
+This function may be used to help with the implementation of the \fBselectTest\fP function for specific plottables\&.
+.PP
+\fBNote:\fP
+.RS 4
+This function is identical to \fBQCPAbstractItem::distSqrToLine\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8813 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by QCPGraph::pointDistance(), and QCPCurve::pointDistance()\&.
+.PP
+.nf
+8814 {
+8815   QVector2D a(start);
+8816   QVector2D b(end);
+8817   QVector2D p(point);
+8818   QVector2D v(b-a);
+8819   
+8820   double vLengthSqr = v\&.lengthSquared();
+8821   if (!qFuzzyIsNull(vLengthSqr))
+8822   {
+8823     double mu = QVector2D::dotProduct(p-a, v)/vLengthSqr;
+8824     if (mu < 0)
+8825       return (a-p)\&.lengthSquared();
+8826     else if (mu > 1)
+8827       return (b-p)\&.lengthSquared();
+8828     else
+8829       return ((a + mu*v)-p)\&.lengthSquared();
+8830   } else
+8831     return (a-p)\&.lengthSquared();
+8832 }
+.fi
+.SS "void QCPAbstractPlottable::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [pure virtual]\fP"
+Draws this plottable with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible plottables\&.
+.PP
+The cliprect of the provided painter is set to the axis rect of the key/value axis of this plottable (what \fBclipRect\fP returns), before this function is called\&. 
+.PP
+Implements \fBQCPLayerable\fP\&.
+.PP
+Implemented in \fBQCPStatisticalBox\fP, \fBQCPBars\fP, \fBQCPCurve\fP, and \fBQCPGraph\fP\&.
+.SS "void QCPAbstractPlottable::drawLegendIcon (\fBQCPPainter\fP *painter, const QRect &rect) const\fC [protected]\fP, \fC [pure virtual]\fP"
+called by \fBQCPLegend::draw\fP (via \fBQCPPlottableLegendItem::draw\fP) to create a graphical representation of this plottable inside \fIrect\fP, next to the plottable name\&. 
+.PP
+Implemented in \fBQCPStatisticalBox\fP, \fBQCPBars\fP, \fBQCPCurve\fP, and \fBQCPGraph\fP\&.
+.PP
+Referenced by QCPPlottableLegendItem::draw()\&.
+.SS "\fBQCPRange\fP QCPAbstractPlottable::getKeyRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [pure virtual]\fP"
+called by rescaleAxes functions to get the full data key bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetValueRange\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBQCPStatisticalBox\fP, \fBQCPBars\fP, \fBQCPCurve\fP, and \fBQCPGraph\fP\&.
+.PP
+Referenced by rescaleKeyAxis()\&.
+.SS "\fBQCPRange\fP QCPAbstractPlottable::getValueRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [pure virtual]\fP"
+called by rescaleAxes functions to get the full data value bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetKeyRange\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBQCPStatisticalBox\fP, \fBQCPBars\fP, \fBQCPCurve\fP, and \fBQCPGraph\fP\&.
+.PP
+Referenced by rescaleValueAxis()\&.
+.SS "\fBQCPAxis\fP* QCPAbstractPlottable::keyAxis () const\fC [inline]\fP"
+
+.PP
+Definition at line 375 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPBars::moveAbove(), QCPBars::moveBelow(), plottableAt(), and QCPItemTracer::setGraph()\&.
+.PP
+.nf
+375 { return mKeyAxis; }
+.fi
+.SS "QBrush QCPAbstractPlottable::mainBrush () const\fC [protected]\fP"
+Returns the brush that should be used for drawing fills of the plottable\&. Returns mBrush when the graph is not selected and mSelectedBrush when it is\&. 
+.PP
+Definition at line 8736 of file qcustomplot\&.cpp\&.
+.PP
+References mBrush, mSelected, and mSelectedBrush\&.
+.PP
+Referenced by QCPCurve::draw(), QCPBars::draw(), QCPGraph::drawFill(), QCPStatisticalBox::drawQuartileBox(), QCPGraph::drawScatterPlot(), and QCPCurve::drawScatterPlot()\&.
+.PP
+.nf
+8737 {
+8738   return mSelected ? mSelectedBrush : mBrush;
+8739 }
+.fi
+.SS "QPen QCPAbstractPlottable::mainPen () const\fC [protected]\fP"
+Returns the pen that should be used for drawing lines of the plottable\&. Returns mPen when the graph is not selected and mSelectedPen when it is\&. 
+.PP
+Definition at line 8726 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, mSelected, and mSelectedPen\&.
+.PP
+Referenced by QCPCurve::draw(), QCPBars::draw(), QCPGraph::drawImpulsePlot(), QCPGraph::drawLinePlot(), QCPStatisticalBox::drawQuartileBox(), QCPGraph::drawScatterPlot(), and QCPCurve::drawScatterPlot()\&.
+.PP
+.nf
+8727 {
+8728   return mSelected ? mSelectedPen : mPen;
+8729 }
+.fi
+.SS "QString QCPAbstractPlottable::name () const\fC [inline]\fP"
+
+.PP
+Definition at line 367 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::draw(), setName(), and QCPPlottableLegendItem::size()\&.
+.PP
+.nf
+367 { return mName; }
+.fi
+.SS "QPen QCPAbstractPlottable::pen () const\fC [inline]\fP"
+
+.PP
+Definition at line 371 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by QCPGraph::drawImpulsePlot(), QCPGraph::setErrorPen(), QCPStatisticalBox::setMedianPen(), QCPStatisticalBox::setOutlierPen(), setPen(), setSelectedPen(), QCPStatisticalBox::setWhiskerBarPen(), and QCPStatisticalBox::setWhiskerPen()\&.
+.PP
+.nf
+371 { return mPen; }
+.fi
+.SS "void QCPAbstractPlottable::pixelsToCoords (doublex, doubley, double &key, double &value) const\fC [protected]\fP"
+Convenience function for transforming a x/y pixel pair on the \fBQCustomPlot\fP surface to plot coordinates, taking the orientations of the axes associated with this plottable into account (e\&.g\&. whether key represents x or y)\&.
+.PP
+\fIx\fP and \fIy\fP are transformed to the plot coodinates and are written to \fIkey\fP and \fIvalue\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcoordsToPixels\fP, \fBQCPAxis::coordToPixel\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8698 of file qcustomplot\&.cpp\&.
+.PP
+References mKeyAxis, mValueAxis, QCPAxis::orientation(), and QCPAxis::pixelToCoord()\&.
+.PP
+Referenced by pixelsToCoords(), QCPBars::selectTest(), and QCPStatisticalBox::selectTest()\&.
+.PP
+.nf
+8699 {
+8700   if (mKeyAxis->orientation() == Qt::Horizontal)
+8701   {
+8702     key = mKeyAxis->pixelToCoord(x);
+8703     value = mValueAxis->pixelToCoord(y);
+8704   } else
+8705   {
+8706     key = mKeyAxis->pixelToCoord(y);
+8707     value = mValueAxis->pixelToCoord(x);
+8708   }
+8709 }
+.fi
+.SS "void QCPAbstractPlottable::pixelsToCoords (const QPointF &pixelPos, double &key, double &value) const\fC [protected]\fP"
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Returns the pixel input \fIpixelPos\fP as plot coordinates \fIkey\fP and \fIvalue\fP\&. 
+.PP
+Definition at line 8716 of file qcustomplot\&.cpp\&.
+.PP
+References key, pixelsToCoords(), and value\&.
+.PP
+.nf
+8717 {
+8718   pixelsToCoords(pixelPos\&.x(), pixelPos\&.y(), key, value);
+8719 }
+.fi
+.SS "bool QCPAbstractPlottable::removeFromLegend () const\fC [virtual]\fP"
+
+.PP
+Removes the plottable from the legend of the parent \fBQCustomPlot\fP\&. This means the \fBQCPAbstractLegendItem\fP (usually a \fBQCPPlottableLegendItem\fP) that is associated with this plottable is removed\&.
+.PP
+Returns true on success, i\&.e\&. if a legend item associated with this plottable was found and removed from the legend\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddToLegend\fP, \fBQCPLegend::removeItem\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8638 of file qcustomplot\&.cpp\&.
+.PP
+References QCPLayerable::mParentPlot\&.
+.PP
+Referenced by removePlottable()\&.
+.PP
+.nf
+8639 {
+8640   if (QCPPlottableLegendItem *lip = mParentPlot->legend->itemWithPlottable(this))
+8641     return mParentPlot->legend->removeItem(lip);
+8642   else
+8643     return false;
+8644 }
+.fi
+.SS "void QCPAbstractPlottable::rescaleAxes (boolonlyEnlarge = \fCfalse\fP) const"
+
+.PP
+Rescales the key and value axes associated with this plottable to contain all displayed data, so the whole plottable is visible\&. If the scaling of an axis is logarithmic, rescaleAxes will make sure not to rescale to an illegal range i\&.e\&. a range containing different signs and/or zero\&. Instead it will stay in the current sign domain and ignore all parts of the plottable that lie outside of that domain\&.
+.PP
+\fIonlyEnlarge\fP makes sure the ranges are only expanded, never reduced\&. So it's possible to show multiple plottables in their entirety by multiple calls to rescaleAxes where the first call has \fIonlyEnlarge\fP set to false (the default), and all subsequent set to true\&. 
+.PP
+Definition at line 8547 of file qcustomplot\&.cpp\&.
+.PP
+References rescaleKeyAxis(), and rescaleValueAxis()\&.
+.PP
+.nf
+8548 {
+8549   rescaleKeyAxis(onlyEnlarge);
+8550   rescaleValueAxis(onlyEnlarge);
+8551 }
+.fi
+.SS "void QCPAbstractPlottable::rescaleKeyAxis (boolonlyEnlarge = \fCfalse\fP) const"
+
+.PP
+Rescales the key axis of the plottable so the whole plottable is visible\&. See \fBrescaleAxes\fP for detailed behaviour\&. 
+.PP
+Definition at line 8558 of file qcustomplot\&.cpp\&.
+.PP
+References getKeyRange(), QCPRange::lower, mKeyAxis, QCPAxis::range(), QCPAxis::scaleType(), sdBoth, sdNegative, sdPositive, QCPAxis::setRange(), and QCPRange::upper\&.
+.PP
+Referenced by rescaleAxes()\&.
+.PP
+.nf
+8559 {
+8560   SignDomain signDomain = sdBoth;
+8561   if (mKeyAxis->scaleType() == QCPAxis::stLogarithmic)
+8562     signDomain = (mKeyAxis->range()\&.upper < 0 ? sdNegative : sdPositive);
+8563   
+8564   bool validRange;
+8565   QCPRange newRange = getKeyRange(validRange, signDomain);
+8566   if (validRange)
+8567   {
+8568     if (onlyEnlarge)
+8569     {
+8570       if (mKeyAxis->range()\&.lower < newRange\&.lower)
+8571         newRange\&.lower = mKeyAxis->range()\&.lower;
+8572       if (mKeyAxis->range()\&.upper > newRange\&.upper)
+8573         newRange\&.upper = mKeyAxis->range()\&.upper;
+8574     }
+8575     mKeyAxis->setRange(newRange);
+8576   }
+8577 }
+.fi
+.SS "void QCPAbstractPlottable::rescaleValueAxis (boolonlyEnlarge = \fCfalse\fP) const"
+
+.PP
+Rescales the value axis of the plottable so the whole plottable is visible\&. See \fBrescaleAxes\fP for detailed behaviour\&. 
+.PP
+Definition at line 8584 of file qcustomplot\&.cpp\&.
+.PP
+References getValueRange(), QCPRange::lower, mValueAxis, QCPAxis::range(), QCPAxis::scaleType(), sdBoth, sdNegative, sdPositive, QCPAxis::setRange(), and QCPRange::upper\&.
+.PP
+Referenced by rescaleAxes()\&.
+.PP
+.nf
+8585 {
+8586   SignDomain signDomain = sdBoth;
+8587   if (mValueAxis->scaleType() == QCPAxis::stLogarithmic)
+8588     signDomain = (mValueAxis->range()\&.upper < 0 ? sdNegative : sdPositive);
+8589   
+8590   bool validRange;
+8591   QCPRange newRange = getValueRange(validRange, signDomain);
+8592   
+8593   if (validRange)
+8594   {
+8595     if (onlyEnlarge)
+8596     {
+8597       if (mValueAxis->range()\&.lower < newRange\&.lower)
+8598         newRange\&.lower = mValueAxis->range()\&.lower;
+8599       if (mValueAxis->range()\&.upper > newRange\&.upper)
+8600         newRange\&.upper = mValueAxis->range()\&.upper;
+8601     }
+8602     mValueAxis->setRange(newRange);
+8603   }
+8604 }
+.fi
+.SS "bool QCPAbstractPlottable::selectable () const\fC [inline]\fP"
+
+.PP
+Definition at line 377 of file qcustomplot\&.h\&.
+.PP
+Referenced by plottableAt(), and setSelectable()\&.
+.PP
+.nf
+377 { return mSelectable; }
+.fi
+.SS "bool QCPAbstractPlottable::selected () const\fC [inline]\fP"
+
+.PP
+Definition at line 378 of file qcustomplot\&.h\&.
+.PP
+Referenced by handlePlottableSelection(), and setSelected()\&.
+.PP
+.nf
+378 { return mSelected; }
+.fi
+.SS "QBrush QCPAbstractPlottable::selectedBrush () const\fC [inline]\fP"
+
+.PP
+Definition at line 374 of file qcustomplot\&.h\&.
+.PP
+.nf
+374 { return mSelectedBrush; }
+.fi
+.SS "QPen QCPAbstractPlottable::selectedPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 372 of file qcustomplot\&.h\&.
+.PP
+.nf
+372 { return mSelectedPen; }
+.fi
+.SS "void QCPAbstractPlottable::selectionChanged (boolselected)\fC [signal]\fP"
+
+.PP
+This signal is emitted when the selection state of this plottable has changed, either by user interaction or by a direct call to \fBsetSelected\fP\&. 
+.PP
+Definition at line 189 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by setSelected()\&.
+.PP
+.nf
+190 {
+191     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+192     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+193 }
+.fi
+.SS "double QCPAbstractPlottable::selectTest (const QPointF &pos) const\fC [pure virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits a plottable or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the plottable (e\&.g\&. to the scatters/lines of a graph)\&. If the plottable is either invisible, contains no data or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the plottable is represented not by single lines but by an area like \fBQCPBars\fP or \fBQCPStatisticalBox\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implemented in \fBQCPStatisticalBox\fP, \fBQCPBars\fP, \fBQCPCurve\fP, and \fBQCPGraph\fP\&.
+.PP
+Referenced by plottableAt()\&.
+.SS "void QCPAbstractPlottable::setAntialiasedErrorBars (boolenabled)"
+
+.PP
+Sets whether the error bars of this plottable are drawn antialiased or not\&. Note that this setting may be overridden by \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. 
+.PP
+Definition at line 8411 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiasedErrorBars\&.
+.PP
+.nf
+8412 {
+8413   mAntialiasedErrorBars = enabled;
+8414 }
+.fi
+.SS "void QCPAbstractPlottable::setAntialiasedFill (boolenabled)"
+
+.PP
+Sets whether fills of this plottable is drawn antialiased or not\&. Note that this setting may be overridden by \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. 
+.PP
+Definition at line 8389 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiasedFill\&.
+.PP
+.nf
+8390 {
+8391   mAntialiasedFill = enabled;
+8392 }
+.fi
+.SS "void QCPAbstractPlottable::setAntialiasedScatters (boolenabled)"
+
+.PP
+Sets whether the scatter symbols of this plottable are drawn antialiased or not\&. Note that this setting may be overridden by \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. 
+.PP
+Definition at line 8400 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiasedScatters\&.
+.PP
+.nf
+8401 {
+8402   mAntialiasedScatters = enabled;
+8403 }
+.fi
+.SS "void QCPAbstractPlottable::setBrush (const QBrush &brush)"
+
+.PP
+The brush is used to draw basic fills of the plottable representation in the plot\&. The Fill can be a color, gradient or texture, see the usage of QBrush\&.
+.PP
+For example, the \fBQCPGraph\fP subclass draws the fill under the graph with this brush, when it's not set to Qt::NoBrush\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8451 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mBrush\&.
+.PP
+Referenced by QCPStatisticalBox::QCPStatisticalBox()\&.
+.PP
+.nf
+8452 {
+8453   mBrush = brush;
+8454 }
+.fi
+.SS "void QCPAbstractPlottable::setKeyAxis (\fBQCPAxis\fP *axis)"
+
+.PP
+The key axis of a plottable can be set to any axis of a \fBQCustomPlot\fP, as long as it is orthogonal to the plottable's value axis\&. This function performs no checks to make sure this is the case\&. The typical mathematical choice is to use the x-axis (QCustomPlot::xAxis) as key axis and the y-axis (QCustomPlot::yAxis) as value axis\&.
+.PP
+Normally, the key and value axes are set in the constructor of the plottable (or \fBQCustomPlot::addGraph\fP when working with QCPGraphs through the dedicated graph interface)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetValueAxis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8478 of file qcustomplot\&.cpp\&.
+.PP
+References mKeyAxis\&.
+.PP
+.nf
+8479 {
+8480   mKeyAxis = axis;
+8481 }
+.fi
+.SS "void QCPAbstractPlottable::setName (const QString &name)"
+
+.PP
+The name is the textual representation of this plottable as it is displayed in the \fBQCPLegend\fP of the parent \fBQCustomPlot\fP\&. It may contain any utf-8 characters, including newlines\&. 
+.PP
+Definition at line 8378 of file qcustomplot\&.cpp\&.
+.PP
+References mName, and name()\&.
+.PP
+Referenced by addGraph()\&.
+.PP
+.nf
+8379 {
+8380   mName = name;
+8381 }
+.fi
+.SS "void QCPAbstractPlottable::setPen (const QPen &pen)"
+
+.PP
+The pen is used to draw basic lines that make up the plottable representation in the plot\&. For example, the \fBQCPGraph\fP subclass draws its graph lines and scatter points with this pen\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetBrush\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8426 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, and pen()\&.
+.PP
+Referenced by QCPStatisticalBox::QCPStatisticalBox()\&.
+.PP
+.nf
+8427 {
+8428   mPen = pen;
+8429 }
+.fi
+.SS "void QCPAbstractPlottable::setSelectable (boolselectable)"
+
+.PP
+Sets whether the user can (de-)select this plottable by clicking on the \fBQCustomPlot\fP surface\&. (When \fBQCustomPlot::setInteractions\fP contains iSelectPlottables\&.)
+.PP
+However, even when \fIselectable\fP was set to false, it is possible to set the selection manually, by calling \fBsetSelected\fP directly\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8508 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectable, and selectable()\&.
+.PP
+.nf
+8509 {
+8510   mSelectable = selectable;
+8511 }
+.fi
+.SS "void QCPAbstractPlottable::setSelected (boolselected)"
+
+.PP
+Sets whether this plottable is selected or not\&. When selected, it uses a different pen and brush to draw its lines and fills, see \fBsetSelectedPen\fP and \fBsetSelectedBrush\fP\&.
+.PP
+The entire selection mechanism for plottables is handled automatically when \fBQCustomPlot::setInteractions\fP contains iSelectPlottables\&. You only need to call this function when you wish to change the selection state manually\&.
+.PP
+This function can change the selection state even when \fBsetSelectable\fP was set to false\&.
+.PP
+emits the \fBselectionChanged\fP signal when \fIselected\fP is different from the previous selection state\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBselectTest\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8527 of file qcustomplot\&.cpp\&.
+.PP
+References mSelected, selected(), and selectionChanged()\&.
+.PP
+Referenced by handlePlottableSelection()\&.
+.PP
+.nf
+8528 {
+8529   if (mSelected != selected)
+8530   {
+8531     mSelected = selected;
+8532     emit selectionChanged(mSelected);
+8533   }
+8534 }
+.fi
+.SS "void QCPAbstractPlottable::setSelectedBrush (const QBrush &brush)"
+
+.PP
+When the plottable is selected, this brush is used to draw fills instead of the normal brush set via \fBsetBrush\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, \fBsetSelectable\fP, \fBsetSelectedPen\fP, \fBselectTest\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8462 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mSelectedBrush\&.
+.PP
+Referenced by QCPStatisticalBox::QCPStatisticalBox()\&.
+.PP
+.nf
+8463 {
+8464   mSelectedBrush = brush;
+8465 }
+.fi
+.SS "void QCPAbstractPlottable::setSelectedPen (const QPen &pen)"
+
+.PP
+When the plottable is selected, this pen is used to draw basic lines instead of the normal pen set via \fBsetPen\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, \fBsetSelectable\fP, \fBsetSelectedBrush\fP, \fBselectTest\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8437 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedPen, and pen()\&.
+.PP
+Referenced by QCPStatisticalBox::QCPStatisticalBox()\&.
+.PP
+.nf
+8438 {
+8439   mSelectedPen = pen;
+8440 }
+.fi
+.SS "void QCPAbstractPlottable::setValueAxis (\fBQCPAxis\fP *axis)"
+
+.PP
+The value axis of a plottable can be set to any axis of a \fBQCustomPlot\fP, as long as it is orthogonal to the plottable's key axis\&. This function performs no checks to make sure this is the case\&. The typical mathematical choice is to use the x-axis (QCustomPlot::xAxis) as key axis and the y-axis (QCustomPlot::yAxis) as value axis\&.
+.PP
+Normally, the key and value axes are set in the constructor of the plottable (or \fBQCustomPlot::addGraph\fP when working with QCPGraphs through the dedicated graph interface)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetKeyAxis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8494 of file qcustomplot\&.cpp\&.
+.PP
+References mValueAxis\&.
+.PP
+.nf
+8495 {
+8496   mValueAxis = axis;
+8497 }
+.fi
+.SS "\fBQCPAxis\fP* QCPAbstractPlottable::valueAxis () const\fC [inline]\fP"
+
+.PP
+Definition at line 376 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPBars::moveAbove(), QCPBars::moveBelow(), and plottableAt()\&.
+.PP
+.nf
+376 { return mValueAxis; }
+.fi
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBQCPPlottableLegendItem\fP\fC [friend]\fP"
+
+.PP
+Definition at line 446 of file qcustomplot\&.h\&.
+.PP
+Referenced by addToLegend()\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool QCPAbstractPlottable::mAntialiasedErrorBars\fC [protected]\fP"
+
+.PP
+Definition at line 415 of file qcustomplot\&.h\&.
+.PP
+Referenced by applyErrorBarsAntialiasingHint(), and setAntialiasedErrorBars()\&.
+.SS "bool QCPAbstractPlottable::mAntialiasedFill\fC [protected]\fP"
+
+.PP
+Definition at line 415 of file qcustomplot\&.h\&.
+.PP
+Referenced by applyFillAntialiasingHint(), and setAntialiasedFill()\&.
+.SS "bool QCPAbstractPlottable::mAntialiasedScatters\fC [protected]\fP"
+
+.PP
+Definition at line 415 of file qcustomplot\&.h\&.
+.PP
+Referenced by applyScattersAntialiasingHint(), and setAntialiasedScatters()\&.
+.SS "QBrush QCPAbstractPlottable::mBrush\fC [protected]\fP"
+
+.PP
+Definition at line 417 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::drawLegendIcon(), QCPCurve::drawLegendIcon(), QCPBars::drawLegendIcon(), QCPStatisticalBox::drawLegendIcon(), QCPCurve::getCurveData(), mainBrush(), QCPBars::QCPBars(), QCPCurve::QCPCurve(), and setBrush()\&.
+.SS "\fBQCPAxis\fP* QCPAbstractPlottable::mKeyAxis\fC [protected]\fP"
+
+.PP
+Definition at line 418 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::addFillBasePoints(), clipRect(), coordsToPixels(), QCPGraph::draw(), QCPBars::draw(), QCPGraph::drawError(), QCPGraph::drawScatterPlot(), QCPGraph::getChannelFillPolygon(), QCPCurve::getCurveData(), QCPGraph::getImpulsePlotData(), QCPGraph::getLinePlotData(), QCPGraph::getScatterPlotData(), QCPGraph::getStepCenterPlotData(), QCPGraph::getStepLeftPlotData(), QCPGraph::getStepRightPlotData(), QCPGraph::getVisibleDataBounds(), QCPGraph::lowerFillBasePoint(), QCPBars::moveAbove(), QCPBars::moveBelow(), QCPCurve::outsideCoordsToPixels(), pixelsToCoords(), rescaleKeyAxis(), QCPGraph::rescaleKeyAxis(), QCPStatisticalBox::selectTest(), setKeyAxis(), and QCPGraph::upperFillBasePoint()\&.
+.SS "QString QCPAbstractPlottable::mName\fC [protected]\fP"
+
+.PP
+Definition at line 414 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::pointDistance(), QCPCurve::pointDistance(), and setName()\&.
+.SS "QPen QCPAbstractPlottable::mPen\fC [protected]\fP"
+
+.PP
+Definition at line 416 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::drawLegendIcon(), QCPCurve::drawLegendIcon(), QCPBars::drawLegendIcon(), QCPStatisticalBox::drawLegendIcon(), mainPen(), QCPBars::QCPBars(), QCPCurve::QCPCurve(), and setPen()\&.
+.SS "bool QCPAbstractPlottable::mSelectable\fC [protected]\fP"
+
+.PP
+Definition at line 419 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSelectable()\&.
+.SS "bool QCPAbstractPlottable::mSelected\fC [protected]\fP"
+
+.PP
+Definition at line 419 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainBrush(), mainPen(), and setSelected()\&.
+.SS "QBrush QCPAbstractPlottable::mSelectedBrush\fC [protected]\fP"
+
+.PP
+Definition at line 417 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainBrush(), QCPBars::QCPBars(), QCPCurve::QCPCurve(), and setSelectedBrush()\&.
+.SS "QPen QCPAbstractPlottable::mSelectedPen\fC [protected]\fP"
+
+.PP
+Definition at line 416 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), QCPBars::QCPBars(), QCPCurve::QCPCurve(), and setSelectedPen()\&.
+.SS "\fBQCPAxis\fP * QCPAbstractPlottable::mValueAxis\fC [protected]\fP"
+
+.PP
+Definition at line 418 of file qcustomplot\&.h\&.
+.PP
+Referenced by clipRect(), coordsToPixels(), QCPGraph::drawError(), QCPGraph::drawScatterPlot(), QCPCurve::getCurveData(), QCPGraph::getImpulsePlotData(), QCPGraph::getLinePlotData(), QCPGraph::getStepCenterPlotData(), QCPGraph::getStepLeftPlotData(), QCPGraph::getStepRightPlotData(), QCPGraph::lowerFillBasePoint(), QCPBars::moveAbove(), QCPBars::moveBelow(), QCPCurve::outsideCoordsToPixels(), pixelsToCoords(), rescaleValueAxis(), QCPGraph::rescaleValueAxis(), setValueAxis(), and QCPGraph::upperFillBasePoint()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

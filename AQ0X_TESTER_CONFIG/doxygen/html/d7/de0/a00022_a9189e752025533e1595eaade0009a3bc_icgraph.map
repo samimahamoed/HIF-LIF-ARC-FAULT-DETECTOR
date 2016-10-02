@@ -1,0 +1,6 @@
+<map id="QCPAbstractItem::selectable" name="QCPAbstractItem::selectable">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a793e4b04e0ede11a733021907368fa83" title="Returns the item at the pixel position pos. " alt="" coords="319,31,379,57"/>
+<area shape="rect" id="node5" href="$d7/de0/a00022.html#a8a8e32a55bc478b849756a78c2d87fd2" title="Sets whether the user can (de&#45;)select this item by clicking on the QCustomPlot surface. " alt="" coords="244,81,455,108"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#aa1ad9839539b4cdf9f7da768336650f2" title="handleItemSelection" alt="" coords="503,5,641,32"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="689,31,829,57"/>
+</map>

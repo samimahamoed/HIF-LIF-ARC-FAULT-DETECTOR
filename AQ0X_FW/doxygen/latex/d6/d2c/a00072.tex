@@ -1,0 +1,231 @@
+\hypertarget{a00072}{\section{System.\+h File Reference}
+\label{a00072}\index{System.\+h@{System.\+h}}
+}
+
+
+Generic project defines ( data types, basic hardware setting)  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{d1/da7/a01709}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00072_a512a7743d94a6335ddd824498dc56df7}{P\+L\+L\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+\+N1}~2
+\item 
+\#define \hyperlink{a00072_a39c4650028eea85070da15dc0a967d8a}{P\+L\+L\+\_\+\+P\+O\+S\+T\+S\+C\+A\+L\+E\+R\+\_\+\+N2}~3
+\item 
+\#define \hyperlink{a00072_a616f73024087cf3c328cde290113065a}{P\+L\+L\+\_\+\+F\+E\+E\+D\+B\+A\+C\+K\+\_\+\+M}~65
+\item 
+\#define \hyperlink{a00072_a719092b960b832b468fd401ed27b9003}{X\+T\+F\+R\+E\+Q\+\_\+\+C\+P\+U}~(7370000)
+\begin{DoxyCompactList}\small\item\em On-\/chip F\+R\+C oscillator used frequency. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00072_a0d6b8c656533d3c815daa9d575998950}{P\+L\+L\+M\+O\+D\+E\+\_\+\+C\+P\+U}~(16)
+\begin{DoxyCompactList}\small\item\em On-\/chip P\+L\+L setting. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{F\+O\+S\+C\+\_\+\+C\+P\+U}~120000000
+\begin{DoxyCompactList}\small\item\em Instruction Cycle Frequency. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00072_a573f918b7668f8f2b59ac8adeae633a4}{F\+C\+Y\+\_\+\+C\+P\+U}~(\hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{F\+O\+S\+C\+\_\+\+C\+P\+U}/2)
+\item 
+\#define \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{A\+S\+S\+E\+R\+T}(c\+\_\+)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned char \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}
+\item 
+typedef unsigned int \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}
+\item 
+typedef unsigned long \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}
+\item 
+typedef unsigned long long \hyperlink{a00072_a69e971e1bcd1d1beb4e09a8b17a95636}{Uint64}
+\item 
+typedef float \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}
+\item 
+typedef signed char \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8}
+\item 
+typedef signed int \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16}
+\item 
+typedef signed long \hyperlink{a00072_a184d0ff2424cf4b81c68ce9538481a04}{Int32}
+\item 
+typedef signed long long \hyperlink{a00072_a56afe571a9be7582d493be2b31aed0ea}{Int64}
+\item 
+typedef unsigned char \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool}
+\item 
+typedef const char \hyperlink{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}{C\+Char}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Generic project defines ( data types, basic hardware setting) 
+
+
+
+Definition in file \hyperlink{a00072_source}{System.\+h}.
+
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{\index{System.\+h@{System.\+h}!A\+S\+S\+E\+R\+T@{A\+S\+S\+E\+R\+T}}
+\index{A\+S\+S\+E\+R\+T@{A\+S\+S\+E\+R\+T}!System.\+h@{System.\+h}}
+\subsubsection[{A\+S\+S\+E\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+S\+S\+E\+R\+T(
+\begin{DoxyParamCaption}
+\item[{}]{c\+\_\+}
+\end{DoxyParamCaption}
+)}}\label{a00072_abb8ff8e213ac9f6fb21d2b968583b936}
+
+
+Definition at line \hyperlink{a00072_source_l00059}{59} of file \hyperlink{a00072_source}{System.\+h}.
+
+
+
+Referenced by \hyperlink{a00038_source_l02006}{algorithm\+\_\+notifyx()}, \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00056_source_l00272}{hwio\+\_\+execute\+\_\+gpio\+\_\+task()}, \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00045_source_l00141}{ir\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00045_source_l00069}{ir\+\_\+sen\+\_\+taskx()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00106}{light\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00047_source_l00065}{light\+\_\+sen\+\_\+taskx()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00050_source_l00107}{mfield\+\_\+x\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00050_source_l00071}{mfield\+\_\+x\+\_\+sen\+\_\+taskx()}, \hyperlink{a00053_source_l00114}{mfield\+\_\+z\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00053_source_l00073}{mfield\+\_\+z\+\_\+sen\+\_\+taskx()}, \hyperlink{a00060_source_l00663}{nov\+\_\+page\+\_\+cpy()}, \hyperlink{a00030_source_l00412}{serial\+\_\+send\+\_\+response()}, \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00073_source_l00141}{uv\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00073_source_l00069}{uv\+\_\+sen\+\_\+taskx()}, \hyperlink{a00037_source_l00482}{x\+\_\+delete\+\_\+timer()}, \hyperlink{a00037_source_l00173}{x\+\_\+init\+\_\+task()}, and \hyperlink{a00037_source_l00521}{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync()}.
+
+\hypertarget{a00072_a573f918b7668f8f2b59ac8adeae633a4}{\index{System.\+h@{System.\+h}!F\+C\+Y\+\_\+\+C\+P\+U@{F\+C\+Y\+\_\+\+C\+P\+U}}
+\index{F\+C\+Y\+\_\+\+C\+P\+U@{F\+C\+Y\+\_\+\+C\+P\+U}!System.\+h@{System.\+h}}
+\subsubsection[{F\+C\+Y\+\_\+\+C\+P\+U}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+C\+Y\+\_\+\+C\+P\+U~({\bf F\+O\+S\+C\+\_\+\+C\+P\+U}/2)}}\label{a00072_a573f918b7668f8f2b59ac8adeae633a4}
+
+
+Definition at line \hyperlink{a00072_source_l00036}{36} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{\index{System.\+h@{System.\+h}!F\+O\+S\+C\+\_\+\+C\+P\+U@{F\+O\+S\+C\+\_\+\+C\+P\+U}}
+\index{F\+O\+S\+C\+\_\+\+C\+P\+U@{F\+O\+S\+C\+\_\+\+C\+P\+U}!System.\+h@{System.\+h}}
+\subsubsection[{F\+O\+S\+C\+\_\+\+C\+P\+U}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+S\+C\+\_\+\+C\+P\+U~120000000}}\label{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}
+
+
+Instruction Cycle Frequency. 
+
+
+
+Definition at line \hyperlink{a00072_source_l00035}{35} of file \hyperlink{a00072_source}{System.\+h}.
+
+
+
+Referenced by \hyperlink{a00038_source_l00543}{algorithm\+\_\+sv\+\_\+scan\+\_\+timer\+\_\+init()}, \hyperlink{a00066_source_l00096}{srv\+\_\+wdg\+\_\+init\+\_\+fn()}, and \hyperlink{a00037_source_l00135}{x\+\_\+init()}.
+
+\hypertarget{a00072_a616f73024087cf3c328cde290113065a}{\index{System.\+h@{System.\+h}!P\+L\+L\+\_\+\+F\+E\+E\+D\+B\+A\+C\+K\+\_\+\+M@{P\+L\+L\+\_\+\+F\+E\+E\+D\+B\+A\+C\+K\+\_\+\+M}}
+\index{P\+L\+L\+\_\+\+F\+E\+E\+D\+B\+A\+C\+K\+\_\+\+M@{P\+L\+L\+\_\+\+F\+E\+E\+D\+B\+A\+C\+K\+\_\+\+M}!System.\+h@{System.\+h}}
+\subsubsection[{P\+L\+L\+\_\+\+F\+E\+E\+D\+B\+A\+C\+K\+\_\+\+M}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+L\+L\+\_\+\+F\+E\+E\+D\+B\+A\+C\+K\+\_\+\+M~65}}\label{a00072_a616f73024087cf3c328cde290113065a}
+
+
+Definition at line \hyperlink{a00072_source_l00024}{24} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a39c4650028eea85070da15dc0a967d8a}{\index{System.\+h@{System.\+h}!P\+L\+L\+\_\+\+P\+O\+S\+T\+S\+C\+A\+L\+E\+R\+\_\+\+N2@{P\+L\+L\+\_\+\+P\+O\+S\+T\+S\+C\+A\+L\+E\+R\+\_\+\+N2}}
+\index{P\+L\+L\+\_\+\+P\+O\+S\+T\+S\+C\+A\+L\+E\+R\+\_\+\+N2@{P\+L\+L\+\_\+\+P\+O\+S\+T\+S\+C\+A\+L\+E\+R\+\_\+\+N2}!System.\+h@{System.\+h}}
+\subsubsection[{P\+L\+L\+\_\+\+P\+O\+S\+T\+S\+C\+A\+L\+E\+R\+\_\+\+N2}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+L\+L\+\_\+\+P\+O\+S\+T\+S\+C\+A\+L\+E\+R\+\_\+\+N2~3}}\label{a00072_a39c4650028eea85070da15dc0a967d8a}
+
+
+Definition at line \hyperlink{a00072_source_l00022}{22} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a512a7743d94a6335ddd824498dc56df7}{\index{System.\+h@{System.\+h}!P\+L\+L\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+\+N1@{P\+L\+L\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+\+N1}}
+\index{P\+L\+L\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+\+N1@{P\+L\+L\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+\+N1}!System.\+h@{System.\+h}}
+\subsubsection[{P\+L\+L\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+\+N1}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+L\+L\+\_\+\+P\+R\+E\+S\+C\+A\+L\+E\+R\+\_\+\+N1~2}}\label{a00072_a512a7743d94a6335ddd824498dc56df7}
+
+
+Definition at line \hyperlink{a00072_source_l00020}{20} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a0d6b8c656533d3c815daa9d575998950}{\index{System.\+h@{System.\+h}!P\+L\+L\+M\+O\+D\+E\+\_\+\+C\+P\+U@{P\+L\+L\+M\+O\+D\+E\+\_\+\+C\+P\+U}}
+\index{P\+L\+L\+M\+O\+D\+E\+\_\+\+C\+P\+U@{P\+L\+L\+M\+O\+D\+E\+\_\+\+C\+P\+U}!System.\+h@{System.\+h}}
+\subsubsection[{P\+L\+L\+M\+O\+D\+E\+\_\+\+C\+P\+U}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+L\+L\+M\+O\+D\+E\+\_\+\+C\+P\+U~(16)}}\label{a00072_a0d6b8c656533d3c815daa9d575998950}
+
+
+On-\/chip P\+L\+L setting. 
+
+
+
+Definition at line \hyperlink{a00072_source_l00032}{32} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a719092b960b832b468fd401ed27b9003}{\index{System.\+h@{System.\+h}!X\+T\+F\+R\+E\+Q\+\_\+\+C\+P\+U@{X\+T\+F\+R\+E\+Q\+\_\+\+C\+P\+U}}
+\index{X\+T\+F\+R\+E\+Q\+\_\+\+C\+P\+U@{X\+T\+F\+R\+E\+Q\+\_\+\+C\+P\+U}!System.\+h@{System.\+h}}
+\subsubsection[{X\+T\+F\+R\+E\+Q\+\_\+\+C\+P\+U}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+T\+F\+R\+E\+Q\+\_\+\+C\+P\+U~(7370000)}}\label{a00072_a719092b960b832b468fd401ed27b9003}
+
+
+On-\/chip F\+R\+C oscillator used frequency. 
+
+
+
+Definition at line \hyperlink{a00072_source_l00028}{28} of file \hyperlink{a00072_source}{System.\+h}.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{a00072_a253b248072cfc8bd812c69acd0046eed}{\index{System.\+h@{System.\+h}!Bool@{Bool}}
+\index{Bool@{Bool}!System.\+h@{System.\+h}}
+\subsubsection[{Bool}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned char {\bf Bool}}}\label{a00072_a253b248072cfc8bd812c69acd0046eed}
+
+
+Definition at line \hyperlink{a00072_source_l00050}{50} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}{\index{System.\+h@{System.\+h}!C\+Char@{C\+Char}}
+\index{C\+Char@{C\+Char}!System.\+h@{System.\+h}}
+\subsubsection[{C\+Char}]{\setlength{\rightskip}{0pt plus 5cm}typedef const char {\bf C\+Char}}}\label{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}
+
+
+Definition at line \hyperlink{a00072_source_l00051}{51} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a87d38f886e617ced2698fc55afa07637}{\index{System.\+h@{System.\+h}!Float32@{Float32}}
+\index{Float32@{Float32}!System.\+h@{System.\+h}}
+\subsubsection[{Float32}]{\setlength{\rightskip}{0pt plus 5cm}typedef float {\bf Float32}}}\label{a00072_a87d38f886e617ced2698fc55afa07637}
+
+
+Definition at line \hyperlink{a00072_source_l00045}{45} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{\index{System.\+h@{System.\+h}!Int16@{Int16}}
+\index{Int16@{Int16}!System.\+h@{System.\+h}}
+\subsubsection[{Int16}]{\setlength{\rightskip}{0pt plus 5cm}typedef signed int {\bf Int16}}}\label{a00072_a659ce9e5eb6571f9984ffc7caad2660a}
+
+
+Definition at line \hyperlink{a00072_source_l00047}{47} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a184d0ff2424cf4b81c68ce9538481a04}{\index{System.\+h@{System.\+h}!Int32@{Int32}}
+\index{Int32@{Int32}!System.\+h@{System.\+h}}
+\subsubsection[{Int32}]{\setlength{\rightskip}{0pt plus 5cm}typedef signed long {\bf Int32}}}\label{a00072_a184d0ff2424cf4b81c68ce9538481a04}
+
+
+Definition at line \hyperlink{a00072_source_l00048}{48} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a56afe571a9be7582d493be2b31aed0ea}{\index{System.\+h@{System.\+h}!Int64@{Int64}}
+\index{Int64@{Int64}!System.\+h@{System.\+h}}
+\subsubsection[{Int64}]{\setlength{\rightskip}{0pt plus 5cm}typedef signed long long {\bf Int64}}}\label{a00072_a56afe571a9be7582d493be2b31aed0ea}
+
+
+Definition at line \hyperlink{a00072_source_l00049}{49} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{\index{System.\+h@{System.\+h}!Int8@{Int8}}
+\index{Int8@{Int8}!System.\+h@{System.\+h}}
+\subsubsection[{Int8}]{\setlength{\rightskip}{0pt plus 5cm}typedef signed char {\bf Int8}}}\label{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}
+
+
+Definition at line \hyperlink{a00072_source_l00046}{46} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{\index{System.\+h@{System.\+h}!Uint16@{Uint16}}
+\index{Uint16@{Uint16}!System.\+h@{System.\+h}}
+\subsubsection[{Uint16}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned int {\bf Uint16}}}\label{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}
+
+
+Definition at line \hyperlink{a00072_source_l00041}{41} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_aba99025e657f892beb7ff31cecf64653}{\index{System.\+h@{System.\+h}!Uint32@{Uint32}}
+\index{Uint32@{Uint32}!System.\+h@{System.\+h}}
+\subsubsection[{Uint32}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned long {\bf Uint32}}}\label{a00072_aba99025e657f892beb7ff31cecf64653}
+
+
+Definition at line \hyperlink{a00072_source_l00042}{42} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_a69e971e1bcd1d1beb4e09a8b17a95636}{\index{System.\+h@{System.\+h}!Uint64@{Uint64}}
+\index{Uint64@{Uint64}!System.\+h@{System.\+h}}
+\subsubsection[{Uint64}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned long long {\bf Uint64}}}\label{a00072_a69e971e1bcd1d1beb4e09a8b17a95636}
+
+
+Definition at line \hyperlink{a00072_source_l00043}{43} of file \hyperlink{a00072_source}{System.\+h}.
+
+\hypertarget{a00072_af84840501dec18061d18a68c162a8fa2}{\index{System.\+h@{System.\+h}!Uint8@{Uint8}}
+\index{Uint8@{Uint8}!System.\+h@{System.\+h}}
+\subsubsection[{Uint8}]{\setlength{\rightskip}{0pt plus 5cm}typedef unsigned char {\bf Uint8}}}\label{a00072_af84840501dec18061d18a68c162a8fa2}
+
+
+Definition at line \hyperlink{a00072_source_l00040}{40} of file \hyperlink{a00072_source}{System.\+h}.
+

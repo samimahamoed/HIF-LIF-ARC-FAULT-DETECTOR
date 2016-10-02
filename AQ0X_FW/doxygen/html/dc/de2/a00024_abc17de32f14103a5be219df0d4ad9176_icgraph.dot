@@ -1,0 +1,12 @@
+digraph "serial_make16"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="serial_make16",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="msg_to_mem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d87/a00032.html#a126f3d78a95341a19a3e862e57357952",tooltip="copy serially received data to given memory address "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="serial_get_command",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/de2/a00024.html#a366b2707f4c7d76f0efc1b5cdde8e37e",tooltip="Function for retriving serial message. "];
+}

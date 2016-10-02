@@ -1,0 +1,414 @@
+\hypertarget{a00013}{\section{srv\+\_\+spi.\+h File Reference}
+\label{a00013}\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+}
+
+
+Header for spi port driver.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d49/a01696}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00013_d8/d7d/a00789}{S\+T\+A\+T\+R\+E\+G}
+\item 
+union \hyperlink{a00013_db/df8/a00076}{\+\_\+\+E\+E\+P\+R\+O\+M\+Status\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00013_a5df9b14c775d6e4eab17c79a729a4dbf}{P\+O\+S\+T\+\_\+\+S\+C\+A\+L\+E\+R}~57600
+\begin{DoxyCompactList}\small\item\em spi module clk rate post scaler value \end{DoxyCompactList}\item 
+\#define \hyperlink{a00013_a5c1fd7fa207a92f0b4b78d39bbd2f34b}{P\+R\+E\+\_\+\+S\+C\+A\+L\+E\+R}~57600
+\begin{DoxyCompactList}\small\item\em spi module clk rate pre scaler value \end{DoxyCompactList}\item 
+\#define \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}~L\+A\+T\+Bbits.\+L\+A\+T\+B12
+\item 
+\#define \hyperlink{a00013_a1424f86a2482cfbcf68f709ce542e262}{S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S}~T\+R\+I\+S\+Bbits.\+T\+R\+I\+S\+B12
+\item 
+\#define \hyperlink{a00013_a98c4bd0ee0f76eb205e874355bf9cd33}{S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S}~T\+R\+I\+S\+Bbits.\+T\+R\+I\+S\+B7
+\item 
+\#define \hyperlink{a00013_aa171067a2f57d1555ab4449c78847c72}{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S}~T\+R\+I\+S\+Bbits.\+T\+R\+I\+S\+B8
+\item 
+\#define \hyperlink{a00013_a11571727bdbc21b0bfb7c701599e759b}{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L}~A\+N\+S\+E\+L\+Bbits.\+A\+N\+S\+B8
+\item 
+\#define \hyperlink{a00013_a40c85fd42ffb12b326b7cb9ee48f2ffb}{S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S}~T\+R\+I\+S\+Bbits.\+T\+R\+I\+S\+B9
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\+\_\+put\+\_\+data} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} data)
+\begin{DoxyCompactList}\small\item\em send one byte of data and receive one back at the same time \end{DoxyCompactList}\item 
+void \hyperlink{a00013_ae909944aa85ae98323073c628be541aa}{spi\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Init function for srv\+\_\+spi service. \end{DoxyCompactList}\item 
+void \hyperlink{a00013_a507081b071417d4dacd038af0d0e4c25}{E\+E\+P\+R\+O\+M\+Init} (void)
+\item 
+union \hyperlink{a00013_db/df8/a00076}{\+\_\+\+E\+E\+P\+R\+O\+M\+Status\+\_\+} \hyperlink{a00013_a737bfe55bdc73b84f3fd5565c6baca2a}{E\+E\+P\+R\+O\+M\+Read\+Status} (void)
+\item 
+void \hyperlink{a00013_ab651dc76a73eff7c347344cc8b5b0b21}{E\+E\+P\+R\+O\+M\+Write\+Byte} (unsigned char, unsigned int)
+\item 
+unsigned char \hyperlink{a00013_a35883bb981f7b74f38bed25512568081}{E\+E\+P\+R\+O\+M\+Read\+Byte} (unsigned int)
+\item 
+void \hyperlink{a00013_a615f233da8f99248295e6ea727d93bde}{E\+E\+P\+R\+O\+M\+Write\+Enable} (void)
+\item 
+void \hyperlink{a00013_a985b143808edb68aca9c4dabc7af959d}{E\+E\+P\+R\+O\+M\+Write\+Disable} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header for spi port driver. 
+
+
+
+Definition in file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+\subsection{Data Structure Documentation}
+\index{S\+T\+A\+T\+R\+E\+G@{S\+T\+A\+T\+R\+E\+G}}\label{d8/d7d/a00789}
+\hypertarget{a00013_d8/d7d/a00789}{}
+\subsubsection{struct S\+T\+A\+T\+R\+E\+G}
+
+
+Definition at line \hyperlink{a00013_source_l00137}{137} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+Collaboration diagram for S\+T\+A\+T\+R\+E\+G\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d6/d15/a01697}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00013_ab3d9157e202ff59406f5ead250a755c4}{unsigned}\label{a00013_ab3d9157e202ff59406f5ead250a755c4}
+&
+B\+P0\+:1&
+\\
+\hline
+
+\hypertarget{a00013_a15cb6e78e0c7f48b64595c2378ea646c}{unsigned}\label{a00013_a15cb6e78e0c7f48b64595c2378ea646c}
+&
+B\+P1\+:1&
+\\
+\hline
+
+\hypertarget{a00013_a4ef10d89ed21189c926e11227bab7c3d}{unsigned}\label{a00013_a4ef10d89ed21189c926e11227bab7c3d}
+&
+R\+E\+S\+E\+R\+V\+E\+D\+:3&
+\\
+\hline
+
+\hypertarget{a00013_a30c6e84d13356eef9e4d20600c3b5433}{unsigned}\label{a00013_a30c6e84d13356eef9e4d20600c3b5433}
+&
+W\+E\+L\+:1&
+\\
+\hline
+
+\hypertarget{a00013_ab9c53087b26832e54862ba3c7b41a05d}{unsigned}\label{a00013_ab9c53087b26832e54862ba3c7b41a05d}
+&
+W\+I\+P\+:1&
+\\
+\hline
+
+\hypertarget{a00013_a55afe6de18b91f01a2d525bdf47b8554}{unsigned}\label{a00013_a55afe6de18b91f01a2d525bdf47b8554}
+&
+W\+P\+E\+N\+:1&
+\\
+\hline
+
+\end{DoxyFields}
+\index{\+\_\+\+E\+E\+P\+R\+O\+M\+Status\+\_\+@{\+\_\+\+E\+E\+P\+R\+O\+M\+Status\+\_\+}}\label{db/df8/a00076}
+\hypertarget{a00013_db/df8/a00076}{}
+\subsubsection{union \+\_\+\+E\+E\+P\+R\+O\+M\+Status\+\_\+}
+
+
+Definition at line \hyperlink{a00013_source_l00146}{146} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+Collaboration diagram for \+\_\+\+E\+E\+P\+R\+O\+M\+Status\+\_\+\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/da6/a01698}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00013_ab27a4d6dd2be64057b4adc7c0bdc4c07}{struct \hyperlink{a00013_d8/d7d/a00789}{S\+T\+A\+T\+R\+E\+G}}\label{a00013_ab27a4d6dd2be64057b4adc7c0bdc4c07}
+&
+Bits&
+\\
+\hline
+
+\hypertarget{a00013_a4362ad9fde44c7f551e727c72cfa111b}{unsigned char}\label{a00013_a4362ad9fde44c7f551e727c72cfa111b}
+&
+Char&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00013_a5df9b14c775d6e4eab17c79a729a4dbf}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!P\+O\+S\+T\+\_\+\+S\+C\+A\+L\+E\+R@{P\+O\+S\+T\+\_\+\+S\+C\+A\+L\+E\+R}}
+\index{P\+O\+S\+T\+\_\+\+S\+C\+A\+L\+E\+R@{P\+O\+S\+T\+\_\+\+S\+C\+A\+L\+E\+R}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{P\+O\+S\+T\+\_\+\+S\+C\+A\+L\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+\_\+\+S\+C\+A\+L\+E\+R~57600}}\label{a00013_a5df9b14c775d6e4eab17c79a729a4dbf}
+
+
+spi module clk rate post scaler value 
+
+
+
+Definition at line \hyperlink{a00013_source_l00014}{14} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+\hypertarget{a00013_a5c1fd7fa207a92f0b4b78d39bbd2f34b}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!P\+R\+E\+\_\+\+S\+C\+A\+L\+E\+R@{P\+R\+E\+\_\+\+S\+C\+A\+L\+E\+R}}
+\index{P\+R\+E\+\_\+\+S\+C\+A\+L\+E\+R@{P\+R\+E\+\_\+\+S\+C\+A\+L\+E\+R}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{P\+R\+E\+\_\+\+S\+C\+A\+L\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+E\+\_\+\+S\+C\+A\+L\+E\+R~57600}}\label{a00013_a5c1fd7fa207a92f0b4b78d39bbd2f34b}
+
+
+spi module clk rate pre scaler value 
+
+
+
+Definition at line \hyperlink{a00013_source_l00018}{18} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+\hypertarget{a00013_a98c4bd0ee0f76eb205e874355bf9cd33}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S@{S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S}}
+\index{S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S@{S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S~T\+R\+I\+S\+Bbits.\+T\+R\+I\+S\+B7}}\label{a00013_a98c4bd0ee0f76eb205e874355bf9cd33}
+
+
+Definition at line \hyperlink{a00013_source_l00113}{113} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+Referenced by \hyperlink{a00032_source_l00030}{spi\+\_\+init()}.
+
+\hypertarget{a00013_a40c85fd42ffb12b326b7cb9ee48f2ffb}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S@{S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S}}
+\index{S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S@{S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S~T\+R\+I\+S\+Bbits.\+T\+R\+I\+S\+B9}}\label{a00013_a40c85fd42ffb12b326b7cb9ee48f2ffb}
+
+
+Definition at line \hyperlink{a00013_source_l00118}{118} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+Referenced by \hyperlink{a00032_source_l00030}{spi\+\_\+init()}.
+
+\hypertarget{a00013_a11571727bdbc21b0bfb7c701599e759b}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L@{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L}}
+\index{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L@{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L~A\+N\+S\+E\+L\+Bbits.\+A\+N\+S\+B8}}\label{a00013_a11571727bdbc21b0bfb7c701599e759b}
+
+
+Definition at line \hyperlink{a00013_source_l00116}{116} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+Referenced by \hyperlink{a00032_source_l00030}{spi\+\_\+init()}.
+
+\hypertarget{a00013_aa171067a2f57d1555ab4449c78847c72}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S@{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S}}
+\index{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S@{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S~T\+R\+I\+S\+Bbits.\+T\+R\+I\+S\+B8}}\label{a00013_aa171067a2f57d1555ab4449c78847c72}
+
+
+Definition at line \hyperlink{a00013_source_l00115}{115} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+Referenced by \hyperlink{a00032_source_l00030}{spi\+\_\+init()}.
+
+\hypertarget{a00013_aa8b53e04161d178ebd9c01edf1584039}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T@{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}}
+\index{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T@{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T~L\+A\+T\+Bbits.\+L\+A\+T\+B12}}\label{a00013_aa8b53e04161d178ebd9c01edf1584039}
+
+
+Definition at line \hyperlink{a00013_source_l00110}{110} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+Referenced by \hyperlink{a00060_source_l00633}{nov\+\_\+byte\+\_\+read()}, \hyperlink{a00060_source_l00608}{nov\+\_\+byte\+\_\+write()}, \hyperlink{a00060_source_l00567}{nov\+\_\+get\+\_\+status()}, \hyperlink{a00060_source_l00723}{nov\+\_\+memcpy()}, \hyperlink{a00060_source_l00663}{nov\+\_\+page\+\_\+cpy()}, \hyperlink{a00060_source_l00553}{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch()}, \hyperlink{a00060_source_l00586}{nov\+\_\+write\+\_\+status()}, and \hyperlink{a00032_source_l00030}{spi\+\_\+init()}.
+
+\hypertarget{a00013_a1424f86a2482cfbcf68f709ce542e262}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S@{S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S}}
+\index{S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S@{S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S~T\+R\+I\+S\+Bbits.\+T\+R\+I\+S\+B12}}\label{a00013_a1424f86a2482cfbcf68f709ce542e262}
+
+
+Definition at line \hyperlink{a00013_source_l00111}{111} of file \hyperlink{a00013_source}{srv\+\_\+spi.\+h}.
+
+
+
+Referenced by \hyperlink{a00032_source_l00030}{spi\+\_\+init()}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00013_a507081b071417d4dacd038af0d0e4c25}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!E\+E\+P\+R\+O\+M\+Init@{E\+E\+P\+R\+O\+M\+Init}}
+\index{E\+E\+P\+R\+O\+M\+Init@{E\+E\+P\+R\+O\+M\+Init}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{E\+E\+P\+R\+O\+M\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void E\+E\+P\+R\+O\+M\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00013_a507081b071417d4dacd038af0d0e4c25}
+\hypertarget{a00013_a35883bb981f7b74f38bed25512568081}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!E\+E\+P\+R\+O\+M\+Read\+Byte@{E\+E\+P\+R\+O\+M\+Read\+Byte}}
+\index{E\+E\+P\+R\+O\+M\+Read\+Byte@{E\+E\+P\+R\+O\+M\+Read\+Byte}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{E\+E\+P\+R\+O\+M\+Read\+Byte}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char E\+E\+P\+R\+O\+M\+Read\+Byte (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{int}
+\end{DoxyParamCaption}
+)}}\label{a00013_a35883bb981f7b74f38bed25512568081}
+\hypertarget{a00013_a737bfe55bdc73b84f3fd5565c6baca2a}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!E\+E\+P\+R\+O\+M\+Read\+Status@{E\+E\+P\+R\+O\+M\+Read\+Status}}
+\index{E\+E\+P\+R\+O\+M\+Read\+Status@{E\+E\+P\+R\+O\+M\+Read\+Status}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{E\+E\+P\+R\+O\+M\+Read\+Status}]{\setlength{\rightskip}{0pt plus 5cm}union {\bf \+\_\+\+E\+E\+P\+R\+O\+M\+Status\+\_\+} E\+E\+P\+R\+O\+M\+Read\+Status (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00013_a737bfe55bdc73b84f3fd5565c6baca2a}
+\hypertarget{a00013_ab651dc76a73eff7c347344cc8b5b0b21}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!E\+E\+P\+R\+O\+M\+Write\+Byte@{E\+E\+P\+R\+O\+M\+Write\+Byte}}
+\index{E\+E\+P\+R\+O\+M\+Write\+Byte@{E\+E\+P\+R\+O\+M\+Write\+Byte}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{E\+E\+P\+R\+O\+M\+Write\+Byte}]{\setlength{\rightskip}{0pt plus 5cm}void E\+E\+P\+R\+O\+M\+Write\+Byte (
+\begin{DoxyParamCaption}
+\item[{unsigned}]{char, }
+\item[{unsigned}]{int}
+\end{DoxyParamCaption}
+)}}\label{a00013_ab651dc76a73eff7c347344cc8b5b0b21}
+\hypertarget{a00013_a985b143808edb68aca9c4dabc7af959d}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!E\+E\+P\+R\+O\+M\+Write\+Disable@{E\+E\+P\+R\+O\+M\+Write\+Disable}}
+\index{E\+E\+P\+R\+O\+M\+Write\+Disable@{E\+E\+P\+R\+O\+M\+Write\+Disable}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{E\+E\+P\+R\+O\+M\+Write\+Disable}]{\setlength{\rightskip}{0pt plus 5cm}void E\+E\+P\+R\+O\+M\+Write\+Disable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00013_a985b143808edb68aca9c4dabc7af959d}
+\hypertarget{a00013_a615f233da8f99248295e6ea727d93bde}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!E\+E\+P\+R\+O\+M\+Write\+Enable@{E\+E\+P\+R\+O\+M\+Write\+Enable}}
+\index{E\+E\+P\+R\+O\+M\+Write\+Enable@{E\+E\+P\+R\+O\+M\+Write\+Enable}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{E\+E\+P\+R\+O\+M\+Write\+Enable}]{\setlength{\rightskip}{0pt plus 5cm}void E\+E\+P\+R\+O\+M\+Write\+Enable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00013_a615f233da8f99248295e6ea727d93bde}
+\hypertarget{a00013_ae909944aa85ae98323073c628be541aa}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!spi\+\_\+init@{spi\+\_\+init}}
+\index{spi\+\_\+init@{spi\+\_\+init}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{spi\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void spi\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00013_ae909944aa85ae98323073c628be541aa}
+
+
+Init function for srv\+\_\+spi service. 
+
+
+
+Definition at line \hyperlink{a00032_source_l00030}{30} of file \hyperlink{a00032_source}{srv\+\_\+spi.\+c}.
+
+
+
+References \hyperlink{a00013_source_l00122}{N\+O\+V\+\_\+\+H\+O\+L\+D\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}, \hyperlink{a00013_source_l00121}{N\+O\+V\+\_\+\+H\+O\+L\+D\+\_\+\+C\+T\+R\+L\+\_\+\+T\+R\+I\+S}, \hyperlink{a00060_source_l00019}{nov\+\_\+wr\+\_\+inprogress}, \hyperlink{a00013_source_l00113}{S\+P\+I\+\_\+\+S\+C\+K\+\_\+\+T\+R\+I\+S}, \hyperlink{a00013_source_l00118}{S\+P\+I\+\_\+\+S\+D\+I\+\_\+\+T\+R\+I\+S}, \hyperlink{a00013_source_l00116}{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+A\+N\+S\+E\+L}, \hyperlink{a00013_source_l00115}{S\+P\+I\+\_\+\+S\+D\+O\+\_\+\+T\+R\+I\+S}, \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}, and \hyperlink{a00013_source_l00111}{S\+P\+I\+\_\+\+S\+S\+\_\+\+T\+R\+I\+S}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00031 \{
+00032 
+00033 
+00034     \textcolor{comment}{// setup the SPI1 port}
+00035     
+00036             \hyperlink{a00013_a98c4bd0ee0f76eb205e874355bf9cd33}{SPI\_SCK\_TRIS}        = 0;
+00037             \hyperlink{a00013_aa171067a2f57d1555ab4449c78847c72}{SPI\_SDO\_TRIS}        = 0;
+00038             \hyperlink{a00013_a40c85fd42ffb12b326b7cb9ee48f2ffb}{SPI\_SDI\_TRIS}        = 1;
+00039             \hyperlink{a00013_a1424f86a2482cfbcf68f709ce542e262}{SPI\_SS\_TRIS}         = 0;
+00040             \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT}     = 1;
+00041             \hyperlink{a00013_a11571727bdbc21b0bfb7c701599e759b}{SPI\_SDO\_ANSEL}       = 0;
+00042             
+00043            \hyperlink{a00029_a37dc9980ee3379d4bd3a66f7cf9d761e}{NOV\_HOLD\_CTRL\_TRIS}   = 0;
+00044            \hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT}    = 1;
+00045            \hyperlink{a00029_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress}    = 0;
+00046 
+00047 
+00048       \textcolor{comment}{//disable SPI module}
+00049        SPI1STATbits.SPIEN       = 0;
+00050        SPI1STATbits.SPISIDL     = 0;
+00051     
+00052 
+00053 \textcolor{comment}{// Configure SPI1CON register}
+00054     
+00055         IFS0bits.SPI1IF         = 0;    \textcolor{comment}{// Clear the Interrupt flag}
+00056         IEC0bits.SPI1IE         = 0;    \textcolor{comment}{// Disable the interrupt}
+00057 
+00058         SPI1CON1bits.MSTEN      = 1;   \textcolor{comment}{//Enable Master mode}
+00059 
+00060         SPI1CON1bits.MODE16     = 0;  \textcolor{comment}{//Communication is byte-wide}
+00061         SPI1CON1bits.CKP        = 0;   \textcolor{comment}{//Idle state for clock is a high level}
+00062         SPI1CON1bits.CKE        = 1;   \textcolor{comment}{//Data out on Active to Idle Edge}
+00063 
+00064         SPI1CON1bits.SMP        = 0;  \textcolor{comment}{/*Master mode => Input data is sampled at}
+00065 \textcolor{comment}{                                        the middle of data output time */}
+00066 
+00067         \textcolor{comment}{//TODO: Fsck = Fp/(Primary Prescaler * Secondary Prescaler)}
+00068         SPI1CON1bits.SPRE       = 6;     \textcolor{comment}{//Set Primary Pre-scalar for 4:1 ratio}
+00069         SPI1CON1bits.PPRE       = 2;     \textcolor{comment}{//Set Secondary Pre-scalar for 2:1 ratio}
+00070 
+00071         SPI1CON1bits.DISSDO     = 0;     \textcolor{comment}{//Internal SPI clock is enabled}
+00072         SPI1CON1bits.DISSCK     = 0;     \textcolor{comment}{//SDOx pin is controlled by the module}
+00073 
+00074         SPI1CON1bits.SSEN       = 0;     \textcolor{comment}{//SSx pin is not used by the module.}
+00075                                          \textcolor{comment}{//Pin is controlled by port function}
+00076 
+00077         SPI1CON2                = 0;     \textcolor{comment}{//Framed SPI modes not used}
+00078 
+00079 
+00080         SPI1STATbits.SPIROV     = 0;
+00081         \textcolor{comment}{//  Enable SPI module}
+00082         SPI1STATbits.SPIEN       = 1;
+00083 
+00084 
+00085 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 0
+
+
+\hypertarget{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}!spi\+\_\+put\+\_\+data@{spi\+\_\+put\+\_\+data}}
+\index{spi\+\_\+put\+\_\+data@{spi\+\_\+put\+\_\+data}!srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+\subsubsection[{spi\+\_\+put\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} spi\+\_\+put\+\_\+data (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{data}
+\end{DoxyParamCaption}
+)}}\label{a00013_a19e2dff580e4d1b2198fa9108fca81ac}
+
+
+send one byte of data and receive one back at the same time 
+
+
+
+Definition at line \hyperlink{a00032_source_l00097}{97} of file \hyperlink{a00032_source}{srv\+\_\+spi.\+c}.
+
+
+
+Referenced by \hyperlink{a00060_source_l00633}{nov\+\_\+byte\+\_\+read()}, \hyperlink{a00060_source_l00608}{nov\+\_\+byte\+\_\+write()}, \hyperlink{a00060_source_l00567}{nov\+\_\+get\+\_\+status()}, \hyperlink{a00060_source_l00723}{nov\+\_\+memcpy()}, \hyperlink{a00060_source_l00663}{nov\+\_\+page\+\_\+cpy()}, \hyperlink{a00060_source_l00553}{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch()}, and \hyperlink{a00060_source_l00586}{nov\+\_\+write\+\_\+status()}.
+
+
+\begin{DoxyCode}
+00098 \{
+00099     SPI1BUF = data;                  \textcolor{comment}{// write to buffer for TX}
+00100     \textcolor{keywordflow}{while}(!SPI1STATbits.SPIRBF);             \textcolor{comment}{// wait for transfer to complete}
+00101     \textcolor{keywordflow}{return} SPI1BUF;                  \textcolor{comment}{// read the received value}
+00102 
+00103 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+

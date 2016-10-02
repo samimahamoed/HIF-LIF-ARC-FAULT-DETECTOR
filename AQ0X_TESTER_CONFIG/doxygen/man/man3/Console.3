@@ -1,0 +1,211 @@
+.TH "Console" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Console \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <console\&.h>\fP
+.PP
+Inherits \fBQPlainTextEdit\fP\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBgetData\fP (const QByteArray &data)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConsole\fP (QWidget *parent=0)"
+.br
+.ti -1c
+.RI "void \fBputData\fP (const QByteArray &data)"
+.br
+.ti -1c
+.RI "void \fBsetLocalEchoEnabled\fP (bool set)"
+.br
+.ti -1c
+.RI "QString \fBuint8_to_str\fP (quint8 val)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPalette \fBp\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBkeyPressEvent\fP (QKeyEvent *e)"
+.br
+.ti -1c
+.RI "virtual void \fBmousePressEvent\fP (QMouseEvent *e)"
+.br
+.ti -1c
+.RI "virtual void \fBmouseDoubleClickEvent\fP (QMouseEvent *e)"
+.br
+.ti -1c
+.RI "virtual void \fBcontextMenuEvent\fP (QContextMenuEvent *e)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 48 of file console\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Console::Console (QWidget *parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 49 of file console\&.cpp\&.
+.PP
+References p\&.
+.PP
+.nf
+50     : QPlainTextEdit(parent)
+51     , localEchoEnabled(false)
+52 {
+53     document()->setMaximumBlockCount(100);
+54     p = palette();
+55     p\&.setColor(QPalette::Base, Qt::black);
+56     p\&.setColor(QPalette::Text, Qt::green);
+57     setPalette(p);
+58 
+59 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void Console::contextMenuEvent (QContextMenuEvent *e)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 110 of file console\&.cpp\&.
+.PP
+.nf
+111 {
+112     Q_UNUSED(e)
+113 }
+.fi
+.SS "void Console::getData (const QByteArray &data)\fC [signal]\fP"
+
+.PP
+Definition at line 120 of file moc_console\&.cpp\&.
+.PP
+Referenced by keyPressEvent()\&.
+.PP
+.nf
+121 {
+122     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+123     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+124 }
+.fi
+.SS "void Console::keyPressEvent (QKeyEvent *e)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 82 of file console\&.cpp\&.
+.PP
+References getData()\&.
+.PP
+.nf
+83 {
+84     switch (e->key()) {
+85     case Qt::Key_Backspace:
+86     case Qt::Key_Left:
+87     case Qt::Key_Right:
+88     case Qt::Key_Up:
+89     case Qt::Key_Down:
+90         // skip processing
+91         break;
+92     default:
+93         if (localEchoEnabled)
+94             QPlainTextEdit::keyPressEvent(e);
+95         emit getData(e->text()\&.toLocal8Bit());
+96     }
+97 }
+.fi
+.SS "void Console::mouseDoubleClickEvent (QMouseEvent *e)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 105 of file console\&.cpp\&.
+.PP
+.nf
+106 {
+107     Q_UNUSED(e)
+108 }
+.fi
+.SS "void Console::mousePressEvent (QMouseEvent *e)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 99 of file console\&.cpp\&.
+.PP
+.nf
+100 {
+101     Q_UNUSED(e)
+102     setFocus();
+103 }
+.fi
+.SS "void Console::putData (const QByteArray &data)"
+
+.PP
+Definition at line 61 of file console\&.cpp\&.
+.PP
+References uint8_to_str()\&.
+.PP
+.nf
+62 {
+63 
+64     QString str;
+65 
+66 
+67     for(int ii =0;ii<data\&.length();ii++)
+68         str\&.append(uint8_to_str((quint8)data\&.at(ii)));
+69 
+70 
+71     insertPlainText(QString(data));
+72 
+73     QScrollBar *bar = verticalScrollBar();
+74     bar->setValue(bar->maximum());
+75 }
+.fi
+.SS "void Console::setLocalEchoEnabled (boolset)"
+
+.PP
+Definition at line 77 of file console\&.cpp\&.
+.PP
+.nf
+78 {
+79     localEchoEnabled = set;
+80 }
+.fi
+.SS "QString Console::uint8_to_str (quint8val)"
+
+.PP
+Definition at line 116 of file console\&.cpp\&.
+.PP
+Referenced by putData()\&.
+.PP
+.nf
+117 {
+118     const char cnv[] = "0123456789ABCDEF";
+119 
+120     return QString(cnv[(val>>4)&0x0F]) + QString(cnv[(val>>0)&0x0F]);
+121 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "QPalette Console::p"
+
+.PP
+Definition at line 64 of file console\&.h\&.
+.PP
+Referenced by Console()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

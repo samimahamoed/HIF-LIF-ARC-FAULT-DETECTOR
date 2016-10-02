@@ -1,0 +1,233 @@
+\hypertarget{a00054_source}{\section{ui\+\_\+settingsdialog.\+h}
+\label{a00054_source}\index{ui\+\_\+settingsdialog.\+h@{ui\+\_\+settingsdialog.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/********************************************************************************}
+00002 \textcolor{comment}{** Form generated from reading UI file 'settingsdialog.ui'}
+00003 \textcolor{comment}{**}
+00004 \textcolor{comment}{** Created by: Qt User Interface Compiler version 5.2.0}
+00005 \textcolor{comment}{**}
+00006 \textcolor{comment}{** WARNING! All changes made in this file will be lost when recompiling UI file!}
+00007 \textcolor{comment}{********************************************************************************/}
+00008 
+00009 \textcolor{preprocessor}{#ifndef UI\_SETTINGSDIALOG\_H}
+00010 \textcolor{preprocessor}{#define UI\_SETTINGSDIALOG\_H}
+00011 
+00012 \textcolor{preprocessor}{#include <QtCore/QVariant>}
+00013 \textcolor{preprocessor}{#include <QtWidgets/QAction>}
+00014 \textcolor{preprocessor}{#include <QtWidgets/QApplication>}
+00015 \textcolor{preprocessor}{#include <QtWidgets/QButtonGroup>}
+00016 \textcolor{preprocessor}{#include <QtWidgets/QCheckBox>}
+00017 \textcolor{preprocessor}{#include <QtWidgets/QComboBox>}
+00018 \textcolor{preprocessor}{#include <QtWidgets/QDialog>}
+00019 \textcolor{preprocessor}{#include <QtWidgets/QGridLayout>}
+00020 \textcolor{preprocessor}{#include <QtWidgets/QGroupBox>}
+00021 \textcolor{preprocessor}{#include <QtWidgets/QHBoxLayout>}
+00022 \textcolor{preprocessor}{#include <QtWidgets/QHeaderView>}
+00023 \textcolor{preprocessor}{#include <QtWidgets/QLabel>}
+00024 \textcolor{preprocessor}{#include <QtWidgets/QPushButton>}
+00025 \textcolor{preprocessor}{#include <QtWidgets/QSpacerItem>}
+00026 \textcolor{preprocessor}{#include <QtWidgets/QVBoxLayout>}
+00027 
+00028 QT\_BEGIN\_NAMESPACE
+00029 
+\hypertarget{a00054_source_l00030}{}\hyperlink{a00029}{00030} \textcolor{keyword}{class }\hyperlink{a00029}{Ui\_SettingsDialog}
+00031 \{
+00032 \textcolor{keyword}{public}:
+\hypertarget{a00054_source_l00033}{}\hyperlink{a00029_a2cc53955b73f22f0cfcf508da4654b16}{00033}     QGridLayout *\hyperlink{a00029_a2cc53955b73f22f0cfcf508da4654b16}{gridLayout\_3};
+\hypertarget{a00054_source_l00034}{}\hyperlink{a00029_a47cebbe70a990bd1f309250101022889}{00034}     QGroupBox *\hyperlink{a00029_a47cebbe70a990bd1f309250101022889}{parametersBox};
+\hypertarget{a00054_source_l00035}{}\hyperlink{a00029_a7b71d6038a34f600625f007630c5234e}{00035}     QGridLayout *\hyperlink{a00029_a7b71d6038a34f600625f007630c5234e}{gridLayout\_2};
+\hypertarget{a00054_source_l00036}{}\hyperlink{a00029_a57e59712bae4f482b1ff1d61c81471e8}{00036}     QLabel *\hyperlink{a00029_a57e59712bae4f482b1ff1d61c81471e8}{baudRateLabel};
+\hypertarget{a00054_source_l00037}{}\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{00037}     QComboBox *\hyperlink{a00029_a766a61db4a8c72219543f7c096ae5601}{baudRateBox};
+\hypertarget{a00054_source_l00038}{}\hyperlink{a00029_a4d827d5f217aa166e228b0e2c9c5aaf7}{00038}     QLabel *\hyperlink{a00029_a4d827d5f217aa166e228b0e2c9c5aaf7}{dataBitsLabel};
+\hypertarget{a00054_source_l00039}{}\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{00039}     QComboBox *\hyperlink{a00029_ab6082bb196e22af4ca04a04db3402166}{dataBitsBox};
+\hypertarget{a00054_source_l00040}{}\hyperlink{a00029_ae062846ca8db471d7eb362ae39123422}{00040}     QLabel *\hyperlink{a00029_ae062846ca8db471d7eb362ae39123422}{parityLabel};
+\hypertarget{a00054_source_l00041}{}\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{00041}     QComboBox *\hyperlink{a00029_a88c0b5d1f96a308ab115937b090f7bba}{parityBox};
+\hypertarget{a00054_source_l00042}{}\hyperlink{a00029_a665748b39dda24475690e2363b72e265}{00042}     QLabel *\hyperlink{a00029_a665748b39dda24475690e2363b72e265}{stopBitsLabel};
+\hypertarget{a00054_source_l00043}{}\hyperlink{a00029_ad61890c5fd0acc9e72385efd02df90c0}{00043}     QComboBox *\hyperlink{a00029_ad61890c5fd0acc9e72385efd02df90c0}{stopBitsBox};
+\hypertarget{a00054_source_l00044}{}\hyperlink{a00029_a7876a6baf43bd21d3b816f6a5a24fffc}{00044}     QLabel *\hyperlink{a00029_a7876a6baf43bd21d3b816f6a5a24fffc}{flowControlLabel};
+\hypertarget{a00054_source_l00045}{}\hyperlink{a00029_a1ebdf5da704108eae1078cefc446fbef}{00045}     QComboBox *\hyperlink{a00029_a1ebdf5da704108eae1078cefc446fbef}{flowControlBox};
+\hypertarget{a00054_source_l00046}{}\hyperlink{a00029_aea3871481f7ecb94f1835e519631f9a2}{00046}     QGroupBox *\hyperlink{a00029_aea3871481f7ecb94f1835e519631f9a2}{selectBox};
+\hypertarget{a00054_source_l00047}{}\hyperlink{a00029_a07d152c7cc63e2cffdda613baea54c0f}{00047}     QGridLayout *\hyperlink{a00029_a07d152c7cc63e2cffdda613baea54c0f}{gridLayout};
+\hypertarget{a00054_source_l00048}{}\hyperlink{a00029_a323eca0d6d4b94d2d41c7737fe8b2282}{00048}     QComboBox *\hyperlink{a00029_a323eca0d6d4b94d2d41c7737fe8b2282}{serialPortInfoListBox};
+\hypertarget{a00054_source_l00049}{}\hyperlink{a00029_aaf2756662f744e79aa3443f1e035870d}{00049}     QLabel *\hyperlink{a00029_aaf2756662f744e79aa3443f1e035870d}{descriptionLabel};
+\hypertarget{a00054_source_l00050}{}\hyperlink{a00029_afeadc7657c9eaa3103bd529342f5fe97}{00050}     QLabel *\hyperlink{a00029_afeadc7657c9eaa3103bd529342f5fe97}{manufacturerLabel};
+\hypertarget{a00054_source_l00051}{}\hyperlink{a00029_ad860892f11a79cb726643d3478078fcd}{00051}     QLabel *\hyperlink{a00029_ad860892f11a79cb726643d3478078fcd}{locationLabel};
+\hypertarget{a00054_source_l00052}{}\hyperlink{a00029_a50c8fdd36faae6146740e37728af71f2}{00052}     QLabel *\hyperlink{a00029_a50c8fdd36faae6146740e37728af71f2}{vidLabel};
+\hypertarget{a00054_source_l00053}{}\hyperlink{a00029_a8ad53ddf3a11421d99dfa6fec8c92cfc}{00053}     QLabel *\hyperlink{a00029_a8ad53ddf3a11421d99dfa6fec8c92cfc}{pidLabel};
+\hypertarget{a00054_source_l00054}{}\hyperlink{a00029_a5519b84cf0fd4124e77643ce5600a251}{00054}     QHBoxLayout *\hyperlink{a00029_a5519b84cf0fd4124e77643ce5600a251}{horizontalLayout};
+\hypertarget{a00054_source_l00055}{}\hyperlink{a00029_a91941a5010b87cc8a0c26a641d4a7808}{00055}     QSpacerItem *\hyperlink{a00029_a91941a5010b87cc8a0c26a641d4a7808}{horizontalSpacer};
+\hypertarget{a00054_source_l00056}{}\hyperlink{a00029_adc885543c05d0026019ec678b4d08c5c}{00056}     QPushButton *\hyperlink{a00029_adc885543c05d0026019ec678b4d08c5c}{applyButton};
+\hypertarget{a00054_source_l00057}{}\hyperlink{a00029_a996d0cf4818dae895375cb43b996e0dc}{00057}     QGroupBox *\hyperlink{a00029_a996d0cf4818dae895375cb43b996e0dc}{additionalOptionsGroupBox};
+\hypertarget{a00054_source_l00058}{}\hyperlink{a00029_aad19d26806d7e14548233852ac97c26f}{00058}     QVBoxLayout *\hyperlink{a00029_aad19d26806d7e14548233852ac97c26f}{verticalLayout};
+\hypertarget{a00054_source_l00059}{}\hyperlink{a00029_a4cef19b8232e266ba202152ade600263}{00059}     QCheckBox *\hyperlink{a00029_a4cef19b8232e266ba202152ade600263}{localEchoCheckBox};
+00060 
+\hypertarget{a00054_source_l00061}{}\hyperlink{a00029_a4666ab89748eeb11cdb95d857bd02c6e}{00061}     \textcolor{keywordtype}{void} \hyperlink{a00029_a4666ab89748eeb11cdb95d857bd02c6e}{setupUi}(\hyperlink{a00009}{QDialog} *\hyperlink{a00022}{SettingsDialog})
+00062     \{
+00063         \textcolor{keywordflow}{if} (SettingsDialog->objectName().isEmpty())
+00064             SettingsDialog->setObjectName(QStringLiteral(\textcolor{stringliteral}{"SettingsDialog"}));
+00065         SettingsDialog->resize(327, 304);
+00066         QIcon icon;
+00067         icon.addFile(QStringLiteral(\textcolor{stringliteral}{":/logo/logo"}), QSize(), QIcon::Normal, QIcon::Off);
+00068         SettingsDialog->setWindowIcon(icon);
+00069         gridLayout\_3 = \textcolor{keyword}{new} QGridLayout(SettingsDialog);
+00070         gridLayout\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_3"}));
+00071         parametersBox = \textcolor{keyword}{new} QGroupBox(SettingsDialog);
+00072         parametersBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"parametersBox"}));
+00073         gridLayout\_2 = \textcolor{keyword}{new} QGridLayout(parametersBox);
+00074         gridLayout\_2->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_2"}));
+00075         baudRateLabel = \textcolor{keyword}{new} QLabel(parametersBox);
+00076         baudRateLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"baudRateLabel"}));
+00077 
+00078         gridLayout\_2->addWidget(baudRateLabel, 0, 0, 1, 1);
+00079 
+00080         baudRateBox = \textcolor{keyword}{new} QComboBox(parametersBox);
+00081         baudRateBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"baudRateBox"}));
+00082 
+00083         gridLayout\_2->addWidget(baudRateBox, 0, 1, 1, 1);
+00084 
+00085         dataBitsLabel = \textcolor{keyword}{new} QLabel(parametersBox);
+00086         dataBitsLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dataBitsLabel"}));
+00087 
+00088         gridLayout\_2->addWidget(dataBitsLabel, 1, 0, 1, 1);
+00089 
+00090         dataBitsBox = \textcolor{keyword}{new} QComboBox(parametersBox);
+00091         dataBitsBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dataBitsBox"}));
+00092 
+00093         gridLayout\_2->addWidget(dataBitsBox, 1, 1, 1, 1);
+00094 
+00095         parityLabel = \textcolor{keyword}{new} QLabel(parametersBox);
+00096         parityLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"parityLabel"}));
+00097 
+00098         gridLayout\_2->addWidget(parityLabel, 2, 0, 1, 1);
+00099 
+00100         parityBox = \textcolor{keyword}{new} QComboBox(parametersBox);
+00101         parityBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"parityBox"}));
+00102 
+00103         gridLayout\_2->addWidget(parityBox, 2, 1, 1, 1);
+00104 
+00105         stopBitsLabel = \textcolor{keyword}{new} QLabel(parametersBox);
+00106         stopBitsLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"stopBitsLabel"}));
+00107 
+00108         gridLayout\_2->addWidget(stopBitsLabel, 3, 0, 1, 1);
+00109 
+00110         stopBitsBox = \textcolor{keyword}{new} QComboBox(parametersBox);
+00111         stopBitsBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"stopBitsBox"}));
+00112 
+00113         gridLayout\_2->addWidget(stopBitsBox, 3, 1, 1, 1);
+00114 
+00115         flowControlLabel = \textcolor{keyword}{new} QLabel(parametersBox);
+00116         flowControlLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"flowControlLabel"}));
+00117 
+00118         gridLayout\_2->addWidget(flowControlLabel, 4, 0, 1, 1);
+00119 
+00120         flowControlBox = \textcolor{keyword}{new} QComboBox(parametersBox);
+00121         flowControlBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"flowControlBox"}));
+00122 
+00123         gridLayout\_2->addWidget(flowControlBox, 4, 1, 1, 1);
+00124 
+00125 
+00126         gridLayout\_3->addWidget(parametersBox, 0, 1, 1, 1);
+00127 
+00128         selectBox = \textcolor{keyword}{new} QGroupBox(SettingsDialog);
+00129         selectBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"selectBox"}));
+00130         gridLayout = \textcolor{keyword}{new} QGridLayout(selectBox);
+00131         gridLayout->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout"}));
+00132         serialPortInfoListBox = \textcolor{keyword}{new} QComboBox(selectBox);
+00133         serialPortInfoListBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"serialPortInfoListBox"}));
+00134 
+00135         gridLayout->addWidget(serialPortInfoListBox, 0, 0, 1, 1);
+00136 
+00137         descriptionLabel = \textcolor{keyword}{new} QLabel(selectBox);
+00138         descriptionLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"descriptionLabel"}));
+00139 
+00140         gridLayout->addWidget(descriptionLabel, 1, 0, 1, 1);
+00141 
+00142         manufacturerLabel = \textcolor{keyword}{new} QLabel(selectBox);
+00143         manufacturerLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"manufacturerLabel"}));
+00144 
+00145         gridLayout->addWidget(manufacturerLabel, 2, 0, 1, 1);
+00146 
+00147         locationLabel = \textcolor{keyword}{new} QLabel(selectBox);
+00148         locationLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"locationLabel"}));
+00149 
+00150         gridLayout->addWidget(locationLabel, 3, 0, 1, 1);
+00151 
+00152         vidLabel = \textcolor{keyword}{new} QLabel(selectBox);
+00153         vidLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"vidLabel"}));
+00154 
+00155         gridLayout->addWidget(vidLabel, 4, 0, 1, 1);
+00156 
+00157         pidLabel = \textcolor{keyword}{new} QLabel(selectBox);
+00158         pidLabel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"pidLabel"}));
+00159 
+00160         gridLayout->addWidget(pidLabel, 5, 0, 1, 1);
+00161 
+00162 
+00163         gridLayout\_3->addWidget(selectBox, 0, 0, 1, 1);
+00164 
+00165         horizontalLayout = \textcolor{keyword}{new} QHBoxLayout();
+00166         horizontalLayout->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout"}));
+00167         horizontalSpacer = \textcolor{keyword}{new} QSpacerItem(96, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+00168 
+00169         horizontalLayout->addItem(horizontalSpacer);
+00170 
+00171         applyButton = \textcolor{keyword}{new} QPushButton(SettingsDialog);
+00172         applyButton->setObjectName(QStringLiteral(\textcolor{stringliteral}{"applyButton"}));
+00173 
+00174         horizontalLayout->addWidget(applyButton);
+00175 
+00176 
+00177         gridLayout\_3->addLayout(horizontalLayout, 2, 0, 1, 2);
+00178 
+00179         additionalOptionsGroupBox = \textcolor{keyword}{new} QGroupBox(SettingsDialog);
+00180         additionalOptionsGroupBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"additionalOptionsGroupBox"}));
+00181         verticalLayout = \textcolor{keyword}{new} QVBoxLayout(additionalOptionsGroupBox);
+00182         verticalLayout->setObjectName(QStringLiteral(\textcolor{stringliteral}{"verticalLayout"}));
+00183         localEchoCheckBox = \textcolor{keyword}{new} QCheckBox(additionalOptionsGroupBox);
+00184         localEchoCheckBox->setObjectName(QStringLiteral(\textcolor{stringliteral}{"localEchoCheckBox"}));
+00185         localEchoCheckBox->setChecked(\textcolor{keyword}{true});
+00186 
+00187         verticalLayout->addWidget(localEchoCheckBox);
+00188 
+00189 
+00190         gridLayout\_3->addWidget(additionalOptionsGroupBox, 1, 0, 1, 2);
+00191 
+00192 
+00193         \hyperlink{a00029_a7a0adf32eef516ceffcc0633a90c3b34}{retranslateUi}(SettingsDialog);
+00194 
+00195         QMetaObject::connectSlotsByName(SettingsDialog);
+00196     \} \textcolor{comment}{// setupUi}
+00197 
+\hypertarget{a00054_source_l00198}{}\hyperlink{a00029_a7a0adf32eef516ceffcc0633a90c3b34}{00198}     \textcolor{keywordtype}{void} \hyperlink{a00029_a7a0adf32eef516ceffcc0633a90c3b34}{retranslateUi}(\hyperlink{a00009}{QDialog} *\hyperlink{a00022}{SettingsDialog})
+00199     \{
+00200         SettingsDialog->setWindowTitle(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Settings"}, 0));
+00201         parametersBox->setTitle(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Select Parameters"}, 0));
+00202         baudRateLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"BaudRate:"}, 0));
+00203         dataBitsLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Data bits:"}, 0));
+00204         parityLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Parity:"}, 0));
+00205         stopBitsLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Stop bits:"}, 0));
+00206         flowControlLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Flow control:"}, 0));
+00207         selectBox->setTitle(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Select Serial Port"}, 0));
+00208         descriptionLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Description:"}, 0));
+00209         manufacturerLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Manufacturer:"}, 0));
+00210         locationLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Location:"}, 0));
+00211         vidLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Vendor ID:"}, 0));
+00212         pidLabel->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Product ID:"}, 0));
+00213         applyButton->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Apply"}, 0));
+00214         additionalOptionsGroupBox->setTitle(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Additional options"},
+       0));
+00215         localEchoCheckBox->setText(QApplication::translate(\textcolor{stringliteral}{"SettingsDialog"}, \textcolor{stringliteral}{"Local echo"}, 0));
+00216     \} \textcolor{comment}{// retranslateUi}
+00217 
+00218 \};
+00219 
+00220 \textcolor{keyword}{namespace }\hyperlink{a00055}{Ui} \{
+\hypertarget{a00054_source_l00221}{}\hyperlink{a00023}{00221}     \textcolor{keyword}{class }\hyperlink{a00023}{SettingsDialog}: \textcolor{keyword}{public} \hyperlink{a00029}{Ui\_SettingsDialog} \{\};
+00222 \} \textcolor{comment}{// namespace Ui}
+00223 
+00224 QT\_END\_NAMESPACE
+00225 
+00226 \textcolor{preprocessor}{#endif // UI\_SETTINGSDIALOG\_H}
+\end{DoxyCode}

@@ -1,0 +1,926 @@
+\hypertarget{a00096_source}{\section{F\+F\+T\+Real.\+hpp}
+\label{a00096_source}\index{F\+F\+T\+Real.\+hpp@{F\+F\+T\+Real.\+hpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*****************************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{        FFTReal.hpp}
+00004 \textcolor{comment}{        By Laurent de Soras}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{--- Legal stuff ---}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{This program is free software. It comes without any warranty, to}
+00009 \textcolor{comment}{the extent permitted by applicable law. You can redistribute it}
+00010 \textcolor{comment}{and/or modify it under the terms of the Do What The Fuck You Want}
+00011 \textcolor{comment}{To Public License, Version 2, as published by Sam Hocevar. See}
+00012 \textcolor{comment}{http://sam.zoy.org/wtfpl/COPYING for more details.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{*Tab=3***********************************************************************/}
+00015 
+00016 
+00017 
+00018 \textcolor{preprocessor}{#if defined (ffft\_FFTReal\_CURRENT\_CODEHEADER)}
+00019 \textcolor{preprocessor}{    #error Recursive inclusion of FFTReal code header.}
+00020 \textcolor{preprocessor}{#endif}
+\hypertarget{a00096_source_l00021}{}\hyperlink{a00096_a7e1c53e720f689723accc78c4835f91c}{00021} \textcolor{preprocessor}{#define ffft\_FFTReal\_CURRENT\_CODEHEADER}
+00022 
+00023 \textcolor{preprocessor}{#if ! defined (ffft\_FFTReal\_CODEHEADER\_INCLUDED)}
+\hypertarget{a00096_source_l00024}{}\hyperlink{a00096_adf3b5663ee12a1d9e612686163e7ad52}{00024} \textcolor{preprocessor}{#define ffft\_FFTReal\_CODEHEADER\_INCLUDED}
+00025 
+00026 
+00027 
+00028 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) INCLUDE FILES \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00029 
+00030 \textcolor{preprocessor}{#include    <cassert>}
+00031 \textcolor{preprocessor}{#include    <cmath>}
+00032 
+00033 
+00034 
+00035 \textcolor{keyword}{namespace }\hyperlink{a00142}{ffft}
+00036 \{
+00037 
+00038 
+00039 
+00040 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{bool}  FFTReal\_is\_pow2 (\textcolor{keywordtype}{long} x)
+00041 \{
+00042     assert (x > 0);
+00043 
+00044     \textcolor{keywordflow}{return}  ((x & -x) == x);
+00045 \}
+00046 
+00047 
+00048 
+00049 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{int}   FFTReal\_get\_next\_pow2 (\textcolor{keywordtype}{long} x)
+00050 \{
+00051     --x;
+00052 
+00053     \textcolor{keywordtype}{int}             p = 0;
+00054     \textcolor{keywordflow}{while} ((x & ~0xFFFFL) != 0)
+00055     \{
+00056         p += 16;
+00057         x >>= 16;
+00058     \}
+00059     \textcolor{keywordflow}{while} ((x & ~0xFL) != 0)
+00060     \{
+00061         p += 4;
+00062         x >>= 4;
+00063     \}
+00064     \textcolor{keywordflow}{while} (x > 0)
+00065     \{
+00066         ++p;
+00067         x >>= 1;
+00068     \}
+00069 
+00070     \textcolor{keywordflow}{return} (p);
+00071 \}
+00072 
+00073 
+00074 
+00075 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PUBLIC \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00076 
+00077 
+00078 
+00079 \textcolor{comment}{/*}
+00080 \textcolor{comment}{==============================================================================}
+00081 \textcolor{comment}{Name: ctor}
+00082 \textcolor{comment}{Input parameters:}
+00083 \textcolor{comment}{    - length: length of the array on which we want to do a FFT. Range: power of}
+00084 \textcolor{comment}{        2 only, > 0.}
+00085 \textcolor{comment}{Throws: std::bad\_alloc}
+00086 \textcolor{comment}{==============================================================================}
+00087 \textcolor{comment}{*/}
+00088 
+00089 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+\hypertarget{a00096_source_l00090}{}\hyperlink{a00010_a627db4d781235302c3a229fc4d7a10ba}{00090} \hyperlink{a00010}{FFTReal <DT>::FFTReal} (\textcolor{keywordtype}{long} length)
+00091 :   \_length (length)
+00092 ,   \_nbr\_bits (FFTReal\_get\_next\_pow2 (length))
+00093 ,   \_br\_lut ()
+00094 ,   \_trigo\_lut ()
+00095 ,   \_buffer (length)
+00096 ,   \_trigo\_osc ()
+00097 \{
+00098     assert (FFTReal\_is\_pow2 (length));
+00099     assert (\_nbr\_bits <= MAX\_BIT\_DEPTH);
+00100 
+00101     init\_br\_lut ();
+00102     init\_trigo\_lut ();
+00103     init\_trigo\_osc ();
+00104 \}
+00105 
+00106 
+00107 
+00108 \textcolor{comment}{/*}
+00109 \textcolor{comment}{==============================================================================}
+00110 \textcolor{comment}{Name: get\_length}
+00111 \textcolor{comment}{Description:}
+00112 \textcolor{comment}{    Returns the number of points processed by this FFT object.}
+00113 \textcolor{comment}{Returns: The number of points, power of 2, > 0.}
+00114 \textcolor{comment}{Throws: Nothing}
+00115 \textcolor{comment}{==============================================================================}
+00116 \textcolor{comment}{*/}
+00117 
+00118 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+\hypertarget{a00096_source_l00119}{}\hyperlink{a00010_abdd5b144ba5737c7ad27095d1658c29e}{00119} \textcolor{keywordtype}{long}    \hyperlink{a00010}{FFTReal <DT>::get\_length} () \textcolor{keyword}{const}
+00120 \{
+00121     \textcolor{keywordflow}{return} (\_length);
+00122 \}
+00123 
+00124 
+00125 
+00126 \textcolor{comment}{/*}
+00127 \textcolor{comment}{==============================================================================}
+00128 \textcolor{comment}{Name: do\_fft}
+00129 \textcolor{comment}{Description:}
+00130 \textcolor{comment}{    Compute the FFT of the array.}
+00131 \textcolor{comment}{Input parameters:}
+00132 \textcolor{comment}{    - x: pointer on the source array (time).}
+00133 \textcolor{comment}{Output parameters:}
+00134 \textcolor{comment}{    - f: pointer on the destination array (frequencies).}
+00135 \textcolor{comment}{        f [0...length(x)/2] = real values,}
+00136 \textcolor{comment}{        f [length(x)/2+1...length(x)-1] = negative imaginary values of}
+00137 \textcolor{comment}{        coefficents 1...length(x)/2-1.}
+00138 \textcolor{comment}{Throws: Nothing}
+00139 \textcolor{comment}{==============================================================================}
+00140 \textcolor{comment}{*/}
+00141 
+00142 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+\hypertarget{a00096_source_l00143}{}\hyperlink{a00010_a4c5b863a285c5a87f38517735cbf1352}{00143} \textcolor{keywordtype}{void}    \hyperlink{a00010}{FFTReal <DT>::do\_fft} (\hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType} f [], \textcolor{keyword}{const} 
+      \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType} x []) \textcolor{keyword}{const}
+00144 \{
+00145     assert (f != 0);
+00146     assert (f != use\_buffer ());
+00147     assert (x != 0);
+00148     assert (x != use\_buffer ());
+00149     assert (x != f);
+00150 
+00151     \textcolor{comment}{// General case}
+00152     \textcolor{keywordflow}{if} (\_nbr\_bits > 2)
+00153     \{
+00154         compute\_fft\_general (f, x);
+00155     \}
+00156 
+00157     \textcolor{comment}{// 4-point FFT}
+00158     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_nbr\_bits == 2)
+00159     \{
+00160         f [1] = x [0] - x [2];
+00161         f [3] = x [1] - x [3];
+00162 
+00163         \textcolor{keyword}{const} \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType}  b\_0 = x [0] + x [2];
+00164         \textcolor{keyword}{const} \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType}  b\_2 = x [1] + x [3];
+00165         
+00166         f [0] = b\_0 + b\_2;
+00167         f [2] = b\_0 - b\_2;
+00168     \}
+00169 
+00170     \textcolor{comment}{// 2-point FFT}
+00171     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_nbr\_bits == 1)
+00172     \{
+00173         f [0] = x [0] + x [1];
+00174         f [1] = x [0] - x [1];
+00175     \}
+00176 
+00177     \textcolor{comment}{// 1-point FFT}
+00178     \textcolor{keywordflow}{else}
+00179     \{
+00180         f [0] = x [0];
+00181     \}
+00182 \}
+00183 
+00184 
+00185 
+00186 \textcolor{comment}{/*}
+00187 \textcolor{comment}{==============================================================================}
+00188 \textcolor{comment}{Name: do\_ifft}
+00189 \textcolor{comment}{Description:}
+00190 \textcolor{comment}{    Compute the inverse FFT of the array. Note that data must be post-scaled:}
+00191 \textcolor{comment}{    IFFT (FFT (x)) = x * length (x).}
+00192 \textcolor{comment}{Input parameters:}
+00193 \textcolor{comment}{    - f: pointer on the source array (frequencies).}
+00194 \textcolor{comment}{        f [0...length(x)/2] = real values}
+00195 \textcolor{comment}{        f [length(x)/2+1...length(x)-1] = negative imaginary values of}
+00196 \textcolor{comment}{        coefficents 1...length(x)/2-1.}
+00197 \textcolor{comment}{Output parameters:}
+00198 \textcolor{comment}{    - x: pointer on the destination array (time).}
+00199 \textcolor{comment}{Throws: Nothing}
+00200 \textcolor{comment}{==============================================================================}
+00201 \textcolor{comment}{*/}
+00202 
+00203 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+\hypertarget{a00096_source_l00204}{}\hyperlink{a00010_a8ab2e0da482cea88a61f01d58c074989}{00204} \textcolor{keywordtype}{void}    \hyperlink{a00010}{FFTReal <DT>::do\_ifft} (\textcolor{keyword}{const} \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType} f [], 
+      \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType} x []) \textcolor{keyword}{const}
+00205 \{
+00206     assert (f != 0);
+00207     assert (f != use\_buffer ());
+00208     assert (x != 0);
+00209     assert (x != use\_buffer ());
+00210     assert (x != f);
+00211 
+00212     \textcolor{comment}{// General case}
+00213     \textcolor{keywordflow}{if} (\_nbr\_bits > 2)
+00214     \{
+00215         compute\_ifft\_general (f, x);
+00216     \}
+00217 
+00218     \textcolor{comment}{// 4-point IFFT}
+00219     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_nbr\_bits == 2)
+00220     \{
+00221         \textcolor{keyword}{const} \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType}  b\_0 = f [0] + f [2];
+00222         \textcolor{keyword}{const} \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType}  b\_2 = f [0] - f [2];
+00223 
+00224         x [0] = b\_0 + f [1] * 2;
+00225         x [2] = b\_0 - f [1] * 2;
+00226         x [1] = b\_2 + f [3] * 2;
+00227         x [3] = b\_2 - f [3] * 2;
+00228     \}
+00229 
+00230     \textcolor{comment}{// 2-point IFFT}
+00231     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_nbr\_bits == 1)
+00232     \{
+00233         x [0] = f [0] + f [1];
+00234         x [1] = f [0] - f [1];
+00235     \}
+00236 
+00237     \textcolor{comment}{// 1-point IFFT}
+00238     \textcolor{keywordflow}{else}
+00239     \{
+00240         x [0] = f [0];
+00241     \}
+00242 \}
+00243 
+00244 
+00245 
+00246 \textcolor{comment}{/*}
+00247 \textcolor{comment}{==============================================================================}
+00248 \textcolor{comment}{Name: rescale}
+00249 \textcolor{comment}{Description:}
+00250 \textcolor{comment}{    Scale an array by divide each element by its length. This function should}
+00251 \textcolor{comment}{    be called after FFT + IFFT.}
+00252 \textcolor{comment}{Input parameters:}
+00253 \textcolor{comment}{    - x: pointer on array to rescale (time or frequency).}
+00254 \textcolor{comment}{Throws: Nothing}
+00255 \textcolor{comment}{==============================================================================}
+00256 \textcolor{comment}{*/}
+00257 
+00258 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+\hypertarget{a00096_source_l00259}{}\hyperlink{a00010_a9e30fff775905b1059aa9299004ee228}{00259} \textcolor{keywordtype}{void}    \hyperlink{a00010}{FFTReal <DT>::rescale} (\hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType} x []) \textcolor{keyword}{const}
+00260 \{
+00261     \textcolor{keyword}{const} \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType}  mul = \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType} (1.0 / \_length);
+00262 
+00263     \textcolor{keywordflow}{if} (\_length < 4)
+00264     \{
+00265         \textcolor{keywordtype}{long}                i = \_length - 1;
+00266         \textcolor{keywordflow}{do}
+00267         \{
+00268             x [i] *= mul;
+00269             --i;
+00270         \}
+00271         \textcolor{keywordflow}{while} (i >= 0);
+00272     \}
+00273 
+00274     \textcolor{keywordflow}{else}
+00275     \{
+00276         assert ((\_length & 3) == 0);
+00277 
+00278         \textcolor{comment}{// Could be optimized with SIMD instruction sets (needs alignment check)}
+00279         \textcolor{keywordtype}{long}                i = \_length - 4;
+00280         \textcolor{keywordflow}{do}
+00281         \{
+00282             x [i + 0] *= mul;
+00283             x [i + 1] *= mul;
+00284             x [i + 2] *= mul;
+00285             x [i + 3] *= mul;
+00286             i -= 4;
+00287         \}
+00288         \textcolor{keywordflow}{while} (i >= 0);
+00289     \}
+00290 \}
+00291 
+00292 
+00293 
+00294 \textcolor{comment}{/*}
+00295 \textcolor{comment}{==============================================================================}
+00296 \textcolor{comment}{Name: use\_buffer}
+00297 \textcolor{comment}{Description:}
+00298 \textcolor{comment}{    Access the internal buffer, whose length is the FFT one.}
+00299 \textcolor{comment}{    Buffer content will be erased at each do\_fft() / do\_ifft() call!}
+00300 \textcolor{comment}{    This buffer cannot be used as:}
+00301 \textcolor{comment}{        - source for FFT or IFFT done with this object}
+00302 \textcolor{comment}{        - destination for FFT or IFFT done with this object}
+00303 \textcolor{comment}{Returns:}
+00304 \textcolor{comment}{    Buffer start address}
+00305 \textcolor{comment}{Throws: Nothing}
+00306 \textcolor{comment}{==============================================================================}
+00307 \textcolor{comment}{*/}
+00308 
+00309 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+\hypertarget{a00096_source_l00310}{}\hyperlink{a00010_af1fcd007f1cf0b41bd2188e0b3cd5cca}{00310} \textcolor{keyword}{typename} \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{FFTReal <DT>::DataType} * \hyperlink{a00010}{FFTReal <DT>::use\_buffer} ()
+       \textcolor{keyword}{const}
+00311 \{
+00312     \textcolor{keywordflow}{return} (&\_buffer [0]);
+00313 \}
+00314 
+00315 
+00316 
+00317 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PROTECTED \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00318 
+00319 
+00320 
+00321 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PRIVATE \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00322 
+00323 
+00324 
+00325 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00326 \textcolor{keywordtype}{void}    \hyperlink{a00010}{FFTReal <DT>::init\_br\_lut} ()
+00327 \{
+00328     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      length = 1L << \_nbr\_bits;
+00329     \_br\_lut.resize (length);
+00330 
+00331     \_br\_lut [0] = 0;
+00332     \textcolor{keywordtype}{long}                br\_index = 0;
+00333     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} cnt = 1; cnt < length; ++cnt)
+00334     \{
+00335         \textcolor{comment}{// ++br\_index (bit reversed)}
+00336         \textcolor{keywordtype}{long}                bit = length >> 1;
+00337         \textcolor{keywordflow}{while} (((br\_index ^= bit) & bit) == 0)
+00338         \{
+00339             bit >>= 1;
+00340         \}
+00341 
+00342         \_br\_lut [cnt] = br\_index;
+00343     \}
+00344 \}
+00345 
+00346 
+00347 
+00348 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00349 \textcolor{keywordtype}{void}    FFTReal <DT>::init\_trigo\_lut ()
+00350 \{
+00351     \textcolor{keyword}{using namespace }\hyperlink{a00144}{std};
+00352 
+00353     \textcolor{keywordflow}{if} (\_nbr\_bits > 3)
+00354     \{
+00355         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      total\_len = (1L << (\_nbr\_bits - 1)) - 4;
+00356         \_trigo\_lut.resize (total\_len);
+00357 
+00358         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} level = 3; level < \_nbr\_bits; ++level)
+00359         \{
+00360             \textcolor{keyword}{const} \textcolor{keywordtype}{long}      level\_len = 1L << (level - 1);
+00361             DataType    * \textcolor{keyword}{const} level\_ptr =
+00362                 &\_trigo\_lut [get\_trigo\_level\_index (level)];
+00363             \textcolor{keyword}{const} \textcolor{keywordtype}{double}    mul = \hyperlink{a00142_a74ffcd4c90202b5240bbca7374dfd6fa}{PI} / (level\_len << 1);
+00364 
+00365             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} i = 0; i < level\_len; ++ i)
+00366             \{
+00367                 level\_ptr [i] = static\_cast <DataType> (cos (i * mul));
+00368             \}
+00369         \}
+00370     \}
+00371 \}
+00372 
+00373 
+00374 
+00375 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00376 \textcolor{keywordtype}{void}    FFTReal <DT>::init\_trigo\_osc ()
+00377 \{
+00378     \textcolor{keyword}{const} \textcolor{keywordtype}{int}       nbr\_osc = \_nbr\_bits - TRIGO\_BD\_LIMIT;
+00379     \textcolor{keywordflow}{if} (nbr\_osc > 0)
+00380     \{
+00381         \_trigo\_osc.resize (nbr\_osc);
+00382 
+00383         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} osc\_cnt = 0; osc\_cnt < nbr\_osc; ++osc\_cnt)
+00384         \{
+00385             OscType &       osc = \_trigo\_osc [osc\_cnt];
+00386 
+00387             \textcolor{keyword}{const} \textcolor{keywordtype}{long}      len = 1L << (TRIGO\_BD\_LIMIT + osc\_cnt);
+00388             \textcolor{keyword}{const} \textcolor{keywordtype}{double}    mul = (0.5 * \hyperlink{a00142_a74ffcd4c90202b5240bbca7374dfd6fa}{PI}) / len;
+00389             osc.set\_step (mul);
+00390         \}
+00391     \}
+00392 \}
+00393 
+00394 
+00395 
+00396 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00397 \textcolor{keyword}{const} \textcolor{keywordtype}{long} *    FFTReal <DT>::get\_br\_ptr () \textcolor{keyword}{const}
+00398 \{
+00399     \textcolor{keywordflow}{return} (&\_br\_lut [0]);
+00400 \}
+00401 
+00402 
+00403 
+00404 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00405 \textcolor{keyword}{const} \textcolor{keyword}{typename} FFTReal <DT>::DataType * FFTReal <DT>::get\_trigo\_ptr (\textcolor{keywordtype}{int} level) \textcolor{keyword}{const}
+00406 \{
+00407     assert (level >= 3);
+00408 
+00409     \textcolor{keywordflow}{return} (&\_trigo\_lut [get\_trigo\_level\_index (level)]);
+00410 \}
+00411 
+00412 
+00413 
+00414 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00415 \textcolor{keywordtype}{long}    FFTReal <DT>::get\_trigo\_level\_index (\textcolor{keywordtype}{int} level) \textcolor{keyword}{const}
+00416 \{
+00417     assert (level >= 3);
+00418 
+00419     \textcolor{keywordflow}{return} ((1L << (level - 1)) - 4);
+00420 \}
+00421 
+00422 
+00423 
+00424 \textcolor{comment}{// Transform in several passes}
+00425 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00426 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_fft\_general (DataType f [], \textcolor{keyword}{const} DataType x []) \textcolor{keyword}{const}
+00427 \{
+00428     assert (f != 0);
+00429     assert (f != use\_buffer ());
+00430     assert (x != 0);
+00431     assert (x != use\_buffer ());
+00432     assert (x != f);
+00433 
+00434     DataType *      sf;
+00435     DataType *      df;
+00436 
+00437     \textcolor{keywordflow}{if} ((\_nbr\_bits & 1) != 0)
+00438     \{
+00439         df = use\_buffer ();
+00440         sf = f;
+00441     \}
+00442     \textcolor{keywordflow}{else}
+00443     \{
+00444         df = f;
+00445         sf = use\_buffer ();
+00446     \}
+00447 
+00448     compute\_direct\_pass\_1\_2 (df, x);
+00449     compute\_direct\_pass\_3 (sf, df);
+00450 
+00451     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} pass = 3; pass < \_nbr\_bits; ++ pass)
+00452     \{
+00453         compute\_direct\_pass\_n (df, sf, pass);
+00454 
+00455         DataType * \textcolor{keyword}{const}    temp\_ptr = df;
+00456         df = sf;
+00457         sf = temp\_ptr;
+00458     \}
+00459 \}
+00460 
+00461 
+00462 
+00463 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00464 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_direct\_pass\_1\_2 (DataType df [], \textcolor{keyword}{const} DataType x []) \textcolor{keyword}{const}
+00465 \{
+00466     assert (df != 0);
+00467     assert (x != 0);
+00468     assert (df != x);
+00469 
+00470     \textcolor{keyword}{const} \textcolor{keywordtype}{long} * \textcolor{keyword}{const}  bit\_rev\_lut\_ptr = get\_br\_ptr ();
+00471     \textcolor{keywordtype}{long}                coef\_index = 0;
+00472     \textcolor{keywordflow}{do}
+00473     \{
+00474         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      rev\_index\_0 = bit\_rev\_lut\_ptr [coef\_index];
+00475         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      rev\_index\_1 = bit\_rev\_lut\_ptr [coef\_index + 1];
+00476         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      rev\_index\_2 = bit\_rev\_lut\_ptr [coef\_index + 2];
+00477         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      rev\_index\_3 = bit\_rev\_lut\_ptr [coef\_index + 3];
+00478 
+00479         DataType    * \textcolor{keyword}{const} df2 = df + coef\_index;
+00480         df2 [1] = x [rev\_index\_0] - x [rev\_index\_1];
+00481         df2 [3] = x [rev\_index\_2] - x [rev\_index\_3];
+00482 
+00483         \textcolor{keyword}{const} DataType  sf\_0 = x [rev\_index\_0] + x [rev\_index\_1];
+00484         \textcolor{keyword}{const} DataType  sf\_2 = x [rev\_index\_2] + x [rev\_index\_3];
+00485 
+00486         df2 [0] = sf\_0 + sf\_2;
+00487         df2 [2] = sf\_0 - sf\_2;
+00488         
+00489         coef\_index += 4;
+00490     \}
+00491     \textcolor{keywordflow}{while} (coef\_index < \_length);
+00492 \}
+00493 
+00494 
+00495 
+00496 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00497 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_direct\_pass\_3 (DataType df [], \textcolor{keyword}{const} DataType sf []) \textcolor{keyword}{const}
+00498 \{
+00499     assert (df != 0);
+00500     assert (sf != 0);
+00501     assert (df != sf);
+00502 
+00503     \textcolor{keyword}{const} DataType  sqrt2\_2 = DataType (\hyperlink{a00142_a489004390ad7d791bf53a724c0f07abb}{SQRT2} * 0.5);
+00504     \textcolor{keywordtype}{long}                coef\_index = 0;
+00505     \textcolor{keywordflow}{do}
+00506     \{
+00507         DataType            v;
+00508 
+00509         df [coef\_index] = sf [coef\_index] + sf [coef\_index + 4];
+00510         df [coef\_index + 4] = sf [coef\_index] - sf [coef\_index + 4];
+00511         df [coef\_index + 2] = sf [coef\_index + 2];
+00512         df [coef\_index + 6] = sf [coef\_index + 6];
+00513 
+00514         v = (sf [coef\_index + 5] - sf [coef\_index + 7]) * sqrt2\_2;
+00515         df [coef\_index + 1] = sf [coef\_index + 1] + v;
+00516         df [coef\_index + 3] = sf [coef\_index + 1] - v;
+00517 
+00518         v = (sf [coef\_index + 5] + sf [coef\_index + 7]) * sqrt2\_2;
+00519         df [coef\_index + 5] = v + sf [coef\_index + 3];
+00520         df [coef\_index + 7] = v - sf [coef\_index + 3];
+00521 
+00522         coef\_index += 8;
+00523     \}
+00524     \textcolor{keywordflow}{while} (coef\_index < \_length);
+00525 \}
+00526 
+00527 
+00528 
+00529 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00530 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_direct\_pass\_n (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const}
+00531 \{
+00532     assert (df != 0);
+00533     assert (sf != 0);
+00534     assert (df != sf);
+00535     assert (pass >= 3);
+00536     assert (pass < \_nbr\_bits);
+00537 
+00538     \textcolor{keywordflow}{if} (pass <= TRIGO\_BD\_LIMIT)
+00539     \{
+00540         compute\_direct\_pass\_n\_lut (df, sf, pass);
+00541     \}
+00542     \textcolor{keywordflow}{else}
+00543     \{
+00544         compute\_direct\_pass\_n\_osc (df, sf, pass);
+00545     \}
+00546 \}
+00547 
+00548 
+00549 
+00550 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00551 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_direct\_pass\_n\_lut (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const}
+00552 \{
+00553     assert (df != 0);
+00554     assert (sf != 0);
+00555     assert (df != sf);
+00556     assert (pass >= 3);
+00557     assert (pass < \_nbr\_bits);
+00558 
+00559     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      nbr\_coef = 1 << pass;
+00560     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      h\_nbr\_coef = nbr\_coef >> 1;
+00561     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      d\_nbr\_coef = nbr\_coef << 1;
+00562     \textcolor{keywordtype}{long}                coef\_index = 0;
+00563     \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} cos\_ptr = get\_trigo\_ptr (pass);
+00564     \textcolor{keywordflow}{do}
+00565     \{
+00566         \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} sf1r = sf + coef\_index;
+00567         \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} sf2r = sf1r + nbr\_coef;
+00568         DataType            * \textcolor{keyword}{const} dfr = df + coef\_index;
+00569         DataType            * \textcolor{keyword}{const} dfi = dfr + nbr\_coef;
+00570 
+00571         \textcolor{comment}{// Extreme coefficients are always real}
+00572         dfr [0] = sf1r [0] + sf2r [0];
+00573         dfi [0] = sf1r [0] - sf2r [0];  \textcolor{comment}{// dfr [nbr\_coef] =}
+00574         dfr [h\_nbr\_coef] = sf1r [h\_nbr\_coef];
+00575         dfi [h\_nbr\_coef] = sf2r [h\_nbr\_coef];
+00576 
+00577         \textcolor{comment}{// Others are conjugate complex numbers}
+00578         \textcolor{keyword}{const} DataType * \textcolor{keyword}{const}  sf1i = sf1r + h\_nbr\_coef;
+00579         \textcolor{keyword}{const} DataType * \textcolor{keyword}{const}  sf2i = sf1i + nbr\_coef;
+00580         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} i = 1; i < h\_nbr\_coef; ++ i)
+00581         \{
+00582             \textcolor{keyword}{const} DataType  c = cos\_ptr [i];                    \textcolor{comment}{// cos (i*PI/nbr\_coef);}
+00583             \textcolor{keyword}{const} DataType  s = cos\_ptr [h\_nbr\_coef - i];   \textcolor{comment}{// sin (i*PI/nbr\_coef);}
+00584             DataType            v;
+00585 
+00586             v = sf2r [i] * c - sf2i [i] * s;
+00587             dfr [i] = sf1r [i] + v;
+00588             dfi [-i] = sf1r [i] - v;    \textcolor{comment}{// dfr [nbr\_coef - i] =}
+00589 
+00590             v = sf2r [i] * s + sf2i [i] * c;
+00591             dfi [i] = v + sf1i [i];
+00592             dfi [nbr\_coef - i] = v - sf1i [i];
+00593         \}
+00594 
+00595         coef\_index += d\_nbr\_coef;
+00596     \}
+00597     \textcolor{keywordflow}{while} (coef\_index < \_length);
+00598 \}
+00599 
+00600 
+00601 
+00602 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00603 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_direct\_pass\_n\_osc (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const}
+00604 \{
+00605     assert (df != 0);
+00606     assert (sf != 0);
+00607     assert (df != sf);
+00608     assert (pass > TRIGO\_BD\_LIMIT);
+00609     assert (pass < \_nbr\_bits);
+00610 
+00611     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      nbr\_coef = 1 << pass;
+00612     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      h\_nbr\_coef = nbr\_coef >> 1;
+00613     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      d\_nbr\_coef = nbr\_coef << 1;
+00614     \textcolor{keywordtype}{long}                coef\_index = 0;
+00615     OscType &       osc = \_trigo\_osc [pass - (TRIGO\_BD\_LIMIT + 1)];
+00616     \textcolor{keywordflow}{do}
+00617     \{
+00618         \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} sf1r = sf + coef\_index;
+00619         \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} sf2r = sf1r + nbr\_coef;
+00620         DataType            * \textcolor{keyword}{const} dfr = df + coef\_index;
+00621         DataType            * \textcolor{keyword}{const} dfi = dfr + nbr\_coef;
+00622 
+00623         osc.clear\_buffers ();
+00624 
+00625         \textcolor{comment}{// Extreme coefficients are always real}
+00626         dfr [0] = sf1r [0] + sf2r [0];
+00627         dfi [0] = sf1r [0] - sf2r [0];  \textcolor{comment}{// dfr [nbr\_coef] =}
+00628         dfr [h\_nbr\_coef] = sf1r [h\_nbr\_coef];
+00629         dfi [h\_nbr\_coef] = sf2r [h\_nbr\_coef];
+00630 
+00631         \textcolor{comment}{// Others are conjugate complex numbers}
+00632         \textcolor{keyword}{const} DataType * \textcolor{keyword}{const}  sf1i = sf1r + h\_nbr\_coef;
+00633         \textcolor{keyword}{const} DataType * \textcolor{keyword}{const}  sf2i = sf1i + nbr\_coef;
+00634         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} i = 1; i < h\_nbr\_coef; ++ i)
+00635         \{
+00636             osc.step ();
+00637             \textcolor{keyword}{const} DataType  c = osc.get\_cos ();
+00638             \textcolor{keyword}{const} DataType  s = osc.get\_sin ();
+00639             DataType            v;
+00640 
+00641             v = sf2r [i] * c - sf2i [i] * s;
+00642             dfr [i] = sf1r [i] + v;
+00643             dfi [-i] = sf1r [i] - v;    \textcolor{comment}{// dfr [nbr\_coef - i] =}
+00644 
+00645             v = sf2r [i] * s + sf2i [i] * c;
+00646             dfi [i] = v + sf1i [i];
+00647             dfi [nbr\_coef - i] = v - sf1i [i];
+00648         \}
+00649 
+00650         coef\_index += d\_nbr\_coef;
+00651     \}
+00652     \textcolor{keywordflow}{while} (coef\_index < \_length);
+00653 \}
+00654 
+00655 
+00656 
+00657 \textcolor{comment}{// Transform in several pass}
+00658 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00659 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_ifft\_general (\textcolor{keyword}{const} DataType f [], DataType x []) \textcolor{keyword}{const}
+00660 \{
+00661     assert (f != 0);
+00662     assert (f != use\_buffer ());
+00663     assert (x != 0);
+00664     assert (x != use\_buffer ());
+00665     assert (x != f);
+00666 
+00667     DataType *      sf = const\_cast <DataType *> (f);
+00668     DataType *      df;
+00669     DataType *      df\_temp;
+00670 
+00671     \textcolor{keywordflow}{if} (\_nbr\_bits & 1)
+00672     \{
+00673         df = use\_buffer ();
+00674         df\_temp = x;
+00675     \}
+00676     \textcolor{keywordflow}{else}
+00677     \{
+00678         df = x;
+00679         df\_temp = use\_buffer ();
+00680     \}
+00681 
+00682     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} pass = \_nbr\_bits - 1; pass >= 3; -- pass)
+00683     \{
+00684         compute\_inverse\_pass\_n (df, sf, pass);
+00685 
+00686         \textcolor{keywordflow}{if} (pass < \_nbr\_bits - 1)
+00687         \{
+00688             DataType    * \textcolor{keyword}{const} temp\_ptr = df;
+00689             df = sf;
+00690             sf = temp\_ptr;
+00691         \}
+00692         \textcolor{keywordflow}{else}
+00693         \{
+00694             sf = df;
+00695             df = df\_temp;
+00696         \}
+00697     \}
+00698 
+00699     compute\_inverse\_pass\_3 (df, sf);
+00700     compute\_inverse\_pass\_1\_2 (x, df);
+00701 \}
+00702 
+00703 
+00704 
+00705 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00706 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_inverse\_pass\_n (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const}
+00707 \{
+00708     assert (df != 0);
+00709     assert (sf != 0);
+00710     assert (df != sf);
+00711     assert (pass >= 3);
+00712     assert (pass < \_nbr\_bits);
+00713 
+00714     \textcolor{keywordflow}{if} (pass <= TRIGO\_BD\_LIMIT)
+00715     \{
+00716         compute\_inverse\_pass\_n\_lut (df, sf, pass);
+00717     \}
+00718     \textcolor{keywordflow}{else}
+00719     \{
+00720         compute\_inverse\_pass\_n\_osc (df, sf, pass);
+00721     \}
+00722 \}
+00723 
+00724 
+00725 
+00726 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00727 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_inverse\_pass\_n\_lut (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const}
+00728 \{
+00729     assert (df != 0);
+00730     assert (sf != 0);
+00731     assert (df != sf);
+00732     assert (pass >= 3);
+00733     assert (pass < \_nbr\_bits);
+00734 
+00735     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      nbr\_coef = 1 << pass;
+00736     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      h\_nbr\_coef = nbr\_coef >> 1;
+00737     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      d\_nbr\_coef = nbr\_coef << 1;
+00738     \textcolor{keywordtype}{long}                coef\_index = 0;
+00739     \textcolor{keyword}{const} DataType * \textcolor{keyword}{const}  cos\_ptr = get\_trigo\_ptr (pass);
+00740     \textcolor{keywordflow}{do}
+00741     \{
+00742         \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} sfr = sf + coef\_index;
+00743         \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} sfi = sfr + nbr\_coef;
+00744         DataType            * \textcolor{keyword}{const} df1r = df + coef\_index;
+00745         DataType            * \textcolor{keyword}{const} df2r = df1r + nbr\_coef;
+00746 
+00747         \textcolor{comment}{// Extreme coefficients are always real}
+00748         df1r [0] = sfr [0] + sfi [0];       \textcolor{comment}{// + sfr [nbr\_coef]}
+00749         df2r [0] = sfr [0] - sfi [0];       \textcolor{comment}{// - sfr [nbr\_coef]}
+00750         df1r [h\_nbr\_coef] = sfr [h\_nbr\_coef] * 2;
+00751         df2r [h\_nbr\_coef] = sfi [h\_nbr\_coef] * 2;
+00752 
+00753         \textcolor{comment}{// Others are conjugate complex numbers}
+00754         DataType * \textcolor{keyword}{const}    df1i = df1r + h\_nbr\_coef;
+00755         DataType * \textcolor{keyword}{const}    df2i = df1i + nbr\_coef;
+00756         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} i = 1; i < h\_nbr\_coef; ++ i)
+00757         \{
+00758             df1r [i] = sfr [i] + sfi [-i];      \textcolor{comment}{// + sfr [nbr\_coef - i]}
+00759             df1i [i] = sfi [i] - sfi [nbr\_coef - i];
+00760 
+00761             \textcolor{keyword}{const} DataType  c = cos\_ptr [i];                    \textcolor{comment}{// cos (i*PI/nbr\_coef);}
+00762             \textcolor{keyword}{const} DataType  s = cos\_ptr [h\_nbr\_coef - i];   \textcolor{comment}{// sin (i*PI/nbr\_coef);}
+00763             \textcolor{keyword}{const} DataType  vr = sfr [i] - sfi [-i];        \textcolor{comment}{// - sfr [nbr\_coef - i]}
+00764             \textcolor{keyword}{const} DataType  vi = sfi [i] + sfi [nbr\_coef - i];
+00765 
+00766             df2r [i] = vr * c + vi * s;
+00767             df2i [i] = vi * c - vr * s;
+00768         \}
+00769 
+00770         coef\_index += d\_nbr\_coef;
+00771     \}
+00772     \textcolor{keywordflow}{while} (coef\_index < \_length);
+00773 \}
+00774 
+00775 
+00776 
+00777 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00778 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_inverse\_pass\_n\_osc (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const}
+00779 \{
+00780     assert (df != 0);
+00781     assert (sf != 0);
+00782     assert (df != sf);
+00783     assert (pass > TRIGO\_BD\_LIMIT);
+00784     assert (pass < \_nbr\_bits);
+00785 
+00786     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      nbr\_coef = 1 << pass;
+00787     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      h\_nbr\_coef = nbr\_coef >> 1;
+00788     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      d\_nbr\_coef = nbr\_coef << 1;
+00789     \textcolor{keywordtype}{long}                coef\_index = 0;
+00790     OscType &       osc = \_trigo\_osc [pass - (TRIGO\_BD\_LIMIT + 1)];
+00791     \textcolor{keywordflow}{do}
+00792     \{
+00793         \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} sfr = sf + coef\_index;
+00794         \textcolor{keyword}{const} DataType  * \textcolor{keyword}{const} sfi = sfr + nbr\_coef;
+00795         DataType            * \textcolor{keyword}{const} df1r = df + coef\_index;
+00796         DataType            * \textcolor{keyword}{const} df2r = df1r + nbr\_coef;
+00797 
+00798         osc.clear\_buffers ();
+00799 
+00800         \textcolor{comment}{// Extreme coefficients are always real}
+00801         df1r [0] = sfr [0] + sfi [0];       \textcolor{comment}{// + sfr [nbr\_coef]}
+00802         df2r [0] = sfr [0] - sfi [0];       \textcolor{comment}{// - sfr [nbr\_coef]}
+00803         df1r [h\_nbr\_coef] = sfr [h\_nbr\_coef] * 2;
+00804         df2r [h\_nbr\_coef] = sfi [h\_nbr\_coef] * 2;
+00805 
+00806         \textcolor{comment}{// Others are conjugate complex numbers}
+00807         DataType * \textcolor{keyword}{const}    df1i = df1r + h\_nbr\_coef;
+00808         DataType * \textcolor{keyword}{const}    df2i = df1i + nbr\_coef;
+00809         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} i = 1; i < h\_nbr\_coef; ++ i)
+00810         \{
+00811             df1r [i] = sfr [i] + sfi [-i];      \textcolor{comment}{// + sfr [nbr\_coef - i]}
+00812             df1i [i] = sfi [i] - sfi [nbr\_coef - i];
+00813 
+00814             osc.step ();
+00815             \textcolor{keyword}{const} DataType  c = osc.get\_cos ();
+00816             \textcolor{keyword}{const} DataType  s = osc.get\_sin ();
+00817             \textcolor{keyword}{const} DataType  vr = sfr [i] - sfi [-i];        \textcolor{comment}{// - sfr [nbr\_coef - i]}
+00818             \textcolor{keyword}{const} DataType  vi = sfi [i] + sfi [nbr\_coef - i];
+00819 
+00820             df2r [i] = vr * c + vi * s;
+00821             df2i [i] = vi * c - vr * s;
+00822         \}
+00823 
+00824         coef\_index += d\_nbr\_coef;
+00825     \}
+00826     \textcolor{keywordflow}{while} (coef\_index < \_length);
+00827 \}
+00828 
+00829 
+00830 
+00831 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00832 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_inverse\_pass\_3 (DataType df [], \textcolor{keyword}{const} DataType sf []) \textcolor{keyword}{const}
+00833 \{
+00834     assert (df != 0);
+00835     assert (sf != 0);
+00836     assert (df != sf);
+00837 
+00838     \textcolor{keyword}{const} DataType  sqrt2\_2 = DataType (\hyperlink{a00142_a489004390ad7d791bf53a724c0f07abb}{SQRT2} * 0.5);
+00839     \textcolor{keywordtype}{long}                coef\_index = 0;
+00840     \textcolor{keywordflow}{do}
+00841     \{
+00842         df [coef\_index] = sf [coef\_index] + sf [coef\_index + 4];
+00843         df [coef\_index + 4] = sf [coef\_index] - sf [coef\_index + 4];
+00844         df [coef\_index + 2] = sf [coef\_index + 2] * 2;
+00845         df [coef\_index + 6] = sf [coef\_index + 6] * 2;
+00846 
+00847         df [coef\_index + 1] = sf [coef\_index + 1] + sf [coef\_index + 3];
+00848         df [coef\_index + 3] = sf [coef\_index + 5] - sf [coef\_index + 7];
+00849 
+00850         \textcolor{keyword}{const} DataType  vr = sf [coef\_index + 1] - sf [coef\_index + 3];
+00851         \textcolor{keyword}{const} DataType  vi = sf [coef\_index + 5] + sf [coef\_index + 7];
+00852 
+00853         df [coef\_index + 5] = (vr + vi) * sqrt2\_2;
+00854         df [coef\_index + 7] = (vi - vr) * sqrt2\_2;
+00855 
+00856         coef\_index += 8;
+00857     \}
+00858     \textcolor{keywordflow}{while} (coef\_index < \_length);
+00859 \}
+00860 
+00861 
+00862 
+00863 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+00864 \textcolor{keywordtype}{void}    FFTReal <DT>::compute\_inverse\_pass\_1\_2 (DataType x [], \textcolor{keyword}{const} DataType sf []) \textcolor{keyword}{const}
+00865 \{
+00866     assert (x != 0);
+00867     assert (sf != 0);
+00868     assert (x != sf);
+00869 
+00870     \textcolor{keyword}{const} \textcolor{keywordtype}{long} *    bit\_rev\_lut\_ptr = get\_br\_ptr ();
+00871     \textcolor{keyword}{const} DataType *    sf2 = sf;
+00872     \textcolor{keywordtype}{long}                coef\_index = 0;
+00873     \textcolor{keywordflow}{do}
+00874     \{
+00875         \{
+00876             \textcolor{keyword}{const} DataType  b\_0 = sf2 [0] + sf2 [2];
+00877             \textcolor{keyword}{const} DataType  b\_2 = sf2 [0] - sf2 [2];
+00878             \textcolor{keyword}{const} DataType  b\_1 = sf2 [1] * 2;
+00879             \textcolor{keyword}{const} DataType  b\_3 = sf2 [3] * 2;
+00880 
+00881             x [bit\_rev\_lut\_ptr [0]] = b\_0 + b\_1;
+00882             x [bit\_rev\_lut\_ptr [1]] = b\_0 - b\_1;
+00883             x [bit\_rev\_lut\_ptr [2]] = b\_2 + b\_3;
+00884             x [bit\_rev\_lut\_ptr [3]] = b\_2 - b\_3;
+00885         \}
+00886         \{
+00887             \textcolor{keyword}{const} DataType  b\_0 = sf2 [4] + sf2 [6];
+00888             \textcolor{keyword}{const} DataType  b\_2 = sf2 [4] - sf2 [6];
+00889             \textcolor{keyword}{const} DataType  b\_1 = sf2 [5] * 2;
+00890             \textcolor{keyword}{const} DataType  b\_3 = sf2 [7] * 2;
+00891 
+00892             x [bit\_rev\_lut\_ptr [4]] = b\_0 + b\_1;
+00893             x [bit\_rev\_lut\_ptr [5]] = b\_0 - b\_1;
+00894             x [bit\_rev\_lut\_ptr [6]] = b\_2 + b\_3;
+00895             x [bit\_rev\_lut\_ptr [7]] = b\_2 - b\_3;
+00896         \}
+00897 
+00898         sf2 += 8;
+00899         coef\_index += 8;
+00900         bit\_rev\_lut\_ptr += 8;
+00901     \}
+00902     \textcolor{keywordflow}{while} (coef\_index < \_length);
+00903 \}
+00904 
+00905 
+00906 
+00907 \}   \textcolor{comment}{// namespace ffft}
+00908 
+00909 
+00910 
+00911 \textcolor{preprocessor}{#endif  // ffft\_FFTReal\_CODEHEADER\_INCLUDED}
+00912 
+00913 \textcolor{preprocessor}{#undef ffft\_FFTReal\_CURRENT\_CODEHEADER}
+00914 
+00915 
+00916 
+00917 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) EOF \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+\end{DoxyCode}

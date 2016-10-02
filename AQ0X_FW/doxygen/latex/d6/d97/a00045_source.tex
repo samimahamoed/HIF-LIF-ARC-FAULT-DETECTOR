@@ -1,0 +1,1318 @@
+\hypertarget{a00045_source}{\section{ir\+\_\+sensor.\+c}
+\label{a00045_source}\index{ir\+\_\+sensor.\+c@{ir\+\_\+sensor.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\(\backslash\)allheaders.h"} 
+00010 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\_prv\(\backslash\)aq0X\(\backslash\)ir\_sensor\_prv.h"}
+00011 
+00012 
+00013 
+00014 
+00015 \textcolor{keyword}{static} \textcolor{keywordtype}{void}             ir\_sen\_sensor\_element\_sv\_task(\textcolor{keywordtype}{void});
+00016 \textcolor{keyword}{static} \textcolor{keywordtype}{void}             ir\_sen\_threshold\_adjustment\_task(\textcolor{keywordtype}{void});
+00017 \textcolor{keyword}{static} \textcolor{keywordtype}{void}             ir\_sen\_mark\_false\_postives(\textcolor{keywordtype}{void});
+00018 \textcolor{keyword}{static} \textcolor{keywordtype}{void}             ir\_sen\_diagonesis\_record(\textcolor{keywordtype}{void});
+00019 
+00020 
+\hypertarget{a00045_source_l00022}{}\hyperlink{a00045_a73dfacb46242746440accc76c7ef710d}{00022} \hyperlink{a00023_d6/d21/a00573}{ir\_sen\_data\_t} \hyperlink{a00045_a73dfacb46242746440accc76c7ef710d}{ir\_sen\_data};
+\hypertarget{a00045_source_l00023}{}\hyperlink{a00045_a624782f67b3870f0dde83528770ef5fc}{00023} \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\_task\_id}        \hyperlink{a00045_a624782f67b3870f0dde83528770ef5fc}{ir\_sen\_id};
+00024 
+00025 
+\hypertarget{a00045_source_l00026}{}\hyperlink{a00045_a6951f534a479b17c02d7da3ad6489634}{00026} \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}           \hyperlink{a00045_a6951f534a479b17c02d7da3ad6489634}{ir\_event\_trigger\_timestamp};
+00027 
+00028 
+00036  \textcolor{keyword}{static} \textcolor{keywordtype}{void} ir\_sen\_init(\textcolor{keywordtype}{void})
+00037 \{
+00038 
+00039 
+00040     memset(&ir\_sen\_data,0,\textcolor{keyword}{sizeof}(ir\_sen\_data));
+00041 
+00042     \textcolor{comment}{// Prepare notifications and events to be used later on}
+00043 
+00044     ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}                             = 
+      \hyperlink{a00023_a3b0f15b601361fafa871c5e49df7842d}{X\_NTF\_IR\_SENSOR\_SV\_TIMER} ;
+00045     ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}                          = 
+      \hyperlink{a00045_a624782f67b3870f0dde83528770ef5fc}{ir\_sen\_id};
+00046 
+00047 
+00048     ir\_sen\_data.\hyperlink{a00023_a43c345f39ea3aefbb60ef1ef57fe5d83}{sv\_task\_event}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}                    = 
+      \hyperlink{a00023_a16b09a45fdc504b8b00d634b49c820b4}{X\_MSG\_IR\_SENSOR\_SV};
+00049     ir\_sen\_data.\hyperlink{a00023_a43c345f39ea3aefbb60ef1ef57fe5d83}{sv\_task\_event}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}                = 
+      \hyperlink{a00045_a624782f67b3870f0dde83528770ef5fc}{ir\_sen\_id};
+00050 
+00051     \textcolor{comment}{// Notifications and events sent to Algorithm module}
+00052     ir\_sen\_data.\hyperlink{a00023_afdc0e2c51e8e301d264700f4f9c10740}{sv\_status\_ntf}.\hyperlink{a00021_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}                       = 
+      \hyperlink{a00021_a0eb06525326cff5fc0fb38f141d6be8e}{X\_NTF\_IR\_SENSOR\_SV\_ALART};
+00053     ir\_sen\_data.\hyperlink{a00023_afdc0e2c51e8e301d264700f4f9c10740}{sv\_status\_ntf}.\hyperlink{a00021_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}                   = 
+      \hyperlink{a00021_aff3e3d622fcd96787628167d3c1856f9}{algorithm\_id};
+00054 
+00055 \}
+00056 
+00057 
+00058 
+00059 
+00060 
+\hypertarget{a00045_source_l00069}{}\hyperlink{a00045_a24529100c87dfc257e9b56f7f0bcfa78}{00069} \textcolor{keywordtype}{void} \hyperlink{a00045_a24529100c87dfc257e9b56f7f0bcfa78}{ir\_sen\_taskx}(\hyperlink{a00036_de/d37/a00849}{x\_event} *event)
+00070 \{
+00071     \textcolor{keywordflow}{switch}(event->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message})
+00072     \{
+00073 
+00074 
+00075         \textcolor{keywordflow}{case} \hyperlink{a00023_a16b09a45fdc504b8b00d634b49c820b4}{X\_MSG\_IR\_SENSOR\_SV}:
+00076         \{
+00077 
+00078             \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00079             ir\_sen\_sensor\_element\_sv\_task();
+00080 
+00081             \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.
+      total\_observation >0)
+00082                 ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.avg =
+00083                         (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.accumulated/
+00084                         ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.total\_observation);
+00085 
+00086             \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.
+      total\_observation >0)\{
+00087                 ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.
+      avg =
+00088                         (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.accumulated/
+00089                         ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.total\_observation);
+00090                  
+00091                 ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.th\_gap.avg
+00092                     = (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.avg - ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value);
+00093             \}
+00094             \textcolor{keywordflow}{else}
+00095             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.th\_gap.avg
+00096                     = (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.avg - ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value);
+00097 
+00098 
+00099               ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.accumulated
+                       = 0;
+00100               ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.
+      total\_observation           = 0;
+00101               ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.
+      accumulated         = 0;
+00102               ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.
+      total\_observation   = 0;
+00103 
+00104 
+00105            
+00106              ir\_sen\_threshold\_adjustment\_task();
+00107 
+00108             \textcolor{keywordflow}{if}((ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all}!=0)  || (ir\_sen\_data.
+      \hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.adjusted == 1))\{
+00109              ir\_sen\_data.\hyperlink{a00023_afdc0e2c51e8e301d264700f4f9c10740}{sv\_status\_ntf}.\hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.error\_flags = ir\_sen\_data.
+      \hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags};
+00110              ir\_sen\_data.\hyperlink{a00023_afdc0e2c51e8e301d264700f4f9c10740}{sv\_status\_ntf}.\hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.config = ir\_sen\_data.
+      \hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured};
+00111 
+00112              \textcolor{comment}{// Send notification to Algorithm module about detected error or about change in threshold
+       values}
+00113              \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&ir\_sen\_data.\hyperlink{a00023_afdc0e2c51e8e301d264700f4f9c10740}{sv\_status\_ntf}.
+      \hyperlink{a00021_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify});
+00114              ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all} =0;
+00115              ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.adjusted = 0;
+00116             \}
+00117 
+00118 
+00119 
+00120         \}\textcolor{keywordflow}{break};
+00121 
+00122 
+00123 
+00124         \textcolor{keywordflow}{default}:
+00125         \{
+00126             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00127         \}
+00128     \}
+00129 \}
+00130 
+00131 
+00132 
+\hypertarget{a00045_source_l00141}{}\hyperlink{a00045_a36c6c2cdf9aa5844371e742330789dad}{00141} \textcolor{keywordtype}{void} \hyperlink{a00045_a36c6c2cdf9aa5844371e742330789dad}{ir\_sen\_notifyx}(\hyperlink{a00036_df/d4c/a00851}{x\_notify} *notify)
+00142 \{
+00143 
+00144 
+00145     \textcolor{keywordflow}{switch}(notify->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message})
+00146     \{
+00147         \textcolor{keywordflow}{case} \hyperlink{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}{X\_NTF\_INIT}:
+00148         \{
+00149             ir\_sen\_init();
+00150         \}\textcolor{keywordflow}{break};
+00151 
+00152 
+00153         \textcolor{keywordflow}{case} \hyperlink{a00017_abb12b7d6a5f3479f552b928bb008d7cd}{X\_NTF\_IR\_SENSOR\_CONFIG}:
+00154         \{
+00155 
+00156             \textcolor{comment}{// configuration details from algorithm module}
+00157             \hyperlink{a00017_d9/dbb/a00852}{x\_notify\_ir\_sen\_configure} * notify\_configure = (
+      \hyperlink{a00017_d9/dbb/a00852}{x\_notify\_ir\_sen\_configure} *)notify;
+00158 
+00159 
+00160             ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured} = notify\_configure->\hyperlink{a00017_a466ed85f7086376a698e191f74f9a0bc}{message}.configured;
+00161             ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record} = notify\_configure->
+      \hyperlink{a00017_a466ed85f7086376a698e191f74f9a0bc}{message}.disturbance\_record;
+00162 
+00163            ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.angular\_freq             = 2*PI*
+      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_aa57be45aa1320405a885474010159c9e}{sys\_freq};
+00164            ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period       = (
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})(\hyperlink{a00021_a8127170b687c1f67a968886c128e76e4}{SCAN\_FREQ}/(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_aa57be45aa1320405a885474010159c9e}{sys\_freq}));
+00165            ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period\_1\_2  = ir\_sen\_data.
+      \hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period/2;
+00166            ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period\_1\_4  = ir\_sen\_data.
+      \hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period/4;
+00167            ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period\_1\_8  = ir\_sen\_data.
+      \hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period/8;
+00168             \textcolor{comment}{// Clear supervison state ( so errors will be reported if module have internal error )}
+00169           ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all} = 0;
+00170 
+00171           \hyperlink{a00036_ab69e9af4cfa717e870d587906283635c}{x\_delete\_timer}(&ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf});
+00172 
+00173           \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_afeb3f74725269028a60926f98890c22b}{element\_status\_sv\_en})
+00174           \hyperlink{a00036_a9e3befaa21e83f196f74201deed85346}{x\_schedule\_timer}(&ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf},
+      \hyperlink{a00036_a1732cd929c486b3a225824bb2b3dba36}{X\_MS2TICK}(\hyperlink{a00023_a8a535456285f4602701c814d7b69cc68}{SV\_TIMER\_PERIOD}));
+00175 
+00176         \}\textcolor{keywordflow}{break};
+00177 
+00178 
+00179          \textcolor{keywordflow}{case} \hyperlink{a00021_a55be0f14bd98010fdd4ff546f8cffefd}{X\_NTF\_CLR\_ALARM\_IR\_SEN}:
+00180         \{
+00181 
+00182            \textcolor{comment}{// Algorithm module alarm reset request}
+00183             \textcolor{comment}{// ir\_sen\_data.module\_status.current.state = STATE\_0;}
+00184              ir\_sen\_mark\_false\_postives();
+00185              ir\_sen\_mark\_false\_postives();
+00186              ir\_sen\_mark\_false\_postives();
+00187 
+00188         \}\textcolor{keywordflow}{break};
+00189 
+00190 
+00191         \textcolor{keywordflow}{case} \hyperlink{a00023_a3b0f15b601361fafa871c5e49df7842d}{X\_NTF\_IR\_SENSOR\_SV\_TIMER}:
+00192         \{
+00193            \hyperlink{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\_send\_event}(&ir\_sen\_data.\hyperlink{a00023_a43c345f39ea3aefbb60ef1ef57fe5d83}{sv\_task\_event});
+00194         \}\textcolor{keywordflow}{break};
+00195 
+00196 
+00197         \textcolor{keywordflow}{default}:
+00198         \{
+00199             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00200         \}
+00201     \}
+00202 
+00203 \}
+00204 
+00205 
+\hypertarget{a00045_source_l00215}{}\hyperlink{a00045_a8998900f530ecbf97f17089547a1c953}{00215}  \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8} \hyperlink{a00045_a8998900f530ecbf97f17089547a1c953}{ir\_compare}(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} num1, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} num2, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} tolerance)\{
+00216 
+00217 
+00218    \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} difference = num1 - num2;
+00219      
+00220    \textcolor{keywordflow}{if}(abs(difference) <= tolerance)
+00221     \textcolor{keywordflow}{return}  0;
+00222 
+00223    \textcolor{keywordflow}{if}(difference > 0\textcolor{comment}{/*num1 > num2*/})
+00224     \textcolor{keywordflow}{return} 1;
+00225   
+00226    \textcolor{keywordflow}{if}(difference < 0\textcolor{comment}{/*num1 < num2*/})
+00227     \textcolor{keywordflow}{return} -1;
+00228     
+00229    \textcolor{keywordflow}{return} -2;
+00230 \}
+00231 
+00232 
+\hypertarget{a00045_source_l00238}{}\hyperlink{a00045_a1bff969fa2162ccb9701f6e88e8c912e}{00238}  \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00045_a1bff969fa2162ccb9701f6e88e8c912e}{ir\_sen\_first\_order\_derivative}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} final\_val,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} init\_val)\{
+00239     \textcolor{keywordflow}{return} ((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})final\_val-(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})init\_val);
+00240 \}
+00241 
+00242 
+\hypertarget{a00045_source_l00251}{}\hyperlink{a00045_a4a7227cd7b902e9a53daa10ddd05bbbf}{00251} \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00045_a4a7227cd7b902e9a53daa10ddd05bbbf}{ir\_sen\_calc\_probablity}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} event,
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} obs)\{
+00252    
+00253     \textcolor{keywordflow}{return} (100L*((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})event/(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})obs));
+00254 \}
+00255 
+00256 
+00257 
+00264 \textcolor{keyword}{static} \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} ir\_peak\_detected(\textcolor{keywordtype}{void})\{
+00265 
+00266 
+00267        \textcolor{keywordflow}{if}(
+00268           (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.projected\_slop.previous ==0)
+00269                &&
+00270           (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.projected\_slop.current  ==0)
+00271           )
+00272            \textcolor{keywordflow}{return} \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00273 
+00274 
+00275        \textcolor{keywordflow}{if}(
+00276        (ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.\hyperlink{a00017_a20a897f33766369aee53f87b907e227d}{slop\_polarity} >= 0)
+00277        &&
+00278        (ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a20a897f33766369aee53f87b907e227d}{slop\_polarity} < 0)
+00279        &&
+00280        (abs(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.
+      \hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time})< ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_a6f5257920e763b7f5f440bc0515cd963}{dfdt\_treshold\_min})
+00281        &&
+00282        (abs(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time})< ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_a6f5257920e763b7f5f440bc0515cd963}{dfdt\_treshold\_min})
+00283        )
+00284        \{
+00285         \textcolor{keywordflow}{return} \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00286        \}
+00287         \textcolor{keywordflow}{else}
+00288         \textcolor{keywordflow}{return} \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00289 
+00290 \}
+00291 
+00292 
+\hypertarget{a00045_source_l00302}{}\hyperlink{a00045_a5bba51487aeccd791ff56017124da833}{00302} \hyperlink{a00021_d6/d66/a00441}{event\_report\_t} \hyperlink{a00045_a5bba51487aeccd791ff56017124da833}{ir\_sen\_get\_status}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} adc\_value,
+      \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} save\_event)
+00303 \{
+00304 
+00305     \hyperlink{a00021_d6/d66/a00441}{event\_report\_t} status;
+00306 
+00307     status.\hyperlink{a00021_a2625a533c46821f49caaf4dcc77316b1}{all} = 0;
+00308     ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous} = ir\_sen\_data.
+      \hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current};
+00309 
+00310     ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level} = adc\_value;
+00311   
+00312     ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time} = 
+      \hyperlink{a00021_ac57756fe3d634c3c5a1af000271d40e5}{\_\_1ST\_ORDER\_DERIVATIVE}(
+00313                                             ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.
+      \hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level},
+00314                                             ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.
+      \hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.\hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level}
+00315                                             );
+00316 
+00317     ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a20a897f33766369aee53f87b907e227d}{slop\_polarity} =
+00318                  \hyperlink{a00021_ad4d76cc0f801d947fd957435649b95bc}{\_\_COMPARE\_ZERO}(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.
+      \hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time});
+00319 
+00320 
+00321     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.new\_dr == \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE})\{
+00322     \textcolor{keywordflow}{if}(\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a11ed024c2cc5c53c79b2c0a8b35e3c06}{disturbance\_record}.bits.\hyperlink{a00021_a11ea0eda9ab27873198e7a5c4be4337d}{wr} == \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})\{
+00330           \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data}.head == 0)
+00331               ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp.
+      global\_active = \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a81f0ce68c2c483fb8df726cc1988d8e8}{tick}-1;
+00333       \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data}.head <
+00334         ((\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir.post\_act\_data.emu\_data\_en==
+      \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE})?\hyperlink{a00022_ab1ad440de86fff80e517ad748de2ee39}{POST\_ACT\_RECORD\_BUFF\_SIZE}:(
+      \hyperlink{a00022_ab1ad440de86fff80e517ad748de2ee39}{POST\_ACT\_RECORD\_BUFF\_SIZE}-\hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH})))
+00335       ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data}.buffer.all[ir\_sen\_data.
+      \hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data}.head++] = adc\_value;
+00336       \textcolor{keywordflow}{else}
+00337       status.\hyperlink{a00021_a5296d090c085b0421fdf5a86e382abea}{fields}.post\_act\_data\_ready = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00339     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(!\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.ir)\{
+00340        
+00346     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_ad611012074e252bf84c1cfb8c273dd79}{buffer}[ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_a15a6827ccabba1c22396eccc1c5c654b}{head}] = adc\_value;
+00348     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_a15a6827ccabba1c22396eccc1c5c654b}{head}
+00349             = (ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_a15a6827ccabba1c22396eccc1c5c654b}{head} + 1)%\hyperlink{a00022_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE};
+00350 
+00351     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_abecaedb3605e8bca8335cd81ca63025f}{elapsed} == \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})
+00352     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_ab3bcc08acd9d73ce1a44992255658e37}{tail} = ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_a15a6827ccabba1c22396eccc1c5c654b}{head};
+00353            
+00354     \textcolor{keywordflow}{else}
+00355     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_a15a6827ccabba1c22396eccc1c5c654b}{head} == \hyperlink{a00022_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE} - 1)
+00356     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data}.
+      \hyperlink{a00022_abecaedb3605e8bca8335cd81ca63025f}{elapsed} = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00358     \}
+00359 
+00360     \}
+00361 
+00362     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.all = 0;
+00363 
+00364 
+00365     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time} > ir\_sen\_data.
+      \hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a3b9c683370c94430a4c6a9d78ce6f5ef}{dfdt\_treshold\_impulse})
+00366         ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.bits.
+      dfdt\_impulse = 1;
+00367     \textcolor{keywordflow}{else}
+00368     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time}  > ir\_sen\_data.
+      \hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_adf9a37828e447378b1d533185213316d}{dfdt\_treshold\_max})
+00369          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.bits.
+      dfdt\_max= 1;
+00370 
+00371 
+00372     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level} > ir\_sen\_data.
+      \hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value)
+00373         ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.bits.
+      amp\_max = 1;
+00374 
+00375 
+00376 
+00377    ir\_sen\_diagonesis\_record();
+00378                           
+00379     \textcolor{keywordflow}{switch}(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state})
+00380     \{
+00381         \textcolor{keywordflow}{case} \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0}:
+00382         \{
+00383             \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.
+      all !=0)\{
+00384             ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}    = 1;
+00385             ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt} = 1;
+00386 
+00387 
+00388 
+00389 
+00390             ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.initial\_amp =
+00391                      ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+00392 
+00393              ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp.
+      event\_detected = \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a81f0ce68c2c483fb8df726cc1988d8e8}{tick};
+00394 
+00395              \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.
+      bits.amp\_max)
+00396              \{
+00398                 ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = 
+      \hyperlink{a00021_a727351838367f27ac0adb9a13422c342}{STATE\_1};
+00399 
+00400              \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.bits.dfdt\_impulse)
+00401              \{
+00403                  ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = 
+      \hyperlink{a00021_a66fa48e832a64af4d405511cecc4c752}{STATE\_2};
+00404              \}
+00405              \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.bits.dfdt\_max)
+00406              \{
+00407                \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.
+      \hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time} >= 0)
+00409                ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = 
+      \hyperlink{a00021_ad87f1bc8466a25d9f7da68717d324a22}{STATE\_3};
+00410              \}
+00411 
+00412                  ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.state\_transition.
+      history.bits.initial
+00413                 = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state};
+00414 
+00415             \}
+00416 
+00417 
+00418         \}\textcolor{keywordflow}{break};
+00419 
+00420          \textcolor{keywordflow}{case} \hyperlink{a00021_a727351838367f27ac0adb9a13422c342}{STATE\_1}:
+00421         \{
+00422 
+00423             ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}++;
+00424 
+00425 
+00426            \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.
+      bits.amp\_max)\{
+00427                  ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}++;
+00428            \}
+00429 
+00430 
+00431 
+00432                \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}
+00433                 >
+00434                 ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae8665e8bf422c1482442d6949ba28408}{min\_number\_of\_observation}
+00435                )\{
+00436 
+00437 
+00438                     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.
+      event\_probability =
+00439                        \hyperlink{a00021_ab2185512402ea26115af112ce48175b2}{\_\_PROBABLITY}(
+00440                            ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}
+00441                           ,ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}
+00442                            );
+00443 
+00444                    \textcolor{keywordflow}{if}( ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.event\_probability
+00445                         >
+00446                        ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a7e2d217b9c9051d361319180a426851c}{probablity\_treshold\_max}
+00447                      )
+00448                    \{
+00449                        ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp.module\_active = \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a81f0ce68c2c483fb8df726cc1988d8e8}{tick};
+00450                          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.state\_transition.history.bits.mid
+00451                          = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state};
+00452 
+00453                          ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT};
+00454                          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data}.head = 0;
+00455                          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data}.head = 0;
+00456                          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt} = 0;
+00457 
+00458 
+00459                    \}
+00460                    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.event\_probability
+00461                             <
+00462                            ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_aa59261f74183d4f9e909ac425e0bea35}{probablity\_treshold\_min}
+00463                            )
+00464                          \{
+00465 
+00466                              ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0};
+00467                              ir\_sen\_mark\_false\_postives();
+00468 
+00469                              memset(&ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp,0,
+00470                                      \textcolor{keyword}{sizeof}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp));
+00471 
+00472                         \}
+00473              \}
+00474 
+00475         \}\textcolor{keywordflow}{break};
+00476 
+00477          \textcolor{keywordflow}{case} \hyperlink{a00021_a66fa48e832a64af4d405511cecc4c752}{STATE\_2}: 
+00478         \{
+00479             ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}++;
+00480 
+00481             \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.
+      bits.amp\_max)\{
+00484                  ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}++;
+00485 
+00486                  ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = 
+      \hyperlink{a00021_a727351838367f27ac0adb9a13422c342}{STATE\_1};
+00487             \}
+00488             \textcolor{keywordflow}{else}
+00489              \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.
+      bits.dfdt\_max)\{
+00491                ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}++;
+00492 
+00493                ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = 
+      \hyperlink{a00021_ad87f1bc8466a25d9f7da68717d324a22}{STATE\_3};
+00494 
+00495              \}
+00496              \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(
+00497                      (
+00498                      ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time}>
+00499                      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a6f5257920e763b7f5f440bc0515cd963}{dfdt\_treshold\_min}
+00500                      )
+00501                      &&
+00502                      (
+00503                      ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt} <
+00504                      ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period\_1\_8
+00505                      )
+00506                      )\{
+00510                     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}++;
+00511                    \}
+00512             
+00513 
+00514 
+00515                \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}
+00516                 >=
+00517                 ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae8665e8bf422c1482442d6949ba28408}{min\_number\_of\_observation}
+00518                )\{
+00519 
+00520                     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.
+      event\_probability =
+00521                            \hyperlink{a00021_ab2185512402ea26115af112ce48175b2}{\_\_PROBABLITY}(
+00522                            ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}
+00523                           ,ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}
+00524                            );
+00525 
+00526                    \textcolor{keywordflow}{if}( ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.event\_probability
+00527                         >
+00528                        ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a7e2d217b9c9051d361319180a426851c}{probablity\_treshold\_max}
+00529                      )
+00530                    \{
+00531 
+00532                          
+00533                         \textcolor{keywordflow}{if}(
+00534                             (
+00535                             ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level}
+00536                             - ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.initial\_amp
+00537                             )
+00538                             >
+00539                             \hyperlink{a00017_a2b2ec7850b6e5f2ba35f81301fc797dd}{IR\_SEN\_NOISE\_DENSITY\_LEVEL}
+00540                           )\{
+00541                          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp.module\_active = \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a81f0ce68c2c483fb8df726cc1988d8e8}{tick};
+00542                          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.state\_transition.history.bits.mid
+00543                          = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state};
+00544 
+00545                          ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT};
+00546                          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data}.head = 0;
+00547                          ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt} = 0;
+00548                            \}
+00549 
+00550 
+00551 
+00552 
+00553                    \}
+00554                    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.event\_probability
+00555                             <
+00556                            ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_aa59261f74183d4f9e909ac425e0bea35}{probablity\_treshold\_min}
+00557                            )
+00558                          \{
+00559 
+00560                              ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0};
+00561                              ir\_sen\_mark\_false\_postives();
+00562 
+00563                              memset(&ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp,0,
+00564                                      \textcolor{keyword}{sizeof}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp));
+00565 
+00566                         \}
+00567              \}
+00568 
+00569 
+00570 
+00571         \}\textcolor{keywordflow}{break};
+00572 
+00573 
+00574         \textcolor{keywordflow}{case} \hyperlink{a00021_ad87f1bc8466a25d9f7da68717d324a22}{STATE\_3}: 
+00575         \{
+00576             ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}++;
+00577 
+00578             \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.
+      bits.dfdt\_max)
+00579                ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}++;
+00580             \textcolor{keywordflow}{else}  \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.bits.amp\_max)\{
+00582                ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}++;
+00583                ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = 
+      \hyperlink{a00021_a727351838367f27ac0adb9a13422c342}{STATE\_1};
+00584             \}
+00585 
+00586 
+00587 
+00588                \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}
+00589                 >=
+00590                 ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae8665e8bf422c1482442d6949ba28408}{min\_number\_of\_observation}
+00591                )\{
+00592 
+00593                     ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.
+      event\_probability =
+00594                           \hyperlink{a00021_ab2185512402ea26115af112ce48175b2}{\_\_PROBABLITY}(
+00595                            ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}
+00596                           ,ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}
+00597                            );
+00598 
+00599                    \textcolor{keywordflow}{if}( ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.event\_probability
+00600                         >
+00601                        ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a7e2d217b9c9051d361319180a426851c}{probablity\_treshold\_max}
+00602                      )
+00603                    \{
+00604                         \textcolor{keywordflow}{if}(
+00605                             (
+00606                             ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level}
+00607                             - ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.initial\_amp
+00608                             )
+00609                             >
+00610                             \hyperlink{a00017_a2b2ec7850b6e5f2ba35f81301fc797dd}{IR\_SEN\_NOISE\_DENSITY\_LEVEL}
+00611                           )\{
+00612                              ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp.module\_active = \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a81f0ce68c2c483fb8df726cc1988d8e8}{tick};
+00613                              ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.state\_transition.history.bits.mid
+00614                              = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state};
+00615 
+00616                              ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT};
+00617                              ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data}.head = 0;
+00618                              ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt} = 0;
+00619                            \}
+00620 
+00621 
+00622                    \}
+00623                    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.event\_probability
+00624                             <
+00625                            ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_aa59261f74183d4f9e909ac425e0bea35}{probablity\_treshold\_min}
+00626                            )
+00627                          \{
+00628 
+00629 
+00630                              ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0};
+00631                              ir\_sen\_mark\_false\_postives();
+00632 
+00633 
+00634                              memset(&ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp,0,
+00635                                      \textcolor{keyword}{sizeof}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.timestamp));
+00636 
+00637                         \}
+00638              \}
+00639 
+00640         \}\textcolor{keywordflow}{break};
+00641 
+00642         \textcolor{keywordflow}{case} \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT}:
+00643         \{
+00644 
+00645              ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}++;
+00646 
+00647             \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.
+      bits.amp\_max)\{
+00648                  ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}++;
+00649 
+00650                 ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.state\_transition.
+      history.bits.final
+00651                 = \hyperlink{a00021_a727351838367f27ac0adb9a13422c342}{STATE\_1};
+00652             \}
+00653 
+00654 
+00655              \textcolor{keywordflow}{if}(
+00656                   ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}
+00657                   >
+00658                   ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period
+00659                )\{
+00660 
+00661 
+00662                     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt} == 0)\{
+00663                        ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0};
+00664                     \}
+00665                            ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt}     = 0;
+00666                            ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->
+      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt}   =0;
+00667                 \}
+00668 
+00669    
+00670 
+00671         \}\textcolor{keywordflow}{break};
+00672 
+00673 
+00674         \textcolor{keywordflow}{default}:
+00675         \{
+00676             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00677         \}
+00678     \}
+00679 
+00680 
+00681     status.\hyperlink{a00021_a5296d090c085b0421fdf5a86e382abea}{fields}.state = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state};
+00682     \textcolor{keywordflow}{return} status;
+00683 \}
+00684 
+00685 
+00686 
+00694 \textcolor{keyword}{static} \textcolor{keywordtype}{void} ir\_sen\_sensor\_element\_sv\_task(\textcolor{keywordtype}{void})
+00695 \{
+00696     \textcolor{keyword}{static} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} ad\_value1;
+00697     \textcolor{keyword}{static} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} ad\_value2;
+00698 
+00699 \textcolor{preprocessor}{#if(TEST\_MODE)}
+00700 
+00701 
+00702     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_afeb3f74725269028a60926f98890c22b}{element\_status\_sv\_en})\{
+00703     \hyperlink{a00036_ab69e9af4cfa717e870d587906283635c}{x\_delete\_timer}(&ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf});
+00704     \hyperlink{a00036_a9e3befaa21e83f196f74201deed85346}{x\_schedule\_timer}(&ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf},
+      \hyperlink{a00036_a1732cd929c486b3a225824bb2b3dba36}{X\_MS2TICK}(\hyperlink{a00023_a8a535456285f4602701c814d7b69cc68}{SV\_TIMER\_PERIOD}));
+00705     \}
+00706     \textcolor{keywordflow}{return};
+00707 \textcolor{preprocessor}{#else}
+00708 
+00709     \textcolor{keywordflow}{if}(\hyperlink{a00058_a0af9eae455fbdf4e77def5bfffa109cb}{hwio\_execute\_gpio\_task}(\hyperlink{a00058_ab1278d6ffe9c661f55b9f146f82b0be6}{HWIO\_SV\_LED\_PORT\_STATUS}) == 0)\{
+00710     ad\_value1  = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+00711     \hyperlink{a00058_a0af9eae455fbdf4e77def5bfffa109cb}{hwio\_execute\_gpio\_task}(\hyperlink{a00058_aae186cdf37c0783bf64b0aed3f1e6eda}{HWIO\_SV\_LED\_ON});
+00712 
+00713 
+00714     \hyperlink{a00036_ab69e9af4cfa717e870d587906283635c}{x\_delete\_timer}(&ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf});
+00715     \hyperlink{a00036_a9e3befaa21e83f196f74201deed85346}{x\_schedule\_timer}(&ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf},
+      \hyperlink{a00036_a1732cd929c486b3a225824bb2b3dba36}{X\_MS2TICK}(\hyperlink{a00023_a44e4917fdf9d2a3574a3dd34537d97a7}{SV\_TIMER\_LED\_ON\_PERIOD}));
+00716     \}\textcolor{keywordflow}{else}\{
+00717      ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all} = 0;
+00718     ad\_value2  = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+00719     \hyperlink{a00058_a0af9eae455fbdf4e77def5bfffa109cb}{hwio\_execute\_gpio\_task}(\hyperlink{a00058_a8fe69ad7e533d2e88cec53c22a56f8fb}{HWIO\_SV\_LED\_OFF});
+00720 
+00721 
+00722     \textcolor{keywordflow}{if}(
+00723       (ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.\hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time} = 0)
+00724       &&
+00725       (ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.\hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time} = 0)
+00726       &&
+00727       (ad\_value2 <= ad\_value1)
+00728       )
+00729         ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_ab81eb6fb4f1351ed07b4d6c4dd6f1959}{bits}.ELEMENT\_NOT\_RESPONDING = 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00730 
+00731 
+00732 
+00733     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_afeb3f74725269028a60926f98890c22b}{element\_status\_sv\_en})\{
+00734     \hyperlink{a00036_ab69e9af4cfa717e870d587906283635c}{x\_delete\_timer}(&ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf});
+00735     \hyperlink{a00036_a9e3befaa21e83f196f74201deed85346}{x\_schedule\_timer}(&ir\_sen\_data.\hyperlink{a00023_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf},
+      \hyperlink{a00036_a1732cd929c486b3a225824bb2b3dba36}{X\_MS2TICK}(\hyperlink{a00023_a8a535456285f4602701c814d7b69cc68}{SV\_TIMER\_PERIOD}));
+00736     \}
+00737     \}
+00738 \textcolor{preprocessor}{#endif}
+00739 
+00740 \}
+00741 
+00749  \textcolor{keyword}{static} \textcolor{keywordtype}{void} ir\_sen\_threshold\_adjustment\_task(\textcolor{keywordtype}{void})\{
+00750 
+00751 
+00752 
+00753 
+00754                 \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_a799f50625c0c03f9404a59287810113d}{false\_alarm}.dfdt\_exceded.cnt
+       < \hyperlink{a00017_a946f0acff4fd16a65859479e9e0b9513}{FP\_TOLERANCE})\{
+00755                      ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_ab81eb6fb4f1351ed07b4d6c4dd6f1959}{bits}.FALSE\_POSITIVE\_DFDT\_TH        = 0;
+00756                 \}\textcolor{keywordflow}{else}\{
+00757                      ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_ab81eb6fb4f1351ed07b4d6c4dd6f1959}{bits}.FALSE\_POSITIVE\_DFDT\_TH        = 1;
+00758                 \}
+00759 
+00760                 \textcolor{keywordflow}{if}(
+00761                   (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_a799f50625c0c03f9404a59287810113d}{false\_alarm}.amp\_exceded.cnt 
+      < \hyperlink{a00017_a946f0acff4fd16a65859479e9e0b9513}{FP\_TOLERANCE})
+00762                  )\{
+00763                   ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_ab81eb6fb4f1351ed07b4d6c4dd6f1959}{bits}.FALSE\_POSITIVE\_AMP\_TH  = 0;
+00764 
+00765            
+00766                   \}
+00767 
+00768 
+00769                 \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_a799f50625c0c03f9404a59287810113d}{false\_alarm}.amp\_exceded.cnt 
+      > \hyperlink{a00017_a946f0acff4fd16a65859479e9e0b9513}{FP\_TOLERANCE})\{
+00770                   ir\_sen\_data.\hyperlink{a00023_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_ab81eb6fb4f1351ed07b4d6c4dd6f1959}{bits}.FALSE\_POSITIVE\_AMP\_TH = 1;
+00771 
+00772                   ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_a799f50625c0c03f9404a59287810113d}{false\_alarm}.amp\_exceded.cnt =
+       0;
+00773    
+00774                  \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a18e270a10094f045f20299b0f7e83085}{threshold\_adjust\_manual} == 0)\{
+00775                          ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value  +=
+00776                          (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.th\_gap.avg
+00777                           +
+00778                          abs(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.th\_gap.avg*0.01)
+00779                          );
+00780 
+00781                          \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value > 
+      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.max)\{
+00782                              ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value = 
+      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.max;
+00783                             
+00784                          \}
+00785                   
+00786                       ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_adf9a37828e447378b1d533185213316d}{dfdt\_treshold\_max}
+00787                         = ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value*2*PI*(
+      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq*
+      \hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE};
+00788 
+00789 
+00790                      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a3b9c683370c94430a4c6a9d78ce6f5ef}{dfdt\_treshold\_impulse}= 10*
+      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_adf9a37828e447378b1d533185213316d}{dfdt\_treshold\_max};
+00791                      
+00792 
+00793                      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.adjusted = 1;
+00794 
+00795                  \}
+00796 
+00797 
+00798                 \}\textcolor{keywordflow}{else}
+00799 
+00800                 \textcolor{keywordflow}{if}(
+00801                   (ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a18e270a10094f045f20299b0f7e83085}{threshold\_adjust\_manual} == 0)
+00802                     &&
+00803                   (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.th\_gap.avg < -1*ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.min)
+00804                   )
+00805                   \{
+00806 
+00807 
+00808                       ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value  +=
+00809                          (ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.th\_gap.avg
+00810                           +
+00811                          abs(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.th\_gap.avg*0.01)
+00812 
+00813                          );
+00814 
+00815 
+00816                      \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value < ir\_sen\_data.
+      \hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.min)
+00817                         ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value = ir\_sen\_data.
+      \hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.min;
+00818 
+00819                       ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_adf9a37828e447378b1d533185213316d}{dfdt\_treshold\_max}
+00820                         = ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.set\_value*2*PI*(
+      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq*
+      \hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE};
+00821 
+00822 
+00823                      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a3b9c683370c94430a4c6a9d78ce6f5ef}{dfdt\_treshold\_impulse}= 10*
+      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_adf9a37828e447378b1d533185213316d}{dfdt\_treshold\_max};
+00824 
+00825                      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_a4b3bbfb0267daea1432f2603825ade62}{amp\_treshold}.adjusted = 1;
+00826 
+00827                   \}
+00828 
+00829 
+00830                    memset(&ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_a799f50625c0c03f9404a59287810113d}{false\_alarm},0,\textcolor{keyword}{sizeof}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_a799f50625c0c03f9404a59287810113d}{false\_alarm}));
+00831      
+00832 
+00833 
+00834 
+00835 \}
+00836 
+00837 
+00844  \textcolor{keyword}{static} \textcolor{keywordtype}{void} ir\_sen\_mark\_false\_postives(\textcolor{keywordtype}{void})\{
+00845         \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.state\_transition.history.
+      bits.final == \hyperlink{a00021_a727351838367f27ac0adb9a13422c342}{STATE\_1})
+00846             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_a799f50625c0c03f9404a59287810113d}{false\_alarm}.amp\_exceded.cnt++;
+00847         
+00848         ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.state\_transition.history.
+      bits.final = 0;
+00849 
+00850 \}
+00851 
+00852 
+00853 
+00860  \textcolor{keyword}{static} \textcolor{keywordtype}{void} ir\_sen\_diagonesis\_record(\textcolor{keywordtype}{void})
+00861  \{
+00862 
+00863               \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      itoi\_counter.armed==1)\{
+00864                ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      itoi\_counter.value++;
+00865 
+00866                \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold
+      .bits.dfdt\_impulse==1 )
+00867                 \{
+00868                      ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.total\_observation++;
+00869 
+00870                      \textcolor{keywordflow}{if}(
+00871                         (\hyperlink{a00021_a1aaf79017d1250538fff385827b7401e}{\_\_COMPARE}((ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.value
+00872                                   -ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.
+      \hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period\_1\_2),
+00873                                5\textcolor{comment}{/*+/- 5*/}
+00874                           )==0)
+00875                          )
+00876                        \{
+00877                            ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.value = 0;
+00878                            ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.positive\_event++;
+00879 
+00880                        \}\textcolor{keywordflow}{else}
+00881                           \textcolor{keywordflow}{if}((\hyperlink{a00021_a1aaf79017d1250538fff385827b7401e}{\_\_COMPARE}((ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.value
+00882                                -ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.
+      samples\_per\_period),
+00883                                5 \textcolor{comment}{/*+/- 5*/}
+00884                               )==0)
+00885                             )\{
+00886                               ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.value = 0;
+00887                               ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.positive\_event++;
+00888 
+00889                              \}
+00890 
+00891 
+00892                  \}\textcolor{keywordflow}{else}\{
+00893 
+00894 
+00895                      \textcolor{keywordflow}{if}(
+00896                        (ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} == \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0})
+00897                        ||
+00898                        (
+00899                             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.value
+00900                             >
+00901                             (3*ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period
+      )
+00902                        )
+00903                        )
+00904                       \{
+00905                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.value = 0;
+00906                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.armed = 0;
+00907                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.positive\_event = 0;
+00908                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.total\_observation = 0;
+00909                      \}
+00910 
+00911                  \}
+00912 
+00913          \}\textcolor{keywordflow}{else}
+00914          \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.bits.
+      dfdt\_impulse)
+00915          \{
+00917                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      itoi\_counter.armed              = 1;
+00918                  ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head       
+                               = 0;
+00919                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      itoi\_counter.value              = 0;
+00920                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      itoi\_counter.positive\_event     = 1;
+00921                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      itoi\_counter.total\_observation  = 1;
+00922 
+00923 
+00925                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      ptop\_counter.armed              = 0;
+00926 
+00927          \}
+00928 
+00929 
+00930              
+00931 
+00932 
+00933 
+00934              ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.
+      total\_observation++;
+00935              ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.accumulated 
+      =
+00936                      ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.accumulated
+00937                      +ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+00938 
+00939 
+00940 
+00941              \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record}->\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{event\_data}.exceeded\_threshold.
+      bits.amp\_max)\{
+00942                     ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.total\_observation++;
+00943                     ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.accumulated =
+00944                      ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp\_exceded.accumulated
+00945                      +ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+00946              \}
+00947 
+00948 
+00949                                                   ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.change\_counter.total\_observation++;
+00950         
+00951              \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time} > 0)
+00952                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.rising++;
+00953              \textcolor{keywordflow}{else}  \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_ad5c4f9a39d2a36632a53205ae8eb5a5d}{change\_per\_time} < 0)
+00954              ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.falling++;
+00955 
+00956 
+00957              \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.total\_observation ==8\textcolor{comment}{/*Observation length*/})\{
+00958 
+00959              \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.rising > 5 \textcolor{comment}{/*>60%*/})\{
+00960                   ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.change\_counter.projected\_slop.current = 1;
+00961              \}\textcolor{keywordflow}{else}
+00962              \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.falling > 5 \textcolor{comment}{/*>60%*/})\{
+00963               ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.projected\_slop.current = -1;
+00964              \}\textcolor{keywordflow}{else}
+00965               ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.projected\_slop.current = 0;
+00966 
+00967                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.total\_observation = 0;
+00968                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.rising            = 0;
+00969                  ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      change\_counter.falling           = 0;
+00970 
+00971            \}
+00972 
+00973 
+00974 
+00975 
+00976 
+00977           \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      ptop\_counter.armed==1)\{
+00978                ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.
+      ptop\_counter.value++;
+00979 
+00980                \textcolor{keywordflow}{if}(ir\_peak\_detected())
+00981                 \{
+00982 
+00983                    ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.total\_observation++;
+00984                    \textcolor{keywordflow}{if}(
+00985                       (\hyperlink{a00021_a1aaf79017d1250538fff385827b7401e}{\_\_COMPARE}((ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.value
+00986                            -ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.
+      samples\_per\_period\_1\_2),
+00987                            5
+00988                       )==0)
+00989                    )
+00990                    \{
+00991                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.value = 0;
+00992                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.positive\_event++;
+00993 
+00994                    \}
+00995                    \textcolor{keywordflow}{else}
+00996                    \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.value
+00997                            <
+00998                       (ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period)
+00999                    )
+01000                    \{
+01001 
+01002                     \textcolor{keywordflow}{if}(
+01003                      ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level}
+01004                       >
+01005                      ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.max
+01006                      )
+01007                    \{
+01008 
+01019                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.max =
+01020                        ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+01021            
+01022 
+01023                        ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head 
+                                     = 0;
+01024                        ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->
+      mean\_value                          = 0;
+01025                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.value              = 0;
+01026                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.positive\_event     = 1;
+01027                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.total\_observation  = 1;
+01028 
+01029 
+01030 
+01031                        \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head < 
+      \hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH})\{
+01032                        ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->
+      buffer[ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head++]
+01033                        = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+01034                        ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->
+      mean\_value =ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.\hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+01035                        \}
+01036 
+01037 
+01038                     \}
+01039                    \}
+01040                  \}
+01041                  \textcolor{keywordflow}{else}
+01042                  \{
+01043 
+01044 
+01045                     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.value
+01046                     >
+01047                     2*ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a6b2516d74583418cec324c50041421c9}{projected}.samples\_per\_period
+01048                     )\{
+01049                        \textcolor{comment}{//signal was inactive for 2 cycles}
+01050                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.value = 0;
+01051                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.armed = 0;
+01052                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.positive\_event = 1;
+01053                        ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.total\_observation = 1;
+01054 
+01055                      \}
+01056 
+01057                  \}
+01058 
+01059                \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head < 
+      \hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH})\{
+01060                ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->buffer[
+      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head++]
+01061                = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+01062                ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->mean\_value +=
+      ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.\hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+01063                \}
+01064 
+01065 
+01066          \}
+01067          \textcolor{keywordflow}{else}
+01068          \textcolor{keywordflow}{if}(ir\_peak\_detected())
+01069          \{
+01070 
+01071                   ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.amp.max  =
+01072                          ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+01073 
+01074                    ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.armed              = 1;
+01075                    ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head     
+                                 = 0;
+01076                    ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->
+      mean\_value                          = 0;
+01077 
+01078                    ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.value              = 0;
+01079                    ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.positive\_event     = 1;
+01080                    ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.
+      \hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.total\_observation  = 1;
+01081 
+01082                ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->buffer[
+      ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head++]
+01083                = ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.
+      \hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+01084                ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->mean\_value =
+      ir\_sen\_data.\hyperlink{a00023_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_a0fc6d9ce6203a17f672c19d3d8747aee}{previous}.\hyperlink{a00017_abcdf2bc0c2e5a14863938ae28c3bc96e}{signal\_level};
+01085 
+01086          \}
+01087 
+01088 
+01089 
+01090 
+01091  \}
+01092 
+01093 
+\hypertarget{a00045_source_l01100}{}\hyperlink{a00045_a86870a0e00601a92277e689447739ce9}{01100} \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00045_a86870a0e00601a92277e689447739ce9}{ir\_sen\_hif\_check}(\textcolor{keywordtype}{void})\{
+01101 
+01102     \hyperlink{a00021_d7/d9f/a00454}{hif\_checklist\_t} result;
+01103     result.\hyperlink{a00021_a2625a533c46821f49caaf4dcc77316b1}{all} = 0;
+01104 
+01105     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head < 
+      \hyperlink{a00022_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE})
+01106         \textcolor{keywordflow}{return} result.\hyperlink{a00021_a2625a533c46821f49caaf4dcc77316b1}{all};
+01107 
+01108     ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->mean\_value /=
+      \hyperlink{a00022_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE};
+01109 
+01110     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.
+      total\_observation > 0)
+01111     \textcolor{keywordflow}{if}(\hyperlink{a00021_a2ec57e7d50ba444ecb9e5c8b717d832d}{\_\_COMPARE\_U}(
+01112             (
+01113             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter
+      .total\_observation
+01114             -
+01115             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter
+      .positive\_event
+01116             )
+01117             ,2
+01118             )==0
+01119            )
+01120         result.\hyperlink{a00021_a4c757443cba2deaf7051fd53f385a73e}{bits}.itoi = 1;
+01121 
+01122     \textcolor{keywordflow}{if}(ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.
+      total\_observation > 0)
+01123     \textcolor{keywordflow}{if}(\hyperlink{a00021_a2ec57e7d50ba444ecb9e5c8b717d832d}{\_\_COMPARE\_U}(
+01124           (
+01125            ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.
+      total\_observation
+01126           -
+01127            ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.
+      positive\_event
+01128           )
+01129          ,0
+01130           )==0
+01131        )
+01132         result.\hyperlink{a00021_a4c757443cba2deaf7051fd53f385a73e}{bits}.ptop = 1;
+01133 
+01134     ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.
+      positive\_event      = 0;
+01135     ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter.
+      total\_observation   = 0;
+01136     ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.
+      positive\_event      = 0;
+01137     ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter.
+      total\_observation   = 0;
+01138 
+01139     \textcolor{keywordflow}{return} result.\hyperlink{a00021_a2625a533c46821f49caaf4dcc77316b1}{all};
+01140 
+01141 
+01142 
+01143 \}
+01144 
+01145 
+\hypertarget{a00045_source_l01152}{}\hyperlink{a00045_a1c9872e93491d95a24ab0bc723d39a74}{01152} \textcolor{keywordtype}{void} \hyperlink{a00045_a1c9872e93491d95a24ab0bc723d39a74}{ir\_record\_reset}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} type)\{
+01153 
+01154     \textcolor{keywordflow}{if}(type == \hyperlink{a00017_aaa1c1ffe30eff38b979b1af9d4e4ef19}{HIF})\{
+01155             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter
+      .positive\_event      = 0;
+01156             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.itoi\_counter
+      .total\_observation   = 0;
+01157             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter
+      .positive\_event      = 0;
+01158             ir\_sen\_data.\hyperlink{a00023_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records}.\hyperlink{a00017_affb63906d23cb1cb7787d61eaaedfb60}{signal\_history}.time.ptop\_counter
+      .total\_observation   = 0;
+01159 
+01160             ir\_sen\_data.\hyperlink{a00023_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.\hyperlink{a00021_ae18294f7499d9fcb5ec796a1816b8cd8}{hif\_diagonesis\_records}->head = 0;
+01161        \}
+01162 \}
+\end{DoxyCode}

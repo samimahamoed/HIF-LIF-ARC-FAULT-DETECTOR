@@ -1,0 +1,5 @@
+<map id="QCPItemRect::pen" name="QCPItemRect::pen">
+<area shape="rect" id="node2" href="$d3/de7/a00039.html#a483c0da5a17e1646cd17ddea2c124e7d" title="Sets the pen that will be used to draw the line of the rectangle. " alt="" coords="210,5,361,32"/>
+<area shape="rect" id="node4" href="$d3/de7/a00039.html#a52a1bcb2dc753a538e406a2ba3cf21ce" title="Sets the pen that will be used to draw the line of the rectangle when selected. " alt="" coords="184,56,387,83"/>
+<area shape="rect" id="node3" href="$d3/de7/a00039.html#a412ad1579f7a1fba453d0fa28c496cbc" title="Creates a rectangle item and sets default values. " alt="" coords="435,31,625,57"/>
+</map>

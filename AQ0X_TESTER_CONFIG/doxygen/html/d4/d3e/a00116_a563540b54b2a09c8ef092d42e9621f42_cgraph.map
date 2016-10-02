@@ -1,0 +1,5 @@
+<map id="replot" name="replot">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a6f4fa624af060bc5919c5f266cf426a0" title="This signal is emitted immediately after a replot has taken place (caused by a call to the slot replo..." alt="" coords="113,5,197,32"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a0cd30e29b73efd6afe096e44bc5956f5" title="This signal is emitted immediately before a replot takes place (caused by a call to the slot replot)..." alt="" coords="108,56,203,83"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a2e9b3d14dffa43c79835869d488936c9" title="draw" alt="" coords="131,107,180,133"/>
+</map>

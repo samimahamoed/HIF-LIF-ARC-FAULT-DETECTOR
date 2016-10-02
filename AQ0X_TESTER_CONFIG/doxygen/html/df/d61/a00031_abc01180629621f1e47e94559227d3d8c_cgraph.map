@@ -1,0 +1,12 @@
+<map id="QCPGraph::drawImpulsePlot" name="QCPGraph::drawImpulsePlot">
+<area shape="rect" id="node2" href="$dc/de2/a00024.html#a76e9d6cc7972dc1528f526d163766aca" title="QCPAbstractPlottable\l::applyDefaultAntialiasingHint" alt="" coords="241,5,432,47"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#ae35093fbf4f645dcefd930ca8c68b622" title="color" alt="" coords="311,71,362,98"/>
+<area shape="rect" id="node6" href="$dc/de2/a00024.html#a19276ed2382a3a06464417b8788b1451" title="QCPAbstractPlottable\l::mainPen" alt="" coords="261,123,412,164"/>
+<area shape="rect" id="node7" href="$dc/de2/a00024.html#a41d060007cc6b3037c9c04d22d0c0398" title="QCPAbstractPlottable::pen" alt="" coords="247,189,426,215"/>
+<area shape="rect" id="node8" href="$d6/d2d/a00047.html#af9c7a4cd1791403901f8c5b82a150195" title="Sets the pen of the painter and applies certain fixes to it, depending on the mode of this QCPPainter..." alt="" coords="267,239,407,266"/>
+<area shape="rect" id="node3" href="$d5/df9/a00044.html#a62bd552d1a45aa9accb24b310542279e" title="QCPLayerable::applyAntialiasingHint" alt="" coords="480,13,715,39"/>
+<area shape="rect" id="node4" href="$d6/d2d/a00047.html#aaba1deb9188244d9ea65b035112b4d05" title="Sets whether painting uses antialiasing or not. " alt="" coords="763,13,947,39"/>
+<area shape="rect" id="node9" href="$d4/d3e/a00116.html#a499165f4744b6d22da7b24295910fb2c" title="setPen" alt="" coords="823,214,886,241"/>
+<area shape="rect" id="node10" href="$d6/d2d/a00047.html#a27af07a62c335faf79191b797306b218" title="Provides a workaround for a QPainter bug that prevents scaling of pen widths for pens with width 0..." alt="" coords="510,265,685,291"/>
+<area shape="rect" id="node11" href="$d4/d3e/a00116.html#a1f13fffa0a0faac34ec342973e613a4a" title="pen" alt="" coords="833,265,876,291"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="emu_data_editor" name="emu_data_editor">
+<area shape="rect" id="node2" href="$d7/df7/a00058.html" title="{QMainWindow\n||}" alt="" coords="5,101,112,178"/>
+<area shape="rect" id="node8" href="$d1/dea/a00054.html" title="{QFourierTransformer\n||+ QFourierTransformer()\l+ ~QFourierTransformer()\l+ setSize()\l+ setWindowFunction()\l+ windowFunctions()\l+ transform()\l+ forwardTransform()\l+ inverseTransform()\l+ rescale()\l+ conjugate()\l+ toComplex()\l# initialize()\l# sizeToKey()\l# isValidSize()\l}" alt="" coords="788,5,956,273"/>
+</map>

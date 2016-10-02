@@ -1,0 +1,58 @@
+.TH "ffft::FFTRealSelect< P >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::FFTRealSelect< P > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <FFTRealSelect\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<> float * \fBsel_bin\fP (float *e_ptr, float *o_ptr)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBffft_FORCEINLINE\fP float * \fBsel_bin\fP (float *e_ptr, float *o_ptr)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<int P>class ffft::FFTRealSelect< P >"
+
+.PP
+Definition at line 39 of file FFTRealSelect\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<> float * \fBffft::FFTRealSelect\fP< 0 >::sel_bin (float *e_ptr, float *o_ptr)\fC [inline]\fP"
+
+.PP
+Definition at line 46 of file FFTRealSelect\&.hpp\&.
+.PP
+.nf
+47 {
+48     return (e_ptr);
+49 }
+.fi
+.SS "template<int P> float * \fBffft::FFTRealSelect\fP< P >::sel_bin (float *e_ptr, float *o_ptr)\fC [static]\fP"
+
+.PP
+Definition at line 38 of file FFTRealSelect\&.hpp\&.
+.PP
+.nf
+39 {
+40     return (o_ptr);
+41 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

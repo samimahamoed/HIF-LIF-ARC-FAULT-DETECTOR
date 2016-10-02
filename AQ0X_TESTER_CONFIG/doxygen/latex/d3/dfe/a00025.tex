@@ -1,0 +1,141 @@
+\hypertarget{a00025}{\section{slider.\+h File Reference}
+\label{a00025}\index{slider.\+h@{slider.\+h}}
+}
+{\ttfamily \#include $<$Q\+Slider$>$}\\*
+{\ttfamily \#include \char`\"{}typedef.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}emu\+\_\+data\+\_\+editor.\+h\char`\"{}}\\*
+Include dependency graph for slider.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d72/a00204}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d13/a00205}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{a00024}{Slider}
+\item 
+union \hyperlink{a00025_d7/d12/a00126}{Slider.\+flags}
+\item 
+struct \hyperlink{a00025_df/dcd/a00127}{Slider.\+flags.\+bits}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00025_a0a9d6eabafd981a8b48b343249428077}{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+N\+O\+R\+M\+A\+L}~\char`\"{}background\+: qlineargradient(x1\+:0, y1\+:0, x2\+:0, y2\+:1, stop\+:0 \#8f8f8f, stop\+:1 \#8f8f8f);\char`\"{}
+\item 
+\#define \hyperlink{a00025_a0d978e946366d0eb299bb966cf8a52e9}{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E}~\char`\"{}background\+: qlineargradient(x1\+:0, y1\+:0, x2\+:0, y2\+:1, stop\+:0 \#3333\+F\+F, stop\+:1 \#3333\+F\+F);\char`\"{}
+\item 
+\#define \hyperlink{a00025_a3b78c22b908aee9d7cda0ff6240570fd}{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+H\+A\+S\+\_\+\+F\+O\+C\+U\+S}~\char`\"{}background\+: qlineargradient(x1\+:0, y1\+:0, x2\+:0, y2\+:1, stop\+:0 \#75\+F\+F47, stop\+:1 \#75\+F\+F47);\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Class Documentation}
+\index{Slider.\+flags@{Slider.\+flags}}\label{d7/d12/a00126}
+\hypertarget{a00025_d7/d12/a00126}{}
+\subsubsection{union Slider.\+flags}
+
+
+Definition at line \hyperlink{a00025_source_l00068}{68} of file \hyperlink{a00025_source}{slider.\+h}.
+
+
+
+Collaboration diagram for Slider.\+flags\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{d5/df1/a00206}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00025_aa181a603769c1f98ad927e7367c7aa51}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00025_aa181a603769c1f98ad927e7367c7aa51}
+&
+all&
+\\
+\hline
+
+\hypertarget{a00025_acc411e6c13670e52124629b8ac83f7d0}{\hyperlink{a00025_df/dcd/a00127}{flags}}\label{a00025_acc411e6c13670e52124629b8ac83f7d0}
+&
+bits&
+\\
+\hline
+
+\end{DoxyFields}
+\index{Slider.\+flags.\+bits@{Slider.\+flags.\+bits}}\label{df/dcd/a00127}
+\hypertarget{a00025_df/dcd/a00127}{}
+\subsubsection{struct Slider.\+flags.\+bits}
+
+
+Definition at line \hyperlink{a00025_source_l00071}{71} of file \hyperlink{a00025_source}{slider.\+h}.
+
+
+
+Collaboration diagram for Slider.\+flags.\+bits\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{de/dd2/a00207}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00025_a73ac9a976343cc1d8842ecd1bc1b2746}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00025_a73ac9a976343cc1d8842ecd1bc1b2746}
+&
+point\+\_\+deselection\+\_\+mode\+:1&
+\\
+\hline
+
+\hypertarget{a00025_aeae313367aca4002d5be6284009fd26a}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00025_aeae313367aca4002d5be6284009fd26a}
+&
+point\+\_\+focuse\+\_\+en\+:1&
+\\
+\hline
+
+\hypertarget{a00025_a6f35b78941cb8dc08585d215b05befa2}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00025_a6f35b78941cb8dc08585d215b05befa2}
+&
+point\+\_\+selected\+:1&
+\\
+\hline
+
+\hypertarget{a00025_a11d4438dc576a131ad6ca02f09621f1d}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00025_a11d4438dc576a131ad6ca02f09621f1d}
+&
+point\+\_\+selection\+\_\+mode\+:1&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00025_a3b78c22b908aee9d7cda0ff6240570fd}{\index{slider.\+h@{slider.\+h}!B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+H\+A\+S\+\_\+\+F\+O\+C\+U\+S@{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+H\+A\+S\+\_\+\+F\+O\+C\+U\+S}}
+\index{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+H\+A\+S\+\_\+\+F\+O\+C\+U\+S@{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+H\+A\+S\+\_\+\+F\+O\+C\+U\+S}!slider.\+h@{slider.\+h}}
+\subsubsection[{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+H\+A\+S\+\_\+\+F\+O\+C\+U\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+H\+A\+S\+\_\+\+F\+O\+C\+U\+S~\char`\"{}background\+: qlineargradient(x1\+:0, y1\+:0, x2\+:0, y2\+:1, stop\+:0 \#75\+F\+F47, stop\+:1 \#75\+F\+F47);\char`\"{}}}\label{a00025_a3b78c22b908aee9d7cda0ff6240570fd}
+
+
+Definition at line \hyperlink{a00025_source_l00052}{52} of file \hyperlink{a00025_source}{slider.\+h}.
+
+\hypertarget{a00025_a0d978e946366d0eb299bb966cf8a52e9}{\index{slider.\+h@{slider.\+h}!B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E@{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E}}
+\index{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E@{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E}!slider.\+h@{slider.\+h}}
+\subsubsection[{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+\_\+\+S\+E\+L\+E\+C\+T\+I\+O\+N\+\_\+\+M\+O\+D\+E~\char`\"{}background\+: qlineargradient(x1\+:0, y1\+:0, x2\+:0, y2\+:1, stop\+:0 \#3333\+F\+F, stop\+:1 \#3333\+F\+F);\char`\"{}}}\label{a00025_a0d978e946366d0eb299bb966cf8a52e9}
+
+
+Definition at line \hyperlink{a00025_source_l00051}{51} of file \hyperlink{a00025_source}{slider.\+h}.
+
+\hypertarget{a00025_a0a9d6eabafd981a8b48b343249428077}{\index{slider.\+h@{slider.\+h}!B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+N\+O\+R\+M\+A\+L@{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+N\+O\+R\+M\+A\+L}}
+\index{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+N\+O\+R\+M\+A\+L@{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+N\+O\+R\+M\+A\+L}!slider.\+h@{slider.\+h}}
+\subsubsection[{B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+N\+O\+R\+M\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+\_\+\+S\+T\+Y\+L\+E\+\_\+\+N\+O\+R\+M\+A\+L~\char`\"{}background\+: qlineargradient(x1\+:0, y1\+:0, x2\+:0, y2\+:1, stop\+:0 \#8f8f8f, stop\+:1 \#8f8f8f);\char`\"{}}}\label{a00025_a0a9d6eabafd981a8b48b343249428077}
+
+
+Definition at line \hyperlink{a00025_source_l00050}{50} of file \hyperlink{a00025_source}{slider.\+h}.
+

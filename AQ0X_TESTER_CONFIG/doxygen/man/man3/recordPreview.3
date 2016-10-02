@@ -1,0 +1,241 @@
+.TH "recordPreview" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+recordPreview \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <recordpreview\&.h>\fP
+.PP
+Inherits \fBQMainWindow\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBrecordPreview\fP (QString type, QVector< \fBUint16\fP > data, QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fBrecordPreview\fP (QString type, QVector< \fBUint16\fP > data, \fBevent_data_t\fP event_data, QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fBrecordPreview\fP (QString type, QVector< double > *data1, QVector< double > *data2=NULL, QVector< double > *data3=NULL, QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fB~recordPreview\fP ()"
+.br
+.ti -1c
+.RI "double \fBmax\fP (QVector< double > val)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 15 of file recordpreview\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "recordPreview::recordPreview (QStringtype, QVector< \fBUint16\fP >data, QWidget *parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 11 of file recordpreview\&.cpp\&.
+.PP
+References Ui_recordPreview::actionWinDataPlot, Ui_recordPreview::actionWinEventPlot, ADC_VAL_MAPPING_FACTOR, Ui_recordPreview::centralwidget, Ui_recordPreview::curve_data, Ui_recordPreview::dockWidgetPlot, Ui_recordPreview::dockWidgetPlot_event_history, Ui_recordPreview::setupUi(), WAVEFORM_0_TO_3_3, and WAVEFORM_PLUS_MINUS_1_65\&.
+.PP
+.nf
+11                                                                                 :
+12     QMainWindow(parent),
+13     ui(new Ui::recordPreview)
+14 {
+15     ui->setupUi(this);
+16     this->setWindowTitle(type);
+17 
+18     dir_default = ((MainWindow *)parent)->dir_default;
+19 
+20     ui->centralwidget->setVisible(false);
+21     ui->dockWidgetPlot->setWidget(ui->curve_data);
+22 
+23     ui->actionWinDataPlot->setChecked(true);
+24 
+25     ui->actionWinEventPlot->setChecked(false);
+26     ui->actionWinEventPlot->setEnabled(false);
+27 
+28     ui->dockWidgetPlot_event_history->setVisible(false);
+29 
+30     this->rc_data = data;
+31 
+32 
+33     measured_values\&.resize(data\&.length());
+34     time\&.resize(data\&.length());
+35     history_dfdt\&.resize(data\&.length());
+36 
+37     
+38     for (int var = 0; var < data\&.length(); ++var) {
+39         time[var]=var;
+40         measured_values[var]=(rc_data[var]*ADC_VAL_MAPPING_FACTOR) - (type\&.contains("MFIELD")?1\&.65:0);
+41 
+42         if(var > 0)
+43             history_dfdt[var] = abs(measured_values[var])- abs(measured_values[var-1]);
+44     }
+45 
+46     plot_curve(time,measured_values,
+47               (type\&.contains("MFIELD")?WAVEFORM_PLUS_MINUS_1_65:WAVEFORM_0_TO_3_3));
+48 
+49 }
+.fi
+.SS "recordPreview::recordPreview (QStringtype, QVector< \fBUint16\fP >data, \fBevent_data_t\fPevent_data, QWidget *parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 52 of file recordpreview\&.cpp\&.
+.PP
+References Ui_recordPreview::actionWinDataPlot, Ui_recordPreview::actionWinEventPlot, ADC_VAL_MAPPING_FACTOR, Ui_recordPreview::centralwidget, Ui_recordPreview::curve_data, Ui_recordPreview::curve_dfdt, Ui_recordPreview::dockWidgetPlot, Ui_recordPreview::dockWidgetPlot_event_history, Ui_recordPreview::setupUi(), WAVEFORM_0_TO_3_3, and WAVEFORM_PLUS_MINUS_1_65\&.
+.PP
+.nf
+52                                                                                                         :
+53     QMainWindow(parent),
+54     ui(new Ui::recordPreview)
+55 {
+56     ui->setupUi(this);
+57     this->setWindowTitle(type);
+58 
+59     ui->centralwidget->setVisible(false);
+60     ui->dockWidgetPlot->setWidget(ui->curve_data);
+61     ui->dockWidgetPlot_event_history->setWidget(ui->curve_dfdt);
+62 
+63     ui->actionWinDataPlot->setChecked(true);
+64     ui->actionWinEventPlot->setChecked(true);
+65 
+66     this->rc_data       = data;
+67     this->event_history  = event_data;
+68 
+69     measured_values\&.resize(data\&.length());
+70     history_amp\&.resize(data\&.length());
+71     history_dfdt\&.resize(data\&.length());
+72     time\&.resize(data\&.length());
+73 
+74 
+75 
+76     for (int var = 0; var < data\&.length(); ++var) {
+77         time[var]=var;
+78         measured_values[var]=(rc_data[var]*ADC_VAL_MAPPING_FACTOR)-(type\&.contains("MFIELD")?1\&.65:0);
+79     }
+80 
+81 
+82 
+83     //TODO: history amp shows when the module is activated
+84     /*
+85     for (int var = 0; var < MAX_EVENT_OBSERVATION_LENGTH; ++var) {
+86         history_amp[var + PRE_ACT_RECORD_BUFF_SIZE + event_history\&.offset]
+87                 =(event_history\&.ignal_level[var]*ADC_VAL_MAPPING_FACTOR) - (type\&.contains("MFIELD")?1\&.65:0);
+88 
+89     }
+90 
+91     */
+92     plot_curve(time,measured_values,
+93               (type\&.contains("MFIELD")?WAVEFORM_PLUS_MINUS_1_65:WAVEFORM_0_TO_3_3),
+94               history_amp
+95               );
+96 
+97 
+98 
+99 }
+.fi
+.SS "recordPreview::recordPreview (QStringtype, QVector< double > *data1, QVector< double > *data2 = \fCNULL\fP, QVector< double > *data3 = \fCNULL\fP, QWidget *parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 102 of file recordpreview\&.cpp\&.
+.PP
+References Ui_recordPreview::actionWinDataPlot, Ui_recordPreview::actionWinEventPlot, Ui_recordPreview::centralwidget, Ui_recordPreview::curve_data, Ui_recordPreview::curve_dfdt, Ui_recordPreview::dockWidgetPlot, Ui_recordPreview::dockWidgetPlot_event_history, max(), Ui_recordPreview::setupUi(), WAVEFORM_0_TO_3_3, and WAVEFORM_PLUS_MINUS_1_65\&.
+.PP
+.nf
+102                                                                                                                                   :
+103     QMainWindow(parent),
+104     ui(new Ui::recordPreview)
+105 {
+106     ui->setupUi(this);
+107     this->setWindowTitle(type);
+108 
+109     ui->centralwidget->setVisible(false);
+110     ui->dockWidgetPlot->setWidget(ui->curve_data);
+111     ui->dockWidgetPlot_event_history->setWidget(ui->curve_dfdt);
+112 
+113 
+114     ui->actionWinDataPlot->setChecked(true);
+115 
+116     measured_values\&.resize(data1->length());
+117 
+118     for (int var = 0; var < data1->length(); ++var)
+119       measured_values[var] = data1->at(var);
+120 
+121    // memmove(&measured_values,data1,sizeof(measured_values));
+122 
+123     time\&.resize(data1->length());
+124     for (int var = 0; var < data1->length(); ++var)
+125         time[var]=var;
+126 
+127     if((data2->length() > 0) && (data3->length()>0)){
+128         ui->actionWinEventPlot->setChecked(true);
+129 
+130         history_amp\&.resize(data2->length());
+131         memmove(&history_amp,data2,sizeof(history_amp));
+132         history_dfdt\&.resize(data3->length());
+133         memmove(&history_dfdt,data3,sizeof(history_dfdt));
+134 
+135 
+136 
+137 
+138         plot_curve(time,measured_values,
+139                   (type\&.contains("MFIELD")?WAVEFORM_PLUS_MINUS_1_65:WAVEFORM_0_TO_3_3),
+140                   history_amp
+141                   );
+142 
+143 
+144 
+145         plot_event(time,history_dfdt,max(history_dfdt));
+146 
+147     }else{
+148         ui->actionWinEventPlot->setChecked(false);
+149         ui->actionWinEventPlot->setEnabled(false);
+150 
+151         ui->dockWidgetPlot_event_history->setVisible(false);
+152 
+153         plot_curve(time,measured_values,
+154                   type\&.contains("MFIELD")?WAVEFORM_PLUS_MINUS_1_65:WAVEFORM_0_TO_3_3);
+155 
+156 
+157     }
+158 
+159 }
+.fi
+.SS "recordPreview::~recordPreview ()"
+
+.PP
+Definition at line 162 of file recordpreview\&.cpp\&.
+.PP
+.nf
+163 {
+164     delete ui;
+165 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "double recordPreview::max (QVector< double >val)"
+
+.PP
+Definition at line 168 of file recordpreview\&.cpp\&.
+.PP
+Referenced by recordPreview()\&.
+.PP
+.nf
+168                                             {
+169     double result = 0;
+170     for (int var = 0; var < val\&.length(); ++var)
+171         result = (result > val[var])?result:val[var];
+172 
+173     return result;
+174 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

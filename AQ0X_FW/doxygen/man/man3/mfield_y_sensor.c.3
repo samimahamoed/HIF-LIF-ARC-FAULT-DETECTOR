@@ -1,0 +1,363 @@
+.TH "mfield_y_sensor.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mfield_y_sensor.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+\fC#include '\&.\&.\\\&.\&.\\includes_prv\\aq0X\\mfield_x_sensor_prv\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmfield_x_sen_taskx\fP (\fBx_event\fP *event)"
+.br
+.RI "\fImfield_x sensor module task function\&. \fP"
+.ti -1c
+.RI "void \fBmfield_x_sen_notifyx\fP (\fBx_notify\fP *notify)"
+.br
+.RI "\fImfield_x module notification function\&. \fP"
+.ti -1c
+.RI "\fBInt8\fP \fBmfield_x_compare\fP (\fBFloat32\fP num1, \fBFloat32\fP num2, \fBFloat32\fP tolerance)"
+.br
+.ti -1c
+.RI "\fBFloat32\fP \fBmfield_x_sen_first_order_derivative\fP (\fBUint16\fP final_val, \fBUint16\fP init_val)"
+.br
+.RI "\fIClaculate first order derivative\&. \fP"
+.ti -1c
+.RI "\fBBool\fP \fBmfield_x_sen_calc_probablity\fP (\fBUint16\fP event, \fBUint16\fP obs, \fBUint16\fP threshold)"
+.br
+.RI "\fIClaculates the event probablity\&. \fP"
+.ti -1c
+.RI "\fBevent_report_t\fP \fBmfield_x_sen_get_status\fP (\fBUint16\fP adc_value, \fBBool\fP save_event)"
+.br
+.RI "\fISupervise the status of the mfield_x sensor\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBmfield_x_sen_hif_check\fP (void)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBmfield_x_sen_data_t\fP \fBmfield_x_sen_data\fP"
+.br
+.RI "\fIInternal mfield_x_sen module data\&. \fP"
+.ti -1c
+.RI "\fBx_task_id\fP \fBmfield_x_sen_id\fP"
+.br
+.RI "\fImfield_x_sen module handle \fP"
+.ti -1c
+.RI "\fBUint32\fP \fBmfield_x_event_trigger_timestamp\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBInt8\fP mfield_x_compare (\fBFloat32\fPnum1, \fBFloat32\fPnum2, \fBFloat32\fPtolerance)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fI\fP 
+.RE
+.PP
+
+.PP
+Definition at line 209 of file mfield_y_sensor\&.c\&.
+.PP
+Referenced by mfield_x_sen_get_status(), and mfield_x_sen_hif_check()\&.
+.PP
+.nf
+209                                                                      {
+210 
+211    Int8    result = -2;
+212    Float32 difference = num1 - num2;
+213 
+214    if(abs(difference) <= tolerance)
+215     result = 0;
+216    if(difference > 0/*num1 > num2*/)
+217     result = 1;
+218    if(difference < 0/*num1 < num2*/)
+219     result = -1;
+220    return result;
+221 }
+.fi
+.SS "\fBBool\fP mfield_x_sen_calc_probablity (\fBUint16\fPevent, \fBUint16\fPobs, \fBUint16\fPthreshold)"
+
+.PP
+Claculates the event probablity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent,positive\fP event count value 
+.br
+\fIobs,total\fP number of observation 
+.RE
+.PP
+
+.PP
+Definition at line 242 of file mfield_y_sensor\&.c\&.
+.PP
+References FALSE, and TRUE\&.
+.PP
+Referenced by mfield_x_sen_get_status()\&.
+.PP
+.nf
+242                                                                            {
+243 
+244     return ((100L*((Float32)event/(Float32)obs)) > threshold)?TRUE:FALSE;
+245 }
+.fi
+.SS "\fBFloat32\fP mfield_x_sen_first_order_derivative (\fBUint16\fPfinal_val, \fBUint16\fPinit_val)"
+
+.PP
+Claculate first order derivative\&. 
+.PP
+Definition at line 229 of file mfield_y_sensor\&.c\&.
+.PP
+Referenced by mfield_x_sen_get_status()\&.
+.PP
+.nf
+229                                                                               {
+230     return ((Float32)final_val-(Float32)init_val);
+231 }
+.fi
+.SS "\fBevent_report_t\fP mfield_x_sen_get_status (\fBUint16\fPadc_value, \fBBool\fPsave_event)"
+
+.PP
+Supervise the status of the mfield_x sensor\&. function used to identify the measured signal waveformREQ-1b: "A valid trip is issued, for few handres of microseconds after trip data will be saved at provided location\&.
+.PP
+Definition at line 293 of file mfield_y_sensor\&.c\&.
+.PP
+References configured_t::amp_treshold, ASSERT, pre_act_record_buffer_t::buffer, state_data_mfield_t::change_per_time, mfield_x_sen_data_t::configured, module_status_mfield_t::current, data_non_volatile, logv_t::data_tx_on_progress, configured_t::dfdt_treshold_impulse, configured_t::dfdt_treshold_max, mfield_x_sen_data_t::disturbance_record, pre_act_record_buffer_t::elapsed, EMU_MODE_DATA_LENGTH, module_disturbance_record_t::event_data, module_disturbance_record_t::event_positive_cnt, FALSE, event_report_t::fields, pre_act_record_buffer_t::head, HOT, logv, mfield_x_compare(), mfield_x_sen_calc_probablity(), mfield_x_sen_first_order_derivative(), configured_t::min_number_of_observation, mfield_x_sen_data_t::module_status, module_disturbance_record_t::observation_cnt, module_disturbance_record_t::post_act_data, POST_ACT_RECORD_BUFF_SIZE, module_disturbance_record_t::pre_act_data, PRE_ACT_RECORD_BUFF_SIZE, module_status_mfield_t::previous, configured_t::probablity_treshold_max, module_status_mfield_t::projected, state_data_mfield_t::signal_level, state_data_mfield_t::state, STATE_0, STATE_1, STATE_2, STATE_3, pre_act_record_buffer_t::tail, logv_t::tick, logv_t::trip_active, and TRUE\&.
+.PP
+Referenced by __attribute__()\&.
+.SS "\fBUint8\fP mfield_x_sen_hif_check (void)"
+
+.PP
+Definition at line 984 of file mfield_y_sensor\&.c\&.
+.PP
+References mfield_x_sen_data_t::configured, mfield_x_sen_data_t::diagonesis_records, configured_t::hif_diagonesis_records, mfield_x_compare(), PRE_ACT_RECORD_BUFF_SIZE, and diagonesis_records_mfield_t::signal_history\&.
+.PP
+.nf
+984                                   {
+985 
+986     Uint8 result = 0;
+987 return result;
+988     if(mfield_x_sen_data\&.configured\&.hif_diagonesis_records->head < PRE_ACT_RECORD_BUFF_SIZE)
+989         return result;
+990 
+991     mfield_x_sen_data\&.configured\&.hif_diagonesis_records->mean_value/=PRE_ACT_RECORD_BUFF_SIZE;
+992 
+993     if(mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.total_observation > 0)
+994     if(mfield_x_compare(
+995             mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.positive_event
+996            ,mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.total_observation
+997            ,1
+998             )
+999            )
+1000         result++;
+1001 
+1002     if(mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.total_observation > 0)
+1003     if(mfield_x_compare(
+1004           mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.positive_event
+1005          ,mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.total_observation
+1006          ,1
+1007           )
+1008        )
+1009         result++;
+1010 
+1011     mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.positive_event      = 0;
+1012     mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.total_observation   = 0;
+1013     mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.positive_event      = 0;
+1014     mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.total_observation   = 0;
+1015 
+1016     return result;
+1017 
+1018 }
+.fi
+.SS "void mfield_x_sen_notifyx (\fBx_notify\fP *notify)"
+
+.PP
+mfield_x module notification function\&. module notification function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP - system distributed notification 
+.RE
+.PP
+
+.PP
+Definition at line 138 of file mfield_y_sensor\&.c\&.
+.PP
+References ASSERT, mfield_x_sen_data_t::configured, module_status_mfield_t::current, mfield_x_sen_data_t::disturbance_record, configured_t::element_status_sv_en, sv_error_flags_ut::flags_all, x_notify::message, mfield_x_sen_data_t::module_status, module_status_mfield_t::projected, SCAN_FREQ, state_data_mfield_t::state, STATE_0, mfield_x_sen_data_t::sv_errors_flags, mfield_x_sen_data_t::sv_task_event, mfield_x_sen_data_t::sv_timer_ntf, SV_TIMER_PERIOD, configured_t::sys_freq, x_delete_timer(), X_MS2TICK, X_NTF_INIT, X_NTF_MFIELD_X_SENSOR_CONFIG, x_schedule_timer(), and x_send_event()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+139 {
+140 
+141 
+142     switch(notify->message)
+143     {
+144         case X_NTF_INIT:
+145         {
+146             mfield_x_sen_init();
+147         }break;
+148 
+149 
+150         case X_NTF_MFIELD_X_SENSOR_CONFIG:
+151         {
+152 
+153             // configuration details from algorithm module
+154             x_notify_mfield_x_sen_configure * notify_configure = (x_notify_mfield_x_sen_configure *)notify;
+155 
+156 
+157             mfield_x_sen_data\&.configured = notify_configure->message\&.configured;
+158             mfield_x_sen_data\&.disturbance_record = notify_configure->message\&.disturbance_record;
+159 
+160            mfield_x_sen_data\&.module_status\&.projected\&.angular_freq             = 2*PI*mfield_x_sen_data\&.configured\&.sys_freq;
+161            mfield_x_sen_data\&.module_status\&.projected\&.samples_per_one_forth_period       = (Uint16)(SCAN_FREQ/(Float32)(mfield_x_sen_data\&.configured\&.sys_freq));
+162            mfield_x_sen_data\&.module_status\&.projected\&.samples_per_half_period  = mfield_x_sen_data\&.module_status\&.projected\&.samples_per_one_forth_period/2;
+163            mfield_x_sen_data\&.module_status\&.projected\&.samples_per_period_1_4  = mfield_x_sen_data\&.module_status\&.projected\&.samples_per_one_forth_period/4;
+164             // Clear supervison state ( so errors will be reported if module have internal error )
+165           mfield_x_sen_data\&.sv_errors_flags\&.flags_all = 0;
+166 
+167           x_delete_timer(&mfield_x_sen_data\&.sv_timer_ntf);
+168 
+169           if(mfield_x_sen_data\&.configured\&.element_status_sv_en)
+170           x_schedule_timer(&mfield_x_sen_data\&.sv_timer_ntf,X_MS2TICK(SV_TIMER_PERIOD));
+171 
+172         }break;
+173 
+174 
+175          case X_NTF_CLR_ALARM:
+176         {
+177 
+178            // Algorithm module alarm reset request
+179              mfield_x_sen_data\&.module_status\&.current\&.state = STATE_0;
+180              mfield_x_sen_mark_false_postives();
+181 
+182 
+183         }break;
+184 
+185 
+186         case X_NTF_MFIELD_X_SENSOR_SV_TIMER:
+187         {
+188            x_send_event(&mfield_x_sen_data\&.sv_task_event);
+189         }break;
+190 
+191 
+192         default:
+193         {
+194             ASSERT(0);
+195         }
+196     }
+197 
+198 }
+.fi
+.SS "void mfield_x_sen_taskx (\fBx_event\fP *event)"
+
+.PP
+mfield_x sensor module task function\&. module task function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP - system distributed event 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file mfield_y_sensor\&.c\&.
+.PP
+References configured_t::amp_treshold, ASSERT, mfield_x_sen_data_t::configured, mfield_x_sen_data_t::diagonesis_records, sv_error_flags_ut::flags_all, x_event::message, x_notify_mfield_sen_sv_report::message, x_notify_mfield_sen_sv_report::notify, diagonesis_records_mfield_t::signal_history, mfield_x_sen_data_t::sv_errors_flags, mfield_x_sen_data_t::sv_status_ntf, X_MSG_MFIELD_SENSOR_SV, and x_send_notify()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+70 {
+71     switch(event->message)
+72     {
+73 
+74 
+75         case X_MSG_MFIELD_SENSOR_SV:
+76         {
+77 
+78 
+79             mfield_x_sen_sensor_element_sv_task();
+80 
+81             if(mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation >0)
+82                 mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.avg =
+83                         mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.accumulated/
+84                         mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation;
+85 
+86             if(mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation >0){
+87                 mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.avg =
+88                         mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.accumulated/
+89                         mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation;
+90 
+91                 mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.th_gap\&.avg
+92                     = (mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.avg - mfield_x_sen_data\&.configured\&.amp_treshold\&.set_value);
+93             }
+94             else
+95             mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.th_gap\&.avg
+96                     = (mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.avg - mfield_x_sen_data\&.configured\&.amp_treshold\&.set_value);
+97 
+98 
+99               mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.accumulated                 = 0;
+100               mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation           = 0;
+101               mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.accumulated         = 0;
+102               mfield_x_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation   = 0;
+103 
+104 
+105 
+106              mfield_x_sen_threshold_adjustment_task();
+107 
+108             if(mfield_x_sen_data\&.sv_errors_flags\&.flags_all!=0){
+109              mfield_x_sen_data\&.sv_status_ntf\&.message\&.error_flags = mfield_x_sen_data\&.sv_errors_flags;
+110              mfield_x_sen_data\&.sv_status_ntf\&.message\&.config = mfield_x_sen_data\&.configured;
+111 
+112              // Send notification to Algorithm module about detected error
+113              x_send_notify(&mfield_x_sen_data\&.sv_status_ntf\&.notify);
+114              mfield_x_sen_data\&.sv_errors_flags\&.flags_all =0;
+115             }
+116 
+117         }break;
+118 
+119 
+120 
+121         default:
+122         {
+123             ASSERT(0);
+124         }
+125     }
+126 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBUint32\fP mfield_x_event_trigger_timestamp"
+
+.PP
+Definition at line 26 of file mfield_y_sensor\&.c\&.
+.SS "\fBmfield_x_sen_data_t\fP mfield_x_sen_data"
+
+.PP
+Internal mfield_x_sen module data\&. 
+.PP
+Definition at line 22 of file mfield_y_sensor\&.c\&.
+.SS "\fBx_task_id\fP mfield_x_sen_id"
+
+.PP
+mfield_x_sen module handle 
+.PP
+Definition at line 23 of file mfield_y_sensor\&.c\&.
+.PP
+Referenced by main()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

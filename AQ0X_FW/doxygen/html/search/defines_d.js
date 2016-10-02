@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['netive_5farithmetic',['NETIVE_ARITHMETIC',['../d8/d41/a00038.html#ac8ba8f308052e254ac745ae76f44d766',1,'algorithm.c']]],
+  ['nop',['Nop',['../dd/d1b/a00015.html#a153a328af535691126bf4955e5d896e6',1,'Nop():&#160;p33EP128MC202.h'],['../d2/de7/a00014.html#a153a328af535691126bf4955e5d896e6',1,'Nop():&#160;p33EP32MC502.h']]],
+  ['nov_5fchip_5fsize',['NOV_CHIP_SIZE',['../d5/d16/a00029.html#acbac04a78072f0322171ea94017f246e',1,'srv_nov.h']]],
+  ['nov_5fcmd_5frdsr',['NOV_CMD_RDSR',['../d5/d16/a00029.html#a55309727a3055fdebf8df6e9d0f72fea',1,'srv_nov.h']]],
+  ['nov_5fcmd_5fread',['NOV_CMD_READ',['../d5/d16/a00029.html#a9d4dca4a65e8cabd1d733922725309e4',1,'srv_nov.h']]],
+  ['nov_5fcmd_5fwrdi',['NOV_CMD_WRDI',['../d5/d16/a00029.html#a3924df5fbf1e1ff642a9bde06e17b69d',1,'srv_nov.h']]],
+  ['nov_5fcmd_5fwren',['NOV_CMD_WREN',['../d5/d16/a00029.html#acc9f91a7c7d40a32755560dda080cf98',1,'srv_nov.h']]],
+  ['nov_5fcmd_5fwrite',['NOV_CMD_WRITE',['../d5/d16/a00029.html#a031aab76ddb1258273541a65d70acbe1',1,'srv_nov.h']]],
+  ['nov_5fcmd_5fwrsr',['NOV_CMD_WRSR',['../d5/d16/a00029.html#a8e00cafebecc8bdde750bb02e504b124',1,'srv_nov.h']]],
+  ['nov_5fdevice_5fid_5fmem_5faddress',['NOV_DEVICE_ID_MEM_ADDRESS',['../d5/d16/a00029.html#a3ddbe5b40319c96bfe46429e902f8d33',1,'srv_nov.h']]],
+  ['nov_5ffirst_5fdata_5fset_5faddress',['NOV_FIRST_DATA_SET_ADDRESS',['../d5/d16/a00029.html#a3d5917eef9709c44acd2e6314619f440',1,'srv_nov.h']]],
+  ['nov_5fhold_5fctrl_5flat',['NOV_HOLD_CTRL_LAT',['../d5/d16/a00029.html#aa03a6ff293decd7159ed1642ccbac971',1,'srv_spi.h']]],
+  ['nov_5fhold_5fctrl_5ftris',['NOV_HOLD_CTRL_TRIS',['../d5/d16/a00029.html#a37dc9980ee3379d4bd3a66f7cf9d761e',1,'srv_spi.h']]],
+  ['nov_5foverwrite_5fall',['NOV_OVERWRITE_ALL',['../d5/d16/a00029.html#aa3471d8e4814035dc24211c0890899bb',1,'srv_nov.h']]],
+  ['nov_5fpage_5fmask',['NOV_PAGE_MASK',['../d5/d16/a00029.html#a9eddef3795715df4279af5e0ddd92a87',1,'srv_nov.h']]],
+  ['nov_5fpage_5fsize',['NOV_PAGE_SIZE',['../d5/d16/a00029.html#aad44ced0f63ecf5d2ced5bc0bf220287',1,'srv_nov.h']]],
+  ['nov_5fsecond_5fdata_5fset_5faddress',['NOV_SECOND_DATA_SET_ADDRESS',['../d5/d16/a00029.html#ab062741a69ee7156fbdf317ec627b4ca',1,'srv_nov.h']]],
+  ['nov_5fserial_5fnumber_5fmem_5faddress',['NOV_SERIAL_NUMBER_MEM_ADDRESS',['../d5/d16/a00029.html#ab7dc1ea8a7f6e16cf27fbfe88efd7285',1,'srv_nov.h']]]
+];

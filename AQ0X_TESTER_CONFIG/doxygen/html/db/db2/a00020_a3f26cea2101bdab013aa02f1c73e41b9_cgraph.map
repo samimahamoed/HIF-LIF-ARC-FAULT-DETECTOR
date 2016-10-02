@@ -1,0 +1,5 @@
+<map id="recordPreview::recordPreview" name="recordPreview::recordPreview">
+<area shape="rect" id="node2" href="$db/db2/a00020.html#ad38222699419e6ac871ce2a23c6d292e" title="recordPreview::max" alt="" coords="263,5,398,32"/>
+<area shape="rect" id="node3" href="$dc/d3c/a00028.html#afa41dc070a896a5eae476f3c0206825c" title="Ui_recordPreview::setupUi" alt="" coords="244,56,417,83"/>
+<area shape="rect" id="node4" href="$dc/d3c/a00028.html#ad30b831cfb4b32956fe67a79748ba194" title="Ui_recordPreview::retranslateUi" alt="" coords="465,56,668,83"/>
+</map>

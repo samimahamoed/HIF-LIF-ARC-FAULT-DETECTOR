@@ -1,0 +1,748 @@
+.TH "algorithm_prv.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+algorithm_prv.h \- 
+.PP
+Private Algorithm module header file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBalgorithm_data_t\fP"
+.br
+.RI "\fIAlgorithm module variables\&. \fP"
+.ti -1c
+.RI "struct \fBalgorithm_data_t\&.modules_state_sv\fP"
+.br
+.RI "\fImodule status collected evey 100us interval \fP"
+.ti -1c
+.RI "struct \fBalgorithm_data_t\&.diagnosis\fP"
+.br
+.ti -1c
+.RI "union \fBalgorithm_data_t\&.diagnosis\&.hif\fP"
+.br
+.ti -1c
+.RI "struct \fBalgorithm_data_t\&.diagnosis\&.hif\&.flags\fP"
+.br
+.ti -1c
+.RI "struct \fBalgorithm_data_t\&.diagnosis\&.false_alarm\fP"
+.br
+.ti -1c
+.RI "struct \fBalgorithm_data_t\&.diagnosis\&.false_alarm\&.ir\fP"
+.br
+.ti -1c
+.RI "struct \fBalgorithm_data_t\&.diagnosis\&.false_alarm\&.uv\fP"
+.br
+.ti -1c
+.RI "struct \fBalgorithm_data_t\&.diagnosis\&.false_alarm\&.mfield_x\fP"
+.br
+.ti -1c
+.RI "union \fBalgorithm_data_t\&.irq_src\fP"
+.br
+.ti -1c
+.RI "struct \fBalgorithm_data_t\&.irq_src\&.fields\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_NTF_SUPERVISION_TIMER\fP   (\fBX_NTF_LAST\fP)"
+.br
+.RI "\fINotification id for supervson timer\&. \fP"
+.ti -1c
+.RI "#define \fBX_NTF_INSTALLATION_TIMER\fP   (\fBX_NTF_LAST\fP-1)"
+.br
+.RI "\fINotification id for installation timer\&. \fP"
+.ti -1c
+.RI "#define \fBX_MSG_WAKE_EVENT\fP   (\fBX_MSG_FREE\fP)"
+.br
+.RI "\fIEvent id for wakeing main task\&. \fP"
+.ti -1c
+.RI "#define \fBX_MSG_CONFIGURE_EVENT\fP   (\fBX_MSG_FREE\fP+1)"
+.br
+.RI "\fIEvent id for configuration request\&. \fP"
+.ti -1c
+.RI "#define \fBSUPERVISION_TIMER_PERIOD\fP   2000"
+.br
+.RI "\fISupervison timeout - after the timeout SF state is cleared ( if all errors disappeared) \fP"
+.ti -1c
+.RI "#define \fBINSTALLATION_TIMER_PERIOD\fP   3000"
+.br
+.RI "\fIInstallation timeout -\&. \fP"
+.ti -1c
+.RI "#define \fBTYPE_IR_MF\fP   1"
+.br
+.ti -1c
+.RI "#define \fBTYPE_IR_MF_UV\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTEST_MF\fP   3"
+.br
+.ti -1c
+.RI "#define \fBTEST_UV\fP   4"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFloat32\fP \fBalgorithm_get_std_deviation\fP (\fBUint16\fP *vector, \fBFloat32\fP mean_val, \fBUint16\fP SIZE)"
+.br
+.ti -1c
+.RI "\fBBool\fP \fBalgorithm_signal_proportionality\fP (\fBUint16\fP *vector1, \fBUint16\fP *vector2, \fBUint16\fP SIZE)"
+.br
+.RI "\fIThe function calculate the relation between the given vectors and standard deviation of the resulting vector to determine the similarity between the two signals\&. \fP"
+.ti -1c
+.RI "void \fBalgorithm_wake\fP (\fBUint8\fP event)"
+.br
+.RI "\fIMain processing loop for algorithm module\&. \fP"
+.ti -1c
+.RI "void \fBalgorithm_sv_scan_timer_init\fP (void)"
+.br
+.RI "\fILow level analog\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBalgorithm_data_t\fP \fBalgorithm_data\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Private Algorithm module header file\&. 
+
+
+.PP
+Definition in file \fBalgorithm_prv\&.h\fP\&.
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct algorithm_data_t"
+.PP 
+Algorithm module variables\&. 
+.PP
+Definition at line 42 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBx_notify\fP \fIclear_alarm_ir\fP Notification message to clear alarm recognized as false positive\&. 
+.br
+.PP
+\fBx_notify\fP \fIclear_alarm_mfield_x\fP Notification message to clear alarm recognized as false positive\&. 
+.br
+.PP
+\fBx_notify\fP \fIclear_alarm_uv\fP Notification message to clear alarm recognized as false positive\&. 
+.br
+.PP
+\fBx_event\fP \fIconfig_event\fP Event used to wake main task in case configuration request\&. 
+.br
+.PP
+struct \fBalgorithm_data_t\fP \fIdiagnosis\fP 
+.br
+.PP
+\fBx_notify_light_sen_configure\fP \fIir_sensor_configure\fP Notification to be sent for uv sensor modules configuration\&. 
+.br
+.PP
+union \fBalgorithm_data_t\fP \fIirq_src\fP 
+.br
+.PP
+\fBx_notify_light_sen_configure\fP \fIlight_sensor_configure\fP Notification to be sent for light sensor modules configuration\&. 
+.br
+.PP
+\fBx_notify_mfield_sen_configure\fP \fImfield_sensor_x_configure\fP Notification to be sent for mfield_x modules configuration\&. 
+.br
+.PP
+struct \fBalgorithm_data_t\fP \fImodules_state_sv\fP module status collected evey 100us interval 
+.br
+.PP
+\fBserial_msg_t\fP \fIserial_msg\fP 
+.br
+.PP
+\fBx_notify\fP \fIsupervision_timer\fP Private notification object- supervison timer\&. 
+.br
+.PP
+\fBx_notify_light_sen_configure\fP \fIuv_sensor_configure\fP Notification to be sent for ir sensor modules configuration\&. 
+.br
+.PP
+\fBx_event\fP \fIwake_event\fP Event used in notifications for wakeing main task\&. 
+.br
+.PP
+.RE
+.PP
+.SH "struct algorithm_data_t\&.modules_state_sv"
+.PP 
+module status collected evey 100us interval 
+.PP
+Definition at line 88 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBevent_report_t\fP \fIir_sen\fP 
+.br
+.PP
+\fBevent_report_t\fP \fIlight_sen\fP 
+.br
+.PP
+\fBevent_report_t\fP \fImfield_x_sen\fP 
+.br
+.PP
+\fBevent_report_t\fP \fImfield_y_sen\fP 
+.br
+.PP
+\fBevent_report_t\fP \fIuv_sen\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct algorithm_data_t\&.diagnosis"
+.PP 
+Definition at line 103 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBdiagnosis\fP \fIfalse_alarm\fP 
+.br
+.PP
+\fBdiagnosis\fP \fIhif\fP 
+.br
+.PP
+\fBhif_checklist_t\fP \fIhif_checklist\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union algorithm_data_t\&.diagnosis\&.hif"
+.PP 
+Definition at line 105 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+\fBhif\fP \fIflags\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct algorithm_data_t\&.diagnosis\&.hif\&.flags"
+.PP 
+Definition at line 107 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIprocessing:1\fP 
+.br
+.PP
+\fBUint8\fP \fIready:1\fP 
+.br
+.PP
+\fBUint8\fP \fIresult:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct algorithm_data_t\&.diagnosis\&.false_alarm"
+.PP 
+Definition at line 115 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBfalse_alarm\fP \fIir\fP 
+.br
+.PP
+\fBfalse_alarm\fP \fImfield_x\fP 
+.br
+.PP
+\fBfalse_alarm\fP \fIuv\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct algorithm_data_t\&.diagnosis\&.false_alarm\&.ir"
+.PP 
+Definition at line 118 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIarmed\fP 
+.br
+.PP
+\fBUint16\fP \fIcnt\fP 
+.br
+.PP
+\fBUint16\fP \fIdelay\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct algorithm_data_t\&.diagnosis\&.false_alarm\&.uv"
+.PP 
+Definition at line 124 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIarmed\fP 
+.br
+.PP
+\fBUint16\fP \fIcnt\fP 
+.br
+.PP
+\fBUint16\fP \fIdelay\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct algorithm_data_t\&.diagnosis\&.false_alarm\&.mfield_x"
+.PP 
+Definition at line 130 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIarmed\fP 
+.br
+.PP
+\fBUint16\fP \fIcnt\fP 
+.br
+.PP
+\fBUint16\fP \fIdelay\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union algorithm_data_t\&.irq_src"
+.PP 
+Definition at line 146 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIall\fP 
+.br
+.PP
+\fBirq_src\fP \fIfields\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct algorithm_data_t\&.irq_src\&.fields"
+.PP 
+Definition at line 148 of file algorithm_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIexternal:8\fP 
+.br
+.PP
+\fBUint16\fP \fIinternal:8\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define INSTALLATION_TIMER_PERIOD   3000"
+
+.PP
+Installation timeout -\&. 
+.PP
+Definition at line 29 of file algorithm_prv\&.h\&.
+.SS "#define SUPERVISION_TIMER_PERIOD   2000"
+
+.PP
+Supervison timeout - after the timeout SF state is cleared ( if all errors disappeared) 
+.PP
+Definition at line 26 of file algorithm_prv\&.h\&.
+.SS "#define TEST_MF   3"
+
+.PP
+Definition at line 35 of file algorithm_prv\&.h\&.
+.SS "#define TEST_UV   4"
+
+.PP
+Definition at line 36 of file algorithm_prv\&.h\&.
+.SS "#define TYPE_IR_MF   1"
+
+.PP
+Definition at line 32 of file algorithm_prv\&.h\&.
+.PP
+Referenced by algorithm_wake()\&.
+.SS "#define TYPE_IR_MF_UV   2"
+
+.PP
+Definition at line 33 of file algorithm_prv\&.h\&.
+.PP
+Referenced by algorithm_wake()\&.
+.SS "#define X_MSG_CONFIGURE_EVENT   (\fBX_MSG_FREE\fP+1)"
+
+.PP
+Event id for configuration request\&. 
+.PP
+Definition at line 23 of file algorithm_prv\&.h\&.
+.PP
+Referenced by algorithm_taskx()\&.
+.SS "#define X_MSG_WAKE_EVENT   (\fBX_MSG_FREE\fP)"
+
+.PP
+Event id for wakeing main task\&. 
+.PP
+Definition at line 20 of file algorithm_prv\&.h\&.
+.PP
+Referenced by algorithm_taskx()\&.
+.SS "#define X_NTF_INSTALLATION_TIMER   (\fBX_NTF_LAST\fP-1)"
+
+.PP
+Notification id for installation timer\&. 
+.PP
+Definition at line 16 of file algorithm_prv\&.h\&.
+.SS "#define X_NTF_SUPERVISION_TIMER   (\fBX_NTF_LAST\fP)"
+
+.PP
+Notification id for supervson timer\&. 
+.PP
+Definition at line 13 of file algorithm_prv\&.h\&.
+.PP
+Referenced by algorithm_notifyx()\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBFloat32\fP algorithm_get_std_deviation (\fBUint16\fP *vector, \fBFloat32\fPmean_val, \fBUint16\fPSIZE)"
+
+.PP
+Definition at line 96 of file algorithm\&.c\&.
+.PP
+Referenced by nov_set_default()\&.
+.PP
+.nf
+97 {
+98     Uint16 cc;
+99 
+100     fractional *vect                = (fractional *)vector;
+101 
+102     fractional  uval                = (fractional)(mean_val);
+103 
+104     Int16  tmp                      = 0;
+105 
+106     Int32  variance                 = 0;
+107   
+108     for(cc = 0;cc < SIZE ; cc++){
+109           tmp       = ((*(vect+cc)) - uval);
+110           variance += __builtin_mulss(tmp,tmp);
+111     }
+112 
+113     Float32 result =  sqrt(((Float32)variance)/((Float32)SIZE));
+114   
+115     return result;
+116 }
+.fi
+.SS "\fBBool\fP algorithm_signal_proportionality (\fBUint16\fP *vector1, \fBUint16\fP *vector2, \fBUint16\fPSIZE)"
+
+.PP
+The function calculate the relation between the given vectors and standard deviation of the resulting vector to determine the similarity between the two signals\&. 
+.PP
+Definition at line 242 of file algorithm\&.c\&.
+.PP
+References FALSE, MAX_EVENT_OBSERVATION_LENGTH, and TRUE\&.
+.PP
+.nf
+243 {
+244 
+245     Float32 vector[MAX_EVENT_OBSERVATION_LENGTH];
+246     long double sum=0;
+247     Uint8 cc = 0;
+248   
+249     for(cc = 0;cc < SIZE;cc++){
+250         vector[cc] = (Float32)*(vector1 + cc)/(Float32)*(vector2 + cc);
+251         sum += vector[cc];
+252     }
+253 
+254     Float32 mean =  sum/SIZE;
+255     sum = 0;
+256     for(cc = 0;cc<SIZE;cc++)
+257         sum += pow((vector[cc]-mean),2);
+258 
+259     Float32 deviation =  sum/SIZE;
+260 
+261     if(deviation < 0\&.1 /*less than 10% deviation*/)
+262         return TRUE;
+263     else
+264         return FALSE;
+265 
+266 }
+.fi
+.SS "void algorithm_sv_scan_timer_init (void)"
+
+.PP
+Low level analog\&. 
+.PP
+Definition at line 543 of file algorithm\&.c\&.
+.PP
+References FOSC_CPU, and SCAN_FREQ\&.
+.PP
+.nf
+544 {
+545 
+546     // Setup fast timer for analog level polling 
+547 
+548     T1CONbits\&.TON    = 0;                    // Disable Timer
+549     T1CON            = 0;                    // Clear the register
+550     T1CONbits\&.TCS    = 0;                    // Internal clock Fosc/4
+551     T1CONbits\&.TGATE  = 0;                    // Disable Gated Timer mode
+552     T1CONbits\&.TCKPS  = 0;                    // 1:1 prescaling
+553 
+554     TMR1             = 0x00;                 // Clear timer register
+555 
+556     PR1 = (FOSC_CPU/2)/SCAN_FREQ;
+557 
+558     IPC0bits\&.T1IP    = 0x06;                 // Set Timer1 Interrupt Priority Level
+559     IFS0bits\&.T1IF    = 0;                    // Clear the Timer1 Interrupt Flag
+560     IEC0bits\&.T1IE    = 1;                    // Enable Timer1 Interrupt Service Routine
+561 
+562 
+563     T1CONbits\&.TON    = 1;                    //Start Timer 1
+564 
+565 }
+.fi
+.SS "void algorithm_wake (\fBUint8\fPevent)"
+
+.PP
+Main processing loop for algorithm module\&. Processes events by examining bitfields for various notification reasons\&. more than 80% correlation is considered as strong similarity
+.PP
+After a valid trip, disturbance recorder data will be will be saved to the memory address allocated for this purpose\&. The process will take some time depending on the size of the data\&. Hence, delay counter will be armed so as to transfer the data to non volatile memory when ready\&.
+.PP
+disturbance record data ready, low priority function will be used, to transfer the data to non volatile memory\&.
+.PP
+reset emulation trip for comunication purpose 
+.PP
+Definition at line 670 of file algorithm\&.c\&.
+.PP
+References algorithm_message_arrived_ntf_isr(), ASSERT, data_non_volatile, algorithm_data_t::diagnosis, logv_t::disturbance_record, DR_RECHECK, DR_RECHECK_TIME, srv_hwio_data_t::emulation_mode, EVENT_CLEARED, EVENT_SV_ALARM, FALSE, HIF, HOT, HWIO_ALARM_OFF, HWIO_ALARM_ON, hwio_execute_gpio_task(), ir_record_reset(), ir_sen_hif_check(), IRQ_CTX_T, IRQ_DISABLE, IRQ_DR_READY, IRQ_ENABLE, IRQ_SOURCE_HIF_EVENT, algorithm_data_t::modules_state_sv, nov_store(), srv_hwio_data, STATE_0, logv_t::sv_delay, logv_t::tick, logv_t::trip_active, TRUE, TYPE_IR_MF, TYPE_IR_MF_UV, and logv_t::wr\&.
+.PP
+Referenced by __attribute__(), and algorithm_notifyx()\&.
+.PP
+.nf
+671 {
+672 
+673     Bool result = FALSE;
+674 
+675     if((event == EVENT_SV_ALARM)&&(logv\&.trip_active == FALSE)){
+676 
+677         if(algorithm_data\&.modules_state_sv\&.ir_sen\&.fields\&.state == HOT){
+678         switch(data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.criterion\&.all)
+679         {
+680 
+681                  case  TYPE_IR_MF:
+682                 {
+683                       if(
+684                           
+685                            (algorithm_data\&.modules_state_sv\&.mfield_x_sen\&.fields\&.state == HOT)                         
+686                             &&
+687                            (algorithm_data\&.modules_state_sv\&.uv_sen\&.fields\&.state > STATE_0)
+688                            )
+689                                 result = TRUE;
+690                        else
+691 
+692 
+693                        if(ir_sen_hif_check() > 2)
+694                         result = TRUE;
+695 
+696                 }break;
+697 
+698                  case  TYPE_IR_MF_UV:
+699                 {
+700                    if(
+701                         (algorithm_data\&.modules_state_sv\&.mfield_x_sen\&.fields\&.state == HOT)
+702                         &&
+703                         (algorithm_data\&.modules_state_sv\&.uv_sen\&.fields\&.state == HOT)
+704                         )
+705                             result = TRUE;
+706                        else if((algorithm_data\&.modules_state_sv\&.uv_sen\&.fields\&.state == HOT))
+707                        {
+708 
+709                                        if(algorithm_data\&.diagnosis\&.hif\&.flags\&.processing == 1){
+710 
+711                                            if(algorithm_data\&.diagnosis\&.hif\&.flags\&.ready  == TRUE){
+712                                                 if(algorithm_data\&.diagnosis\&.hif\&.flags\&.result == TRUE)
+713                                                 {
+714                                                         algorithm_data\&.diagnosis\&.hif\&.flags\&.processing = 0;
+715                                                         ir_record_reset(HIF);
+716                                                         if((algorithm_data\&.modules_state_sv\&.uv_sen\&.fields\&.state == HOT))
+717                                                         result = TRUE;
+718 
+719                                                 }
+720                                               else
+721                                                 {
+722                                                     algorithm_data\&.diagnosis\&.hif\&.flags\&.processing = 0;
+723 
+724                                                     ir_record_reset(HIF);
+725 
+726                                                     algorithm_data_mark_false_postives();
+727 
+728 
+729                                                 }
+730                                           }
+731 
+732                                      }
+733                                      else
+734                                      {
+735 
+736                                                if((ir_sen_hif_check() > 0))
+737                                                {
+738 
+739                                                    algorithm_data\&.diagnosis\&.hif\&.all = 0;
+740                                                    algorithm_data\&.diagnosis\&.hif\&.flags\&.processing = 1;
+741                                                        //linear correlation function requires about 200us to return,
+742                                                        //therefore,low priority function will be used to execute this procedure
+743                                                         algorithm_message_arrived_ntf_isr(IRQ_SOURCE_HIF_EVENT);
+744 
+745 
+746                                                         //TODO:clear all timers
+747                                                }
+748 
+749                                     }
+750                       }else
+751                           algorithm_data_mark_false_postives();
+752 
+753 
+754                 }break;
+755 
+756 
+757                  default:
+758                 {
+759 
+760                       if(
+761                         (algorithm_data\&.modules_state_sv\&.mfield_x_sen\&.fields\&.state == HOT)
+762                         &&
+763                         (algorithm_data\&.modules_state_sv\&.uv_sen\&.fields\&.state == HOT)
+764                         )
+765                             result = TRUE;
+766                        else if((algorithm_data\&.modules_state_sv\&.uv_sen\&.fields\&.state == HOT))
+767                        {
+768 
+769                            algorithm_data\&.diagnosis\&.hif_checklist\&.all = ir_sen_hif_check();
+770 
+771                            if((algorithm_data\&.diagnosis\&.hif_checklist\&.all > 0))
+772                            {
+773 
+774                                IRQ_CTX_T   irq_ctx;
+775                                IRQ_DISABLE(irq_ctx);
+776                                  Float32 correlation_result = algorithm_liner_correlation(&data_non_volatile\&.disturbance_record\&.hif_diagonesis_records,MAX_EVENT_OBSERVATION_LENGTH);
+777                                IRQ_ENABLE(irq_ctx);
+778                                
+779                                //linear correlation function requires about 236us to return,with 60MIP
+780                                //therefore,we update global tick by 2 sample time
+781                                logv\&.tick +=2;
+782 
+783                                  if(correlation_result >= 80){
+785                                      result = TRUE;
+786                                  }
+787                                  else
+788                                  if
+789                                  (
+790                                  (correlation_result > 50)
+791                                  &&
+792                                  algorithm_data\&.diagnosis\&.hif_checklist\&.bits\&.itoi
+793                                  &&
+794                                  algorithm_data\&.diagnosis\&.hif_checklist\&.bits\&.ptop
+795                                  )
+796                                 {
+797                                   result = TRUE;
+798                                 }
+799                                  else
+800                                 algorithm_data_mark_false_postives();
+801 
+802                                data_non_volatile\&.disturbance_record\&.hif_diagonesis_records\&.head = 0;
+803                                data_non_volatile\&.disturbance_record\&.hif_diagonesis_records\&.mean_value = 0;
+804 
+805                            }
+806 
+807                                     
+808                       }else if(algorithm_data\&.modules_state_sv\&.mfield_x_sen\&.fields\&.state == STATE_0){
+809                             algorithm_data_mark_false_postives();
+810                       } 
+811                        
+812 
+813                 }break;
+814 
+815         }
+816 
+817 
+818         }else if(algorithm_data\&.modules_state_sv\&.mfield_x_sen\&.fields\&.state == STATE_0){
+819             if(algorithm_data\&.modules_state_sv\&.uv_sen\&.fields\&.state == HOT)
+820             algorithm_data_mark_false_postives();
+821         }
+822         
+823         
+824         
+825 
+826 
+827         if(result == TRUE){
+828             hwio_execute_gpio_task(HWIO_ALARM_ON);
+829             logv\&.trip_active   = TRUE;
+830              logv\&.disturbance_record\&.bits\&.wr = TRUE;
+837             memset(&algorithm_data\&.diagnosis\&.false_alarm,0,sizeof(algorithm_data\&.diagnosis\&.false_alarm));
+838             logv\&.sv_delay\&.set  = TRUE;
+839             logv\&.sv_delay\&.cnt  = DR_RECHECK_TIME;
+840             logv\&.sv_delay\&.type = DR_RECHECK;
+841 
+842         }
+843         
+844     }else if(event == EVENT_CLEARED){
+845 
+846           hwio_execute_gpio_task(HWIO_ALARM_OFF);
+847           logv\&.trip_active   = FALSE;
+848           
+849     }else if(event == DR_RECHECK){
+850                     
+851             if(
+852               (algorithm_data\&.modules_state_sv\&.ir_sen\&.fields\&.post_act_data_ready == TRUE)
+853              ){
+854 
+859            data_non_volatile\&.disturbance_record\&.new_dr = TRUE;
+860            logv\&.disturbance_record\&.bits\&.wr = FALSE;
+861        algorithm_message_arrived_ntf_isr(IRQ_DR_READY);
+862 
+864            if(srv_hwio_data\&.emulation_mode\&.enabled\&.all != 0)
+865                srv_hwio_data\&.emulation_mode\&.enabled\&.all = 0;
+866 
+867 
+868        }
+869        else
+870           ASSERT(0);
+871 
+872             logv\&.sv_delay\&.set  = FALSE;
+873             logv\&.sv_delay\&.cnt  = 0;
+874             logv\&.sv_delay\&.type = 0;
+875 
+876        
+877 
+878     }else if(event == 0/*internal event*/){
+879 
+880 #if(DEVICE == AQ0X_V1)
+881     if(data_non_volatile\&.device_data\&.sv_record\&.system_error_flags\&.bits\&.power_supply == TRUE)
+882        nov_store();
+883 
+885 #endif
+886       
+887     }
+888 
+889 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBalgorithm_data_t\fP algorithm_data"
+
+.PP
+Definition at line 33 of file algorithm\&.c\&.
+.PP
+Referenced by __attribute__(), and nov_set_default()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

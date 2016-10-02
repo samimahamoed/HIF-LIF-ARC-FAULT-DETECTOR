@@ -1,0 +1,5 @@
+<map id="QCPItemText::brush" name="QCPItemText::brush">
+<area shape="rect" id="node2" href="$dd/d32/a00041.html#a1c7e131516df2ed8d941ef31240ded8e" title="Sets the brush that will be used do fill the background of the text. " alt="" coords="202,5,362,32"/>
+<area shape="rect" id="node4" href="$dd/d32/a00041.html#a6b8377eeb2af75eb9528422671ac16cb" title="Sets the brush that will be used do fill the background of the text, when the item is selected..." alt="" coords="193,57,371,98"/>
+<area shape="rect" id="node3" href="$dd/d32/a00041.html#a77ff96a2972a00872ff8f8c67143abbe" title="Creates a text item and sets default values. " alt="" coords="419,35,605,61"/>
+</map>

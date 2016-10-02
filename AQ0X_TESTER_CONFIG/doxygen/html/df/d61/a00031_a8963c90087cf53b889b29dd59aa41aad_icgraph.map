@@ -1,0 +1,14 @@
+<map id="QCPGraph::getVisibleDataBounds" name="QCPGraph::getVisibleDataBounds">
+<area shape="rect" id="node2" href="$df/d61/a00031.html#a0ff6e856387cc079b28592ead2a81f6c" title="QCPGraph::getImpulsePlotData" alt="" coords="241,5,447,32"/>
+<area shape="rect" id="node9" href="$df/d61/a00031.html#ac76804eb33446181f3e4f708b7639a75" title="QCPGraph::getLinePlotData" alt="" coords="251,56,437,83"/>
+<area shape="rect" id="node10" href="$df/d61/a00031.html#a0899c4d6357aee19a3abff5897c3c8c5" title="QCPGraph::getScatterPlotData" alt="" coords="243,259,445,285"/>
+<area shape="rect" id="node11" href="$df/d61/a00031.html#ac79dc75dd98db9948d9656447b463af5" title="QCPGraph::getStepCenterPlotData" alt="" coords="231,107,457,133"/>
+<area shape="rect" id="node12" href="$df/d61/a00031.html#a6b7c14e04deed69b70d552dbe70c4d28" title="QCPGraph::getStepLeftPlotData" alt="" coords="239,157,449,184"/>
+<area shape="rect" id="node13" href="$df/d61/a00031.html#ab2ad46716889c73ab977cf9280de0788" title="QCPGraph::getStepRightPlotData" alt="" coords="235,208,453,235"/>
+<area shape="rect" id="node3" href="$df/d61/a00031.html#af66183533a29520be3e74489ad1449cc" title="QCPGraph::getPlotData" alt="" coords="505,157,667,184"/>
+<area shape="rect" id="node4" href="$df/d61/a00031.html#a659218cc62c2a7786213d9dd429c1c8d" title="QCPGraph::draw" alt="" coords="1139,145,1259,172"/>
+<area shape="rect" id="node5" href="$df/d61/a00031.html#a0374b7268e35cab9802a6be2b5d726d7" title="QCPGraph::getChannelFill\lPolygon" alt="" coords="715,171,889,213"/>
+<area shape="rect" id="node7" href="$df/d61/a00031.html#af93762a12a481a7edb4b3dd9e330dff1" title="QCPGraph::pointDistance" alt="" coords="716,243,888,269"/>
+<area shape="rect" id="node6" href="$df/d61/a00031.html#ad6d07926e6d6b7cfa70258780d47b7a0" title="QCPGraph::drawFill" alt="" coords="945,175,1083,201"/>
+<area shape="rect" id="node8" href="$df/d61/a00031.html#a9a95048dc6daf83e45efbf6d2cdc92d7" title="This function is used to decide whether a click hits a plottable or not. " alt="" coords="937,243,1091,269"/>
+</map>

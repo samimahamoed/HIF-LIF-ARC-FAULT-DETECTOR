@@ -1,0 +1,675 @@
+.TH "sys_eventx.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sys_eventx.c \- 
+.PP
+Simple event based operating system\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBx_module_info_t\fP"
+.br
+.RI "\fITask descrtiption data structure\&. \fP"
+.ti -1c
+.RI "struct \fBx_system_t\fP"
+.br
+.RI "\fIOS internal data strucutre\&. \fP"
+.ti -1c
+.RI "struct \fBx_system_volatile_t\fP"
+.br
+.RI "\fIOS volatile internal data strucutre\&. \fP"
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_MAX_MODULE\fP"
+.br
+.RI "\fIMax amount of tasks\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB__attribute__\fP ((__interrupt__, auto_psv))"
+.br
+.RI "\fIOS timer tick function\&. \fP"
+.ti -1c
+.RI "void \fBx_init\fP (void)"
+.br
+.RI "\fIOS internal init\&. \fP"
+.ti -1c
+.RI "void \fBx_init_task\fP (\fBx_task_fn\fP task_fn, \fBx_notify_fn\fP notify_fn, \fBx_task_id\fP *pHandle_id, const char *task_name)"
+.br
+.RI "\fIOS task init function\&. \fP"
+.ti -1c
+.RI "void \fBx_start\fP (void)"
+.br
+.RI "\fIOS function which starts event scheduling\&. \fP"
+.ti -1c
+.RI "void \fBx_loop\fP (void)"
+.br
+.RI "\fIOS function which should be called in idle loop\&. \fP"
+.ti -1c
+.RI "void \fBx_send_event\fP (\fBx_event\fP *event)"
+.br
+.RI "\fIOS event scheduling function\&. \fP"
+.ti -1c
+.RI "void \fBx_send_notify\fP (\fBx_notify\fP *notify)"
+.br
+.RI "\fIOS notification processing request\&. \fP"
+.ti -1c
+.RI "void \fBx_schedule_timer\fP (\fBx_notify\fP *timer, \fBUint16\fP ticks)"
+.br
+.RI "\fIOS timer configuration request\&. \fP"
+.ti -1c
+.RI "void \fBx_delete_timer\fP (\fBx_notify\fP *timer)"
+.br
+.RI "\fIOS timer delete request\&. \fP"
+.ti -1c
+.RI "void \fBx_task_send_irq_sync\fP (\fBx_task_id\fP task_id)"
+.br
+.RI "\fIOS interrupt notification timer\&. \fP"
+.ti -1c
+.RI "\fBUint16\fP \fBx_tick\fP (void)"
+.br
+.RI "\fIOS time function\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBx_system_t\fP \fBx_system\fP"
+.br
+.RI "\fIOS data\&. \fP"
+.ti -1c
+.RI "\fBx_system_volatile_t\fP \fBx_systemv\fP"
+.br
+.RI "\fIOS volatile data\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Simple event based operating system\&. 
+
+
+.PP
+Definition in file \fBsys_eventx\&.c\fP\&.
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct x_module_info_t"
+.PP 
+Task descrtiption data structure\&. 
+.PP
+Definition at line 58 of file sys_eventx\&.c\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBx_notify_fn\fP \fInotify_fn\fP Task notification function\&. 
+.br
+.PP
+\fBx_task_fn\fP \fItask_fn\fP Task fevent unction\&. 
+.br
+.PP
+const char \fItask_name[10]\fP Task name\&. 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_system_t"
+.PP 
+OS internal data strucutre\&. 
+.PP
+Definition at line 71 of file sys_eventx\&.c\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBx_event\fP * \fIevent_queue\fP Event queue\&. 
+.br
+.PP
+int \fIsys_tick\fP Last processed system tick\&. 
+.br
+.PP
+\fBx_notify\fP \fItimer_queue\fP Timer queue\&. 
+.br
+.PP
+\fBUint8\fP \fIx_module_count\fP Total moduilkes count\&. 
+.br
+.PP
+\fBx_module_info_t\fP \fIx_module_info[\fBX_MAX_MODULE\fP]\fP Modules info\&. 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_system_volatile_t"
+.PP 
+OS volatile internal data strucutre\&. 
+.PP
+Definition at line 93 of file sys_eventx\&.c\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIirq_tick\fP System timer tick\&. 
+.br
+.PP
+\fBUint16\fP \fIx_irq_mask\fP Bitcoded module interrupt notifications\&. 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define X_MAX_MODULE"
+
+.PP
+Max amount of tasks\&. 
+.PP
+Definition at line 52 of file sys_eventx\&.c\&.
+.PP
+Referenced by x_init_task(), and x_task_send_irq_sync()\&.
+.SH "Function Documentation"
+.PP 
+.SS "void __attribute__ ((__interrupt__, auto_psv))"
+
+.PP
+OS timer tick function\&. Serial port transmit interrupt\&. req REQ-8a: 'Read the sensor inputs ' Sensors and inputs are read and filtered\&.
+.PP
+Definition at line 115 of file sys_eventx\&.c\&.
+.PP
+References logv_t::data_tx_on_progress, FALSE, x_system_volatile_t::irq_tick, logv, SET_CPU_IPL, TRANSMIT_BUFFER_SIZE, serial_data_t::tx_buff_head, serial_data_t::tx_buff_tail, serial_data_t::tx_buffer, and serial_data_t::tx_cnt\&.
+.PP
+.nf
+117 {
+118     x_systemv\&.irq_tick++;
+119 
+120     IFS1bits\&.T5IF = 0;
+121     SET_CPU_IPL(6);
+122    
+123 }
+.fi
+.SS "void x_delete_timer (\fBx_notify\fP *timer)"
+
+.PP
+OS timer delete request\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimer\fP Pointer to timer object
+.RE
+.PP
+If timer is running, it is taken away from active timer queue\&. 
+.PP
+Definition at line 482 of file sys_eventx\&.c\&.
+.PP
+References x_notify::active, ASSERT, x_notify::link, and x_system_t::timer_queue\&.
+.PP
+Referenced by algorithm_taskx(), ir_sen_notifyx(), light_sen_notifyx(), mfield_x_sen_notifyx(), mfield_z_sen_notifyx(), and uv_sen_notifyx()\&.
+.PP
+.nf
+483 {
+484     x_notify  * timer_curr;
+485 
+486     if(timer->active == 1)
+487     {
+488         timer_curr = &x_system\&.timer_queue;
+489 
+490         while(timer_curr->link!= NULL)
+491         {
+492             if(timer_curr->link == timer)
+493             {
+494                 // Timer found
+495                 timer_curr->link = (timer_curr->link)->link;
+496                 timer->link = NULL;
+497                 timer->active = 0;
+498                 return;
+499             }
+500             timer_curr = timer_curr->link;
+501         }
+502 
+503         // Does not exist ??
+504         ASSERT(0);
+505     }
+506 
+507 
+508 }
+.fi
+.SS "void x_init (void)"
+
+.PP
+OS internal init\&. 
+.PP
+Definition at line 135 of file sys_eventx\&.c\&.
+.PP
+References x_system_t::event_queue, FOSC_CPU, x_notify::link, x_system_t::timer_queue, x_system_volatile_t::x_irq_mask, x_system_t::x_module_count, and X_TIMER_TICK\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+136 {
+137     x_system\&.x_module_count        = 0;
+138     x_system\&.event_queue           = NULL;
+139     x_system\&.timer_queue\&.link      = NULL;
+140     x_systemv\&.x_irq_mask           = 0;
+141 
+142 
+143     // Setup system - Timer 1
+144     
+145     T5CON = 0;                  // Clear the register
+146     T5CONbits\&.TCS   = 0;        // Internal clock Fosc/4
+147     T5CONbits\&.TCKPS = 1;        //    1:8 prescaling
+148 
+149     PR5 = ((FOSC_CPU/2)/8)/X_TIMER_TICK;
+150     
+151     
+152     IPC7bits\&.T5IP = 0x06;         // Set Timer5 Interrupt Priority Level
+153     IFS1bits\&.T5IF = 0;            //Clear the Timer1 Interrupt Flag
+154     IEC1bits\&.T5IE = 1;            //Enable Timer1 Interrupt Service Routine
+155     T5CONbits\&.TON = 1;            //Start Timer 1
+156 
+157 }
+.fi
+.SS "void x_init_task (\fBx_task_fn\fPtask_fn, \fBx_notify_fn\fPnotify_fn, \fBx_task_id\fP *pHandle_id, const char *task_name)"
+
+.PP
+OS task init function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItask_fn\fP Module task event processing function 
+.br
+\fInotify_fn\fP Module task notification processing function 
+.br
+\fIpHandle_id\fP Pointer to module handle variable 
+.br
+\fItask_name\fP Task name (null terminated string) 
+.RE
+.PP
+
+.PP
+Definition at line 173 of file sys_eventx\&.c\&.
+.PP
+References ASSERT, x_module_info_t::notify_fn, x_module_info_t::task_fn, x_module_info_t::task_name, X_MAX_MODULE, x_system_t::x_module_count, and x_system_t::x_module_info\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+174 {
+175     if(x_system\&.x_module_count < X_MAX_MODULE)
+176     {
+177         x_system\&.x_module_info[x_system\&.x_module_count]\&.task_fn   = task_fn;
+178         x_system\&.x_module_info[x_system\&.x_module_count]\&.notify_fn = notify_fn;
+179         strncpy((char*)x_system\&.x_module_info[x_system\&.x_module_count]\&.task_name,task_name,sizeof(x_system\&.x_module_info[x_system\&.x_module_count]\&.task_name)-1);
+180         *pHandle_id = x_system\&.x_module_count++;
+181     }
+182     else
+183     {
+184         ASSERT(0);
+185     }
+186 }
+.fi
+.SS "void x_loop (void)"
+
+.PP
+OS function which should be called in idle loop\&. This function processes events and notifications\&. Watchdog kick - before executing notification function with interrupt notification
+.PP
+Watchdog kick - before executing notification function with timer notification
+.PP
+Watchdog kick - before executing task event function with event from system queue
+.PP
+Watchdog kick - needed for idle cases
+.PP
+Definition at line 231 of file sys_eventx\&.c\&.
+.PP
+References x_notify::active, D_E, D_T, x_system_t::event_queue, IRQ_CTX_T, IRQ_DISABLE, IRQ_ENABLE, x_system_volatile_t::irq_tick, x_event::link, x_notify::link, x_event::message, x_notify::message, x_module_info_t::notify_fn, srv_wdg_kick, x_system_t::sys_tick, x_module_info_t::task_fn, x_event::task_id, x_notify::task_id, x_module_info_t::task_name, x_notify::ticks, x_system_t::timer_queue, x_system_volatile_t::x_irq_mask, x_system_t::x_module_count, x_system_t::x_module_info, X_MSG_IRQ_SYNC, and X_TICK2MS\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+232 {
+233     Uint16            tmp;
+234     Uint16            delta;
+235     int               ii;
+236     x_event           irq_event;
+237     x_notify          * timer_prev;
+238     x_notify          * timer_run;
+239     x_event           * event;
+240     x_event           * event_run;
+241     IRQ_CTX_T         irq_ctx;
+242 
+243     // Service interrupt sync requests
+244     irq_event\&.task_id = -1;
+245     irq_event\&.message = X_MSG_IRQ_SYNC;
+246 
+247     do
+248     {
+249 
+250         IRQ_DISABLE(irq_ctx);
+251 
+252         tmp = x_systemv\&.x_irq_mask;
+253         x_systemv\&.x_irq_mask = 0;
+254 
+255 
+256 
+257         IRQ_ENABLE(irq_ctx);
+258 
+259         if(tmp != 0)
+260         {
+261             for(ii = 0; ii < x_system\&.x_module_count;ii++)
+262             {
+263                 if(tmp & ( 1<<ii))
+264                 {
+273                     // Kick watchdog
+274                     srv_wdg_kick();
+275                     // Execute notification function
+276                     x_system\&.x_module_info[ii]\&.task_fn(&irq_event);
+277                 }
+278             }
+279         }
+280     }while(tmp != 0);
+281 
+282 
+283     // Service timers
+284     if(x_systemv\&.irq_tick != x_system\&.sys_tick)
+285     {
+286         delta =  x_systemv\&.irq_tick - x_system\&.sys_tick;
+287         x_system\&.sys_tick = x_systemv\&.irq_tick;
+288 
+289         timer_prev = &x_system\&.timer_queue;
+290         while(timer_prev != NULL)
+291         {
+292             //Scan through all timers
+293             timer_run  = timer_prev->link;
+294             if(timer_run != NULL)
+295             {
+296                 if(timer_run->ticks > delta)
+297                 {
+298                     timer_run->ticks -= delta;
+299                 }
+300                 else
+301                 {
+302                     timer_run->ticks = 0;
+303                 }
+304 
+305                 if(timer_run->ticks == 0)
+306                 {
+307                     // Remove timer
+308                     timer_prev->link = timer_run->link;
+309                     // Launch timer
+310                     timer_run->link   = NULL;
+311                     timer_run->active = 0;
+312                     D_T(fprintf(stdout,"Timer Notification time:%u Task name:%s msg:%x\n",X_TICK2MS(x_systemv\&.irq_tick),x_system\&.x_module_info[timer_run->task_id]\&.task_name,timer_run->message);)
+318                     srv_wdg_kick();
+319                     x_system\&.x_module_info[timer_run->task_id]\&.notify_fn(timer_run);
+320                  }
+321             }
+322 
+323             if(timer_prev->link == NULL)
+324             {
+325                 break;
+326             }
+327             else
+328             {
+329                 timer_prev = timer_prev->link;
+330             }
+331         }
+332     }
+333 
+334 
+335     // Service events
+336     event = x_system\&.event_queue;
+337     while(event != NULL)
+338     {
+339         // Send event
+340         event_run = event;
+341 
+342         // First remove event from queue
+343         x_system\&.event_queue = event->link;
+344         event = event->link;
+345 
+346         // Clean event link ( which marks as executed)
+347         event_run->link = NULL;
+348         D_E(fprintf(stdout,"sending event time:%u task:%s msg:%x\n",X_TICK2MS(x_systemv\&.irq_tick),x_system\&.x_module_info[event_run->task_id]\&.task_name,event_run->message);)
+353         srv_wdg_kick();
+354         x_system\&.x_module_info[event_run->task_id]\&.task_fn(event_run);
+355     }
+356 
+357 
+362     srv_wdg_kick();
+363 
+364 }
+.fi
+.SS "void x_schedule_timer (\fBx_notify\fP *timer, \fBUint16\fPticks)"
+
+.PP
+OS timer configuration request\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimer\fP Pointer to timer object 
+.br
+\fIticks\fP Timer timeout in OS ticks
+.RE
+.PP
+The user is expexted to fill: message,task_id and ticks fields\&. If the timer is running, the timer period will be updated\&. 
+.PP
+Definition at line 456 of file sys_eventx\&.c\&.
+.PP
+References x_notify::active, x_notify::link, x_notify::ticks, and x_system_t::timer_queue\&.
+.PP
+Referenced by algorithm_taskx(), ir_sen_notifyx(), light_sen_notifyx(), mfield_x_sen_notifyx(), mfield_z_sen_notifyx(), and uv_sen_notifyx()\&.
+.PP
+.nf
+457 {
+458 
+459     if( ticks == 0)ticks = 1;
+460     timer->ticks = ticks;
+461 
+462     if( timer->active == 0)
+463     {
+464         // If not linked ( already scheduled) - link it
+465         timer->link = x_system\&.timer_queue\&.link;
+466         x_system\&.timer_queue\&.link = timer;
+467         timer->active = 1;
+468     }
+469 }
+.fi
+.SS "void x_send_event (\fBx_event\fP *event)"
+
+.PP
+OS event scheduling function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The user is expexted to fill: message,task_id\&.
+.RE
+.PP
+The event will be placed in FIFO queue and send (during OS loop exectuion) to target task event function 
+.PP
+Definition at line 381 of file sys_eventx\&.c\&.
+.PP
+References D_E, D_P, x_system_t::event_queue, x_event::link, x_event::message, x_event::task_id, x_module_info_t::task_name, and x_system_t::x_module_info\&.
+.PP
+Referenced by algorithm_notifyx(), ir_sen_notifyx(), light_sen_notifyx(), mfield_x_sen_notifyx(), mfield_z_sen_notifyx(), and uv_sen_notifyx()\&.
+.PP
+.nf
+382 {
+383     x_event *    event_next;
+384 
+385 
+386     if(x_system\&.event_queue == NULL)
+387     {
+388         x_system\&.event_queue = event;
+389         event->link = NULL;
+390     }
+391     else
+392     {
+393         event_next = x_system\&.event_queue;
+394 
+395         // Go through all linked events
+396         while(event_next != NULL)
+397         {
+398             if(event_next == event)
+399             {
+400                 D_E(fprintf(stdout,"Scheduling event :%s msg:%x\n",x_system\&.x_module_info[event->task_id]\&.task_name,event->message);)
+401                 D_P(fprintf(stdout,"Event already in queue");)
+402                 
+403                 return;
+404             }
+405 
+406             if(event_next->link  == NULL)
+407             {
+408                 // No more events - link new one as last
+409                 D_E(fprintf(stdout,"Scheduling new event:%s msg:%x\n",x_system\&.x_module_info[event->task_id]\&.task_name,event->message);    )
+410                 event_next->link = event;
+411                 event->link = NULL;
+412                 break;
+413             }
+414             else
+415             {
+416                 event_next = event_next->link;
+417             }
+418         }
+419     }
+420 
+421 
+422 }
+.fi
+.SS "void x_send_notify (\fBx_notify\fP *notify)"
+
+.PP
+OS notification processing request\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP Pointer to OS notification object
+.RE
+.PP
+The user is expexted to fill message and task_id fields 
+.PP
+Definition at line 435 of file sys_eventx\&.c\&.
+.PP
+References D_N, x_system_volatile_t::irq_tick, x_notify::message, x_module_info_t::notify_fn, x_notify::task_id, x_module_info_t::task_name, x_system_t::x_module_info, and X_TICK2MS\&.
+.PP
+Referenced by algorithm_taskx(), ir_sen_taskx(), light_sen_taskx(), mfield_x_sen_taskx(), mfield_z_sen_taskx(), and uv_sen_taskx()\&.
+.PP
+.nf
+436 {
+437     D_N(fprintf(stdout,"Notification time:%u task:%s msg:%x\n",X_TICK2MS(x_systemv\&.irq_tick),x_system\&.x_module_info[notify->task_id]\&.task_name,notify->message);)
+438     x_system\&.x_module_info[notify->task_id]\&.notify_fn(notify);
+439 }
+.fi
+.SS "void x_start (void)"
+
+.PP
+OS function which starts event scheduling\&. Watchdog kick - before each module start
+.PP
+Definition at line 196 of file sys_eventx\&.c\&.
+.PP
+References D_I, x_notify::message, x_module_info_t::notify_fn, srv_wdg_kick, x_notify::task_id, x_module_info_t::task_name, x_system_t::x_module_count, x_system_t::x_module_info, and X_NTF_INIT\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+197 {
+198     int                 jj;
+199     x_notify            ntf;
+200 
+201 
+202     ntf\&.task_id = -1;
+203     ntf\&.message = X_NTF_INIT;
+204 
+205 
+206     for(jj = 0; jj < x_system\&.x_module_count;jj++)
+207     {
+208 
+214         srv_wdg_kick();
+215 
+216         ntf\&.task_id = jj;
+217         D_I(fprintf(stdout,"Initalizing module:%s\n",x_system\&.x_module_info[jj]\&.task_name);)
+218         x_system\&.x_module_info[jj]\&.notify_fn(&ntf);
+219     }
+220 
+221 }
+.fi
+.SS "void x_task_send_irq_sync (\fBx_task_id\fPtask_id)"
+
+.PP
+OS interrupt notification timer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItask_id\fP Task id to which timer notification should be sent
+.RE
+.PP
+The receiver will get X_MSG_IRQ_SYNC notification 
+.PP
+Definition at line 521 of file sys_eventx\&.c\&.
+.PP
+References ASSERT, IRQ_CTX_T, IRQ_DISABLE, IRQ_ENABLE, x_system_volatile_t::x_irq_mask, and X_MAX_MODULE\&.
+.PP
+Referenced by algorithm_message_arrived_ntf_isr()\&.
+.PP
+.nf
+522 {
+523     IRQ_CTX_T   irq_ctx;
+524 
+525 
+526     if(task_id < X_MAX_MODULE)
+527     {
+528         IRQ_DISABLE(irq_ctx);
+529 
+530         x_systemv\&.x_irq_mask |= (1<< task_id);
+531         IRQ_ENABLE(irq_ctx);
+532     }
+533     else
+534     {
+535         ASSERT(0);
+536     }
+537 }
+.fi
+.SS "\fBUint16\fP x_tick (void)"
+
+.PP
+OS time function\&. 
+.PP
+\fBReturn values:\fP
+.RS 4
+\fIReturns\fP current system tick counter 
+.RE
+.PP
+
+.PP
+Definition at line 549 of file sys_eventx\&.c\&.
+.PP
+References x_system_volatile_t::irq_tick\&.
+.PP
+.nf
+550 {
+551     return x_systemv\&.irq_tick;
+552 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBx_system_t\fP x_system"
+
+.PP
+OS data\&. 
+.PP
+Definition at line 104 of file sys_eventx\&.c\&.
+.SS "\fBx_system_volatile_t\fP x_systemv"
+
+.PP
+OS volatile data\&. 
+.PP
+Definition at line 107 of file sys_eventx\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

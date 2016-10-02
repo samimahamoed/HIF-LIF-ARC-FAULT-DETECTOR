@@ -1,0 +1,149 @@
+\hypertarget{a00095_source}{\section{F\+F\+T\+Real.\+h}
+\label{a00095_source}\index{F\+F\+T\+Real.\+h@{F\+F\+T\+Real.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*****************************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{        FFTReal.h}
+00004 \textcolor{comment}{        By Laurent de Soras}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{--- Legal stuff ---}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{This program is free software. It comes without any warranty, to}
+00009 \textcolor{comment}{the extent permitted by applicable law. You can redistribute it}
+00010 \textcolor{comment}{and/or modify it under the terms of the Do What The Fuck You Want}
+00011 \textcolor{comment}{To Public License, Version 2, as published by Sam Hocevar. See}
+00012 \textcolor{comment}{http://sam.zoy.org/wtfpl/COPYING for more details.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{*Tab=3***********************************************************************/}
+00015 
+00016 
+00017 
+00018 \textcolor{preprocessor}{#if ! defined (ffft\_FFTReal\_HEADER\_INCLUDED)}
+00019 \textcolor{preprocessor}{#define ffft\_FFTReal\_HEADER\_INCLUDED}
+00020 
+00021 \textcolor{preprocessor}{#if defined (\_MSC\_VER)}
+00022 \textcolor{preprocessor}{    #pragma once}
+00023 \textcolor{preprocessor}{    #pragma warning (4 : 4250) // "Inherits via dominance."}
+00024 \textcolor{preprocessor}{#endif}
+00025 
+00026 
+00027 
+00028 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) INCLUDE FILES \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00029 
+00030 \textcolor{preprocessor}{#include    "\hyperlink{a00089}{def.h}"}
+00031 \textcolor{preprocessor}{#include    "\hyperlink{a00091}{DynArray.h}"}
+00032 \textcolor{preprocessor}{#include    "\hyperlink{a00111}{OscSinCos.h}"}
+00033 
+00034 
+00035 
+00036 \textcolor{keyword}{namespace }\hyperlink{a00142}{ffft}
+00037 \{
+00038 
+00039 
+00040 
+00041 \textcolor{keyword}{template} <\textcolor{keyword}{class} DT>
+\hypertarget{a00095_source_l00042}{}\hyperlink{a00010}{00042} \textcolor{keyword}{class }\hyperlink{a00010}{FFTReal}
+00043 \{
+00044 
+00045 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PUBLIC \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00046 
+00047 \textcolor{keyword}{public}:
+00048 
+\hypertarget{a00095_source_l00049}{}\hyperlink{a00010_acfe74c608746ce4a401526ce206f13cbabec37ae38b07b6e3e1230562f01882a2}{00049}     \textcolor{keyword}{enum} \{          \hyperlink{a00010_acfe74c608746ce4a401526ce206f13cbabec37ae38b07b6e3e1230562f01882a2}{MAX\_BIT\_DEPTH}  = 30    \};  \textcolor{comment}{// So length can be represented as long int}
+00050 
+\hypertarget{a00095_source_l00051}{}\hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{00051}     \textcolor{keyword}{typedef} DT  \hyperlink{a00010_a606148f1cf8c3b7d705473932fc063d1}{DataType};
+00052 
+00053     \textcolor{keyword}{explicit}            \hyperlink{a00010}{FFTReal} (\textcolor{keywordtype}{long} length);
+\hypertarget{a00095_source_l00054}{}\hyperlink{a00010_a04f14f3576aac18af45ba22c38fbaf2a}{00054}     \textcolor{keyword}{virtual}         \hyperlink{a00010_a04f14f3576aac18af45ba22c38fbaf2a}{~FFTReal} () \{\}
+00055 
+00056     \textcolor{keywordtype}{long}                \hyperlink{a00010_abdd5b144ba5737c7ad27095d1658c29e}{get\_length} () \textcolor{keyword}{const};
+00057     \textcolor{keywordtype}{void}                \hyperlink{a00010_a4c5b863a285c5a87f38517735cbf1352}{do\_fft} (DataType f [], \textcolor{keyword}{const} DataType x []) \textcolor{keyword}{const};
+00058     \textcolor{keywordtype}{void}                \hyperlink{a00010_a8ab2e0da482cea88a61f01d58c074989}{do\_ifft} (\textcolor{keyword}{const} DataType f [], DataType x []) \textcolor{keyword}{const};
+00059     \textcolor{keywordtype}{void}                \hyperlink{a00010_a9e30fff775905b1059aa9299004ee228}{rescale} (DataType x []) \textcolor{keyword}{const};
+00060     DataType *      \hyperlink{a00010_af1fcd007f1cf0b41bd2188e0b3cd5cca}{use\_buffer} () \textcolor{keyword}{const};
+00061 
+00062 
+00063 
+00064 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PROTECTED \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00065 
+00066 \textcolor{keyword}{protected}:
+00067 
+00068 
+00069 
+00070 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PRIVATE \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00071 
+00072 \textcolor{keyword}{private}:
+00073 
+00074    \textcolor{comment}{// Over this bit depth, we use direct calculation for sin/cos}
+00075    \textcolor{keyword}{enum} \{         TRIGO\_BD\_LIMIT    = 12  \};
+00076 
+00077     \textcolor{keyword}{typedef} OscSinCos <DataType>    OscType;
+00078 
+00079     \textcolor{keywordtype}{void}                init\_br\_lut ();
+00080     \textcolor{keywordtype}{void}                init\_trigo\_lut ();
+00081     \textcolor{keywordtype}{void}                init\_trigo\_osc ();
+00082 
+00083     \hyperlink{a00089_a31b2ada863c9efa7455efae4e13661f3}{ffft\_FORCEINLINE} \textcolor{keyword}{const} \textcolor{keywordtype}{long} *
+00084                         get\_br\_ptr () \textcolor{keyword}{const};
+00085     \hyperlink{a00089_a31b2ada863c9efa7455efae4e13661f3}{ffft\_FORCEINLINE} \textcolor{keyword}{const} DataType *
+00086                         get\_trigo\_ptr (\textcolor{keywordtype}{int} level) \textcolor{keyword}{const};
+00087     \hyperlink{a00089_a31b2ada863c9efa7455efae4e13661f3}{ffft\_FORCEINLINE} \textcolor{keywordtype}{long}
+00088                         get\_trigo\_level\_index (\textcolor{keywordtype}{int} level) \textcolor{keyword}{const};
+00089 
+00090     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_fft\_general (DataType f [], \textcolor{keyword}{const} DataType x []) \textcolor{keyword}{const};
+00091     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_direct\_pass\_1\_2 (DataType df [], \textcolor{keyword}{const} DataType x []) \textcolor{keyword}{const};
+00092     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_direct\_pass\_3 (DataType df [], \textcolor{keyword}{const} DataType sf []) \textcolor{keyword}{const};
+00093     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_direct\_pass\_n (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const};
+00094     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_direct\_pass\_n\_lut (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const};
+00095     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_direct\_pass\_n\_osc (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const};
+00096 
+00097     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_ifft\_general (\textcolor{keyword}{const} DataType f [], DataType x []) \textcolor{keyword}{const};
+00098     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_inverse\_pass\_n (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const};
+00099     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_inverse\_pass\_n\_osc (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const};
+00100     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_inverse\_pass\_n\_lut (DataType df [], \textcolor{keyword}{const} DataType sf [], \textcolor{keywordtype}{int} pass) \textcolor{keyword}{const};
+00101     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_inverse\_pass\_3 (DataType df [], \textcolor{keyword}{const} DataType sf []) \textcolor{keyword}{const};
+00102     \textcolor{keyword}{inline} \textcolor{keywordtype}{void}     compute\_inverse\_pass\_1\_2 (DataType x [], \textcolor{keyword}{const} DataType sf []) \textcolor{keyword}{const};
+00103 
+00104     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      \_length;
+00105     \textcolor{keyword}{const} \textcolor{keywordtype}{int}       \_nbr\_bits;
+00106     DynArray <long>
+00107                         \_br\_lut;
+00108     DynArray <DataType>
+00109                         \_trigo\_lut;
+00110     \textcolor{keyword}{mutable} DynArray <DataType>
+00111                         \_buffer;
+00112    \textcolor{keyword}{mutable} DynArray <OscType>
+00113                         \_trigo\_osc;
+00114 
+00115 
+00116 
+00117 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) FORBIDDEN MEMBER FUNCTIONS \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00118 
+00119 \textcolor{keyword}{private}:
+00120 
+00121                         FFTReal ();
+00122                         FFTReal (\textcolor{keyword}{const} FFTReal &other);
+00123     FFTReal &       operator = (\textcolor{keyword}{const} FFTReal &other);
+00124     \textcolor{keywordtype}{bool}                operator == (\textcolor{keyword}{const} FFTReal &other);
+00125     \textcolor{keywordtype}{bool}                operator != (\textcolor{keyword}{const} FFTReal &other);
+00126 
+00127 \};  \textcolor{comment}{// class FFTReal}
+00128 
+00129 
+00130 
+00131 \}   \textcolor{comment}{// namespace ffft}
+00132 
+00133 
+00134 
+00135 \textcolor{preprocessor}{#include    "\hyperlink{a00096}{FFTReal.hpp}"}
+00136 
+00137 
+00138 
+00139 \textcolor{preprocessor}{#endif  // ffft\_FFTReal\_HEADER\_INCLUDED}
+00140 
+00141 
+00142 
+00143 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) EOF \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+\end{DoxyCode}

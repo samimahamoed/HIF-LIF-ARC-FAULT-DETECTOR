@@ -1,0 +1,313 @@
+\hypertarget{a00022_source}{\section{nov\+\_\+data.\+h}
+\label{a00022_source}\index{nov\+\_\+data.\+h@{nov\+\_\+data.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00006 \textcolor{preprocessor}{#ifndef NOV\_DATA\_H}
+00007 \textcolor{preprocessor}{#define NOV\_DATA\_H}
+00008 
+00009 \textcolor{preprocessor}{#include "\hyperlink{a00072}{System.h}"}
+00010 \textcolor{preprocessor}{#include "\hyperlink{a00040}{allheaders.h}"}
+00011 
+00012 
+\hypertarget{a00022_source_l00013}{}\hyperlink{a00022_a18dcecc16ded13fa622e0913e73442e6}{00013} \textcolor{preprocessor}{#define PRE\_ACT\_RECORD\_BUFF\_SIZE                                200}
+\hypertarget{a00022_source_l00014}{}\hyperlink{a00022_ab1ad440de86fff80e517ad748de2ee39}{00014} \textcolor{preprocessor}{#define POST\_ACT\_RECORD\_BUFF\_SIZE                               800}
+\hypertarget{a00022_source_l00015}{}\hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{00015} \textcolor{preprocessor}{#define EMU\_MODE\_DATA\_LENGTH                                    200}
+\hypertarget{a00022_source_l00016}{}\hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{00016} \textcolor{preprocessor}{#define MAX\_EVENT\_OBSERVATION\_LENGTH                            200}
+00017 
+\hypertarget{a00022_source_l00019}{}\hyperlink{a00022}{00019} \textcolor{keyword}{typedef} \textcolor{keyword}{union}
+00020 \{
+\hypertarget{a00022_source_l00021}{}\hyperlink{a00022_a82602ac07808604d0870a9880b62d5f4}{00021}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00022_a82602ac07808604d0870a9880b62d5f4}{flags\_all};
+\hypertarget{a00022_source_l00022}{}\hyperlink{a00022}{00022}     \textcolor{keyword}{struct}
+00023     \{
+00024         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} power\_supply:1;
+00025         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} storage:1;
+00026         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} mfield\_x\_sensor\_element:1;
+00027 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00028         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} mfield\_y\_sensor\_element:1;
+00029 \textcolor{preprocessor}{#endif}
+00030 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+00031         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} light\_sensor\_element:1;
+00032 \textcolor{preprocessor}{#endif}
+00033         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} uv\_sensor\_element:1;
+00034         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} ir\_sensor\_element:1;
+00035 
+00036     \}bits;
+00037 
+00038 
+00039 \}\hyperlink{a00022_d1/d0b/a00452}{global\_error\_flags\_ut};
+00040 
+\hypertarget{a00022_source_l00042}{}\hyperlink{a00022}{00042} \textcolor{keyword}{typedef} \textcolor{keyword}{union}
+00043 \{
+\hypertarget{a00022_source_l00044}{}\hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{00044}      \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all};
+\hypertarget{a00022_source_l00045}{}\hyperlink{a00022}{00045}     \textcolor{keyword}{struct}
+00046     \{
+00047         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} ELEMENT\_NOT\_RESPONDING:1;
+00048         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} FALSE\_POSITIVE:1;
+00049         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} FALSE\_POSITIVE\_AMP\_TH:1;
+00050         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} FALSE\_POSITIVE\_DFDT\_TH:1;
+00051     \}bits;
+00052 
+00053 \}\hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut};
+00054 
+\hypertarget{a00022_source_l00056}{}\hyperlink{a00022}{00056} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00057 \{
+\hypertarget{a00022_source_l00059}{}\hyperlink{a00022_af01cfb308e496b8084778ac0315c9ccc}{00059}   \hyperlink{a00022_d1/d0b/a00452}{global\_error\_flags\_ut}     \hyperlink{a00022_af01cfb308e496b8084778ac0315c9ccc}{system\_error\_flags};
+00060 
+\hypertarget{a00022_source_l00061}{}\hyperlink{a00022}{00061}   \textcolor{keyword}{struct}\{
+00062 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+00063    \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}        light;
+00064 \textcolor{preprocessor}{#endif}
+00065    \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}        ir;
+00066    \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}        uv;
+00067    \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}        mfield\_x;
+00068 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00069    \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}        mfield\_y;
+00070 \textcolor{preprocessor}{#endif}
+00071   \}error\_flags;
+00072 
+00073 \}\hyperlink{a00022_d3/daf/a00790}{supervision\_t};
+00074 
+00075 
+\hypertarget{a00022_source_l00076}{}\hyperlink{a00022_a0ff9495f8521ea7698e83e7b4d6a6985}{00076} \textcolor{preprocessor}{#define DEFAULT\_TRIP\_CRITERION   0b00001101}
+00077 
+00078 
+\hypertarget{a00022_source_l00080}{}\hyperlink{a00022}{00080} \textcolor{keyword}{typedef}  \textcolor{keyword}{union}\{
+00081 
+\hypertarget{a00022_source_l00082}{}\hyperlink{a00022_a0bb3bfaeecd5a6042a359402ea9cddbb}{00082}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00022_a0bb3bfaeecd5a6042a359402ea9cddbb}{all};
+00083 
+\hypertarget{a00022_source_l00084}{}\hyperlink{a00022}{00084}     \textcolor{keyword}{union}
+00085     \{
+00086         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} all;
+\hypertarget{a00022_source_l00087}{}\hyperlink{a00022}{00087}         \textcolor{keyword}{struct}
+00088         \{
+00089             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} ir      :1;
+00090             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} uv      :1;
+00091             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} mfield\_x:1;
+00092 \textcolor{preprocessor}{            #ifdef MFIELD\_Y}
+00093             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} mfield\_y:1;
+00094 \textcolor{preprocessor}{            #else}
+00095             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00096 \textcolor{preprocessor}{            #endif}
+00097             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00098             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00099             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00100             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00101         \}bits;
+00102     \}active\_modules;
+00103 
+\hypertarget{a00022_source_l00104}{}\hyperlink{a00022}{00104}      \textcolor{keyword}{union}
+00105     \{
+00106         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} all;
+\hypertarget{a00022_source_l00107}{}\hyperlink{a00022}{00107}         \textcolor{keyword}{struct}
+00108         \{
+00109 
+00110             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} case\_1  :1;
+00111             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} case\_2  :1;
+00112             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} case\_3  :1;
+00113             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} case\_4  :1;
+00114             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00115             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00116             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00117             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}         :1;
+00118         \}bits;
+00119     \}criterion;
+00120 
+00121 
+00122 \}\hyperlink{a00022_d8/d64/a00828}{trip\_criteria\_ut};
+00123 
+00124 
+\hypertarget{a00022_source_l00125}{}\hyperlink{a00022_ad8187eb7fe09751a387e3dcb11c51565}{00125} \textcolor{keyword}{typedef} \textcolor{keyword}{struct    }\hyperlink{a00022_ad8187eb7fe09751a387e3dcb11c51565}{\_\_attribute\_\_}((packed, aligned(4)))
+00126 \{
+00127        \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                mean\_value;
+00128        \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                std\_deviation;
+00129        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 head;
+00130        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 valid;
+00131        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 buffer[\hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH}];
+\hypertarget{a00022_source_l00132}{}\hyperlink{a00022_a4726b814166e222a6f13e21453f76d8d}{00132} \}\hyperlink{a00022_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t};
+00133 
+\hypertarget{a00022_source_l00134}{}\hyperlink{a00022}{00134} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00135 \{
+\hypertarget{a00022_source_l00137}{}\hyperlink{a00022_ad611012074e252bf84c1cfb8c273dd79}{00137} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}   buffer[\hyperlink{a00022_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE}];
+00138 
+\hypertarget{a00022_source_l00140}{}\hyperlink{a00022_abecaedb3605e8bca8335cd81ca63025f}{00140} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}    \hyperlink{a00022_abecaedb3605e8bca8335cd81ca63025f}{elapsed};
+\hypertarget{a00022_source_l00142}{}\hyperlink{a00022_a15a6827ccabba1c22396eccc1c5c654b}{00142} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}   \hyperlink{a00022_a15a6827ccabba1c22396eccc1c5c654b}{head};
+\hypertarget{a00022_source_l00144}{}\hyperlink{a00022_ab3bcc08acd9d73ce1a44992255658e37}{00144} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}    \hyperlink{a00022_ab3bcc08acd9d73ce1a44992255658e37}{tail};
+00145 
+00146 
+00147 \}\hyperlink{a00022_da/dc3/a00657}{pre\_act\_record\_buffer\_t};
+00148 
+00149 
+00150 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{a00022_ad8187eb7fe09751a387e3dcb11c51565}{\_\_attribute\_\_}((packed, aligned(4)))
+00151 \{
+00153     \textcolor{keyword}{union}\{
+00154         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} all[\hyperlink{a00022_ab1ad440de86fff80e517ad748de2ee39}{POST\_ACT\_RECORD\_BUFF\_SIZE}];
+00155         \textcolor{keyword}{struct}\{
+00156             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} l[\hyperlink{a00022_ab1ad440de86fff80e517ad748de2ee39}{POST\_ACT\_RECORD\_BUFF\_SIZE} - 
+      \hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}];
+00157             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} h[\hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}];
+00158         \}data;
+00159     \}buffer;
+00161 \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                      emu\_data\_en;
+00162 
+00164 \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                    head;
+00166 \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                    tail;
+00167 
+00168 \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}                        timestamp;
+\hypertarget{a00022_source_l00169}{}\hyperlink{a00022_a826f1702f1b63c184df702204bea5122}{00169} \}\hyperlink{a00022_a826f1702f1b63c184df702204bea5122}{post\_act\_record\_buffer\_t};
+00170 
+00171 
+00172 
+\hypertarget{a00022_source_l00173}{}\hyperlink{a00028}{00173} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00174 \{
+00175 
+\hypertarget{a00022_source_l00176}{}\hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{00176}     \hyperlink{a00022_da/dc3/a00657}{pre\_act\_record\_buffer\_t}    \hyperlink{a00028_aab01e8da056827bc5c9caff9b64c78be}{pre\_act\_data};
+\hypertarget{a00022_source_l00177}{}\hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{00177}     \hyperlink{a00022_a826f1702f1b63c184df702204bea5122}{post\_act\_record\_buffer\_t}   \hyperlink{a00028_a9c699c0cc82d0baa6e49195f185ab34f}{post\_act\_data};
+00178 
+00179     \textcolor{comment}{//Diagnostic counter - total observation count}
+\hypertarget{a00022_source_l00180}{}\hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{00180}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                      \hyperlink{a00028_ad5b0bac02ce266b91b2b52a1c3ea1d78}{observation\_cnt};
+00181     \textcolor{comment}{//Diagnostic counter - positive event count}
+\hypertarget{a00022_source_l00182}{}\hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{00182}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                      \hyperlink{a00028_a7397b9d76d4b57500f27bb23d258a18a}{event\_positive\_cnt};
+00183 
+00184     \textcolor{comment}{//holds disturbance details starting form event detetion for the duration of Observation record length}
+\hypertarget{a00022_source_l00185}{}\hyperlink{a00028_ad8187eb7fe09751a387e3dcb11c51565}{00185}     \textcolor{keyword}{struct }\hyperlink{a00022_ad8187eb7fe09751a387e3dcb11c51565}{\_\_attribute\_\_}((packed, aligned(4)))
+00186    \{
+00187      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                     initial\_amp;
+00188     \textcolor{keyword}{union}\{
+00189         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} all;
+00190         \textcolor{keyword}{struct}\{
+00191             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} dfdt\_max:1;
+00192             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} amp\_max:1;
+00193             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} dfdt\_impulse:1;
+00194             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} dfdt\_min:1;
+00195         \}bits;
+00196     \}exceeded\_threshold;
+00197 
+00198 
+00199     \textcolor{keyword}{struct}\{
+00200     \textcolor{keyword}{union}\{
+00201         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} all;
+00202         \textcolor{keyword}{struct}\{
+00203             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} initial  :4;
+00204             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} mid      :4;
+00205             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \textcolor{keyword}{final}    :4;
+00206             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}          :4;
+00207   
+00208         \}bits;
+00209     \}history;
+00210 
+00211     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cnt;
+00212 
+00213     \}state\_transition;
+00214 
+00215 
+00216     \textcolor{keyword}{struct}\{
+00217      \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}                    event\_detected;
+00218      \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}                    module\_active;
+00219      \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}                    global\_active;
+00220     \}timestamp;
+00221 
+00222 
+00223 
+00224     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                    event\_probability;
+00225 
+00226     
+00227 
+\hypertarget{a00022_source_l00228}{}\hyperlink{a00028_a8c0bda69e71ef674e60da47ad0be9ab0}{00228}     \}event\_data;
+00229 
+00230 
+00231 
+00232 \}\hyperlink{a00028}{module\_disturbance\_record\_t};
+00233 
+00234 
+00235 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{a00022_ad8187eb7fe09751a387e3dcb11c51565}{\_\_attribute\_\_}((packed, aligned(4)))
+00236 \{
+00237     \textcolor{keyword}{struct}\{
+00238         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              device\_address;
+00239         \textcolor{keyword}{struct}\{
+00241         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              sh\_current;
+00243         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              rated\_current;
+00245         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              min\_distance;
+00247         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              freq;
+00248 
+00249         \}system\_info;
+00250 
+00251 
+00252         \textcolor{keyword}{struct}\{
+00254         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              lux\_level\_max;
+00256         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              ir\_level\_max;
+00258         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              uv\_level\_max;
+00259 
+00262         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              min\_number\_of\_observation;
+00263 
+00265         \textcolor{comment}{//of an event condisered to be true}
+00266         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              probablity\_max;
+00267 
+00269         \textcolor{comment}{//of an event condisered to be false}
+00270         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                              probablity\_min;
+00271 
+00272         \}thresholds;
+00273 
+00275         \hyperlink{a00022_d8/d64/a00828}{trip\_criteria\_ut}                    trip\_criteria;
+00276 
+00278         \textcolor{keyword}{union}
+00279         \{
+00280            \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                           all;
+00281            \textcolor{keyword}{struct}
+00282            \{
+00283               \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                        threshold\_adjust\_manual :1;
+00284               \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                        ir\_element\_sv\_en        :1;
+00285               \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                        uv\_element\_sv\_en        :1;
+00286               \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                        mfield\_element\_sv\_en    :1;
+00287               \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                                                :1;
+00288               \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                                                :1;
+00289               \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                                                :1;
+00290               \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                                                :1;
+00291            \}bits;
+00292         \}options;
+00293 
+00294 
+00296         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                             is\_valid;
+00297    \}installation;
+00298 
+00300     \hyperlink{a00022_d3/daf/a00790}{supervision\_t}                          sv\_record;
+00301 
+00302 
+00303     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                                 configured\_data\_crc;
+00304 
+00305     \hyperlink{a00022_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t}               ref\_signal;
+00306 
+\hypertarget{a00022_source_l00307}{}\hyperlink{a00022_a95029dff9c90f6a6907353ba86eb3f33}{00307} \}\hyperlink{a00022_a95029dff9c90f6a6907353ba86eb3f33}{device\_data\_t};
+00308 
+\hypertarget{a00022_source_l00309}{}\hyperlink{a00022}{00309}  \textcolor{keyword}{typedef} \textcolor{keyword}{struct}\{
+\hypertarget{a00022_source_l00310}{}\hyperlink{a00022_a09e3379d2abb3f9e7baca2d70d830589}{00310}     \hyperlink{a00028}{module\_disturbance\_record\_t}            \hyperlink{a00022_a09e3379d2abb3f9e7baca2d70d830589}{mfield\_x};
+00311 \textcolor{preprocessor}{    #ifdef MFIELD\_Y}
+00312     \hyperlink{a00028}{module\_disturbance\_record\_t}            mfield\_y;
+00313 \textcolor{preprocessor}{    #endif}
+\hypertarget{a00022_source_l00314}{}\hyperlink{a00022_a158b2957d77d3d89c153aa8f7d2c24aa}{00314}     \hyperlink{a00028}{module\_disturbance\_record\_t}            \hyperlink{a00022_a158b2957d77d3d89c153aa8f7d2c24aa}{ir};
+\hypertarget{a00022_source_l00315}{}\hyperlink{a00022_a06b409cbaa5fcf126e93268387d3718d}{00315}     \hyperlink{a00028}{module\_disturbance\_record\_t}            \hyperlink{a00022_a06b409cbaa5fcf126e93268387d3718d}{uv};
+\hypertarget{a00022_source_l00316}{}\hyperlink{a00022_a7c8da86c63f709f97092f5e93d63d717}{00316}     \hyperlink{a00022_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t}               
+      \hyperlink{a00022_a7c8da86c63f709f97092f5e93d63d717}{hif\_diagonesis\_records};
+\hypertarget{a00022_source_l00317}{}\hyperlink{a00022_a06567da877d94afe70f37fcb95f1c3ae}{00317}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                                 \hyperlink{a00022_a06567da877d94afe70f37fcb95f1c3ae}{new\_dr};
+00318  \}\hyperlink{a00022_db/dbc/a00395}{disturbance\_record\_t};
+00319 
+00321 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\hyperlink{a00022_ad8187eb7fe09751a387e3dcb11c51565}{\_\_attribute\_\_}((packed, aligned(4)))
+00322 \{
+00324     \hyperlink{a00022_a95029dff9c90f6a6907353ba86eb3f33}{device\_data\_t}                          device\_data;
+00325     \hyperlink{a00022_db/dbc/a00395}{disturbance\_record\_t}                   disturbance\_record;
+00326     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                                 crc;
+\hypertarget{a00022_source_l00327}{}\hyperlink{a00022_a8e66478e65e03ebc9434466e51c0ad0b}{00327} \}\hyperlink{a00022_a8e66478e65e03ebc9434466e51c0ad0b}{data\_non\_volatile\_t};
+00328 
+00329 
+00330 \textcolor{keyword}{extern} \hyperlink{a00022_a8e66478e65e03ebc9434466e51c0ad0b}{data\_non\_volatile\_t}  \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile} 
+      \hyperlink{a00022_ad8187eb7fe09751a387e3dcb11c51565}{\_\_attribute\_\_}((far));
+00331 
+00332 \textcolor{comment}{//extern \_\_prog\_\_ data\_non\_volatile\_t                 data\_non\_volatile  \_\_attribute\_\_((space(prog)));}
+00333 
+00334 
+00335 
+00336 \textcolor{preprocessor}{#endif //NOV\_DATA\_H}
+00337 
+00338 
+\end{DoxyCode}

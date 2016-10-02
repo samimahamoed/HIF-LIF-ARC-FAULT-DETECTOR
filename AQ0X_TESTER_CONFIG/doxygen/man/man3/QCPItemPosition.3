@@ -1,0 +1,714 @@
+.TH "QCPItemPosition" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemPosition \- 
+.PP
+Manages the position of an item\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPItemAnchor\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPositionType\fP { \fBptAbsolute\fP, \fBptViewportRatio\fP, \fBptAxisRectRatio\fP, \fBptPlotCoords\fP }"
+.br
+.RI "\fIDefines the ways an item position can be specified\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPosition\fP (\fBQCustomPlot\fP *parentPlot, \fBQCPAbstractItem\fP *parentItem, const QString \fBname\fP)"
+.br
+.RI "\fICreates a new \fBQCPItemPosition\fP\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPItemPosition\fP ()"
+.br
+.ti -1c
+.RI "\fBPositionType\fP \fBtype\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP * \fBparentAnchor\fP () const "
+.br
+.ti -1c
+.RI "double \fBkey\fP () const "
+.br
+.ti -1c
+.RI "double \fBvalue\fP () const "
+.br
+.ti -1c
+.RI "QPointF \fBcoords\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBkeyAxis\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBvalueAxis\fP () const "
+.br
+.ti -1c
+.RI "virtual QPointF \fBpixelPoint\fP () const "
+.br
+.RI "\fIReturns the final absolute pixel position of the \fBQCPItemPosition\fP on the \fBQCustomPlot\fP surface\&. \fP"
+.ti -1c
+.RI "void \fBsetType\fP (\fBPositionType\fP \fBtype\fP)"
+.br
+.RI "\fISets the type of the position\&. \fP"
+.ti -1c
+.RI "bool \fBsetParentAnchor\fP (\fBQCPItemAnchor\fP *\fBparentAnchor\fP, bool keepPixelPosition=false)"
+.br
+.RI "\fISets the parent of this \fBQCPItemPosition\fP to \fIparentAnchor\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetCoords\fP (double \fBkey\fP, double \fBvalue\fP)"
+.br
+.RI "\fISets the coordinates of this \fBQCPItemPosition\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetCoords\fP (const QPointF &\fBcoords\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets the coordinates as a QPointF \fIpos\fP where pos\&.x has the meaning of \fIkey\fP and pos\&.y the meaning of \fIvalue\fP of the \fBsetCoords(double key, double value)\fP function\&. \fP"
+.ti -1c
+.RI "void \fBsetAxes\fP (\fBQCPAxis\fP *\fBkeyAxis\fP, \fBQCPAxis\fP *\fBvalueAxis\fP)"
+.br
+.RI "\fIWhen \fBsetType\fP is ptPlotCoords, this function may be used to specify the axes the coordinates set with \fBsetCoords\fP relate to\&. \fP"
+.ti -1c
+.RI "void \fBsetPixelPoint\fP (const QPointF &\fBpixelPoint\fP)"
+.br
+.RI "\fISets the apparent pixel position\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBPositionType\fP \fBmPositionType\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmKeyAxis\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmValueAxis\fP"
+.br
+.ti -1c
+.RI "double \fBmKey\fP"
+.br
+.ti -1c
+.RI "double \fBmValue\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP * \fBmParentAnchor\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Manages the position of an item\&. 
+
+Every item has at least one public \fBQCPItemPosition\fP member pointer which provides ways to position the item on the \fBQCustomPlot\fP surface\&. Some items have multiple positions, for example \fBQCPItemRect\fP has two: \fItopLeft\fP and \fIbottomRight\fP\&.
+.PP
+\fBQCPItemPosition\fP has a type (\fBPositionType\fP) that can be set with \fBsetType\fP\&. This type defines how coordinates passed to \fBsetCoords\fP are to be interpreted, e\&.g\&. as absolute pixel coordinates, as plot coordinates of certain axes, etc\&.
+.PP
+Further, \fBQCPItemPosition\fP may have a parent \fBQCPItemAnchor\fP, see \fBsetParentAnchor\fP\&. (Note that every \fBQCPItemPosition\fP inherits from \fBQCPItemAnchor\fP and thus can itself be used as parent anchor for other positions\&.) This way you can tie multiple items together\&. If the \fBQCPItemPosition\fP has a parent, the coordinates set with \fBsetCoords\fP are considered to be absolute values in the reference frame of the parent anchor, where (0, 0) means directly ontop of the parent anchor\&. For example, You could attach the \fIstart\fP position of a \fBQCPItemLine\fP to the \fIbottom\fP anchor of a \fBQCPItemText\fP to make the starting point of the line always be centered under the text label, no matter where the text is moved to, or is itself tied to\&.
+.PP
+To set the apparent pixel position on the \fBQCustomPlot\fP surface directly, use \fBsetPixelPoint\fP\&. This works no matter what type this \fBQCPItemPosition\fP is or what parent-child situation it is in, as \fBsetPixelPoint\fP transforms the coordinates appropriately, to make the position appear at the specified pixel values\&. 
+.PP
+Definition at line 795 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPItemPosition::PositionType\fP"
+
+.PP
+Defines the ways an item position can be specified\&. Thus it defines what the numbers passed to \fBsetCoords\fP actually mean\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetType\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIptAbsolute \fP\fP
+Static positioning in pixels, starting from the top left corner of the viewport/widget\&. 
+.TP
+\fB\fIptViewportRatio \fP\fP
+Static positioning given by a ratio of the current viewport (coordinates 0 to 1)\&. 
+.TP
+\fB\fIptAxisRectRatio \fP\fP
+Static positioning given by a ratio of the current axis rect (coordinates 0 to 1)\&. 
+.TP
+\fB\fIptPlotCoords \fP\fP
+Dynamic positioning at a plot coordinate defined by two axes (see \fBsetAxes\fP)\&. 
+.PP
+Definition at line 804 of file qcustomplot\&.h\&.
+.PP
+.nf
+804                     { ptAbsolute        
+805                       ,ptViewportRatio  
+806                       ,ptAxisRectRatio  
+807                       ,ptPlotCoords     
+808                     };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemPosition::QCPItemPosition (\fBQCustomPlot\fP *parentPlot, \fBQCPAbstractItem\fP *parentItem, const QStringname)"
+
+.PP
+Creates a new \fBQCPItemPosition\fP\&. You shouldn't create \fBQCPItemPosition\fP instances directly, even if you want to make a new item subclass\&. Use \fBQCPAbstractItem::createPosition\fP instead, as explained in the subclassing section of the \fBQCPAbstractItem\fP documentation\&. 
+.PP
+Definition at line 11405 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+11405                                                                                                          :
+11406   QCPItemAnchor(parentPlot, parentItem, name),
+11407   mPositionType(ptAbsolute),
+11408   mKeyAxis(0),
+11409   mValueAxis(0),
+11410   mKey(0),
+11411   mValue(0),
+11412   mParentAnchor(0)
+11413 {
+11414 }
+.fi
+.SS "QCPItemPosition::~QCPItemPosition ()\fC [virtual]\fP"
+
+.PP
+Definition at line 11416 of file qcustomplot\&.cpp\&.
+.PP
+References QCPItemAnchor::mChildren, mParentAnchor, and QCPItemAnchor::removeChild()\&.
+.PP
+.nf
+11417 {
+11418   // unregister as parent at children:
+11419   // Note: this is done in ~QCPItemAnchor again, but it's important QCPItemPosition does it itself, because only then
+11420   //       the setParentAnchor(0) call the correct QCPItemPosition::pixelPos function instead of QCPItemAnchor::pixelPos
+11421   QList<QCPItemPosition*> currentChildren(mChildren\&.toList());
+11422   for (int i=0; i<currentChildren\&.size(); ++i)
+11423     currentChildren\&.at(i)->setParentAnchor(0); // this acts back on this anchor and child removes itself from mChildren
+11424   // unregister as child in parent:
+11425   if (mParentAnchor)
+11426     mParentAnchor->removeChild(this);
+11427 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "QPointF QCPItemPosition::coords () const\fC [inline]\fP"
+
+.PP
+Definition at line 818 of file qcustomplot\&.h\&.
+.PP
+.nf
+818 { return QPointF(mKey, mValue); }
+.fi
+.SS "double QCPItemPosition::key () const\fC [inline]\fP"
+
+.PP
+Definition at line 816 of file qcustomplot\&.h\&.
+.PP
+Referenced by setCoords()\&.
+.PP
+.nf
+816 { return mKey; }
+.fi
+.SS "\fBQCPAxis\fP* QCPItemPosition::keyAxis () const\fC [inline]\fP"
+
+.PP
+Definition at line 819 of file qcustomplot\&.h\&.
+.PP
+Referenced by setAxes()\&.
+.PP
+.nf
+819 { return mKeyAxis; }
+.fi
+.SS "\fBQCPItemAnchor\fP* QCPItemPosition::parentAnchor () const\fC [inline]\fP"
+
+.PP
+Definition at line 815 of file qcustomplot\&.h\&.
+.PP
+Referenced by setParentAnchor()\&.
+.PP
+.nf
+815 { return mParentAnchor; }
+.fi
+.SS "QPointF QCPItemPosition::pixelPoint () const\fC [virtual]\fP"
+
+.PP
+Returns the final absolute pixel position of the \fBQCPItemPosition\fP on the \fBQCustomPlot\fP surface\&. It includes all effects of type (\fBsetType\fP) and possible parent anchors (\fBsetParentAnchor\fP)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPixelPoint\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQCPItemAnchor\fP\&.
+.PP
+Definition at line 11564 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::coordToPixel(), mKey, mKeyAxis, mParentAnchor, QCPItemAnchor::mParentPlot, mPositionType, mValue, mValueAxis, QCPAxis::orientation(), QCPItemAnchor::pixelPoint(), ptAbsolute, ptAxisRectRatio, ptPlotCoords, and ptViewportRatio\&.
+.PP
+Referenced by QCPItemEllipse::anchorPixelPoint(), QCPItemRect::anchorPixelPoint(), QCPItemText::anchorPixelPoint(), QCPItemBracket::anchorPixelPoint(), QCPItemStraightLine::draw(), QCPItemLine::draw(), QCPItemEllipse::draw(), QCPItemRect::draw(), QCPItemText::draw(), QCPItemCurve::draw(), QCPItemBracket::draw(), QCPItemTracer::draw(), QCPItemPixmap::getFinalRect(), QCPItemStraightLine::selectTest(), QCPItemLine::selectTest(), QCPItemEllipse::selectTest(), QCPItemRect::selectTest(), QCPItemText::selectTest(), QCPItemCurve::selectTest(), QCPItemBracket::selectTest(), QCPItemTracer::selectTest(), setParentAnchor(), and setType()\&.
+.PP
+.nf
+11565 {
+11566   switch (mPositionType)
+11567   {
+11568     case ptAbsolute:
+11569     {
+11570       if (mParentAnchor)
+11571         return QPointF(mKey, mValue) + mParentAnchor->pixelPoint();
+11572       else
+11573         return QPointF(mKey, mValue);
+11574     }
+11575     
+11576     case ptViewportRatio:
+11577     {
+11578       if (mParentAnchor)
+11579       {
+11580         return QPointF(mKey*mParentPlot->viewport()\&.width(),
+11581                        mValue*mParentPlot->viewport()\&.height()) + mParentAnchor->pixelPoint();
+11582       } else
+11583       {
+11584         return QPointF(mKey*mParentPlot->viewport()\&.width(),
+11585                        mValue*mParentPlot->viewport()\&.height()) + mParentPlot->viewport()\&.topLeft();
+11586       }
+11587     }
+11588       
+11589     case ptAxisRectRatio:
+11590     {
+11591       if (mParentAnchor)
+11592       {
+11593         return QPointF(mKey*mParentPlot->axisRect()\&.width(),
+11594                        mValue*mParentPlot->axisRect()\&.height()) + mParentAnchor->pixelPoint();
+11595       } else
+11596       {
+11597         return QPointF(mKey*mParentPlot->axisRect()\&.width(),
+11598                        mValue*mParentPlot->axisRect()\&.height()) + mParentPlot->axisRect()\&.topLeft();
+11599       }
+11600     }
+11601     
+11602     case ptPlotCoords:
+11603     {
+11604       double x, y;
+11605       if (mKeyAxis && mValueAxis)
+11606       {
+11607         // both key and value axis are given, translate key/value to x/y coordinates:
+11608         if (mKeyAxis->orientation() == Qt::Horizontal)
+11609         {
+11610           x = mKeyAxis->coordToPixel(mKey);
+11611           y = mValueAxis->coordToPixel(mValue);
+11612         } else
+11613         {
+11614           y = mKeyAxis->coordToPixel(mKey);
+11615           x = mValueAxis->coordToPixel(mValue);
+11616         }
+11617       } else if (mKeyAxis)
+11618       {
+11619         // only key axis is given, depending on orientation only transform x or y to key coordinate, other stays pixel:
+11620         if (mKeyAxis->orientation() == Qt::Horizontal)
+11621         {
+11622           x = mKeyAxis->coordToPixel(mKey);
+11623           y = mValue;
+11624         } else
+11625         {
+11626           y = mKeyAxis->coordToPixel(mKey);
+11627           x = mValue;
+11628         }
+11629       } else if (mValueAxis)
+11630       {
+11631         // only value axis is given, depending on orientation only transform x or y to value coordinate, other stays pixel:
+11632         if (mValueAxis->orientation() == Qt::Horizontal)
+11633         {
+11634           x = mValueAxis->coordToPixel(mValue);
+11635           y = mKey;
+11636         } else
+11637         {
+11638           y = mValueAxis->coordToPixel(mValue);
+11639           x = mKey;
+11640         }
+11641       } else
+11642       {
+11643         // no axis given, basically the same as if mAnchorType were atNone
+11644         x = mKey;
+11645         y = mValue;
+11646       }
+11647       return QPointF(x, y);
+11648     }
+11649   }
+11650   return QPointF();
+11651 }
+.fi
+.SS "void QCPItemPosition::setAxes (\fBQCPAxis\fP *keyAxis, \fBQCPAxis\fP *valueAxis)"
+
+.PP
+When \fBsetType\fP is ptPlotCoords, this function may be used to specify the axes the coordinates set with \fBsetCoords\fP relate to\&. 
+.PP
+Definition at line 11657 of file qcustomplot\&.cpp\&.
+.PP
+References keyAxis(), mKeyAxis, mValueAxis, and valueAxis()\&.
+.PP
+Referenced by QCPAbstractItem::createPosition(), and QCPItemTracer::setGraph()\&.
+.PP
+.nf
+11658 {
+11659   mKeyAxis = keyAxis;
+11660   mValueAxis = valueAxis;
+11661 }
+.fi
+.SS "void QCPItemPosition::setCoords (doublekey, doublevalue)"
+
+.PP
+Sets the coordinates of this \fBQCPItemPosition\fP\&. What the coordinates mean, is defined by the type (\fBsetType\fP)\&.
+.PP
+For example, if the type is \fBptAbsolute\fP, \fIkey\fP and \fIvalue\fP mean the x and y pixel position on the \fBQCustomPlot\fP surface where the origin (0, 0) is in the top left corner of the \fBQCustomPlot\fP viewport\&. If the type is \fBptPlotCoords\fP, \fIkey\fP and \fIvalue\fP mean a point in the plot coordinate system defined by the axes set by \fBsetAxes\fP\&. (By default the \fBQCustomPlot\fP's x- and yAxis\&.)
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPixelPoint\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11542 of file qcustomplot\&.cpp\&.
+.PP
+References key(), mKey, mValue, and value()\&.
+.PP
+Referenced by QCPAbstractItem::createPosition(), QCPItemBracket::QCPItemBracket(), QCPItemCurve::QCPItemCurve(), QCPItemEllipse::QCPItemEllipse(), QCPItemLine::QCPItemLine(), QCPItemPixmap::QCPItemPixmap(), QCPItemRect::QCPItemRect(), QCPItemStraightLine::QCPItemStraightLine(), QCPItemText::QCPItemText(), setCoords(), setParentAnchor(), setPixelPoint(), and QCPItemTracer::updatePosition()\&.
+.PP
+.nf
+11543 {
+11544   mKey = key;
+11545   mValue = value;
+11546 }
+.fi
+.SS "void QCPItemPosition::setCoords (const QPointF &coords)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets the coordinates as a QPointF \fIpos\fP where pos\&.x has the meaning of \fIkey\fP and pos\&.y the meaning of \fIvalue\fP of the \fBsetCoords(double key, double value)\fP function\&. 
+.PP
+Definition at line 11553 of file qcustomplot\&.cpp\&.
+.PP
+References setCoords()\&.
+.PP
+.nf
+11554 {
+11555   setCoords(pos\&.x(), pos\&.y());
+11556 }
+.fi
+.SS "bool QCPItemPosition::setParentAnchor (\fBQCPItemAnchor\fP *parentAnchor, boolkeepPixelPosition = \fCfalse\fP)"
+
+.PP
+Sets the parent of this \fBQCPItemPosition\fP to \fIparentAnchor\fP\&. This means the position will now follow any position changes of the anchor\&. The local coordinate system of positions with a parent anchor always is absolute with (0, 0) being exactly on top of the parent anchor\&. (Hence the type shouldn't be \fBptPlotCoords\fP for positions with parent anchors\&.)
+.PP
+if \fIkeepPixelPosition\fP is true, the current pixel position of the \fBQCPItemPosition\fP is preserved during reparenting\&. If it's set to false, the coordinates are set to (0, 0), i\&.e\&. the position will be exactly on top of the parent anchor\&.
+.PP
+To remove this \fBQCPItemPosition\fP from any parent anchor, set \fIparentAnchor\fP to 0\&.
+.PP
+\fBNote:\fP
+.RS 4
+If the \fBQCPItemPosition\fP previously had no parent and the type is \fBptPlotCoords\fP, the type is set to \fBptAbsolute\fP, to keep the position in a valid state\&. 
+.RE
+.PP
+
+.PP
+Definition at line 11474 of file qcustomplot\&.cpp\&.
+.PP
+References QCPItemAnchor::addChild(), mParentAnchor, QCPItemAnchor::mParentItem, mPositionType, parentAnchor(), pixelPoint(), ptAbsolute, ptPlotCoords, QCPItemAnchor::removeChild(), setCoords(), setPixelPoint(), and setType()\&.
+.PP
+.nf
+11475 {
+11476   // make sure self is not assigned as parent:
+11477   if (parentAnchor == this)
+11478   {
+11479     qDebug() << Q_FUNC_INFO << "can't set self as parent anchor" << reinterpret_cast<quintptr>(parentAnchor);
+11480     return false;
+11481   }
+11482   // make sure no recursive parent-child-relationships are created:
+11483   QCPItemAnchor *currentParent = parentAnchor;
+11484   while (currentParent)
+11485   {
+11486     if (QCPItemPosition *currentParentPos = dynamic_cast<QCPItemPosition*>(currentParent))
+11487     {
+11488       // is a QCPItemPosition, might have further parent, so keep iterating
+11489       if (currentParentPos == this)
+11490       {
+11491         qDebug() << Q_FUNC_INFO << "can't create recursive parent-child-relationship" << reinterpret_cast<quintptr>(parentAnchor);
+11492         return false;
+11493       }
+11494       currentParent = currentParentPos->mParentAnchor;
+11495     } else
+11496     {
+11497       // is a QCPItemAnchor, can't have further parent, so just compare parent items
+11498       if (currentParent->mParentItem == mParentItem)
+11499       {
+11500         qDebug() << Q_FUNC_INFO << "can't create recursive parent-child-relationship" << reinterpret_cast<quintptr>(parentAnchor);
+11501         return false;
+11502       }
+11503       break;
+11504     }
+11505   }
+11506   
+11507   // if previously no parent set and PosType is still ptPlotCoords, set to ptAbsolute:
+11508   if (!mParentAnchor && mPositionType == ptPlotCoords)
+11509     setType(ptAbsolute);
+11510   
+11511   // save pixel position:
+11512   QPointF pixelP;
+11513   if (keepPixelPosition)
+11514     pixelP = pixelPoint();
+11515   // unregister at current parent anchor:
+11516   if (mParentAnchor)
+11517     mParentAnchor->removeChild(this);
+11518   // register at new parent anchor:
+11519   if (parentAnchor)
+11520     parentAnchor->addChild(this);
+11521   mParentAnchor = parentAnchor;
+11522   // restore pixel position under new parent:
+11523   if (keepPixelPosition)
+11524     setPixelPoint(pixelP);
+11525   else
+11526     setCoords(0, 0);
+11527   return true;
+11528 }
+.fi
+.SS "void QCPItemPosition::setPixelPoint (const QPointF &pixelPoint)"
+
+.PP
+Sets the apparent pixel position\&. This works no matter what type this \fBQCPItemPosition\fP is or what parent-child situation it is in, as \fBsetPixelPoint\fP transforms the coordinates appropriately, to make the position appear at the specified pixel values\&.
+.PP
+Only if the type is \fBptAbsolute\fP and no parent anchor is set, this function is identical to \fBsetCoords\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetCoords\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11673 of file qcustomplot\&.cpp\&.
+.PP
+References mKeyAxis, mParentAnchor, QCPItemAnchor::mParentPlot, mPositionType, mValueAxis, QCPAxis::orientation(), QCPItemAnchor::pixelPoint(), QCPAxis::pixelToCoord(), ptAbsolute, ptAxisRectRatio, ptPlotCoords, ptViewportRatio, and setCoords()\&.
+.PP
+Referenced by setParentAnchor(), and setType()\&.
+.PP
+.nf
+11674 {
+11675   switch (mPositionType)
+11676   {
+11677     case ptAbsolute:
+11678     {
+11679       if (mParentAnchor)
+11680         setCoords(pixelPoint-mParentAnchor->pixelPoint());
+11681       else
+11682         setCoords(pixelPoint);
+11683       break;
+11684     }
+11685       
+11686     case ptViewportRatio:
+11687     {
+11688       if (mParentAnchor)
+11689       {
+11690         QPointF p(pixelPoint-mParentAnchor->pixelPoint());
+11691         p\&.rx() /= (double)mParentPlot->viewport()\&.width();
+11692         p\&.ry() /= (double)mParentPlot->viewport()\&.height();
+11693         setCoords(p);
+11694       } else
+11695       {
+11696         QPointF p(pixelPoint-mParentPlot->viewport()\&.topLeft());
+11697         p\&.rx() /= (double)mParentPlot->viewport()\&.width();
+11698         p\&.ry() /= (double)mParentPlot->viewport()\&.height();
+11699         setCoords(p);
+11700       }
+11701       break;
+11702     }
+11703       
+11704     case ptAxisRectRatio:
+11705     {
+11706       if (mParentAnchor)
+11707       {
+11708         QPointF p(pixelPoint-mParentAnchor->pixelPoint());
+11709         p\&.rx() /= (double)mParentPlot->axisRect()\&.width();
+11710         p\&.ry() /= (double)mParentPlot->axisRect()\&.height();
+11711         setCoords(p);
+11712       } else
+11713       {
+11714         QPointF p(pixelPoint-mParentPlot->axisRect()\&.topLeft());
+11715         p\&.rx() /= (double)mParentPlot->axisRect()\&.width();
+11716         p\&.ry() /= (double)mParentPlot->axisRect()\&.height();
+11717         setCoords(p);
+11718       }
+11719       break;
+11720     }
+11721       
+11722     case ptPlotCoords:
+11723     {
+11724       double newKey, newValue;
+11725       if (mKeyAxis && mValueAxis)
+11726       {
+11727         // both key and value axis are given, translate point to key/value coordinates:
+11728         if (mKeyAxis->orientation() == Qt::Horizontal)
+11729         {
+11730           newKey = mKeyAxis->pixelToCoord(pixelPoint\&.x());
+11731           newValue = mValueAxis->pixelToCoord(pixelPoint\&.y());
+11732         } else
+11733         {
+11734           newKey = mKeyAxis->pixelToCoord(pixelPoint\&.y());
+11735           newValue = mValueAxis->pixelToCoord(pixelPoint\&.x());
+11736         }
+11737       } else if (mKeyAxis)
+11738       {
+11739         // only key axis is given, depending on orientation only transform x or y to key coordinate, other stays pixel:
+11740         if (mKeyAxis->orientation() == Qt::Horizontal)
+11741         {
+11742           newKey = mKeyAxis->pixelToCoord(pixelPoint\&.x());
+11743           newValue = pixelPoint\&.y();
+11744         } else
+11745         {
+11746           newKey = mKeyAxis->pixelToCoord(pixelPoint\&.y());
+11747           newValue = pixelPoint\&.x();
+11748         }
+11749       } else if (mValueAxis)
+11750       {
+11751         // only value axis is given, depending on orientation only transform x or y to value coordinate, other stays pixel:
+11752         if (mValueAxis->orientation() == Qt::Horizontal)
+11753         {
+11754           newKey = pixelPoint\&.y();
+11755           newValue = mValueAxis->pixelToCoord(pixelPoint\&.x());
+11756         } else
+11757         {
+11758           newKey = pixelPoint\&.x();
+11759           newValue = mValueAxis->pixelToCoord(pixelPoint\&.y());
+11760         }
+11761       } else
+11762       {
+11763         // no axis given, basically the same as if mAnchorType were atNone
+11764         newKey = pixelPoint\&.x();
+11765         newValue = pixelPoint\&.y();
+11766       }
+11767       setCoords(newKey, newValue);
+11768       break;
+11769     }
+11770   }
+11771 }
+.fi
+.SS "void QCPItemPosition::setType (\fBQCPItemPosition::PositionType\fPtype)"
+
+.PP
+Sets the type of the position\&. The type defines how the coordinates passed to \fBsetCoords\fP should be handled and how the \fBQCPItemPosition\fP should behave in the plot\&. Note that the position type \fBptPlotCoords\fP is only available (and sensible) when the position has no parent anchor (\fBsetParentAnchor\fP)\&.
+.PP
+The possible values for \fItype\fP can be separated in two main categories:
+.PP
+.PD 0
+.IP "\(bu" 2
+The position is regarded as a point in plot coordinates\&. This corresponds to \fBptPlotCoords\fP and requires two axes that define the plot coordinate system\&. They can be specified with \fBsetAxes\fP\&. By default, the \fBQCustomPlot\fP's x- and yAxis are used\&.
+.PP
+.PD 0
+.IP "\(bu" 2
+The position is fixed on the \fBQCustomPlot\fP surface, i\&.e\&. independant of axis ranges\&. This corresponds to all other types, i\&.e\&. \fBptAbsolute\fP, \fBptViewportRatio\fP and \fBptAxisRectRatio\fP\&. They differ only in the way the absolute position is described, see the documentation of PositionType for details\&.
+.PP
+\fBNote:\fP
+.RS 4
+If the type is changed, the apparent pixel position on the plot is preserved\&. This means the coordinates as retrieved with \fBcoords()\fP and set with \fBsetCoords\fP may change in the process\&. 
+.RE
+.PP
+
+.PP
+Definition at line 11449 of file qcustomplot\&.cpp\&.
+.PP
+References mPositionType, pixelPoint(), setPixelPoint(), and type()\&.
+.PP
+Referenced by QCPAbstractItem::createPosition(), QCPItemTracer::setGraph(), and setParentAnchor()\&.
+.PP
+.nf
+11450 {
+11451   if (mPositionType != type)
+11452   {
+11453     QPointF pixelP = pixelPoint();
+11454     mPositionType = type;
+11455     setPixelPoint(pixelP);
+11456   }
+11457 }
+.fi
+.SS "\fBPositionType\fP QCPItemPosition::type () const\fC [inline]\fP"
+
+.PP
+Definition at line 814 of file qcustomplot\&.h\&.
+.PP
+Referenced by setType()\&.
+.PP
+.nf
+814 { return mPositionType; }
+.fi
+.SS "double QCPItemPosition::value () const\fC [inline]\fP"
+
+.PP
+Definition at line 817 of file qcustomplot\&.h\&.
+.PP
+Referenced by setCoords()\&.
+.PP
+.nf
+817 { return mValue; }
+.fi
+.SS "\fBQCPAxis\fP* QCPItemPosition::valueAxis () const\fC [inline]\fP"
+
+.PP
+Definition at line 820 of file qcustomplot\&.h\&.
+.PP
+Referenced by setAxes()\&.
+.PP
+.nf
+820 { return mValueAxis; }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "double QCPItemPosition::mKey\fC [protected]\fP"
+
+.PP
+Definition at line 834 of file qcustomplot\&.h\&.
+.PP
+Referenced by pixelPoint(), and setCoords()\&.
+.SS "\fBQCPAxis\fP* QCPItemPosition::mKeyAxis\fC [protected]\fP"
+
+.PP
+Definition at line 833 of file qcustomplot\&.h\&.
+.PP
+Referenced by pixelPoint(), setAxes(), and setPixelPoint()\&.
+.SS "\fBQCPItemAnchor\fP* QCPItemPosition::mParentAnchor\fC [protected]\fP"
+
+.PP
+Definition at line 835 of file qcustomplot\&.h\&.
+.PP
+Referenced by pixelPoint(), setParentAnchor(), setPixelPoint(), and ~QCPItemPosition()\&.
+.SS "\fBPositionType\fP QCPItemPosition::mPositionType\fC [protected]\fP"
+
+.PP
+Definition at line 832 of file qcustomplot\&.h\&.
+.PP
+Referenced by pixelPoint(), setParentAnchor(), setPixelPoint(), and setType()\&.
+.SS "double QCPItemPosition::mValue\fC [protected]\fP"
+
+.PP
+Definition at line 834 of file qcustomplot\&.h\&.
+.PP
+Referenced by pixelPoint(), and setCoords()\&.
+.SS "\fBQCPAxis\fP * QCPItemPosition::mValueAxis\fC [protected]\fP"
+
+.PP
+Definition at line 833 of file qcustomplot\&.h\&.
+.PP
+Referenced by pixelPoint(), setAxes(), and setPixelPoint()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

@@ -1,0 +1,654 @@
+.TH "QCPPainter" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPPainter \- 
+.PP
+\fBQPainter\fP subclass used internally\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQPainter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPPainter\fP ()"
+.br
+.RI "\fICreates a new \fBQCPPainter\fP instance and sets default values\&. \fP"
+.ti -1c
+.RI "\fBQCPPainter\fP (QPaintDevice *device)"
+.br
+.RI "\fICreates a new \fBQCPPainter\fP instance on the specified paint \fIdevice\fP and sets default values\&. \fP"
+.ti -1c
+.RI "\fB~QCPPainter\fP ()"
+.br
+.ti -1c
+.RI "QPixmap \fBscatterPixmap\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasing\fP () const "
+.br
+.ti -1c
+.RI "bool \fBpdfExportMode\fP () const "
+.br
+.ti -1c
+.RI "bool \fBscaledExportMode\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetScatterPixmap\fP (const QPixmap pm)"
+.br
+.RI "\fISets the pixmap that will be used to draw scatters with \fBdrawScatter\fP, when the style is \fBQCP::ssPixmap\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasing\fP (bool enabled)"
+.br
+.RI "\fISets whether painting uses antialiasing or not\&. \fP"
+.ti -1c
+.RI "void \fBsetPdfExportMode\fP (bool enabled)"
+.br
+.RI "\fISets whether the painter shall adjust its fixes/workarounds optimized for vectorized pdf export\&. \fP"
+.ti -1c
+.RI "void \fBsetScaledExportMode\fP (bool enabled)"
+.br
+.RI "\fISets whether the painter shall adjust its fixes/workarounds optimized for scaled export to rastered image formats\&. \fP"
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen of the painter and applies certain fixes to it, depending on the mode of this \fBQCPPainter\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetPen\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets the pen (by color) of the painter and applies certain fixes to it, depending on the mode of this \fBQCPPainter\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetPen\fP (Qt::PenStyle penStyle)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets the pen (by style) of the painter and applies certain fixes to it, depending on the mode of this \fBQCPPainter\fP\&. \fP"
+.ti -1c
+.RI "void \fBdrawLine\fP (const QLineF &line)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Works around a Qt bug introduced with Qt 4\&.8 which makes drawing QLineF unpredictable when antialiasing is disabled\&. \fP"
+.ti -1c
+.RI "void \fBdrawLine\fP (const QPointF &p1, const QPointF &p2)"
+.br
+.ti -1c
+.RI "void \fBsave\fP ()"
+.br
+.RI "\fISaves the painter (see QPainter::save)\&. \fP"
+.ti -1c
+.RI "void \fBrestore\fP ()"
+.br
+.RI "\fIRestores the painter (see QPainter::restore)\&. \fP"
+.ti -1c
+.RI "void \fBfixScaledPen\fP ()"
+.br
+.RI "\fIProvides a workaround for a \fBQPainter\fP bug that prevents scaling of pen widths for pens with width 0, although the QPainter::NonCosmeticDefaultPen render hint is set\&. \fP"
+.ti -1c
+.RI "void \fBdrawScatter\fP (double x, double y, double size, \fBQCP::ScatterStyle\fP style)"
+.br
+.RI "\fIDraws a single scatter point with the specified \fIstyle\fP and \fIsize\fP in pixels at the pixel position \fIx\fP and \fIy\fP\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPixmap \fBmScatterPixmap\fP"
+.br
+.ti -1c
+.RI "bool \fBmScaledExportMode\fP"
+.br
+.ti -1c
+.RI "bool \fBmPdfExportMode\fP"
+.br
+.ti -1c
+.RI "bool \fBmIsAntialiasing\fP"
+.br
+.ti -1c
+.RI "QStack< bool > \fBmAntialiasingStack\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBQPainter\fP subclass used internally\&. 
+
+This internal class is used to provide some extended functionality e\&.g\&. for tweaking position consistency between antialiased and non-antialiased painting and drawing common shapes (like scatter symbols)\&. Further it provides workarounds for \fBQPainter\fP quirks\&.
+.PP
+\fBWarning:\fP
+.RS 4
+This class intentionally hides non-virtual functions of \fBQPainter\fP, e\&.g\&. setPen, save and restore\&. So while it is possible to pass a \fBQCPPainter\fP instance to a function that expects a \fBQPainter\fP pointer, some of the workarounds and tweaks will be unavailable to the function (because it will call the base class implementations of the functions actually hidden by \fBQCPPainter\fP)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 203 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPPainter::QCPPainter ()"
+
+.PP
+Creates a new \fBQCPPainter\fP instance and sets default values\&. 
+.PP
+Definition at line 13110 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+13110                        :
+13111   QPainter(),
+13112   mScaledExportMode(false),
+13113   mPdfExportMode(false),
+13114   mIsAntialiasing(false)
+13115 {
+13116 }
+.fi
+.SS "QCPPainter::QCPPainter (QPaintDevice *device)"
+
+.PP
+Creates a new \fBQCPPainter\fP instance on the specified paint \fIdevice\fP and sets default values\&. Just like the analogous \fBQPainter\fP constructor, begins painting on \fIdevice\fP immediately\&. 
+.PP
+Definition at line 13122 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+13122                                            :
+13123   QPainter(device),
+13124   mScaledExportMode(false),
+13125   mPdfExportMode(false),
+13126   mIsAntialiasing(false)
+13127 {
+13128 }
+.fi
+.SS "QCPPainter::~QCPPainter ()"
+
+.PP
+Definition at line 13130 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+13131 {
+13132 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QCPPainter::antialiasing () const\fC [inline]\fP"
+
+.PP
+Definition at line 212 of file qcustomplot\&.h\&.
+.PP
+.nf
+212 { return testRenderHint(QPainter::Antialiasing); }
+.fi
+.SS "void QCPPainter::drawLine (const QLineF &line)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Works around a Qt bug introduced with Qt 4\&.8 which makes drawing QLineF unpredictable when antialiasing is disabled\&. 
+.PP
+\fBNote:\fP
+.RS 4
+this function hides the non-virtual base class implementation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13191 of file qcustomplot\&.cpp\&.
+.PP
+References mIsAntialiasing\&.
+.PP
+Referenced by QCPLineEnding::draw(), QCPCurve::draw(), QCPItemStraightLine::draw(), QCPItemLine::draw(), QCPItemBracket::draw(), QCPItemTracer::draw(), QCPAxis::draw(), QCPGraph::drawError(), drawGridLines(), QCPGraph::drawLegendIcon(), QCPCurve::drawLegendIcon(), QCPGraph::drawLinePlot(), QCPStatisticalBox::drawMedian(), drawScatter(), drawSubGridLines(), and QCPStatisticalBox::drawWhiskers()\&.
+.PP
+.nf
+13192 {
+13193   if (mIsAntialiasing)
+13194     QPainter::drawLine(line);
+13195   else
+13196     QPainter::drawLine(line\&.toLine());
+13197 }
+.fi
+.SS "void QCPPainter::drawLine (const QPointF &p1, const QPointF &p2)\fC [inline]\fP"
+
+.PP
+Definition at line 227 of file qcustomplot\&.h\&.
+.PP
+References drawLine()\&.
+.PP
+Referenced by drawLine()\&.
+.PP
+.nf
+227 {drawLine(QLineF(p1, p2));}
+.fi
+.SS "void QCPPainter::drawScatter (doublex, doubley, doublesize, \fBQCP::ScatterStyle\fPstyle)"
+
+.PP
+Draws a single scatter point with the specified \fIstyle\fP and \fIsize\fP in pixels at the pixel position \fIx\fP and \fIy\fP\&. If the \fIstyle\fP is ssPixmap, make sure to pass the respective pixmap with \fBsetScatterPixmap\fP before calling this function\&. 
+.PP
+Definition at line 13300 of file qcustomplot\&.cpp\&.
+.PP
+References color(), drawLine(), mScatterPixmap, pen(), QCP::ssCircle, QCP::ssCross, QCP::ssCrossCircle, QCP::ssCrossSquare, QCP::ssDiamond, QCP::ssDisc, QCP::ssDot, QCP::ssNone, QCP::ssPeace, QCP::ssPixmap, QCP::ssPlus, QCP::ssPlusCircle, QCP::ssPlusSquare, QCP::ssSquare, QCP::ssStar, QCP::ssTriangle, and QCP::ssTriangleInverted\&.
+.PP
+Referenced by QCPGraph::drawLegendIcon(), QCPCurve::drawLegendIcon(), QCPStatisticalBox::drawOutliers(), QCPGraph::drawScatterPlot(), and QCPCurve::drawScatterPlot()\&.
+.PP
+.nf
+13301 {
+13302   double w = size/2\&.0;
+13303   switch (style)
+13304   {
+13305     case QCP::ssNone: break;
+13306     case QCP::ssDot:
+13307     {
+13308       drawPoint(QPointF(x, y));
+13309       break;
+13310     }
+13311     case QCP::ssCross:
+13312     {
+13313       drawLine(QLineF(x-w, y-w, x+w, y+w));
+13314       drawLine(QLineF(x-w, y+w, x+w, y-w));
+13315       break;
+13316     }
+13317     case QCP::ssPlus:
+13318     {
+13319       drawLine(QLineF(x-w, y, x+w, y));
+13320       drawLine(QLineF(x, y+w, x, y-w));
+13321       break;
+13322     }
+13323     case QCP::ssCircle:
+13324     {
+13325       setBrush(Qt::NoBrush);
+13326       drawEllipse(QPointF(x,y), w, w);
+13327       break;
+13328     }
+13329     case QCP::ssDisc:
+13330     {
+13331       setBrush(QBrush(pen()\&.color()));
+13332       drawEllipse(QPointF(x,y), w, w);
+13333       break;
+13334     }
+13335     case QCP::ssSquare:
+13336     {
+13337       setBrush(Qt::NoBrush);
+13338       drawRect(QRectF(x-w, y-w, size, size));
+13339       break;
+13340     }
+13341     case QCP::ssDiamond:
+13342     {
+13343       setBrush(Qt::NoBrush);
+13344       drawLine(QLineF(x-w, y, x, y-w));
+13345       drawLine(QLineF(x, y-w, x+w, y));
+13346       drawLine(QLineF(x+w, y, x, y+w));
+13347       drawLine(QLineF(x, y+w, x-w, y));
+13348       break;
+13349     }
+13350     case QCP::ssStar:
+13351     {
+13352       drawLine(QLineF(x-w, y, x+w, y));
+13353       drawLine(QLineF(x, y+w, x, y-w));
+13354       drawLine(QLineF(x-w*0\&.707, y-w*0\&.707, x+w*0\&.707, y+w*0\&.707));
+13355       drawLine(QLineF(x-w*0\&.707, y+w*0\&.707, x+w*0\&.707, y-w*0\&.707));
+13356       break;
+13357     }
+13358     case QCP::ssTriangle:
+13359     {
+13360       drawLine(QLineF(x-w, y+0\&.755*w, x+w, y+0\&.755*w));
+13361       drawLine(QLineF(x+w, y+0\&.755*w, x, y-0\&.977*w));
+13362       drawLine(QLineF(x, y-0\&.977*w, x-w, y+0\&.755*w));
+13363       break;
+13364     }
+13365     case QCP::ssTriangleInverted:
+13366     {
+13367       drawLine(QLineF(x-w, y-0\&.755*w, x+w, y-0\&.755*w));
+13368       drawLine(QLineF(x+w, y-0\&.755*w, x, y+0\&.977*w));
+13369       drawLine(QLineF(x, y+0\&.977*w, x-w, y-0\&.755*w));
+13370       break;
+13371     }
+13372     case QCP::ssCrossSquare:
+13373     {
+13374       setBrush(Qt::NoBrush);
+13375       drawLine(QLineF(x-w, y-w, x+w*0\&.95, y+w*0\&.95));
+13376       drawLine(QLineF(x-w, y+w*0\&.95, x+w*0\&.95, y-w));
+13377       drawRect(QRectF(x-w,y-w,size,size));
+13378       break;
+13379     }
+13380     case QCP::ssPlusSquare:
+13381     {
+13382       setBrush(Qt::NoBrush);
+13383       drawLine(QLineF(x-w, y, x+w*0\&.95, y));
+13384       drawLine(QLineF(x, y+w, x, y-w));
+13385       drawRect(QRectF(x-w, y-w, size, size));
+13386       break;
+13387     }
+13388     case QCP::ssCrossCircle:
+13389     {
+13390       setBrush(Qt::NoBrush);
+13391       drawLine(QLineF(x-w*0\&.707, y-w*0\&.707, x+w*0\&.67, y+w*0\&.67));
+13392       drawLine(QLineF(x-w*0\&.707, y+w*0\&.67, x+w*0\&.67, y-w*0\&.707));
+13393       drawEllipse(QPointF(x,y), w, w);
+13394       break;
+13395     }
+13396     case QCP::ssPlusCircle:
+13397     {
+13398       setBrush(Qt::NoBrush);
+13399       drawLine(QLineF(x-w, y, x+w, y));
+13400       drawLine(QLineF(x, y+w, x, y-w));
+13401       drawEllipse(QPointF(x,y), w, w);
+13402       break;
+13403     }
+13404     case QCP::ssPeace:
+13405     {
+13406       setBrush(Qt::NoBrush);
+13407       drawLine(QLineF(x, y-w, x, y+w));
+13408       drawLine(QLineF(x, y, x-w*0\&.707, y+w*0\&.707));
+13409       drawLine(QLineF(x, y, x+w*0\&.707, y+w*0\&.707));
+13410       drawEllipse(QPointF(x,y), w, w);
+13411       break;
+13412     }
+13413     case QCP::ssPixmap:
+13414     {
+13415       drawPixmap(x-mScatterPixmap\&.width()*0\&.5, y-mScatterPixmap\&.height()*0\&.5, mScatterPixmap);
+13416       // if something in here is changed, adapt QCP::ssPixmap special case in drawLegendIcon(), too
+13417       break;
+13418     }
+13419   }
+13420 }
+.fi
+.SS "void QCPPainter::fixScaledPen ()"
+
+.PP
+Provides a workaround for a \fBQPainter\fP bug that prevents scaling of pen widths for pens with width 0, although the QPainter::NonCosmeticDefaultPen render hint is set\&. Changes the pen width from 0 to 1, if appropriate\&.
+.PP
+Does nothing if the \fBQCPPainter\fP is not in scaled export mode (\fBsetScaledExportMode\fP)\&. 
+.PP
+Definition at line 13284 of file qcustomplot\&.cpp\&.
+.PP
+References mScaledExportMode, pen(), and setPen()\&.
+.PP
+Referenced by setPen()\&.
+.PP
+.nf
+13285 {
+13286   if (mScaledExportMode && pen()\&.isCosmetic() && qFuzzyIsNull(pen()\&.widthF()))
+13287   {
+13288     QPen p = pen();
+13289     p\&.setWidth(1);
+13290     QPainter::setPen(p);
+13291   }
+13292 }
+.fi
+.SS "bool QCPPainter::pdfExportMode () const\fC [inline]\fP"
+
+.PP
+Definition at line 213 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPCurve::draw(), and QCPGraph::drawLinePlot()\&.
+.PP
+.nf
+213 { return mPdfExportMode; }
+.fi
+.SS "void QCPPainter::restore ()"
+
+.PP
+Restores the painter (see QPainter::restore)\&. Since \fBQCPPainter\fP adds some new internal state to \fBQPainter\fP, the save/restore functions are reimplemented to also save/restore those members\&.
+.PP
+\fBNote:\fP
+.RS 4
+this function hides the non-virtual base class implementation\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsave\fP 
+.RE
+.PP
+
+.PP
+Definition at line 13243 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiasingStack, and mIsAntialiasing\&.
+.PP
+Referenced by QCPStatisticalBox::draw(), QCPPlottableLegendItem::draw(), and QCPLegend::draw()\&.
+.PP
+.nf
+13244 {
+13245   if (!mAntialiasingStack\&.isEmpty())
+13246     mIsAntialiasing = mAntialiasingStack\&.pop();
+13247   else
+13248     qDebug() << Q_FUNC_INFO << "Unbalanced save/restore";
+13249   QPainter::restore();
+13250 }
+.fi
+.SS "void QCPPainter::save ()"
+
+.PP
+Saves the painter (see QPainter::save)\&. Since \fBQCPPainter\fP adds some new internal state to \fBQPainter\fP, the save/restore functions are reimplemented to also save/restore those members\&.
+.PP
+\fBNote:\fP
+.RS 4
+this function hides the non-virtual base class implementation\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrestore\fP 
+.RE
+.PP
+
+.PP
+Definition at line 13229 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiasingStack, and mIsAntialiasing\&.
+.PP
+Referenced by QCPStatisticalBox::draw(), QCPPlottableLegendItem::draw(), and QCPLegend::draw()\&.
+.PP
+.nf
+13230 {
+13231   mAntialiasingStack\&.push(mIsAntialiasing);
+13232   QPainter::save();
+13233 }
+.fi
+.SS "bool QCPPainter::scaledExportMode () const\fC [inline]\fP"
+
+.PP
+Definition at line 214 of file qcustomplot\&.h\&.
+.PP
+.nf
+214 { return mScaledExportMode; }
+.fi
+.SS "QPixmap QCPPainter::scatterPixmap () const\fC [inline]\fP"
+
+.PP
+Definition at line 211 of file qcustomplot\&.h\&.
+.PP
+.nf
+211 { return mScatterPixmap; }
+.fi
+.SS "void QCPPainter::setAntialiasing (boolenabled)"
+
+.PP
+Sets whether painting uses antialiasing or not\&. Use this method instead of using setRenderHint with QPainter::Antialiasing directly, as it allows \fBQCPPainter\fP to regain pixel exactness between antialiased and non-antialiased painting (Since Qt uses slightly different coordinate systems for AA/Non-AA painting)\&. 
+.PP
+Definition at line 13205 of file qcustomplot\&.cpp\&.
+.PP
+References mIsAntialiasing, and mPdfExportMode\&.
+.PP
+Referenced by QCPLayerable::applyAntialiasingHint(), and QCPAbstractLegendItem::applyAntialiasingHint()\&.
+.PP
+.nf
+13206 {
+13207   if (mPdfExportMode)
+13208     return;
+13209   
+13210   setRenderHint(QPainter::Antialiasing, enabled);
+13211   if (mIsAntialiasing != enabled)
+13212   {
+13213     if (mIsAntialiasing)
+13214       translate(-0\&.5, -0\&.5);
+13215     else
+13216       translate(0\&.5, 0\&.5);
+13217     mIsAntialiasing = enabled;
+13218   }
+13219 }
+.fi
+.SS "void QCPPainter::setPdfExportMode (boolenabled)"
+
+.PP
+Sets whether the painter shall adjust its fixes/workarounds optimized for vectorized pdf export\&. This means for example, that the antialiasing/non-antialiasing fix introduced with \fBsetAntialiasing\fP is not used, since PDF is not rastered and thus works with floating point data natively\&. 
+.PP
+Definition at line 13259 of file qcustomplot\&.cpp\&.
+.PP
+References mPdfExportMode\&.
+.PP
+Referenced by savePdf()\&.
+.PP
+.nf
+13260 {
+13261   mPdfExportMode = enabled;
+13262 }
+.fi
+.SS "void QCPPainter::setPen (const QPen &pen)"
+
+.PP
+Sets the pen of the painter and applies certain fixes to it, depending on the mode of this \fBQCPPainter\fP\&. 
+.PP
+\fBNote:\fP
+.RS 4
+this function hides the non-virtual base class implementation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13149 of file qcustomplot\&.cpp\&.
+.PP
+References fixScaledPen(), mScaledExportMode, and setPen()\&.
+.PP
+Referenced by QCPLineEnding::draw(), QCPCurve::draw(), QCPBars::draw(), QCPItemStraightLine::draw(), QCPItemLine::draw(), QCPItemEllipse::draw(), QCPItemRect::draw(), QCPItemPixmap::draw(), QCPItemText::draw(), QCPItemCurve::draw(), QCPItemBracket::draw(), QCPItemTracer::draw(), QCPPlottableLegendItem::draw(), QCPLegend::draw(), QCPAxis::draw(), QCPGraph::drawFill(), drawGridLines(), QCPGraph::drawImpulsePlot(), QCPGraph::drawLegendIcon(), QCPCurve::drawLegendIcon(), QCPBars::drawLegendIcon(), QCPStatisticalBox::drawLegendIcon(), QCPGraph::drawLinePlot(), QCPStatisticalBox::drawMedian(), QCPStatisticalBox::drawOutliers(), QCPStatisticalBox::drawQuartileBox(), QCPGraph::drawScatterPlot(), QCPCurve::drawScatterPlot(), drawSubGridLines(), and QCPStatisticalBox::drawWhiskers()\&.
+.PP
+.nf
+13150 {
+13151   QPainter::setPen(pen);
+13152   if (mScaledExportMode)
+13153     fixScaledPen();
+13154 }
+.fi
+.SS "void QCPPainter::setPen (const QColor &color)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets the pen (by color) of the painter and applies certain fixes to it, depending on the mode of this \fBQCPPainter\fP\&. 
+.PP
+\fBNote:\fP
+.RS 4
+this function hides the non-virtual base class implementation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13163 of file qcustomplot\&.cpp\&.
+.PP
+References fixScaledPen(), mScaledExportMode, and setPen()\&.
+.PP
+.nf
+13164 {
+13165   QPainter::setPen(color);
+13166   if (mScaledExportMode)
+13167     fixScaledPen();
+13168 }
+.fi
+.SS "void QCPPainter::setPen (Qt::PenStylepenStyle)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets the pen (by style) of the painter and applies certain fixes to it, depending on the mode of this \fBQCPPainter\fP\&. 
+.PP
+\fBNote:\fP
+.RS 4
+this function hides the non-virtual base class implementation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13177 of file qcustomplot\&.cpp\&.
+.PP
+References fixScaledPen(), mScaledExportMode, and setPen()\&.
+.PP
+.nf
+13178 {
+13179   QPainter::setPen(penStyle);
+13180   if (mScaledExportMode)
+13181     fixScaledPen();
+13182 }
+.fi
+.SS "void QCPPainter::setScaledExportMode (boolenabled)"
+
+.PP
+Sets whether the painter shall adjust its fixes/workarounds optimized for scaled export to rastered image formats\&. For example this provides a workaround for a \fBQPainter\fP bug that prevents scaling of pen widths for pens with width 0, although the QPainter::NonCosmeticDefaultPen render hint is set\&. 
+.PP
+Definition at line 13271 of file qcustomplot\&.cpp\&.
+.PP
+References mScaledExportMode\&.
+.PP
+Referenced by saveRastered()\&.
+.PP
+.nf
+13272 {
+13273   mScaledExportMode = enabled;
+13274 }
+.fi
+.SS "void QCPPainter::setScatterPixmap (const QPixmappm)"
+
+.PP
+Sets the pixmap that will be used to draw scatters with \fBdrawScatter\fP, when the style is \fBQCP::ssPixmap\fP\&. 
+.PP
+Definition at line 13138 of file qcustomplot\&.cpp\&.
+.PP
+References mScatterPixmap\&.
+.PP
+Referenced by QCPGraph::drawScatterPlot(), and QCPCurve::drawScatterPlot()\&.
+.PP
+.nf
+13139 {
+13140   mScatterPixmap = pm;
+13141 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "QStack<bool> QCPPainter::mAntialiasingStack\fC [protected]\fP"
+
+.PP
+Definition at line 240 of file qcustomplot\&.h\&.
+.PP
+Referenced by restore(), and save()\&.
+.SS "bool QCPPainter::mIsAntialiasing\fC [protected]\fP"
+
+.PP
+Definition at line 239 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawLine(), restore(), save(), and setAntialiasing()\&.
+.SS "bool QCPPainter::mPdfExportMode\fC [protected]\fP"
+
+.PP
+Definition at line 238 of file qcustomplot\&.h\&.
+.PP
+Referenced by setAntialiasing(), and setPdfExportMode()\&.
+.SS "bool QCPPainter::mScaledExportMode\fC [protected]\fP"
+
+.PP
+Definition at line 237 of file qcustomplot\&.h\&.
+.PP
+Referenced by fixScaledPen(), setPen(), and setScaledExportMode()\&.
+.SS "QPixmap QCPPainter::mScatterPixmap\fC [protected]\fP"
+
+.PP
+Definition at line 236 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawScatter(), and setScatterPixmap()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

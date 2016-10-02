@@ -1,0 +1,95 @@
+\hypertarget{a00123_source}{\section{qfouriervariablecalculator.\+cpp}
+\label{a00123_source}\index{qfouriervariablecalculator.\+cpp@{qfouriervariablecalculator.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***********************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{qfouriervariablecalculator.cpp - Source file for}
+00004 \textcolor{comment}{                                 QFourierVariableCalculator}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{Class for calculating FFts of a variable size.}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{************************************************************************}
+00009 \textcolor{comment}{}
+00010 \textcolor{comment}{This file is part of QRealFourier.}
+00011 \textcolor{comment}{}
+00012 \textcolor{comment}{QRealFourier is free software: you can redistribute it and/or modify it}
+00013 \textcolor{comment}{under the terms of the Lesser GNU General Public License as published}
+00014 \textcolor{comment}{by the Free Software Foundation, either version 3 of the License, or}
+00015 \textcolor{comment}{(at your option) any later version.}
+00016 \textcolor{comment}{}
+00017 \textcolor{comment}{Foobar is distributed in the hope that it will be useful, but WITHOUT}
+00018 \textcolor{comment}{ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or}
+00019 \textcolor{comment}{FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser GNU General Public}
+00020 \textcolor{comment}{License for more details.}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{You should have received a copy of the Lesser GNU General Public License}
+00023 \textcolor{comment}{along with Foobar.  If not, see <http://www.gnu.org/licenses/>.}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{************************************************************************}
+00026 \textcolor{comment}{}
+00027 \textcolor{comment}{Copyright © 2012 - 2013 Christoph Stallmann, University of Pretoria}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{Developer: Christoph Stallmann}
+00030 \textcolor{comment}{University of Pretoria}
+00031 \textcolor{comment}{Department of Computer Science}
+00032 \textcolor{comment}{}
+00033 \textcolor{comment}{http://www.visore.org}
+00034 \textcolor{comment}{http://sourceforge.net/projects/qrealfourier}
+00035 \textcolor{comment}{http://github.com/visore/QRealFourier}
+00036 \textcolor{comment}{}
+00037 \textcolor{comment}{qrealfourier@visore.org}
+00038 \textcolor{comment}{qrealfourier@gmail.com}
+00039 \textcolor{comment}{}
+00040 \textcolor{comment}{***********************************************************************/}
+00041 
+00042 \textcolor{preprocessor}{#include "../fft/headers/qfouriervariablecalculator.h"}
+00043 
+\hypertarget{a00123_source_l00044}{}\hyperlink{a00055_a620f0850958df6f82854e0df6d2c5a0d}{00044} \hyperlink{a00055_a620f0850958df6f82854e0df6d2c5a0d}{QFourierVariableCalculator::QFourierVariableCalculator}
+      ()
+00045     : \hyperlink{a00052}{QFourierCalculator}()
+00046 \{
+00047     \hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform} = 0;
+00048 \}
+00049 
+\hypertarget{a00123_source_l00050}{}\hyperlink{a00055_ac98b83f9b6e72ac43a374a9f239d9de3}{00050} \hyperlink{a00055_ac98b83f9b6e72ac43a374a9f239d9de3}{QFourierVariableCalculator::~QFourierVariableCalculator}
+      ()
+00051 \{
+00052     \textcolor{keywordflow}{if}(\hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform} != 0)
+00053     \{
+00054         \textcolor{keyword}{delete} \hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform};
+00055     \}
+00056 \}
+00057 
+\hypertarget{a00123_source_l00058}{}\hyperlink{a00055_a6de06a9ed2105755db1f92ec9c571b96}{00058} \textcolor{keywordtype}{void} \hyperlink{a00055_a6de06a9ed2105755db1f92ec9c571b96}{QFourierVariableCalculator::setSize}(\textcolor{keywordtype}{int} size)
+00059 \{
+00060     \hyperlink{a00052_a8eef0ee0494f04e73191890de476795a}{QFourierCalculator::setSize}(size);
+00061     \textcolor{keywordflow}{if}(\hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform} == 0)
+00062     \{
+00063         \hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform} = \textcolor{keyword}{new} \hyperlink{a00010}{ffft::FFTReal<float>}(
+      \hyperlink{a00052_adbddf53a590be6186e623d9fc89f0e80}{mSize});
+00064     \}
+00065     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform}->\hyperlink{a00010_abdd5b144ba5737c7ad27095d1658c29e}{get\_length}() != \hyperlink{a00052_adbddf53a590be6186e623d9fc89f0e80}{mSize})
+00066     \{
+00067         \textcolor{keyword}{delete} \hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform};
+00068         \hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform} = \textcolor{keyword}{new} \hyperlink{a00010}{ffft::FFTReal<float>}(
+      \hyperlink{a00052_adbddf53a590be6186e623d9fc89f0e80}{mSize});
+00069     \}
+00070 \}
+00071 
+\hypertarget{a00123_source_l00072}{}\hyperlink{a00055_a605bd6c152a76c00f34ef8df715bce40}{00072} \textcolor{keywordtype}{void} \hyperlink{a00055_a605bd6c152a76c00f34ef8df715bce40}{QFourierVariableCalculator::forward}()
+00073 \{
+00074     \hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform}->\hyperlink{a00010_a4c5b863a285c5a87f38517735cbf1352}{do\_fft}(\hyperlink{a00052_a44e6b65579dba529c38d2ae35f97e18d}{mOutput}, \hyperlink{a00052_ac14a86f60463eed27b3b1beab135e689}{mInput});
+00075 \}
+00076 
+\hypertarget{a00123_source_l00077}{}\hyperlink{a00055_ad84456e4b9a5fe21b9f1427ecc411f79}{00077} \textcolor{keywordtype}{void} \hyperlink{a00055_ad84456e4b9a5fe21b9f1427ecc411f79}{QFourierVariableCalculator::inverse}()
+00078 \{
+00079     \hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform}->\hyperlink{a00010_a8ab2e0da482cea88a61f01d58c074989}{do\_ifft}(\hyperlink{a00052_ac14a86f60463eed27b3b1beab135e689}{mInput}, \hyperlink{a00052_a44e6b65579dba529c38d2ae35f97e18d}{mOutput});
+00080 \}
+00081 
+\hypertarget{a00123_source_l00082}{}\hyperlink{a00055_a663267f9addf061c6f869203e75e4d13}{00082} \textcolor{keywordtype}{void} \hyperlink{a00055_a663267f9addf061c6f869203e75e4d13}{QFourierVariableCalculator::rescale}()
+00083 \{
+00084     \hyperlink{a00055_a87b5b3f4f70fd4b6221541066e662fbe}{mFourierTransform}->\hyperlink{a00010_a9e30fff775905b1059aa9299004ee228}{rescale}(\hyperlink{a00052_ac14a86f60463eed27b3b1beab135e689}{mInput});
+00085 \}
+\end{DoxyCode}

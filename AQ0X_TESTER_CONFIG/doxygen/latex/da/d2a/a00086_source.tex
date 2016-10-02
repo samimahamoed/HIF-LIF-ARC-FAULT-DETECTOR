@@ -1,0 +1,84 @@
+\hypertarget{a00086_source}{\section{common\+\_\+define\+\_\+aq0x.\+h}
+\label{a00086_source}\index{common\+\_\+define\+\_\+aq0x.\+h@{common\+\_\+define\+\_\+aq0x.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef COMMON\_DEFINE\_AQ0X\_H}
+00002 \textcolor{preprocessor}{#define COMMON\_DEFINE\_AQ0X\_H}
+00003 
+\hypertarget{a00086_source_l00004}{}\hyperlink{a00086_a985a153b3edd3d7d638137ae0b9e5e67}{00004} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_FREQ                                     50}
+\hypertarget{a00086_source_l00005}{}\hyperlink{a00086_ae329eb408f386777cbb443c27ca7c1c5}{00005} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_RATED\_CURRENT                            2000}
+\hypertarget{a00086_source_l00006}{}\hyperlink{a00086_a9b142f2e7d26511af74c411c0e524384}{00006} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_SHORT\_CKT\_CURRENT                        45000}
+\hypertarget{a00086_source_l00007}{}\hyperlink{a00086_aad4ef21bb535ed8bbba5a4f2d0451711}{00007} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_MIN\_INSTALLATION\_DISTANCE                1}
+00008 
+\hypertarget{a00086_source_l00009}{}\hyperlink{a00086_adf882de105367de21f0cbfe4490a046f}{00009} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_IR\_LEVEL\_MAX                             300}
+\hypertarget{a00086_source_l00010}{}\hyperlink{a00086_a29f761c18bae89d087200e4f1891c651}{00010} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_UV\_LEVEL\_MAX                             300}
+\hypertarget{a00086_source_l00011}{}\hyperlink{a00086_a04ab25767fbb61ec61784da889ec8c09}{00011} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_LUX\_LEVEL\_MAX                            300}
+\hypertarget{a00086_source_l00012}{}\hyperlink{a00086_a96cf926b530a1d5968881620d2f10445}{00012} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_PROBABLITY\_MAX                           90}
+\hypertarget{a00086_source_l00013}{}\hyperlink{a00086_a599be42d4b357badb7c9b16a124a186a}{00013} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_PROBABLITY\_MIN                           10}
+\hypertarget{a00086_source_l00014}{}\hyperlink{a00086_af69b35a9f07bfcfe500538565d898c65}{00014} \textcolor{preprocessor}{#define CONFIG\_DEFAULT\_NO\_OF\_OBSERVATION                        4}
+00015 
+\hypertarget{a00086_source_l00016}{}\hyperlink{a00086_a0eae7c540b766617bb00f79cd63415a2}{00016} \textcolor{preprocessor}{#define CONFIG\_\_DEFAULT\_MIN\_DFDT                                3     //12mV}
+00017 
+00018 
+00019 
+00020 
+\hypertarget{a00086_source_l00022}{}\hyperlink{a00086_a8127170b687c1f67a968886c128e76e4}{00022} \textcolor{preprocessor}{#define SCAN\_FREQ                                       10000L}
+00023 
+\hypertarget{a00086_source_l00024}{}\hyperlink{a00086_a3a4dcb8af26a561d90607a41a3745806}{00024} \textcolor{preprocessor}{#define FAST\_TIMER\_SAMPLING\_RATE                        100E-6        //timer rate in second}
+00025 
+\hypertarget{a00086_source_l00026}{}\hyperlink{a00086_a87ea9a0eaa474d8b8f672cfa5cbb091f}{00026} \textcolor{preprocessor}{#define FAST\_TIMER\_SAMPLING\_RATE\_XU                     100           //timer rate in us}
+00027 
+00028 
+00029 
+00030 
+00031 
+00032 
+00033 
+00034 \textcolor{comment}{//common commands}
+\hypertarget{a00086_source_l00035}{}\hyperlink{a00086_aa87bfa4fccf7f7a4fc45afb1966a655f}{00035} \textcolor{preprocessor}{#define CMD\_CONFIG                                              0xE000}
+\hypertarget{a00086_source_l00036}{}\hyperlink{a00086_a7c6a5f4023cb02d02f2ded23147be425}{00036} \textcolor{preprocessor}{#define CMD\_DEVICE\_ADDRESS                                      0xE101}
+\hypertarget{a00086_source_l00037}{}\hyperlink{a00086_ac361dc1b32c1036394be0fd7de1182ca}{00037} \textcolor{preprocessor}{#define CMD\_SIGNAL\_THRESHOLDS                                   0xE203}
+\hypertarget{a00086_source_l00038}{}\hyperlink{a00086_af91ff280feea1f52e3bdd7f0f556d153}{00038} \textcolor{preprocessor}{#define CMD\_INSTALLATION\_DITAILS                                0xE302}
+\hypertarget{a00086_source_l00039}{}\hyperlink{a00086_a3a15793e3ab7817f2429edf04de693a0}{00039} \textcolor{preprocessor}{#define CMD\_EVENT\_ANALYSIS                                      0xE404}
+\hypertarget{a00086_source_l00040}{}\hyperlink{a00086_a1d8673a7ca545f3e382fc538f543ab72}{00040} \textcolor{preprocessor}{#define CMD\_RUN\_TIME\_OPTIONS                                    0xE505}
+\hypertarget{a00086_source_l00041}{}\hyperlink{a00086_a8ad7dae51114833acbb665d703d8ffeb}{00041} \textcolor{preprocessor}{#define CMD\_FACTORY\_DEFAULT                                     0xE106}
+\hypertarget{a00086_source_l00042}{}\hyperlink{a00086_a7df85bf97a6a032220d7a71c78be5206}{00042} \textcolor{preprocessor}{#define CMD\_COMMIT                                              0xE107}
+00043 
+\hypertarget{a00086_source_l00044}{}\hyperlink{a00086_a230386ac00f9c01793857101e1680324}{00044} \textcolor{preprocessor}{#define CMD\_EMULATION\_SETTING                                   0xE008}
+\hypertarget{a00086_source_l00045}{}\hyperlink{a00086_a8c7ce698ee79d20e30eb0ac08f0d9abc}{00045} \textcolor{preprocessor}{#define CMD\_LOAD\_IR\_DATA                                        0xE609}
+\hypertarget{a00086_source_l00046}{}\hyperlink{a00086_a8904f57ef5850374dbcdbe67eb8a5543}{00046} \textcolor{preprocessor}{#define CMD\_LOAD\_UV\_DATA                                        0xE60A}
+\hypertarget{a00086_source_l00047}{}\hyperlink{a00086_a9e5d9d302e44daccbe233d321696b12c}{00047} \textcolor{preprocessor}{#define CMD\_LOAD\_MAGNETIC\_FIELD\_X\_DATA                          0xE60B}
+\hypertarget{a00086_source_l00048}{}\hyperlink{a00086_ace011e2ba41b184650e8bd0ddbfa00d2}{00048} \textcolor{preprocessor}{#define CMD\_LOAD\_MAGNETIC\_FIELD\_Y\_DATA                          0xE60C}
+\hypertarget{a00086_source_l00049}{}\hyperlink{a00086_afc4f83cb04e57ee185a039b10e19e297}{00049} \textcolor{preprocessor}{#define CMD\_LOAD\_HIF\_REFERENCE\_DATA                             0xE60D}
+00050 
+\hypertarget{a00086_source_l00051}{}\hyperlink{a00086_ac80fdfdbada05f61256bef39c2064330}{00051} \textcolor{preprocessor}{#define CMD\_EMU\_MODE\_SET                                        0xE10D}
+\hypertarget{a00086_source_l00052}{}\hyperlink{a00086_a48532ee6ce8c4c41bc6a972f66998ca6}{00052} \textcolor{preprocessor}{#define CMD\_EMU\_MODE\_RESET                                      0xE10E}
+\hypertarget{a00086_source_l00053}{}\hyperlink{a00086_aa5f71f685588bc4e978cd6d595a5ea81}{00053} \textcolor{preprocessor}{#define CMD\_CLEAR\_EMU\_DATA                                      0xE10F}
+\hypertarget{a00086_source_l00054}{}\hyperlink{a00086_a1c028104d44ece3aca38373da0345c04}{00054} \textcolor{preprocessor}{#define CMD\_MISCELLANEOUS                                       0xE01A}
+\hypertarget{a00086_source_l00055}{}\hyperlink{a00086_ac4c8a78ea50054745a0ac0792baa7657}{00055} \textcolor{preprocessor}{#define CMD\_DEVICE\_RESET                                        0xE11B}
+\hypertarget{a00086_source_l00056}{}\hyperlink{a00086_a9084e0a84e73318b6fad9841fb4d4f98}{00056} \textcolor{preprocessor}{#define CMD\_CLEAR\_EEPROM                                        0xE11C}
+\hypertarget{a00086_source_l00057}{}\hyperlink{a00086_ad6af9210ac0903986f3ac3e55c6816a3}{00057} \textcolor{preprocessor}{#define CMD\_SUPERVISION\_STATUS                                  0xE11D}
+00058 
+\hypertarget{a00086_source_l00059}{}\hyperlink{a00086_af89ae6f2252e558fc6e54ea9b452bf0e}{00059} \textcolor{preprocessor}{#define CMD\_GET\_DATA                                            0xE0E0}
+\hypertarget{a00086_source_l00060}{}\hyperlink{a00086_a4412fcb90fb9171d432a624428881e70}{00060} \textcolor{preprocessor}{#define CMD\_DEVICE\_DATA                                         0xE1E1}
+\hypertarget{a00086_source_l00061}{}\hyperlink{a00086_ad37cd290161f0a245d189c3f4e014d4e}{00061} \textcolor{preprocessor}{#define CMD\_IR\_DISTURBANCE\_RECORD                               0xE1E2}
+\hypertarget{a00086_source_l00062}{}\hyperlink{a00086_ae45bb46748497c6a117beb1e93072d83}{00062} \textcolor{preprocessor}{#define CMD\_UV\_DISTURBANCE\_RECORD                               0xE1E3}
+\hypertarget{a00086_source_l00063}{}\hyperlink{a00086_ab84aea346a3f75b58f8bda67b8ae9be0}{00063} \textcolor{preprocessor}{#define CMD\_MFIELD\_X\_DISTURBANCE\_RECORD                         0xE1E4}
+\hypertarget{a00086_source_l00064}{}\hyperlink{a00086_af77e9c0ad32b3cc50d61992d4b64a831}{00064} \textcolor{preprocessor}{#define CMD\_MFIELD\_Y\_DISTURBANCE\_RECORD                         0xE1E5}
+\hypertarget{a00086_source_l00065}{}\hyperlink{a00086_a4dcce4fd3ff29eb6782f3228901f99cf}{00065} \textcolor{preprocessor}{#define CMD\_IR\_CURRENT\_RECORD                                   0xE1E6}
+\hypertarget{a00086_source_l00066}{}\hyperlink{a00086_ab0e0364ddc2d95d1e5b51a3e3ff50918}{00066} \textcolor{preprocessor}{#define CMD\_UV\_CURRENT\_RECORD                                   0xE1E7}
+\hypertarget{a00086_source_l00067}{}\hyperlink{a00086_ab796345ffdbc6a240b67b56583bb77c6}{00067} \textcolor{preprocessor}{#define CMD\_MFIELD\_X\_CURRENT\_RECORD                             0xE1E8}
+\hypertarget{a00086_source_l00068}{}\hyperlink{a00086_a8ddac7f7a2a90f2d8535af02e338b1bf}{00068} \textcolor{preprocessor}{#define CMD\_MFIELD\_Y\_CURRENT\_RECORD                             0xE1E9}
+\hypertarget{a00086_source_l00069}{}\hyperlink{a00086_a185ed5442d69c7c8abba13323a8e8187}{00069} \textcolor{preprocessor}{#define CMD\_HIF\_DIAGNOSIS\_RECORD                                0xE1EA}
+00070 
+\hypertarget{a00086_source_l00072}{}\hyperlink{a00086_a00978ca9e8220475258dcbbbb7d29129}{00072} \textcolor{preprocessor}{#define ADC\_RESOLUTION                                          (1024L) // 10 bit}
+00073 
+\hypertarget{a00086_source_l00075}{}\hyperlink{a00086_ada92d3eeeec0cbeee41e76a52d145792}{00075} \textcolor{preprocessor}{#define ADC\_VAL\_MAPPING\_FACTOR                                  ((3.3L}\textcolor{comment}{/*Vref*/}\textcolor{preprocessor}{)/(ADC\_RESOLUTION))}
+00076 
+\hypertarget{a00086_source_l00077}{}\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{00077} \textcolor{preprocessor}{#define MAX\_ATTACHMENT\_LENGTH                                   100}
+00078 
+00079 
+00080 
+00081 \textcolor{preprocessor}{#endif // COMMON\_DEFINE\_AQ0X\_H}
+\end{DoxyCode}

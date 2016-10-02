@@ -1,0 +1,51 @@
+<map id="QCPAxis::QCPAxis" name="QCPAxis::QCPAxis">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#ae8029ae0b32e9d4d73dddcdd0a08c838" title="QCPAxis::labelFont" alt="" coords="235,5,372,32"/>
+<area shape="rect" id="node3" href="$d5/df9/a00044.html#a4fd43e89be4a553ead41652565ff0581" title="Sets whether this object will be drawn antialiased or not. " alt="" coords="205,56,401,83"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#adcbdec7a60054b88571e89599f4a45bf" title="Sets whether the number of sub ticks in one tick interval is determined automatically. " alt="" coords="212,107,395,133"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a7c7111cbeac9ec5fcb40f93a1ef51a0b" title="When setAutoTickStep is true, approximateCount determines how many ticks should be generated in the v..." alt="" coords="210,157,397,184"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#aaa47e3a6bac0c20d4beb9028f01bc1a1" title="Sets whether the tick labels are generated automatically depending on the tick label type (ltNumber o..." alt="" coords="208,208,399,235"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#ae867c23d3a6a7bd4d09cc66c5d018f63" title="Sets whether the tick positions should be calculated automatically (either from an automatically gene..." alt="" coords="223,259,383,285"/>
+<area shape="rect" id="node8" href="$d3/dfe/a00025.html#a99fe77b034e06f5b723995beab96e741" title="Sets whether the tick step, i.e. " alt="" coords="213,309,393,336"/>
+<area shape="rect" id="node9" href="$d3/dfe/a00025.html#a0188c6248366fc9f9ff816dceee986e0" title="QCPAxis::setAxisRect" alt="" coords="226,360,381,387"/>
+<area shape="rect" id="node10" href="$d3/dfe/a00025.html#a3976dba7137c71a2a1a34737ff9baff9" title="QCPAxis::setAxisType" alt="" coords="225,411,381,437"/>
+<area shape="rect" id="node11" href="$d3/dfe/a00025.html#a778d45fb71b3c7ab3bb7079e18b058e4" title="Sets the pen, the axis base line is drawn with. " alt="" coords="226,1573,381,1600"/>
+<area shape="rect" id="node13" href="$d3/dfe/a00025.html#a2ee0191daa03524a682113e63e05f7a7" title="Sets the format in which dates and times are displayed as tick labels, if setTickLabelType is ltDateT..." alt="" coords="204,512,403,539"/>
+<area shape="rect" id="node14" href="$d3/dfe/a00025.html#a33bcc382c111c9f31bb0687352a2dea4" title="Sets the axis label that will be shown below/above or next to the axis, depending on its orientation..." alt="" coords="237,563,370,589"/>
+<area shape="rect" id="node15" href="$d3/dfe/a00025.html#a6c906fe56d75f0122335b9f79b999608" title="Sets the color of the axis label. " alt="" coords="222,1221,385,1248"/>
+<area shape="rect" id="node17" href="$d3/dfe/a00025.html#a71ac1a47f7547e490a8c4311d1433cf3" title="Sets the font of the axis label. " alt="" coords="224,664,383,691"/>
+<area shape="rect" id="node18" href="$d3/dfe/a00025.html#a4391192a766e5d20cfe5cbc17607a7a2" title="Sets the distance between the tick labels and the axis label. " alt="" coords="213,461,393,488"/>
+<area shape="rect" id="node20" href="$d3/dfe/a00025.html#ae585a54dc2aac662e90a2ca82f002590" title="Sets the number format for the numbers drawn as tick labels (if tick label type is ltNumber)..." alt="" coords="209,765,397,792"/>
+<area shape="rect" id="node21" href="$d3/dfe/a00025.html#a21dc8023ad7500382ad9574b48137e63" title="Sets the precision of the numbers drawn as tick labels. " alt="" coords="203,816,404,843"/>
+<area shape="rect" id="node22" href="$d3/dfe/a00025.html#a5691441cb3de9e9844855d339c0db279" title="Sets the padding of the axis. " alt="" coords="229,613,378,640"/>
+<area shape="rect" id="node23" href="$d3/dfe/a00025.html#a57d6ee9e9009fe88cb19db476ec70bca" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="234,867,373,893"/>
+<area shape="rect" id="node25" href="$d3/dfe/a00025.html#a2172fdb196b1a0dc3f40992fcad8e9e1" title="Sets whether the axis range (direction) is displayed reversed. " alt="" coords="207,968,399,995"/>
+<area shape="rect" id="node26" href="$d3/dfe/a00025.html#a726186054be90487885a748aa1b42188" title="If setScaleType is set to stLogarithmic, base will be the logarithm base of the scaling. " alt="" coords="210,1019,397,1045"/>
+<area shape="rect" id="node27" href="$d3/dfe/a00025.html#adb6c5c45bdf899ea221881dd3b43b406" title="Sets whether the axis uses a linear scale or a logarithmic scale. " alt="" coords="222,1069,385,1096"/>
+<area shape="rect" id="node28" href="$d3/dfe/a00025.html#afa988209bf6519f63d6ef2e615dbe1ea" title="Sets whether the user can (de&#45;)select the parts in selectable by clicking on the QCustomPlot surface..." alt="" coords="222,1120,385,1147"/>
+<area shape="rect" id="node29" href="$d3/dfe/a00025.html#a24c13908da2f8d629b1bbbe9cbd63e39" title="Sets the selected state of the respective axis parts described by SelectablePart. ..." alt="" coords="227,1171,380,1197"/>
+<area shape="rect" id="node30" href="$d3/dfe/a00025.html#aeb917a909215605b95ef2be843de1ee8" title="Sets the pen that is used to draw the axis base line when selected. " alt="" coords="200,1725,407,1752"/>
+<area shape="rect" id="node31" href="$d3/dfe/a00025.html#a5d502dec597c634f491fdd73d151c72d" title="Sets the color that is used for the axis label when it is selected. " alt="" coords="211,1273,395,1314"/>
+<area shape="rect" id="node32" href="$d3/dfe/a00025.html#a02ec2a75d4d8401eaab834fbc6803d30" title="Sets the font that is used for the axis label when it is selected. " alt="" coords="198,1339,409,1365"/>
+<area shape="rect" id="node33" href="$d3/dfe/a00025.html#a2a00a7166600155eac26843132eb9576" title="Sets the pen that is used to draw the subticks when selected. " alt="" coords="192,1877,415,1904"/>
+<area shape="rect" id="node34" href="$d3/dfe/a00025.html#a9bdbf5e63ab15187f3a1de9440129227" title="Sets the color that is used for tick labels when they are selected. " alt="" coords="215,1390,392,1431"/>
+<area shape="rect" id="node35" href="$d3/dfe/a00025.html#a845ccb560b7bc5281098a5be494145f6" title="Sets the font that is used for tick labels when they are selected. " alt="" coords="215,1507,392,1549"/>
+<area shape="rect" id="node36" href="$d3/dfe/a00025.html#a8360502685eb782edbf04019c9345cdc" title="Sets the pen that is used to draw the (major) ticks when selected. " alt="" coords="203,2131,403,2157"/>
+<area shape="rect" id="node37" href="$d3/dfe/a00025.html#a4b1554ead9d7f9799650d51383e326dd" title="Sets the number of sub ticks in one (major) tick step. " alt="" coords="212,1624,395,1651"/>
+<area shape="rect" id="node38" href="$d3/dfe/a00025.html#ab702d6fd42fc620607435339a1c2a2e1" title="Sets the length of the subticks in pixels. " alt="" coords="209,1675,397,1701"/>
+<area shape="rect" id="node39" href="$d3/dfe/a00025.html#aede4028ae7516bd51a60618a8233f9cf" title="Sets the pen, subtick marks will be drawn with. " alt="" coords="217,1776,389,1803"/>
+<area shape="rect" id="node40" href="$d3/dfe/a00025.html#a395e445c3fe496b935bee7b911ecfd1c" title="Sets the color of the tick labels, i.e. " alt="" coords="210,917,397,944"/>
+<area shape="rect" id="node41" href="$d3/dfe/a00025.html#a2b8690c4e8dbc39d9185d2b398ce7a6c" title="Sets the font of the tick labels, i.e. " alt="" coords="212,1827,395,1853"/>
+<area shape="rect" id="node42" href="$d3/dfe/a00025.html#af302c479af9dbc2e9f0e44e07c0012ee" title="Sets the distance between the axis base line (or any tick marks pointing outward) and the tick labels..." alt="" coords="201,715,405,741"/>
+<area shape="rect" id="node43" href="$d3/dfe/a00025.html#a1bddd4413df8a576b7ad4b067fb33375" title="Sets the rotation of the tick labels, i.e. " alt="" coords="201,1928,406,1955"/>
+<area shape="rect" id="node44" href="$d3/dfe/a00025.html#a04ba16e1f6f78d70f938519576ed32c8" title="Sets whether tick labels are displayed. " alt="" coords="221,1979,385,2005"/>
+<area shape="rect" id="node45" href="$d3/dfe/a00025.html#a54f24f5ce8feea25209388a863d7e448" title="Sets whether the tick labels display numbers or dates/times. " alt="" coords="211,2029,396,2056"/>
+<area shape="rect" id="node46" href="$d3/dfe/a00025.html#a62ec40bebe3540e9c1479a8fd2be3b0d" title="Sets the length of the ticks in pixels. " alt="" coords="221,2080,386,2107"/>
+<area shape="rect" id="node47" href="$d3/dfe/a00025.html#ad80923bcc1c5da4c4db602c5325e797e" title="Sets the pen, tick marks will be drawn with. " alt="" coords="229,1456,378,1483"/>
+<area shape="rect" id="node48" href="$d3/dfe/a00025.html#ac891409315bc379e3b1abdb162c1a011" title="Sets whether tick marks are displayed. " alt="" coords="237,2181,370,2208"/>
+<area shape="rect" id="node49" href="$d3/dfe/a00025.html#af727db0acc6492c4c774c0700e738205" title="If setAutoTickStep is set to false, use this function to set the tick step manually. " alt="" coords="227,2232,380,2259"/>
+<area shape="rect" id="node50" href="$d3/dfe/a00025.html#af6d7ad17f3398b114a413f7a3dc5ef9d" title="QCPAxis::tickLabelFont" alt="" coords="222,2283,385,2309"/>
+<area shape="rect" id="node12" href="$d4/d3e/a00116.html#a1f13fffa0a0faac34ec342973e613a4a" title="pen" alt="" coords="520,1751,563,1777"/>
+<area shape="rect" id="node16" href="$d4/d3e/a00116.html#ae35093fbf4f645dcefd930ca8c68b622" title="color" alt="" coords="516,1251,567,1277"/>
+<area shape="rect" id="node19" href="$d3/dfe/a00025.html#abb85015a9467ec176e70698307ec833a" title="QCPAxis::padding" alt="" coords="477,613,606,640"/>
+<area shape="rect" id="node24" href="$d2/dee/a00049.html#ab38bd4841c77c7bb86c9eea0f142dcc0" title="Checks, whether the specified range is within valid bounds, which are defined as QCPRange::maxRange a..." alt="" coords="463,867,620,893"/>
+</map>

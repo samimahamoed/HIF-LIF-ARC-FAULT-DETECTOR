@@ -1,0 +1,11 @@
+<map id="QCPItemRect::QCPItemRect" name="QCPItemRect::QCPItemRect">
+<area shape="rect" id="node2" href="$d3/de7/a00039.html#abbd4e346a03513ee466afc25d9c75446" title="Sets the brush that will be used to fill the rectangle. " alt="" coords="264,5,427,32"/>
+<area shape="rect" id="node4" href="$d8/d41/a00038.html#aa988ba4e87ab684c9021017dcaba945f" title="Sets the coordinates of this QCPItemPosition. " alt="" coords="251,123,440,149"/>
+<area shape="rect" id="node7" href="$d3/de7/a00039.html#a483c0da5a17e1646cd17ddea2c124e7d" title="Sets the pen that will be used to draw the line of the rectangle. " alt="" coords="270,173,421,200"/>
+<area shape="rect" id="node9" href="$d3/de7/a00039.html#abd1792859844118dedee86223cede7af" title="Sets the brush that will be used to fill the rectangle when selected. " alt="" coords="256,57,435,98"/>
+<area shape="rect" id="node10" href="$d3/de7/a00039.html#a52a1bcb2dc753a538e406a2ba3cf21ce" title="Sets the pen that will be used to draw the line of the rectangle when selected. " alt="" coords="244,224,447,251"/>
+<area shape="rect" id="node3" href="$d3/de7/a00039.html#a03d2d26ffcac78b25b8e90915f9c4abe" title="QCPItemRect::brush" alt="" coords="503,41,645,68"/>
+<area shape="rect" id="node5" href="$d8/d41/a00038.html#ac3cb2bddf5f89e5181830be30b93d090" title="QCPItemPosition::key" alt="" coords="499,96,649,123"/>
+<area shape="rect" id="node6" href="$d8/d41/a00038.html#a6817f7356d3a2b63e8446c6b6106dae1" title="QCPItemPosition::value" alt="" coords="495,147,653,173"/>
+<area shape="rect" id="node8" href="$d3/de7/a00039.html#a3cb7b6de5e82cc5a3c99e9de919a55e6" title="QCPItemRect::pen" alt="" coords="509,211,639,237"/>
+</map>

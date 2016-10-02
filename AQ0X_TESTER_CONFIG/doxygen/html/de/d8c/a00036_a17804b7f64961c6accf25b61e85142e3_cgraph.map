@@ -1,0 +1,8 @@
+<map id="QCPItemLine::QCPItemLine" name="QCPItemLine::QCPItemLine">
+<area shape="rect" id="node2" href="$d8/d41/a00038.html#aa988ba4e87ab684c9021017dcaba945f" title="Sets the coordinates of this QCPItemPosition. " alt="" coords="242,31,431,57"/>
+<area shape="rect" id="node5" href="$de/d8c/a00036.html#a572528dab61c1abe205822fbd5db4b27" title="Sets the pen that will be used to draw the line. " alt="" coords="263,81,411,108"/>
+<area shape="rect" id="node7" href="$de/d8c/a00036.html#a3e2fec44503277e77717e9c24f87f1ea" title="Sets the pen that will be used to draw the line when selected. " alt="" coords="237,132,436,159"/>
+<area shape="rect" id="node3" href="$d8/d41/a00038.html#ac3cb2bddf5f89e5181830be30b93d090" title="QCPItemPosition::key" alt="" coords="488,5,639,32"/>
+<area shape="rect" id="node4" href="$d8/d41/a00038.html#a6817f7356d3a2b63e8446c6b6106dae1" title="QCPItemPosition::value" alt="" coords="484,56,643,83"/>
+<area shape="rect" id="node6" href="$de/d8c/a00036.html#a235779dd079a263bedb20b3daecc40eb" title="QCPItemLine::pen" alt="" coords="499,119,627,145"/>
+</map>

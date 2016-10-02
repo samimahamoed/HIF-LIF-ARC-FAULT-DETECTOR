@@ -1,0 +1,167 @@
+\hypertarget{a00024}{\section{light\+\_\+sensor\+\_\+prv.\+h File Reference}
+\label{a00024}\index{light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}}
+}
+{\ttfamily \#include \char`\"{}..\textbackslash{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+Include dependency graph for light\+\_\+sensor\+\_\+prv.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d6/dad/a00941}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{df/d12/a00942}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00024_d8/d2e/a00588}{light\+\_\+sen\+\_\+data\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00024_a5877f449ae4b7e77914fedf212c3d01f}{X\+\_\+\+M\+S\+G\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}~(\hyperlink{a00036_a082eb6e82ded25b00f04da4f611c961e}{X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E})
+\begin{DoxyCompactList}\small\item\em Internal event message, initiates periodic supervision. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00024_ad7dfa3ed8d8d926ba462f9e951f1b391}{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}~(\hyperlink{a00036_ab2eeea4643823a0c7c7731ddb83e3edc}{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E} + 2)
+\begin{DoxyCompactList}\small\item\em Internal supervison timer. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00024_a8a535456285f4602701c814d7b69cc68}{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}~1000
+\begin{DoxyCompactList}\small\item\em Timeout. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00024_aa88a423475bb5b13601785eed80fb1b9}{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T}~(2\+E8) -\/ 1
+\item 
+\#define \hyperlink{a00024_a4131fea6179b36b90522dd6a9ecc0a73}{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P}~100
+\end{DoxyCompactItemize}
+
+
+\subsection{Data Structure Documentation}
+\index{light\+\_\+sen\+\_\+data\+\_\+t@{light\+\_\+sen\+\_\+data\+\_\+t}}\label{d8/d2e/a00588}
+\hypertarget{a00024_d8/d2e/a00588}{}
+\subsubsection{struct light\+\_\+sen\+\_\+data\+\_\+t}
+
+
+Definition at line \hyperlink{a00024_source_l00028}{28} of file \hyperlink{a00024_source}{light\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+Collaboration diagram for light\+\_\+sen\+\_\+data\+\_\+t\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/ddd/a00943}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00024_a94b2d1f6ea4ab334c74d24984dd27843}{\hyperlink{a00021_d6/d9c/a00352}{configured\+\_\+t}}\label{a00024_a94b2d1f6ea4ab334c74d24984dd27843}
+&
+configured&
+stores user configuration details \\
+\hline
+
+\hypertarget{a00024_a7ae905b560513ad201e58c2f63375030}{\hyperlink{a00017_dd/dcb/a00375}{diagonesis\+\_\+records\+\_\+light\+\_\+t}}\label{a00024_a7ae905b560513ad201e58c2f63375030}
+&
+diagonesis\+\_\+records&
+holds diagonesis data on the module operation \\
+\hline
+
+\hypertarget{a00024_ac9b38e2c1d3f1013a88d33506c754152}{\hyperlink{a00028}{module\+\_\+disturbance\+\_\+record\+\_\+t} $\ast$}\label{a00024_ac9b38e2c1d3f1013a88d33506c754152}
+&
+disturbance\+\_\+record&
+disturbance record storage , details starting form the first event detection to the duration of observation record length \\
+\hline
+
+\hypertarget{a00024_a5a53c391562b059eb744ac679f3765ca}{\hyperlink{a00017_de/d94/a00603}{module\+\_\+status\+\_\+t}}\label{a00024_a5a53c391562b059eb744ac679f3765ca}
+&
+module\+\_\+status&
+holds details about the module current state \\
+\hline
+
+\hypertarget{a00024_aaeec6b0609dba31393f337abf1cce3d3}{\hyperlink{a00022_d2/d5a/a00792}{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00024_aaeec6b0609dba31393f337abf1cce3d3}
+&
+sv\+\_\+errors\+\_\+flags&
+supervission error flags \\
+\hline
+
+\hypertarget{a00024_a35ce77844e6990e2537b2f11cd2d5cca}{\hyperlink{a00018_d0/d66/a00858}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report}}\label{a00024_a35ce77844e6990e2537b2f11cd2d5cca}
+&
+sv\+\_\+status\+\_\+ntf&
+\\
+\hline
+
+\hypertarget{a00024_a43c345f39ea3aefbb60ef1ef57fe5d83}{\hyperlink{a00036_de/d37/a00849}{x\+\_\+event}}\label{a00024_a43c345f39ea3aefbb60ef1ef57fe5d83}
+&
+sv\+\_\+task\+\_\+event&
+Internal event for processing light module suppervission task. \\
+\hline
+
+\hypertarget{a00024_ada91b200053f2d93e3639dc4ee3415b4}{\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify}}\label{a00024_ada91b200053f2d93e3639dc4ee3415b4}
+&
+sv\+\_\+timer\+\_\+ntf&
+Timer notification to initiate light module suppervission task. \\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00024_aa88a423475bb5b13601785eed80fb1b9}{\index{light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}!F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T@{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T}}
+\index{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T@{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T}!light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T~(2\+E8) -\/ 1}}\label{a00024_aa88a423475bb5b13601785eed80fb1b9}
+
+
+Definition at line \hyperlink{a00024_source_l00023}{23} of file \hyperlink{a00024_source}{light\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+Referenced by \hyperlink{a00047_source_l00441}{light\+\_\+sen\+\_\+false\+\_\+positive\+\_\+adjustment\+\_\+task()}.
+
+\hypertarget{a00024_a4131fea6179b36b90522dd6a9ecc0a73}{\index{light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}!M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P@{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P}}
+\index{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P@{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P}!light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P~100}}\label{a00024_a4131fea6179b36b90522dd6a9ecc0a73}
+
+
+Definition at line \hyperlink{a00024_source_l00024}{24} of file \hyperlink{a00024_source}{light\+\_\+sensor\+\_\+prv.\+h}.
+
+\hypertarget{a00024_a8a535456285f4602701c814d7b69cc68}{\index{light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}!S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D@{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}}
+\index{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D@{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}!light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D~1000}}\label{a00024_a8a535456285f4602701c814d7b69cc68}
+
+
+Timeout. 
+
+
+
+Definition at line \hyperlink{a00024_source_l00019}{19} of file \hyperlink{a00024_source}{light\+\_\+sensor\+\_\+prv.\+h}.
+
+\hypertarget{a00024_a5877f449ae4b7e77914fedf212c3d01f}{\index{light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}!X\+\_\+\+M\+S\+G\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V@{X\+\_\+\+M\+S\+G\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}}
+\index{X\+\_\+\+M\+S\+G\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V@{X\+\_\+\+M\+S\+G\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}!light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{X\+\_\+\+M\+S\+G\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+M\+S\+G\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V~({\bf X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E})}}\label{a00024_a5877f449ae4b7e77914fedf212c3d01f}
+
+
+Internal event message, initiates periodic supervision. 
+
+
+
+Definition at line \hyperlink{a00024_source_l00012}{12} of file \hyperlink{a00024_source}{light\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+Referenced by \hyperlink{a00047_source_l00065}{light\+\_\+sen\+\_\+taskx()}.
+
+\hypertarget{a00024_ad7dfa3ed8d8d926ba462f9e951f1b391}{\index{light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}!X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R@{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}}
+\index{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R@{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}!light\+\_\+sensor\+\_\+prv.\+h@{light\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R~({\bf X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E} + 2)}}\label{a00024_ad7dfa3ed8d8d926ba462f9e951f1b391}
+
+
+Internal supervison timer. 
+
+
+
+Definition at line \hyperlink{a00024_source_l00015}{15} of file \hyperlink{a00024_source}{light\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+Referenced by \hyperlink{a00047_source_l00106}{light\+\_\+sen\+\_\+notifyx()}.
+

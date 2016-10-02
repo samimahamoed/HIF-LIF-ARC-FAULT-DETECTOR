@@ -1,0 +1,5 @@
+<map id="saveRastered" name="saveRastered">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a6629d9e8e6da4bf18055ee0257fdce9a" title="Saves a BMP image file to fileName on disc. " alt="" coords="153,5,228,32"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a490c722092d1771e8ce4a7a73dfd84ab" title="Saves a JPG image file to fileName on disc. " alt="" coords="157,56,225,83"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a7636261aff1f6d25c9da749ece3fc8b8" title="Saves a PNG image file to fileName on disc. " alt="" coords="155,107,226,133"/>
+</map>

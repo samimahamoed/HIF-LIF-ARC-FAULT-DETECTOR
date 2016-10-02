@@ -1,0 +1,5 @@
+<map id="QCPAbstractPlottable::brush" name="QCPAbstractPlottable::brush">
+<area shape="rect" id="node2" href="$dc/de2/a00024.html#a7a4b92144dca6453a1f0f210e27edc74" title="The brush is used to draw basic fills of the plottable representation in the plot. " alt="" coords="204,5,355,47"/>
+<area shape="rect" id="node4" href="$dc/de2/a00024.html#ae8c816874089f7a44001e8618e81a9dc" title="When the plottable is selected, this brush is used to draw fills instead of the normal brush set via ..." alt="" coords="204,71,355,112"/>
+<area shape="rect" id="node3" href="$d5/de0/a00050.html#a75c2b3e7fcd0741cc981693a2ba63b27" title="Constructs a statistical box which uses keyAxis as its key axis (&quot;x&quot;) and valueAxis as its value axis..." alt="" coords="403,39,541,80"/>
+</map>

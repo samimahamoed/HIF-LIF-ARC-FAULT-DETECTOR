@@ -1,0 +1,12 @@
+<map id="QFourierTransformer::QFourierTransformer" name="QFourierTransformer::QFourierTransformer">
+<area shape="rect" id="node2" href="$d6/d2c/a00072.html#ae0508780c15f6c28fb566dfe76c9a082" title="QWindowFunctionManager\l::functions" alt="" coords="201,5,380,47"/>
+<area shape="rect" id="node3" href="$d1/dea/a00054.html#a050f813673ba678aefeeafba415c82aa" title="QFourierTransformer\l::initialize" alt="" coords="221,71,361,112"/>
+<area shape="rect" id="node4" href="$d1/dea/a00054.html#aab762683a5ed505ed7be906c4340cb07" title="QFourierTransformer\l::setSize" alt="" coords="221,201,361,243"/>
+<area shape="rect" id="node10" href="$d1/dea/a00054.html#a8c8f0a2101aba7f6da70050c7ebdc36c" title="QFourierTransformer\l::setWindowFunction" alt="" coords="219,136,363,177"/>
+<area shape="rect" id="node5" href="$d1/dea/a00054.html#ac6ce59f26c2e51bc91f16ba42cf059a4" title="QFourierTransformer\l::isValidSize" alt="" coords="447,195,587,236"/>
+<area shape="rect" id="node6" href="$d0/d89/a00071.html#a23ec85a35c762367195a47898cc75380" title="QWindowFunction::create" alt="" coords="431,143,603,170"/>
+<area shape="rect" id="node7" href="$d1/dea/a00054.html#ae8918e95cfd4b0b65bae0947903918ac" title="QFourierTransformer\l::sizeToKey" alt="" coords="447,325,587,367"/>
+<area shape="rect" id="node8" href="$d1/d84/a00052.html#a8eef0ee0494f04e73191890de476795a" title="QFourierCalculator\l::setSize" alt="" coords="452,260,583,301"/>
+<area shape="rect" id="node9" href="$d1/d84/a00052.html#a76f0e0b1b3269d7267cd732b3e6ba3a5" title="QFourierCalculator\l::size" alt="" coords="655,260,785,301"/>
+<area shape="rect" id="node11" href="$d6/d2c/a00072.html#a3c72b178730b8731087337bcbfcbd4b7" title="QWindowFunctionManager\l::createFunction" alt="" coords="428,77,607,119"/>
+</map>

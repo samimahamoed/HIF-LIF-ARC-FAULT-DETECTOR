@@ -1,0 +1,5 @@
+<map id="crc16" name="crc16">
+<area shape="rect" id="node2" href="$d9/d2e/a00056.html#a8ad2f815848f1668763c01ff9d45a01b" title="nov_init" alt="" coords="149,5,215,32"/>
+<area shape="rect" id="node3" href="$d6/d5b/a00026.html#a366b2707f4c7d76f0efc1b5cdde8e37e" title="Function for retriving serial message. " alt="" coords="111,56,253,83"/>
+<area shape="rect" id="node4" href="$d6/d5b/a00026.html#a96a3f016ca5b0736424c2695fe9fbdf8" title="Function sending command responses on serial line. " alt="" coords="108,107,256,133"/>
+</map>

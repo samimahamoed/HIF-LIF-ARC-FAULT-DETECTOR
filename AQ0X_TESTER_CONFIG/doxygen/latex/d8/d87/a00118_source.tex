@@ -1,0 +1,75 @@
+\hypertarget{a00118_source}{\section{qfouriercalculator.\+h}
+\label{a00118_source}\index{qfouriercalculator.\+h@{qfouriercalculator.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***********************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{qfouriercalculator.h - Header file for QFourierCalculator}
+00004 \textcolor{comment}{}
+00005 \textcolor{comment}{Abstract class providing a common interface for calculating FFTs of}
+00006 \textcolor{comment}{fixed or variable size.}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{************************************************************************}
+00009 \textcolor{comment}{}
+00010 \textcolor{comment}{This file is part of QRealFourier.}
+00011 \textcolor{comment}{}
+00012 \textcolor{comment}{QRealFourier is free software: you can redistribute it and/or modify it}
+00013 \textcolor{comment}{under the terms of the Lesser GNU General Public License as published}
+00014 \textcolor{comment}{by the Free Software Foundation, either version 3 of the License, or}
+00015 \textcolor{comment}{(at your option) any later version.}
+00016 \textcolor{comment}{}
+00017 \textcolor{comment}{Foobar is distributed in the hope that it will be useful, but WITHOUT}
+00018 \textcolor{comment}{ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or}
+00019 \textcolor{comment}{FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser GNU General Public}
+00020 \textcolor{comment}{License for more details.}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{You should have received a copy of the Lesser GNU General Public License}
+00023 \textcolor{comment}{along with Foobar.  If not, see <http://www.gnu.org/licenses/>.}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{************************************************************************}
+00026 \textcolor{comment}{}
+00027 \textcolor{comment}{Copyright © 2012 - 2013 Christoph Stallmann, University of Pretoria}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{Developer: Christoph Stallmann}
+00030 \textcolor{comment}{University of Pretoria}
+00031 \textcolor{comment}{Department of Computer Science}
+00032 \textcolor{comment}{}
+00033 \textcolor{comment}{http://www.visore.org}
+00034 \textcolor{comment}{http://sourceforge.net/projects/qrealfourier}
+00035 \textcolor{comment}{http://github.com/visore/QRealFourier}
+00036 \textcolor{comment}{}
+00037 \textcolor{comment}{qrealfourier@visore.org}
+00038 \textcolor{comment}{qrealfourier@gmail.com}
+00039 \textcolor{comment}{}
+00040 \textcolor{comment}{***********************************************************************/}
+00041 
+00042 
+00043 \textcolor{preprocessor}{#ifndef QFOURIERCALCULATOR\_H}
+00044 \textcolor{preprocessor}{#define QFOURIERCALCULATOR\_H}
+00045 
+\hypertarget{a00118_source_l00046}{}\hyperlink{a00052}{00046} \textcolor{keyword}{class }\hyperlink{a00052}{QFourierCalculator}
+00047 \{
+00048 
+00049     \textcolor{keyword}{public}:
+00050         
+00051         \hyperlink{a00052_ab974fa1ec9e01d9eea40f0a5a6872722}{QFourierCalculator}();
+00052         \textcolor{keyword}{virtual} \hyperlink{a00052_ac742acb84a88033f573ae41b54844880}{~QFourierCalculator}();
+00053         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00052_a2d48438c3ee2549f8bf0e1e8fc1c3f1d}{setData}(\textcolor{keywordtype}{float} input[], \textcolor{keywordtype}{float} output[] = 0);
+00054         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00052_a8eef0ee0494f04e73191890de476795a}{setSize}(\textcolor{keywordtype}{int} \hyperlink{a00052_a76f0e0b1b3269d7267cd732b3e6ba3a5}{size});
+00055         \textcolor{keyword}{virtual} \textcolor{keywordtype}{int} \hyperlink{a00052_a76f0e0b1b3269d7267cd732b3e6ba3a5}{size}();
+00056 
+00057         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00052_a77ef4fb3e16e1727a9d96ef5956c1885}{forward}() = 0;
+00058         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00052_a31bf1b0c412519f3e8d0af3cdf0c543b}{inverse}() = 0;
+00059         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00052_a1f9d429995cc71729a12ce901e280fcf}{rescale}() = 0;
+00060 
+00061     \textcolor{keyword}{protected}:
+00062 
+\hypertarget{a00118_source_l00063}{}\hyperlink{a00052_ac14a86f60463eed27b3b1beab135e689}{00063}         \textcolor{keywordtype}{float} *\hyperlink{a00052_ac14a86f60463eed27b3b1beab135e689}{mInput};
+\hypertarget{a00118_source_l00064}{}\hyperlink{a00052_a44e6b65579dba529c38d2ae35f97e18d}{00064}         \textcolor{keywordtype}{float} *\hyperlink{a00052_a44e6b65579dba529c38d2ae35f97e18d}{mOutput};
+\hypertarget{a00118_source_l00065}{}\hyperlink{a00052_adbddf53a590be6186e623d9fc89f0e80}{00065}         \textcolor{keywordtype}{int} \hyperlink{a00052_adbddf53a590be6186e623d9fc89f0e80}{mSize};
+00066 
+00067 \};
+00068 
+00069 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

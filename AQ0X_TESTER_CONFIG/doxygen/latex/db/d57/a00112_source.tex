@@ -1,0 +1,131 @@
+\hypertarget{a00112_source}{\section{Osc\+Sin\+Cos.\+hpp}
+\label{a00112_source}\index{Osc\+Sin\+Cos.\+hpp@{Osc\+Sin\+Cos.\+hpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*****************************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{        OscSinCos.hpp}
+00004 \textcolor{comment}{        By Laurent de Soras}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{--- Legal stuff ---}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{This program is free software. It comes without any warranty, to}
+00009 \textcolor{comment}{the extent permitted by applicable law. You can redistribute it}
+00010 \textcolor{comment}{and/or modify it under the terms of the Do What The Fuck You Want}
+00011 \textcolor{comment}{To Public License, Version 2, as published by Sam Hocevar. See}
+00012 \textcolor{comment}{http://sam.zoy.org/wtfpl/COPYING for more details.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{*Tab=3***********************************************************************/}
+00015 
+00016 
+00017 
+00018 \textcolor{preprocessor}{#if defined (ffft\_OscSinCos\_CURRENT\_CODEHEADER)}
+00019 \textcolor{preprocessor}{    #error Recursive inclusion of OscSinCos code header.}
+00020 \textcolor{preprocessor}{#endif}
+\hypertarget{a00112_source_l00021}{}\hyperlink{a00112_a494ff2306ae58e9421db77eb15781a51}{00021} \textcolor{preprocessor}{#define ffft\_OscSinCos\_CURRENT\_CODEHEADER}
+00022 
+00023 \textcolor{preprocessor}{#if ! defined (ffft\_OscSinCos\_CODEHEADER\_INCLUDED)}
+\hypertarget{a00112_source_l00024}{}\hyperlink{a00112_ae01440666959e9c8b8737183e8a5b3ef}{00024} \textcolor{preprocessor}{#define ffft\_OscSinCos\_CODEHEADER\_INCLUDED}
+00025 
+00026 
+00027 
+00028 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) INCLUDE FILES \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00029 
+00030 \textcolor{preprocessor}{#include    <cmath>}
+00031 
+00032 \textcolor{keyword}{namespace }\hyperlink{a00144}{std} \{ \}
+00033 
+00034 
+00035 
+00036 \textcolor{keyword}{namespace }\hyperlink{a00142}{ffft}
+00037 \{
+00038 
+00039 
+00040 
+00041 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PUBLIC \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00042 
+00043 
+00044 
+00045 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>
+\hypertarget{a00112_source_l00046}{}\hyperlink{a00020_aed332791021f51d86b05594629244f1e}{00046} \hyperlink{a00020}{OscSinCos <T>::OscSinCos} ()
+00047 :   \_pos\_cos (1)
+00048 ,   \_pos\_sin (0)
+00049 ,   \_step\_cos (1)
+00050 ,   \_step\_sin (0)
+00051 \{
+00052     \textcolor{comment}{// Nothing}
+00053 \}
+00054 
+00055 
+00056 
+00057 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>
+\hypertarget{a00112_source_l00058}{}\hyperlink{a00020_ad41139a76b16a5af136d1e730a9143dc}{00058} \textcolor{keywordtype}{void}    \hyperlink{a00020}{OscSinCos <T>::set\_step} (\textcolor{keywordtype}{double} angle\_rad)
+00059 \{
+00060     \textcolor{keyword}{using namespace }\hyperlink{a00144}{std};
+00061 
+00062     \_step\_cos = static\_cast <\hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{DataType}> (cos (angle\_rad));
+00063     \_step\_sin = static\_cast <\hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{DataType}> (sin (angle\_rad));
+00064 \}
+00065 
+00066 
+00067 
+00068 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>
+\hypertarget{a00112_source_l00069}{}\hyperlink{a00020_aa903b64bed3d46a27aeb5af7d7154eb3}{00069} \textcolor{keyword}{typename} \hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{OscSinCos <T>::DataType} \hyperlink{a00020}{OscSinCos <T>::get\_cos} () \textcolor{keyword}{
+      const}
+00070 \{
+00071     \textcolor{keywordflow}{return} (\_pos\_cos);
+00072 \}
+00073 
+00074 
+00075 
+00076 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>
+\hypertarget{a00112_source_l00077}{}\hyperlink{a00020_a3e336802d9e10288483d477bfdf50c20}{00077} \textcolor{keyword}{typename} \hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{OscSinCos <T>::DataType} \hyperlink{a00020}{OscSinCos <T>::get\_sin} () \textcolor{keyword}{
+      const}
+00078 \{
+00079     \textcolor{keywordflow}{return} (\_pos\_sin);
+00080 \}
+00081 
+00082 
+00083 
+00084 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>
+\hypertarget{a00112_source_l00085}{}\hyperlink{a00020_a442975ce6388271ea78998c080364e08}{00085} \textcolor{keywordtype}{void}    \hyperlink{a00020}{OscSinCos <T>::step} ()
+00086 \{
+00087     \textcolor{keyword}{const} \hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{DataType}  old\_cos = \_pos\_cos;
+00088     \textcolor{keyword}{const} \hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{DataType}  old\_sin = \_pos\_sin;
+00089 
+00090     \_pos\_cos = old\_cos * \_step\_cos - old\_sin * \_step\_sin;
+00091     \_pos\_sin = old\_cos * \_step\_sin + old\_sin * \_step\_cos;
+00092 \}
+00093 
+00094 
+00095 
+00096 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>
+\hypertarget{a00112_source_l00097}{}\hyperlink{a00020_a1be4a9ec10517ae2615d2925c05d7d29}{00097} \textcolor{keywordtype}{void}    \hyperlink{a00020}{OscSinCos <T>::clear\_buffers} ()
+00098 \{
+00099     \_pos\_cos = static\_cast <\hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{DataType}> (1);
+00100     \_pos\_sin = static\_cast <\hyperlink{a00020_af91237051e92ce0af7aaf38b1826244d}{DataType}> (0);
+00101 \}
+00102 
+00103 
+00104 
+00105 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PROTECTED \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00106 
+00107 
+00108 
+00109 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PRIVATE \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00110 
+00111 
+00112 
+00113 \}   \textcolor{comment}{// namespace ffft}
+00114 
+00115 
+00116 
+00117 \textcolor{preprocessor}{#endif  // ffft\_OscSinCos\_CODEHEADER\_INCLUDED}
+00118 
+00119 \textcolor{preprocessor}{#undef ffft\_OscSinCos\_CURRENT\_CODEHEADER}
+00120 
+00121 
+00122 
+00123 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) EOF \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+\end{DoxyCode}

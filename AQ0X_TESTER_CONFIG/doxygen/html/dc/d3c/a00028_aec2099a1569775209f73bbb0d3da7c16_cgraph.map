@@ -1,0 +1,9 @@
+<map id="QCPCurve::outsideCoordsToPixels" name="QCPCurve::outsideCoordsToPixels">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#a7fe5b84f4891838b63ed5181f5811dc5" title="QCPAxis::axisRect" alt="" coords="248,5,383,32"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#ad1541f59ff23332e3245b74af2fd3833" title="axisRect" alt="" coords="279,56,352,83"/>
+<area shape="rect" id="node4" href="$dc/de2/a00024.html#ade710a776104b14c1c835168ce1bfc5c" title="QCPAbstractPlottable\l::coordsToPixels" alt="" coords="240,107,391,149"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a985ae693b842fb0422b4390fe36d299a" title="Transforms value (in coordinates of the axis) to pixel coordinates of the QCustomPlot widget..." alt="" coords="439,89,597,116"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#a57483f2f60145ddc9e63f3af53959265" title="Returns the orientation of the axis. " alt="" coords="645,140,789,167"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#a1385765db2419ee5fb5505a6cf9130fb" title="QCPAxis::baseLog" alt="" coords="651,39,784,65"/>
+<area shape="rect" id="node8" href="$d2/dee/a00049.html#afa57c13049b965edb6fd1c00ac56338a" title="Returns the size of the range, i.e. " alt="" coords="658,89,777,116"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="QCPStatisticalBox::clearData" name="QCPStatisticalBox::clearData">
+<area shape="rect" id="node2" href="$d5/de0/a00050.html#a84a1c6d34b2f9af40bca0c527d51e97e" title="Sets the key coordinate of the statistical box. " alt="" coords="192,5,331,47"/>
+<area shape="rect" id="node4" href="$d5/de0/a00050.html#a680941af5e23d902013962fa67223f9e" title="Sets the parameter &quot;lower Quartile&quot; of the statistical box plot. " alt="" coords="192,71,331,112"/>
+<area shape="rect" id="node5" href="$d5/de0/a00050.html#acec5ad1901f00f2c5387cfb4d9787eb3" title="Sets the parameter &quot;maximum&quot; of the statistical box plot. " alt="" coords="192,136,331,177"/>
+<area shape="rect" id="node6" href="$d5/de0/a00050.html#a65970e77a897da4ecb4b15300868aad3" title="Sets the parameter &quot;median&quot; of the statistical box plot. " alt="" coords="192,201,331,243"/>
+<area shape="rect" id="node7" href="$d5/de0/a00050.html#a84ff7cc61ba44890f0c3e0c99c19941e" title="Sets the parameter &quot;minimum&quot; of the statistical box plot. " alt="" coords="192,267,331,308"/>
+<area shape="rect" id="node8" href="$d5/de0/a00050.html#af9bc09620e0bf93bf444ee35e5800d1d" title="Sets a vector of outlier values that will be drawn as circles. " alt="" coords="192,332,331,373"/>
+<area shape="rect" id="node9" href="$d5/de0/a00050.html#a65a1375f941c5a2077b5201229e89346" title="Sets the parameter &quot;upper Quartile&quot; of the statistical box plot. " alt="" coords="192,397,331,439"/>
+<area shape="rect" id="node3" href="$d5/de0/a00050.html#a767af754f39872d6308b900a0d1758ca" title="QCPStatisticalBox::key" alt="" coords="379,13,539,39"/>
+</map>

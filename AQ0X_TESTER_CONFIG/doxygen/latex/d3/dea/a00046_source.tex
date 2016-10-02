@@ -1,0 +1,446 @@
+\hypertarget{a00046_source}{\section{slider.\+cpp}
+\label{a00046_source}\index{slider.\+cpp@{slider.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{a00025}{slider.h}"}
+00002 \textcolor{preprocessor}{#include "\hyperlink{a00003}{storage\_structure.h}"}
+00003 \textcolor{preprocessor}{#include <QScrollBar>}
+00004 \textcolor{preprocessor}{#include <QEvent>}
+00005 \textcolor{preprocessor}{#include <QKeyEvent>}
+00006 \textcolor{preprocessor}{#include <QDebug>}
+00007 \textcolor{preprocessor}{#include <QMenu>}
+00008 \textcolor{preprocessor}{#include <QLineEdit>}
+00009 \textcolor{preprocessor}{#include <QPushButton>}
+00010 \textcolor{preprocessor}{#include <QWidgetAction>}
+00011 \textcolor{preprocessor}{#include <QDoubleSpinBox>}
+00012 \textcolor{preprocessor}{#include <math.h>}
+00013 
+\hypertarget{a00046_source_l00014}{}\hyperlink{a00024_a4f5bd678ed7e386b568121eaeb0ce912}{00014} \hyperlink{a00024_a4f5bd678ed7e386b568121eaeb0ce912}{Slider::Slider}(\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} \textcolor{keywordtype}{id},QWidget *parent)
+00015     : \hyperlink{a00012}{QSlider}(parent)
+00016 \{
+00017 
+00018     this->\textcolor{keywordtype}{id} = id;
+00019     this->parent = (\hyperlink{a00004}{emu\_data\_editor} *)parent;
+00020 
+00021 
+00022     setMaximumWidth(40\textcolor{comment}{/*item width*/});
+00023     setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::Expanding);
+00024 
+00025     current\_style = \textcolor{stringliteral}{"QSlider \{ width: 5px; border: none; \}"}
+00026             \textcolor{stringliteral}{"QSlider::groove:veritcal \{"}
+00027             \textcolor{stringliteral}{"border: none;"}
+00028             \textcolor{stringliteral}{"background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1 #000000);"}
+00029 
+00030             \textcolor{stringliteral}{"margin: 0 0 0 0;\}"}
+00031             \textcolor{stringliteral}{"QSlider::handle:veritcal \{"}
+00032             \textcolor{stringliteral}{"background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);"}
+00033             \textcolor{stringliteral}{"border: none;"}
+00034             \textcolor{stringliteral}{"width: 5px;"}
+00035             \textcolor{stringliteral}{"height: 5px;"}
+00036             \textcolor{stringliteral}{"margin: 2px 2px 2px 2px;"}
+00037             \textcolor{stringliteral}{"border-radius: 2px;\}"};
+00038 
+00039      setStyleSheet(current\_style);
+00040 
+00041     \textcolor{comment}{// this->setSliderDown(true);}
+00042 
+00043     \hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.all = 0;
+00044 
+00045     connect(parent,SIGNAL(\hyperlink{a00024_adeebaace74ff3add2acd9147e96fc0a6}{edit\_point\_selection}(\textcolor{keywordtype}{bool})),\textcolor{keyword}{this},SLOT(
+      \hyperlink{a00024_adeebaace74ff3add2acd9147e96fc0a6}{edit\_point\_selection}(\textcolor{keywordtype}{bool})));
+00046     connect(parent,SIGNAL(\hyperlink{a00024_a105dff1f3ae7cfdcfabacd013428a501}{edit\_point\_deselection}(\textcolor{keywordtype}{bool})),\textcolor{keyword}{this},SLOT(
+      \hyperlink{a00024_a105dff1f3ae7cfdcfabacd013428a501}{edit\_point\_deselection}(\textcolor{keywordtype}{bool})));
+00047     connect(parent,SIGNAL(\hyperlink{a00024_a521ac5143857dd652a0bafa77389fa81}{adjust\_value}(\hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16})),\textcolor{keyword}{this},SLOT(
+      \hyperlink{a00024_a521ac5143857dd652a0bafa77389fa81}{adjust\_value}(\hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16})));
+00048     connect(parent,SIGNAL(\hyperlink{a00024_a886f07f2c612121bec703581f9398a10}{action\_set\_value}(\textcolor{keywordtype}{double},\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8})),\textcolor{keyword}{this},SLOT(
+      \hyperlink{a00024_ae3010d3de02715db2f443560d7d2a27b}{set\_value}(\textcolor{keywordtype}{double},\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8})));
+00049     connect(\textcolor{keyword}{this},SIGNAL(\hyperlink{a00024_a886f07f2c612121bec703581f9398a10}{action\_set\_value}(\textcolor{keywordtype}{double},\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8})),parent,SLOT(
+      action\_set\_value\_triggered(\textcolor{keywordtype}{double},\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8})));
+00050     connect(\textcolor{keyword}{this},SIGNAL(\hyperlink{a00024_a66bf875d43a16cf37527ab75c439fd8e}{selection}(\textcolor{keywordtype}{bool})),parent,SLOT(\hyperlink{a00024_a66bf875d43a16cf37527ab75c439fd8e}{selection}(\textcolor{keywordtype}{bool})));
+00051     connect(parent,SIGNAL(\hyperlink{a00024_a567902754e43310fe921b74c9d1862dd}{set\_status}(\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8})),\textcolor{keyword}{this},SLOT(\hyperlink{a00024_a567902754e43310fe921b74c9d1862dd}{set\_status}(
+      \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8})));
+00052     connect(\textcolor{keyword}{this},SIGNAL(sliderMoved(\textcolor{keywordtype}{int})),\textcolor{keyword}{this},SLOT(moved(\textcolor{keywordtype}{int})));
+00053     connect(parent,SIGNAL(\hyperlink{a00024_a4f62a01554ee8d975abe0cb136937695}{update\_value}()),\textcolor{keyword}{this},SLOT(\hyperlink{a00024_a4f62a01554ee8d975abe0cb136937695}{update\_value}()));
+00054     installEventFilter(\textcolor{keyword}{this});
+00055 \}
+00056 
+\hypertarget{a00046_source_l00057}{}\hyperlink{a00024_adeebaace74ff3add2acd9147e96fc0a6}{00057} \textcolor{keywordtype}{void} \hyperlink{a00024_adeebaace74ff3add2acd9147e96fc0a6}{Slider::edit\_point\_selection}(\textcolor{keywordtype}{bool} status)
+00058 \{
+00059     \hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_selection\_mode = status;
+00060 
+00061 \}
+00062 
+\hypertarget{a00046_source_l00063}{}\hyperlink{a00024_a105dff1f3ae7cfdcfabacd013428a501}{00063} \textcolor{keywordtype}{void} \hyperlink{a00024_a105dff1f3ae7cfdcfabacd013428a501}{Slider::edit\_point\_deselection}(\textcolor{keywordtype}{bool} status)
+00064 \{
+00065     \hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_deselection\_mode = status;
+00066 
+00067 \}
+00068 
+\hypertarget{a00046_source_l00069}{}\hyperlink{a00024_a521ac5143857dd652a0bafa77389fa81}{00069} \textcolor{keywordtype}{void} \hyperlink{a00024_a521ac5143857dd652a0bafa77389fa81}{Slider::adjust\_value}(\hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16} val)
+00070 \{
+00071     \textcolor{keywordflow}{if}(\hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_selected == 1)\{
+00072 
+00073 
+00074     \hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16} new\_value = this->value()+val;
+00075     \textcolor{keywordflow}{if}((new\_value >=0)&&(new\_value <=this->maximum()))\{
+00076         \hyperlink{a00024_ae3010d3de02715db2f443560d7d2a27b}{set\_value}(new\_value,\hyperlink{a00034_a16b6b7b5ad68ec0dd62a3c9e97f88adb}{SET\_TYPE\_ADJUST});
+00077 
+00078     \}
+00079 
+00080     \}
+00081 
+00082 
+00083 
+00084 
+00085 \}
+00086 
+00087 
+\hypertarget{a00046_source_l00088}{}\hyperlink{a00024_a4f62a01554ee8d975abe0cb136937695}{00088} \textcolor{keywordtype}{void} \hyperlink{a00024_a4f62a01554ee8d975abe0cb136937695}{Slider::update\_value}()\{
+00089 
+00090     \hyperlink{a00024_ae3010d3de02715db2f443560d7d2a27b}{set\_value}(this->value(),\hyperlink{a00034_a16b6b7b5ad68ec0dd62a3c9e97f88adb}{SET\_TYPE\_ADJUST});
+00091 
+00092 \}
+00093 
+00094 \textcolor{keywordtype}{void} Slider::moved(\textcolor{keywordtype}{int} value)\{
+00095 
+00096     \textcolor{keywordflow}{if}(isSliderDown())\{
+00097     \hyperlink{a00024_ae3010d3de02715db2f443560d7d2a27b}{set\_value}(value,\hyperlink{a00034_a16b6b7b5ad68ec0dd62a3c9e97f88adb}{SET\_TYPE\_ADJUST});
+00098     this->parent->\hyperlink{a00004_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00099     \}
+00100 \}
+00101 
+\hypertarget{a00046_source_l00102}{}\hyperlink{a00024_ae3010d3de02715db2f443560d7d2a27b}{00102} \textcolor{keywordtype}{void} \hyperlink{a00024_ae3010d3de02715db2f443560d7d2a27b}{Slider::set\_value}(\textcolor{keywordtype}{double} val, \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} type)
+00103 \{
+00104 
+00105 
+00106     \textcolor{keywordflow}{switch} (type) \{
+00107     \textcolor{keywordflow}{case} \hyperlink{a00034_a347f6ec80828b93988d22989c0df015f}{SET\_TYPE\_DC\_VALUE}:
+00108      \{
+00109         \textcolor{keywordflow}{if}(this->\hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_selected == 1)\{
+00110             \textcolor{keywordflow}{if}(this->parent->\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00111             this->setValue(2*(val)/\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR});
+00112             \textcolor{keywordflow}{else}
+00113             this->setValue((val)/\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR});
+00114 
+00115         this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[this->id]= val;
+00116 
+00117         \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} interval = (\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16})(\hyperlink{a00031_a8127170b687c1f67a968886c128e76e4}{SCAN\_FREQ}/(2*this->parent->
+      \hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\_freq}));
+00118 
+00119         \textcolor{keywordflow}{if}((this->\textcolor{keywordtype}{id} + interval) < this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}.length())
+00120         this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[this->id + interval]=
+00121         (this->parent->signal\_type ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00122         ?(-1*val):val;
+00123         \}
+00124 
+00125 
+00126         \textcolor{keywordflow}{break};
+00127     \}
+00128     \textcolor{keywordflow}{case} \hyperlink{a00034_a704f34d2cc6c149f96e9da9d2a1aa8c0}{SET\_TYPE\_AC\_AMPLITUDE}:
+00129       \{
+00130 
+00131         \textcolor{keywordflow}{if}(this->\hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_selected == 1)\{
+00132         \textcolor{keywordtype}{double} freq    = this->parent->\hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\_freq};
+00133         \textcolor{keywordtype}{double} phase   = this->parent->\hyperlink{a00004_af08de88fdfe283086e3cca97a2965678}{signal\_phase};
+00134         \textcolor{keywordtype}{double} new\_val = val*sin(2*M\_PI*freq*this->\textcolor{keywordtype}{id}*\hyperlink{a00031_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE} - 
+      phase);
+00135 
+00136 
+00137         \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} interval = (\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16})(\hyperlink{a00031_a8127170b687c1f67a968886c128e76e4}{SCAN\_FREQ}/(2*this->parent->
+      \hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\_freq}));
+00138 
+00139         this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[this->id]= new\_val;
+00140 
+00141        \textcolor{keywordflow}{if}((this->\textcolor{keywordtype}{id} + interval) < this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}.length())
+00142         this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[this->id + interval]=
+00143         (this->parent->signal\_type ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00144         ?(-1*new\_val):new\_val;
+00145 
+00146 
+00147         \textcolor{keywordflow}{if}(this->parent->\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00148         this->setValue((2*new\_val)/\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR});
+00149         \textcolor{keywordflow}{else}
+00150         this->setValue((new\_val)/\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR});
+00151         \}
+00152 
+00153     \textcolor{keywordflow}{break};
+00154      \}
+00155     \textcolor{keywordflow}{case} \hyperlink{a00034_afd1036bf6329d2ac31913e14c1f56725}{SET\_TYPE\_DEFAULT}:
+00156     \{
+00157         \textcolor{keywordtype}{double} amp     = this->parent->\hyperlink{a00004_a73dabe63bd74afe2776e8136211dc36e}{signal\_amplitude};
+00158         \textcolor{keywordtype}{double} freq    = this->parent->\hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\_freq};
+00159         \textcolor{keywordtype}{double} phase   = this->parent->\hyperlink{a00004_af08de88fdfe283086e3cca97a2965678}{signal\_phase};
+00160         \textcolor{keywordtype}{double} new\_val = amp*sin(2*M\_PI*freq*this->\textcolor{keywordtype}{id}*\hyperlink{a00031_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE} - 
+      phase);
+00161 
+00162 
+00163         \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} interval = (\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16})(\hyperlink{a00031_a8127170b687c1f67a968886c128e76e4}{SCAN\_FREQ}/(2*this->parent->
+      \hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\_freq}));
+00164 
+00165         this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[this->id]= new\_val;
+00166 
+00167         \textcolor{keywordflow}{if}((this->\textcolor{keywordtype}{id} + interval) < this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}.length())
+00168         this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[this->id + interval]=
+00169         (this->parent->signal\_type ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00170         ?(-1*new\_val):new\_val;
+00171 
+00172 
+00173 
+00174         \textcolor{keywordflow}{if}(this->parent->\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00175         this->setValue((2*new\_val)/\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR});
+00176         \textcolor{keywordflow}{else}
+00177         this->setValue((new\_val)/\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR});
+00178 
+00179 
+00180     \textcolor{keywordflow}{break};
+00181     \}
+00182 
+00183     \textcolor{keywordflow}{case} \hyperlink{a00034_a16b6b7b5ad68ec0dd62a3c9e97f88adb}{SET\_TYPE\_ADJUST}:
+00184     \{
+00185         this->setValue(val);
+00186 
+00187         \textcolor{keywordtype}{double} new\_val;
+00188 
+00189 
+00190 
+00191         \textcolor{keywordflow}{if}(this->parent->\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00192         new\_val = (val/2)*\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR};
+00193         \textcolor{keywordflow}{else}
+00194         new\_val = val*\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR};
+00195 
+00196 
+00197         \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} interval = (\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16})(\hyperlink{a00031_a8127170b687c1f67a968886c128e76e4}{SCAN\_FREQ}/(2*this->parent->
+      \hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\_freq}));
+00198 
+00199         this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[this->id]= new\_val;
+00200 
+00201         \textcolor{keywordflow}{if}((this->\textcolor{keywordtype}{id} + interval) < this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}.length())
+00202         this->parent->\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[this->id + interval]=
+00203         (this->parent->signal\_type ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00204         ?(-1*new\_val):new\_val;
+00205 
+00206         \textcolor{comment}{//emit update\_curve\_signal();}
+00207 
+00208     \textcolor{keywordflow}{break};
+00209     \}
+00210     \textcolor{keywordflow}{default}:
+00211         \textcolor{keywordflow}{break};
+00212     \}
+00213 
+00214 
+00215 
+00216 
+00217 \}
+00218 
+\hypertarget{a00046_source_l00219}{}\hyperlink{a00024_ab803f71d290c06c574e6d46be42e779e}{00219} \textcolor{keywordtype}{void} \hyperlink{a00024_ab803f71d290c06c574e6d46be42e779e}{Slider::keyPressEvent}(QKeyEvent *e)
+00220 \{
+00221 
+00222 
+00223     \textcolor{keywordflow}{if}(\hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_focuse\_en==1)\{
+00224 
+00225     \textcolor{keywordflow}{if}(e->key() == Qt::Key\_Up)\{
+00226         \hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16} new\_value;
+00227         \textcolor{keywordflow}{if}(this->parent->\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00228         new\_value= (this->value()/2)+10;
+00229         \textcolor{keywordflow}{else}
+00230         new\_value= (this->value())+10;
+00231         \textcolor{keywordflow}{if}((new\_value <=this->maximum()))\{
+00232             \hyperlink{a00024_ae3010d3de02715db2f443560d7d2a27b}{set\_value}(new\_value,\hyperlink{a00034_a16b6b7b5ad68ec0dd62a3c9e97f88adb}{SET\_TYPE\_ADJUST});
+00233             this->parent->\hyperlink{a00004_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00234         \}
+00235     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(e->key() == Qt::Key\_Down)\{
+00236         \hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16} new\_value;
+00237         \textcolor{keywordflow}{if}(this->parent->\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} ==\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00238         new\_value= (this->value()/2)-10;
+00239         \textcolor{keywordflow}{else}
+00240         new\_value= (this->value())-10;
+00241         \textcolor{keywordflow}{if}((new\_value >=0))\{
+00242             \hyperlink{a00024_ae3010d3de02715db2f443560d7d2a27b}{set\_value}(new\_value,\hyperlink{a00034_a16b6b7b5ad68ec0dd62a3c9e97f88adb}{SET\_TYPE\_ADJUST});
+00243             this->parent->\hyperlink{a00004_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00244         \}
+00245     \}
+00246     \}
+00247 
+00248     QSlider::keyPressEvent(e);
+00249 \}
+00250 
+\hypertarget{a00046_source_l00251}{}\hyperlink{a00024_aec3191237e5d11f90059f9758173b544}{00251} \textcolor{keywordtype}{bool} \hyperlink{a00024_aec3191237e5d11f90059f9758173b544}{Slider::eventFilter}(QObject *\textcolor{keywordtype}{object}, QEvent *event)
+00252 \{
+00253     \textcolor{keywordflow}{if} (event->type() == QEvent::FocusOut)
+00254     \{
+00255         \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object} == \textcolor{keyword}{this})
+00256         \{
+00257                \hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_focuse\_en = 0;
+00258                setStyleSheet(current\_style);
+00259         \}
+00260     \}
+00261     \textcolor{keywordflow}{if} (event->type() == QEvent::FocusIn)
+00262     \{
+00263         \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object} == \textcolor{keyword}{this})
+00264         \{
+00265             \hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_focuse\_en = 1;
+00266 
+00267             setStyleSheet(\textcolor{stringliteral}{"QSlider \{ width: 5px; border: none; \}"}
+00268                          \textcolor{stringliteral}{"QSlider::groove:veritcal \{"}
+00269                          \textcolor{stringliteral}{"border: none;"}
+00270                          \textcolor{stringliteral}{"background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1
+       #000000);"}
+00271 
+00272                          \textcolor{stringliteral}{"margin: 0 0 0 0;\}"}
+00273                          \textcolor{stringliteral}{"QSlider::handle:veritcal \{"}
+00274                          \textcolor{stringliteral}{"background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #75FF47, stop:1
+       #75FF47);"}
+00275                          \textcolor{stringliteral}{"border: none;"}
+00276                          \textcolor{stringliteral}{"width: 5px;"}
+00277                          \textcolor{stringliteral}{"height: 5px;"}
+00278                          \textcolor{stringliteral}{"margin: 2px 2px 2px 2px;"}
+00279                          \textcolor{stringliteral}{"border-radius: 2px;\}"});
+00280         \}
+00281     \}
+00282     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00283 \}
+00284 
+00285 
+\hypertarget{a00046_source_l00286}{}\hyperlink{a00024_ad7ad2fd0571f0f8486732f783802eb0e}{00286} \textcolor{keywordtype}{void} \hyperlink{a00024_ad7ad2fd0571f0f8486732f783802eb0e}{Slider::enterEvent}(QEvent *e)
+00287 \{
+00288 
+00289     QSlider::enterEvent(e);
+00290 \}
+00291 
+\hypertarget{a00046_source_l00292}{}\hyperlink{a00024_a40078aca597449b51938078628c695ae}{00292} \textcolor{keywordtype}{void} \hyperlink{a00024_a40078aca597449b51938078628c695ae}{Slider::leaveEvent}(QEvent *e)
+00293 \{
+00294     \hyperlink{a00024_a567902754e43310fe921b74c9d1862dd}{set\_status}(0);
+00295     QSlider::leaveEvent(e);
+00296 \}
+00297 
+00298 
+\hypertarget{a00046_source_l00299}{}\hyperlink{a00024_a99f35b6c6aa1ffa696ac44e558bb3dab}{00299} \textcolor{keywordtype}{void} \hyperlink{a00024_a99f35b6c6aa1ffa696ac44e558bb3dab}{Slider::mousePressEvent}(QMouseEvent *e)
+00300 \{
+00301    QSlider::mousePressEvent(e);
+00302 \}
+00303 
+\hypertarget{a00046_source_l00304}{}\hyperlink{a00024_a408a766481a987b9f165de7bd54a1a38}{00304} \textcolor{keywordtype}{void} \hyperlink{a00024_a408a766481a987b9f165de7bd54a1a38}{Slider::mouseDoubleClickEvent}(QMouseEvent *e)
+00305 \{
+00306     Q\_UNUSED(e)
+00307 \}
+00308 
+\hypertarget{a00046_source_l00309}{}\hyperlink{a00024_ac5ddce14c487d6bc720035cf338e8021}{00309} \textcolor{keywordtype}{void} \hyperlink{a00024_ac5ddce14c487d6bc720035cf338e8021}{Slider::contextMenuEvent}(QContextMenuEvent *e)
+00310 \{
+00311     QMenu menu;
+00312 
+00313     QMenu   *waveform = menu.addMenu(\textcolor{stringliteral}{"Waveform"});
+00314              \textcolor{comment}{//waveform->setIcon(QIcon(":icons\(\backslash\)signal"));}
+00315 
+00316     QMenu   *dc = waveform->addMenu(\textcolor{stringliteral}{"DC (Constant value)"});
+00317     QDoubleSpinBox *value\_dc = \textcolor{keyword}{new} QDoubleSpinBox();
+00318 
+00319     \textcolor{keywordflow}{if}(this->parent->\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} == \hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})\{
+00320     value\_dc->setMaximum(50);
+00321     value\_dc->setMinimum(-50);
+00322     \}\textcolor{keywordflow}{else}\{
+00323     value\_dc->setMaximum(100);
+00324     value\_dc->setMinimum(0);
+00325     \}
+00326     QWidgetAction *action\_dc = \textcolor{keyword}{new} QWidgetAction(\textcolor{keyword}{this});
+00327     action\_dc->setDefaultWidget(value\_dc);
+00328     dc->addAction(action\_dc);
+00329     QAction *set\_dc = dc->addAction(\textcolor{stringliteral}{"Set Value"});
+00330 
+00331     QMenu   *ac = waveform->addMenu(\textcolor{stringliteral}{"AC (Sinusoid)"});
+00332     QDoubleSpinBox *value\_ac = \textcolor{keyword}{new} QDoubleSpinBox();
+00333 
+00334 
+00335     \textcolor{keywordflow}{if}(this->parent->\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} == \hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})\{
+00336     value\_ac->setMaximum(50);
+00337     value\_ac->setMinimum(-50);
+00338     \}\textcolor{keywordflow}{else}\{
+00339     value\_ac->setMaximum(100);
+00340     value\_ac->setMinimum(0);
+00341     \}
+00342     QWidgetAction *action\_ac = \textcolor{keyword}{new} QWidgetAction(\textcolor{keyword}{this});
+00343     action\_ac->setDefaultWidget(value\_ac);
+00344     ac->addAction(action\_ac);
+00345     QAction *set\_ac = ac->addAction(\textcolor{stringliteral}{"Set Value"});
+00346 
+00347 
+00348     QAction *select\_all = menu.addAction(\textcolor{stringliteral}{"Select all"});
+00349     QAction *clear\_all = menu.addAction(\textcolor{stringliteral}{"Clear selection"});
+00350     QAction *reset = menu.addAction(\textcolor{stringliteral}{"Reset curve"});
+00351 
+00352     QAction *selectedAction = menu.exec(e->globalPos());
+00353 
+00354     \textcolor{keywordflow}{if}(selectedAction == set\_dc)
+00355     \{
+00356 
+00357         emit \hyperlink{a00024_a886f07f2c612121bec703581f9398a10}{action\_set\_value}(value\_dc->value(),
+      \hyperlink{a00034_a347f6ec80828b93988d22989c0df015f}{SET\_TYPE\_DC\_VALUE});
+00358 
+00359     \}\textcolor{keywordflow}{if}(selectedAction == set\_ac)
+00360     \{
+00361          emit \hyperlink{a00024_a886f07f2c612121bec703581f9398a10}{action\_set\_value}(value\_ac->value(),
+      \hyperlink{a00034_a704f34d2cc6c149f96e9da9d2a1aa8c0}{SET\_TYPE\_AC\_AMPLITUDE});
+00362     \}\textcolor{keywordflow}{else}
+00363     \textcolor{keywordflow}{if}(selectedAction == select\_all)
+00364     \{
+00365          emit \hyperlink{a00024_a66bf875d43a16cf37527ab75c439fd8e}{selection}(\textcolor{keyword}{false});
+00366     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(selectedAction == clear\_all)
+00367     \{
+00368          emit \hyperlink{a00024_a66bf875d43a16cf37527ab75c439fd8e}{selection}(\textcolor{keyword}{true});
+00369     \}
+00370     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(selectedAction == reset)
+00371     \{
+00372          emit \hyperlink{a00024_a886f07f2c612121bec703581f9398a10}{action\_set\_value}(0,\hyperlink{a00034_afd1036bf6329d2ac31913e14c1f56725}{SET\_TYPE\_DEFAULT});
+00373     \}
+00374 
+00375 
+00376 \}
+00377 
+00378 
+\hypertarget{a00046_source_l00379}{}\hyperlink{a00024_a567902754e43310fe921b74c9d1862dd}{00379} \textcolor{keywordtype}{void} \hyperlink{a00024_a567902754e43310fe921b74c9d1862dd}{Slider::set\_status}(\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} select)\{
+00380 
+00381     \textcolor{keywordflow}{if} (\hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_selection\_mode==1 || select == 1)
+00382     \{
+00383        \hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_selected=1;
+00384      current\_style = \textcolor{stringliteral}{"QSlider \{ width: 5px; border: none; \}"}
+00385                   \textcolor{stringliteral}{"QSlider::groove:veritcal \{"}
+00386                   \textcolor{stringliteral}{"border: none;"}
+00387                   \textcolor{stringliteral}{"background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1 #000000);"}
+00388 
+00389                   \textcolor{stringliteral}{"margin: 0 0 0 0;\}"}
+00390                   \textcolor{stringliteral}{"QSlider::handle:veritcal \{"}
+00391                   \textcolor{stringliteral}{"background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #FF0000, stop:1 #FF0000);"}
+00392                   \textcolor{stringliteral}{"border: none;"}
+00393                   \textcolor{stringliteral}{"width: 5px;"}
+00394                   \textcolor{stringliteral}{"height: 5px;"}
+00395                   \textcolor{stringliteral}{"margin: 2px 2px 2px 2px;"}
+00396                   \textcolor{stringliteral}{"border-radius: 2px;\}"};
+00397      setStyleSheet(current\_style);
+00398     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_deselection\_mode==1 || select==2)
+00399     \{
+00400        \hyperlink{a00024_ade6449558d429b66e5ed1381bc9b9060}{flags}.bits.point\_selected=0;
+00401 
+00402        current\_style = \textcolor{stringliteral}{"QSlider \{ width: 5px; border: none; \}"}
+00403                     \textcolor{stringliteral}{"QSlider::groove:veritcal \{"}
+00404                     \textcolor{stringliteral}{"border: none;"}
+00405                     \textcolor{stringliteral}{"background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1 #000000);"}
+00406 
+00407                     \textcolor{stringliteral}{"margin: 0 0 0 0;\}"}
+00408                     \textcolor{stringliteral}{"QSlider::handle:veritcal \{"}
+00409                     \textcolor{stringliteral}{"background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);"}
+00410                     \textcolor{stringliteral}{"border: none;"}
+00411                     \textcolor{stringliteral}{"width: 5px;"}
+00412                     \textcolor{stringliteral}{"height: 5px;"}
+00413                     \textcolor{stringliteral}{"margin: 2px 2px 2px 2px;"}
+00414                     \textcolor{stringliteral}{"border-radius: 2px;\}"};
+00415 
+00416        setStyleSheet(current\_style);
+00417     \}
+00418 
+00419 
+00420 
+00421 \}
+00422 
+00423 
+00424 
+\end{DoxyCode}

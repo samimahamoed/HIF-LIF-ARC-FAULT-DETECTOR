@@ -1,0 +1,9 @@
+<map id="QCPLayer::removeChild" name="QCPLayer::removeChild">
+<area shape="rect" id="node2" href="$d5/df9/a00044.html#af94484cfb7cbbddb7de522e9be71d9a4" title="QCPLayerable::moveToLayer" alt="" coords="221,56,412,83"/>
+<area shape="rect" id="node8" href="$d5/df9/a00044.html#a4231cf5b3601d6d3a5781283e7a9735b" title="QCPLayerable::~QCPLayerable" alt="" coords="213,107,420,133"/>
+<area shape="rect" id="node3" href="$d5/df9/a00044.html#ab0d0da6d2de45a118886d2c8e16d5a54" title="Sets the layer of this layerable object. " alt="" coords="468,56,632,83"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#ab7ad9174f701f9c6f64e378df77927a6" title="Adds the specified plottable to the plot and, if setAutoAddPlottableToLegend is enabled, to the legend. " alt="" coords="732,5,827,32"/>
+<area shape="rect" id="node6" href="$d5/df9/a00044.html#a13db44e350bb2c681d2e31e2208e23f9" title="Creates a new QCPLayerable instance. " alt="" coords="680,56,879,83"/>
+<area shape="rect" id="node7" href="$d5/df9/a00044.html#ab25a0e7b897993b44447caee0f142083" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="697,107,861,133"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a6fb2873d35a8a8089842d81a70a54167" title="Creates a new graph inside the plot. " alt="" coords="927,5,1005,32"/>
+</map>

@@ -1,0 +1,201 @@
+.TH "ir_sensor_prv.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ir_sensor_prv.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBir_sen_data_t\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_MSG_IR_SENSOR_SV\fP   (\fBX_MSG_FREE\fP + 2)"
+.br
+.RI "\fIInternal event message, initiates periodic supervision\&. \fP"
+.ti -1c
+.RI "#define \fBX_NTF_IR_SENSOR_SV_TIMER\fP   (\fBX_NTF_FREE\fP + 12)"
+.br
+.RI "\fIInternal supervison timer\&. \fP"
+.ti -1c
+.RI "#define \fBSV_TIMER_PERIOD\fP   1000"
+.br
+.RI "\fITimeout\&. \fP"
+.ti -1c
+.RI "#define \fBSV_TIMER_LED_ON_PERIOD\fP   10"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFloat32\fP \fBir_sen_first_order_derivative\fP (\fBUint16\fP final_val, \fBUint16\fP init_val)"
+.br
+.RI "\fIClaculate first order derivative\&. \fP"
+.ti -1c
+.RI "\fBFloat32\fP \fBir_sen_calc_probablity\fP (\fBUint16\fP event, \fBUint16\fP obs)"
+.br
+.RI "\fIClaculates the event probablity\&. \fP"
+.ti -1c
+.RI "\fBInt8\fP \fBir_compare\fP (\fBFloat32\fP num, \fBFloat32\fP given_num, \fBFloat32\fP tolerance)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBir_sen_data_t\fP \fBir_sen_data\fP"
+.br
+.RI "\fIInternal ir_sen module data\&. \fP"
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct ir_sen_data_t"
+.PP 
+Definition at line 27 of file ir_sensor_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfigured\fP stores user configuration details 
+.br
+.PP
+\fBdiagonesis_records_light_t\fP \fIdiagonesis_records\fP holds diagonesis data on the module operation 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP * \fIdisturbance_record\fP disturbance record storage , details starting form the first event detection to the duration of observation record length 
+.br
+.PP
+\fBmodule_status_t\fP \fImodule_status\fP holds details about the module current status 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fIsv_errors_flags\fP supervission error flags 
+.br
+.PP
+\fBx_notify_module_sv_status_report_t\fP \fIsv_status_ntf\fP 
+.br
+.PP
+\fBx_event\fP \fIsv_task_event\fP Internal event for processing light module suppervission task\&. 
+.br
+.PP
+\fBx_notify\fP \fIsv_timer_ntf\fP Timer notification to initiate light module suppervission task\&. 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define SV_TIMER_LED_ON_PERIOD   10"
+
+.PP
+Definition at line 21 of file ir_sensor_prv\&.h\&.
+.SS "#define SV_TIMER_PERIOD   1000"
+
+.PP
+Timeout\&. 
+.PP
+Definition at line 20 of file ir_sensor_prv\&.h\&.
+.PP
+Referenced by algorithm_taskx(), ir_sen_notifyx(), light_sen_notifyx(), mfield_x_sen_notifyx(), mfield_z_sen_notifyx(), and uv_sen_notifyx()\&.
+.SS "#define X_MSG_IR_SENSOR_SV   (\fBX_MSG_FREE\fP + 2)"
+
+.PP
+Internal event message, initiates periodic supervision\&. 
+.PP
+Definition at line 13 of file ir_sensor_prv\&.h\&.
+.PP
+Referenced by ir_sen_taskx()\&.
+.SS "#define X_NTF_IR_SENSOR_SV_TIMER   (\fBX_NTF_FREE\fP + 12)"
+
+.PP
+Internal supervison timer\&. 
+.PP
+Definition at line 16 of file ir_sensor_prv\&.h\&.
+.PP
+Referenced by ir_sen_notifyx()\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBInt8\fP ir_compare (\fBFloat32\fPnum1, \fBFloat32\fPnum2, \fBFloat32\fPtolerance)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fI\fP 
+.RE
+.PP
+
+.PP
+Definition at line 215 of file ir_sensor\&.c\&.
+.PP
+.nf
+215                                                                {
+216 
+217 
+218    Float32 difference = num1 - num2;
+219      
+220    if(abs(difference) <= tolerance)
+221     return  0;
+222 
+223    if(difference > 0/*num1 > num2*/)
+224     return 1;
+225   
+226    if(difference < 0/*num1 < num2*/)
+227     return -1;
+228     
+229    return -2;
+230 }
+.fi
+.SS "\fBFloat32\fP ir_sen_calc_probablity (\fBUint16\fPevent, \fBUint16\fPobs)"
+
+.PP
+Claculates the event probablity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent,positive\fP event count value 
+.br
+\fIobs,total\fP number of observation 
+.RE
+.PP
+
+.PP
+Definition at line 251 of file ir_sensor\&.c\&.
+.PP
+.nf
+251                                                        {
+252    
+253     return (100L*((Float32)event/(Float32)obs));
+254 }
+.fi
+.SS "\fBFloat32\fP ir_sen_first_order_derivative (\fBUint16\fPfinal_val, \fBUint16\fPinit_val)"
+
+.PP
+Claculate first order derivative\&. 
+.PP
+Definition at line 238 of file ir_sensor\&.c\&.
+.PP
+.nf
+238                                                                         {
+239     return ((Float32)final_val-(Float32)init_val);
+240 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBir_sen_data_t\fP ir_sen_data"
+
+.PP
+Internal ir_sen module data\&. 
+.PP
+Definition at line 22 of file ir_sensor\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

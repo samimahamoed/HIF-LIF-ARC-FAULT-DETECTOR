@@ -1,0 +1,489 @@
+.TH "QCPAbstractLegendItem" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPAbstractLegendItem \- 
+.PP
+The abstract base class for all items in a \fBQCPLegend\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQObject\fP\&.
+.PP
+Inherited by \fBQCPPlottableLegendItem\fP\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBselectionChanged\fP (bool \fBselected\fP)"
+.br
+.RI "\fIThis signal is emitted when the selection state of this legend item has changed, either by user interaction or by a direct call to \fBsetSelected\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPAbstractLegendItem\fP (\fBQCPLegend\fP *parent)"
+.br
+.RI "\fIConstructs a \fBQCPAbstractLegendItem\fP and associates it with the \fBQCPLegend\fP \fIparent\fP\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPAbstractLegendItem\fP ()"
+.br
+.ti -1c
+.RI "bool \fBantialiased\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBfont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBtextColor\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBselectedFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBselectedTextColor\fP () const "
+.br
+.ti -1c
+.RI "bool \fBselectable\fP () const "
+.br
+.ti -1c
+.RI "bool \fBselected\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetAntialiased\fP (bool enabled)"
+.br
+.RI "\fISets whether this legend item is drawn antialiased or not\&. \fP"
+.ti -1c
+.RI "void \fBsetFont\fP (const QFont &\fBfont\fP)"
+.br
+.RI "\fISets the default font of this specific legend item to \fIfont\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetTextColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the default text color of this specific legend item to \fIcolor\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedFont\fP (const QFont &\fBfont\fP)"
+.br
+.RI "\fIWhen this legend item is selected, \fIfont\fP is used to draw generic text, instead of the normal font set with \fBsetFont\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedTextColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fIWhen this legend item is selected, \fIcolor\fP is used to draw generic text, instead of the normal color set with \fBsetTextColor\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectable\fP (bool \fBselectable\fP)"
+.br
+.RI "\fISets whether this specific legend item is selectable\&. \fP"
+.ti -1c
+.RI "void \fBsetSelected\fP (bool \fBselected\fP)"
+.br
+.RI "\fISets whether this specific legend item is selected\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter, const QRect &rect) const =0"
+.br
+.RI "\fIDraws this legend item with \fIpainter\fP inside the specified \fIrect\fP\&. \fP"
+.ti -1c
+.RI "virtual QSize \fBsize\fP (const QSize &targetSize) const =0"
+.br
+.RI "\fIReturns the size this item occupies in the legend\&. \fP"
+.ti -1c
+.RI "void \fBapplyAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPLegend\fP * \fBmParentLegend\fP"
+.br
+.ti -1c
+.RI "bool \fBmAntialiased\fP"
+.br
+.ti -1c
+.RI "QFont \fBmFont\fP"
+.br
+.ti -1c
+.RI "QColor \fBmTextColor\fP"
+.br
+.ti -1c
+.RI "QFont \fBmSelectedFont\fP"
+.br
+.ti -1c
+.RI "QColor \fBmSelectedTextColor\fP"
+.br
+.ti -1c
+.RI "bool \fBmSelectable\fP"
+.br
+.ti -1c
+.RI "bool \fBmSelected\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The abstract base class for all items in a \fBQCPLegend\fP\&. 
+
+It defines a very basic interface to items in a \fBQCPLegend\fP\&. For representing plottables in the legend, the subclass \fBQCPPlottableLegendItem\fP is more suitable\&.
+.PP
+Only derive directly from this class when you need absolute freedom (i\&.e\&. a legend item that's not associated with a plottable)\&.
+.PP
+You must implement the following pure virtual functions: 
+.PD 0
+
+.IP "\(bu" 2
+\fBdraw\fP 
+.IP "\(bu" 2
+\fBsize\fP
+.PP
+You inherit the following members you may use: \fBQCPLegend\fP *\fBmParentLegend\fP  A pointer to the parent \fBQCPLegend\fP\&. QFont \fBmFont\fP  The generic font of the item\&. You should use this font for all or at least the most prominent text of the item\&.  
+.PP
+Definition at line 1348 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPAbstractLegendItem::QCPAbstractLegendItem (\fBQCPLegend\fP *parent)"
+
+.PP
+Constructs a \fBQCPAbstractLegendItem\fP and associates it with the \fBQCPLegend\fP \fIparent\fP\&. This does not cause the item to be added to \fIparent\fP, so \fBQCPLegend::addItem\fP must be called separately\&. 
+.PP
+Definition at line 8895 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+8895                                                               : 
+8896   QObject(parent),
+8897   mParentLegend(parent),
+8898   mAntialiased(false),
+8899   mFont(parent->font()),
+8900   mTextColor(parent->textColor()),
+8901   mSelectedFont(parent->selectedFont()),
+8902   mSelectedTextColor(parent->selectedTextColor()),
+8903   mSelectable(true),
+8904   mSelected(false)
+8905 {
+8906 }
+.fi
+.SS "virtual QCPAbstractLegendItem::~QCPAbstractLegendItem ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 1353 of file qcustomplot\&.h\&.
+.PP
+.nf
+1353 {}
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QCPAbstractLegendItem::antialiased () const\fC [inline]\fP"
+
+.PP
+Definition at line 1356 of file qcustomplot\&.h\&.
+.PP
+.nf
+1356 { return mAntialiased; }
+.fi
+.SS "void QCPAbstractLegendItem::applyAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP"
+Sets the QPainter::Antialiasing render hint on the provided \fIpainter\fP, depending on the \fBsetAntialiased\fP state of this legend item as well as the overrides \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. 
+.PP
+Definition at line 8996 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeLegendItems, mAntialiased, mParentLegend, QCPLayerable::mParentPlot, and QCPPainter::setAntialiasing()\&.
+.PP
+.nf
+8997 {
+8998   if (mParentLegend->mParentPlot->notAntialiasedElements()\&.testFlag(QCP::aeLegendItems))
+8999     painter->setAntialiasing(false);
+9000   else if (mParentLegend->mParentPlot->antialiasedElements()\&.testFlag(QCP::aeLegendItems))
+9001     painter->setAntialiasing(true);
+9002   else
+9003     painter->setAntialiasing(mAntialiased);
+9004 }
+.fi
+.SS "void QCPAbstractLegendItem::draw (\fBQCPPainter\fP *painter, const QRect &rect) const\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Draws this legend item with \fIpainter\fP inside the specified \fIrect\fP\&. The \fIrect\fP typically has the size which was returned from a preceding \fBsize\fP call\&. 
+.PP
+Implemented in \fBQCPPlottableLegendItem\fP\&.
+.SS "QFont QCPAbstractLegendItem::font () const\fC [inline]\fP"
+
+.PP
+Definition at line 1357 of file qcustomplot\&.h\&.
+.PP
+Referenced by setFont(), and setSelectedFont()\&.
+.PP
+.nf
+1357 { return mFont; }
+.fi
+.SS "bool QCPAbstractLegendItem::selectable () const\fC [inline]\fP"
+
+.PP
+Definition at line 1361 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPLegend::handleLegendSelection(), and setSelectable()\&.
+.PP
+.nf
+1361 { return mSelectable; }
+.fi
+.SS "bool QCPAbstractLegendItem::selected () const\fC [inline]\fP"
+
+.PP
+Definition at line 1362 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPLegend::handleLegendSelection(), and setSelected()\&.
+.PP
+.nf
+1362 { return mSelected; }
+.fi
+.SS "QFont QCPAbstractLegendItem::selectedFont () const\fC [inline]\fP"
+
+.PP
+Definition at line 1359 of file qcustomplot\&.h\&.
+.PP
+.nf
+1359 { return mSelectedFont; }
+.fi
+.SS "QColor QCPAbstractLegendItem::selectedTextColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1360 of file qcustomplot\&.h\&.
+.PP
+.nf
+1360 { return mSelectedTextColor; }
+.fi
+.SS "void QCPAbstractLegendItem::selectionChanged (boolselected)\fC [signal]\fP"
+
+.PP
+This signal is emitted when the selection state of this legend item has changed, either by user interaction or by a direct call to \fBsetSelected\fP\&. 
+.PP
+Definition at line 1318 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by setSelected()\&.
+.PP
+.nf
+1319 {
+1320     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+1321     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+1322 }
+.fi
+.SS "void QCPAbstractLegendItem::setAntialiased (boolenabled)"
+
+.PP
+Sets whether this legend item is drawn antialiased or not\&. Note that this setting may be overridden by \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. 
+.PP
+Definition at line 8914 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiased\&.
+.PP
+.nf
+8915 {
+8916   mAntialiased = enabled;
+8917 }
+.fi
+.SS "void QCPAbstractLegendItem::setFont (const QFont &font)"
+
+.PP
+Sets the default font of this specific legend item to \fIfont\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTextColor\fP, \fBQCPLegend::setFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8924 of file qcustomplot\&.cpp\&.
+.PP
+References font(), and mFont\&.
+.PP
+.nf
+8925 {
+8926   mFont = font;
+8927 }
+.fi
+.SS "void QCPAbstractLegendItem::setSelectable (boolselectable)"
+
+.PP
+Sets whether this specific legend item is selectable\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 8966 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectable, and selectable()\&.
+.PP
+.nf
+8967 {
+8968   mSelectable = selectable;
+8969 }
+.fi
+.SS "void QCPAbstractLegendItem::setSelected (boolselected)"
+
+.PP
+Sets whether this specific legend item is selected\&. The selection state of the parent \fBQCPLegend\fP is updated correspondingly\&.
+.PP
+It is possible to set the selection state of this item by calling this function directly, even if setSelectable is set to false\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectable\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 8980 of file qcustomplot\&.cpp\&.
+.PP
+References mParentLegend, mSelected, selected(), selectionChanged(), and QCPLegend::updateSelectionState()\&.
+.PP
+Referenced by QCPLegend::handleLegendSelection()\&.
+.PP
+.nf
+8981 {
+8982   if (mSelected != selected)
+8983   {
+8984     mSelected = selected;
+8985     emit selectionChanged(mSelected);
+8986     mParentLegend->updateSelectionState();
+8987   }
+8988 }
+.fi
+.SS "void QCPAbstractLegendItem::setSelectedFont (const QFont &font)"
+
+.PP
+When this legend item is selected, \fIfont\fP is used to draw generic text, instead of the normal font set with \fBsetFont\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetFont\fP, \fBQCPLegend::setSelectedFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8945 of file qcustomplot\&.cpp\&.
+.PP
+References font(), and mSelectedFont\&.
+.PP
+.nf
+8946 {
+8947   mSelectedFont = font;
+8948 }
+.fi
+.SS "void QCPAbstractLegendItem::setSelectedTextColor (const QColor &color)"
+
+.PP
+When this legend item is selected, \fIcolor\fP is used to draw generic text, instead of the normal color set with \fBsetTextColor\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTextColor\fP, \fBQCPLegend::setSelectedTextColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8956 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mSelectedTextColor\&.
+.PP
+.nf
+8957 {
+8958   mSelectedTextColor = color;
+8959 }
+.fi
+.SS "void QCPAbstractLegendItem::setTextColor (const QColor &color)"
+
+.PP
+Sets the default text color of this specific legend item to \fIcolor\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetFont\fP, \fBQCPLegend::setTextColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8934 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mTextColor\&.
+.PP
+.nf
+8935 {
+8936   mTextColor = color;
+8937 }
+.fi
+.SS "QSize QCPAbstractLegendItem::size (const QSize &targetSize) const\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Returns the size this item occupies in the legend\&. The legend will adapt its layout with the help of this function\&. If this legend item can have a variable width (e\&.g\&. auto-wrapping text), this function tries to find a size with a width close to the width of \fItargetSize\fP\&. The height of \fItargetSize\fP only may have meaning in specific sublasses\&. Typically, it's ignored\&. 
+.PP
+Implemented in \fBQCPPlottableLegendItem\fP\&.
+.SS "QColor QCPAbstractLegendItem::textColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1358 of file qcustomplot\&.h\&.
+.PP
+.nf
+1358 { return mTextColor; }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "bool QCPAbstractLegendItem::mAntialiased\fC [protected]\fP"
+
+.PP
+Definition at line 1378 of file qcustomplot\&.h\&.
+.PP
+Referenced by applyAntialiasingHint(), and setAntialiased()\&.
+.SS "QFont QCPAbstractLegendItem::mFont\fC [protected]\fP"
+
+.PP
+Definition at line 1379 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::getFont(), and setFont()\&.
+.SS "\fBQCPLegend\fP* QCPAbstractLegendItem::mParentLegend\fC [protected]\fP"
+
+.PP
+Definition at line 1377 of file qcustomplot\&.h\&.
+.PP
+Referenced by applyAntialiasingHint(), QCPPlottableLegendItem::draw(), QCPPlottableLegendItem::getIconBorderPen(), setSelected(), and QCPPlottableLegendItem::size()\&.
+.SS "bool QCPAbstractLegendItem::mSelectable\fC [protected]\fP"
+
+.PP
+Definition at line 1383 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSelectable()\&.
+.SS "bool QCPAbstractLegendItem::mSelected\fC [protected]\fP"
+
+.PP
+Definition at line 1383 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::getFont(), QCPPlottableLegendItem::getIconBorderPen(), QCPPlottableLegendItem::getTextColor(), and setSelected()\&.
+.SS "QFont QCPAbstractLegendItem::mSelectedFont\fC [protected]\fP"
+
+.PP
+Definition at line 1381 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::getFont(), and setSelectedFont()\&.
+.SS "QColor QCPAbstractLegendItem::mSelectedTextColor\fC [protected]\fP"
+
+.PP
+Definition at line 1382 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::getTextColor(), and setSelectedTextColor()\&.
+.SS "QColor QCPAbstractLegendItem::mTextColor\fC [protected]\fP"
+
+.PP
+Definition at line 1380 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPPlottableLegendItem::getTextColor(), and setTextColor()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

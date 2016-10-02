@@ -1,0 +1,921 @@
+.TH "QCPAbstractItem" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPAbstractItem \- 
+.PP
+The abstract base class for all items in a plot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPLayerable\fP\&.
+.PP
+Inherited by \fBQCPItemBracket\fP, \fBQCPItemCurve\fP, \fBQCPItemEllipse\fP, \fBQCPItemLine\fP, \fBQCPItemPixmap\fP, \fBQCPItemRect\fP, \fBQCPItemStraightLine\fP, \fBQCPItemText\fP, and \fBQCPItemTracer\fP\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBselectionChanged\fP (bool \fBselected\fP)"
+.br
+.RI "\fIThis signal is emitted when the selection state of this item has changed, either by user interaction or by a direct call to \fBsetSelected\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPAbstractItem\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fIBase class constructor which initializes base class members\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPAbstractItem\fP ()"
+.br
+.ti -1c
+.RI "bool \fBclipToAxisRect\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBclipKeyAxis\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBclipValueAxis\fP () const "
+.br
+.ti -1c
+.RI "bool \fBselectable\fP () const "
+.br
+.ti -1c
+.RI "bool \fBselected\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetClipToAxisRect\fP (bool clip)"
+.br
+.RI "\fISets whether the item shall be clipped to the axis rect or whether it shall be visible on the entire \fBQCustomPlot\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetClipAxes\fP (\fBQCPAxis\fP *keyAxis, \fBQCPAxis\fP *valueAxis)"
+.br
+.RI "\fISets both clip axes\&. \fP"
+.ti -1c
+.RI "void \fBsetClipKeyAxis\fP (\fBQCPAxis\fP *axis)"
+.br
+.RI "\fISets the clip key axis\&. \fP"
+.ti -1c
+.RI "void \fBsetClipValueAxis\fP (\fBQCPAxis\fP *axis)"
+.br
+.RI "\fISets the clip value axis\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectable\fP (bool \fBselectable\fP)"
+.br
+.RI "\fISets whether the user can (de-)select this item by clicking on the \fBQCustomPlot\fP surface\&. \fP"
+.ti -1c
+.RI "void \fBsetSelected\fP (bool \fBselected\fP)"
+.br
+.RI "\fISets whether this item is selected or not\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const =0"
+.br
+.RI "\fIThis function is used to decide whether a click hits an item or not\&. \fP"
+.ti -1c
+.RI "QList< \fBQCPItemPosition\fP * > \fBpositions\fP () const "
+.br
+.RI "\fIReturns all positions of the item in a list\&. \fP"
+.ti -1c
+.RI "QList< \fBQCPItemAnchor\fP * > \fBanchors\fP () const "
+.br
+.RI "\fIReturns all anchors of the item in a list\&. \fP"
+.ti -1c
+.RI "\fBQCPItemPosition\fP * \fBposition\fP (const QString &name) const "
+.br
+.RI "\fIReturns the \fBQCPItemPosition\fP with the specified \fIname\fP\&. \fP"
+.ti -1c
+.RI "\fBQCPItemAnchor\fP * \fBanchor\fP (const QString &name) const "
+.br
+.RI "\fIReturns the \fBQCPItemAnchor\fP with the specified \fIname\fP\&. \fP"
+.ti -1c
+.RI "bool \fBhasAnchor\fP (const QString &name) const "
+.br
+.RI "\fIReturns whether this item has an anchor with the specified \fIname\fP\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual QRect \fBclipRect\fP () const "
+.br
+.ti -1c
+.RI "virtual void \fBapplyDefaultAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)=0"
+.br
+.ti -1c
+.RI "double \fBdistSqrToLine\fP (const QPointF &start, const QPointF &end, const QPointF &point) const "
+.br
+.ti -1c
+.RI "double \fBrectSelectTest\fP (const QRectF &rect, const QPointF &pos, bool filledRect) const "
+.br
+.ti -1c
+.RI "virtual QPointF \fBanchorPixelPoint\fP (int anchorId) const "
+.br
+.ti -1c
+.RI "\fBQCPItemPosition\fP * \fBcreatePosition\fP (const QString &name)"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP * \fBcreateAnchor\fP (const QString &name, int anchorId)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBmClipToAxisRect\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmClipKeyAxis\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmClipValueAxis\fP"
+.br
+.ti -1c
+.RI "bool \fBmSelectable\fP"
+.br
+.ti -1c
+.RI "bool \fBmSelected\fP"
+.br
+.ti -1c
+.RI "QList< \fBQCPItemPosition\fP * > \fBmPositions\fP"
+.br
+.ti -1c
+.RI "QList< \fBQCPItemAnchor\fP * > \fBmAnchors\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCPItemAnchor\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The abstract base class for all items in a plot\&. 
+
+In \fBQCustomPlot\fP, items are supplemental graphical elements that are neither plottables (\fBQCPAbstractPlottable\fP) nor axes (\fBQCPAxis\fP)\&. While plottables are always tied to two axes and thus plot coordinates, items can also be placed in absolute coordinates independent of any axes\&. Each specific item has at least one \fBQCPItemPosition\fP member which controls the positioning\&. Some items are defined by more than one coordinate and thus have two or more \fBQCPItemPosition\fP members (For example, \fBQCPItemRect\fP has \fItopLeft\fP and \fIbottomRight\fP)\&.
+.PP
+This abstract base class defines a very basic interface like visibility and clipping\&. Since this class is abstract, it can't be instantiated\&. Use one of the subclasses or create a subclass yourself to create new items\&.
+.PP
+The built-in items are: \fBQCPItemLine\fPA line defined by a start and an end point\&. May have different ending styles on each side (e\&.g\&. arrows)\&. \fBQCPItemStraightLine\fPA straight line defined by a start and a direction point\&. Unlike \fBQCPItemLine\fP, the straight line is infinitely long and has no endings\&. \fBQCPItemCurve\fPA curve defined by start, end and two intermediate control points\&. May have different ending styles on each side (e\&.g\&. arrows)\&. \fBQCPItemRect\fPA rectangle \fBQCPItemEllipse\fPAn ellipse \fBQCPItemPixmap\fPAn arbitrary pixmap \fBQCPItemText\fPA text label \fBQCPItemBracket\fPA bracket which may be used to reference/highlight certain parts in the plot\&. \fBQCPItemTracer\fPAn item that can be attached to a \fBQCPGraph\fP and sticks to its data points, given a key coordinate\&. 
+.SH "Using items"
+.PP
+First you instantiate the item you want to use and add it to the plot: 
+.PP
+.nf
+QCPItemLine *line = new QCPItemLine(customPlot);
+customPlot->addItem(line);
+
+.fi
+.PP
+ by default, the positions of the item are bound to the x- and y-Axis of the plot\&. So we can just set the plot coordinates where the line should start/end: 
+.PP
+.nf
+line->start->setCoords(-0\&.1, 0\&.8);
+line->end->setCoords(1\&.1, 0\&.2);
+
+.fi
+.PP
+ If we wanted the line to be positioned not in plot coordinates but a different coordinate system, e\&.g\&. absolute pixel positions on the \fBQCustomPlot\fP surface, we would have changed the position type like this: 
+.PP
+.nf
+line->start->setType(QCPItemPosition::ptAbsolute);
+line->end->setType(QCPItemPosition::ptAbsolute);
+
+.fi
+.PP
+ Then we can set the coordinates, this time in pixels: 
+.PP
+.nf
+line->start->setCoords(100, 200);
+line->end->setCoords(450, 320);
+
+.fi
+.PP
+.SH "Creating own items"
+.PP
+To create an own item, you implement a subclass of \fBQCPAbstractItem\fP\&. These are the pure virtual functions, you must implement: 
+.PD 0
+
+.IP "\(bu" 2
+\fBselectTest\fP 
+.IP "\(bu" 2
+\fBdraw\fP
+.PP
+See the documentation of those functions for what they need to do\&.
+.SS "Allowing the item to be positioned"
+As mentioned, item positions are represented by \fBQCPItemPosition\fP members\&. Let's assume the new item shall have only one coordinate as its position (as opposed to two like a rect or multiple like a polygon)\&. You then add a public member of type \fBQCPItemPosition\fP like so:
+.PP
+.PP
+.nf
+QCPItemPosition * const myPosition;
+.fi
+.PP
+.PP
+the const makes sure the pointer itself can't be modified from the user of your new item (the \fBQCPItemPosition\fP instance it points to, can be modified, of course)\&. The initialization of this pointer is made easy with the \fBcreatePosition\fP function\&. Just assign the return value of this function to each \fBQCPItemPosition\fP in the constructor of your item\&. \fBcreatePosition\fP takes a string which is the name of the position, typically this is identical to the variable name\&. For example, the constructor of QCPItemExample could look like this:
+.PP
+.PP
+.nf
+QCPItemExample::QCPItemExample(QCustomPlot *parentPlot) :
+  QCPAbstractItem(parentPlot),
+  myPosition(createPosition("myPosition"))
+{
+  // other constructor code
+}
+.fi
+.PP
+.SS "The draw function"
+Your implementation of the draw function should check whether the item is visible (\fImVisible\fP) and then draw the item\&. You can retrieve its position in pixel coordinates from the position member(s) via \fBQCPItemPosition::pixelPoint\fP\&.
+.PP
+To optimize performance you should calculate a bounding rect first (don't forget to take the pen width into account), check whether it intersects the \fBclipRect\fP, and only draw the item at all if this is the case\&.
+.SS "The selectTest function"
+Your implementation of the \fBselectTest\fP function may use the helpers \fBdistSqrToLine\fP and \fBrectSelectTest\fP\&. With these, the implementation of the selection test becomes significantly simpler for most items\&.
+.SS "Providing anchors"
+Providing anchors (\fBQCPItemAnchor\fP) starts off like adding a position\&. First you create a public member, e\&.g\&.
+.PP
+.PP
+.nf
+QCPItemAnchor * const bottom;
+.fi
+.PP
+.PP
+and create it in the constructor with the \fBcreateAnchor\fP function, assigning it a name and an anchor id (an integer enumerating all anchors on the item, you may create an own enum for this)\&. Since anchors can be placed anywhere, relative to the item's position(s), your item needs to provide the position of every anchor with the reimplementation of the \fBanchorPixelPoint\fP(int anchorId) function\&.
+.PP
+In essence the \fBQCPItemAnchor\fP is merely an intermediary that itself asks your item for the pixel position when anything attached to the anchor needs to know the coordinates\&. 
+.PP
+Definition at line 842 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPAbstractItem::QCPAbstractItem (\fBQCustomPlot\fP *parentPlot)"
+
+.PP
+Base class constructor which initializes base class members\&. 
+.PP
+Definition at line 11024 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+11024                                                         :
+11025   QCPLayerable(parentPlot),
+11026   mClipToAxisRect(true),
+11027   mClipKeyAxis(parentPlot->xAxis),
+11028   mClipValueAxis(parentPlot->yAxis),
+11029   mSelectable(true),
+11030   mSelected(false)
+11031 {
+11032 }
+.fi
+.SS "QCPAbstractItem::~QCPAbstractItem ()\fC [virtual]\fP"
+
+.PP
+Definition at line 11034 of file qcustomplot\&.cpp\&.
+.PP
+References mAnchors\&.
+.PP
+.nf
+11035 {
+11036   // don't delete mPositions because every position is also an anchor and thus in mAnchors
+11037   qDeleteAll(mAnchors);
+11038 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQCPItemAnchor\fP * QCPAbstractItem::anchor (const QString &name) const"
+
+.PP
+Returns the \fBQCPItemAnchor\fP with the specified \fIname\fP\&. If this item doesn't have an anchor by that name, returns 0\&.
+.PP
+This function provides an alternative way to access item anchors\&. Normally, you access anchors direcly by their member pointers (which typically have the same variable name as \fIname\fP)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBanchors\fP, \fBposition\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11152 of file qcustomplot\&.cpp\&.
+.PP
+References mAnchors\&.
+.PP
+.nf
+11153 {
+11154   for (int i=0; i<mAnchors\&.size(); ++i)
+11155   {
+11156     if (mAnchors\&.at(i)->name() == name)
+11157       return mAnchors\&.at(i);
+11158   }
+11159   qDebug() << Q_FUNC_INFO << "anchor with name not found:" << name;
+11160   return 0;
+11161 }
+.fi
+.SS "QPointF QCPAbstractItem::anchorPixelPoint (intanchorId) const\fC [protected]\fP, \fC [virtual]\fP"
+Returns the pixel position of the anchor with Id \fIanchorId\fP\&. This function must be reimplemented in item subclasses if they want to provide anchors (\fBQCPItemAnchor\fP)\&.
+.PP
+For example, if the item has two anchors with id 0 and 1, this function takes one of these anchor ids and returns the respective pixel points of the specified anchor\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcreateAnchor\fP 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQCPItemBracket\fP, \fBQCPItemText\fP, \fBQCPItemPixmap\fP, \fBQCPItemRect\fP, and \fBQCPItemEllipse\fP\&.
+.PP
+Definition at line 11308 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by QCPItemAnchor::pixelPoint()\&.
+.PP
+.nf
+11309 {
+11310   qDebug() << Q_FUNC_INFO << "called on item which shouldn't have any anchors (anchorPixelPos not reimplemented)\&. anchorId" << anchorId;
+11311   return QPointF();
+11312 }
+.fi
+.SS "QList< \fBQCPItemAnchor\fP * > QCPAbstractItem::anchors () const\fC [inline]\fP"
+
+.PP
+Returns all anchors of the item in a list\&. Note that since a position (\fBQCPItemPosition\fP) is always also an anchor, the list will also contain the positions of this item\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBpositions\fP, \fBanchor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 867 of file qcustomplot\&.h\&.
+.PP
+.nf
+867 { return mAnchors; }
+.fi
+.SS "void QCPAbstractItem::applyDefaultAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [virtual]\fP"
+A convenience function to easily set the QPainter::Antialiased hint on the provided \fIpainter\fP before drawing item lines\&.
+.PP
+This is the antialiasing state the painter passed to the \fBdraw\fP method is in by default\&.
+.PP
+This function takes into account the local setting of the antialiasing flag as well as the overrides set e\&.g\&. with \fBQCustomPlot::setNotAntialiasedElements\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiased\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPLayerable\fP\&.
+.PP
+Definition at line 11217 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeItems, QCPLayerable::applyAntialiasingHint(), and QCPLayerable::mAntialiased\&.
+.PP
+.nf
+11218 {
+11219   applyAntialiasingHint(painter, mAntialiased, QCP::aeItems);
+11220 }
+.fi
+.SS "\fBQCPAxis\fP* QCPAbstractItem::clipKeyAxis () const\fC [inline]\fP"
+
+.PP
+Definition at line 851 of file qcustomplot\&.h\&.
+.PP
+.nf
+851 { return mClipKeyAxis; }
+.fi
+.SS "QRect QCPAbstractItem::clipRect () const\fC [protected]\fP, \fC [virtual]\fP"
+Returns the rect the visual representation of this item is clipped to\&. This depends on the current setting of \fBsetClipToAxisRect\fP aswell as the clip axes set with \fBsetClipAxes\fP\&.
+.PP
+If the item is not clipped to an axis rect, the \fBQCustomPlot::viewport\fP rect is returned\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdraw\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQCPLayerable\fP\&.
+.PP
+Definition at line 11190 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::axisRect(), mClipKeyAxis, mClipToAxisRect, mClipValueAxis, and QCPLayerable::mParentPlot\&.
+.PP
+Referenced by QCPItemStraightLine::draw(), QCPItemLine::draw(), QCPItemEllipse::draw(), QCPItemRect::draw(), QCPItemPixmap::draw(), QCPItemText::draw(), QCPItemCurve::draw(), QCPItemBracket::draw(), QCPItemTracer::draw(), itemAt(), and QCPItemTracer::selectTest()\&.
+.PP
+.nf
+11191 {
+11192   if (mClipToAxisRect)
+11193   {
+11194     if (mClipKeyAxis && mClipValueAxis)
+11195       return mClipKeyAxis->axisRect() | mClipValueAxis->axisRect();
+11196     else if (mClipKeyAxis)
+11197       return mClipKeyAxis->axisRect();
+11198     else if (mClipValueAxis)
+11199       return mClipValueAxis->axisRect();
+11200   }
+11201   
+11202   return mParentPlot->viewport();
+11203 }
+.fi
+.SS "bool QCPAbstractItem::clipToAxisRect () const\fC [inline]\fP"
+
+.PP
+Definition at line 850 of file qcustomplot\&.h\&.
+.PP
+Referenced by itemAt()\&.
+.PP
+.nf
+850 { return mClipToAxisRect; }
+.fi
+.SS "\fBQCPAxis\fP* QCPAbstractItem::clipValueAxis () const\fC [inline]\fP"
+
+.PP
+Definition at line 852 of file qcustomplot\&.h\&.
+.PP
+.nf
+852 { return mClipValueAxis; }
+.fi
+.SS "\fBQCPItemAnchor\fP * QCPAbstractItem::createAnchor (const QString &name, intanchorId)\fC [protected]\fP"
+Creates a \fBQCPItemAnchor\fP, registers it with this item and returns a pointer to it\&. The specified \fIname\fP must be a unique string that is usually identical to the variable name of the anchor member (This is needed to provide the name based \fBanchor\fP access to anchors)\&.
+.PP
+The \fIanchorId\fP must be a number identifying the created anchor\&. It is recommended to create an enum (e\&.g\&. 'AnchorIndex') for this on each item that uses anchors\&. This id is used by the anchor to identify itself when it calls \fBQCPAbstractItem::anchorPixelPoint\fP\&. That function then returns the correct pixel coordinates for the passed anchor id\&.
+.PP
+Don't delete anchors created by this function manually, as the item will take care of it\&.
+.PP
+Use this function in the constructor (initialization list) of the specific item subclass to create each anchor member\&. Don't create QCPItemAnchors with \fBnew\fP yourself, because then they won't be registered with the item properly\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcreatePosition\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11360 of file qcustomplot\&.cpp\&.
+.PP
+References hasAnchor(), mAnchors, QCPLayerable::mParentPlot, and QCPItemAnchor\&.
+.PP
+.nf
+11361 {
+11362   if (hasAnchor(name))
+11363     qDebug() << Q_FUNC_INFO << "anchor/position with name exists already:" << name;
+11364   QCPItemAnchor *newAnchor = new QCPItemAnchor(mParentPlot, this, name, anchorId);
+11365   mAnchors\&.append(newAnchor);
+11366   return newAnchor;
+11367 }
+.fi
+.SS "\fBQCPItemPosition\fP * QCPAbstractItem::createPosition (const QString &name)\fC [protected]\fP"
+Creates a \fBQCPItemPosition\fP, registers it with this item and returns a pointer to it\&. The specified \fIname\fP must be a unique string that is usually identical to the variable name of the position member (This is needed to provide the name based \fBposition\fP access to positions)\&.
+.PP
+Don't delete positions created by this function manually, as the item will take care of it\&.
+.PP
+Use this function in the constructor (initialization list) of the specific item subclass to create each position member\&. Don't create QCPItemPositions with \fBnew\fP yourself, because they won't be registered with the item properly\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcreateAnchor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11328 of file qcustomplot\&.cpp\&.
+.PP
+References hasAnchor(), mAnchors, QCPLayerable::mParentPlot, mPositions, QCPItemPosition::ptPlotCoords, QCPItemPosition::setAxes(), QCPItemPosition::setCoords(), and QCPItemPosition::setType()\&.
+.PP
+.nf
+11329 {
+11330   if (hasAnchor(name))
+11331     qDebug() << Q_FUNC_INFO << "anchor/position with name exists already:" << name;
+11332   QCPItemPosition *newPosition = new QCPItemPosition(mParentPlot, this, name);
+11333   mPositions\&.append(newPosition);
+11334   mAnchors\&.append(newPosition); // every position is also an anchor
+11335   newPosition->setType(QCPItemPosition::ptPlotCoords);
+11336   newPosition->setAxes(mParentPlot->xAxis, mParentPlot->yAxis);
+11337   newPosition->setCoords(0, 0);
+11338   return newPosition;
+11339 }
+.fi
+.SS "double QCPAbstractItem::distSqrToLine (const QPointF &start, const QPointF &end, const QPointF &point) const\fC [protected]\fP"
+Finds the shortest squared distance of \fIpoint\fP to the line segment defined by \fIstart\fP and \fIend\fP\&.
+.PP
+This function may be used to help with the implementation of the \fBselectTest\fP function for specific items\&.
+.PP
+\fBNote:\fP
+.RS 4
+This function is identical to \fBQCPAbstractPlottable::distSqrToLine\fP
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrectSelectTest\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11234 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by rectSelectTest(), QCPItemLine::selectTest(), QCPItemCurve::selectTest(), QCPItemBracket::selectTest(), and QCPItemTracer::selectTest()\&.
+.PP
+.nf
+11235 {
+11236   QVector2D a(start);
+11237   QVector2D b(end);
+11238   QVector2D p(point);
+11239   QVector2D v(b-a);
+11240   
+11241   double vLengthSqr = v\&.lengthSquared();
+11242   if (!qFuzzyIsNull(vLengthSqr))
+11243   {
+11244     double mu = QVector2D::dotProduct(p-a, v)/vLengthSqr;
+11245     if (mu < 0)
+11246       return (a-p)\&.lengthSquared();
+11247     else if (mu > 1)
+11248       return (b-p)\&.lengthSquared();
+11249     else
+11250       return ((a + mu*v)-p)\&.lengthSquared();
+11251   } else
+11252     return (a-p)\&.lengthSquared();
+11253 }
+.fi
+.SS "void QCPAbstractItem::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [pure virtual]\fP"
+Draws this item with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible items\&.
+.PP
+The cliprect of the provided painter is set to the rect returned by \fBclipRect\fP before this function is called\&. For items this depends on the clipping settings defined by \fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Implements \fBQCPLayerable\fP\&.
+.PP
+Implemented in \fBQCPItemTracer\fP, \fBQCPItemBracket\fP, \fBQCPItemCurve\fP, \fBQCPItemText\fP, \fBQCPItemPixmap\fP, \fBQCPItemRect\fP, \fBQCPItemEllipse\fP, \fBQCPItemLine\fP, and \fBQCPItemStraightLine\fP\&.
+.SS "bool QCPAbstractItem::hasAnchor (const QString &name) const"
+
+.PP
+Returns whether this item has an anchor with the specified \fIname\fP\&. Note that you can check for positions with this function, too, because every position is also an anchor (\fBQCPItemPosition\fP inherits from \fBQCPItemAnchor\fP)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBanchor\fP, \fBposition\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11171 of file qcustomplot\&.cpp\&.
+.PP
+References mAnchors\&.
+.PP
+Referenced by createAnchor(), and createPosition()\&.
+.PP
+.nf
+11172 {
+11173   for (int i=0; i<mAnchors\&.size(); ++i)
+11174   {
+11175     if (mAnchors\&.at(i)->name() == name)
+11176       return true;
+11177   }
+11178   return false;
+11179 }
+.fi
+.SS "\fBQCPItemPosition\fP * QCPAbstractItem::position (const QString &name) const"
+
+.PP
+Returns the \fBQCPItemPosition\fP with the specified \fIname\fP\&. If this item doesn't have a position by that name, returns 0\&.
+.PP
+This function provides an alternative way to access item positions\&. Normally, you access positions direcly by their member pointers (which typically have the same variable name as \fIname\fP)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBpositions\fP, \fBanchor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11131 of file qcustomplot\&.cpp\&.
+.PP
+References mPositions\&.
+.PP
+.nf
+11132 {
+11133   for (int i=0; i<mPositions\&.size(); ++i)
+11134   {
+11135     if (mPositions\&.at(i)->name() == name)
+11136       return mPositions\&.at(i);
+11137   }
+11138   qDebug() << Q_FUNC_INFO << "position with name not found:" << name;
+11139   return 0;
+11140 }
+.fi
+.SS "QList< \fBQCPItemPosition\fP * > QCPAbstractItem::positions () const\fC [inline]\fP"
+
+.PP
+Returns all positions of the item in a list\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBanchors\fP, \fBposition\fP 
+.RE
+.PP
+
+.PP
+Definition at line 866 of file qcustomplot\&.h\&.
+.PP
+.nf
+866 { return mPositions; }
+.fi
+.SS "double QCPAbstractItem::rectSelectTest (const QRectF &rect, const QPointF &pos, boolfilledRect) const\fC [protected]\fP"
+A convenience function which returns the selectTest value for a specified \fIrect\fP and a specified click position \fIpos\fP\&. \fIfilledRect\fP defines whether a click inside the rect should also be considered a hit or whether only the rect border is sensitive to hits\&.
+.PP
+This function may be used to help with the implementation of the \fBselectTest\fP function for specific items\&.
+.PP
+For example, if your item consists of four rects, call this function four times, once for each rect, in your \fBselectTest\fP reimplementation\&. Finally, return the minimum of all four returned values which were greater or equal to zero\&. (Because this function may return -1\&.0 when \fIpos\fP doesn't hit \fIrect\fP at all)\&. If all calls returned -1\&.0, return -1\&.0, too, because your item wasn't hit\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdistSqrToLine\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11272 of file qcustomplot\&.cpp\&.
+.PP
+References distSqrToLine(), and QCPLayerable::mParentPlot\&.
+.PP
+Referenced by QCPItemRect::selectTest(), QCPItemPixmap::selectTest(), QCPItemText::selectTest(), and QCPItemTracer::selectTest()\&.
+.PP
+.nf
+11273 {
+11274   double result = -1;
+11275 
+11276   // distance to border:
+11277   QList<QLineF> lines;
+11278   lines << QLineF(rect\&.topLeft(), rect\&.topRight()) << QLineF(rect\&.bottomLeft(), rect\&.bottomRight())
+11279         << QLineF(rect\&.topLeft(), rect\&.bottomLeft()) << QLineF(rect\&.topRight(), rect\&.bottomRight());
+11280   double minDistSqr = std::numeric_limits<double>::max();
+11281   for (int i=0; i<lines\&.size(); ++i)
+11282   {
+11283     double distSqr = distSqrToLine(lines\&.at(i)\&.p1(), lines\&.at(i)\&.p2(), pos);
+11284     if (distSqr < minDistSqr)
+11285       minDistSqr = distSqr;
+11286   }
+11287   result = qSqrt(minDistSqr);
+11288   
+11289   // filled rect, allow click inside to count as hit:
+11290   if (filledRect && result > mParentPlot->selectionTolerance()*0\&.99)
+11291   {
+11292     if (rect\&.contains(pos))
+11293       result = mParentPlot->selectionTolerance()*0\&.99;
+11294   }
+11295   return result;
+11296 }
+.fi
+.SS "bool QCPAbstractItem::selectable () const\fC [inline]\fP"
+
+.PP
+Definition at line 853 of file qcustomplot\&.h\&.
+.PP
+Referenced by itemAt(), and setSelectable()\&.
+.PP
+.nf
+853 { return mSelectable; }
+.fi
+.SS "bool QCPAbstractItem::selected () const\fC [inline]\fP"
+
+.PP
+Definition at line 854 of file qcustomplot\&.h\&.
+.PP
+Referenced by handleItemSelection(), and setSelected()\&.
+.PP
+.nf
+854 { return mSelected; }
+.fi
+.SS "void QCPAbstractItem::selectionChanged (boolselected)\fC [signal]\fP"
+
+.PP
+This signal is emitted when the selection state of this item has changed, either by user interaction or by a direct call to \fBsetSelected\fP\&. 
+.PP
+Definition at line 593 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by setSelected()\&.
+.PP
+.nf
+594 {
+595     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+596     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+597 }
+.fi
+.SS "double QCPAbstractItem::selectTest (const QPointF &pos) const\fC [pure virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits an item or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the item\&. If the item is either invisible or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the item is represented not by single lines but by an area like \fBQCPItemRect\fP or \fBQCPItemText\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implemented in \fBQCPItemTracer\fP, \fBQCPItemBracket\fP, \fBQCPItemCurve\fP, \fBQCPItemText\fP, \fBQCPItemPixmap\fP, \fBQCPItemRect\fP, \fBQCPItemEllipse\fP, \fBQCPItemLine\fP, and \fBQCPItemStraightLine\fP\&.
+.PP
+Referenced by itemAt()\&.
+.SS "void QCPAbstractItem::setClipAxes (\fBQCPAxis\fP *keyAxis, \fBQCPAxis\fP *valueAxis)"
+
+.PP
+Sets both clip axes\&. Together they define the axis rect that will be used to clip the item when \fBsetClipToAxisRect\fP is set to true\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP, \fBsetClipValueAxis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11056 of file qcustomplot\&.cpp\&.
+.PP
+References mClipKeyAxis, and mClipValueAxis\&.
+.PP
+.nf
+11057 {
+11058   mClipKeyAxis = keyAxis;
+11059   mClipValueAxis = valueAxis;
+11060 }
+.fi
+.SS "void QCPAbstractItem::setClipKeyAxis (\fBQCPAxis\fP *axis)"
+
+.PP
+Sets the clip key axis\&. Together with the clip value axis it defines the axis rect that will be used to clip the item when \fBsetClipToAxisRect\fP is set to true\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetClipToAxisRect\fP, \fBsetClipAxes\fP, \fBsetClipValueAxis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11068 of file qcustomplot\&.cpp\&.
+.PP
+References mClipKeyAxis\&.
+.PP
+.nf
+11069 {
+11070   mClipKeyAxis = axis;
+11071 }
+.fi
+.SS "void QCPAbstractItem::setClipToAxisRect (boolclip)"
+
+.PP
+Sets whether the item shall be clipped to the axis rect or whether it shall be visible on the entire \fBQCustomPlot\fP\&. The axis rect is defined by the clip axes which can be set via \fBsetClipAxes\fP or individually with \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Definition at line 11045 of file qcustomplot\&.cpp\&.
+.PP
+References mClipToAxisRect\&.
+.PP
+.nf
+11046 {
+11047   mClipToAxisRect = clip;
+11048 }
+.fi
+.SS "void QCPAbstractItem::setClipValueAxis (\fBQCPAxis\fP *axis)"
+
+.PP
+Sets the clip value axis\&. Together with the clip key axis it defines the axis rect that will be used to clip the item when \fBsetClipToAxisRect\fP is set to true\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetClipToAxisRect\fP, \fBsetClipAxes\fP, \fBsetClipKeyAxis\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11079 of file qcustomplot\&.cpp\&.
+.PP
+References mClipValueAxis\&.
+.PP
+.nf
+11080 {
+11081   mClipValueAxis = axis;
+11082 }
+.fi
+.SS "void QCPAbstractItem::setSelectable (boolselectable)"
+
+.PP
+Sets whether the user can (de-)select this item by clicking on the \fBQCustomPlot\fP surface\&. (When \fBQCustomPlot::setInteractions\fP contains QCustomPlot::iSelectItems\&.)
+.PP
+However, even when \fIselectable\fP was set to false, it is possible to set the selection manually, by calling \fBsetSelected\fP directly\&.
+.PP
+\fBSee also:\fP
+.RS 4
+QCustomPlot::setInteractions, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11093 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectable, and selectable()\&.
+.PP
+.nf
+11094 {
+11095   mSelectable = selectable;
+11096 }
+.fi
+.SS "void QCPAbstractItem::setSelected (boolselected)"
+
+.PP
+Sets whether this item is selected or not\&. When selected, it might use a different visual appearance (e\&.g\&. pen and brush), this depends on the specific item, though\&.
+.PP
+The entire selection mechanism for items is handled automatically when \fBQCustomPlot::setInteractions\fP contains QCustomPlot::iSelectItems\&. You only need to call this function when you wish to change the selection state manually\&.
+.PP
+This function can change the selection state even when \fBsetSelectable\fP was set to false\&.
+.PP
+emits the \fBselectionChanged\fP signal when \fIselected\fP is different from the previous selection state\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBselectTest\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11112 of file qcustomplot\&.cpp\&.
+.PP
+References mSelected, selected(), and selectionChanged()\&.
+.PP
+Referenced by handleItemSelection()\&.
+.PP
+.nf
+11113 {
+11114   if (mSelected != selected)
+11115   {
+11116     mSelected = selected;
+11117     emit selectionChanged(mSelected);
+11118   }
+11119 }
+.fi
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBQCPItemAnchor\fP\fC [friend]\fP"
+
+.PP
+Definition at line 899 of file qcustomplot\&.h\&.
+.PP
+Referenced by createAnchor()\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "QList<\fBQCPItemAnchor\fP*> QCPAbstractItem::mAnchors\fC [protected]\fP"
+
+.PP
+Definition at line 877 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchor(), createAnchor(), createPosition(), hasAnchor(), and ~QCPAbstractItem()\&.
+.SS "\fBQCPAxis\fP* QCPAbstractItem::mClipKeyAxis\fC [protected]\fP"
+
+.PP
+Definition at line 874 of file qcustomplot\&.h\&.
+.PP
+Referenced by clipRect(), setClipAxes(), and setClipKeyAxis()\&.
+.SS "bool QCPAbstractItem::mClipToAxisRect\fC [protected]\fP"
+
+.PP
+Definition at line 873 of file qcustomplot\&.h\&.
+.PP
+Referenced by clipRect(), and setClipToAxisRect()\&.
+.SS "\fBQCPAxis\fP * QCPAbstractItem::mClipValueAxis\fC [protected]\fP"
+
+.PP
+Definition at line 874 of file qcustomplot\&.h\&.
+.PP
+Referenced by clipRect(), setClipAxes(), and setClipValueAxis()\&.
+.SS "QList<\fBQCPItemPosition\fP*> QCPAbstractItem::mPositions\fC [protected]\fP"
+
+.PP
+Definition at line 876 of file qcustomplot\&.h\&.
+.PP
+Referenced by createPosition(), and position()\&.
+.SS "bool QCPAbstractItem::mSelectable\fC [protected]\fP"
+
+.PP
+Definition at line 875 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSelectable()\&.
+.SS "bool QCPAbstractItem::mSelected\fC [protected]\fP"
+
+.PP
+Definition at line 875 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPItemEllipse::mainBrush(), QCPItemRect::mainBrush(), QCPItemText::mainBrush(), QCPItemTracer::mainBrush(), QCPItemText::mainColor(), QCPItemText::mainFont(), QCPItemStraightLine::mainPen(), QCPItemLine::mainPen(), QCPItemEllipse::mainPen(), QCPItemRect::mainPen(), QCPItemPixmap::mainPen(), QCPItemText::mainPen(), QCPItemCurve::mainPen(), QCPItemBracket::mainPen(), QCPItemTracer::mainPen(), and setSelected()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

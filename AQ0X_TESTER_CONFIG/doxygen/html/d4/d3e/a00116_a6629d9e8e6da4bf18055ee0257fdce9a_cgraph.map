@@ -1,0 +1,7 @@
+<map id="saveBmp" name="saveBmp">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#ab528b84cf92baabe29b1d0ef2f77c93e" title="Saves the plot to a rastered image file fileName in the image format format. " alt="" coords="128,56,228,83"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a428242419d3a1b63f2cbff637986c35c" title="updateAxisRect" alt="" coords="332,5,447,32"/>
+<area shape="rect" id="node5" href="$d6/d2d/a00047.html#a256e886e856ae696503aeacae91535cd" title="Sets whether the painter shall adjust its fixes/workarounds optimized for scaled export to rastered i..." alt="" coords="276,56,503,83"/>
+<area shape="rect" id="node6" href="$d4/d3e/a00116.html#a2e9b3d14dffa43c79835869d488936c9" title="draw" alt="" coords="365,107,414,133"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#a0188c6248366fc9f9ff816dceee986e0" title="QCPAxis::setAxisRect" alt="" coords="551,5,705,32"/>
+</map>

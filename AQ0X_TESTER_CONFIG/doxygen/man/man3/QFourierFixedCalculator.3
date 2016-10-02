@@ -1,0 +1,131 @@
+.TH "QFourierFixedCalculator< T >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QFourierFixedCalculator< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qfourierfixedcalculator\&.h>\fP
+.PP
+Inherits \fBQFourierCalculator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQFourierFixedCalculator\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetSize\fP (int \fBsize\fP)"
+.br
+.ti -1c
+.RI "void \fBforward\fP ()"
+.br
+.ti -1c
+.RI "void \fBinverse\fP ()"
+.br
+.ti -1c
+.RI "void \fBrescale\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBffft::FFTRealFixLen\fP< T > \fBmFourierTransform\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<int T>class QFourierFixedCalculator< T >"
+
+.PP
+Definition at line 49 of file qfourierfixedcalculator\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<int T> \fBQFourierFixedCalculator\fP< T >::\fBQFourierFixedCalculator\fP ()"
+
+.PP
+Definition at line 45 of file qfourierfixedcalculator\&.cpp\&.
+.PP
+References ffft::FFTRealFixLen< LL2 >::get_length(), QFourierFixedCalculator< T >::mFourierTransform, and QFourierFixedCalculator< T >::setSize()\&.
+.PP
+.nf
+46     : QFourierCalculator()
+47 {
+48     setSize(mFourierTransform\&.get_length());
+49 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int T> void \fBQFourierFixedCalculator\fP< T >::forward ()\fC [virtual]\fP"
+
+.PP
+Implements \fBQFourierCalculator\fP\&.
+.PP
+Definition at line 57 of file qfourierfixedcalculator\&.cpp\&.
+.PP
+References QFourierCalculator::mInput, and QFourierCalculator::mOutput\&.
+.PP
+.nf
+58 {
+59     QFourierFixedCalculator<T>::mFourierTransform\&.do_fft(QFourierCalculator::mOutput, QFourierCalculator::mInput);
+60 }
+.fi
+.SS "template<int T> void \fBQFourierFixedCalculator\fP< T >::inverse ()\fC [virtual]\fP"
+
+.PP
+Implements \fBQFourierCalculator\fP\&.
+.PP
+Definition at line 63 of file qfourierfixedcalculator\&.cpp\&.
+.PP
+References QFourierCalculator::mInput, and QFourierCalculator::mOutput\&.
+.PP
+.nf
+64 {
+65     QFourierFixedCalculator<T>::mFourierTransform\&.do_ifft(QFourierCalculator::mInput, QFourierCalculator::mOutput);
+66 }
+.fi
+.SS "template<int T> void \fBQFourierFixedCalculator\fP< T >::rescale ()\fC [virtual]\fP"
+
+.PP
+Implements \fBQFourierCalculator\fP\&.
+.PP
+Definition at line 69 of file qfourierfixedcalculator\&.cpp\&.
+.PP
+References QFourierCalculator::mInput, and QFourierFixedCalculator< T >::rescale()\&.
+.PP
+Referenced by QFourierFixedCalculator< T >::rescale()\&.
+.PP
+.nf
+70 {
+71     QFourierFixedCalculator<T>::mFourierTransform\&.rescale(QFourierCalculator::mInput);
+72 }
+.fi
+.SS "template<int T> void \fBQFourierFixedCalculator\fP< T >::setSize (intsize)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBQFourierCalculator\fP\&.
+.PP
+Definition at line 52 of file qfourierfixedcalculator\&.cpp\&.
+.PP
+Referenced by QFourierFixedCalculator< T >::QFourierFixedCalculator()\&.
+.PP
+.nf
+53 {
+54 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "template<int T> \fBffft::FFTRealFixLen\fP<T> \fBQFourierFixedCalculator\fP< T >::mFourierTransform\fC [protected]\fP"
+
+.PP
+Definition at line 62 of file qfourierfixedcalculator\&.h\&.
+.PP
+Referenced by QFourierFixedCalculator< T >::QFourierFixedCalculator()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

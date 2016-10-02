@@ -1,0 +1,393 @@
+.TH "QCPItemStraightLine" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemStraightLine \- 
+.PP
+A straight line that spans infinitely in both directions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemStraightLine\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fICreates a straight line item and sets default values\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPItemStraightLine\fP ()"
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedPen\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the line\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the line when selected\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits an item or not\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBpoint1\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBpoint2\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "double \fBdistToStraightLine\fP (const QVector2D &\fBpoint1\fP, const QVector2D &vec, const QVector2D &point) const "
+.br
+.ti -1c
+.RI "QLineF \fBgetRectClippedStraightLine\fP (const QVector2D &\fBpoint1\fP, const QVector2D &vec, const QRect &rect) const "
+.br
+.ti -1c
+.RI "QPen \fBmainPen\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedPen\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A straight line that spans infinitely in both directions\&. 
+
+Straight line example\&. Blue dotted circles are anchors, solid blue discs are positions\&. It has two positions, \fIpoint1\fP and \fIpoint2\fP, which define the straight line\&. 
+.PP
+Definition at line 902 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemStraightLine::QCPItemStraightLine (\fBQCustomPlot\fP *parentPlot)"
+
+.PP
+Creates a straight line item and sets default values\&. The constructed item can be added to the plot with QCustomPlot::addItem\&. 
+.PP
+Definition at line 11791 of file qcustomplot\&.cpp\&.
+.PP
+References point1, point2, QCPItemPosition::setCoords(), setPen(), and setSelectedPen()\&.
+.PP
+.nf
+11791                                                                 :
+11792   QCPAbstractItem(parentPlot),
+11793   point1(createPosition("point1")),
+11794   point2(createPosition("point2"))
+11795 {
+11796   point1->setCoords(0, 0);
+11797   point2->setCoords(1, 1);
+11798   
+11799   setPen(QPen(Qt::black));
+11800   setSelectedPen(QPen(Qt::blue,2));
+11801 }
+.fi
+.SS "QCPItemStraightLine::~QCPItemStraightLine ()\fC [virtual]\fP"
+
+.PP
+Definition at line 11803 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+11804 {
+11805 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "double QCPItemStraightLine::distToStraightLine (const QVector2D &base, const QVector2D &vec, const QVector2D &point) const\fC [protected]\fP"
+finds the shortest distance of \fIpoint\fP to the straight line defined by the base point \fIbase\fP and the direction vector \fIvec\fP\&.
+.PP
+This is a helper function for \fBselectTest\fP\&. 
+.PP
+Definition at line 11859 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by selectTest()\&.
+.PP
+.nf
+11860 {
+11861   return qAbs((base\&.y()-point\&.y())*vec\&.x()-(base\&.x()-point\&.x())*vec\&.y())/vec\&.length();
+11862 }
+.fi
+.SS "void QCPItemStraightLine::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this item with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible items\&.
+.PP
+The cliprect of the provided painter is set to the rect returned by \fBclipRect\fP before this function is called\&. For items this depends on the clipping settings defined by \fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 11837 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::clipRect(), QCPPainter::drawLine(), getRectClippedStraightLine(), mainPen(), QCPItemPosition::pixelPoint(), point1, point2, and QCPPainter::setPen()\&.
+.PP
+.nf
+11838 {
+11839   QVector2D start(point1->pixelPoint());
+11840   QVector2D end(point2->pixelPoint());
+11841   // get visible segment of straight line inside clipRect:
+11842   double clipPad = mainPen()\&.widthF();
+11843   QLineF line = getRectClippedStraightLine(start, end-start, clipRect()\&.adjusted(-clipPad, -clipPad, clipPad, clipPad));
+11844   // paint visible segment, if existent:
+11845   if (!line\&.isNull())
+11846   {
+11847     painter->setPen(mainPen());
+11848     painter->drawLine(line);
+11849   }
+11850 }
+.fi
+.SS "QLineF QCPItemStraightLine::getRectClippedStraightLine (const QVector2D &base, const QVector2D &vec, const QRect &rect) const\fC [protected]\fP"
+Returns the section of the straight line defined by \fIbase\fP and direction vector \fIvec\fP, that is visible in the specified \fIrect\fP\&.
+.PP
+This is a helper function for \fBdraw\fP\&. 
+.PP
+Definition at line 11871 of file qcustomplot\&.cpp\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+11872 {
+11873   double bx, by;
+11874   double gamma;
+11875   QLineF result;
+11876   if (vec\&.x() == 0 && vec\&.y() == 0)
+11877     return result;
+11878   if (qFuzzyIsNull(vec\&.x())) // line is vertical
+11879   {
+11880     // check top of rect:
+11881     bx = rect\&.left();
+11882     by = rect\&.top();
+11883     gamma = base\&.x()-bx + (by-base\&.y())*vec\&.x()/vec\&.y();
+11884     if (gamma >= 0 && gamma <= rect\&.width())
+11885       result\&.setLine(bx+gamma, rect\&.top(), bx+gamma, rect\&.bottom()); // no need to check bottom because we know line is vertical
+11886   } else if (qFuzzyIsNull(vec\&.y())) // line is horizontal
+11887   {
+11888     // check left of rect:
+11889     bx = rect\&.left();
+11890     by = rect\&.top();
+11891     gamma = base\&.y()-by + (bx-base\&.x())*vec\&.y()/vec\&.x();
+11892     if (gamma >= 0 && gamma <= rect\&.height())
+11893       result\&.setLine(rect\&.left(), by+gamma, rect\&.right(), by+gamma); // no need to check right because we know line is horizontal
+11894   } else // line is skewed
+11895   {
+11896     QList<QVector2D> pointVectors;
+11897     // check top of rect:
+11898     bx = rect\&.left();
+11899     by = rect\&.top();
+11900     gamma = base\&.x()-bx + (by-base\&.y())*vec\&.x()/vec\&.y();
+11901     if (gamma >= 0 && gamma <= rect\&.width())
+11902       pointVectors\&.append(QVector2D(bx+gamma, by));
+11903     // check bottom of rect:
+11904     bx = rect\&.left();
+11905     by = rect\&.bottom();
+11906     gamma = base\&.x()-bx + (by-base\&.y())*vec\&.x()/vec\&.y();
+11907     if (gamma >= 0 && gamma <= rect\&.width())
+11908       pointVectors\&.append(QVector2D(bx+gamma, by));
+11909     // check left of rect:
+11910     bx = rect\&.left();
+11911     by = rect\&.top();
+11912     gamma = base\&.y()-by + (bx-base\&.x())*vec\&.y()/vec\&.x();
+11913     if (gamma >= 0 && gamma <= rect\&.height())
+11914       pointVectors\&.append(QVector2D(bx, by+gamma));
+11915     // check right of rect:
+11916     bx = rect\&.right();
+11917     by = rect\&.top();
+11918     gamma = base\&.y()-by + (bx-base\&.x())*vec\&.y()/vec\&.x();
+11919     if (gamma >= 0 && gamma <= rect\&.height())
+11920       pointVectors\&.append(QVector2D(bx, by+gamma));
+11921     
+11922     // evaluate points:
+11923     if (pointVectors\&.size() == 2)
+11924     {
+11925       result\&.setPoints(pointVectors\&.at(0)\&.toPointF(), pointVectors\&.at(1)\&.toPointF());
+11926     } else if (pointVectors\&.size() > 2)
+11927     {
+11928       // line probably goes through corner of rect, and we got two points there\&. single out the point pair with greatest distance:
+11929       double distSqrMax = 0;
+11930       QVector2D pv1, pv2;
+11931       for (int i=0; i<pointVectors\&.size()-1; ++i)
+11932       {
+11933         for (int k=i+1; k<pointVectors\&.size(); ++k)
+11934         {
+11935           double distSqr = (pointVectors\&.at(i)-pointVectors\&.at(k))\&.lengthSquared();
+11936           if (distSqr > distSqrMax)
+11937           {
+11938             pv1 = pointVectors\&.at(i);
+11939             pv2 = pointVectors\&.at(k);
+11940             distSqrMax = distSqr;
+11941           }
+11942         }
+11943       }
+11944       result\&.setPoints(pv1\&.toPointF(), pv2\&.toPointF());
+11945     }
+11946   }
+11947   return result;
+11948 }
+.fi
+.SS "QPen QCPItemStraightLine::mainPen () const\fC [protected]\fP"
+Returns the pen that should be used for drawing lines\&. Returns mPen when the item is not selected and mSelectedPen when it is\&. 
+.PP
+Definition at line 11955 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, QCPAbstractItem::mSelected, and mSelectedPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+11956 {
+11957   return mSelected ? mSelectedPen : mPen;
+11958 }
+.fi
+.SS "QPen QCPItemStraightLine::pen () const\fC [inline]\fP"
+
+.PP
+Definition at line 910 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by setPen(), and setSelectedPen()\&.
+.PP
+.nf
+910 { return mPen; }
+.fi
+.SS "QPen QCPItemStraightLine::selectedPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 911 of file qcustomplot\&.h\&.
+.PP
+.nf
+911 { return mSelectedPen; }
+.fi
+.SS "double QCPItemStraightLine::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits an item or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the item\&. If the item is either invisible or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the item is represented not by single lines but by an area like \fBQCPItemRect\fP or \fBQCPItemText\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 11828 of file qcustomplot\&.cpp\&.
+.PP
+References distToStraightLine(), QCPLayerable::mVisible, QCPItemPosition::pixelPoint(), point1, and point2\&.
+.PP
+.nf
+11829 {
+11830   if (!mVisible)
+11831     return -1;
+11832   
+11833   return distToStraightLine(QVector2D(point1->pixelPoint()), QVector2D(point2->pixelPoint()-point1->pixelPoint()), QVector2D(pos));
+11834 }
+.fi
+.SS "void QCPItemStraightLine::setPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the line\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11812 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, and pen()\&.
+.PP
+Referenced by QCPItemStraightLine()\&.
+.PP
+.nf
+11813 {
+11814   mPen = pen;
+11815 }
+.fi
+.SS "void QCPItemStraightLine::setSelectedPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the line when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 11822 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedPen, and pen()\&.
+.PP
+Referenced by QCPItemStraightLine()\&.
+.PP
+.nf
+11823 {
+11824   mSelectedPen = pen;
+11825 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "QPen QCPItemStraightLine::mPen\fC [protected]\fP"
+
+.PP
+Definition at line 924 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setPen()\&.
+.SS "QPen QCPItemStraightLine::mSelectedPen\fC [protected]\fP"
+
+.PP
+Definition at line 924 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setSelectedPen()\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemStraightLine::point1"
+
+.PP
+Definition at line 920 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), QCPItemStraightLine(), and selectTest()\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemStraightLine::point2"
+
+.PP
+Definition at line 921 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), QCPItemStraightLine(), and selectTest()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

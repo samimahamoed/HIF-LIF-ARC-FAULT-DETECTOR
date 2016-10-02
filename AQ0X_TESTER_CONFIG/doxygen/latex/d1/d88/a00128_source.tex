@@ -1,0 +1,142 @@
+\hypertarget{a00128_source}{\section{qwindowfunction.\+h}
+\label{a00128_source}\index{qwindowfunction.\+h@{qwindowfunction.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***********************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{qwindowfunction.h - Header file for QWindowFunction,}
+00004 \textcolor{comment}{                    QWindowFunctionManager, QRectangularFunction,}
+00005 \textcolor{comment}{                    QHammingFunction, QHannFunction}
+00006 \textcolor{comment}{}
+00007 \textcolor{comment}{Template classes necessary for applying a window function to a discrete}
+00008 \textcolor{comment}{set of samples.}
+00009 \textcolor{comment}{}
+00010 \textcolor{comment}{************************************************************************}
+00011 \textcolor{comment}{}
+00012 \textcolor{comment}{This file is part of QRealFourier.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{QRealFourier is free software: you can redistribute it and/or modify it}
+00015 \textcolor{comment}{under the terms of the Lesser GNU General Public License as published}
+00016 \textcolor{comment}{by the Free Software Foundation, either version 3 of the License, or}
+00017 \textcolor{comment}{(at your option) any later version.}
+00018 \textcolor{comment}{}
+00019 \textcolor{comment}{Foobar is distributed in the hope that it will be useful, but WITHOUT}
+00020 \textcolor{comment}{ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or}
+00021 \textcolor{comment}{FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser GNU General Public}
+00022 \textcolor{comment}{License for more details.}
+00023 \textcolor{comment}{}
+00024 \textcolor{comment}{You should have received a copy of the Lesser GNU General Public License}
+00025 \textcolor{comment}{along with Foobar.  If not, see <http://www.gnu.org/licenses/>.}
+00026 \textcolor{comment}{}
+00027 \textcolor{comment}{************************************************************************}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{Copyright © 2012 - 2013 Christoph Stallmann, University of Pretoria}
+00030 \textcolor{comment}{}
+00031 \textcolor{comment}{Developer: Christoph Stallmann}
+00032 \textcolor{comment}{University of Pretoria}
+00033 \textcolor{comment}{Department of Computer Science}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{http://www.visore.org}
+00036 \textcolor{comment}{http://sourceforge.net/projects/qrealfourier}
+00037 \textcolor{comment}{http://github.com/visore/QRealFourier}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{qrealfourier@visore.org}
+00040 \textcolor{comment}{qrealfourier@gmail.com}
+00041 \textcolor{comment}{}
+00042 \textcolor{comment}{***********************************************************************/}
+00043 
+00044 \textcolor{preprocessor}{#ifndef QWINDOWFUNCTION\_H}
+00045 \textcolor{preprocessor}{#define QWINDOWFUNCTION\_H}
+00046 
+00047 \textcolor{preprocessor}{#include <QList>}
+00048 \textcolor{preprocessor}{#include <QStringList>}
+00049 \textcolor{preprocessor}{#include <QVector>}
+00050 \textcolor{preprocessor}{#include "math.h"}
+00051 \textcolor{preprocessor}{#include <qmath.h>}
+00052 
+00053 \textcolor{comment}{/**********************************************************}
+00054 \textcolor{comment}{QWindowFunction}
+00055 \textcolor{comment}{**********************************************************/}
+00056 
+00057 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00128_source_l00058}{}\hyperlink{a00071}{00058} \textcolor{keyword}{class }\hyperlink{a00071}{QWindowFunction}
+00059 \{
+00060 
+00061     \textcolor{keyword}{typedef} QVector<T> QWindow;
+00062 
+00063     \textcolor{keyword}{public}:
+00064 
+00065         \textcolor{keywordtype}{void} \hyperlink{a00071_aa4a4f988e1f4b65e4181a0c8c3245a00}{apply}(T *data, \textcolor{keywordtype}{int} size);
+00066         \textcolor{keywordtype}{void} \hyperlink{a00071_a23ec85a35c762367195a47898cc75380}{create}(\textcolor{keywordtype}{int} size);
+00067 
+00068     \textcolor{keyword}{protected}:
+00069 
+00070         \textcolor{keywordtype}{void} \hyperlink{a00071_abde81294328ded8482380a7cfefab0b9}{fillWindow}(\textcolor{keywordtype}{int} size);
+00071         \textcolor{keyword}{virtual} T \hyperlink{a00071_ad58fa8c208b487dc2cbe765053228068}{calculate}(\textcolor{keywordtype}{int} currentSample, \textcolor{keywordtype}{int} totalSamples) = 0;
+00072 
+00073     \textcolor{keyword}{protected}:
+00074 
+\hypertarget{a00128_source_l00075}{}\hyperlink{a00071_ac0e8285a38390b8388bc0be152abcb0a}{00075}         QWindow \hyperlink{a00071_ac0e8285a38390b8388bc0be152abcb0a}{mWindow};
+00076 
+00077 \};
+00078 
+00079 \textcolor{comment}{/**********************************************************}
+00080 \textcolor{comment}{QWindowFunctionManager}
+00081 \textcolor{comment}{**********************************************************/}
+00082 
+00083 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00128_source_l00084}{}\hyperlink{a00072}{00084} \textcolor{keyword}{class }\hyperlink{a00072}{QWindowFunctionManager}
+00085 \{
+00086 
+00087     \textcolor{keyword}{public}:
+00088 
+00089         \textcolor{keyword}{static} \hyperlink{a00071}{QWindowFunction<T>}* \hyperlink{a00072_a3c72b178730b8731087337bcbfcbd4b7}{createFunction}(QString functionName);
+00090         \textcolor{keyword}{static} QStringList \hyperlink{a00072_ae0508780c15f6c28fb566dfe76c9a082}{functions}();
+00091 
+00092 \};
+00093 
+00094 \textcolor{comment}{/**********************************************************}
+00095 \textcolor{comment}{QRectangularFunction}
+00096 \textcolor{comment}{**********************************************************/}
+00097 
+00098 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00128_source_l00099}{}\hyperlink{a00062}{00099} \textcolor{keyword}{class }\hyperlink{a00062}{QRectangularFunction} : \textcolor{keyword}{public} \hyperlink{a00071}{QWindowFunction}<T>
+00100 \{
+00101 
+00102     \textcolor{keyword}{protected}:
+00103 
+00104         T \hyperlink{a00062_add2d1c665e03d573a4349324acfdd0e6}{calculate}(\textcolor{keywordtype}{int} currentSample, \textcolor{keywordtype}{int} totalSamples);
+00105 
+00106 \};
+00107 
+00108 \textcolor{comment}{/**********************************************************}
+00109 \textcolor{comment}{QHammingFunction}
+00110 \textcolor{comment}{**********************************************************/}
+00111 
+00112 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00128_source_l00113}{}\hyperlink{a00056}{00113} \textcolor{keyword}{class }\hyperlink{a00056}{QHammingFunction} : \textcolor{keyword}{public} \hyperlink{a00071}{QWindowFunction}<T>
+00114 \{
+00115 
+00116     \textcolor{keyword}{protected}:
+00117 
+00118         T \hyperlink{a00056_a211906f8eb2b7b00b2edda7a9d0926a6}{calculate}(\textcolor{keywordtype}{int} currentSample, \textcolor{keywordtype}{int} totalSamples);
+00119 
+00120 \};
+00121 
+00122 \textcolor{comment}{/**********************************************************}
+00123 \textcolor{comment}{QHannFunction}
+00124 \textcolor{comment}{**********************************************************/}
+00125 
+00126 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00128_source_l00127}{}\hyperlink{a00057}{00127} \textcolor{keyword}{class }\hyperlink{a00057}{QHannFunction} : \textcolor{keyword}{public} \hyperlink{a00071}{QWindowFunction}<T>
+00128 \{
+00129 
+00130     \textcolor{keyword}{protected}:
+00131 
+00132         T \hyperlink{a00057_a4c93ae740237871fc75e3bea81521f35}{calculate}(\textcolor{keywordtype}{int} currentSample, \textcolor{keywordtype}{int} totalSamples);
+00133 
+00134 \};
+00135 
+00136 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

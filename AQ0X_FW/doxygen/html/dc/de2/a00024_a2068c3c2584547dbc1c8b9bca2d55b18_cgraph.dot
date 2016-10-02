@@ -1,0 +1,12 @@
+digraph "__attribute__"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="__attribute__",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="algorithm_message_arrived\l_ntf_isr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d1b/a00015.html#a85471d58eae93d5d7e7e2b52e2b915d3",tooltip="Causes that system will send notification to the module as this cannot be done directly because the f..."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="x_task_send_irq_sync",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d79/a00030.html#a9953756bc7c83e5f2c36830396136e75",tooltip="OS interrupt notification timer. "];
+}

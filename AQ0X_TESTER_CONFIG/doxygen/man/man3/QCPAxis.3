@@ -1,0 +1,4344 @@
+.TH "QCPAxis" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPAxis \- 
+.PP
+Manages a single axis inside a \fBQCustomPlot\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPLayerable\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAxisType\fP { \fBatLeft\fP, \fBatRight\fP, \fBatTop\fP, \fBatBottom\fP }"
+.br
+.RI "\fIDefines at which side of the axis rect the axis will appear\&. \fP"
+.in -1c
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetRange\fP (const \fBQCPRange\fP &\fBrange\fP)"
+.br
+.RI "\fISets the range of the axis\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectable\fP (const QCPAxis::SelectableParts &\fBselectable\fP)"
+.br
+.RI "\fISets whether the user can (de-)select the parts in \fIselectable\fP by clicking on the \fBQCustomPlot\fP surface\&. \fP"
+.ti -1c
+.RI "void \fBsetSelected\fP (const QCPAxis::SelectableParts &\fBselected\fP)"
+.br
+.RI "\fISets the selected state of the respective axis parts described by \fBSelectablePart\fP\&. \fP"
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBticksRequest\fP ()"
+.br
+.RI "\fIThis signal is emitted when \fBsetAutoTicks\fP is false and the axis is about to generate tick labels and replot itself\&. \fP"
+.ti -1c
+.RI "void \fBrangeChanged\fP (const \fBQCPRange\fP &newRange)"
+.br
+.RI "\fIThis signal is emitted when the range of this axis has changed\&. \fP"
+.ti -1c
+.RI "void \fBselectionChanged\fP (QCPAxis::SelectableParts selection)"
+.br
+.RI "\fIThis signal is emitted when the selection state of this axis has changed, either by user interaction or by a direct call to \fBsetSelected\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQ_ENUMS\fP (\fBAxisType\fP) enum LabelType"
+.br
+.RI "\fIWhen automatic tick label generation is enabled (\fBsetAutoTickLabels\fP), defines how the numerical value (coordinate) of the tick position is translated into a string that will be drawn at the tick position\&. \fP"
+.ti -1c
+.RI "\fBQ_ENUMS\fP (LabelType) enum ScaleType"
+.br
+.RI "\fIDefines the scale of an axis\&. \fP"
+.ti -1c
+.RI "\fBQ_ENUMS\fP (ScaleType) enum SelectablePart"
+.br
+.RI "\fIDefines the selectable parts of an axis\&. \fP"
+.ti -1c
+.RI "\fBQ_ENUMS\fP (SelectablePart) Q_DECLARE_FLAGS(SelectableParts"
+.br
+.ti -1c
+.RI "SelectablePart \fBQCPAxis\fP (\fBQCustomPlot\fP *\fBparentPlot\fP, \fBAxisType\fP type)"
+.br
+.RI "\fIConstructs an Axis instance of Type \fItype\fP inside \fIparentPlot\fP\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPAxis\fP ()"
+.br
+.ti -1c
+.RI "\fBAxisType\fP \fBaxisType\fP () const "
+.br
+.ti -1c
+.RI "QRect \fBaxisRect\fP () const "
+.br
+.ti -1c
+.RI "ScaleType \fBscaleType\fP () const "
+.br
+.ti -1c
+.RI "double \fBscaleLogBase\fP () const "
+.br
+.ti -1c
+.RI "const \fBQCPRange\fP \fBrange\fP () const "
+.br
+.ti -1c
+.RI "bool \fBrangeReversed\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasedGrid\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasedSubGrid\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasedZeroLine\fP () const "
+.br
+.ti -1c
+.RI "bool \fBgrid\fP () const "
+.br
+.ti -1c
+.RI "bool \fBsubGrid\fP () const "
+.br
+.ti -1c
+.RI "bool \fBautoTicks\fP () const "
+.br
+.ti -1c
+.RI "int \fBautoTickCount\fP () const "
+.br
+.ti -1c
+.RI "bool \fBautoTickLabels\fP () const "
+.br
+.ti -1c
+.RI "bool \fBautoTickStep\fP () const "
+.br
+.ti -1c
+.RI "bool \fBautoSubTicks\fP () const "
+.br
+.ti -1c
+.RI "bool \fBticks\fP () const "
+.br
+.ti -1c
+.RI "bool \fBtickLabels\fP () const "
+.br
+.ti -1c
+.RI "int \fBtickLabelPadding\fP () const "
+.br
+.ti -1c
+.RI "LabelType \fBtickLabelType\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBtickLabelFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBtickLabelColor\fP () const "
+.br
+.ti -1c
+.RI "double \fBtickLabelRotation\fP () const "
+.br
+.ti -1c
+.RI "QString \fBdateTimeFormat\fP () const "
+.br
+.ti -1c
+.RI "QString \fBnumberFormat\fP () const "
+.br
+.ti -1c
+.RI "int \fBnumberPrecision\fP () const "
+.br
+.ti -1c
+.RI "double \fBtickStep\fP () const "
+.br
+.ti -1c
+.RI "QVector< double > \fBtickVector\fP () const "
+.br
+.ti -1c
+.RI "QVector< QString > \fBtickVectorLabels\fP () const "
+.br
+.ti -1c
+.RI "int \fBtickLengthIn\fP () const "
+.br
+.ti -1c
+.RI "int \fBtickLengthOut\fP () const "
+.br
+.ti -1c
+.RI "int \fBsubTickCount\fP () const "
+.br
+.ti -1c
+.RI "int \fBsubTickLengthIn\fP () const "
+.br
+.ti -1c
+.RI "int \fBsubTickLengthOut\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBbasePen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBgridPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBsubGridPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBzeroLinePen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBtickPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBsubTickPen\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBlabelFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBlabelColor\fP () const "
+.br
+.ti -1c
+.RI "QString \fBlabel\fP () const "
+.br
+.ti -1c
+.RI "int \fBlabelPadding\fP () const "
+.br
+.ti -1c
+.RI "int \fBpadding\fP () const "
+.br
+.ti -1c
+.RI "SelectableParts \fBselected\fP () const "
+.br
+.ti -1c
+.RI "SelectableParts \fBselectable\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBselectedTickLabelFont\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBselectedLabelFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBselectedTickLabelColor\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBselectedLabelColor\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedBasePen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedTickPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedSubTickPen\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetScaleType\fP (ScaleType type)"
+.br
+.RI "\fISets whether the axis uses a linear scale or a logarithmic scale\&. \fP"
+.ti -1c
+.RI "void \fBsetScaleLogBase\fP (double base)"
+.br
+.RI "\fIIf \fBsetScaleType\fP is set to \fBstLogarithmic\fP, \fIbase\fP will be the logarithm base of the scaling\&. \fP"
+.ti -1c
+.RI "void \fBsetRange\fP (double lower, double upper)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Sets the lower and upper bound of the axis range\&. \fP"
+.ti -1c
+.RI "void \fBsetRange\fP (double position, double size, Qt::AlignmentFlag alignment)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Sets the range of the axis\&. \fP"
+.ti -1c
+.RI "void \fBsetRangeLower\fP (double lower)"
+.br
+.RI "\fISets the lower bound of the axis range, independently of the upper bound\&. \fP"
+.ti -1c
+.RI "void \fBsetRangeUpper\fP (double upper)"
+.br
+.RI "\fISets the upper bound of the axis range, independently of the lower bound\&. \fP"
+.ti -1c
+.RI "void \fBsetRangeReversed\fP (bool reversed)"
+.br
+.RI "\fISets whether the axis range (direction) is displayed reversed\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedGrid\fP (bool enabled)"
+.br
+.RI "\fISets whether the grid of this axis is drawn antialiased or not\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedSubGrid\fP (bool enabled)"
+.br
+.RI "\fISets whether the sub grid of this axis is drawn antialiased or not\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedZeroLine\fP (bool enabled)"
+.br
+.RI "\fISets whether the zero line of this axis is drawn antialiased or not\&. \fP"
+.ti -1c
+.RI "void \fBsetGrid\fP (bool show)"
+.br
+.RI "\fISets whether the grid lines are visible\&. \fP"
+.ti -1c
+.RI "void \fBsetSubGrid\fP (bool show)"
+.br
+.RI "\fISets whether the sub grid lines are visible\&. \fP"
+.ti -1c
+.RI "void \fBsetAutoTicks\fP (bool on)"
+.br
+.RI "\fISets whether the tick positions should be calculated automatically (either from an automatically generated tick step or a tick step provided manually via \fBsetTickStep\fP, see \fBsetAutoTickStep\fP)\&. \fP"
+.ti -1c
+.RI "void \fBsetAutoTickCount\fP (int approximateCount)"
+.br
+.RI "\fIWhen \fBsetAutoTickStep\fP is true, \fIapproximateCount\fP determines how many ticks should be generated in the visible range approximately\&. \fP"
+.ti -1c
+.RI "void \fBsetAutoTickLabels\fP (bool on)"
+.br
+.RI "\fISets whether the tick labels are generated automatically depending on the tick label type (\fBltNumber\fP or \fBltDateTime\fP)\&. \fP"
+.ti -1c
+.RI "void \fBsetAutoTickStep\fP (bool on)"
+.br
+.RI "\fISets whether the tick step, i\&.e\&. \fP"
+.ti -1c
+.RI "void \fBsetAutoSubTicks\fP (bool on)"
+.br
+.RI "\fISets whether the number of sub ticks in one tick interval is determined automatically\&. \fP"
+.ti -1c
+.RI "void \fBsetTicks\fP (bool show)"
+.br
+.RI "\fISets whether tick marks are displayed\&. \fP"
+.ti -1c
+.RI "void \fBsetTickLabels\fP (bool show)"
+.br
+.RI "\fISets whether tick labels are displayed\&. \fP"
+.ti -1c
+.RI "void \fBsetTickLabelPadding\fP (int \fBpadding\fP)"
+.br
+.RI "\fISets the distance between the axis base line (or any tick marks pointing outward) and the tick labels\&. \fP"
+.ti -1c
+.RI "void \fBsetTickLabelType\fP (LabelType type)"
+.br
+.RI "\fISets whether the tick labels display numbers or dates/times\&. \fP"
+.ti -1c
+.RI "void \fBsetTickLabelFont\fP (const QFont &font)"
+.br
+.RI "\fISets the font of the tick labels, i\&.e\&. \fP"
+.ti -1c
+.RI "void \fBsetTickLabelColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the color of the tick labels, i\&.e\&. \fP"
+.ti -1c
+.RI "void \fBsetTickLabelRotation\fP (double degrees)"
+.br
+.RI "\fISets the rotation of the tick labels, i\&.e\&. \fP"
+.ti -1c
+.RI "void \fBsetDateTimeFormat\fP (const QString &format)"
+.br
+.RI "\fISets the format in which dates and times are displayed as tick labels, if \fBsetTickLabelType\fP is \fBltDateTime\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetNumberFormat\fP (const QString &formatCode)"
+.br
+.RI "\fISets the number format for the numbers drawn as tick labels (if tick label type is \fBltNumber\fP)\&. \fP"
+.ti -1c
+.RI "void \fBsetNumberPrecision\fP (int precision)"
+.br
+.RI "\fISets the precision of the numbers drawn as tick labels\&. \fP"
+.ti -1c
+.RI "void \fBsetTickStep\fP (double step)"
+.br
+.RI "\fIIf \fBsetAutoTickStep\fP is set to false, use this function to set the tick step manually\&. \fP"
+.ti -1c
+.RI "void \fBsetTickVector\fP (const QVector< double > &vec)"
+.br
+.RI "\fIIf you want full control over what ticks (and possibly labels) the axes show, this function is used to set the coordinates at which ticks will appear\&. \fP"
+.ti -1c
+.RI "void \fBsetTickVectorLabels\fP (const QVector< QString > &vec)"
+.br
+.RI "\fIIf you want full control over what ticks and labels the axes show, this function is used to set a number of QStrings that will be displayed at the tick positions which you need to provide with \fBsetTickVector\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetTickLength\fP (int inside, int outside=0)"
+.br
+.RI "\fISets the length of the ticks in pixels\&. \fP"
+.ti -1c
+.RI "void \fBsetSubTickCount\fP (int count)"
+.br
+.RI "\fISets the number of sub ticks in one (major) tick step\&. \fP"
+.ti -1c
+.RI "void \fBsetSubTickLength\fP (int inside, int outside=0)"
+.br
+.RI "\fISets the length of the subticks in pixels\&. \fP"
+.ti -1c
+.RI "void \fBsetBasePen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen, the axis base line is drawn with\&. \fP"
+.ti -1c
+.RI "void \fBsetGridPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen, grid lines are drawn with\&. \fP"
+.ti -1c
+.RI "void \fBsetSubGridPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen, the sub grid lines are drawn with\&. \fP"
+.ti -1c
+.RI "void \fBsetZeroLinePen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen with which a single grid-like line will be drawn at value position zero\&. \fP"
+.ti -1c
+.RI "void \fBsetTickPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen, tick marks will be drawn with\&. \fP"
+.ti -1c
+.RI "void \fBsetSubTickPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen, subtick marks will be drawn with\&. \fP"
+.ti -1c
+.RI "void \fBsetLabelFont\fP (const QFont &font)"
+.br
+.RI "\fISets the font of the axis label\&. \fP"
+.ti -1c
+.RI "void \fBsetLabelColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the color of the axis label\&. \fP"
+.ti -1c
+.RI "void \fBsetLabel\fP (const QString &str)"
+.br
+.RI "\fISets the axis label that will be shown below/above or next to the axis, depending on its orientation\&. \fP"
+.ti -1c
+.RI "void \fBsetLabelPadding\fP (int \fBpadding\fP)"
+.br
+.RI "\fISets the distance between the tick labels and the axis label\&. \fP"
+.ti -1c
+.RI "void \fBsetPadding\fP (int \fBpadding\fP)"
+.br
+.RI "\fISets the padding of the axis\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedTickLabelFont\fP (const QFont &font)"
+.br
+.RI "\fISets the font that is used for tick labels when they are selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedLabelFont\fP (const QFont &font)"
+.br
+.RI "\fISets the font that is used for the axis label when it is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedTickLabelColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the color that is used for tick labels when they are selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedLabelColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the color that is used for the axis label when it is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedBasePen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that is used to draw the axis base line when selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedTickPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that is used to draw the (major) ticks when selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedSubTickPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that is used to draw the subticks when selected\&. \fP"
+.ti -1c
+.RI "Qt::Orientation \fBorientation\fP () const "
+.br
+.RI "\fIReturns the orientation of the axis\&. \fP"
+.ti -1c
+.RI "void \fBmoveRange\fP (double diff)"
+.br
+.RI "\fIIf the scale type (\fBsetScaleType\fP) is \fBstLinear\fP, \fIdiff\fP is added to the lower and upper bounds of the range\&. \fP"
+.ti -1c
+.RI "void \fBscaleRange\fP (double factor, double center)"
+.br
+.RI "\fIScales the range of this axis by \fIfactor\fP around the coordinate \fIcenter\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetScaleRatio\fP (const \fBQCPAxis\fP *otherAxis, double ratio=1\&.0)"
+.br
+.RI "\fISets the range of this axis to have a certain scale \fIratio\fP to \fIotherAxis\fP\&. \fP"
+.ti -1c
+.RI "double \fBpixelToCoord\fP (double \fBvalue\fP) const "
+.br
+.RI "\fITransforms \fIvalue\fP (in pixel coordinates of the \fBQCustomPlot\fP widget) to axis coordinates\&. \fP"
+.ti -1c
+.RI "double \fBcoordToPixel\fP (double \fBvalue\fP) const "
+.br
+.RI "\fITransforms \fIvalue\fP (in coordinates of the axis) to pixel coordinates of the \fBQCustomPlot\fP widget\&. \fP"
+.ti -1c
+.RI "SelectablePart \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIReturns the part of the axis that is hit by \fIpos\fP (in pixels)\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetAxisType\fP (\fBAxisType\fP type)"
+.br
+.ti -1c
+.RI "void \fBsetAxisRect\fP (const QRect &rect)"
+.br
+.ti -1c
+.RI "virtual void \fBsetupTickVectors\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBgenerateAutoTicks\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBcalculateAutoSubTickCount\fP (double \fBtickStep\fP) const "
+.br
+.ti -1c
+.RI "virtual int \fBcalculateMargin\fP () const "
+.br
+.ti -1c
+.RI "virtual bool \fBhandleAxisSelection\fP (QMouseEvent *event, bool additiveSelection, bool &modified)"
+.br
+.ti -1c
+.RI "virtual void \fBapplyDefaultAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual void \fBdrawTickLabel\fP (\fBQCPPainter\fP *painter, double position, int distanceToAxis, const QString &text, QSize *tickLabelsSize)"
+.br
+.ti -1c
+.RI "virtual void \fBgetMaxTickLabelSize\fP (const QFont &font, const QString &text, QSize *tickLabelsSize) const "
+.br
+.ti -1c
+.RI "void \fBvisibleTickBounds\fP (int &lowIndex, int &highIndex) const "
+.br
+.ti -1c
+.RI "double \fBbaseLog\fP (double \fBvalue\fP) const "
+.br
+.ti -1c
+.RI "double \fBbasePow\fP (double \fBvalue\fP) const "
+.br
+.ti -1c
+.RI "QPen \fBgetBasePen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBgetTickPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBgetSubTickPen\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBgetTickLabelFont\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBgetLabelFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBgetTickLabelColor\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBgetLabelColor\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QVector< double > \fBmTickVector\fP"
+.br
+.ti -1c
+.RI "QVector< QString > \fBmTickVectorLabels\fP"
+.br
+.ti -1c
+.RI "\fBQCPRange\fP \fBmRange\fP"
+.br
+.ti -1c
+.RI "QString \fBmDateTimeFormat\fP"
+.br
+.ti -1c
+.RI "QString \fBmLabel\fP"
+.br
+.ti -1c
+.RI "QRect \fBmAxisRect\fP"
+.br
+.ti -1c
+.RI "QPen \fBmBasePen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmTickPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSubTickPen\fP"
+.br
+.ti -1c
+.RI "QFont \fBmTickLabelFont\fP"
+.br
+.ti -1c
+.RI "QFont \fBmLabelFont\fP"
+.br
+.ti -1c
+.RI "QColor \fBmTickLabelColor\fP"
+.br
+.ti -1c
+.RI "QColor \fBmLabelColor\fP"
+.br
+.ti -1c
+.RI "LabelType \fBmTickLabelType\fP"
+.br
+.ti -1c
+.RI "ScaleType \fBmScaleType\fP"
+.br
+.ti -1c
+.RI "\fBAxisType\fP \fBmAxisType\fP"
+.br
+.ti -1c
+.RI "double \fBmTickStep\fP"
+.br
+.ti -1c
+.RI "double \fBmScaleLogBase\fP"
+.br
+.ti -1c
+.RI "double \fBmScaleLogBaseLogInv\fP"
+.br
+.ti -1c
+.RI "int \fBmSubTickCount\fP"
+.br
+.ti -1c
+.RI "int \fBmTickLengthIn\fP"
+.br
+.ti -1c
+.RI "int \fBmTickLengthOut\fP"
+.br
+.ti -1c
+.RI "int \fBmSubTickLengthIn\fP"
+.br
+.ti -1c
+.RI "int \fBmSubTickLengthOut\fP"
+.br
+.ti -1c
+.RI "int \fBmAutoTickCount\fP"
+.br
+.ti -1c
+.RI "int \fBmTickLabelPadding\fP"
+.br
+.ti -1c
+.RI "int \fBmLabelPadding\fP"
+.br
+.ti -1c
+.RI "int \fBmPadding\fP"
+.br
+.ti -1c
+.RI "double \fBmTickLabelRotation\fP"
+.br
+.ti -1c
+.RI "bool \fBmTicks\fP"
+.br
+.ti -1c
+.RI "bool \fBmTickLabels\fP"
+.br
+.ti -1c
+.RI "bool \fBmAutoTicks\fP"
+.br
+.ti -1c
+.RI "bool \fBmAutoTickLabels\fP"
+.br
+.ti -1c
+.RI "bool \fBmAutoTickStep\fP"
+.br
+.ti -1c
+.RI "bool \fBmAutoSubTicks\fP"
+.br
+.ti -1c
+.RI "bool \fBmRangeReversed\fP"
+.br
+.ti -1c
+.RI "SelectableParts \fBmSelectable\fP"
+.br
+.ti -1c
+.RI "SelectableParts \fBmSelected\fP"
+.br
+.ti -1c
+.RI "QFont \fBmSelectedTickLabelFont\fP"
+.br
+.ti -1c
+.RI "QFont \fBmSelectedLabelFont\fP"
+.br
+.ti -1c
+.RI "QColor \fBmSelectedTickLabelColor\fP"
+.br
+.ti -1c
+.RI "QColor \fBmSelectedLabelColor\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedBasePen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedTickPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedSubTickPen\fP"
+.br
+.ti -1c
+.RI "QRect \fBmAxisSelectionBox\fP"
+.br
+.ti -1c
+.RI "QRect \fBmTickLabelsSelectionBox\fP"
+.br
+.ti -1c
+.RI "QRect \fBmLabelSelectionBox\fP"
+.br
+.ti -1c
+.RI "\fBQCPGrid\fP * \fBmGrid\fP"
+.br
+.ti -1c
+.RI "QVector< double > \fBmSubTickVector\fP"
+.br
+.ti -1c
+.RI "QChar \fBmExponentialChar\fP"
+.br
+.ti -1c
+.RI "QChar \fBmPositiveSignChar\fP"
+.br
+.ti -1c
+.RI "int \fBmNumberPrecision\fP"
+.br
+.ti -1c
+.RI "char \fBmNumberFormatChar\fP"
+.br
+.ti -1c
+.RI "bool \fBmNumberBeautifulPowers\fP"
+.br
+.ti -1c
+.RI "bool \fBmNumberMultiplyCross\fP"
+.br
+.ti -1c
+.RI "Qt::Orientation \fBmOrientation\fP"
+.br
+.ti -1c
+.RI "int \fBmLowestVisibleTick\fP"
+.br
+.ti -1c
+.RI "int \fBmHighestVisibleTick\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCPGrid\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages a single axis inside a \fBQCustomPlot\fP\&. 
+
+Usually doesn't need to be instantiated externally\&. Access QCustomPlot's axes via QCustomPlot::xAxis (bottom), QCustomPlot::yAxis (left), QCustomPlot::xAxis2 (top) and QCustomPlot::yAxis2 (right)\&. 
+.PP
+Definition at line 1618 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPAxis::AxisType\fP"
+
+.PP
+Defines at which side of the axis rect the axis will appear\&. This also affects how the tick marks are drawn, on which side the labels are placed etc\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAxisType\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIatLeft \fP\fP
+Axis is vertical and on the left side of the axis rect of the parent \fBQCustomPlot\fP\&. 
+.TP
+\fB\fIatRight \fP\fP
+Axis is vertical and on the right side of the axis rect of the parent \fBQCustomPlot\fP\&. 
+.TP
+\fB\fIatTop \fP\fP
+Axis is horizontal and on the top side of the axis rect of the parent \fBQCustomPlot\fP\&. 
+.TP
+\fB\fIatBottom \fP\fP
+Axis is horizontal and on the bottom side of the axis rect of the parent \fBQCustomPlot\fP\&. 
+.PP
+Definition at line 1661 of file qcustomplot\&.h\&.
+.PP
+.nf
+1661                 { atLeft    
+1662                   ,atRight  
+1663                   ,atTop    
+1664                   ,atBottom 
+1665                 };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPAxis::QCPAxis (\fBQCustomPlot\fP *parentPlot, \fBAxisType\fPtype)\fC [explicit]\fP"
+
+.PP
+Constructs an Axis instance of Type \fItype\fP inside \fIparentPlot\fP\&. 
+.PP
+Definition at line 3521 of file qcustomplot\&.cpp\&.
+.PP
+References atBottom, atLeft, atRight, atTop, labelFont(), mGrid, mHighestVisibleTick, mLowestVisibleTick, QCPGrid, QCPLayerable::setAntialiased(), setAutoSubTicks(), setAutoTickCount(), setAutoTickLabels(), setAutoTicks(), setAutoTickStep(), setAxisRect(), setAxisType(), setBasePen(), setDateTimeFormat(), setLabel(), setLabelColor(), setLabelFont(), setLabelPadding(), setNumberFormat(), setNumberPrecision(), setPadding(), setRange(), setRangeReversed(), setScaleLogBase(), setScaleType(), setSelectable(), setSelected(), setSelectedBasePen(), setSelectedLabelColor(), setSelectedLabelFont(), setSelectedSubTickPen(), setSelectedTickLabelColor(), setSelectedTickLabelFont(), setSelectedTickPen(), setSubTickCount(), setSubTickLength(), setSubTickPen(), setTickLabelColor(), setTickLabelFont(), setTickLabelPadding(), setTickLabelRotation(), setTickLabels(), setTickLabelType(), setTickLength(), setTickPen(), setTicks(), setTickStep(), and tickLabelFont()\&.
+.PP
+.nf
+3521                                                        :
+3522   QCPLayerable(parentPlot)
+3523 {
+3524   mLowestVisibleTick = 0;
+3525   mHighestVisibleTick = -1;
+3526   mGrid = new QCPGrid(this);
+3527   setAxisType(type);
+3528   setAxisRect(parentPlot->axisRect()); 
+3529   setScaleType(stLinear);
+3530   setScaleLogBase(10);
+3531   
+3532   setAntialiased(false);
+3533   setRange(0, 5);
+3534   setRangeReversed(false);
+3535   
+3536   setTicks(true);
+3537   setTickStep(1);
+3538   setAutoTickCount(6);
+3539   setAutoTicks(true);
+3540   setAutoTickLabels(true);
+3541   setAutoTickStep(true);
+3542   setTickLabelFont(parentPlot->font());
+3543   setTickLabelColor(Qt::black);
+3544   setTickLength(5);
+3545   setTickPen(QPen(Qt::black, 0, Qt::SolidLine, Qt::SquareCap));
+3546   setTickLabels(true);
+3547   setTickLabelType(ltNumber);
+3548   setTickLabelRotation(0);
+3549   setDateTimeFormat("hh:mm:ss\ndd\&.MM\&.yy");
+3550   setNumberFormat("gbd");
+3551   setNumberPrecision(6);
+3552   setLabel("");
+3553   setLabelFont(parentPlot->font());
+3554   setLabelColor(Qt::black);
+3555   
+3556   setAutoSubTicks(true);
+3557   setSubTickCount(4);
+3558   setSubTickLength(2);
+3559   setSubTickPen(QPen(Qt::black, 0, Qt::SolidLine, Qt::SquareCap));
+3560   setBasePen(QPen(Qt::black, 0, Qt::SolidLine, Qt::SquareCap));
+3561   
+3562   setSelected(spNone);
+3563   setSelectable(spAxis | spTickLabels | spAxisLabel);
+3564   QFont selTickLabelFont = tickLabelFont();
+3565   selTickLabelFont\&.setBold(true);
+3566   setSelectedTickLabelFont(selTickLabelFont);
+3567   QFont selLabelFont = labelFont();
+3568   selLabelFont\&.setBold(true);
+3569   setSelectedLabelFont(selLabelFont);
+3570   setSelectedTickLabelColor(Qt::blue);
+3571   setSelectedLabelColor(Qt::blue);
+3572   QPen blueThickPen(Qt::blue, 2);
+3573   setSelectedBasePen(blueThickPen);
+3574   setSelectedTickPen(blueThickPen);
+3575   setSelectedSubTickPen(blueThickPen);
+3576   
+3577   setPadding(0);
+3578   if (type == atTop)
+3579   {
+3580     setTickLabelPadding(3);
+3581     setLabelPadding(6);
+3582   } else if (type == atRight)
+3583   {
+3584     setTickLabelPadding(7);
+3585     setLabelPadding(12);
+3586   } else if (type == atBottom)
+3587   {
+3588     setTickLabelPadding(3);
+3589     setLabelPadding(3);
+3590   } else if (type == atLeft)
+3591   {
+3592     setTickLabelPadding(5);
+3593     setLabelPadding(10);
+3594   }
+3595 }
+.fi
+.SS "QCPAxis::~QCPAxis ()\fC [virtual]\fP"
+
+.PP
+Definition at line 3597 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+3598 {
+3599   delete mGrid;
+3600 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QCPAxis::antialiasedGrid () const\fC [inline]\fP"
+
+.PP
+Definition at line 1707 of file qcustomplot\&.h\&.
+.PP
+.nf
+1707 { return mGrid->antialiased(); }
+.fi
+.SS "bool QCPAxis::antialiasedSubGrid () const\fC [inline]\fP"
+
+.PP
+Definition at line 1708 of file qcustomplot\&.h\&.
+.PP
+.nf
+1708 { return mGrid->antialiasedSubGrid(); }
+.fi
+.SS "bool QCPAxis::antialiasedZeroLine () const\fC [inline]\fP"
+
+.PP
+Definition at line 1709 of file qcustomplot\&.h\&.
+.PP
+.nf
+1709 { return mGrid->antialiasedZeroLine(); }
+.fi
+.SS "void QCPAxis::applyDefaultAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [virtual]\fP"
+A convenience function to easily set the QPainter::Antialiased hint on the provided \fIpainter\fP before drawing axis lines\&.
+.PP
+This is the antialiasing state the painter passed to the \fBdraw\fP method is in by default\&.
+.PP
+This function takes into account the local setting of the antialiasing flag as well as the overrides set e\&.g\&. with \fBQCustomPlot::setNotAntialiasedElements\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiased\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPLayerable\fP\&.
+.PP
+Definition at line 5358 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeAxes, QCPLayerable::applyAntialiasingHint(), and QCPLayerable::mAntialiased\&.
+.PP
+.nf
+5359 {
+5360   applyAntialiasingHint(painter, mAntialiased, QCP::aeAxes);
+5361 }
+.fi
+.SS "bool QCPAxis::autoSubTicks () const\fC [inline]\fP"
+
+.PP
+Definition at line 1716 of file qcustomplot\&.h\&.
+.PP
+Referenced by setupFullAxesBox()\&.
+.PP
+.nf
+1716 { return mAutoSubTicks; }
+.fi
+.SS "int QCPAxis::autoTickCount () const\fC [inline]\fP"
+
+.PP
+Definition at line 1713 of file qcustomplot\&.h\&.
+.PP
+Referenced by setupFullAxesBox()\&.
+.PP
+.nf
+1713 { return mAutoTickCount; }
+.fi
+.SS "bool QCPAxis::autoTickLabels () const\fC [inline]\fP"
+
+.PP
+Definition at line 1714 of file qcustomplot\&.h\&.
+.PP
+.nf
+1714 { return mAutoTickLabels; }
+.fi
+.SS "bool QCPAxis::autoTicks () const\fC [inline]\fP"
+
+.PP
+Definition at line 1712 of file qcustomplot\&.h\&.
+.PP
+.nf
+1712 { return mAutoTicks; }
+.fi
+.SS "bool QCPAxis::autoTickStep () const\fC [inline]\fP"
+
+.PP
+Definition at line 1715 of file qcustomplot\&.h\&.
+.PP
+Referenced by setupFullAxesBox()\&.
+.PP
+.nf
+1715 { return mAutoTickStep; }
+.fi
+.SS "QRect QCPAxis::axisRect () const\fC [inline]\fP"
+
+.PP
+Definition at line 1702 of file qcustomplot\&.h\&.
+.PP
+References mAxisRect\&.
+.PP
+Referenced by QCPAbstractPlottable::clipRect(), QCPAbstractItem::clipRect(), QCPGraph::lowerFillBasePoint(), QCPCurve::outsideCoordsToPixels(), plottableAt(), and QCPGraph::upperFillBasePoint()\&.
+.PP
+.nf
+1702 { return mAxisRect; }
+.fi
+.SS "\fBAxisType\fP QCPAxis::axisType () const\fC [inline]\fP"
+
+.PP
+Definition at line 1701 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::lowerFillBasePoint(), and QCPGraph::upperFillBasePoint()\&.
+.PP
+.nf
+1701 { return mAxisType; }
+.fi
+.SS "double QCPAxis::baseLog (doublevalue) const\fC [protected]\fP"
+A log function with the base mScaleLogBase, used mostly for coordinate transforms in logarithmic scales with arbitrary log base\&. Uses the buffered mScaleLogBaseLogInv for faster calculation\&. This is set to \fC1\&.0/qLn(mScaleLogBase)\fP in \fBsetScaleLogBase\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBbasePow\fP, \fBsetScaleLogBase\fP, \fBsetScaleType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5398 of file qcustomplot\&.cpp\&.
+.PP
+References mScaleLogBaseLogInv\&.
+.PP
+Referenced by coordToPixel(), and generateAutoTicks()\&.
+.PP
+.nf
+5399 {
+5400   return qLn(value)*mScaleLogBaseLogInv;
+5401 }
+.fi
+.SS "QPen QCPAxis::basePen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1735 of file qcustomplot\&.h\&.
+.PP
+.nf
+1735 { return mBasePen; }
+.fi
+.SS "double QCPAxis::basePow (doublevalue) const\fC [protected]\fP"
+A power function with the base mScaleLogBase, used mostly for coordinate transforms in logarithmic scales with arbitrary log base\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBbaseLog\fP, \fBsetScaleLogBase\fP, \fBsetScaleType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5410 of file qcustomplot\&.cpp\&.
+.PP
+References mScaleLogBase\&.
+.PP
+Referenced by generateAutoTicks()\&.
+.PP
+.nf
+5411 {
+5412   return qPow(mScaleLogBase, value);
+5413 }
+.fi
+.SS "int QCPAxis::calculateAutoSubTickCount (doubletickStep) const\fC [protected]\fP, \fC [virtual]\fP"
+Called by generateAutoTicks when \fBsetAutoSubTicks\fP is set to true\&. Depending on the \fItickStep\fP between two major ticks on the axis, a different number of sub ticks is appropriate\&. For Example taking 4 sub ticks for a \fItickStep\fP of 1 makes more sense than taking 5 sub ticks, because this corresponds to a sub tick step of 0\&.2, instead of the less intuitive 0\&.16666\&. Note that a subtick count of 4 means dividing the major tick step into 5 sections\&.
+.PP
+This is implemented by a hand made lookup for integer tick steps as well as fractional tick steps with a fractional part of (approximately) 0\&.5\&. If a tick step is different (i\&.e\&. has no fractional part close to 0\&.5), the currently set sub tick count (\fBsetSubTickCount\fP) is returned\&. 
+.PP
+Definition at line 4782 of file qcustomplot\&.cpp\&.
+.PP
+References mSubTickCount\&.
+.PP
+Referenced by generateAutoTicks()\&.
+.PP
+.nf
+4783 {
+4784   int result = mSubTickCount; // default to current setting, if no proper value can be found
+4785   
+4786   // get mantissa of tickstep:
+4787   double magnitudeFactor = qPow(10\&.0, qFloor(qLn(tickStep)/qLn(10\&.0))); // get magnitude factor e\&.g\&. 0\&.01, 1, 10, 1000 etc\&.
+4788   double tickStepMantissa = tickStep/magnitudeFactor;
+4789   
+4790   // separate integer and fractional part of mantissa:
+4791   double epsilon = 0\&.01;
+4792   double intPartf;
+4793   int intPart;
+4794   double fracPart = modf(tickStepMantissa, &intPartf);
+4795   intPart = intPartf;
+4796   
+4797   // handle cases with (almost) integer mantissa:
+4798   if (fracPart < epsilon || 1\&.0-fracPart < epsilon)
+4799   {
+4800     if (1\&.0-fracPart < epsilon)
+4801       intPart++;
+4802     switch (intPart)
+4803     {
+4804       case 1: result = 4; break; // 1\&.0 -> 0\&.2 substep
+4805       case 2: result = 3; break; // 2\&.0 -> 0\&.5 substep
+4806       case 3: result = 2; break; // 3\&.0 -> 1\&.0 substep
+4807       case 4: result = 3; break; // 4\&.0 -> 1\&.0 substep
+4808       case 5: result = 4; break; // 5\&.0 -> 1\&.0 substep
+4809       case 6: result = 2; break; // 6\&.0 -> 2\&.0 substep
+4810       case 7: result = 6; break; // 7\&.0 -> 1\&.0 substep
+4811       case 8: result = 3; break; // 8\&.0 -> 2\&.0 substep
+4812       case 9: result = 2; break; // 9\&.0 -> 3\&.0 substep
+4813     }
+4814   } else
+4815   {
+4816     // handle cases with significantly fractional mantissa:
+4817     if (qAbs(fracPart-0\&.5) < epsilon) // *\&.5 mantissa
+4818     {
+4819       switch (intPart)
+4820       {
+4821         case 1: result = 2; break; // 1\&.5 -> 0\&.5 substep
+4822         case 2: result = 4; break; // 2\&.5 -> 0\&.5 substep
+4823         case 3: result = 4; break; // 3\&.5 -> 0\&.7 substep
+4824         case 4: result = 2; break; // 4\&.5 -> 1\&.5 substep
+4825         case 5: result = 4; break; // 5\&.5 -> 1\&.1 substep (won't occur with autoTickStep from here on)
+4826         case 6: result = 4; break; // 6\&.5 -> 1\&.3 substep
+4827         case 7: result = 2; break; // 7\&.5 -> 2\&.5 substep
+4828         case 8: result = 4; break; // 8\&.5 -> 1\&.7 substep
+4829         case 9: result = 4; break; // 9\&.5 -> 1\&.9 substep
+4830       }
+4831     }
+4832     // if mantissa fraction isnt 0\&.0 or 0\&.5, don't bother finding good sub tick marks, leave default
+4833   }
+4834   
+4835   return result;
+4836 }
+.fi
+.SS "int QCPAxis::calculateMargin () const\fC [protected]\fP, \fC [virtual]\fP"
+Simulates the steps of \fBdraw\fP by calculating all appearing text bounding boxes\&. From this information, the appropriate margin for this axis is determined, so nothing is drawn beyond the widget border in the actual \fBdraw\fP function (if \fBQCustomPlot::setAutoMargin\fP is set to true)\&.
+.PP
+The margin consists of: tick label padding, tick label size, label padding, label size\&. The return value is the calculated margin for this axis\&. Thus, an axis with axis type \fBatLeft\fP will return an appropriate left margin, \fBatBottom\fP will return an appropriate bottom margin and so forth\&.
+.PP
+\fBWarning:\fP
+.RS 4
+if anything is changed in this function, make sure it's synchronized with the actual drawing function \fBdraw\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 5500 of file qcustomplot\&.cpp\&.
+.PP
+References getMaxTickLabelSize(), mLabel, mLabelFont, mLabelPadding, mPadding, mSubTickLengthOut, mTickLabelFont, mTickLabelPadding, mTickLabels, mTickLengthOut, mTickVectorLabels, QCPLayerable::mVisible, orientation(), and visibleTickBounds()\&.
+.PP
+.nf
+5501 {
+5502   // run through similar steps as QCPAxis::draw, and caluclate margin needed to fit axis and its labels
+5503   int margin = 0;
+5504   
+5505   if (mVisible)
+5506   {
+5507     int lowTick, highTick;
+5508     visibleTickBounds(lowTick, highTick);
+5509     // get length of tick marks reaching outside axis rect:
+5510     margin += qMax(0, qMax(mTickLengthOut, mSubTickLengthOut));
+5511     // calculate size of tick labels:
+5512     QSize tickLabelsSize(0, 0);
+5513     if (mTickLabels)
+5514     {
+5515       for (int i=lowTick; i <= highTick; ++i)
+5516       {
+5517         getMaxTickLabelSize(mTickLabelFont, mTickVectorLabels\&.at(i), &tickLabelsSize); // don't use getTickLabelFont() because we don't want margin to possibly change on selection
+5518       }
+5519       if (orientation() == Qt::Horizontal)
+5520         margin += tickLabelsSize\&.height() + mTickLabelPadding;
+5521       else
+5522         margin += tickLabelsSize\&.width() + mTickLabelPadding;
+5523     }
+5524     // calculate size of axis label (only height needed, because left/right labels are rotated by 90 degrees):
+5525     if (!mLabel\&.isEmpty())
+5526     {
+5527       QFontMetrics fontMetrics(mLabelFont); // don't use getLabelFont() because we don't want margin to possibly change on selection
+5528       QRect bounds;
+5529       bounds = fontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip | Qt::AlignHCenter | Qt::AlignVCenter, mLabel);
+5530       margin += bounds\&.height() + mLabelPadding;
+5531     }
+5532   }
+5533   margin += mPadding;
+5534   
+5535   if (margin < 15) // need a bit of margin if no axis text is shown at all (i\&.e\&. only baseline and tick lines, or no axis at all)
+5536     margin = 15;
+5537   return margin;
+5538 }
+.fi
+.SS "double QCPAxis::coordToPixel (doublevalue) const"
+
+.PP
+Transforms \fIvalue\fP (in coordinates of the axis) to pixel coordinates of the \fBQCustomPlot\fP widget\&. 
+.PP
+Definition at line 4531 of file qcustomplot\&.cpp\&.
+.PP
+References baseLog(), QCPRange::lower, mAxisRect, mRange, mRangeReversed, mScaleType, orientation(), QCPRange::size(), QCPRange::upper, and value\&.
+.PP
+Referenced by QCPAbstractPlottable::coordsToPixels(), draw(), QCPGraph::drawError(), drawGridLines(), QCPGraph::drawScatterPlot(), drawSubGridLines(), QCPGraph::getImpulsePlotData(), QCPGraph::getLinePlotData(), QCPGraph::getStepCenterPlotData(), QCPGraph::getStepLeftPlotData(), QCPGraph::getStepRightPlotData(), QCPGraph::lowerFillBasePoint(), QCPItemPosition::pixelPoint(), QCPStatisticalBox::selectTest(), and QCPGraph::upperFillBasePoint()\&.
+.PP
+.nf
+4532 {
+4533   if (orientation() == Qt::Horizontal)
+4534   {
+4535     if (mScaleType == stLinear)
+4536     {
+4537       if (!mRangeReversed)
+4538         return (value-mRange\&.lower)/mRange\&.size()*mAxisRect\&.width()+mAxisRect\&.left();
+4539       else
+4540         return (mRange\&.upper-value)/mRange\&.size()*mAxisRect\&.width()+mAxisRect\&.left();
+4541     } else // mScaleType == stLogarithmic
+4542     {
+4543       if (value >= 0 && mRange\&.upper < 0) // invalid value for logarithmic scale, just draw it outside visible range
+4544         return !mRangeReversed ? mAxisRect\&.right()+200 : mAxisRect\&.left()-200;
+4545       else if (value <= 0 && mRange\&.upper > 0) // invalid value for logarithmic scale, just draw it outside visible range
+4546         return !mRangeReversed ? mAxisRect\&.left()-200 : mAxisRect\&.right()+200;
+4547       else
+4548       {
+4549         if (!mRangeReversed)
+4550           return baseLog(value/mRange\&.lower)/baseLog(mRange\&.upper/mRange\&.lower)*mAxisRect\&.width()+mAxisRect\&.left();
+4551         else
+4552           return baseLog(mRange\&.upper/value)/baseLog(mRange\&.upper/mRange\&.lower)*mAxisRect\&.width()+mAxisRect\&.left();
+4553       }
+4554     }
+4555   } else // orientation() == Qt::Vertical
+4556   {
+4557     if (mScaleType == stLinear)
+4558     {
+4559       if (!mRangeReversed)
+4560         return mAxisRect\&.bottom()-(value-mRange\&.lower)/mRange\&.size()*mAxisRect\&.height();
+4561       else
+4562         return mAxisRect\&.bottom()-(mRange\&.upper-value)/mRange\&.size()*mAxisRect\&.height();
+4563     } else // mScaleType == stLogarithmic
+4564     {     
+4565       if (value >= 0 && mRange\&.upper < 0) // invalid value for logarithmic scale, just draw it outside visible range
+4566         return !mRangeReversed ? mAxisRect\&.top()-200 : mAxisRect\&.bottom()+200;
+4567       else if (value <= 0 && mRange\&.upper > 0) // invalid value for logarithmic scale, just draw it outside visible range
+4568         return !mRangeReversed ? mAxisRect\&.bottom()+200 : mAxisRect\&.top()-200;
+4569       else
+4570       {
+4571         if (!mRangeReversed)
+4572           return mAxisRect\&.bottom()-baseLog(value/mRange\&.lower)/baseLog(mRange\&.upper/mRange\&.lower)*mAxisRect\&.height();
+4573         else
+4574           return mAxisRect\&.bottom()-baseLog(mRange\&.upper/value)/baseLog(mRange\&.upper/mRange\&.lower)*mAxisRect\&.height();
+4575       }
+4576     }
+4577   }
+4578 }
+.fi
+.SS "QString QCPAxis::dateTimeFormat () const\fC [inline]\fP"
+
+.PP
+Definition at line 1724 of file qcustomplot\&.h\&.
+.PP
+.nf
+1724 { return mDateTimeFormat; }
+.fi
+.SS "void QCPAxis::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+The main draw function of an axis, called by QCustomPlot::draw for each axis\&. Draws axis baseline, major ticks, subticks, tick labels and axis label\&.
+.PP
+The selection boxes (mAxisSelectionBox, mTickLabelsSelectionBox, mLabelSelectionBox) are set here, too\&. 
+.PP
+Implements \fBQCPLayerable\fP\&.
+.PP
+Definition at line 4846 of file qcustomplot\&.cpp\&.
+.PP
+References atBottom, atLeft, atRight, atTop, coordToPixel(), QCPPainter::drawLine(), drawTickLabel(), getBasePen(), getLabelColor(), getLabelFont(), getSubTickPen(), getTickLabelColor(), getTickLabelFont(), getTickPen(), mAxisRect, mAxisSelectionBox, mAxisType, mHighestVisibleTick, mLabel, mLabelPadding, mLabelSelectionBox, mLowestVisibleTick, QCPLayerable::mParentPlot, mSubTickCount, mSubTickLengthIn, mSubTickLengthOut, mSubTickVector, mTickLabelPadding, mTickLabels, mTickLabelsSelectionBox, mTickLengthIn, mTickLengthOut, mTicks, mTickVector, mTickVectorLabels, orientation(), and QCPPainter::setPen()\&.
+.PP
+.nf
+4847 {
+4848   QPoint origin;
+4849   if (mAxisType == atLeft)
+4850     origin = mAxisRect\&.bottomLeft();
+4851   else if (mAxisType == atRight)
+4852     origin = mAxisRect\&.bottomRight();
+4853   else if (mAxisType == atTop)
+4854     origin = mAxisRect\&.topLeft();
+4855   else if (mAxisType == atBottom)
+4856     origin = mAxisRect\&.bottomLeft();
+4857   
+4858   double xCor = 0, yCor = 0; // paint system correction, for pixel exact matches (affects baselines and ticks of top/right axes)
+4859   switch (mAxisType)
+4860   {
+4861     case atTop: yCor = -1; break;
+4862     case atRight: xCor = 1; break;
+4863     default: break;
+4864   }
+4865   
+4866   int margin = 0;
+4867   int lowTick = mLowestVisibleTick;
+4868   int highTick = mHighestVisibleTick;
+4869   double t; // helper variable, result of coordinate-to-pixel transforms
+4870 
+4871   // draw baseline:
+4872   painter->setPen(getBasePen());
+4873   if (orientation() == Qt::Horizontal)
+4874     painter->drawLine(QLineF(origin+QPointF(xCor, yCor), origin+QPointF(mAxisRect\&.width()+xCor, yCor)));
+4875   else
+4876     painter->drawLine(QLineF(origin+QPointF(xCor, yCor), origin+QPointF(xCor, -mAxisRect\&.height()+yCor)));
+4877   
+4878   // draw ticks:
+4879   if (mTicks)
+4880   {
+4881     painter->setPen(getTickPen());
+4882     // direction of ticks ("inward" is right for left axis and left for right axis)
+4883     int tickDir = (mAxisType == atBottom || mAxisType == atRight) ? -1 : 1;
+4884     if (orientation() == Qt::Horizontal)
+4885     {
+4886       for (int i=lowTick; i <= highTick; ++i)
+4887       {
+4888         t = coordToPixel(mTickVector\&.at(i)); // x
+4889         painter->drawLine(QLineF(t+xCor, origin\&.y()-mTickLengthOut*tickDir+yCor, t+xCor, origin\&.y()+mTickLengthIn*tickDir+yCor));
+4890       }
+4891     } else
+4892     {
+4893       for (int i=lowTick; i <= highTick; ++i)
+4894       {
+4895         t = coordToPixel(mTickVector\&.at(i)); // y
+4896         painter->drawLine(QLineF(origin\&.x()-mTickLengthOut*tickDir+xCor, t+yCor, origin\&.x()+mTickLengthIn*tickDir+xCor, t+yCor));
+4897       }
+4898     }
+4899   }
+4900   
+4901   // draw subticks:
+4902   if (mTicks && mSubTickCount > 0)
+4903   {
+4904     painter->setPen(getSubTickPen());
+4905     // direction of ticks ("inward" is right for left axis and left for right axis)
+4906     int tickDir = (mAxisType == atBottom || mAxisType == atRight) ? -1 : 1;
+4907     if (orientation() == Qt::Horizontal)
+4908     {
+4909       for (int i=0; i<mSubTickVector\&.size(); ++i) // no need to check bounds because subticks are always only created inside current mRange
+4910       {
+4911         t = coordToPixel(mSubTickVector\&.at(i));
+4912         painter->drawLine(QLineF(t+xCor, origin\&.y()-mSubTickLengthOut*tickDir+yCor, t+xCor, origin\&.y()+mSubTickLengthIn*tickDir+yCor));
+4913       }
+4914     } else
+4915     {
+4916       for (int i=0; i<mSubTickVector\&.size(); ++i)
+4917       {
+4918         t = coordToPixel(mSubTickVector\&.at(i));
+4919         painter->drawLine(QLineF(origin\&.x()-mSubTickLengthOut*tickDir+xCor, t+yCor, origin\&.x()+mSubTickLengthIn*tickDir+xCor, t+yCor));
+4920       }
+4921     }
+4922   }
+4923   margin += qMax(0, qMax(mTickLengthOut, mSubTickLengthOut));
+4924   
+4925   // tick labels:
+4926   QSize tickLabelsSize(0, 0); // size of largest tick label, for offset calculation of axis label
+4927   if (mTickLabels)
+4928   {
+4929     margin += mTickLabelPadding;
+4930     painter->setFont(getTickLabelFont());
+4931     painter->setPen(QPen(getTickLabelColor()));
+4932     for (int i=lowTick; i <= highTick; ++i)
+4933     {
+4934       t = coordToPixel(mTickVector\&.at(i));
+4935       drawTickLabel(painter, t, margin, mTickVectorLabels\&.at(i), &tickLabelsSize);
+4936     }
+4937   }
+4938   if (orientation() == Qt::Horizontal)
+4939     margin += tickLabelsSize\&.height();
+4940   else
+4941     margin += tickLabelsSize\&.width();
+4942 
+4943   // axis label:
+4944   QRect labelBounds;
+4945   if (!mLabel\&.isEmpty())
+4946   {
+4947     margin += mLabelPadding;
+4948     painter->setFont(getLabelFont());
+4949     painter->setPen(QPen(getLabelColor()));
+4950     labelBounds = painter->fontMetrics()\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip, mLabel);
+4951     if (mAxisType == atLeft)
+4952     {
+4953       QTransform oldTransform = painter->transform();
+4954       painter->translate((origin\&.x()-margin-labelBounds\&.height()), origin\&.y());
+4955       painter->rotate(-90);
+4956       painter->drawText(0, 0, mAxisRect\&.height(), labelBounds\&.height(), Qt::TextDontClip | Qt::AlignCenter, mLabel);
+4957       painter->setTransform(oldTransform);
+4958     }
+4959     else if (mAxisType == atRight)
+4960     {
+4961       QTransform oldTransform = painter->transform();
+4962       painter->translate((origin\&.x()+margin+labelBounds\&.height()), origin\&.y()-mAxisRect\&.height());
+4963       painter->rotate(90);
+4964       painter->drawText(0, 0, mAxisRect\&.height(), labelBounds\&.height(), Qt::TextDontClip | Qt::AlignCenter, mLabel);
+4965       painter->setTransform(oldTransform);
+4966     }
+4967     else if (mAxisType == atTop)
+4968       painter->drawText(origin\&.x(), origin\&.y()-margin-labelBounds\&.height(), mAxisRect\&.width(), labelBounds\&.height(), Qt::TextDontClip | Qt::AlignCenter, mLabel);
+4969     else if (mAxisType == atBottom)
+4970       painter->drawText(origin\&.x(), origin\&.y()+margin, mAxisRect\&.width(), labelBounds\&.height(), Qt::TextDontClip | Qt::AlignCenter, mLabel);
+4971   }
+4972   
+4973   // set selection boxes:
+4974   int selAxisOutSize = qMax(qMax(mTickLengthOut, mSubTickLengthOut), mParentPlot->selectionTolerance());
+4975   int selAxisInSize = mParentPlot->selectionTolerance();
+4976   int selTickLabelSize = (orientation()==Qt::Horizontal ? tickLabelsSize\&.height() : tickLabelsSize\&.width());
+4977   int selTickLabelOffset = qMax(mTickLengthOut, mSubTickLengthOut)+mTickLabelPadding;
+4978   int selLabelSize = labelBounds\&.height();
+4979   int selLabelOffset = selTickLabelOffset+selTickLabelSize+mLabelPadding;
+4980   if (mAxisType == atLeft)
+4981   {
+4982     mAxisSelectionBox\&.setCoords(mAxisRect\&.left()-selAxisOutSize, mAxisRect\&.top(), mAxisRect\&.left()+selAxisInSize, mAxisRect\&.bottom());
+4983     mTickLabelsSelectionBox\&.setCoords(mAxisRect\&.left()-selTickLabelOffset-selTickLabelSize, mAxisRect\&.top(), mAxisRect\&.left()-selTickLabelOffset, mAxisRect\&.bottom());
+4984     mLabelSelectionBox\&.setCoords(mAxisRect\&.left()-selLabelOffset-selLabelSize, mAxisRect\&.top(), mAxisRect\&.left()-selLabelOffset, mAxisRect\&.bottom());
+4985   } else if (mAxisType == atRight)
+4986   {
+4987     mAxisSelectionBox\&.setCoords(mAxisRect\&.right()-selAxisInSize, mAxisRect\&.top(), mAxisRect\&.right()+selAxisOutSize, mAxisRect\&.bottom());
+4988     mTickLabelsSelectionBox\&.setCoords(mAxisRect\&.right()+selTickLabelOffset+selTickLabelSize, mAxisRect\&.top(), mAxisRect\&.right()+selTickLabelOffset, mAxisRect\&.bottom());
+4989     mLabelSelectionBox\&.setCoords(mAxisRect\&.right()+selLabelOffset+selLabelSize, mAxisRect\&.top(), mAxisRect\&.right()+selLabelOffset, mAxisRect\&.bottom());
+4990   } else if (mAxisType == atTop)
+4991   {
+4992     mAxisSelectionBox\&.setCoords(mAxisRect\&.left(), mAxisRect\&.top()-selAxisOutSize, mAxisRect\&.right(), mAxisRect\&.top()+selAxisInSize);
+4993     mTickLabelsSelectionBox\&.setCoords(mAxisRect\&.left(), mAxisRect\&.top()-selTickLabelOffset-selTickLabelSize, mAxisRect\&.right(), mAxisRect\&.top()-selTickLabelOffset);
+4994     mLabelSelectionBox\&.setCoords(mAxisRect\&.left(), mAxisRect\&.top()-selLabelOffset-selLabelSize, mAxisRect\&.right(), mAxisRect\&.top()-selLabelOffset);
+4995   } else if (mAxisType == atBottom)
+4996   {
+4997     mAxisSelectionBox\&.setCoords(mAxisRect\&.left(), mAxisRect\&.bottom()-selAxisInSize, mAxisRect\&.right(), mAxisRect\&.bottom()+selAxisOutSize);
+4998     mTickLabelsSelectionBox\&.setCoords(mAxisRect\&.left(), mAxisRect\&.bottom()+selTickLabelOffset+selTickLabelSize, mAxisRect\&.right(), mAxisRect\&.bottom()+selTickLabelOffset);
+4999     mLabelSelectionBox\&.setCoords(mAxisRect\&.left(), mAxisRect\&.bottom()+selLabelOffset+selLabelSize, mAxisRect\&.right(), mAxisRect\&.bottom()+selLabelOffset);
+5000   }
+5001   // draw hitboxes for debug purposes:
+5002   //painter->drawRects(QVector<QRect>() << mAxisSelectionBox << mTickLabelsSelectionBox << mLabelSelectionBox);
+5003 }
+.fi
+.SS "void QCPAxis::drawTickLabel (\fBQCPPainter\fP *painter, doubleposition, intdistanceToAxis, const QString &text, QSize *tickLabelsSize)\fC [protected]\fP, \fC [virtual]\fP"
+Draws a single tick label with the provided \fIpainter\fP\&. The tick label is always bound to an axis in one direction (distance to axis in that direction is however controllable via \fIdistanceToAxis\fP in pixels)\&. The position in the other direction is passed in the \fIposition\fP parameter\&. Hence for the bottom axis, \fIposition\fP would indicate the horizontal pixel position (not coordinate!), at which the label should be drawn\&.
+.PP
+In order to draw the axis label after all the tick labels in a position, that doesn't overlap with the tick labels, we need to know the largest tick label size\&. This is done by passing a \fItickLabelsSize\fP to all \fBdrawTickLabel\fP calls during the process of drawing all tick labels of one axis\&. \fItickLabelSize\fP is only expanded, if the drawn label exceeds the value \fItickLabelsSize\fP currently holds\&.
+.PP
+This function is also responsible for turning ugly exponential numbers '5\&.5e9' into a more beautifully typeset format '5\&.5 [multiplication sign] 10 [superscript] 9'\&. This feature is controlled with \fBsetNumberFormat\fP\&.
+.PP
+The label is drawn with the font and pen that are currently set on the \fIpainter\fP\&. To draw superscripted powers, the font is temporarily made smaller by a fixed factor\&. 
+.PP
+Definition at line 5026 of file qcustomplot\&.cpp\&.
+.PP
+References atBottom, atLeft, atRight, atTop, mAutoTickLabels, mAxisRect, mAxisType, mNumberBeautifulPowers, mNumberMultiplyCross, QCPLayerable::mParentPlot, mPositiveSignChar, mScaleType, mTickLabelRotation, mTickLabelType, and orientation()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+5027 {
+5028   // warning: if you change anything here, also adapt getMaxTickLabelSize() accordingly!
+5029   
+5030   // determine whether beautiful decimal powers should be used
+5031   bool useBeautifulPowers = false;
+5032   int ePos = -1;
+5033   if (mAutoTickLabels && mNumberBeautifulPowers && mTickLabelType == ltNumber)
+5034   {
+5035     ePos = text\&.indexOf('e');
+5036     if (ePos > -1)
+5037       useBeautifulPowers = true;
+5038   }
+5039   
+5040   // calculate text bounding rects and do string preparation for beautiful decimal powers:
+5041   QRect bounds, baseBounds, expBounds;
+5042   QString basePart, expPart;
+5043   QFont bugFixFont(painter->font());
+5044   bugFixFont\&.setPointSizeF(bugFixFont\&.pointSizeF()+0\&.05); // QFontMetrics\&.boundingRect has a bug for exact point sizes that make the results oscillate due to internal rounding 
+5045   QFont expFont;
+5046   if (useBeautifulPowers)
+5047   {
+5048     // split string parts for part of number/symbol that will be drawn normally and part that will be drawn as exponent:
+5049     basePart = text\&.left(ePos);
+5050     // in log scaling, we want to turn "1*10^n" into "10^n", else add multiplication sign and decimal base:
+5051     if (mScaleType == stLogarithmic && basePart == "1")
+5052       basePart = "10";
+5053     else
+5054       basePart += (mNumberMultiplyCross ? QString(QChar(215)) : QString(QChar(183))) + "10";
+5055     expPart = text\&.mid(ePos+1);
+5056     // clip "+" and leading zeros off expPart:
+5057     while (expPart\&.at(1) == '0' && expPart\&.length() > 2) // length > 2 so we leave one zero when numberFormatChar is 'e'
+5058       expPart\&.remove(1, 1);
+5059     if (expPart\&.at(0) == mPositiveSignChar)
+5060       expPart\&.remove(0, 1);
+5061     // prepare smaller font for exponent:
+5062     expFont = painter->font();
+5063     expFont\&.setPointSize(expFont\&.pointSize()*0\&.75);
+5064     // calculate bounding rects of base part, exponent part and total one:
+5065     QFontMetrics fontMetrics(bugFixFont);
+5066     baseBounds = fontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip, basePart);
+5067     QFontMetrics expFontMetrics(expFont);
+5068     expBounds = expFontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip, expPart);
+5069     bounds = baseBounds\&.adjusted(0, 0, expBounds\&.width(), 0);
+5070   } else // useBeautifulPowers == false
+5071   {
+5072     QFontMetrics fontMetrics(bugFixFont);
+5073     bounds = fontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip | Qt::AlignHCenter, text);
+5074   }
+5075   
+5076   // if using rotated tick labels, transform bounding rect, too:
+5077   QRect rotatedBounds = bounds;
+5078   if (!qFuzzyIsNull(mTickLabelRotation))
+5079   {
+5080     QTransform transform;
+5081     transform\&.rotate(mTickLabelRotation);
+5082     rotatedBounds = transform\&.mapRect(bounds);
+5083   }
+5084   // expand passed tickLabelsSize if current tick label is larger:
+5085   if (rotatedBounds\&.width() > tickLabelsSize->width()) 
+5086     tickLabelsSize->setWidth(rotatedBounds\&.width());
+5087   if (rotatedBounds\&.height() > tickLabelsSize->height())
+5088     tickLabelsSize->setHeight(rotatedBounds\&.height());
+5089   
+5090   /*
+5091     calculate coordinates (non-trivial, for best visual appearance): short explanation for bottom
+5092     axis: The anchor, i\&.e\&. the point in the label that is placed horizontally under the
+5093     corresponding tick is always on the label side that is closer to the axis (e\&.g\&. the left side
+5094     of the text when we're rotating clockwise)\&. On that side, the height is halved and the
+5095     resulting point is defined the anchor\&. This way, a 90 degree rotated text will be centered
+5096     under the tick (i\&.e\&. displaced horizontally by half its height)\&. At the same time, a 45 degree
+5097     rotated text will "point toward" its tick, as is typical for rotated tick labels\&.
+5098   */
+5099   bool doRotation = !qFuzzyIsNull(mTickLabelRotation);
+5100   double radians = mTickLabelRotation/180\&.0*M_PI;
+5101   int x=0,y=0;
+5102   if (mAxisType == atLeft)
+5103   {
+5104     if (doRotation)
+5105     {
+5106       if (mTickLabelRotation > 0)
+5107       {
+5108         x = mAxisRect\&.left()-qCos(radians)*bounds\&.width()-distanceToAxis;
+5109         y = position-qSin(radians)*bounds\&.width()-qCos(radians)*bounds\&.height()/2\&.0;
+5110       } else
+5111       {
+5112         x = mAxisRect\&.left()-qCos(-radians)*bounds\&.width()-qSin(-radians)*bounds\&.height()-distanceToAxis;
+5113         y = position+qSin(-radians)*bounds\&.width()-qCos(-radians)*bounds\&.height()/2\&.0;
+5114       }
+5115     } else
+5116     {
+5117       x = mAxisRect\&.left()-bounds\&.width()-distanceToAxis;
+5118       y = position-bounds\&.height()/2\&.0;
+5119     }
+5120   } else if (mAxisType == atRight)
+5121   {
+5122     if (doRotation)
+5123     {
+5124       if (mTickLabelRotation > 0)
+5125       {
+5126         x = mAxisRect\&.right()+qSin(radians)*bounds\&.height()+distanceToAxis;
+5127         y = position-qCos(radians)*bounds\&.height()/2\&.0;
+5128       } else
+5129       {
+5130         x = mAxisRect\&.right()+distanceToAxis;
+5131         y = position-qCos(-radians)*bounds\&.height()/2\&.0;
+5132       }
+5133     } else
+5134     {
+5135       x = mAxisRect\&.right()+distanceToAxis;
+5136       y = position-bounds\&.height()/2\&.0;
+5137     }
+5138   } else if (mAxisType == atTop)
+5139   {
+5140     if (doRotation)
+5141     {
+5142       if (mTickLabelRotation > 0)
+5143       {
+5144         x = position-qCos(radians)*bounds\&.width()+qSin(radians)*bounds\&.height()/2\&.0;
+5145         y = mAxisRect\&.top()-qSin(radians)*bounds\&.width()-qCos(radians)*bounds\&.height()-distanceToAxis;
+5146       } else
+5147       {
+5148         x = position-qSin(-radians)*bounds\&.height()/2\&.0;
+5149         y = mAxisRect\&.top()-qCos(-radians)*bounds\&.height()-distanceToAxis;
+5150       }
+5151     } else
+5152     {
+5153       x = position-bounds\&.width()/2\&.0;
+5154       y = mAxisRect\&.top()-bounds\&.height()-distanceToAxis;
+5155     }
+5156   } else if (mAxisType == atBottom)
+5157   {
+5158     if (doRotation)
+5159     {
+5160       if (mTickLabelRotation > 0)
+5161       {
+5162         x = position+qSin(radians)*bounds\&.height()/2\&.0;
+5163         y = mAxisRect\&.bottom()+distanceToAxis;
+5164       } else
+5165       {
+5166         x = position-qCos(-radians)*bounds\&.width()-qSin(-radians)*bounds\&.height()/2\&.0;
+5167         y = mAxisRect\&.bottom()+qSin(-radians)*bounds\&.width()+distanceToAxis;
+5168       }
+5169     } else
+5170     {
+5171       x = position-bounds\&.width()/2\&.0;
+5172       y = mAxisRect\&.bottom()+distanceToAxis;
+5173     }
+5174   }
+5175   
+5176   // if label would be partly clipped by widget border on sides, don't draw it:
+5177   if (orientation() == Qt::Horizontal)
+5178   {
+5179     if (x+bounds\&.width() > mParentPlot->mViewport\&.right() ||
+5180         x < mParentPlot->mViewport\&.left())
+5181       return;
+5182   } else
+5183   {
+5184     if (y+bounds\&.height() > mParentPlot->mViewport\&.bottom() ||
+5185         y < mParentPlot->mViewport\&.top())
+5186       return;
+5187   }
+5188   
+5189   // transform painter to position/rotation:
+5190   QTransform oldTransform = painter->transform();
+5191   painter->translate(x, y);
+5192   if (doRotation)
+5193     painter->rotate(mTickLabelRotation);
+5194   // draw text:
+5195   if (useBeautifulPowers)
+5196   {
+5197     // draw base:
+5198     painter->drawText(0, 0, 0, 0, Qt::TextDontClip, basePart);
+5199     // draw exponent:
+5200     QFont normalFont = painter->font();
+5201     painter->setFont(expFont);
+5202     painter->drawText(baseBounds\&.width()+1, 0, expBounds\&.width(), expBounds\&.height(), Qt::TextDontClip,  expPart);
+5203     painter->setFont(normalFont);
+5204   } else // useBeautifulPowers == false
+5205   {
+5206     painter->drawText(0, 0, bounds\&.width(), bounds\&.height(), Qt::TextDontClip | Qt::AlignHCenter, text);
+5207   }
+5208   
+5209   // reset rotation/translation transform to what it was before:
+5210   painter->setTransform(oldTransform);
+5211 }
+.fi
+.SS "void QCPAxis::generateAutoTicks ()\fC [protected]\fP, \fC [virtual]\fP"
+If \fBsetAutoTicks\fP is set to true, this function is called by \fBsetupTickVectors\fP to generate reasonable tick positions (and subtick count)\&. The algorithm tries to create approximately \fCmAutoTickCount\fP ticks (set via \fBsetAutoTickCount\fP), taking into account, that tick mantissas that are divisable by two or end in \&.5 are nice to look at and practical in linear scales\&. If the scale is logarithmic, one tick is generated at every power of the current logarithm base, set via \fBsetScaleLogBase\fP\&. 
+.PP
+Definition at line 4704 of file qcustomplot\&.cpp\&.
+.PP
+References baseLog(), basePow(), calculateAutoSubTickCount(), QCPRange::lower, mAutoSubTicks, mAutoTickCount, mAutoTickStep, mRange, mScaleLogBase, mScaleType, mSubTickCount, mTickStep, mTickVector, QCPRange::size(), and QCPRange::upper\&.
+.PP
+Referenced by setupTickVectors()\&.
+.PP
+.nf
+4705 {
+4706   if (mScaleType == stLinear)
+4707   {
+4708     if (mAutoTickStep)
+4709     {
+4710       // Generate tick positions according to linear scaling:
+4711       mTickStep = mRange\&.size()/(double)(mAutoTickCount+1e-10); // mAutoTickCount ticks on average, the small addition is to prevent jitter on exact integers
+4712       double magnitudeFactor = qPow(10\&.0, qFloor(qLn(mTickStep)/qLn(10\&.0))); // get magnitude factor e\&.g\&. 0\&.01, 1, 10, 1000 etc\&.
+4713       double tickStepMantissa = mTickStep/magnitudeFactor;
+4714       if (tickStepMantissa < 5)
+4715       {
+4716         // round digit after decimal point to 0\&.5
+4717         mTickStep = (int)(tickStepMantissa*2)/2\&.0*magnitudeFactor;
+4718       } else
+4719       {
+4720         // round to first digit in multiples of 2
+4721         mTickStep = (int)((tickStepMantissa/10\&.0)*5)/5\&.0*10*magnitudeFactor;
+4722       }
+4723     }
+4724     if (mAutoSubTicks)
+4725       mSubTickCount = calculateAutoSubTickCount(mTickStep);
+4726     // Generate tick positions according to mTickStep:
+4727     int firstStep = floor(mRange\&.lower/mTickStep);
+4728     int lastStep = ceil(mRange\&.upper/mTickStep);
+4729     int tickcount = lastStep-firstStep+1;
+4730     if (tickcount < 0) tickcount = 0;
+4731     mTickVector\&.resize(tickcount);
+4732     for (int i=0; i<tickcount; ++i)
+4733     {
+4734       mTickVector[i] = (firstStep+i)*mTickStep;
+4735     }
+4736   } else // mScaleType == stLogarithmic
+4737   {
+4738     // Generate tick positions according to logbase scaling:
+4739     if (mRange\&.lower > 0 && mRange\&.upper > 0) // positive range
+4740     {
+4741       double lowerMag = basePow((int)floor(baseLog(mRange\&.lower)));
+4742       double currentMag = lowerMag;
+4743       mTickVector\&.clear();
+4744       mTickVector\&.append(currentMag);
+4745       while (currentMag < mRange\&.upper && currentMag > 0) // currentMag might be zero for ranges ~1e-300, just cancel in that case
+4746       {
+4747         currentMag *= mScaleLogBase;
+4748         mTickVector\&.append(currentMag);
+4749       }
+4750     } else if (mRange\&.lower < 0 && mRange\&.upper < 0) // negative range
+4751     {
+4752       double lowerMag = -basePow((int)ceil(baseLog(-mRange\&.lower)));
+4753       double currentMag = lowerMag;
+4754       mTickVector\&.clear();
+4755       mTickVector\&.append(currentMag);
+4756       while (currentMag < mRange\&.upper && currentMag < 0) // currentMag might be zero for ranges ~1e-300, just cancel in that case
+4757       {
+4758         currentMag /= mScaleLogBase;
+4759         mTickVector\&.append(currentMag);
+4760       }
+4761     } else // invalid range for logarithmic scale, because lower and upper have different sign
+4762     {
+4763       mTickVector\&.clear();
+4764       qDebug() << Q_FUNC_INFO << "Invalid range for logarithmic plot: " << mRange\&.lower << "-" << mRange\&.upper;
+4765     }
+4766   }
+4767 }
+.fi
+.SS "QPen QCPAxis::getBasePen () const\fC [protected]\fP"
+Returns the pen that is used to draw the axis base line\&. Depending on the selection state, this is either mSelectedBasePen or mBasePen\&. 
+.PP
+Definition at line 5420 of file qcustomplot\&.cpp\&.
+.PP
+References mBasePen, mSelected, and mSelectedBasePen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+5421 {
+5422   return mSelected\&.testFlag(spAxis) ? mSelectedBasePen : mBasePen;
+5423 }
+.fi
+.SS "QColor QCPAxis::getLabelColor () const\fC [protected]\fP"
+Returns the color that is used to draw the axis label\&. Depending on the selection state, this is either mSelectedLabelColor or mLabelColor\&. 
+.PP
+Definition at line 5480 of file qcustomplot\&.cpp\&.
+.PP
+References mLabelColor, mSelected, and mSelectedLabelColor\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+5481 {
+5482   return mSelected\&.testFlag(spAxisLabel) ? mSelectedLabelColor : mLabelColor;
+5483 }
+.fi
+.SS "QFont QCPAxis::getLabelFont () const\fC [protected]\fP"
+Returns the font that is used to draw the axis label\&. Depending on the selection state, this is either mSelectedLabelFont or mLabelFont\&. 
+.PP
+Definition at line 5460 of file qcustomplot\&.cpp\&.
+.PP
+References mLabelFont, mSelected, and mSelectedLabelFont\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+5461 {
+5462   return mSelected\&.testFlag(spAxisLabel) ? mSelectedLabelFont : mLabelFont;
+5463 }
+.fi
+.SS "void QCPAxis::getMaxTickLabelSize (const QFont &font, const QString &text, QSize *tickLabelsSize) const\fC [protected]\fP, \fC [virtual]\fP"
+Simulates the steps done by \fBdrawTickLabel\fP by calculating bounding boxes of the text label to be drawn, depending on number format etc\&. Since we only want the largest tick label for the margin calculation, the passed \fItickLabelsSize\fP isn't overridden with the calculated label size, but it's only expanded, if it's currently set to a smaller width/height\&. 
+.PP
+Definition at line 5220 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoTickLabels, mExponentialChar, mNumberBeautifulPowers, mNumberMultiplyCross, mPositiveSignChar, mScaleType, mTickLabelRotation, and mTickLabelType\&.
+.PP
+Referenced by calculateMargin()\&.
+.PP
+.nf
+5221 {
+5222   // This function does the same as drawTickLabel but omits the actual drawing
+5223   // changes involve creating extra QFontMetrics instances for font, since painter->fontMetrics() isn't available
+5224   
+5225   // determine whether beautiful powers should be used
+5226   bool useBeautifulPowers = false;
+5227   int ePos=-1;
+5228   if (mAutoTickLabels && mNumberBeautifulPowers && mTickLabelType == ltNumber)
+5229   {
+5230     ePos = text\&.indexOf(mExponentialChar);
+5231     if (ePos > -1)
+5232       useBeautifulPowers = true;
+5233   }
+5234   
+5235   // calculate and draw text, depending on whether beautiful powers are applicable or not:
+5236   QRect bounds, baseBounds, expBounds;
+5237   QString basePart, expPart;
+5238   QFont bugFixFont(font);
+5239   bugFixFont\&.setPointSizeF(bugFixFont\&.pointSizeF()+0\&.05); // QFontMetrics\&.boundingRect has a bug for exact point sizes that make the results oscillate due to internal rounding 
+5240   QFont expFont;
+5241   if (useBeautifulPowers)
+5242   {
+5243     // split string parts for part of number/symbol that will be drawn normally and part that will be drawn as exponent:
+5244     basePart = text\&.left(ePos);
+5245     // in log scaling, we want to turn "1*10^n" into "10^n", else add multiplication sign and decimal base:
+5246     if (mScaleType == stLogarithmic && basePart == "1")
+5247       basePart = "10";
+5248     else
+5249       basePart += (mNumberMultiplyCross ? QString(QChar(215)) : QString(QChar(183))) + "10";
+5250     expPart = text\&.mid(ePos+1);
+5251     // clip "+" and leading zeros off expPart:
+5252     while (expPart\&.at(1) == '0' && expPart\&.length() > 2) // length > 2 so we leave one zero when numberFormatChar is 'e'
+5253       expPart\&.remove(1, 1);
+5254     if (expPart\&.at(0) == mPositiveSignChar)
+5255       expPart\&.remove(0, 1);
+5256     // prepare smaller font for exponent:
+5257     expFont = font;
+5258     expFont\&.setPointSize(expFont\&.pointSize()*0\&.75);
+5259     // calculate bounding rects of base part, exponent part and total one:
+5260     QFontMetrics baseFontMetrics(bugFixFont);
+5261     baseBounds = baseFontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip, basePart);
+5262     QFontMetrics expFontMetrics(expFont);
+5263     expBounds = expFontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip, expPart);
+5264     bounds = baseBounds\&.adjusted(0, 0, expBounds\&.width(), 0); 
+5265   } else // useBeautifulPowers == false
+5266   {
+5267     QFontMetrics fontMetrics(bugFixFont);
+5268     bounds = fontMetrics\&.boundingRect(0, 0, 0, 0, Qt::TextDontClip | Qt::AlignHCenter, text);
+5269   }
+5270   
+5271   // if rotated tick labels, transform bounding rect, too:
+5272   QRect rotatedBounds = bounds;
+5273   if (!qFuzzyIsNull(mTickLabelRotation))
+5274   {
+5275     QTransform transform;
+5276     transform\&.rotate(mTickLabelRotation);
+5277     rotatedBounds = transform\&.mapRect(bounds);
+5278   }
+5279   
+5280   // expand passed tickLabelsSize if current tick label is larger:
+5281   if (rotatedBounds\&.width() > tickLabelsSize->width()) 
+5282     tickLabelsSize->setWidth(rotatedBounds\&.width());
+5283   if (rotatedBounds\&.height() > tickLabelsSize->height())
+5284     tickLabelsSize->setHeight(rotatedBounds\&.height());
+5285 }
+.fi
+.SS "QPen QCPAxis::getSubTickPen () const\fC [protected]\fP"
+Returns the pen that is used to draw the subticks\&. Depending on the selection state, this is either mSelectedSubTickPen or mSubTickPen\&. 
+.PP
+Definition at line 5440 of file qcustomplot\&.cpp\&.
+.PP
+References mSelected, mSelectedSubTickPen, and mSubTickPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+5441 {
+5442   return mSelected\&.testFlag(spAxis) ? mSelectedSubTickPen : mSubTickPen;
+5443 }
+.fi
+.SS "QColor QCPAxis::getTickLabelColor () const\fC [protected]\fP"
+Returns the color that is used to draw the tick labels\&. Depending on the selection state, this is either mSelectedTickLabelColor or mTickLabelColor\&. 
+.PP
+Definition at line 5470 of file qcustomplot\&.cpp\&.
+.PP
+References mSelected, mSelectedTickLabelColor, and mTickLabelColor\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+5471 {
+5472   return mSelected\&.testFlag(spTickLabels) ? mSelectedTickLabelColor : mTickLabelColor;
+5473 }
+.fi
+.SS "QFont QCPAxis::getTickLabelFont () const\fC [protected]\fP"
+Returns the font that is used to draw the tick labels\&. Depending on the selection state, this is either mSelectedTickLabelFont or mTickLabelFont\&. 
+.PP
+Definition at line 5450 of file qcustomplot\&.cpp\&.
+.PP
+References mSelected, mSelectedTickLabelFont, and mTickLabelFont\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+5451 {
+5452   return mSelected\&.testFlag(spTickLabels) ? mSelectedTickLabelFont : mTickLabelFont;
+5453 }
+.fi
+.SS "QPen QCPAxis::getTickPen () const\fC [protected]\fP"
+Returns the pen that is used to draw the (major) ticks\&. Depending on the selection state, this is either mSelectedTickPen or mTickPen\&. 
+.PP
+Definition at line 5430 of file qcustomplot\&.cpp\&.
+.PP
+References mSelected, mSelectedTickPen, and mTickPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+5431 {
+5432   return mSelected\&.testFlag(spAxis) ? mSelectedTickPen : mTickPen;
+5433 }
+.fi
+.SS "bool QCPAxis::grid () const\fC [inline]\fP"
+
+.PP
+Definition at line 1710 of file qcustomplot\&.h\&.
+.PP
+.nf
+1710 { return mGrid->visible(); }
+.fi
+.SS "QPen QCPAxis::gridPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1736 of file qcustomplot\&.h\&.
+.PP
+.nf
+1736 { return mGrid->pen(); }
+.fi
+.SS "bool QCPAxis::handleAxisSelection (QMouseEvent *event, booladditiveSelection, bool &modified)\fC [protected]\fP, \fC [virtual]\fP"
+Handles the selection \fIevent\fP and returns true when the selection event hit any parts of the axis\&. If the selection state of any parts of the axis was changed, the output parameter \fImodified\fP is set to true\&.
+.PP
+When \fIadditiveSelecton\fP is true, any new selections become selected in addition to the recent selections\&. The recent selections are not cleared\&. Further, clicking on one object multiple times in additive selection mode, toggles the selection of that object on and off\&.
+.PP
+To indicate that an event deselects the axis (i\&.e\&. the parts that are deselectable by the user, see \fBsetSelectable\fP), pass 0 as \fIevent\fP\&. 
+.PP
+Definition at line 5300 of file qcustomplot\&.cpp\&.
+.PP
+References selectable(), selected(), selectTest(), and setSelected()\&.
+.PP
+.nf
+5301 {
+5302   bool selectionFound = false;
+5303   if (event)
+5304   {
+5305     SelectablePart selectedAxisPart = selectTest(event->pos());
+5306     if (selectedAxisPart == spNone || !selectable()\&.testFlag(selectedAxisPart))
+5307     {
+5308       // deselect parts that are changeable (selectable):
+5309       SelectableParts newState = selected() & ~selectable();
+5310       if (newState != selected() && !additiveSelection)
+5311       {
+5312         modified = true;
+5313         setSelected(newState);
+5314       }
+5315     } else
+5316     {
+5317       selectionFound = true;
+5318       if (additiveSelection)
+5319       {
+5320         // additive selection, so toggle selected part:
+5321         setSelected(selected() ^ selectedAxisPart);
+5322         modified = true;
+5323       } else
+5324       {
+5325         // not additive selection, so select part and deselect all others that are changeable (selectable):
+5326         SelectableParts newState = (selected() & ~selectable()) | selectedAxisPart;
+5327         if (newState != selected())
+5328         {
+5329           modified = true;
+5330           setSelected(newState);
+5331         }
+5332       }
+5333     }
+5334   } else // event == 0, so deselect all changeable parts
+5335   {
+5336     SelectableParts newState = selected() & ~selectable();
+5337     if (newState != selected())
+5338     {
+5339       modified = true;
+5340       setSelected(newState);
+5341     }
+5342   }
+5343   return selectionFound;
+5344 }
+.fi
+.SS "QString QCPAxis::label () const\fC [inline]\fP"
+
+.PP
+Definition at line 1743 of file qcustomplot\&.h\&.
+.PP
+.nf
+1743 { return mLabel; }
+.fi
+.SS "QColor QCPAxis::labelColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1742 of file qcustomplot\&.h\&.
+.PP
+.nf
+1742 { return mLabelColor; }
+.fi
+.SS "QFont QCPAxis::labelFont () const\fC [inline]\fP"
+
+.PP
+Definition at line 1741 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+1741 { return mLabelFont; }
+.fi
+.SS "int QCPAxis::labelPadding () const\fC [inline]\fP"
+
+.PP
+Definition at line 1744 of file qcustomplot\&.h\&.
+.PP
+.nf
+1744 { return mLabelPadding; }
+.fi
+.SS "void QCPAxis::moveRange (doublediff)"
+
+.PP
+If the scale type (\fBsetScaleType\fP) is \fBstLinear\fP, \fIdiff\fP is added to the lower and upper bounds of the range\&. The range is simply moved by \fIdiff\fP\&.
+.PP
+If the scale type is \fBstLogarithmic\fP, the range bounds are multiplied by \fIdiff\fP\&. This corresponds to an apparent 'linear' move in logarithmic scaling by a distance of log(diff)\&. 
+.PP
+Definition at line 4419 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mRange, mScaleType, rangeChanged(), and QCPRange::upper\&.
+.PP
+.nf
+4420 {
+4421   if (mScaleType == stLinear)
+4422   {
+4423     mRange\&.lower += diff;
+4424     mRange\&.upper += diff;
+4425   } else // mScaleType == stLogarithmic
+4426   {
+4427     mRange\&.lower *= diff;
+4428     mRange\&.upper *= diff;
+4429   }
+4430   emit rangeChanged(mRange);
+4431 }
+.fi
+.SS "QString QCPAxis::numberFormat () const"
+
+.PP
+Definition at line 3603 of file qcustomplot\&.cpp\&.
+.PP
+References mNumberBeautifulPowers, mNumberFormatChar, and mNumberMultiplyCross\&.
+.PP
+.nf
+3604 {
+3605   QString result;
+3606   result\&.append(mNumberFormatChar);
+3607   if (mNumberBeautifulPowers)
+3608   {
+3609     result\&.append("b");
+3610     if (mNumberMultiplyCross)
+3611       result\&.append("c");
+3612   }
+3613   return result;
+3614 }
+.fi
+.SS "int QCPAxis::numberPrecision () const\fC [inline]\fP"
+
+.PP
+Definition at line 1726 of file qcustomplot\&.h\&.
+.PP
+.nf
+1726 { return mNumberPrecision; }
+.fi
+.SS "Qt::Orientation QCPAxis::orientation () const\fC [inline]\fP"
+
+.PP
+Returns the orientation of the axis\&. The axis orientation (horizontal or vertical) is deduced from the axis type (left, top, right or bottom)\&. 
+.PP
+Definition at line 1810 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::addFillBasePoints(), calculateMargin(), QCPAbstractPlottable::coordsToPixels(), coordToPixel(), draw(), QCPGraph::drawError(), drawGridLines(), QCPGraph::drawScatterPlot(), drawSubGridLines(), drawTickLabel(), QCPGraph::getChannelFillPolygon(), QCPGraph::getImpulsePlotData(), QCPGraph::getLinePlotData(), QCPGraph::getScatterPlotData(), QCPGraph::getStepCenterPlotData(), QCPGraph::getStepLeftPlotData(), QCPGraph::getStepRightPlotData(), QCPGraph::lowerFillBasePoint(), QCPItemPosition::pixelPoint(), QCPAbstractPlottable::pixelsToCoords(), pixelToCoord(), QCPAbstractPlottable::QCPAbstractPlottable(), QCPItemPosition::setPixelPoint(), setScaleRatio(), and QCPGraph::upperFillBasePoint()\&.
+.PP
+.nf
+1810 { return mOrientation; }
+.fi
+.SS "int QCPAxis::padding () const\fC [inline]\fP"
+
+.PP
+Definition at line 1745 of file qcustomplot\&.h\&.
+.PP
+Referenced by setLabelPadding(), setPadding(), and setTickLabelPadding()\&.
+.PP
+.nf
+1745 { return mPadding; }
+.fi
+.SS "double QCPAxis::pixelToCoord (doublevalue) const"
+
+.PP
+Transforms \fIvalue\fP (in pixel coordinates of the \fBQCustomPlot\fP widget) to axis coordinates\&. 
+.PP
+Definition at line 4493 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mAxisRect, mRange, mRangeReversed, mScaleType, orientation(), QCPRange::size(), QCPRange::upper, and value\&.
+.PP
+Referenced by mouseMoveEvent(), QCPAbstractPlottable::pixelsToCoords(), QCPItemPosition::setPixelPoint(), and wheelEvent()\&.
+.PP
+.nf
+4494 {
+4495   if (orientation() == Qt::Horizontal)
+4496   {
+4497     if (mScaleType == stLinear)
+4498     {
+4499       if (!mRangeReversed)
+4500         return (value-mAxisRect\&.left())/(double)mAxisRect\&.width()*mRange\&.size()+mRange\&.lower;
+4501       else
+4502         return -(value-mAxisRect\&.left())/(double)mAxisRect\&.width()*mRange\&.size()+mRange\&.upper;
+4503     } else // mScaleType == stLogarithmic
+4504     {
+4505       if (!mRangeReversed)
+4506         return pow(mRange\&.upper/mRange\&.lower, (value-mAxisRect\&.left())/(double)mAxisRect\&.width())*mRange\&.lower;
+4507       else
+4508         return pow(mRange\&.upper/mRange\&.lower, (mAxisRect\&.left()-value)/(double)mAxisRect\&.width())*mRange\&.upper;
+4509     }
+4510   } else // orientation() == Qt::Vertical
+4511   {
+4512     if (mScaleType == stLinear)
+4513     {
+4514       if (!mRangeReversed)
+4515         return (mAxisRect\&.bottom()-value)/(double)mAxisRect\&.height()*mRange\&.size()+mRange\&.lower;
+4516       else
+4517         return -(mAxisRect\&.bottom()-value)/(double)mAxisRect\&.height()*mRange\&.size()+mRange\&.upper;
+4518     } else // mScaleType == stLogarithmic
+4519     {
+4520       if (!mRangeReversed)
+4521         return pow(mRange\&.upper/mRange\&.lower, (mAxisRect\&.bottom()-value)/(double)mAxisRect\&.height())*mRange\&.lower;
+4522       else
+4523         return pow(mRange\&.upper/mRange\&.lower, (value-mAxisRect\&.bottom())/(double)mAxisRect\&.height())*mRange\&.upper;
+4524     }
+4525   }
+4526 }
+.fi
+.SS "QCPAxis::Q_ENUMS (\fBAxisType\fP)\fC [inline]\fP"
+
+.PP
+When automatic tick label generation is enabled (\fBsetAutoTickLabels\fP), defines how the numerical value (coordinate) of the tick position is translated into a string that will be drawn at the tick position\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickLabelType\fP 
+.RE
+.PP
+< Tick coordinate is regarded as normal number and will be displayed as such\&. (see \fBsetNumberFormat\fP)
+.PP
+< Tick coordinate is regarded as a date/time (seconds since 1970-01-01T00:00:00 UTC, see QDateTime::toTime_t) and will be displayed and formatted as such\&. (see \fBsetDateTimeFormat\fP) 
+.PP
+Definition at line 1666 of file qcustomplot\&.h\&.
+.PP
+.nf
+1673                  { ltNumber    
+1674                    ,ltDateTime 
+1675                  };
+.fi
+.SS "QCPAxis::Q_ENUMS (LabelType)\fC [inline]\fP"
+
+.PP
+Defines the scale of an axis\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetScaleType\fP 
+.RE
+.PP
+< Normal linear scaling
+.PP
+< Logarithmic scaling with correspondingly transformed plots and (major) tick marks at every base power (see \fBsetScaleLogBase\fP)\&. 
+.PP
+Definition at line 1676 of file qcustomplot\&.h\&.
+.PP
+.nf
+1681                  { stLinear       
+1682                    ,stLogarithmic 
+1683                  };
+.fi
+.SS "QCPAxis::Q_ENUMS (ScaleType)\fC [inline]\fP"
+
+.PP
+Defines the selectable parts of an axis\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectable\fP, \fBsetSelected\fP 
+.RE
+.PP
+< None of the selectable parts
+.PP
+< The axis backbone and tick marks
+.PP
+< Tick labels (numbers) of this axis (as a whole, not individually)
+.PP
+< The axis label 
+.PP
+Definition at line 1684 of file qcustomplot\&.h\&.
+.PP
+.nf
+1689                       { spNone        = 0      
+1690                         ,spAxis       = 0x001  
+1691                         ,spTickLabels = 0x002  
+1692                         ,spAxisLabel  = 0x004  
+1693                       };
+.fi
+.SS "QCPAxis::Q_ENUMS (SelectablePart)"
+
+.SS "const \fBQCPRange\fP QCPAxis::range () const\fC [inline]\fP"
+
+.PP
+Definition at line 1705 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::draw(), QCPBars::draw(), drawGridLines(), QCPCurve::getCurveData(), QCPGraph::getVisibleDataBounds(), QCPGraph::lowerFillBasePoint(), QCPAbstractPlottable::rescaleKeyAxis(), QCPGraph::rescaleKeyAxis(), QCPAbstractPlottable::rescaleValueAxis(), QCPGraph::rescaleValueAxis(), setScaleRatio(), setupFullAxesBox(), and QCPGraph::upperFillBasePoint()\&.
+.PP
+.nf
+1705 { return mRange; }
+.fi
+.SS "void QCPAxis::rangeChanged (const \fBQCPRange\fP &newRange)\fC [signal]\fP"
+
+.PP
+This signal is emitted when the range of this axis has changed\&. You can connect it to the \fBsetRange\fP slot of another axis to communicate the new range to the other axis, in order for it to be synchronized\&. 
+.PP
+Definition at line 1971 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by moveRange(), scaleRange(), setRange(), setRangeLower(), and setRangeUpper()\&.
+.PP
+.nf
+1972 {
+1973     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+1974     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+1975 }
+.fi
+.SS "bool QCPAxis::rangeReversed () const\fC [inline]\fP"
+
+.PP
+Definition at line 1706 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::drawError(), QCPGraph::lowerFillBasePoint(), setupFullAxesBox(), and QCPGraph::upperFillBasePoint()\&.
+.PP
+.nf
+1706 { return mRangeReversed; }
+.fi
+.SS "double QCPAxis::scaleLogBase () const\fC [inline]\fP"
+
+.PP
+Definition at line 1704 of file qcustomplot\&.h\&.
+.PP
+Referenced by setupFullAxesBox()\&.
+.PP
+.nf
+1704 { return mScaleLogBase; }
+.fi
+.SS "void QCPAxis::scaleRange (doublefactor, doublecenter)"
+
+.PP
+Scales the range of this axis by \fIfactor\fP around the coordinate \fIcenter\fP\&. For example, if \fIfactor\fP is 2\&.0, \fIcenter\fP is 1\&.0, then the axis range will double its size, and the point at coordinate 1\&.0 won't have changed its position in the \fBQCustomPlot\fP widget (i\&.e\&. coordinates around 1\&.0 will have moved symmetrically closer to 1\&.0)\&. 
+.PP
+Definition at line 4439 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mRange, mScaleType, rangeChanged(), QCPRange::sanitizedForLinScale(), QCPRange::sanitizedForLogScale(), QCPRange::upper, and QCPRange::validRange()\&.
+.PP
+Referenced by wheelEvent()\&.
+.PP
+.nf
+4440 {
+4441   
+4442   if (mScaleType == stLinear)
+4443   {
+4444     QCPRange newRange;
+4445     newRange\&.lower = (mRange\&.lower-center)*factor + center;
+4446     newRange\&.upper = (mRange\&.upper-center)*factor + center;
+4447     if (QCPRange::validRange(newRange))
+4448       mRange = newRange\&.sanitizedForLinScale();
+4449   } else // mScaleType == stLogarithmic
+4450   {
+4451     if ((mRange\&.upper < 0 && center < 0) || (mRange\&.upper > 0 && center > 0)) // make sure center has same sign as range
+4452     {
+4453       QCPRange newRange;
+4454       newRange\&.lower = pow(mRange\&.lower/center, factor)*center;
+4455       newRange\&.upper = pow(mRange\&.upper/center, factor)*center;
+4456       if (QCPRange::validRange(newRange))
+4457         mRange = newRange\&.sanitizedForLogScale();
+4458     } else
+4459       qDebug() << Q_FUNC_INFO << "center of scaling operation doesn't lie in same logarithmic sign domain as range:" << center;
+4460   }
+4461   emit rangeChanged(mRange);
+4462 }
+.fi
+.SS "ScaleType QCPAxis::scaleType () const\fC [inline]\fP"
+
+.PP
+Definition at line 1703 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::lowerFillBasePoint(), QCPAbstractPlottable::rescaleKeyAxis(), QCPGraph::rescaleKeyAxis(), QCPAbstractPlottable::rescaleValueAxis(), QCPGraph::rescaleValueAxis(), setupFullAxesBox(), and QCPGraph::upperFillBasePoint()\&.
+.PP
+.nf
+1703 { return mScaleType; }
+.fi
+.SS "SelectableParts QCPAxis::selectable () const\fC [inline]\fP"
+
+.PP
+Definition at line 1747 of file qcustomplot\&.h\&.
+.PP
+Referenced by handleAxisSelection(), and setSelectable()\&.
+.PP
+.nf
+1747 { return mSelectable; }
+.fi
+.SS "SelectableParts QCPAxis::selected () const\fC [inline]\fP"
+
+.PP
+Definition at line 1746 of file qcustomplot\&.h\&.
+.PP
+Referenced by handleAxisSelection(), and setSelected()\&.
+.PP
+.nf
+1746 { return mSelected; }
+.fi
+.SS "QPen QCPAxis::selectedBasePen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1752 of file qcustomplot\&.h\&.
+.PP
+.nf
+1752 { return mSelectedBasePen; }
+.fi
+.SS "QColor QCPAxis::selectedLabelColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1751 of file qcustomplot\&.h\&.
+.PP
+.nf
+1751 { return mSelectedLabelColor; }
+.fi
+.SS "QFont QCPAxis::selectedLabelFont () const\fC [inline]\fP"
+
+.PP
+Definition at line 1749 of file qcustomplot\&.h\&.
+.PP
+.nf
+1749 { return mSelectedLabelFont; }
+.fi
+.SS "QPen QCPAxis::selectedSubTickPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1754 of file qcustomplot\&.h\&.
+.PP
+.nf
+1754 { return mSelectedSubTickPen; }
+.fi
+.SS "QColor QCPAxis::selectedTickLabelColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1750 of file qcustomplot\&.h\&.
+.PP
+.nf
+1750 { return mSelectedTickLabelColor; }
+.fi
+.SS "QFont QCPAxis::selectedTickLabelFont () const\fC [inline]\fP"
+
+.PP
+Definition at line 1748 of file qcustomplot\&.h\&.
+.PP
+.nf
+1748 { return mSelectedTickLabelFont; }
+.fi
+.SS "QPen QCPAxis::selectedTickPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1753 of file qcustomplot\&.h\&.
+.PP
+.nf
+1753 { return mSelectedTickPen; }
+.fi
+.SS "void QCPAxis::selectionChanged (QCPAxis::SelectablePartsselection)\fC [signal]\fP"
+
+.PP
+This signal is emitted when the selection state of this axis has changed, either by user interaction or by a direct call to \fBsetSelected\fP\&. 
+.PP
+Definition at line 1978 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by setSelected()\&.
+.PP
+.nf
+1979 {
+1980     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+1981     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+1982 }
+.fi
+.SS "QCPAxis::SelectablePart QCPAxis::selectTest (const QPointF &pos) const"
+
+.PP
+Returns the part of the axis that is hit by \fIpos\fP (in pixels)\&. The return value of this function is independent of the user-selectable parts defined with \fBsetSelectable\fP\&. Further, this function does not change the current selection state of the axis\&.
+.PP
+If the axis is not visible (\fBsetVisible\fP), this function always returns \fBspNone\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, \fBsetSelectable\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 4589 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisSelectionBox, mLabelSelectionBox, mTickLabelsSelectionBox, and QCPLayerable::mVisible\&.
+.PP
+Referenced by handleAxisSelection(), and mouseReleaseEvent()\&.
+.PP
+.nf
+4590 {
+4591   if (!mVisible)
+4592     return spNone;
+4593   
+4594   if (mAxisSelectionBox\&.contains(pos\&.toPoint()))
+4595     return spAxis;
+4596   else if (mTickLabelsSelectionBox\&.contains(pos\&.toPoint()))
+4597     return spTickLabels;
+4598   else if (mLabelSelectionBox\&.contains(pos\&.toPoint()))
+4599     return spAxisLabel;
+4600   else
+4601     return spNone;
+4602 }
+.fi
+.SS "void QCPAxis::setAntialiasedGrid (boolenabled)"
+
+.PP
+Sets whether the grid of this axis is drawn antialiased or not\&. Note that this setting may be overridden by \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. 
+.PP
+Definition at line 3848 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+3849 {
+3850   mGrid->setAntialiased(enabled);
+3851 }
+.fi
+.SS "void QCPAxis::setAntialiasedSubGrid (boolenabled)"
+
+.PP
+Sets whether the sub grid of this axis is drawn antialiased or not\&. Note that this setting may be overridden by \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. 
+.PP
+Definition at line 3859 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+3860 {
+3861   mGrid->setAntialiasedSubGrid(enabled);
+3862 }
+.fi
+.SS "void QCPAxis::setAntialiasedZeroLine (boolenabled)"
+
+.PP
+Sets whether the zero line of this axis is drawn antialiased or not\&. Note that this setting may be overridden by \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. 
+.PP
+Definition at line 3870 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+3871 {
+3872   mGrid->setAntialiasedZeroLine(enabled);
+3873 }
+.fi
+.SS "void QCPAxis::setAutoSubTicks (boolon)"
+
+.PP
+Sets whether the number of sub ticks in one tick interval is determined automatically\&. This works, as long as the tick step mantissa is a multiple of 0\&.5 (which it is, when \fBsetAutoTickStep\fP is enabled)\&.
+.br
+When \fIon\fP is set to false, you may set the sub tick count with \fBsetSubTickCount\fP manually\&. 
+.PP
+Definition at line 3957 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoSubTicks\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+3958 {
+3959   mAutoSubTicks = on;
+3960 }
+.fi
+.SS "void QCPAxis::setAutoTickCount (intapproximateCount)"
+
+.PP
+When \fBsetAutoTickStep\fP is true, \fIapproximateCount\fP determines how many ticks should be generated in the visible range approximately\&. 
+.PP
+Definition at line 3914 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoTickCount\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+3915 {
+3916   mAutoTickCount = approximateCount;
+3917 }
+.fi
+.SS "void QCPAxis::setAutoTickLabels (boolon)"
+
+.PP
+Sets whether the tick labels are generated automatically depending on the tick label type (\fBltNumber\fP or \fBltDateTime\fP)\&. If \fIon\fP is set to false, you should provide the tick labels via \fBsetTickVectorLabels\fP\&. This is usually used in a combination with \fBsetAutoTicks\fP set to false for complete control over tick positions and labels, e\&.g\&. when the ticks should be at multiples of pi and show '2pi', '3pi' etc\&. as tick labels\&.
+.PP
+If you need dynamically calculated tick vectors (and possibly tick label vectors), set the vectors in a slot connected to the \fBticksRequest\fP signal\&. 
+.PP
+Definition at line 3931 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoTickLabels\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+3932 {
+3933   mAutoTickLabels = on;
+3934 }
+.fi
+.SS "void QCPAxis::setAutoTicks (boolon)"
+
+.PP
+Sets whether the tick positions should be calculated automatically (either from an automatically generated tick step or a tick step provided manually via \fBsetTickStep\fP, see \fBsetAutoTickStep\fP)\&. If \fIon\fP is set to false, you must provide the tick positions manually via \fBsetTickVector\fP\&. For these manual ticks you may let \fBQCPAxis\fP generate the appropriate labels automatically by setting/leaving \fBsetAutoTickLabels\fP true\&. If you also wish to control the displayed labels manually, set \fBsetAutoTickLabels\fP to false and provide the label strings with \fBsetTickVectorLabels\fP\&.
+.PP
+If you need dynamically calculated tick vectors (and possibly tick label vectors), set the vectors in a slot connected to the \fBticksRequest\fP signal\&. 
+.PP
+Definition at line 3905 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoTicks\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+3906 {
+3907   mAutoTicks = on;
+3908 }
+.fi
+.SS "void QCPAxis::setAutoTickStep (boolon)"
+
+.PP
+Sets whether the tick step, i\&.e\&. the interval between two (major) ticks, is calculated automatically\&. If \fIon\fP is set to true, the axis finds a tick step that is reasonable for human readable plots\&. This means the tick step mantissa is chosen such that it's either a multiple of two or ends in 0\&.5\&. The number of ticks the algorithm aims for within the visible range can be set with \fBsetAutoTickCount\fP\&. It's not guaranteed that this number of ticks is met exactly, but approximately within a tolerance of two or three\&.
+.PP
+If \fIon\fP is set to false, you may set the tick step manually with \fBsetTickStep\fP\&. 
+.PP
+Definition at line 3946 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoTickStep\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+3947 {
+3948   mAutoTickStep = on;
+3949 }
+.fi
+.SS "void QCPAxis::setAxisRect (const QRect &rect)\fC [protected]\fP"
+Sets the axis rect\&. The axis uses this rect to position itself within the plot, together with the information of its type (\fBsetAxisType\fP)\&. Theoretically it's possible to give a plot's axes different axis rects (e\&.g\&. for gaps between them), however, they are currently all synchronized by the QCustomPlot::setAxisRect function\&. 
+.PP
+Definition at line 3635 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisRect\&.
+.PP
+Referenced by QCPAxis(), and updateAxisRect()\&.
+.PP
+.nf
+3636 {
+3637   mAxisRect = rect;
+3638 }
+.fi
+.SS "void QCPAxis::setAxisType (\fBAxisType\fPtype)\fC [protected]\fP"
+Sets the axis type\&. This determines the \fBorientation\fP and together with the current axis rect (see \fBsetAxisRect\fP), the position of the axis\&. Depending on \fItype\fP, ticks, tick labels, and label are drawn on corresponding sides of the axis base line\&. 
+.PP
+Definition at line 3622 of file qcustomplot\&.cpp\&.
+.PP
+References atBottom, atTop, mAxisType, and mOrientation\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+3623 {
+3624   mAxisType = type;
+3625   mOrientation = (type == atBottom || type == atTop) ? Qt::Horizontal : Qt::Vertical;
+3626 }
+.fi
+.SS "void QCPAxis::setBasePen (const QPen &pen)"
+
+.PP
+Sets the pen, the axis base line is drawn with\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickPen\fP, \fBsetSubTickPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4233 of file qcustomplot\&.cpp\&.
+.PP
+References mBasePen, and pen()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4234 {
+4235   mBasePen = pen;
+4236 }
+.fi
+.SS "void QCPAxis::setDateTimeFormat (const QString &format)"
+
+.PP
+Sets the format in which dates and times are displayed as tick labels, if \fBsetTickLabelType\fP is \fBltDateTime\fP\&. for details about the \fIformat\fP string, see the documentation of QDateTime::toString()\&. Newlines can be inserted with '\\n'\&. 
+.PP
+Definition at line 4038 of file qcustomplot\&.cpp\&.
+.PP
+References mDateTimeFormat\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4039 {
+4040   mDateTimeFormat = format;
+4041 }
+.fi
+.SS "void QCPAxis::setGrid (boolshow)"
+
+.PP
+Sets whether the grid lines are visible\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSubGrid\fP, \fBsetGridPen\fP, \fBsetZeroLinePen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3879 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+3880 {
+3881   mGrid->setVisible(show);
+3882 }
+.fi
+.SS "void QCPAxis::setGridPen (const QPen &pen)"
+
+.PP
+Sets the pen, grid lines are drawn with\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSubGridPen\fP, \fBsetZeroLinePen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4242 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+4243 {
+4244   mGrid->setPen(pen);
+4245 }
+.fi
+.SS "void QCPAxis::setLabel (const QString &str)"
+
+.PP
+Sets the axis label that will be shown below/above or next to the axis, depending on its orientation\&. 
+.PP
+Definition at line 4310 of file qcustomplot\&.cpp\&.
+.PP
+References mLabel\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4311 {
+4312   mLabel = str;
+4313 }
+.fi
+.SS "void QCPAxis::setLabelColor (const QColor &color)"
+
+.PP
+Sets the color of the axis label\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLabelFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4302 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mLabelColor\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4303 {
+4304   mLabelColor = color;
+4305 }
+.fi
+.SS "void QCPAxis::setLabelFont (const QFont &font)"
+
+.PP
+Sets the font of the axis label\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLabelColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4292 of file qcustomplot\&.cpp\&.
+.PP
+References mLabelFont\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4293 {
+4294   mLabelFont = font;
+4295 }
+.fi
+.SS "void QCPAxis::setLabelPadding (intpadding)"
+
+.PP
+Sets the distance between the tick labels and the axis label\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickLabelPadding\fP, \fBsetPadding\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4319 of file qcustomplot\&.cpp\&.
+.PP
+References mLabelPadding, and padding()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4320 {
+4321   mLabelPadding = padding;
+4322 }
+.fi
+.SS "void QCPAxis::setNumberFormat (const QString &formatCode)"
+
+.PP
+Sets the number format for the numbers drawn as tick labels (if tick label type is \fBltNumber\fP)\&. This \fIformatCode\fP is an extended version of the format code used e\&.g\&. by QString::number() and QLocale::toString()\&. For reference about that, see the 'Argument Formats' section in the detailed description of the QString class\&. \fIformatCode\fP is a string of one, two or three characters\&. The first character is identical to the normal format code used by Qt\&. In short, this means: 'e'/'E' scientific format, 'f' fixed format, 'g'/'G' scientific or fixed, whichever is shorter\&.
+.PP
+The second and third characters are optional and specific to \fBQCustomPlot\fP:
+.br
+If the first char was 'e' or 'g', numbers are/might be displayed in the scientific format, e\&.g\&. '5\&.5e9', which is ugly in a plot\&. So when the second char of \fIformatCode\fP is set to 'b' (for 'beautiful'), those exponential numbers are formatted in a more natural way, i\&.e\&. '5\&.5
+[multiplication sign] 10 [superscript] 9'\&. By default, the multiplication sign is a centered dot\&. If instead a cross should be shown (as is usual in the USA), the third char of \fIformatCode\fP can be set to 'c'\&. The inserted multiplication signs are the UTF-8 characters 215 (0xD7) for the cross and 183 (0xB7) for the dot\&.
+.PP
+If the scale type (\fBsetScaleType\fP) is \fBstLogarithmic\fP and the \fIformatCode\fP uses the 'b' option (beautifully typeset decimal powers), the display usually is '1 [multiplication sign] 10
+[superscript] n', which looks unnatural for logarithmic scaling (the '1 [multiplication sign]' part)\&. To only display the decimal power, set the number precision to zero with \fBsetNumberPrecision\fP\&.
+.PP
+Examples for \fIformatCode:\fP 
+.PD 0
+
+.IP "\(bu" 2
+\fCg\fP normal format code behaviour\&. If number is small, fixed format is used, if number is large, normal scientific format is used 
+.IP "\(bu" 2
+\fCgb\fP If number is small, fixed format is used, if number is large, scientific format is used with beautifully typeset decimal powers and a dot as multiplication sign 
+.IP "\(bu" 2
+\fCebc\fP All numbers are in scientific format with beautifully typeset decimal power and a cross as multiplication sign 
+.IP "\(bu" 2
+\fCfb\fP illegal format code, since fixed format doesn't support (or need) beautifully typeset decimal powers\&. Format code will be reduced to 'f'\&. 
+.IP "\(bu" 2
+\fChello\fP illegal format code, since first char is not 'e', 'E', 'f', 'g' or 'G'\&. Current format code will not be changed\&. 
+.PP
+
+.PP
+Definition at line 4079 of file qcustomplot\&.cpp\&.
+.PP
+References mNumberBeautifulPowers, mNumberFormatChar, and mNumberMultiplyCross\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4080 {
+4081   if (formatCode\&.length() < 1) return;
+4082   
+4083   // interpret first char as number format char:
+4084   QString allowedFormatChars = "eEfgG";
+4085   if (allowedFormatChars\&.contains(formatCode\&.at(0)))
+4086   {
+4087   // mNumberFormatChar = formatCode\&.at(0)\&.toAscii();
+4088     mNumberFormatChar = formatCode\&.at(0)\&.toLatin1();
+4089   } else
+4090   {
+4091     qDebug() << Q_FUNC_INFO << "Invalid number format code (first char not in 'eEfgG'):" << formatCode;
+4092     return;
+4093   }
+4094   if (formatCode\&.length() < 2)
+4095   {
+4096     mNumberBeautifulPowers = false;
+4097     mNumberMultiplyCross = false;
+4098     return;
+4099   }
+4100   
+4101   // interpret second char as indicator for beautiful decimal powers:
+4102   if (formatCode\&.at(1) == 'b' && (mNumberFormatChar == 'e' || mNumberFormatChar == 'g'))
+4103   {
+4104     mNumberBeautifulPowers = true;
+4105   } else
+4106   {
+4107     qDebug() << Q_FUNC_INFO << "Invalid number format code (second char not 'b' or first char neither 'e' nor 'g'):" << formatCode;
+4108     return;
+4109   }
+4110   if (formatCode\&.length() < 3)
+4111   {
+4112     mNumberMultiplyCross = false;
+4113     return;
+4114   }
+4115   
+4116   // interpret third char as indicator for dot or cross multiplication symbol:
+4117   if (formatCode\&.at(2) == 'c')
+4118   {
+4119     mNumberMultiplyCross = true;
+4120   } else if (formatCode\&.at(2) == 'd')
+4121   {
+4122     mNumberMultiplyCross = false;
+4123   } else
+4124   {
+4125     qDebug() << Q_FUNC_INFO << "Invalid number format code (third char neither 'c' nor 'd'):" << formatCode;
+4126     return;
+4127   }
+4128 }
+.fi
+.SS "void QCPAxis::setNumberPrecision (intprecision)"
+
+.PP
+Sets the precision of the numbers drawn as tick labels\&. See QLocale::toString(double i, char f, int prec) for details\&. The effect of precisions are most notably for number Formats starting with 'e', see \fBsetNumberFormat\fP
+.PP
+If the scale type (\fBsetScaleType\fP) is \fBstLogarithmic\fP and the number format (\fBsetNumberFormat\fP) uses the 'b' format code (beautifully typeset decimal powers), the display usually is '1 [multiplication sign] 10 [superscript] n', which looks unnatural for logarithmic scaling (the '1 [multiplication sign]' part)\&. To only display the decimal power, set \fIprecision\fP to zero\&. 
+.PP
+Definition at line 4141 of file qcustomplot\&.cpp\&.
+.PP
+References mNumberPrecision\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4142 {
+4143   mNumberPrecision = precision;
+4144 }
+.fi
+.SS "void QCPAxis::setPadding (intpadding)"
+
+.PP
+Sets the padding of the axis\&. When \fBQCustomPlot::setAutoMargin\fP is enabled, the padding is the additional distance to the respective widget border, that is left blank\&. If \fIpadding\fP is zero (default), the auto margin mechanism will find a margin that the axis label (or tick label, if no axis label is set) barely fits inside the \fBQCustomPlot\fP widget\&. To give the label closest to the border some freedom, increase \fIpadding\fP\&.
+.PP
+The axis padding has no meaning if \fBQCustomPlot::setAutoMargin\fP is disabled\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLabelPadding\fP, \fBsetTickLabelPadding\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4337 of file qcustomplot\&.cpp\&.
+.PP
+References mPadding, and padding()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4338 {
+4339   mPadding = padding;
+4340 }
+.fi
+.SS "void QCPAxis::setRange (doublelower, doubleupper)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Sets the lower and upper bound of the axis range\&. To invert the direction of an axis range, use \fBsetRangeReversed\fP\&.
+.PP
+There is also a slot to set a range, see \fBsetRange(const QCPRange &range)\fP\&. 
+.PP
+Definition at line 3749 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mRange, mScaleType, rangeChanged(), QCPRange::sanitizedForLinScale(), QCPRange::sanitizedForLogScale(), QCPRange::upper, and QCPRange::validRange()\&.
+.PP
+Referenced by mouseMoveEvent(), QCPAxis(), QCPAbstractPlottable::rescaleKeyAxis(), QCPGraph::rescaleKeyAxis(), QCPAbstractPlottable::rescaleValueAxis(), QCPGraph::rescaleValueAxis(), setRange(), setScaleRatio(), and setupFullAxesBox()\&.
+.PP
+.nf
+3750 {
+3751   if (lower == mRange\&.lower && upper == mRange\&.upper)
+3752     return;
+3753   
+3754   if (!QCPRange::validRange(lower, upper)) return;
+3755   mRange\&.lower = lower;
+3756   mRange\&.upper = upper;
+3757   if (mScaleType == stLogarithmic)
+3758   {
+3759     mRange = mRange\&.sanitizedForLogScale();
+3760   } else
+3761   {
+3762     mRange = mRange\&.sanitizedForLinScale();
+3763   }
+3764   emit rangeChanged(mRange);
+3765 }
+.fi
+.SS "void QCPAxis::setRange (doubleposition, doublesize, Qt::AlignmentFlagalignment)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Sets the range of the axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP the \fIposition\fP coordinate indicates together with the \fIalignment\fP parameter, where the new range will be positioned\&. 
+.br
+\fIsize\fP defines the size (upper-lower) of the new axis range\&. 
+.br
+\fIalignment\fP determines how \fIposition\fP is to be interpreted\&.
+.br
+If \fIalignment\fP is Qt::AlignLeft, \fIposition\fP will be the lower bound of the range\&.
+.br
+If \fIalignment\fP is Qt::AlignRight, \fIposition\fP will be the upper bound of the range\&.
+.br
+If \fIalignment\fP is Qt::AlignCenter, the new range will be centered around \fIposition\fP\&.
+.br
+Any other values for \fIalignment\fP will default to Qt::AlignCenter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 3780 of file qcustomplot\&.cpp\&.
+.PP
+References setRange()\&.
+.PP
+.nf
+3781 {
+3782   if (alignment == Qt::AlignLeft)
+3783     setRange(position, position+size);
+3784   else if (alignment == Qt::AlignRight)
+3785     setRange(position-size, position);
+3786   else // alignment == Qt::AlignCenter
+3787     setRange(position-size/2\&.0, position+size/2\&.0);
+3788 }
+.fi
+.SS "void QCPAxis::setRange (const \fBQCPRange\fP &range)\fC [slot]\fP"
+
+.PP
+Sets the range of the axis\&. This slot may be connected with the \fBrangeChanged\fP signal of another axis so this axis is always synchronized with the other axis range, when it changes\&.
+.PP
+To invert the direction of an axis range, use \fBsetRangeReversed\fP\&. 
+.PP
+Definition at line 3685 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mRange, mScaleType, rangeChanged(), QCPRange::sanitizedForLinScale(), QCPRange::sanitizedForLogScale(), QCPRange::upper, and QCPRange::validRange()\&.
+.PP
+.nf
+3686 {
+3687   if (range\&.lower == mRange\&.lower && range\&.upper == mRange\&.upper)
+3688     return;
+3689   
+3690   if (!QCPRange::validRange(range)) return;
+3691   if (mScaleType == stLogarithmic)
+3692   {
+3693     mRange = range\&.sanitizedForLogScale();
+3694   } else
+3695   {
+3696     mRange = range\&.sanitizedForLinScale();
+3697   }
+3698   emit rangeChanged(mRange);
+3699 }
+.fi
+.SS "void QCPAxis::setRangeLower (doublelower)"
+
+.PP
+Sets the lower bound of the axis range, independently of the upper bound\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRange\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3794 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mRange, mScaleType, rangeChanged(), QCPRange::sanitizedForLinScale(), and QCPRange::sanitizedForLogScale()\&.
+.PP
+.nf
+3795 {
+3796   if (mRange\&.lower == lower)
+3797     return;
+3798   
+3799   mRange\&.lower = lower;
+3800   if (mScaleType == stLogarithmic)
+3801   {
+3802     mRange = mRange\&.sanitizedForLogScale();
+3803   } else
+3804   {
+3805     mRange = mRange\&.sanitizedForLinScale();
+3806   }
+3807   emit rangeChanged(mRange);
+3808 }
+.fi
+.SS "void QCPAxis::setRangeReversed (boolreversed)"
+
+.PP
+Sets whether the axis range (direction) is displayed reversed\&. Normally, the values on horizontal axes increase left to right, on vertical axes bottom to top\&. When \fIreversed\fP is set to true, the direction of increasing values is inverted\&. Note that the range and data interface stays the same for reversed axes, e\&.g\&. the \fIlower\fP part of the \fBsetRange\fP interface will still reference the mathematically smaller number than the \fIupper\fP part\&. 
+.PP
+Definition at line 3837 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeReversed\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+3838 {
+3839   mRangeReversed = reversed;
+3840 }
+.fi
+.SS "void QCPAxis::setRangeUpper (doubleupper)"
+
+.PP
+Sets the upper bound of the axis range, independently of the lower bound\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRange\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3814 of file qcustomplot\&.cpp\&.
+.PP
+References mRange, mScaleType, rangeChanged(), QCPRange::sanitizedForLinScale(), QCPRange::sanitizedForLogScale(), and QCPRange::upper\&.
+.PP
+.nf
+3815 {
+3816   if (mRange\&.upper == upper)
+3817     return;
+3818   
+3819   mRange\&.upper = upper;
+3820   if (mScaleType == stLogarithmic)
+3821   {
+3822     mRange = mRange\&.sanitizedForLogScale();
+3823   } else
+3824   {
+3825     mRange = mRange\&.sanitizedForLinScale();
+3826   }
+3827   emit rangeChanged(mRange);
+3828 }
+.fi
+.SS "void QCPAxis::setScaleLogBase (doublebase)"
+
+.PP
+If \fBsetScaleType\fP is set to \fBstLogarithmic\fP, \fIbase\fP will be the logarithm base of the scaling\&. In logarithmic axis scaling, major tick marks appear at all powers of \fIbase\fP\&.
+.PP
+Properties like tick step (\fBsetTickStep\fP) don't apply in logarithmic scaling\&. If you wish a decimal base but less major ticks, consider choosing \fIbase\fP 100, 1000 or even higher\&. 
+.PP
+Definition at line 3667 of file qcustomplot\&.cpp\&.
+.PP
+References mScaleLogBase, and mScaleLogBaseLogInv\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+3668 {
+3669   if (base > 1)
+3670   {
+3671     mScaleLogBase = base;
+3672     mScaleLogBaseLogInv = 1\&.0/qLn(mScaleLogBase); // buffer for faster baseLog() calculation
+3673   } else
+3674     qDebug() << Q_FUNC_INFO << "Invalid logarithmic scale base (must be greater 1):" << base;
+3675 }
+.fi
+.SS "void QCPAxis::setScaleRatio (const \fBQCPAxis\fP *otherAxis, doubleratio = \fC1\&.0\fP)"
+
+.PP
+Sets the range of this axis to have a certain scale \fIratio\fP to \fIotherAxis\fP\&. For example, if \fIratio\fP is 1, this axis is the \fIyAxis\fP and \fIotherAxis\fP is \fIxAxis\fP, graphs plotted with those axes will appear in a 1:1 ratio, independent of the aspect ratio the axis rect has\&. This is an operation that changes the range of this axis once, it doesn't fix the scale ratio indefinitely\&. Consequently calling this function in the constructor won't have the desired effect, since the widget's dimensions aren't defined yet, and a resizeEvent will follow\&. 
+.PP
+Definition at line 4472 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisRect, mRange, orientation(), range(), setRange(), and QCPRange::size()\&.
+.PP
+.nf
+4473 {
+4474   int otherPixelSize, ownPixelSize;
+4475   
+4476   if (otherAxis->orientation() == Qt::Horizontal)
+4477     otherPixelSize = otherAxis->mAxisRect\&.width();
+4478   else
+4479     otherPixelSize = otherAxis->mAxisRect\&.height();
+4480   
+4481   if (orientation() == Qt::Horizontal)
+4482     ownPixelSize = mAxisRect\&.width();
+4483   else
+4484     ownPixelSize = mAxisRect\&.height();
+4485   
+4486   double newRangeSize = ratio*otherAxis->mRange\&.size()*ownPixelSize/(double)otherPixelSize;
+4487   setRange(range()\&.center(), newRangeSize, Qt::AlignCenter);
+4488 }
+.fi
+.SS "void QCPAxis::setScaleType (ScaleTypetype)"
+
+.PP
+Sets whether the axis uses a linear scale or a logarithmic scale\&. If \fItype\fP is set to \fBstLogarithmic\fP, the logarithm base can be set with \fBsetScaleLogBase\fP\&. In logarithmic axis scaling, major tick marks appear at all powers of the logarithm base\&. Properties like tick step (\fBsetTickStep\fP) don't apply in logarithmic scaling\&. If you wish a decimal base but less major ticks, consider choosing a logarithm base of 100, 1000 or even higher\&.
+.PP
+If \fItype\fP is \fBstLogarithmic\fP and the number format (\fBsetNumberFormat\fP) uses the 'b' option (beautifully typeset decimal powers), the display usually is '1 [multiplication sign] 10
+[superscript] n', which looks unnatural for logarithmic scaling (the '1 [multiplication sign]' part)\&. To only display the decimal power, set the number precision to zero with \fBsetNumberPrecision\fP\&. 
+.PP
+Definition at line 3653 of file qcustomplot\&.cpp\&.
+.PP
+References mRange, mScaleType, and QCPRange::sanitizedForLogScale()\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+3654 {
+3655   mScaleType = type;
+3656   if (mScaleType == stLogarithmic)
+3657     mRange = mRange\&.sanitizedForLogScale();
+3658 }
+.fi
+.SS "void QCPAxis::setSelectable (const QCPAxis::SelectableParts &selectable)\fC [slot]\fP"
+
+.PP
+Sets whether the user can (de-)select the parts in \fIselectable\fP by clicking on the \fBQCustomPlot\fP surface\&. (When \fBQCustomPlot::setInteractions\fP contains iSelectAxes\&.)
+.PP
+However, even when \fIselectable\fP is set to a value not allowing the selection of a specific part, it is still possible to set the selection of this part manually, by calling \fBsetSelected\fP directly\&.
+.PP
+\fBSee also:\fP
+.RS 4
+SelectablePart, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3711 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectable, and selectable()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+3712 {
+3713   mSelectable = selectable;
+3714 }
+.fi
+.SS "void QCPAxis::setSelected (const QCPAxis::SelectableParts &selected)\fC [slot]\fP"
+
+.PP
+Sets the selected state of the respective axis parts described by \fBSelectablePart\fP\&. When a part is selected, it uses a different pen/font\&.
+.PP
+The entire selection mechanism for axes is handled automatically when \fBQCustomPlot::setInteractions\fP contains iSelectAxes\&. You only need to call this function when you wish to change the selection state manually\&.
+.PP
+This function can change the selection state of a part even when \fBsetSelectable\fP was set to a value that actually excludes the part\&.
+.PP
+emits the \fBselectionChanged\fP signal when \fIselected\fP is different from the previous selection state\&.
+.PP
+\fBSee also:\fP
+.RS 4
+SelectablePart, \fBsetSelectable\fP, \fBselectTest\fP, \fBsetSelectedBasePen\fP, \fBsetSelectedTickPen\fP, \fBsetSelectedSubTickPen\fP, \fBsetSelectedTickLabelFont\fP, \fBsetSelectedLabelFont\fP, \fBsetSelectedTickLabelColor\fP, \fBsetSelectedLabelColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3732 of file qcustomplot\&.cpp\&.
+.PP
+References mSelected, selected(), and selectionChanged()\&.
+.PP
+Referenced by handleAxisSelection(), and QCPAxis()\&.
+.PP
+.nf
+3733 {
+3734   if (mSelected != selected)
+3735   {
+3736     mSelected = selected;
+3737     emit selectionChanged(mSelected);
+3738   }
+3739 }
+.fi
+.SS "void QCPAxis::setSelectedBasePen (const QPen &pen)"
+
+.PP
+Sets the pen that is used to draw the axis base line when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetBasePen\fP, \fBsetSelectable\fP, \fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 4387 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedBasePen, and pen()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4388 {
+4389   mSelectedBasePen = pen;
+4390 }
+.fi
+.SS "void QCPAxis::setSelectedLabelColor (const QColor &color)"
+
+.PP
+Sets the color that is used for the axis label when it is selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLabelColor\fP, \fBsetSelectable\fP, \fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 4377 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mSelectedLabelColor\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4378 {
+4379   mSelectedLabelColor = color;
+4380 }
+.fi
+.SS "void QCPAxis::setSelectedLabelFont (const QFont &font)"
+
+.PP
+Sets the font that is used for the axis label when it is selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLabelFont\fP, \fBsetSelectable\fP, \fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 4357 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedLabelFont\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4358 {
+4359   mSelectedLabelFont = font;
+4360 }
+.fi
+.SS "void QCPAxis::setSelectedSubTickPen (const QPen &pen)"
+
+.PP
+Sets the pen that is used to draw the subticks when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSubTickPen\fP, \fBsetSelectable\fP, \fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 4407 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedSubTickPen, and pen()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4408 {
+4409   mSelectedSubTickPen = pen;
+4410 }
+.fi
+.SS "void QCPAxis::setSelectedTickLabelColor (const QColor &color)"
+
+.PP
+Sets the color that is used for tick labels when they are selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickLabelColor\fP, \fBsetSelectable\fP, \fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 4367 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mSelectedTickLabelColor\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4368 {
+4369   mSelectedTickLabelColor = color;
+4370 }
+.fi
+.SS "void QCPAxis::setSelectedTickLabelFont (const QFont &font)"
+
+.PP
+Sets the font that is used for tick labels when they are selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickLabelFont\fP, \fBsetSelectable\fP, \fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 4347 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedTickLabelFont\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4348 {
+4349   mSelectedTickLabelFont = font;
+4350 }
+.fi
+.SS "void QCPAxis::setSelectedTickPen (const QPen &pen)"
+
+.PP
+Sets the pen that is used to draw the (major) ticks when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickPen\fP, \fBsetSelectable\fP, \fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Definition at line 4397 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedTickPen, and pen()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4398 {
+4399   mSelectedTickPen = pen;
+4400 }
+.fi
+.SS "void QCPAxis::setSubGrid (boolshow)"
+
+.PP
+Sets whether the sub grid lines are visible\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetGrid\fP, \fBsetSubGridPen\fP, \fBsetZeroLinePen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3888 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+3889 {
+3890   mGrid->setSubGridVisible(show);
+3891 }
+.fi
+.SS "void QCPAxis::setSubGridPen (const QPen &pen)"
+
+.PP
+Sets the pen, the sub grid lines are drawn with\&. (By default, subgrid drawing needs to be enabled first with \fBsetSubGrid\fP\&.) 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetGridPen\fP, \fBsetZeroLinePen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4252 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+4253 {
+4254   mGrid->setSubGridPen(pen);
+4255 }
+.fi
+.SS "void QCPAxis::setSubTickCount (intcount)"
+
+.PP
+Sets the number of sub ticks in one (major) tick step\&. A sub tick count of three for example, divides the tick intervals in four sub intervals\&.
+.PP
+By default, the number of sub ticks is chosen automatically in a reasonable manner as long as the mantissa of the tick step is a multiple of 0\&.5 (which it is, when \fBsetAutoTickStep\fP is enabled)\&. If you want to disable automatic sub ticks and use this function to set the count manually, see \fBsetAutoSubTicks\fP\&. 
+.PP
+Definition at line 4210 of file qcustomplot\&.cpp\&.
+.PP
+References mSubTickCount\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+4211 {
+4212   mSubTickCount = count;
+4213 }
+.fi
+.SS "void QCPAxis::setSubTickLength (intinside, intoutside = \fC0\fP)"
+
+.PP
+Sets the length of the subticks in pixels\&. \fIinside\fP is the length the subticks will reach inside the plot and \fIoutside\fP is the length they will reach outside the plot\&. If \fIoutside\fP is greater than zero, the tick labels will increase their distance to the axis accordingly, so they won't collide with the ticks\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickLength\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4222 of file qcustomplot\&.cpp\&.
+.PP
+References mSubTickLengthIn, and mSubTickLengthOut\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4223 {
+4224   mSubTickLengthIn = inside;
+4225   mSubTickLengthOut = outside;
+4226 }
+.fi
+.SS "void QCPAxis::setSubTickPen (const QPen &pen)"
+
+.PP
+Sets the pen, subtick marks will be drawn with\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSubTickCount\fP, \fBsetSubTickLength\fP, \fBsetBasePen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4282 of file qcustomplot\&.cpp\&.
+.PP
+References mSubTickPen, and pen()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4283 {
+4284   mSubTickPen = pen;
+4285 }
+.fi
+.SS "void QCPAxis::setTickLabelColor (const QColor &color)"
+
+.PP
+Sets the color of the tick labels, i\&.e\&. the numbers drawn next to tick marks\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickLabelFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4018 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mTickLabelColor\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4019 {
+4020   mTickLabelColor = color;
+4021 }
+.fi
+.SS "void QCPAxis::setTickLabelFont (const QFont &font)"
+
+.PP
+Sets the font of the tick labels, i\&.e\&. the numbers drawn next to tick marks\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickLabelColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4008 of file qcustomplot\&.cpp\&.
+.PP
+References mTickLabelFont\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4009 {
+4010   mTickLabelFont = font;
+4011 }
+.fi
+.SS "void QCPAxis::setTickLabelPadding (intpadding)"
+
+.PP
+Sets the distance between the axis base line (or any tick marks pointing outward) and the tick labels\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLabelPadding\fP, \fBsetPadding\fP 
+.RE
+.PP
+
+.PP
+Definition at line 3983 of file qcustomplot\&.cpp\&.
+.PP
+References mTickLabelPadding, and padding()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+3984 {
+3985   mTickLabelPadding = padding;
+3986 }
+.fi
+.SS "void QCPAxis::setTickLabelRotation (doubledegrees)"
+
+.PP
+Sets the rotation of the tick labels, i\&.e\&. the numbers drawn next to tick marks\&. If \fIdegrees\fP is zero, the labels are drawn normally\&. Else, the tick labels are drawn rotated by \fIdegrees\fP clockwise\&. The specified angle is bound to values from -90 to 90 degrees\&. 
+.PP
+Definition at line 4028 of file qcustomplot\&.cpp\&.
+.PP
+References mTickLabelRotation\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4029 {
+4030   mTickLabelRotation = qBound(-90\&.0, degrees, 90\&.0);
+4031 }
+.fi
+.SS "void QCPAxis::setTickLabels (boolshow)"
+
+.PP
+Sets whether tick labels are displayed\&. 
+.PP
+Definition at line 3974 of file qcustomplot\&.cpp\&.
+.PP
+References mTickLabels\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+3975 {
+3976   mTickLabels = show;
+3977 }
+.fi
+.SS "void QCPAxis::setTickLabelType (LabelTypetype)"
+
+.PP
+Sets whether the tick labels display numbers or dates/times\&. 
+.br
+If \fItype\fP is set to \fBltNumber\fP, the format specifications of \fBsetNumberFormat\fP apply\&.
+.br
+If \fItype\fP is set to \fBltDateTime\fP, the format specifications of \fBsetDateTimeFormat\fP apply\&.
+.br
+In \fBQCustomPlot\fP, date/time coordinates are double numbers representing the seconds since 1970-01-01T00:00:00 UTC\&. This format can be retrieved from QDateTime objects with the QDateTime::toTime_t() function\&. Since this only gives a resolution of one second, there is also the QDateTime::toMSecsSinceEpoch() function which returns the timespan described above in milliseconds\&. Divide its return value by 1000\&.0 to get a value with the format needed for date/time plotting, this time with a resolution of one millisecond\&. 
+.PP
+Definition at line 3998 of file qcustomplot\&.cpp\&.
+.PP
+References mTickLabelType\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+3999 {
+4000   mTickLabelType = type;
+4001 }
+.fi
+.SS "void QCPAxis::setTickLength (intinside, intoutside = \fC0\fP)"
+
+.PP
+Sets the length of the ticks in pixels\&. \fIinside\fP is the length the ticks will reach inside the plot and \fIoutside\fP is the length they will reach outside the plot\&. If \fIoutside\fP is greater than zero, the tick labels will increase their distance to the axis accordingly, so they won't collide with the ticks\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSubTickLength\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4195 of file qcustomplot\&.cpp\&.
+.PP
+References mTickLengthIn, and mTickLengthOut\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4196 {
+4197   mTickLengthIn = inside;
+4198   mTickLengthOut = outside;
+4199 }
+.fi
+.SS "void QCPAxis::setTickPen (const QPen &pen)"
+
+.PP
+Sets the pen, tick marks will be drawn with\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickLength\fP, \fBsetBasePen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4273 of file qcustomplot\&.cpp\&.
+.PP
+References mTickPen, and pen()\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+4274 {
+4275   mTickPen = pen;
+4276 }
+.fi
+.SS "void QCPAxis::setTicks (boolshow)"
+
+.PP
+Sets whether tick marks are displayed\&. Setting \fIshow\fP to false does not imply, that tick labels are invisible, too\&. To achieve that, see \fBsetTickLabels\fP\&. 
+.PP
+Definition at line 3966 of file qcustomplot\&.cpp\&.
+.PP
+References mTicks\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+3967 {
+3968   mTicks = show;
+3969 }
+.fi
+.SS "void QCPAxis::setTickStep (doublestep)"
+
+.PP
+If \fBsetAutoTickStep\fP is set to false, use this function to set the tick step manually\&. The tick step is the interval between (major) ticks, in plot coordinates\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSubTickCount\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4151 of file qcustomplot\&.cpp\&.
+.PP
+References mTickStep\&.
+.PP
+Referenced by QCPAxis(), and setupFullAxesBox()\&.
+.PP
+.nf
+4152 {
+4153   mTickStep = step;
+4154 }
+.fi
+.SS "void QCPAxis::setTickVector (const QVector< double > &vec)"
+
+.PP
+If you want full control over what ticks (and possibly labels) the axes show, this function is used to set the coordinates at which ticks will appear\&. \fBsetAutoTicks\fP must be disabled, else the provided tick vector will be overwritten with automatically generated tick coordinates\&. The labels of the ticks can either be generated automatically when \fBsetAutoTickLabels\fP is left enabled, or be set manually with \fBsetTickVectorLabels\fP, when \fBsetAutoTickLabels\fP is disabled\&.
+.PP
+\fIvec\fP is a vector containing the positions of the ticks\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickVectorLabels\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4168 of file qcustomplot\&.cpp\&.
+.PP
+References mTickVector\&.
+.PP
+.nf
+4169 {
+4170   mTickVector = vec;
+4171 }
+.fi
+.SS "void QCPAxis::setTickVectorLabels (const QVector< QString > &vec)"
+
+.PP
+If you want full control over what ticks and labels the axes show, this function is used to set a number of QStrings that will be displayed at the tick positions which you need to provide with \fBsetTickVector\fP\&. These two vectors should have the same size\&. (Note that you need to disable \fBsetAutoTicks\fP and \fBsetAutoTickLabels\fP first\&.)
+.PP
+\fIvec\fP is a vector containing the labels of the ticks\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTickVector\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4183 of file qcustomplot\&.cpp\&.
+.PP
+References mTickVectorLabels\&.
+.PP
+.nf
+4184 {
+4185   mTickVectorLabels = vec;
+4186 }
+.fi
+.SS "void QCPAxis::setupTickVectors ()\fC [protected]\fP, \fC [virtual]\fP"
+This function is called before the grid and axis is drawn, in order to prepare the tick vector, sub tick vector and tick label vector\&. If \fBsetAutoTicks\fP is set to true, appropriate tick values are determined automatically via \fBgenerateAutoTicks\fP\&. If it's set to false, the signal ticksRequest is emitted, which can be used to provide external tick positions\&. Then the sub tick vectors and tick label vectors are created\&. 
+.PP
+Definition at line 4612 of file qcustomplot\&.cpp\&.
+.PP
+References generateAutoTicks(), QCPRange::lower, mAutoTickLabels, mAutoTicks, mDateTimeFormat, mExponentialChar, mGrid, mHighestVisibleTick, mLowestVisibleTick, mNumberFormatChar, mNumberPrecision, QCPLayerable::mParentPlot, mPositiveSignChar, mRange, mSubTickCount, mSubTickVector, mTickLabels, mTickLabelType, mTicks, mTickVector, mTickVectorLabels, QCPRange::size(), ticksRequest(), QCPRange::upper, and visibleTickBounds()\&.
+.PP
+.nf
+4613 {
+4614   if ((!mTicks && !mTickLabels && !mGrid->visible()) || mRange\&.size() <= 0) return;
+4615   
+4616   // fill tick vectors, either by auto generating or by notifying user to fill the vectors himself
+4617   if (mAutoTicks)
+4618   {
+4619     generateAutoTicks();
+4620   } else
+4621   {
+4622     emit ticksRequest();
+4623   }
+4624   
+4625   visibleTickBounds(mLowestVisibleTick, mHighestVisibleTick);
+4626   if (mTickVector\&.isEmpty())
+4627   {
+4628     mSubTickVector\&.clear();
+4629     return;
+4630   }
+4631   
+4632   // generate subticks between ticks:
+4633   mSubTickVector\&.resize((mTickVector\&.size()-1)*mSubTickCount);
+4634   if (mSubTickCount > 0)
+4635   {
+4636     double subTickStep = 0;
+4637     double subTickPosition = 0;
+4638     int subTickIndex = 0;
+4639     bool done = false;
+4640     for (int i=1; i<mTickVector\&.size(); ++i)
+4641     {
+4642       subTickStep = (mTickVector\&.at(i)-mTickVector\&.at(i-1))/(double)(mSubTickCount+1);
+4643       for (int k=1; k<=mSubTickCount; ++k)
+4644       {
+4645         subTickPosition = mTickVector\&.at(i-1) + k*subTickStep;
+4646         if (subTickPosition < mRange\&.lower)
+4647           continue;
+4648         if (subTickPosition > mRange\&.upper)
+4649         {
+4650           done = true;
+4651           break;
+4652         }
+4653         mSubTickVector[subTickIndex] = subTickPosition;
+4654         subTickIndex++;
+4655       }
+4656       if (done) break;
+4657     }
+4658     mSubTickVector\&.resize(subTickIndex);
+4659   }
+4660 
+4661   // generate tick labels according to tick positions:
+4662   mExponentialChar = mParentPlot->locale()\&.exponential();   // will be needed when drawing the numbers generated here, in drawTickLabel()
+4663   mPositiveSignChar = mParentPlot->locale()\&.positiveSign(); // will be needed when drawing the numbers generated here, in drawTickLabel()
+4664   if (mAutoTickLabels)
+4665   {
+4666     int vecsize = mTickVector\&.size();
+4667     mTickVectorLabels\&.resize(vecsize);
+4668     if (mTickLabelType == ltNumber)
+4669     {
+4670       for (int i=0; i<vecsize; ++i)
+4671         mTickVectorLabels[i] = mParentPlot->locale()\&.toString(mTickVector\&.at(i), mNumberFormatChar, mNumberPrecision);
+4672     } else if (mTickLabelType == ltDateTime)
+4673     {
+4674       for (int i=0; i<vecsize; ++i)
+4675       {
+4676 #if QT_VERSION < QT_VERSION_CHECK(4, 7, 0) // use fromMSecsSinceEpoch function if available, to gain sub-second accuracy on tick labels (e\&.g\&. for format "hh:mm:ss:zzz")
+4677         mTickVectorLabels[i] = mParentPlot->locale()\&.toString(QDateTime::fromTime_t(mTickVector\&.at(i)), mDateTimeFormat);
+4678 #else
+4679         mTickVectorLabels[i] = mParentPlot->locale()\&.toString(QDateTime::fromMSecsSinceEpoch(mTickVector\&.at(i)*1000), mDateTimeFormat);
+4680 #endif
+4681       }
+4682     }
+4683   } else // mAutoTickLabels == false
+4684   {
+4685     if (mAutoTicks) // ticks generated automatically, but not ticklabels, so emit ticksRequest here for labels
+4686     {
+4687       emit ticksRequest();
+4688     }
+4689     // make sure provided tick label vector has correct (minimal) length:
+4690     if (mTickVectorLabels\&.size() < mTickVector\&.size())
+4691       mTickVectorLabels\&.resize(mTickVector\&.size());
+4692   }
+4693 }
+.fi
+.SS "void QCPAxis::setZeroLinePen (const QPen &pen)"
+
+.PP
+Sets the pen with which a single grid-like line will be drawn at value position zero\&. The line will be drawn instead of a grid line at that position, and not on top\&. To disable the drawing of a zero-line, set \fIpen\fP to Qt::NoPen\&. Then, if \fBsetGrid\fP is enabled, a grid line will be drawn instead\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetGrid\fP, \fBsetGridPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 4264 of file qcustomplot\&.cpp\&.
+.PP
+References mGrid\&.
+.PP
+.nf
+4265 {
+4266   mGrid->setZeroLinePen(pen);
+4267 }
+.fi
+.SS "bool QCPAxis::subGrid () const\fC [inline]\fP"
+
+.PP
+Definition at line 1711 of file qcustomplot\&.h\&.
+.PP
+.nf
+1711 { return mGrid->subGridVisible(); }
+.fi
+.SS "QPen QCPAxis::subGridPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1737 of file qcustomplot\&.h\&.
+.PP
+.nf
+1737 { return mGrid->subGridPen(); }
+.fi
+.SS "int QCPAxis::subTickCount () const\fC [inline]\fP"
+
+.PP
+Definition at line 1732 of file qcustomplot\&.h\&.
+.PP
+Referenced by setupFullAxesBox()\&.
+.PP
+.nf
+1732 { return mSubTickCount; }
+.fi
+.SS "int QCPAxis::subTickLengthIn () const\fC [inline]\fP"
+
+.PP
+Definition at line 1733 of file qcustomplot\&.h\&.
+.PP
+.nf
+1733 { return mSubTickLengthIn; }
+.fi
+.SS "int QCPAxis::subTickLengthOut () const\fC [inline]\fP"
+
+.PP
+Definition at line 1734 of file qcustomplot\&.h\&.
+.PP
+.nf
+1734 { return mSubTickLengthOut; }
+.fi
+.SS "QPen QCPAxis::subTickPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1740 of file qcustomplot\&.h\&.
+.PP
+.nf
+1740 { return mSubTickPen; }
+.fi
+.SS "QColor QCPAxis::tickLabelColor () const\fC [inline]\fP"
+
+.PP
+Definition at line 1722 of file qcustomplot\&.h\&.
+.PP
+.nf
+1722 { return mTickLabelColor; }
+.fi
+.SS "QFont QCPAxis::tickLabelFont () const\fC [inline]\fP"
+
+.PP
+Definition at line 1721 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPAxis()\&.
+.PP
+.nf
+1721 { return mTickLabelFont; }
+.fi
+.SS "int QCPAxis::tickLabelPadding () const\fC [inline]\fP"
+
+.PP
+Definition at line 1719 of file qcustomplot\&.h\&.
+.PP
+.nf
+1719 { return mTickLabelPadding; }
+.fi
+.SS "double QCPAxis::tickLabelRotation () const\fC [inline]\fP"
+
+.PP
+Definition at line 1723 of file qcustomplot\&.h\&.
+.PP
+.nf
+1723 { return mTickLabelRotation; }
+.fi
+.SS "bool QCPAxis::tickLabels () const\fC [inline]\fP"
+
+.PP
+Definition at line 1718 of file qcustomplot\&.h\&.
+.PP
+.nf
+1718 { return mTickLabels; }
+.fi
+.SS "LabelType QCPAxis::tickLabelType () const\fC [inline]\fP"
+
+.PP
+Definition at line 1720 of file qcustomplot\&.h\&.
+.PP
+.nf
+1720 { return mTickLabelType; }
+.fi
+.SS "int QCPAxis::tickLengthIn () const\fC [inline]\fP"
+
+.PP
+Definition at line 1730 of file qcustomplot\&.h\&.
+.PP
+.nf
+1730 { return mTickLengthIn; }
+.fi
+.SS "int QCPAxis::tickLengthOut () const\fC [inline]\fP"
+
+.PP
+Definition at line 1731 of file qcustomplot\&.h\&.
+.PP
+.nf
+1731 { return mTickLengthOut; }
+.fi
+.SS "QPen QCPAxis::tickPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1739 of file qcustomplot\&.h\&.
+.PP
+.nf
+1739 { return mTickPen; }
+.fi
+.SS "bool QCPAxis::ticks () const\fC [inline]\fP"
+
+.PP
+Definition at line 1717 of file qcustomplot\&.h\&.
+.PP
+Referenced by setupFullAxesBox()\&.
+.PP
+.nf
+1717 { return mTicks; }
+.fi
+.SS "void QCPAxis::ticksRequest ()\fC [signal]\fP"
+
+.PP
+This signal is emitted when \fBsetAutoTicks\fP is false and the axis is about to generate tick labels and replot itself\&. Modifying the tick positions can be done with \fBsetTickVector\fP\&. If you also want to control the tick labels, set \fBsetAutoTickLabels\fP to false and also provide the labels with \fBsetTickVectorLabels\fP\&.
+.PP
+If you only want static ticks you probably don't need this signal, since you can just set the tick vector (and possibly tick label vector) once\&. However, if you want to provide ticks (and maybe labels) dynamically, e\&.g\&. depending on the current axis range, connect a slot to this signal and set the vector/vectors there\&. 
+.PP
+Definition at line 1965 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by setupTickVectors()\&.
+.PP
+.nf
+1966 {
+1967     QMetaObject::activate(this, &staticMetaObject, 0, 0);
+1968 }
+.fi
+.SS "double QCPAxis::tickStep () const\fC [inline]\fP"
+
+.PP
+Definition at line 1727 of file qcustomplot\&.h\&.
+.PP
+Referenced by setupFullAxesBox()\&.
+.PP
+.nf
+1727 { return mTickStep; }
+.fi
+.SS "QVector<double> QCPAxis::tickVector () const\fC [inline]\fP"
+
+.PP
+Definition at line 1728 of file qcustomplot\&.h\&.
+.PP
+.nf
+1728 { return mTickVector; }
+.fi
+.SS "QVector<QString> QCPAxis::tickVectorLabels () const\fC [inline]\fP"
+
+.PP
+Definition at line 1729 of file qcustomplot\&.h\&.
+.PP
+.nf
+1729 { return mTickVectorLabels; }
+.fi
+.SS "void QCPAxis::visibleTickBounds (int &lowIndex, int &highIndex) const\fC [protected]\fP"
+Returns via \fIlowIndex\fP and \fIhighIndex\fP, which ticks in the current tick vector are visible in the current range\&. The return values are indices of the tick vector, not the positions of the ticks themselves\&.
+.PP
+The actual use of this function is when we have an externally provided tick vector, which might exceed far beyond the currently displayed range, and would cause unnecessary calculations e\&.g\&. of subticks\&. 
+.PP
+Definition at line 5373 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mRange, mTickVector, and QCPRange::upper\&.
+.PP
+Referenced by calculateMargin(), and setupTickVectors()\&.
+.PP
+.nf
+5374 {
+5375   lowIndex = 0;
+5376   highIndex = -1;
+5377   // make sure only ticks that are in visible range are returned
+5378   for (int i=0; i < mTickVector\&.size(); ++i)
+5379   {
+5380     lowIndex = i;
+5381     if (mTickVector\&.at(i) >= mRange\&.lower) break;
+5382   }
+5383   for (int i=mTickVector\&.size()-1; i >= 0; --i)
+5384   {
+5385     highIndex = i;
+5386     if (mTickVector\&.at(i) <= mRange\&.upper) break;
+5387   }
+5388 }
+.fi
+.SS "QPen QCPAxis::zeroLinePen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1738 of file qcustomplot\&.h\&.
+.PP
+.nf
+1738 { return mGrid->zeroLinePen(); }
+.fi
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBQCPGrid\fP\fC [friend]\fP"
+
+.PP
+Definition at line 1902 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPAxis()\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool QCPAxis::mAutoSubTicks\fC [protected]\fP"
+
+.PP
+Definition at line 1849 of file qcustomplot\&.h\&.
+.PP
+Referenced by generateAutoTicks(), and setAutoSubTicks()\&.
+.SS "int QCPAxis::mAutoTickCount\fC [protected]\fP"
+
+.PP
+Definition at line 1846 of file qcustomplot\&.h\&.
+.PP
+Referenced by generateAutoTicks(), and setAutoTickCount()\&.
+.SS "bool QCPAxis::mAutoTickLabels\fC [protected]\fP"
+
+.PP
+Definition at line 1849 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawTickLabel(), getMaxTickLabelSize(), setAutoTickLabels(), and setupTickVectors()\&.
+.SS "bool QCPAxis::mAutoTicks\fC [protected]\fP"
+
+.PP
+Definition at line 1849 of file qcustomplot\&.h\&.
+.PP
+Referenced by setAutoTicks(), and setupTickVectors()\&.
+.SS "bool QCPAxis::mAutoTickStep\fC [protected]\fP"
+
+.PP
+Definition at line 1849 of file qcustomplot\&.h\&.
+.PP
+Referenced by generateAutoTicks(), and setAutoTickStep()\&.
+.SS "QRect QCPAxis::mAxisRect\fC [protected]\fP"
+
+.PP
+Definition at line 1836 of file qcustomplot\&.h\&.
+.PP
+Referenced by coordToPixel(), draw(), drawGridLines(), drawSubGridLines(), drawTickLabel(), pixelToCoord(), setAxisRect(), and setScaleRatio()\&.
+.SS "QRect QCPAxis::mAxisSelectionBox\fC [protected]\fP"
+
+.PP
+Definition at line 1855 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and selectTest()\&.
+.SS "\fBAxisType\fP QCPAxis::mAxisType\fC [protected]\fP"
+
+.PP
+Definition at line 1842 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawTickLabel(), and setAxisType()\&.
+.SS "QPen QCPAxis::mBasePen\fC [protected]\fP"
+
+.PP
+Definition at line 1837 of file qcustomplot\&.h\&.
+.PP
+Referenced by getBasePen(), and setBasePen()\&.
+.SS "QString QCPAxis::mDateTimeFormat\fC [protected]\fP"
+
+.PP
+Definition at line 1834 of file qcustomplot\&.h\&.
+.PP
+Referenced by setDateTimeFormat(), and setupTickVectors()\&.
+.SS "QChar QCPAxis::mExponentialChar\fC [protected]\fP"
+
+.PP
+Definition at line 1860 of file qcustomplot\&.h\&.
+.PP
+Referenced by getMaxTickLabelSize(), and setupTickVectors()\&.
+.SS "\fBQCPGrid\fP* QCPAxis::mGrid\fC [protected]\fP"
+
+.PP
+Definition at line 1858 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPAxis(), setAntialiasedGrid(), setAntialiasedSubGrid(), setAntialiasedZeroLine(), setGrid(), setGridPen(), setSubGrid(), setSubGridPen(), setupTickVectors(), setZeroLinePen(), and ~QCPAxis()\&.
+.SS "int QCPAxis::mHighestVisibleTick\fC [protected]\fP"
+
+.PP
+Definition at line 1865 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawGridLines(), QCPAxis(), and setupTickVectors()\&.
+.SS "QString QCPAxis::mLabel\fC [protected]\fP"
+
+.PP
+Definition at line 1835 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), draw(), and setLabel()\&.
+.SS "QColor QCPAxis::mLabelColor\fC [protected]\fP"
+
+.PP
+Definition at line 1839 of file qcustomplot\&.h\&.
+.PP
+Referenced by getLabelColor(), and setLabelColor()\&.
+.SS "QFont QCPAxis::mLabelFont\fC [protected]\fP"
+
+.PP
+Definition at line 1838 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), getLabelFont(), and setLabelFont()\&.
+.SS "int QCPAxis::mLabelPadding\fC [protected]\fP"
+
+.PP
+Definition at line 1847 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), draw(), and setLabelPadding()\&.
+.SS "QRect QCPAxis::mLabelSelectionBox\fC [protected]\fP"
+
+.PP
+Definition at line 1855 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and selectTest()\&.
+.SS "int QCPAxis::mLowestVisibleTick\fC [protected]\fP"
+
+.PP
+Definition at line 1865 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawGridLines(), QCPAxis(), and setupTickVectors()\&.
+.SS "bool QCPAxis::mNumberBeautifulPowers\fC [protected]\fP"
+
+.PP
+Definition at line 1863 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawTickLabel(), getMaxTickLabelSize(), numberFormat(), and setNumberFormat()\&.
+.SS "char QCPAxis::mNumberFormatChar\fC [protected]\fP"
+
+.PP
+Definition at line 1862 of file qcustomplot\&.h\&.
+.PP
+Referenced by numberFormat(), setNumberFormat(), and setupTickVectors()\&.
+.SS "bool QCPAxis::mNumberMultiplyCross\fC [protected]\fP"
+
+.PP
+Definition at line 1863 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawTickLabel(), getMaxTickLabelSize(), numberFormat(), and setNumberFormat()\&.
+.SS "int QCPAxis::mNumberPrecision\fC [protected]\fP"
+
+.PP
+Definition at line 1861 of file qcustomplot\&.h\&.
+.PP
+Referenced by setNumberPrecision(), and setupTickVectors()\&.
+.SS "Qt::Orientation QCPAxis::mOrientation\fC [protected]\fP"
+
+.PP
+Definition at line 1864 of file qcustomplot\&.h\&.
+.PP
+Referenced by setAxisType()\&.
+.SS "int QCPAxis::mPadding\fC [protected]\fP"
+
+.PP
+Definition at line 1847 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), and setPadding()\&.
+.SS "QChar QCPAxis::mPositiveSignChar\fC [protected]\fP"
+
+.PP
+Definition at line 1860 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawTickLabel(), getMaxTickLabelSize(), and setupTickVectors()\&.
+.SS "\fBQCPRange\fP QCPAxis::mRange\fC [protected]\fP"
+
+.PP
+Definition at line 1833 of file qcustomplot\&.h\&.
+.PP
+Referenced by coordToPixel(), drawGridLines(), generateAutoTicks(), moveRange(), pixelToCoord(), scaleRange(), setRange(), setRangeLower(), setRangeUpper(), setScaleRatio(), setScaleType(), setupTickVectors(), and visibleTickBounds()\&.
+.SS "bool QCPAxis::mRangeReversed\fC [protected]\fP"
+
+.PP
+Definition at line 1850 of file qcustomplot\&.h\&.
+.PP
+Referenced by coordToPixel(), pixelToCoord(), and setRangeReversed()\&.
+.SS "double QCPAxis::mScaleLogBase\fC [protected]\fP"
+
+.PP
+Definition at line 1844 of file qcustomplot\&.h\&.
+.PP
+Referenced by basePow(), generateAutoTicks(), and setScaleLogBase()\&.
+.SS "double QCPAxis::mScaleLogBaseLogInv\fC [protected]\fP"
+
+.PP
+Definition at line 1844 of file qcustomplot\&.h\&.
+.PP
+Referenced by baseLog(), and setScaleLogBase()\&.
+.SS "ScaleType QCPAxis::mScaleType\fC [protected]\fP"
+
+.PP
+Definition at line 1841 of file qcustomplot\&.h\&.
+.PP
+Referenced by coordToPixel(), drawTickLabel(), generateAutoTicks(), getMaxTickLabelSize(), mouseMoveEvent(), moveRange(), pixelToCoord(), scaleRange(), setRange(), setRangeLower(), setRangeUpper(), and setScaleType()\&.
+.SS "SelectableParts QCPAxis::mSelectable\fC [protected]\fP"
+
+.PP
+Definition at line 1851 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSelectable()\&.
+.SS "SelectableParts QCPAxis::mSelected\fC [protected]\fP"
+
+.PP
+Definition at line 1851 of file qcustomplot\&.h\&.
+.PP
+Referenced by getBasePen(), getLabelColor(), getLabelFont(), getSubTickPen(), getTickLabelColor(), getTickLabelFont(), getTickPen(), and setSelected()\&.
+.SS "QPen QCPAxis::mSelectedBasePen\fC [protected]\fP"
+
+.PP
+Definition at line 1854 of file qcustomplot\&.h\&.
+.PP
+Referenced by getBasePen(), and setSelectedBasePen()\&.
+.SS "QColor QCPAxis::mSelectedLabelColor\fC [protected]\fP"
+
+.PP
+Definition at line 1853 of file qcustomplot\&.h\&.
+.PP
+Referenced by getLabelColor(), and setSelectedLabelColor()\&.
+.SS "QFont QCPAxis::mSelectedLabelFont\fC [protected]\fP"
+
+.PP
+Definition at line 1852 of file qcustomplot\&.h\&.
+.PP
+Referenced by getLabelFont(), and setSelectedLabelFont()\&.
+.SS "QPen QCPAxis::mSelectedSubTickPen\fC [protected]\fP"
+
+.PP
+Definition at line 1854 of file qcustomplot\&.h\&.
+.PP
+Referenced by getSubTickPen(), and setSelectedSubTickPen()\&.
+.SS "QColor QCPAxis::mSelectedTickLabelColor\fC [protected]\fP"
+
+.PP
+Definition at line 1853 of file qcustomplot\&.h\&.
+.PP
+Referenced by getTickLabelColor(), and setSelectedTickLabelColor()\&.
+.SS "QFont QCPAxis::mSelectedTickLabelFont\fC [protected]\fP"
+
+.PP
+Definition at line 1852 of file qcustomplot\&.h\&.
+.PP
+Referenced by getTickLabelFont(), and setSelectedTickLabelFont()\&.
+.SS "QPen QCPAxis::mSelectedTickPen\fC [protected]\fP"
+
+.PP
+Definition at line 1854 of file qcustomplot\&.h\&.
+.PP
+Referenced by getTickPen(), and setSelectedTickPen()\&.
+.SS "int QCPAxis::mSubTickCount\fC [protected]\fP"
+
+.PP
+Definition at line 1845 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateAutoSubTickCount(), draw(), generateAutoTicks(), setSubTickCount(), and setupTickVectors()\&.
+.SS "int QCPAxis::mSubTickLengthIn\fC [protected]\fP"
+
+.PP
+Definition at line 1845 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and setSubTickLength()\&.
+.SS "int QCPAxis::mSubTickLengthOut\fC [protected]\fP"
+
+.PP
+Definition at line 1845 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), draw(), and setSubTickLength()\&.
+.SS "QPen QCPAxis::mSubTickPen\fC [protected]\fP"
+
+.PP
+Definition at line 1837 of file qcustomplot\&.h\&.
+.PP
+Referenced by getSubTickPen(), and setSubTickPen()\&.
+.SS "QVector<double> QCPAxis::mSubTickVector\fC [protected]\fP"
+
+.PP
+Definition at line 1859 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawSubGridLines(), and setupTickVectors()\&.
+.SS "QColor QCPAxis::mTickLabelColor\fC [protected]\fP"
+
+.PP
+Definition at line 1839 of file qcustomplot\&.h\&.
+.PP
+Referenced by getTickLabelColor(), and setTickLabelColor()\&.
+.SS "QFont QCPAxis::mTickLabelFont\fC [protected]\fP"
+
+.PP
+Definition at line 1838 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), getTickLabelFont(), and setTickLabelFont()\&.
+.SS "int QCPAxis::mTickLabelPadding\fC [protected]\fP"
+
+.PP
+Definition at line 1847 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), draw(), and setTickLabelPadding()\&.
+.SS "double QCPAxis::mTickLabelRotation\fC [protected]\fP"
+
+.PP
+Definition at line 1848 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawTickLabel(), getMaxTickLabelSize(), and setTickLabelRotation()\&.
+.SS "bool QCPAxis::mTickLabels\fC [protected]\fP"
+
+.PP
+Definition at line 1849 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), draw(), setTickLabels(), and setupTickVectors()\&.
+.SS "QRect QCPAxis::mTickLabelsSelectionBox\fC [protected]\fP"
+
+.PP
+Definition at line 1855 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and selectTest()\&.
+.SS "LabelType QCPAxis::mTickLabelType\fC [protected]\fP"
+
+.PP
+Definition at line 1840 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawTickLabel(), getMaxTickLabelSize(), setTickLabelType(), and setupTickVectors()\&.
+.SS "int QCPAxis::mTickLengthIn\fC [protected]\fP"
+
+.PP
+Definition at line 1845 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and setTickLength()\&.
+.SS "int QCPAxis::mTickLengthOut\fC [protected]\fP"
+
+.PP
+Definition at line 1845 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), draw(), and setTickLength()\&.
+.SS "QPen QCPAxis::mTickPen\fC [protected]\fP"
+
+.PP
+Definition at line 1837 of file qcustomplot\&.h\&.
+.PP
+Referenced by getTickPen(), and setTickPen()\&.
+.SS "bool QCPAxis::mTicks\fC [protected]\fP"
+
+.PP
+Definition at line 1849 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), setTicks(), and setupTickVectors()\&.
+.SS "double QCPAxis::mTickStep\fC [protected]\fP"
+
+.PP
+Definition at line 1843 of file qcustomplot\&.h\&.
+.PP
+Referenced by generateAutoTicks(), and setTickStep()\&.
+.SS "QVector<double> QCPAxis::mTickVector\fC [protected]\fP"
+
+.PP
+Definition at line 1831 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawGridLines(), generateAutoTicks(), setTickVector(), setupTickVectors(), and visibleTickBounds()\&.
+.SS "QVector<QString> QCPAxis::mTickVectorLabels\fC [protected]\fP"
+
+.PP
+Definition at line 1832 of file qcustomplot\&.h\&.
+.PP
+Referenced by calculateMargin(), draw(), setTickVectorLabels(), and setupTickVectors()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

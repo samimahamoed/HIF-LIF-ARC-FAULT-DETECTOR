@@ -1,0 +1,105 @@
+\hypertarget{a00041_source}{\section{analog\+\_\+sv\+\_\+scan.\+c}
+\label{a00041_source}\index{analog\+\_\+sv\+\_\+scan.\+c@{analog\+\_\+sv\+\_\+scan.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\(\backslash\)allheaders.h"} 
+00010 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\_prv\(\backslash\)aq0X\(\backslash\)algorithm\_prv.h"}
+00011 
+00012 
+00013 
+00014 
+\hypertarget{a00041_source_l00025}{}\hyperlink{a00041_a2068c3c2584547dbc1c8b9bca2d55b18}{00025} \textcolor{keywordtype}{void} \hyperlink{a00041_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((\_\_interrupt\_\_,auto\_psv)) \_T1Interrupt(\textcolor{keywordtype}{void})
+00026 \{
+00027         
+00028   \hyperlink{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{IRQ\_CTX\_T}   irq\_ctx;
+00029   \hyperlink{a00033_a357168bbe78739811cdb7b5576714ca6}{IRQ\_DISABLE}(irq\_ctx);  
+00030 
+00031 
+00032 
+00033     \textcolor{keywordflow}{if}(\hyperlink{a00029_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress}==\hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})
+00034         \textcolor{comment}{//If nov operation is on progress suspend for a moment}
+00035         \hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT} = 0;
+00036 
+00037   \textcolor{comment}{// Increment tick - used as fast timestamp}
+00038     \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a81f0ce68c2c483fb8df726cc1988d8e8}{tick}++;
+00039 
+00047 \textcolor{preprocessor}{#if(TEST\_MODE)}
+00048     \textcolor{comment}{//For timing measurements only - prolog}
+00049     \hyperlink{a00058_a4c044f78fb8b7ee19bfdb5d2b204b50e}{DIG\_TEST\_LED\_LAT} =1;
+00050 \textcolor{preprocessor}{#endif}
+00051     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.ir)
+00052          \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.ir\_sen = 
+      \hyperlink{a00017_a5bba51487aeccd791ff56017124da833}{ir\_sen\_get\_status}(\hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(\hyperlink{a00058_a1fae4d2e8dd35f504ec4170044da7e73}{ANA\_INDEX\_IR}),0);
+00053 
+00054     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.uv)
+00055           \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen = 
+      \hyperlink{a00020_a354d25047e79397dbe5525178f19cae0}{uv\_sen\_get\_status}(\hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(\hyperlink{a00058_af523b82e94e382153f1313307c5bd879}{ANA\_INDEX\_UV}),0);
+00056 
+00057     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.
+      mfield\_x)
+00058           \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_x\_sen = 
+      \hyperlink{a00019_a3a46d0e69b27b3566e6d8465cf7a8b0a}{mfield\_x\_sen\_get\_status}(\hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(
+      \hyperlink{a00058_aa797210faae0317a1b0ddace04d1257e}{ANA\_INDEX\_MFIELD\_X}),0);
+00059 
+00060 \textcolor{preprocessor}{  #if(DEVICE == AQ0X\_V1)}
+00061     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.
+      mfield\_y)
+00062          \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_y\_sen = 
+      \hyperlink{a00019_ac7134882964fedc18be6c75547987a2c}{mfield\_y\_sen\_get\_status}(\hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(
+      \hyperlink{a00058_aa2f14d4d069c5888b1d230be59751a09}{ANA\_INDEX\_MFIELD\_Y}),0);
+00063 \textcolor{preprocessor}{  #endif}
+00064 
+00065 
+00066 
+00067      \textcolor{keywordflow}{if}(
+00068         (\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.ir\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00069        || (\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00070        )
+00071        \hyperlink{a00016_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\_wake}(\hyperlink{a00021_a0cec8cae6d70499e62b4251e5843497d}{EVENT\_SV\_ALARM});
+00072      \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a32ebd32977bc9831cd68530b2b7ec664}{trip\_active} == \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})
+00073           \hyperlink{a00016_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\_wake}(\hyperlink{a00021_a602c125746b241f3a37e9fd5f43412b0}{EVENT\_CLEARED});
+00074     
+00075 
+00076 
+00077      \textcolor{keywordflow}{if}(\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.cnt > 0)
+00078          \textcolor{keywordflow}{if}((--\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.cnt) == 0)
+00079              \hyperlink{a00016_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\_wake}(\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.type);
+00080 
+00081 
+00082      \textcolor{keywordflow}{if}(\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.delay > 0)
+00083         \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.delay--;
+00084 
+00085      \textcolor{keywordflow}{if}(\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.delay > 0)
+00086         \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.delay--;
+00087 
+00088     
+00089      
+00090 
+00091 
+00092 \textcolor{preprocessor}{#if(TEST\_MODE)}
+00093     \textcolor{comment}{//For timing measurements only - prolog}
+00094     \hyperlink{a00058_a4c044f78fb8b7ee19bfdb5d2b204b50e}{DIG\_TEST\_LED\_LAT} =0;     
+00095 \textcolor{preprocessor}{#endif}
+00096 
+00097 
+00098 
+00099      
+00100   
+00101     \textcolor{keywordflow}{if}((\hyperlink{a00029_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress}==1) && (\hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT} == 0))
+00102         \textcolor{comment}{//Restart suspended nov operation}
+00103     \hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT} = 1;
+00104 
+00105     IFS0bits.T1IF = 0;    \textcolor{comment}{// Clear Timer1 Interrupt Flag}
+00106     
+00107    \hyperlink{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{IRQ\_ENABLE}(irq\_ctx);
+00108    \hyperlink{a00015_a34d4c80d85281a545f3c7f1530803d65}{SET\_CPU\_IPL}(6);       \textcolor{comment}{// Fix for core interrupt in-interupt issue}
+00109 
+00110 
+00111 \}
+00112 
+00113 
+\end{DoxyCode}

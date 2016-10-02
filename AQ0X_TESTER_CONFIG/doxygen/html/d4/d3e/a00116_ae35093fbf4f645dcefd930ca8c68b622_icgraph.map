@@ -1,0 +1,28 @@
+<map id="color" name="color">
+<area shape="rect" id="node2" href="$dc/d3c/a00028.html#a2361302d2fc6ec669849bd3bca00c4b2" title="QCPCurve::draw" alt="" coords="607,9,725,35"/>
+<area shape="rect" id="node3" href="$d0/d33/a00027.html#a42b894e34dac799f90ff3700706b31df" title="QCPBars::draw" alt="" coords="145,455,257,482"/>
+<area shape="rect" id="node4" href="$d0/dc0/a00033.html#a8343cf0559c64886add7aa7f4b22f1a6" title="QCPItemBracket::draw" alt="" coords="124,506,279,533"/>
+<area shape="rect" id="node5" href="$df/d61/a00031.html#ad6d07926e6d6b7cfa70258780d47b7a0" title="QCPGraph::drawFill" alt="" coords="372,303,509,330"/>
+<area shape="rect" id="node7" href="$df/d61/a00031.html#abc01180629621f1e47e94559227d3d8c" title="QCPGraph::drawImpulsePlot" alt="" coords="347,354,535,381"/>
+<area shape="rect" id="node8" href="$df/d61/a00031.html#acebc22c3385829b19a87e6281fe6ade2" title="QCPGraph::drawLinePlot" alt="" coords="357,405,524,431"/>
+<area shape="rect" id="node9" href="$d6/d2d/a00047.html#a3aa145eb9865752d583c40ef995c5049" title="Draws a single scatter point with the specified style and size in pixels at the pixel position x and ..." alt="" coords="117,177,285,203"/>
+<area shape="rect" id="node16" href="$d3/dfe/a00025.html#a6c906fe56d75f0122335b9f79b999608" title="Sets the color of the axis label. " alt="" coords="120,607,283,634"/>
+<area shape="rect" id="node18" href="$d3/dfe/a00025.html#a5d502dec597c634f491fdd73d151c72d" title="Sets the color that is used for the axis label when it is selected. " alt="" coords="109,659,293,700"/>
+<area shape="rect" id="node19" href="$d3/d52/a00023.html#a4d01d008ee1a5bfe9905b0397a421936" title="When this legend item is selected, color is used to draw generic text, instead of the normal color se..." alt="" coords="118,789,285,831"/>
+<area shape="rect" id="node20" href="$d6/d97/a00045.html#a7674dfc7a1f30e1abd1018c0ed45e0bc" title="Sets the default text color that is used by legend items when they are selected. " alt="" coords="104,907,299,948"/>
+<area shape="rect" id="node22" href="$d3/dfe/a00025.html#a9bdbf5e63ab15187f3a1de9440129227" title="Sets the color that is used for tick labels when they are selected. " alt="" coords="113,724,290,765"/>
+<area shape="rect" id="node23" href="$d4/d3e/a00116.html#ad0897d7ba31a3994d7323f568cdcd2d8" title="This color is used to draw the title, when it is selected. " alt="" coords="129,973,274,999"/>
+<area shape="rect" id="node24" href="$d3/d52/a00023.html#a6ebace6aaffaedcdab2d74e88acc2d1e" title="Sets the default text color of this specific legend item to color. " alt="" coords="118,1024,285,1065"/>
+<area shape="rect" id="node25" href="$d6/d97/a00045.html#ae1eb239ff4a4632fe1b6c3e668d845c6" title="Sets the default color of legend text. " alt="" coords="115,855,288,882"/>
+<area shape="rect" id="node26" href="$d3/dfe/a00025.html#a395e445c3fe496b935bee7b911ecfd1c" title="Sets the color of the tick labels, i.e. " alt="" coords="108,557,295,583"/>
+<area shape="rect" id="node27" href="$d4/d3e/a00116.html#a57693e1334130e47dae06f8bd226328b" title="Sets the text color of the plot title. " alt="" coords="154,1090,249,1117"/>
+<area shape="rect" id="node6" href="$df/d61/a00031.html#a659218cc62c2a7786213d9dd429c1c8d" title="QCPGraph::draw" alt="" coords="606,329,726,355"/>
+<area shape="rect" id="node10" href="$df/d61/a00031.html#a9a1a3d937a35368c421657860aa5a173" title="QCPGraph::drawLegendIcon" alt="" coords="347,202,534,229"/>
+<area shape="rect" id="node11" href="$df/d61/a00031.html#af1872a60bed7acb3f3b17bfae3f4764c" title="QCPGraph::drawScatterPlot" alt="" coords="348,151,533,178"/>
+<area shape="rect" id="node12" href="$dc/d3c/a00028.html#a8e9b46de865a9f07cc9d62c904ab8198" title="QCPCurve::drawLegendIcon" alt="" coords="349,253,532,279"/>
+<area shape="rect" id="node13" href="$dc/d3c/a00028.html#a45593f30b81beec4b6130b6b53306087" title="QCPCurve::drawScatterPlot" alt="" coords="349,34,532,61"/>
+<area shape="rect" id="node14" href="$d5/de0/a00050.html#a60ebb332a497f51ace837767db5105b9" title="QCPStatisticalBox::\ldrawOutliers" alt="" coords="371,85,510,127"/>
+<area shape="rect" id="node15" href="$d5/de0/a00050.html#a753b62761217dd6b92f8a29e286a1317" title="QCPStatisticalBox::draw" alt="" coords="583,93,749,119"/>
+<area shape="rect" id="node17" href="$d3/dfe/a00025.html#a5a34dafa051be08d03e89c163c507f90" title="Constructs an Axis instance of Type type inside parentPlot. " alt="" coords="371,637,510,663"/>
+<area shape="rect" id="node21" href="$d6/d97/a00045.html#a5dc42d73df80e7294414aee1170c4d2b" title="Constructs a new QCPLegend instance with parentPlot as the containing plot and default values..." alt="" coords="355,885,526,911"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="drawSubGridLines" name="drawSubGridLines">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#a985ae693b842fb0422b4390fe36d299a" title="Transforms value (in coordinates of the axis) to pixel coordinates of the QCustomPlot widget..." alt="" coords="180,56,339,83"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#a57483f2f60145ddc9e63f3af53959265" title="Returns the orientation of the axis. " alt="" coords="402,5,546,32"/>
+<area shape="rect" id="node6" href="$d6/d2d/a00047.html#a0b4b1b9bd495e182c731774dc800e6e0" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="184,107,335,133"/>
+<area shape="rect" id="node7" href="$d6/d2d/a00047.html#af9c7a4cd1791403901f8c5b82a150195" title="Sets the pen of the painter and applies certain fixes to it, depending on the mode of this QCPPainter..." alt="" coords="189,157,329,184"/>
+<area shape="rect" id="node4" href="$d2/dee/a00049.html#afa57c13049b965edb6fd1c00ac56338a" title="Returns the size of the range, i.e. " alt="" coords="415,56,533,83"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a1385765db2419ee5fb5505a6cf9130fb" title="QCPAxis::baseLog" alt="" coords="407,107,541,133"/>
+<area shape="rect" id="node8" href="$d4/d3e/a00116.html#a499165f4744b6d22da7b24295910fb2c" title="setPen" alt="" coords="609,157,672,184"/>
+<area shape="rect" id="node9" href="$d6/d2d/a00047.html#a27af07a62c335faf79191b797306b218" title="Provides a workaround for a QPainter bug that prevents scaling of pen widths for pens with width 0..." alt="" coords="387,208,561,235"/>
+<area shape="rect" id="node10" href="$d4/d3e/a00116.html#a1f13fffa0a0faac34ec342973e613a4a" title="pen" alt="" coords="619,208,662,235"/>
+</map>

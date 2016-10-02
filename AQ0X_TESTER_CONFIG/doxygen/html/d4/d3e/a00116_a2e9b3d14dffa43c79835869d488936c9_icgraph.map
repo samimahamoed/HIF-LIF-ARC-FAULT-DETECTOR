@@ -1,0 +1,12 @@
+<map id="draw" name="draw">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a563540b54b2a09c8ef092d42e9621f42" title="Causes a complete replot (axes, labels, graphs, etc.) into the internal buffer. " alt="" coords="125,107,180,133"/>
+<area shape="rect" id="node7" href="$d4/d3e/a00116.html#a84e33ad7492180f20ff520e557ed102d" title="Saves a PDF with the vectorized plot to the file fileName. " alt="" coords="119,171,186,197"/>
+<area shape="rect" id="node8" href="$d4/d3e/a00116.html#ab528b84cf92baabe29b1d0ef2f77c93e" title="Saves the plot to a rastered image file fileName in the image format format. " alt="" coords="103,247,203,273"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a13e05523a40c3f08875df5cde85cf0d9" title="resizeEvent" alt="" coords="276,5,365,32"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#ac64727a4f442770f6e5e6be2d0530843" title="mouseMoveEvent" alt="" coords="259,56,382,83"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="251,107,391,133"/>
+<area shape="rect" id="node6" href="$d4/d3e/a00116.html#a7b8bd7e8d3a1d23a8595e9c6a6b76ef1" title="wheelEvent" alt="" coords="277,157,364,184"/>
+<area shape="rect" id="node9" href="$d4/d3e/a00116.html#a7636261aff1f6d25c9da749ece3fc8b8" title="Saves a PNG image file to fileName on disc. " alt="" coords="285,208,356,235"/>
+<area shape="rect" id="node10" href="$d4/d3e/a00116.html#a490c722092d1771e8ce4a7a73dfd84ab" title="Saves a JPG image file to fileName on disc. " alt="" coords="287,259,355,285"/>
+<area shape="rect" id="node11" href="$d4/d3e/a00116.html#a6629d9e8e6da4bf18055ee0257fdce9a" title="Saves a BMP image file to fileName on disc. " alt="" coords="283,309,358,336"/>
+</map>

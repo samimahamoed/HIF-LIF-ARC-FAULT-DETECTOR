@@ -1,0 +1,4 @@
+<map id="serial_make16" name="serial_make16">
+<area shape="rect" id="node2" href="$d8/d41/a00038.html#a126f3d78a95341a19a3e862e57357952" title="copy serially received data to given memory address " alt="" coords="181,5,282,32"/>
+<area shape="rect" id="node3" href="$d5/d79/a00030.html#a366b2707f4c7d76f0efc1b5cdde8e37e" title="Function for retriving serial message. " alt="" coords="160,56,303,83"/>
+</map>

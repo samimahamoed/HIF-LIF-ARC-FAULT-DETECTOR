@@ -1,0 +1,42 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icons/bgColor.jpg</file>
+        <file alias="clear2">icons/clear.png</file>
+        <file alias="connect">icons/connect.png</file>
+        <file>icons/csv_file</file>
+        <file>icons/csv_file_icon.png</file>
+        <file alias="disconnect">icons/disconnect.png</file>
+        <file>icons/excel.png</file>
+        <file alias="exit">icons/exit.png</file>
+        <file>icons/Font_Book_Icon.png</file>
+        <file>icons/fontColor.jpg</file>
+        <file>icons/image_icon.png</file>
+        <file>icons/light.jpg</file>
+        <file>icons/open_file-icon.gif</file>
+        <file>icons/PDF-icon.png</file>
+        <file>icons/preasure.jpg</file>
+        <file alias="setting">icons/settings.png</file>
+        <file alias="Download">icons/download_icon.jpg</file>
+        <file alias="Address">icons/ID_icon.png</file>
+        <file alias="Run">icons/play_icon.png</file>
+        <file alias="Halt">icons/Pause_icon.png</file>
+        <file alias="clear">icons/clear_icon.png</file>
+        <file alias="sys_info">icons/system_info.jpg</file>
+        <file>icons/options.jpg</file>
+        <file>icons/conditional.jpg</file>
+        <file>icons/signal.jpg</file>
+        <file>icons/probablity.jpg</file>
+        <file>icons/calculation.jpg</file>
+        <file>icons/installation_setup.png</file>
+        <file>icons/system_options.jpg</file>
+        <file>icons/alarm3.jpg</file>
+        <file>icons/upload.jpg</file>
+        <file>icons/sv_status.png</file>
+        <file>icons/clear_data.jpg</file>
+        <file>icons/reset.jpg</file>
+        <file>icons/default.jpg</file>
+        <file>icons/miscellaneous.jpg</file>
+        <file alias="signal">icons/signal_warning.jpg</file>
+        <file>icons/confirm.jpg</file>
+    </qresource>
+</RCC>

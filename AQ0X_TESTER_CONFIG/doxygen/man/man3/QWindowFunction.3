@@ -1,0 +1,107 @@
+.TH "QWindowFunction< T >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QWindowFunction< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwindowfunction\&.h>\fP
+.PP
+Inherited by \fBQHammingFunction< T >\fP, \fBQHannFunction< T >\fP, and \fBQRectangularFunction< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBapply\fP (T *data, int size)"
+.br
+.ti -1c
+.RI "void \fBcreate\fP (int size)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBfillWindow\fP (int size)"
+.br
+.ti -1c
+.RI "virtual T \fBcalculate\fP (int currentSample, int totalSamples)=0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QWindow \fBmWindow\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>class QWindowFunction< T >"
+
+.PP
+Definition at line 58 of file qwindowfunction\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T> void \fBQWindowFunction\fP< T >::apply (T *data, intsize)"
+
+.PP
+Definition at line 51 of file qwindowfunction\&.cpp\&.
+.PP
+Referenced by QFourierTransformer::forwardTransform()\&.
+.PP
+.nf
+52 {
+53     for(int i = 0; i < size; ++i)
+54     {
+55         data[i] *= mWindow[i];
+56     }
+57 }
+.fi
+.SS "template<typename T> virtual T \fBQWindowFunction\fP< T >::calculate (intcurrentSample, inttotalSamples)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBQHannFunction< T >\fP, \fBQHammingFunction< T >\fP, and \fBQRectangularFunction< T >\fP\&.
+.SS "template<typename T > void \fBQWindowFunction\fP< T >::create (intsize)"
+
+.PP
+Definition at line 60 of file qwindowfunction\&.cpp\&.
+.PP
+Referenced by QFourierTransformer::setSize(), and QFourierTransformer::setWindowFunction()\&.
+.PP
+.nf
+61 {
+62     if(size != mWindow\&.size())
+63     {
+64         mWindow\&.clear();
+65         mWindow\&.resize(size);
+66         fillWindow(size);
+67     }
+68 }
+.fi
+.SS "template<typename T > void \fBQWindowFunction\fP< T >::fillWindow (intsize)\fC [protected]\fP"
+
+.PP
+Definition at line 71 of file qwindowfunction\&.cpp\&.
+.PP
+.nf
+72 {
+73     for(int i = 0; i < size; ++i)
+74     {
+75         mWindow[i] = calculate(i, size);
+76     }
+77 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename T> QWindow \fBQWindowFunction\fP< T >::mWindow\fC [protected]\fP"
+
+.PP
+Definition at line 75 of file qwindowfunction\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

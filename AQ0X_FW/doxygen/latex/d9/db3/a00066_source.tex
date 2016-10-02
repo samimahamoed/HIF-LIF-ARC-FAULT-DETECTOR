@@ -1,0 +1,103 @@
+\hypertarget{a00066_source}{\section{srv\+\_\+watchdog.\+c}
+\label{a00066_source}\index{srv\+\_\+watchdog.\+c@{srv\+\_\+watchdog.\+c}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "..\(\backslash\)includes\(\backslash\)allheaders.h"} 
+00002 
+00031 
+00035 \textcolor{comment}{/*}
+00036 \textcolor{comment}{}
+00037 \textcolor{comment}{ }
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{ */}
+00040 
+00041 \textcolor{preprocessor}{#if defined(\_\_DEBUG) || (WATCHDOG\_PRODUCTION\_MODE == 0)}
+00042 \textcolor{preprocessor}{#ifdef \_\_C30\_VERSION\_\_}
+00043 \hyperlink{a00015_af24dea78c3111674d8bd9d621f1023ad}{\_FWDT}(\hyperlink{a00015_a251770e7a21c7f3c211849959dd26d1c}{FWDTEN\_OFF} & \hyperlink{a00015_afdc8e2e610d007e1c289198581c01df4}{WINDIS\_OFF});
+00044 \textcolor{preprocessor}{#endif}
+00045 \textcolor{preprocessor}{#else}
+00046 \textcolor{preprocessor}{#ifdef \_\_C30\_VERSION\_\_}
+00047 \hyperlink{a00015_af24dea78c3111674d8bd9d621f1023ad}{\_FWDT}(\hyperlink{a00015_a8e573d695a5bcdcd012a407a4dd588d5}{FWDTEN\_ON} & \hyperlink{a00015_afdc8e2e610d007e1c289198581c01df4}{WINDIS\_OFF} & \hyperlink{a00015_af4c27494e74759f053e8762756425243}{WDTPOST\_PS8} & 
+      \hyperlink{a00015_a7ca5d56a666b5eec4193af43aaf64a45}{WDTPRE\_PR32});
+00048 \textcolor{preprocessor}{#endif}
+00049 \textcolor{preprocessor}{#endif}
+00050 
+00051 
+00052 \textcolor{preprocessor}{#if defined(\_\_DEBUG) || (WATCHDOG\_PRODUCTION\_MODE == 0)}
+00053 
+00054 
+\hypertarget{a00066_source_l00055}{}\hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{00055} \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32} \hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\_timeout} = \hyperlink{a00067_aaf1a99e6db8062353e5f10d1f7d02938}{WATCHDOG\_TUNNING\_TIMEOUT};
+00056 
+00057 
+00058 
+00063 \textcolor{preprocessor}{#ifdef HI\_TECH\_C}
+00064 \textcolor{keywordtype}{void} interrupt \_T4Interrupt(\textcolor{keywordtype}{void}) @ T4\_VCTR
+00065 \textcolor{preprocessor}{#else}
+\hypertarget{a00066_source_l00066}{}\hyperlink{a00066_a2068c3c2584547dbc1c8b9bca2d55b18}{00066} \textcolor{keywordtype}{void} \hyperlink{a00066_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((\_\_interrupt\_\_,auto\_psv )) \_T4Interrupt(\textcolor{keywordtype}{void})
+00067 \textcolor{preprocessor}{#endif}
+00068 \{
+00069 
+00070     \textcolor{comment}{// Ack interrupt}
+00071     IFS1bits.T4IF = 0;
+00072 
+00073 
+00074     \textcolor{comment}{// Stop timer}
+00075     T4CONbits.TON = 0;
+00076     TMR4          = 0;  
+00077     
+00078     \textcolor{comment}{// Increase watchdog timeout}
+00079     \textcolor{keywordflow}{if}(\hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\_timeout}< 1000)
+00080     \{
+00081         \hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\_timeout}++;
+00082     \}
+00083 
+00084     \textcolor{comment}{// Reinitialize tunning timer}
+00085     \hyperlink{a00066_a37c35718860234f09b8cef8680e1cc09}{srv\_wdg\_init\_fn}();
+00086 
+00087     
+00088 \}
+00089 
+00090 
+\hypertarget{a00066_source_l00096}{}\hyperlink{a00066_a37c35718860234f09b8cef8680e1cc09}{00096} \textcolor{keywordtype}{void} \hyperlink{a00066_a37c35718860234f09b8cef8680e1cc09}{srv\_wdg\_init\_fn}(\textcolor{keywordtype}{void})
+00097 \{
+00098 
+00099     \textcolor{comment}{// Setup tunning timer}
+00100     
+00101     T4CON = 0;                    \textcolor{comment}{// Clear the register}
+00102     T4CONbits.TCS    = 0;         \textcolor{comment}{// Internal clock Fosc/4   }
+00103     T4CONbits.TCKPS = 1;          \textcolor{comment}{//    1:8 prescaling    }
+00104 
+00105 
+00106 
+00107     PR4 = (((\hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{FOSC\_CPU}/2L)/8)*\hyperlink{a00066_a159d343205105c86a6dec5da26cfdfe0}{watchdog\_timeout})/(1000L); 
+00108     
+00109     IPC6bits.T4IP = 1;            \textcolor{comment}{// Set Timer4 Interrupt Priority Level}
+00110     IFS1bits.T4IF = 0;            \textcolor{comment}{//Clear the Timer4 Interrupt Flag}
+00111     IEC1bits.T4IE = 1;            \textcolor{comment}{//Enable Timer4I nterrupt Service Routine}
+00112     T4CONbits.TON = 1;            \textcolor{comment}{//Start Timer 4}
+00113 
+00114 
+00115 
+00116 
+00117     
+00118 \}
+00119 
+00120 
+\hypertarget{a00066_source_l00126}{}\hyperlink{a00066_ac6f811346b702c404d5e6cdfb9262767}{00126} \textcolor{keywordtype}{void} \hyperlink{a00066_ac6f811346b702c404d5e6cdfb9262767}{srv\_wdg\_kick\_fn}(\textcolor{keywordtype}{void})
+00127 \{
+00128     T4CONbits.TON = 0;
+00129     TMR4 = 0;
+00130     T4CONbits.TON = 1;
+00131 \}
+00132 \textcolor{preprocessor}{#else}
+00133 
+00134 \textcolor{keywordtype}{void} \hyperlink{a00066_ac6f811346b702c404d5e6cdfb9262767}{srv\_wdg\_kick\_fn}(\textcolor{keywordtype}{void})
+00135 \{
+00136    \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00137 \}
+00138 
+00139 \textcolor{preprocessor}{#endif //  (WATCHDOG\_PRODUCTION\_MODE == 0)}
+00140 
+00141 
+\end{DoxyCode}

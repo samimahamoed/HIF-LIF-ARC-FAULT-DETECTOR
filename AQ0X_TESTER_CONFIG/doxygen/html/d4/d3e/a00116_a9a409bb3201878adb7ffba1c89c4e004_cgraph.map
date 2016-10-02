@@ -1,0 +1,6 @@
+<map id="clearPlottables" name="clearPlottables">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#af3dafd56884208474f311d6226513ab2" title="Removes the specified plottable from the plot and, if necessary, from the legend. ..." alt="" coords="161,64,276,91"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a5c198d46ea2a2255a1b73e2c590f0364" title="plottable" alt="" coords="364,5,435,32"/>
+<area shape="rect" id="node4" href="$dc/de2/a00024.html#aa1f350e510326d012b9a9c9249736c83" title="Removes the plottable from the legend of the parent QCustomPlot. " alt="" coords="324,57,475,98"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#ac6b19830ab0f0073ff3089cf7c9b3c2e" title="graph" alt="" coords="372,123,427,149"/>
+</map>

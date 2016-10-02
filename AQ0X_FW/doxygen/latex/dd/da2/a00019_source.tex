@@ -1,0 +1,190 @@
+\hypertarget{a00019_source}{\section{mfield\+\_\+sensor.\+h}
+\label{a00019_source}\index{mfield\+\_\+sensor.\+h@{mfield\+\_\+sensor.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef MFIELD\_SEN\_H}
+00002 \textcolor{preprocessor}{#define MFIELD\_SEN\_H}
+00003 
+00010 \textcolor{preprocessor}{#define X\_NTF\_MFIELD\_X\_SENSOR\_CONFIG                                (X\_NTF\_FREE  + 13)}
+00012 
+00013 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00014 \textcolor{preprocessor}{#define X\_NTF\_MFIELD\_Y\_SENSOR\_CONFIG                                (X\_NTF\_FREE +  14)}
+00015 \textcolor{preprocessor}{#endif}
+00016 
+00017 
+00018 
+00019 \textcolor{comment}{//TODO: adjust to 2 Meg}
+\hypertarget{a00019_source_l00024}{}\hyperlink{a00019_a0dbceb8ab2804359733a52568f2fd349}{00024} \textcolor{comment}{}\textcolor{preprocessor}{#define MFIELD\_SEN\_GAIN                                             0.274}
+00025 
+00026 
+00027 
+\hypertarget{a00019_source_l00029}{}\hyperlink{a00019_a2310c2bd339d54b86e9fae262def2008}{00029} \textcolor{preprocessor}{#define MFIELD\_ADC\_QUIESCENT\_LEVEL                                  512}
+00030 
+\hypertarget{a00019_source_l00031}{}\hyperlink{a00019_aafdb9e443a3251c41a62e1a1534673f9}{00031} \textcolor{preprocessor}{#define MFIELD\_SEN\_NOISE\_DENSITY\_LEVEL                              0}
+00032 
+00033 
+\hypertarget{a00019_source_l00034}{}\hyperlink{a00019_a9c3f9296b977b6f4f9632c8430525738}{00034} \textcolor{preprocessor}{#define REDUCTION\_FACTOR          100}
+00035 
+\hypertarget{a00019_source_l00036}{}\hyperlink{a00019_a9c5372190518a7d696da393f1a9a5fb9}{00036} \textcolor{preprocessor}{#define EXCEDED\_AMP\_TH            0x00}
+\hypertarget{a00019_source_l00037}{}\hyperlink{a00019_abf943c473e214930a7be647c4c43b55d}{00037} \textcolor{preprocessor}{#define EXCEDED\_DFDT\_IMPULS       0x02}
+\hypertarget{a00019_source_l00038}{}\hyperlink{a00019_afe7d875f6e5291e2b91df5c18af8789f}{00038} \textcolor{preprocessor}{#define EXCEDED\_DFDT\_MAX          0x04}
+\hypertarget{a00019_source_l00039}{}\hyperlink{a00019_a7bccfba89f8c2aedefd2d67e2a1c475e}{00039} \textcolor{preprocessor}{#define EXCEDED\_DFDT\_MIN          0x08}
+00040 
+00041 
+00042 
+\hypertarget{a00019_source_l00043}{}\hyperlink{a00019_a8956b2c85796334b2f0617ebd3cf9a52}{00043} \textcolor{preprocessor}{#define SINUSOID                               0}
+\hypertarget{a00019_source_l00044}{}\hyperlink{a00019_ae577db27e9b0eec218f9b0b74015043a}{00044} \textcolor{preprocessor}{#define MIN\_ACCEPTABLE\_CORRELATION             0.90}
+\hypertarget{a00019_source_l00045}{}\hyperlink{a00019_a016beb9ae543c41bbe4c8cefe6a4e690}{00045} \textcolor{preprocessor}{#define PRE\_ACTIVATION\_RECORD\_LENGTH\_MFIELD    100}
+\hypertarget{a00019_source_l00046}{}\hyperlink{a00019_a2fb6f38d16f4ccb6a19773d6a254f512}{00046} \textcolor{preprocessor}{#define OBSERVATION\_TIME\_WINDOW                (1/2*FAST\_TIMER\_SAMPLING\_RATE\_XU + 100)}
+00047 
+00048 
+\hypertarget{a00019_source_l00049}{}\hyperlink{a00019}{00049} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00050 \{
+\hypertarget{a00019_source_l00051}{}\hyperlink{a00019_a9568f2e3dbed66848fe6d9d352933b9a}{00051}     \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16}      \hyperlink{a00019_a9568f2e3dbed66848fe6d9d352933b9a}{adc\_val};
+00052  \textcolor{comment}{//   Float32    ana\_val;}
+\hypertarget{a00019_source_l00053}{}\hyperlink{a00019_ac4ae69b7df3459cce228e151e9811a83}{00053}     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}    \hyperlink{a00019_ac4ae69b7df3459cce228e151e9811a83}{calculated\_pick};
+\hypertarget{a00019_source_l00054}{}\hyperlink{a00019_a45152a3cd909463d7c924c30b575a073}{00054}     \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8}       \hyperlink{a00019_a45152a3cd909463d7c924c30b575a073}{polarity};
+00055 \}\hyperlink{a00019_d4/d81/a00110}{analog\_sample\_mfield\_t};
+00056 
+00057 
+00058 
+\hypertarget{a00019_source_l00059}{}\hyperlink{a00019}{00059} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}\{
+\hypertarget{a00019_source_l00060}{}\hyperlink{a00019_a5a7c9d8495de198c019659cce3aacf3b}{00060}         \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                \hyperlink{a00019_a5a7c9d8495de198c019659cce3aacf3b}{dl\_impulse};
+\hypertarget{a00019_source_l00061}{}\hyperlink{a00019_a7d2a0ec3c4d71f0893b36b4cea791626}{00061}         \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                \hyperlink{a00019_a7d2a0ec3c4d71f0893b36b4cea791626}{dl\_treshold\_max};
+\hypertarget{a00019_source_l00062}{}\hyperlink{a00019_a09fa95dca161334a339db80a4dfe18c9}{00062}         \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                \hyperlink{a00019_a09fa95dca161334a339db80a4dfe18c9}{dl\_treshold\_min};
+\hypertarget{a00019_source_l00063}{}\hyperlink{a00019_a1a6df58a4de80d8c64fc97c517db3d13}{00063}         \hyperlink{a00019_d4/d81/a00110}{analog\_sample\_mfield\_t} \hyperlink{a00019_a1a6df58a4de80d8c64fc97c517db3d13}{amp\_treshold\_max};
+00064 \}\hyperlink{a00019_d9/d0d/a00298}{calc\_tresholds\_mfield\_t};
+00065 
+00066 
+00067 
+00068 
+00069 
+00070 
+\hypertarget{a00019_source_l00072}{}\hyperlink{a00019}{00072} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\_x\_notify\_mfield\_sen\_configure
+00073 \{
+\hypertarget{a00019_source_l00074}{}\hyperlink{a00019_a8e6a04c2283f9fd7b8dcbc62faba5847}{00074}     \hyperlink{a00036_df/d4c/a00851}{x\_notify}           \hyperlink{a00019_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify};
+00075 
+\hypertarget{a00019_source_l00076}{}\hyperlink{a00019}{00076}     \textcolor{keyword}{struct}
+00077     \{
+00078        \hyperlink{a00021_d6/d9c/a00352}{configured\_t}                   configured;
+00079        \hyperlink{a00028}{module\_disturbance\_record\_t}   *disturbance\_record;
+00080     
+00081     \}message;
+00082 
+00083 
+00084 \}\hyperlink{a00019_d2/d5e/a00860}{x\_notify\_mfield\_sen\_configure};
+00085 
+00086 
+\hypertarget{a00019_source_l00088}{}\hyperlink{a00019}{00088} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\_x\_notify\_mfield\_sen\_sv\_report
+00089 \{
+\hypertarget{a00019_source_l00090}{}\hyperlink{a00019_a8e6a04c2283f9fd7b8dcbc62faba5847}{00090}     \hyperlink{a00036_df/d4c/a00851}{x\_notify}            \hyperlink{a00019_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify};
+00091 
+\hypertarget{a00019_source_l00092}{}\hyperlink{a00019}{00092}     \textcolor{keyword}{struct}
+00093     \{
+00094       \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}   error\_status\_flags;
+00095     \}message;
+00096 
+00097 \}\hyperlink{a00019_dc/d41/a00862}{x\_notify\_mfield\_sen\_sv\_report};
+00098 
+00099 
+\hypertarget{a00019_source_l00100}{}\hyperlink{a00019}{00100} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}\{
+\hypertarget{a00019_source_l00101}{}\hyperlink{a00019_a4070db8eab0ff93e3fbc1df59872f117}{00101}         \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16}                  \hyperlink{a00019_a4070db8eab0ff93e3fbc1df59872f117}{signal\_level};
+\hypertarget{a00019_source_l00102}{}\hyperlink{a00019_a0f645dd76b41adc6a966feba8e4bff8c}{00102}         \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                \hyperlink{a00019_a0f645dd76b41adc6a966feba8e4bff8c}{change\_per\_time};
+\hypertarget{a00019_source_l00103}{}\hyperlink{a00019_a6b8d8e916bc56265a3fd279bd26b6d1b}{00103}         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}                  \hyperlink{a00019_a6b8d8e916bc56265a3fd279bd26b6d1b}{state};
+\hypertarget{a00019_source_l00104}{}\hyperlink{a00019_a45152a3cd909463d7c924c30b575a073}{00104}         \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8}                   \hyperlink{a00019_a45152a3cd909463d7c924c30b575a073}{polarity};
+00105 \}\hyperlink{a00019_df/d0c/a00788}{state\_data\_mfield\_t};
+\hypertarget{a00019_source_l00106}{}\hyperlink{a00019}{00106} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}\{
+\hypertarget{a00019_source_l00107}{}\hyperlink{a00019_ad496f33595a12b00015d6778e594321c}{00107}    \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                     \hyperlink{a00019_ad496f33595a12b00015d6778e594321c}{time};
+\hypertarget{a00019_source_l00108}{}\hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{00108}    \hyperlink{a00019_df/d0c/a00788}{state\_data\_mfield\_t}        \hyperlink{a00019_acf41ffc11da291c2f9f0fcb02ee72b98}{current};
+00109 
+\hypertarget{a00019_source_l00110}{}\hyperlink{a00019_adcb859b2f3983a9c58deab28e59c333f}{00110}    \hyperlink{a00019_df/d0c/a00788}{state\_data\_mfield\_t}        \hyperlink{a00019_adcb859b2f3983a9c58deab28e59c333f}{previous};
+00111    
+\hypertarget{a00019_source_l00112}{}\hyperlink{a00019}{00112}     \textcolor{keyword}{struct}\{
+00113        \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                amplitude;
+00114        \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                waveform;
+00115        \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                angular\_freq;
+00116        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 samples\_per\_period;
+00117        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 samples\_per\_period\_1\_2;
+00118        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 samples\_per\_period\_1\_4;
+00119        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 samples\_per\_period\_1\_8;
+00120     \}projected;
+00121 
+00122 
+00123     
+00124 \}\hyperlink{a00019_d6/db2/a00601}{module\_status\_mfield\_t};
+00125 
+00126 
+00127 
+\hypertarget{a00019_source_l00128}{}\hyperlink{a00019}{00128} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}\{
+00129 
+\hypertarget{a00019_source_l00130}{}\hyperlink{a00019}{00130}     \textcolor{keyword}{struct}\{
+00131 
+\hypertarget{a00019_source_l00132}{}\hyperlink{a00019}{00132}         \textcolor{keyword}{struct}\{
+00133 
+00134         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 max;
+00135         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 min;
+00136         \textcolor{comment}{//from the current signal level to threshold value}
+00137         \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                accumulated;
+00138         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 total\_observation;
+00139         \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                avg;
+00140         \}amp;
+00141 
+00142 
+\hypertarget{a00019_source_l00143}{}\hyperlink{a00019}{00143}         \textcolor{keyword}{struct}\{
+00144             \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}                  total\_observation;
+00145             \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}                 accumulated;
+00146             \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                avg;
+00147         \}amp\_exceded;
+00148 
+00149     \}signal\_history;
+00150 
+00151 
+\hypertarget{a00019_source_l00156}{}\hyperlink{a00019}{00156}         \textcolor{keyword}{struct}\{
+\hypertarget{a00019_source_l00157}{}\hyperlink{a00019}{00157}             \textcolor{keyword}{struct}\{
+00158                 \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 cnt;
+00159 
+00160                 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                avg;
+00161             \}dfdt\_exceded;
+00162 
+\hypertarget{a00019_source_l00163}{}\hyperlink{a00019}{00163}             \textcolor{keyword}{struct}\{
+00164                 \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}                 cnt;
+00165         
+00166                 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                avg;
+00167             \}amp\_exceded;
+00168         \}false\_alarm;
+00169 
+00170 
+00171 \}\hyperlink{a00019_d9/dc1/a00388}{diagonesis\_records\_mfield\_t};
+00172 
+00173 
+00174 
+00175 \hyperlink{a00021_d6/d66/a00441}{event\_report\_t} \hyperlink{a00019_a3a46d0e69b27b3566e6d8465cf7a8b0a}{mfield\_x\_sen\_get\_status}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} adc\_value,\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} save\_event);
+00176 \hyperlink{a00021_d6/d66/a00441}{event\_report\_t} \hyperlink{a00019_ac7134882964fedc18be6c75547987a2c}{mfield\_y\_sen\_get\_status}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} adc\_value,\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} save\_event);
+00177 
+00178 
+00179 
+00181 \textcolor{keyword}{extern} \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\_task\_id} \hyperlink{a00019_a19a33e680bf19d1aed76750132ed8b64}{mfield\_x\_sen\_id};
+00182 \textcolor{keywordtype}{void} \hyperlink{a00019_a72e9235043dc4a8469143a6eb48bf117}{mfield\_x\_sen\_taskx}(\hyperlink{a00036_de/d37/a00849}{x\_event} *event);
+00183 \textcolor{keywordtype}{void} \hyperlink{a00019_ac28a2b5f3fa92c0593446e15a63a501c}{mfield\_x\_sen\_notifyx}(\hyperlink{a00036_df/d4c/a00851}{x\_notify} *notify);
+00184 
+00185 
+00187 \textcolor{keyword}{extern} \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\_task\_id} \hyperlink{a00019_a99c4ad3cf8b9ce2b67351d6edf48f937}{mfield\_y\_sen\_id};
+00188 \textcolor{keywordtype}{void} \hyperlink{a00019_adfb4e8d328a4cd1c7639082bef5841a9}{mfield\_y\_sen\_taskx}(\hyperlink{a00036_de/d37/a00849}{x\_event} *event);
+00189 \textcolor{keywordtype}{void} \hyperlink{a00019_a80b82366f7d22e925f279d20328f05c8}{mfield\_y\_sen\_notifyx}(\hyperlink{a00036_df/d4c/a00851}{x\_notify} *notify);
+00190 
+00191 
+00192 
+00193 \textcolor{preprocessor}{#endif   //MFIELD\_SEN\_H}
+00194 
+00195 
+00196 
+00197 
+00198 
+00199 
+00200 
+00201 
+00202 
+\end{DoxyCode}

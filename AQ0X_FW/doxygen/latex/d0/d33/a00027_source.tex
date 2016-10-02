@@ -1,0 +1,69 @@
+\hypertarget{a00027_source}{\section{mfield\+\_\+z\+\_\+sensor\+\_\+prv.\+h}
+\label{a00027_source}\index{mfield\+\_\+z\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+z\+\_\+sensor\+\_\+prv.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef MFIELD\_Z\_SEN\_PRV\_H}
+00002 \textcolor{preprocessor}{#define MFIELD\_Z\_SEN\_PRV\_H}
+00003 
+00011 \textcolor{preprocessor}{#define X\_MSG\_MFIELD\_SENSOR\_SV                      (X\_MSG\_FREE)}
+00013 
+\hypertarget{a00027_source_l00015}{}\hyperlink{a00027_ad9eede821e7c65d58f1806af4bd6bf29}{00015} \textcolor{preprocessor}{#define X\_NTF\_MFIELD\_SENSOR\_SV\_TIMER                                (X\_NTF\_FREE + 2)}
+00016 
+00017 
+\hypertarget{a00027_source_l00019}{}\hyperlink{a00027_a8a535456285f4602701c814d7b69cc68}{00019} \textcolor{preprocessor}{#define SV\_TIMER\_PERIOD                             1000  //1 sec}
+00020 
+00021 
+00022 
+00023 
+00024 
+\hypertarget{a00027_source_l00025}{}\hyperlink{a00027}{00025} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00026 \{
+00027 
+\hypertarget{a00027_source_l00028}{}\hyperlink{a00027_a752b00333ec308e07c6bd41aa9a01e73}{00028}        \hyperlink{a00019_dc/d41/a00862}{x\_notify\_mfield\_sen\_sv\_report}             
+      \hyperlink{a00027_a752b00333ec308e07c6bd41aa9a01e73}{sv\_status\_ntf};
+00029 
+\hypertarget{a00027_source_l00031}{}\hyperlink{a00027_a43c345f39ea3aefbb60ef1ef57fe5d83}{00031}       \hyperlink{a00036_de/d37/a00849}{x\_event}                         \hyperlink{a00027_a43c345f39ea3aefbb60ef1ef57fe5d83}{sv\_task\_event};
+00032 
+\hypertarget{a00027_source_l00034}{}\hyperlink{a00027_ada91b200053f2d93e3639dc4ee3415b4}{00034}       \hyperlink{a00036_df/d4c/a00851}{x\_notify}                                   \hyperlink{a00027_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf};
+00035 
+00036 
+\hypertarget{a00027_source_l00038}{}\hyperlink{a00027_a94b2d1f6ea4ab334c74d24984dd27843}{00038}       \hyperlink{a00021_d6/d9c/a00352}{configured\_t}                               \hyperlink{a00027_a94b2d1f6ea4ab334c74d24984dd27843}{configured};
+00039 
+\hypertarget{a00027_source_l00043}{}\hyperlink{a00027_ac9b38e2c1d3f1013a88d33506c754152}{00043}       \hyperlink{a00028}{module\_disturbance\_record\_t}                *
+      \hyperlink{a00027_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record};
+00044 
+00045 
+\hypertarget{a00027_source_l00047}{}\hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{00047}       \hyperlink{a00019_d6/db2/a00601}{module\_status\_mfield\_t}                     
+      \hyperlink{a00027_adfab5a5d8b45a93dfb13edb24e2b80e3}{module\_status};
+00048 
+\hypertarget{a00027_source_l00050}{}\hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{00050}       \hyperlink{a00019_d9/dc1/a00388}{diagonesis\_records\_mfield\_t}                
+      \hyperlink{a00027_a2bd79ce84bbd6b7f50d38954f7ae475e}{diagonesis\_records};
+00051 
+\hypertarget{a00027_source_l00053}{}\hyperlink{a00027_aaeec6b0609dba31393f337abf1cce3d3}{00053}       \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}                       \hyperlink{a00027_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags};
+00054 
+00055 
+00056 \}\hyperlink{a00027_d8/dbd/a00597}{mfield\_z\_sen\_data\_t};
+00057 
+00058 
+00059 \textcolor{keyword}{extern} \hyperlink{a00027_d8/dbd/a00597}{mfield\_z\_sen\_data\_t} \hyperlink{a00027_ae42bea09c571df9fad890518725d5cf4}{mfield\_z\_sen\_data};
+00060 
+00061 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                 \hyperlink{a00027_a82939d05c14b8ab80cacc21b7a1b8d3e}{mfield\_z\_sen\_first\_order\_derivative}(
+      \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} final\_val,\hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} init\_val,\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} period);
+00062 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                 \hyperlink{a00027_a8a5c3986dbe778d199b6e3b485f7a34b}{mfield\_z\_sen\_calc\_probablity}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} event,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} obs);
+00063 \textcolor{keywordtype}{void}                    \hyperlink{a00027_ab3b441646e86a6cf6ddfe83c1af4e075}{mfield\_z\_sen\_sensor\_element\_sv\_task}(\textcolor{keywordtype}{void});
+00064 \textcolor{keywordtype}{void}                    \hyperlink{a00027_a36a65e3e838c4f7be43267a10532d318}{mfield\_z\_sen\_false\_positive\_correction\_task}
+      (\textcolor{keywordtype}{void});
+00065 \textcolor{keywordtype}{void}                    \hyperlink{a00027_acd2adf617d062b1d3dfc9df79aa2ad32}{mfield\_z\_sen\_mark\_false\_postives}(\textcolor{keywordtype}{void});
+00066 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                 \hyperlink{a00027_a30e963041fabe45400803a40cc920b85}{mfield\_z\_input\_signal}(\textcolor{keywordtype}{void});
+00067 \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool}                    \hyperlink{a00027_a8830f50d7a451bec0a7d61c44d5cd98b}{mfield\_z\_zero\_cross}(\textcolor{keywordtype}{void});
+00068 \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool}                    \hyperlink{a00027_a8d1f1b622ef0081218e8f64cd9a44e59}{mfield\_z\_observation\_time\_window\_expired}
+      (\textcolor{keywordtype}{void});
+00069 
+00070 
+00071 
+00072 \textcolor{preprocessor}{#endif //MFIELD\_Z\_SEN\_PRV\_H}
+00073 
+00074 
+\end{DoxyCode}

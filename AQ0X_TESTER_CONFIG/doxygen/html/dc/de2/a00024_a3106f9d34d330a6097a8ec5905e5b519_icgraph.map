@@ -1,0 +1,7 @@
+<map id="QCPAbstractPlottable::valueAxis" name="QCPAbstractPlottable::valueAxis">
+<area shape="rect" id="node2" href="$d0/d33/a00027.html#ac22e00a6a41509538c21b04f0a57318c" title="Moves this bars plottable above bars. " alt="" coords="204,5,355,32"/>
+<area shape="rect" id="node3" href="$d0/d33/a00027.html#a69fc371346980f19177c3d1ecdad78ee" title="Moves this bars plottable below bars. " alt="" coords="204,56,355,83"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#ac1d1bc6ae4e13616fb02cef6d9e2188e" title="Returns the plottable at the pixel position pos. " alt="" coords="237,107,321,133"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a881c8652ebb912345de27687817845cf" title="handlePlottableSelection" alt="" coords="403,81,568,108"/>
+<area shape="rect" id="node6" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="616,107,756,133"/>
+</map>

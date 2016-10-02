@@ -1,0 +1,163 @@
+\hypertarget{a00040_source}{\section{allheaders.\+h}
+\label{a00040_source}\index{allheaders.\+h@{allheaders.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#ifndef ALLHEADERS\_H}
+00010 \textcolor{preprocessor}{#define ALLHEADERS\_H}
+00011 
+00012 
+00013 
+00014 \textcolor{preprocessor}{#if  defined(\_\_DEBUG) & !defined(\_\_MPLAB\_DEBUGGER\_ICD3) }
+00015 \textcolor{preprocessor}{#define DBG\_SHOW\_INIT    1}
+00017 
+00019 \textcolor{preprocessor}{#define DBG\_SHOW\_TIMERS  1}
+00020 
+00022 \textcolor{preprocessor}{#define DBG\_SHOW\_EVENTS  1}
+00023 
+00025 \textcolor{preprocessor}{#define DBG\_SHOW\_NOTIFY  1}
+00026 
+00027 
+00029 \textcolor{preprocessor}{#define DBG\_TEST\_POINT  1}
+00030 
+00031 \textcolor{preprocessor}{#else}
+00032 
+\hypertarget{a00040_source_l00034}{}\hyperlink{a00040_a3f5985ec802de602e1ec6c5f35cf45ac}{00034} \textcolor{preprocessor}{#define DBG\_SHOW\_INIT    0}
+00035 
+\hypertarget{a00040_source_l00037}{}\hyperlink{a00040_a696094a227f00f646c71694eba56c239}{00037} \textcolor{preprocessor}{#define DBG\_SHOW\_TIMERS  0}
+00038 
+\hypertarget{a00040_source_l00040}{}\hyperlink{a00040_ac99a26a91700184ca9c836b8837fc9c2}{00040} \textcolor{preprocessor}{#define DBG\_SHOW\_EVENTS  0}
+00041 
+\hypertarget{a00040_source_l00043}{}\hyperlink{a00040_aeba6fb01c031645d68a352c3e617724f}{00043} \textcolor{preprocessor}{#define DBG\_SHOW\_NOTIFY  0}
+00044 
+\hypertarget{a00040_source_l00046}{}\hyperlink{a00040_ae48f2746c700061f944a2747a966863c}{00046} \textcolor{preprocessor}{#define DBG\_TEST\_POINT  0}
+00047 \textcolor{preprocessor}{#endif}
+00048 
+00049 
+00050 \textcolor{preprocessor}{#if (DBG\_SHOW\_INIT == 1)}
+00051 \textcolor{preprocessor}{#define D\_I(x\_) x\_}
+00052 \textcolor{preprocessor}{#else}
+\hypertarget{a00040_source_l00053}{}\hyperlink{a00040_a41b841dd3ca98f243a56ff65652be225}{00053} \textcolor{preprocessor}{#define D\_I(x\_)}
+00054 \textcolor{preprocessor}{#endif}
+00055 
+00056 \textcolor{preprocessor}{#if (DBG\_SHOW\_TIMERS == 1)}
+00057 \textcolor{preprocessor}{#define D\_T(x\_) x\_}
+00058 \textcolor{preprocessor}{#else}
+\hypertarget{a00040_source_l00059}{}\hyperlink{a00040_a5e876f6543757da83f9b3ddee08dece7}{00059} \textcolor{preprocessor}{#define D\_T(x\_)}
+00060 \textcolor{preprocessor}{#endif}
+00061 
+00062 
+00063 \textcolor{preprocessor}{#if (DBG\_SHOW\_EVENTS == 1)}
+00064 \textcolor{preprocessor}{#define D\_E(x\_) x\_}
+00065 \textcolor{preprocessor}{#else}
+\hypertarget{a00040_source_l00066}{}\hyperlink{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{00066} \textcolor{preprocessor}{#define D\_E(x\_)}
+00067 \textcolor{preprocessor}{#endif}
+00068 
+00069 
+00070 \textcolor{preprocessor}{#if (DBG\_SHOW\_NOTIFY == 1)}
+00071 \textcolor{preprocessor}{#define D\_N(x\_) x\_}
+00072 \textcolor{preprocessor}{#else}
+\hypertarget{a00040_source_l00073}{}\hyperlink{a00040_afdf6a05ce2b9711e8bb4ef40fdb6930a}{00073} \textcolor{preprocessor}{#define D\_N(x\_)}
+00074 \textcolor{preprocessor}{#endif}
+00075 
+00076 
+00077 \textcolor{preprocessor}{#if (DBG\_TEST\_POINT == 1)}
+00078 \textcolor{preprocessor}{#define D\_P(x\_) x\_}
+00079 \textcolor{preprocessor}{#else}
+\hypertarget{a00040_source_l00080}{}\hyperlink{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{00080} \textcolor{preprocessor}{#define D\_P(x\_)}
+00081 \textcolor{preprocessor}{#endif}
+00082 
+00083 
+\hypertarget{a00040_source_l00084}{}\hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{00084} \textcolor{preprocessor}{#define TRUE    1}
+00085 
+\hypertarget{a00040_source_l00086}{}\hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{00086} \textcolor{preprocessor}{#define FALSE   0}
+00087 
+00088 \textcolor{comment}{//code enable macros}
+\hypertarget{a00040_source_l00089}{}\hyperlink{a00040_ab6d58cce6e97b6b549801e696ac9f4f6}{00089} \textcolor{preprocessor}{#define  TEST\_MODE  0}
+00090 
+\hypertarget{a00040_source_l00092}{}\hyperlink{a00040_ad750d25410f340cb93a424349ccecdd3}{00092} \textcolor{preprocessor}{#define  AQ0X\_V0      0}
+00093 \textcolor{preprocessor}{#define  AQ0X\_V1      1}
+00095 
+\hypertarget{a00040_source_l00096}{}\hyperlink{a00040_a775d096fbc3988fb7ed858b79ef44e22}{00096} \textcolor{preprocessor}{#define  DEVICE      AQ0X\_V0}
+00097 
+00098 \textcolor{preprocessor}{#include "string.h"}
+00099 
+00100 \textcolor{preprocessor}{#include "stdlib.h"}
+00101 \textcolor{preprocessor}{#include "stddef.h"}
+00102 \textcolor{preprocessor}{#include "stdarg.h"}
+00103 \textcolor{preprocessor}{#include "stdio.h"}
+00104 
+00105 
+00106 \textcolor{preprocessor}{#include <math.h>}
+00107 
+00108 \textcolor{preprocessor}{#include "libpic30.h"}
+00109 \textcolor{preprocessor}{#include "\hyperlink{a00015}{p33EP128MC202.h}"}
+00110 
+00111 
+00112 \textcolor{preprocessor}{#include "\hyperlink{a00072}{System.h}"}
+00113 \textcolor{preprocessor}{#include "\hyperlink{a00067}{srv\_watchdog.h}"}
+00114 \textcolor{preprocessor}{#include "\hyperlink{a00036}{sys\_eventx.h}"}
+00115 \textcolor{preprocessor}{#include "\hyperlink{a00033}{main.h}"}
+00116 
+00117 \textcolor{preprocessor}{#include "\hyperlink{a00022}{nov\_data.h}"}
+00118 \textcolor{preprocessor}{#include "\hyperlink{a00031}{srv\_serial.h}"}
+00119 \textcolor{preprocessor}{#include "\hyperlink{a00029}{srv\_nov.h}"}
+00120 \textcolor{preprocessor}{#include "\hyperlink{a00013}{srv\_spi.h}"}
+00121 
+00122 \textcolor{preprocessor}{#include "srv\_hwio.h"}
+00123 \textcolor{comment}{/*}
+00124 \textcolor{comment}{}
+00125 \textcolor{comment}{}
+00126 \textcolor{comment}{}
+00127 \textcolor{comment}{}
+00128 \textcolor{comment}{}
+00129 \textcolor{comment}{*/}
+00130 \textcolor{comment}{/*}
+00131 \textcolor{comment}{}
+00132 \textcolor{comment}{#include "srv\_testlog.h"}
+00133 \textcolor{comment}{#include "srv\_progmem.h"}
+00134 \textcolor{comment}{*/}
+00135 
+00136 
+00137 \textcolor{preprocessor}{#include "\hyperlink{a00021}{aq0X/algorithm.h}"}
+00138 
+00139 \textcolor{preprocessor}{#include "\hyperlink{a00020}{aq0X/uv\_sensor.h}"}
+00140 
+00141 
+00142 \textcolor{preprocessor}{#include "\hyperlink{a00018}{aq0X/light\_sensor.h}"}
+00143 
+00144 
+00145 \textcolor{preprocessor}{#include "\hyperlink{a00019}{aq0X/mfield\_sensor.h}"} 
+00146 \textcolor{preprocessor}{#include "\hyperlink{a00017}{aq0X/ir\_sensor.h}"}
+00147 
+00148 
+00149 
+00150 
+00151 
+00152 \textcolor{comment}{/*}
+00153 \textcolor{comment}{#include "gprintf.h"}
+00154 \textcolor{comment}{*/}
+00155 
+00156 
+00157 
+00158 
+00159 
+00160 
+00161 
+00162 
+00163 
+00164 
+00165 
+00166 
+00167 
+00168 
+00169 
+00170 
+00171 
+00172 
+00173 
+00174 \textcolor{preprocessor}{#endif}
+00175 
+00176 
+\end{DoxyCode}

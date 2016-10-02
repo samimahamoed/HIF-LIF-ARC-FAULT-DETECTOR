@@ -1,0 +1,144 @@
+\hypertarget{a00041}{\section{analog\+\_\+sv\+\_\+scan.\+c File Reference}
+\label{a00041}\index{analog\+\_\+sv\+\_\+scan.\+c@{analog\+\_\+sv\+\_\+scan.\+c}}
+}
+{\ttfamily \#include \char`\"{}..\textbackslash{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}..\textbackslash{}..\textbackslash{}includes\+\_\+prv\textbackslash{}aq0\+X\textbackslash{}algorithm\+\_\+prv.\+h\char`\"{}}\\*
+Include dependency graph for analog\+\_\+sv\+\_\+scan.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/dd8/a00906}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00041_a2068c3c2584547dbc1c8b9bca2d55b18}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((\+\_\+\+\_\+interrupt\+\_\+\+\_\+, auto\+\_\+psv))
+\begin{DoxyCompactList}\small\item\em Fast timer interrupt to scan sensor element analog values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{a00041_a2068c3c2584547dbc1c8b9bca2d55b18}{\index{analog\+\_\+sv\+\_\+scan.\+c@{analog\+\_\+sv\+\_\+scan.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!analog\+\_\+sv\+\_\+scan.\+c@{analog\+\_\+sv\+\_\+scan.\+c}}
+\subsubsection[{\+\_\+\+\_\+attribute\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+\+\_\+attribute\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{(\+\_\+\+\_\+interrupt\+\_\+\+\_\+, auto\+\_\+psv)}]{}
+\end{DoxyParamCaption}
+)}}\label{a00041_a2068c3c2584547dbc1c8b9bca2d55b18}
+
+
+Fast timer interrupt to scan sensor element analog values. 
+
+Serial port transmit interrupt.
+
+Processe also delay blocks from concerned modules req R\+E\+Q-\/8a\+: \char`\"{}\+Read the sensor inputs \char`\"{} Sensors and inputs are read and filtered.
+
+Definition at line \hyperlink{a00041_source_l00025}{25} of file \hyperlink{a00041_source}{analog\+\_\+sv\+\_\+scan.\+c}.
+
+
+
+References \hyperlink{a00038_source_l00033}{algorithm\+\_\+data}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00058_source_l00026}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+I\+R}, \hyperlink{a00058_source_l00027}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+X}, \hyperlink{a00058_source_l00028}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+Y}, \hyperlink{a00058_source_l00025}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+U\+V}, \hyperlink{a00060_source_l00016}{data\+\_\+non\+\_\+volatile}, \hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{algorithm\+\_\+data\+\_\+t\+::diagnosis}, \hyperlink{a00058_source_l00051}{D\+I\+G\+\_\+\+T\+E\+S\+T\+\_\+\+L\+E\+D\+\_\+\+L\+A\+T}, \hyperlink{a00021_source_l00073}{E\+V\+E\+N\+T\+\_\+\+C\+L\+E\+A\+R\+E\+D}, \hyperlink{a00021_source_l00069}{E\+V\+E\+N\+T\+\_\+\+S\+V\+\_\+\+A\+L\+A\+R\+M}, \hyperlink{a00021_source_l00153}{H\+O\+T}, \hyperlink{a00056_source_l00223}{hwio\+\_\+get\+\_\+analog()}, \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00033_source_l00017}{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T}, \hyperlink{a00033_source_l00020}{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E}, \hyperlink{a00033_source_l00025}{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E}, \hyperlink{a00038_source_l00036}{logv}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00019_ac7134882964fedc18be6c75547987a2c}{mfield\+\_\+y\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{algorithm\+\_\+data\+\_\+t\+::modules\+\_\+state\+\_\+sv}, \hyperlink{a00013_source_l00122}{N\+O\+V\+\_\+\+H\+O\+L\+D\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}, \hyperlink{a00060_source_l00019}{nov\+\_\+wr\+\_\+inprogress}, \hyperlink{a00015_source_l08162}{S\+E\+T\+\_\+\+C\+P\+U\+\_\+\+I\+P\+L}, \hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{logv\+\_\+t\+::sv\+\_\+delay}, \hyperlink{a00021_source_l00247}{logv\+\_\+t\+::tick}, \hyperlink{a00021_source_l00248}{logv\+\_\+t\+::trip\+\_\+active}, \hyperlink{a00040_source_l00084}{T\+R\+U\+E}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+
+
+\begin{DoxyCode}
+00026 \{
+00027         
+00028   \hyperlink{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{IRQ\_CTX\_T}   irq\_ctx;
+00029   \hyperlink{a00033_a357168bbe78739811cdb7b5576714ca6}{IRQ\_DISABLE}(irq\_ctx);  
+00030 
+00031 
+00032 
+00033     \textcolor{keywordflow}{if}(\hyperlink{a00029_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress}==\hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})
+00034         \textcolor{comment}{//If nov operation is on progress suspend for a moment}
+00035         \hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT} = 0;
+00036 
+00037   \textcolor{comment}{// Increment tick - used as fast timestamp}
+00038     \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a81f0ce68c2c483fb8df726cc1988d8e8}{tick}++;
+00039 
+00047 \textcolor{preprocessor}{#if(TEST\_MODE)}
+00048     \textcolor{comment}{//For timing measurements only - prolog}
+00049     \hyperlink{a00058_a4c044f78fb8b7ee19bfdb5d2b204b50e}{DIG\_TEST\_LED\_LAT} =1;
+00050 \textcolor{preprocessor}{#endif}
+00051     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.ir)
+00052          \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.ir\_sen = 
+      \hyperlink{a00017_a5bba51487aeccd791ff56017124da833}{ir\_sen\_get\_status}(\hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(\hyperlink{a00058_a1fae4d2e8dd35f504ec4170044da7e73}{ANA\_INDEX\_IR}),0);
+00053 
+00054     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.uv)
+00055           \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen = 
+      \hyperlink{a00020_a354d25047e79397dbe5525178f19cae0}{uv\_sen\_get\_status}(\hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(\hyperlink{a00058_af523b82e94e382153f1313307c5bd879}{ANA\_INDEX\_UV}),0);
+00056 
+00057     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.
+      mfield\_x)
+00058           \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_x\_sen = 
+      \hyperlink{a00019_a3a46d0e69b27b3566e6d8465cf7a8b0a}{mfield\_x\_sen\_get\_status}(\hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(
+      \hyperlink{a00058_aa797210faae0317a1b0ddace04d1257e}{ANA\_INDEX\_MFIELD\_X}),0);
+00059 
+00060 \textcolor{preprocessor}{  #if(DEVICE == AQ0X\_V1)}
+00061     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.
+      mfield\_y)
+00062          \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_y\_sen = 
+      \hyperlink{a00019_ac7134882964fedc18be6c75547987a2c}{mfield\_y\_sen\_get\_status}(\hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(
+      \hyperlink{a00058_aa2f14d4d069c5888b1d230be59751a09}{ANA\_INDEX\_MFIELD\_Y}),0);
+00063 \textcolor{preprocessor}{  #endif}
+00064 
+00065 
+00066 
+00067      \textcolor{keywordflow}{if}(
+00068         (\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.ir\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00069        || (\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00070        )
+00071        \hyperlink{a00016_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\_wake}(\hyperlink{a00021_a0cec8cae6d70499e62b4251e5843497d}{EVENT\_SV\_ALARM});
+00072      \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a32ebd32977bc9831cd68530b2b7ec664}{trip\_active} == \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})
+00073           \hyperlink{a00016_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\_wake}(\hyperlink{a00021_a602c125746b241f3a37e9fd5f43412b0}{EVENT\_CLEARED});
+00074     
+00075 
+00076 
+00077      \textcolor{keywordflow}{if}(\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.cnt > 0)
+00078          \textcolor{keywordflow}{if}((--\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.cnt) == 0)
+00079              \hyperlink{a00016_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\_wake}(\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.type);
+00080 
+00081 
+00082      \textcolor{keywordflow}{if}(\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.delay > 0)
+00083         \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.delay--;
+00084 
+00085      \textcolor{keywordflow}{if}(\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.delay > 0)
+00086         \hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.delay--;
+00087 
+00088     
+00089      
+00090 
+00091 
+00092 \textcolor{preprocessor}{#if(TEST\_MODE)}
+00093     \textcolor{comment}{//For timing measurements only - prolog}
+00094     \hyperlink{a00058_a4c044f78fb8b7ee19bfdb5d2b204b50e}{DIG\_TEST\_LED\_LAT} =0;     
+00095 \textcolor{preprocessor}{#endif}
+00096 
+00097 
+00098 
+00099      
+00100   
+00101     \textcolor{keywordflow}{if}((\hyperlink{a00029_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress}==1) && (\hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT} == 0))
+00102         \textcolor{comment}{//Restart suspended nov operation}
+00103     \hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT} = 1;
+00104 
+00105     IFS0bits.T1IF = 0;    \textcolor{comment}{// Clear Timer1 Interrupt Flag}
+00106     
+00107    \hyperlink{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{IRQ\_ENABLE}(irq\_ctx);
+00108    \hyperlink{a00015_a34d4c80d85281a545f3c7f1530803d65}{SET\_CPU\_IPL}(6);       \textcolor{comment}{// Fix for core interrupt in-interupt issue}
+00109 
+00110 
+00111 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d32/a00041_a2068c3c2584547dbc1c8b9bca2d55b18_cgraph}
+\end{center}
+\end{figure}
+
+

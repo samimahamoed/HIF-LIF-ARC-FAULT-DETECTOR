@@ -1,0 +1,1233 @@
+.TH "QCPCurve" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPCurve \- 
+.PP
+A plottable representing a parametric curve in a plot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractPlottable\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBLineStyle\fP { \fBlsNone\fP, \fBlsLine\fP }"
+.br
+.RI "\fIDefines how the curve's line is represented visually in the plot\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPCurve\fP (\fBQCPAxis\fP *\fBkeyAxis\fP, \fBQCPAxis\fP *\fBvalueAxis\fP)"
+.br
+.RI "\fIConstructs a curve which uses \fIkeyAxis\fP as its key axis ('x') and \fIvalueAxis\fP as its value axis ('y')\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPCurve\fP ()"
+.br
+.ti -1c
+.RI "const \fBQCPCurveDataMap\fP * \fBdata\fP () const "
+.br
+.ti -1c
+.RI "\fBQCP::ScatterStyle\fP \fBscatterStyle\fP () const "
+.br
+.ti -1c
+.RI "double \fBscatterSize\fP () const "
+.br
+.ti -1c
+.RI "QPixmap \fBscatterPixmap\fP () const "
+.br
+.ti -1c
+.RI "\fBLineStyle\fP \fBlineStyle\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetData\fP (\fBQCPCurveDataMap\fP *\fBdata\fP, bool copy=false)"
+.br
+.RI "\fIReplaces the current data with the provided \fIdata\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetData\fP (const QVector< double > &t, const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Replaces the current data with the provided points in \fIt\fP, \fIkey\fP and \fIvalue\fP tuples\&. \fP"
+.ti -1c
+.RI "void \fBsetData\fP (const QVector< double > &\fBkey\fP, const QVector< double > &\fBvalue\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Replaces the current data with the provided \fIkey\fP and \fIvalue\fP pairs\&. \fP"
+.ti -1c
+.RI "void \fBsetScatterStyle\fP (\fBQCP::ScatterStyle\fP style)"
+.br
+.RI "\fISets the visual appearance of single data points in the plot\&. \fP"
+.ti -1c
+.RI "void \fBsetScatterSize\fP (double size)"
+.br
+.RI "\fIThis defines how big (in pixels) single scatters are drawn, if scatter style (\fBsetScatterStyle\fP) isn't \fBQCP::ssNone\fP, \fBQCP::ssDot\fP or \fBQCP::ssPixmap\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetScatterPixmap\fP (const QPixmap &pixmap)"
+.br
+.RI "\fIIf the scatter style (\fBsetScatterStyle\fP) is set to ssPixmap, this function defines the QPixmap that will be drawn centered on the data point coordinate\&. \fP"
+.ti -1c
+.RI "void \fBsetLineStyle\fP (\fBLineStyle\fP style)"
+.br
+.RI "\fISets how the single data points are connected in the plot or how they are represented visually apart from the scatter symbol\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const \fBQCPCurveDataMap\fP &dataMap)"
+.br
+.RI "\fIAdds the provided data points in \fIdataMap\fP to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const \fBQCPCurveData\fP &\fBdata\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point in \fIdata\fP to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (double t, double \fBkey\fP, double \fBvalue\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point as \fIt\fP, \fIkey\fP and \fIvalue\fP tuple to the current data\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (double \fBkey\fP, double \fBvalue\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Adds the provided single data point as \fIkey\fP and \fIvalue\fP pair to the current data The t parameter of the data point is set to the t of the last data point plus 1\&. \fP"
+.ti -1c
+.RI "void \fBaddData\fP (const QVector< double > &ts, const QVector< double > &keys, const QVector< double > &values)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided data points as \fIt\fP, \fIkey\fP and \fIvalue\fP tuples to the current data\&. \fP"
+.ti -1c
+.RI "void \fBremoveDataBefore\fP (double t)"
+.br
+.RI "\fIRemoves all data points with curve parameter t smaller than \fIt\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveDataAfter\fP (double t)"
+.br
+.RI "\fIRemoves all data points with curve parameter t greater than \fIt\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveData\fP (double fromt, double tot)"
+.br
+.RI "\fIRemoves all data points with curve parameter t between \fIfromt\fP and \fItot\fP\&. \fP"
+.ti -1c
+.RI "void \fBremoveData\fP (double t)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes a single data point at curve parameter \fIt\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBclearData\fP ()"
+.br
+.RI "\fIRemoves all data points\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits a plottable or not\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual void \fBdrawLegendIcon\fP (\fBQCPPainter\fP *painter, const QRect &rect) const "
+.br
+.ti -1c
+.RI "virtual void \fBdrawScatterPlot\fP (\fBQCPPainter\fP *painter, const QVector< QPointF > *pointData) const "
+.br
+.ti -1c
+.RI "void \fBgetCurveData\fP (QVector< QPointF > *lineData) const "
+.br
+.ti -1c
+.RI "double \fBpointDistance\fP (const QPointF &pixelPoint) const "
+.br
+.ti -1c
+.RI "QPointF \fBoutsideCoordsToPixels\fP (double \fBkey\fP, double \fBvalue\fP, int region) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetKeyRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetValueRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPCurveDataMap\fP * \fBmData\fP"
+.br
+.ti -1c
+.RI "\fBQCP::ScatterStyle\fP \fBmScatterStyle\fP"
+.br
+.ti -1c
+.RI "double \fBmScatterSize\fP"
+.br
+.ti -1c
+.RI "QPixmap \fBmScatterPixmap\fP"
+.br
+.ti -1c
+.RI "\fBLineStyle\fP \fBmLineStyle\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCustomPlot\fP"
+.br
+.ti -1c
+.RI "class \fBQCPLegend\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plottable representing a parametric curve in a plot\&. 
+
+To plot data, assign it with the \fBsetData\fP or \fBaddData\fP functions\&.
+.SH "Changing the appearance"
+.PP
+The appearance of the curve is determined by the pen and the brush (\fBsetPen\fP, \fBsetBrush\fP)\&. 
+.SH "Usage"
+.PP
+Like all data representing objects in \fBQCustomPlot\fP, the \fBQCPCurve\fP is a plottable (\fBQCPAbstractPlottable\fP)\&. So the plottable-interface of \fBQCustomPlot\fP applies (QCustomPlot::plottable, QCustomPlot::addPlottable, QCustomPlot::removePlottable, etc\&.)
+.PP
+Usually, you first create an instance: 
+.PP
+.nf
+QCPCurve *newCurve = new QCPCurve(customPlot->xAxis, customPlot->yAxis);
+
+.fi
+.PP
+ add it to the customPlot with QCustomPlot::addPlottable: 
+.PP
+.nf
+customPlot->addPlottable(newCurve);
+
+.fi
+.PP
+ and then modify the properties of the newly created plottable, e\&.g\&.: 
+.PP
+.nf
+newCurve->setName("Fermat's Spiral");
+newCurve->setData(tData, xData, yData);
+
+.fi
+.PP
+ 
+.PP
+Definition at line 582 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPCurve::LineStyle\fP"
+
+.PP
+Defines how the curve's line is represented visually in the plot\&. The line is drawn with the current pen of the curve (\fBsetPen\fP)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLineStyle\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIlsNone \fP\fP
+No line is drawn between data points (e\&.g\&. only scatters) 
+.TP
+\fB\fIlsLine \fP\fP
+Data points are connected with a straight line\&. 
+.PP
+Definition at line 591 of file qcustomplot\&.h\&.
+.PP
+.nf
+591                  { lsNone, 
+592                    lsLine  
+593                  };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPCurve::QCPCurve (\fBQCPAxis\fP *keyAxis, \fBQCPAxis\fP *valueAxis)\fC [explicit]\fP"
+
+.PP
+Constructs a curve which uses \fIkeyAxis\fP as its key axis ('x') and \fIvalueAxis\fP as its value axis ('y')\&. \fIkeyAxis\fP and \fIvalueAxis\fP must reside in the same \fBQCustomPlot\fP instance and not have the same orientation\&. If either of these restrictions is violated, a corresponding message is printed to the debug output (qDebug), the construction is not aborted, though\&.
+.PP
+The constructed \fBQCPCurve\fP can be added to the plot with QCustomPlot::addPlottable, \fBQCustomPlot\fP then takes ownership of the graph\&. 
+.PP
+Definition at line 9216 of file qcustomplot\&.cpp\&.
+.PP
+References lsLine, QCPAbstractPlottable::mBrush, mData, QCPAbstractPlottable::mPen, QCPAbstractPlottable::mSelectedBrush, QCPAbstractPlottable::mSelectedPen, setLineStyle(), setScatterSize(), setScatterStyle(), and QCP::ssNone\&.
+.PP
+.nf
+9216                                                        :
+9217   QCPAbstractPlottable(keyAxis, valueAxis)
+9218 {
+9219   mData = new QCPCurveDataMap;
+9220   mPen\&.setColor(Qt::blue);
+9221   mPen\&.setStyle(Qt::SolidLine);
+9222   mBrush\&.setColor(Qt::blue);
+9223   mBrush\&.setStyle(Qt::NoBrush);
+9224   mSelectedPen = mPen;
+9225   mSelectedPen\&.setWidthF(2\&.5);
+9226   mSelectedPen\&.setColor(QColor(80, 80, 255)); // lighter than Qt::blue of mPen
+9227   mSelectedBrush = mBrush;
+9228   
+9229   setScatterSize(6);
+9230   setScatterStyle(QCP::ssNone);
+9231   setLineStyle(lsLine);
+9232 }
+.fi
+.SS "QCPCurve::~QCPCurve ()\fC [virtual]\fP"
+
+.PP
+Definition at line 9234 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+9235 {
+9236   delete mData;
+9237 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QCPCurve::addData (const \fBQCPCurveDataMap\fP &dataMap)"
+
+.PP
+Adds the provided data points in \fIdataMap\fP to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9349 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+9350 {
+9351   mData->unite(dataMap);
+9352 }
+.fi
+.SS "void QCPCurve::addData (const \fBQCPCurveData\fP &data)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point in \fIdata\fP to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9358 of file qcustomplot\&.cpp\&.
+.PP
+References mData, and QCPCurveData::t\&.
+.PP
+.nf
+9359 {
+9360   mData->insertMulti(data\&.t, data);
+9361 }
+.fi
+.SS "void QCPCurve::addData (doublet, doublekey, doublevalue)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided single data point as \fIt\fP, \fIkey\fP and \fIvalue\fP tuple to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9367 of file qcustomplot\&.cpp\&.
+.PP
+References key, QCPCurveData::key, mData, QCPCurveData::t, value, and QCPCurveData::value\&.
+.PP
+.nf
+9368 {
+9369   QCPCurveData newData;
+9370   newData\&.t = t;
+9371   newData\&.key = key;
+9372   newData\&.value = value;
+9373   mData->insertMulti(newData\&.t, newData);
+9374 }
+.fi
+.SS "void QCPCurve::addData (doublekey, doublevalue)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Adds the provided single data point as \fIkey\fP and \fIvalue\fP pair to the current data The t parameter of the data point is set to the t of the last data point plus 1\&. If there is no last data point, t will be set to 0\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9384 of file qcustomplot\&.cpp\&.
+.PP
+References key, QCPCurveData::key, mData, QCPCurveData::t, value, and QCPCurveData::value\&.
+.PP
+.nf
+9385 {
+9386   QCPCurveData newData;
+9387   if (!mData->isEmpty())
+9388     newData\&.t = (mData->constEnd()-1)\&.key()+1;
+9389   else
+9390     newData\&.t = 0;
+9391   newData\&.key = key;
+9392   newData\&.value = value;
+9393   mData->insertMulti(newData\&.t, newData);
+9394 }
+.fi
+.SS "void QCPCurve::addData (const QVector< double > &ts, const QVector< double > &keys, const QVector< double > &values)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Adds the provided data points as \fIt\fP, \fIkey\fP and \fIvalue\fP tuples to the current data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9400 of file qcustomplot\&.cpp\&.
+.PP
+References mData, and QCPCurveData::t\&.
+.PP
+.nf
+9401 {
+9402   int n = ts\&.size();
+9403   n = qMin(n, keys\&.size());
+9404   n = qMin(n, values\&.size());
+9405   QCPCurveData newData;
+9406   for (int i=0; i<n; ++i)
+9407   {
+9408     newData\&.t = ts[i];
+9409     newData\&.key = keys[i];
+9410     newData\&.value = values[i];
+9411     mData->insertMulti(newData\&.t, newData);
+9412   }
+9413 }
+.fi
+.SS "void QCPCurve::clearData ()\fC [virtual]\fP"
+
+.PP
+Removes all data points\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveData\fP, \fBremoveDataAfter\fP, \fBremoveDataBefore\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 9472 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+9473 {
+9474   mData->clear();
+9475 }
+.fi
+.SS "const \fBQCPCurveDataMap\fP* QCPCurve::data () const\fC [inline]\fP"
+
+.PP
+Definition at line 598 of file qcustomplot\&.h\&.
+.PP
+Referenced by setData()\&.
+.PP
+.nf
+598 { return mData; }
+.fi
+.SS "void QCPCurve::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this plottable with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible plottables\&.
+.PP
+The cliprect of the provided painter is set to the axis rect of the key/value axis of this plottable (what \fBclipRect\fP returns), before this function is called\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 9487 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractPlottable::applyFillAntialiasingHint(), color(), QCPPainter::drawLine(), drawScatterPlot(), getCurveData(), lsNone, QCPAbstractPlottable::mainBrush(), QCPAbstractPlottable::mainPen(), mData, mLineStyle, QCPLayerable::mParentPlot, mScatterStyle, QCPPainter::pdfExportMode(), QCPPainter::setPen(), and QCP::ssNone\&.
+.PP
+.nf
+9488 {
+9489   if (mData->isEmpty()) return;
+9490   
+9491   // allocate line vector:
+9492   QVector<QPointF> *lineData = new QVector<QPointF>;
+9493   // fill with curve data:
+9494   getCurveData(lineData);
+9495   // draw curve fill:
+9496   if (mainBrush()\&.style() != Qt::NoBrush && mainBrush()\&.color()\&.alpha() != 0)
+9497   {
+9498     applyFillAntialiasingHint(painter);
+9499     painter->setPen(Qt::NoPen);
+9500     painter->setBrush(mainBrush());
+9501     painter->drawPolygon(QPolygonF(*lineData));
+9502   }
+9503   // draw curve line:
+9504   if (mLineStyle != lsNone && mainPen()\&.style() != Qt::NoPen && mainPen()\&.color()\&.alpha() != 0)
+9505   {
+9506     applyDefaultAntialiasingHint(painter);
+9507     painter->setPen(mainPen());
+9508     painter->setBrush(Qt::NoBrush);
+9509     // if drawing solid line and not in PDF, use much faster line drawing instead of polyline:
+9510     if (mParentPlot->plottingHints()\&.testFlag(QCP::phFastPolylines) &&
+9511         painter->pen()\&.style() == Qt::SolidLine &&
+9512         !painter->pdfExportMode())
+9513     {
+9514       for (int i=1; i<lineData->size(); ++i)
+9515         painter->drawLine(lineData->at(i-1), lineData->at(i));
+9516     } else
+9517     {  
+9518       painter->drawPolyline(QPolygonF(*lineData));
+9519     }
+9520   }
+9521   // draw scatters:
+9522   if (mScatterStyle != QCP::ssNone)
+9523     drawScatterPlot(painter, lineData);
+9524   // free allocated line data:
+9525   delete lineData;
+9526 }
+.fi
+.SS "void QCPCurve::drawLegendIcon (\fBQCPPainter\fP *painter, const QRect &rect) const\fC [protected]\fP, \fC [virtual]\fP"
+called by \fBQCPLegend::draw\fP (via \fBQCPPlottableLegendItem::draw\fP) to create a graphical representation of this plottable inside \fIrect\fP, next to the plottable name\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 9529 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractPlottable::applyFillAntialiasingHint(), QCPAbstractPlottable::applyScattersAntialiasingHint(), QCPPainter::drawLine(), QCPPainter::drawScatter(), lsNone, QCPAbstractPlottable::mBrush, mLineStyle, QCPAbstractPlottable::mPen, mScatterPixmap, mScatterSize, mScatterStyle, QCPPainter::setPen(), QCP::ssNone, and QCP::ssPixmap\&.
+.PP
+.nf
+9530 {
+9531   // draw fill:
+9532   if (mBrush\&.style() != Qt::NoBrush)
+9533   {
+9534     applyFillAntialiasingHint(painter);
+9535     painter->fillRect(QRectF(rect\&.left(), rect\&.top()+rect\&.height()/2\&.0, rect\&.width(), rect\&.height()/3\&.0), mBrush);
+9536   }
+9537   // draw line vertically centered:
+9538   if (mLineStyle != lsNone)
+9539   {
+9540     applyDefaultAntialiasingHint(painter);
+9541     painter->setPen(mPen);
+9542     painter->drawLine(QLineF(rect\&.left(), rect\&.top()+rect\&.height()/2\&.0, rect\&.right()+5, rect\&.top()+rect\&.height()/2\&.0)); // +5 on x2 else last segment is missing from dashed/dotted pens
+9543   }
+9544   // draw scatter symbol:
+9545   if (mScatterStyle != QCP::ssNone)
+9546   {
+9547     if (mScatterStyle == QCP::ssPixmap && (mScatterPixmap\&.size()\&.width() > rect\&.width() || mScatterPixmap\&.size()\&.height() > rect\&.height()))
+9548     {
+9549       // handle pixmap scatters that are larger than legend icon rect separately\&.
+9550       // We resize them and draw them manually, instead of calling drawScatter:
+9551       QSize newSize = mScatterPixmap\&.size();
+9552       newSize\&.scale(rect\&.size(), Qt::KeepAspectRatio);
+9553       QRect targetRect;
+9554       targetRect\&.setSize(newSize);
+9555       targetRect\&.moveCenter(rect\&.center());
+9556       bool smoothBackup = painter->testRenderHint(QPainter::SmoothPixmapTransform);
+9557       painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+9558       painter->drawPixmap(targetRect, mScatterPixmap);
+9559       painter->setRenderHint(QPainter::SmoothPixmapTransform, smoothBackup);
+9560     } else
+9561     {
+9562       applyScattersAntialiasingHint(painter);
+9563       painter->setPen(mPen);
+9564       painter->drawScatter(QRectF(rect)\&.center()\&.x(), QRectF(rect)\&.center()\&.y(), mScatterSize, mScatterStyle);
+9565     }
+9566   }
+9567 }
+.fi
+.SS "void QCPCurve::drawScatterPlot (\fBQCPPainter\fP *painter, const QVector< QPointF > *pointData) const\fC [protected]\fP, \fC [virtual]\fP"
+Draws scatter symbols at every data point passed in \fIpointData\fP\&. scatter symbols are independent of the line style and are always drawn if scatter style is not \fBQCP::ssNone\fP\&. 
+.PP
+Definition at line 9574 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyScattersAntialiasingHint(), QCPPainter::drawScatter(), QCPAbstractPlottable::mainBrush(), QCPAbstractPlottable::mainPen(), mScatterPixmap, mScatterSize, mScatterStyle, QCPPainter::setPen(), and QCPPainter::setScatterPixmap()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+9575 {
+9576   // draw scatter point symbols:
+9577   applyScattersAntialiasingHint(painter);
+9578   painter->setPen(mainPen());
+9579   painter->setBrush(mainBrush());
+9580   painter->setScatterPixmap(mScatterPixmap);
+9581   for (int i=0; i<pointData->size(); ++i)
+9582     painter->drawScatter(pointData->at(i)\&.x(), pointData->at(i)\&.y(), mScatterSize, mScatterStyle);
+9583 }
+.fi
+.SS "void QCPCurve::getCurveData (QVector< QPointF > *lineData) const\fC [protected]\fP"
+called by \fBQCPCurve::draw\fP to generate a point vector (pixels) which represents the line of the curve\&. Line segments that aren't visible in the current axis rect are handled in an optimized way\&. 
+.PP
+Definition at line 9591 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::coordsToPixels(), key, QCPRange::lower, QCPAbstractPlottable::mBrush, mData, QCPAbstractPlottable::mKeyAxis, QCPAbstractPlottable::mValueAxis, outsideCoordsToPixels(), QCPAxis::range(), QCPRange::upper, and value\&.
+.PP
+Referenced by draw(), and pointDistance()\&.
+.PP
+.nf
+9592 {
+9593   /* Extended sides of axis rect R divide space into 9 regions:
+9594      1__|_4_|__7  
+9595      2__|_R_|__8
+9596      3  | 6 |  9 
+9597      General idea: If the two points of a line segment are in the same region (that is not R), the line segment corner is removed\&.
+9598      Curves outside R become straight lines closely outside of R which greatly reduces drawing time, yet keeps the look of lines and
+9599      fills inside R consistent\&.
+9600      The region R has index 5\&.
+9601   */
+9602   lineData->reserve(mData->size());
+9603   QCPCurveDataMap::const_iterator it;
+9604   int lastRegion = 5;
+9605   int currentRegion = 5;
+9606   double RLeft = mKeyAxis->range()\&.lower;
+9607   double RRight = mKeyAxis->range()\&.upper;
+9608   double RBottom = mValueAxis->range()\&.lower;
+9609   double RTop = mValueAxis->range()\&.upper;
+9610   double x, y; // current key/value
+9611   bool addedLastAlready = true;
+9612   bool firstPoint = true; // first point must always be drawn, to make sure fill works correctly
+9613   for (it = mData->constBegin(); it != mData->constEnd(); ++it)
+9614   {
+9615     x = it\&.value()\&.key;
+9616     y = it\&.value()\&.value;
+9617     // determine current region:
+9618     if (x < RLeft) // region 123
+9619     {
+9620       if (y > RTop)
+9621         currentRegion = 1;
+9622       else if (y < RBottom)
+9623         currentRegion = 3;
+9624       else
+9625         currentRegion = 2;
+9626     } else if (x > RRight) // region 789
+9627     {
+9628       if (y > RTop)
+9629         currentRegion = 7;
+9630       else if (y < RBottom)
+9631         currentRegion = 9;
+9632       else
+9633         currentRegion = 8;
+9634     } else // region 456
+9635     {
+9636       if (y > RTop)
+9637         currentRegion = 4;
+9638       else if (y < RBottom)
+9639         currentRegion = 6;
+9640       else
+9641         currentRegion = 5;
+9642     }
+9643     
+9644     /*
+9645       Watch out, the next part is very tricky\&. It modifies the curve such that it seems like the
+9646       whole thing is still drawn, but actually the points outside the axisRect are simplified
+9647       ("optimized") greatly\&. There are some subtle special cases when line segments are large and
+9648       thereby each subsequent point may be in a different region or even skip some\&.
+9649     */
+9650     // determine whether to keep current point:
+9651     if (currentRegion == 5 || (firstPoint && mBrush\&.style() != Qt::NoBrush)) // current is in R, add current and last if it wasn't added already
+9652     {
+9653       if (!addedLastAlready) // in case curve just entered R, make sure the last point outside R is also drawn correctly
+9654         lineData->append(coordsToPixels((it-1)\&.value()\&.key, (it-1)\&.value()\&.value)); // add last point to vector
+9655       else if (lastRegion != 5) // added last already\&. If that's the case, we probably added it at optimized position\&. So go back and make sure it's at original position (else the angle changes under which this segment enters R)
+9656       {
+9657         if (!firstPoint) // because on firstPoint, currentRegion is 5 and addedLastAlready is true, although there is no last point
+9658           lineData->replace(lineData->size()-1, coordsToPixels((it-1)\&.value()\&.key, (it-1)\&.value()\&.value));
+9659       }
+9660       lineData->append(coordsToPixels(it\&.value()\&.key, it\&.value()\&.value)); // add current point to vector
+9661       addedLastAlready = true; // so in next iteration, we don't add this point twice
+9662     } else if (currentRegion != lastRegion) // changed region, add current and last if not added already
+9663     {
+9664       // using outsideCoordsToPixels instead of coorsToPixels for optimized point placement (places points just outside axisRect instead of potentially far away)
+9665       
+9666       // if we're coming from R or we skip diagonally over the corner regions (so line might still be visible in R), we can't place points optimized
+9667       if (lastRegion == 5 || // coming from R
+9668           ((lastRegion==2 && currentRegion==4) || (lastRegion==4 && currentRegion==2)) || // skip top left diagonal
+9669           ((lastRegion==4 && currentRegion==8) || (lastRegion==8 && currentRegion==4)) || // skip top right diagonal
+9670           ((lastRegion==8 && currentRegion==6) || (lastRegion==6 && currentRegion==8)) || // skip bottom right diagonal
+9671           ((lastRegion==6 && currentRegion==2) || (lastRegion==2 && currentRegion==6))    // skip bottom left diagonal
+9672           )
+9673       {
+9674         // always add last point if not added already, original:
+9675         if (!addedLastAlready)
+9676           lineData->append(coordsToPixels((it-1)\&.value()\&.key, (it-1)\&.value()\&.value));
+9677         // add current point, original:
+9678         lineData->append(coordsToPixels(it\&.value()\&.key, it\&.value()\&.value));
+9679       } else // no special case that forbids optimized point placement, so do it:
+9680       {
+9681         // always add last point if not added already, optimized:
+9682         if (!addedLastAlready)
+9683           lineData->append(outsideCoordsToPixels((it-1)\&.value()\&.key, (it-1)\&.value()\&.value, currentRegion));
+9684         // add current point, optimized:
+9685         lineData->append(outsideCoordsToPixels(it\&.value()\&.key, it\&.value()\&.value, currentRegion));
+9686       }
+9687       addedLastAlready = true; // so that if next point enters 5, or crosses another region boundary, we don't add this point twice
+9688     } else // neither in R, nor crossed a region boundary, skip current point
+9689     {
+9690       addedLastAlready = false;
+9691     }
+9692     lastRegion = currentRegion;
+9693     firstPoint = false;
+9694   }
+9695   // If curve ends outside R, we want to add very last point so the fill looks like it should when the curve started inside R:
+9696   if (lastRegion != 5 && mBrush\&.style() != Qt::NoBrush && !mData->isEmpty())
+9697     lineData->append(coordsToPixels((mData->constEnd()-1)\&.value()\&.key, (mData->constEnd()-1)\&.value()\&.value));
+9698 }
+.fi
+.SS "\fBQCPRange\fP QCPCurve::getKeyRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+called by rescaleAxes functions to get the full data key bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetValueRange\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 9767 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mData, QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, QCPAbstractPlottable::sdPositive, and QCPRange::upper\&.
+.PP
+.nf
+9768 {
+9769   QCPRange range;
+9770   bool haveLower = false;
+9771   bool haveUpper = false;
+9772   
+9773   double current;
+9774   
+9775   QCPCurveDataMap::const_iterator it = mData->constBegin();
+9776   while (it != mData->constEnd())
+9777   {
+9778     current = it\&.value()\&.key;
+9779     if (inSignDomain == sdBoth || (inSignDomain == sdNegative && current < 0) || (inSignDomain == sdPositive && current > 0))
+9780     {
+9781       if (current < range\&.lower || !haveLower)
+9782       {
+9783         range\&.lower = current;
+9784         haveLower = true;
+9785       }
+9786       if (current > range\&.upper || !haveUpper)
+9787       {
+9788         range\&.upper = current;
+9789         haveUpper = true;
+9790       }
+9791     }
+9792     ++it;
+9793   }
+9794   
+9795   validRange = haveLower && haveUpper;
+9796   return range;
+9797 }
+.fi
+.SS "\fBQCPRange\fP QCPCurve::getValueRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+called by rescaleAxes functions to get the full data value bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetKeyRange\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 9800 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::lower, mData, QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, QCPAbstractPlottable::sdPositive, and QCPRange::upper\&.
+.PP
+.nf
+9801 {
+9802   QCPRange range;
+9803   bool haveLower = false;
+9804   bool haveUpper = false;
+9805   
+9806   double current;
+9807   
+9808   QCPCurveDataMap::const_iterator it = mData->constBegin();
+9809   while (it != mData->constEnd())
+9810   {
+9811     current = it\&.value()\&.value;
+9812     if (inSignDomain == sdBoth || (inSignDomain == sdNegative && current < 0) || (inSignDomain == sdPositive && current > 0))
+9813     {
+9814       if (current < range\&.lower || !haveLower)
+9815       {
+9816         range\&.lower = current;
+9817         haveLower = true;
+9818       }
+9819       if (current > range\&.upper || !haveUpper)
+9820       {
+9821         range\&.upper = current;
+9822         haveUpper = true;
+9823       }
+9824     }
+9825     ++it;
+9826   }
+9827   
+9828   validRange = haveLower && haveUpper;
+9829   return range;
+9830 }
+.fi
+.SS "\fBLineStyle\fP QCPCurve::lineStyle () const\fC [inline]\fP"
+
+.PP
+Definition at line 602 of file qcustomplot\&.h\&.
+.PP
+.nf
+602 { return mLineStyle; }
+.fi
+.SS "QPointF QCPCurve::outsideCoordsToPixels (doublekey, doublevalue, intregion) const\fC [protected]\fP"
+This is a specialized \fBcoordsToPixels\fP function for points that are outside the visible axisRect and just crossing a boundary (since \fBgetCurveData\fP reduces non-visible curve segments to those line segments that cross region boundaries, see documentation there)\&. It only uses the coordinate parallel to the region boundary of the axisRect\&. The other coordinate is picked 10 pixels outside the axisRect\&. Together with the optimization in \fBgetCurveData\fP this improves performance for large curves (or zoomed in ones) significantly while keeping the illusion the whole curve and its filling is still being drawn for the viewer\&. 
+.PP
+Definition at line 9743 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::axisRect(), axisRect(), QCPAbstractPlottable::coordsToPixels(), QCPAbstractPlottable::mKeyAxis, and QCPAbstractPlottable::mValueAxis\&.
+.PP
+Referenced by getCurveData()\&.
+.PP
+.nf
+9744 {
+9745   int margin = 10;
+9746   QRect axisRect = mKeyAxis->axisRect() | mValueAxis->axisRect();
+9747   QPointF result = coordsToPixels(key, value);
+9748   switch (region)
+9749   {
+9750     case 2: result\&.setX(axisRect\&.left()-margin); break; // left
+9751     case 8: result\&.setX(axisRect\&.right()+margin); break; // right
+9752     case 4: result\&.setY(axisRect\&.top()-margin); break; // top
+9753     case 6: result\&.setY(axisRect\&.bottom()+margin); break; // bottom
+9754     case 1: result\&.setX(axisRect\&.left()-margin);
+9755             result\&.setY(axisRect\&.top()-margin); break; // top left
+9756     case 7: result\&.setX(axisRect\&.right()+margin);
+9757             result\&.setY(axisRect\&.top()-margin); break; // top right
+9758     case 9: result\&.setX(axisRect\&.right()+margin);
+9759             result\&.setY(axisRect\&.bottom()+margin); break; // bottom right
+9760     case 3: result\&.setX(axisRect\&.left()-margin);
+9761             result\&.setY(axisRect\&.bottom()+margin); break; // bottom left
+9762   }
+9763   return result;
+9764 }
+.fi
+.SS "double QCPCurve::pointDistance (const QPointF &pixelPoint) const\fC [protected]\fP"
+Calculates the (minimum) distance (in pixels) the curve's representation has from the given \fIpixelPoint\fP in pixels\&. This is used to determine whether the curve was clicked or not, e\&.g\&. in \fBselectTest\fP\&. 
+.PP
+Definition at line 9706 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::coordsToPixels(), QCPAbstractPlottable::distSqrToLine(), getCurveData(), mData, and QCPAbstractPlottable::mName\&.
+.PP
+Referenced by selectTest()\&.
+.PP
+.nf
+9707 {
+9708   if (mData->isEmpty())
+9709   {
+9710     qDebug() << Q_FUNC_INFO << "requested point distance on curve" << mName << "without data";
+9711     return 500;
+9712   }
+9713   if (mData->size() == 1)
+9714   {
+9715     QPointF dataPoint = coordsToPixels(mData->constBegin()\&.key(), mData->constBegin()\&.value()\&.value);
+9716     return QVector2D(dataPoint-pixelPoint)\&.length();
+9717   }
+9718   
+9719   // calculate minimum distance to line segments:
+9720   QVector<QPointF> *lineData = new QVector<QPointF>;
+9721   getCurveData(lineData);
+9722   double minDistSqr = std::numeric_limits<double>::max();
+9723   for (int i=0; i<lineData->size()-1; ++i)
+9724   {
+9725     double currentDistSqr = distSqrToLine(lineData->at(i), lineData->at(i+1), pixelPoint);
+9726     if (currentDistSqr < minDistSqr)
+9727       minDistSqr = currentDistSqr;
+9728   }
+9729   delete lineData;
+9730   return sqrt(minDistSqr);
+9731 }
+.fi
+.SS "void QCPCurve::removeData (doublefromt, doubletot)"
+
+.PP
+Removes all data points with curve parameter t between \fIfromt\fP and \fItot\fP\&. if \fIfromt\fP is greater or equal to \fItot\fP, the function does nothing\&. To remove a single data point with known t, use \fBremoveData(double t)\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9445 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+9446 {
+9447   if (fromt >= tot || mData->isEmpty()) return;
+9448   QCPCurveDataMap::iterator it = mData->upperBound(fromt);
+9449   QCPCurveDataMap::iterator itEnd = mData->upperBound(tot);
+9450   while (it != itEnd)
+9451     it = mData->erase(it);
+9452 }
+.fi
+.SS "void QCPCurve::removeData (doublet)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes a single data point at curve parameter \fIt\fP\&. If the position is not known with absolute precision, consider using \fBremoveData(double fromt, double tot)\fP with a small fuzziness interval around the suspected position, depeding on the precision with which the curve parameter is known\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9463 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+9464 {
+9465   mData->remove(t);
+9466 }
+.fi
+.SS "void QCPCurve::removeDataAfter (doublet)"
+
+.PP
+Removes all data points with curve parameter t greater than \fIt\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9430 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+9431 {
+9432   if (mData->isEmpty()) return;
+9433   QCPCurveDataMap::iterator it = mData->upperBound(t);
+9434   while (it != mData->end())
+9435     it = mData->erase(it);
+9436 }
+.fi
+.SS "void QCPCurve::removeDataBefore (doublet)"
+
+.PP
+Removes all data points with curve parameter t smaller than \fIt\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddData\fP, \fBclearData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9419 of file qcustomplot\&.cpp\&.
+.PP
+References mData\&.
+.PP
+.nf
+9420 {
+9421   QCPCurveDataMap::iterator it = mData->begin();
+9422   while (it != mData->end() && it\&.key() < t)
+9423     it = mData->erase(it);
+9424 }
+.fi
+.SS "QPixmap QCPCurve::scatterPixmap () const\fC [inline]\fP"
+
+.PP
+Definition at line 601 of file qcustomplot\&.h\&.
+.PP
+.nf
+601 { return mScatterPixmap; }
+.fi
+.SS "double QCPCurve::scatterSize () const\fC [inline]\fP"
+
+.PP
+Definition at line 600 of file qcustomplot\&.h\&.
+.PP
+.nf
+600 { return mScatterSize; }
+.fi
+.SS "\fBQCP::ScatterStyle\fP QCPCurve::scatterStyle () const\fC [inline]\fP"
+
+.PP
+Definition at line 599 of file qcustomplot\&.h\&.
+.PP
+.nf
+599 { return mScatterStyle; }
+.fi
+.SS "double QCPCurve::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits a plottable or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the plottable (e\&.g\&. to the scatters/lines of a graph)\&. If the plottable is either invisible, contains no data or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the plottable is represented not by single lines but by an area like \fBQCPBars\fP or \fBQCPStatisticalBox\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 9478 of file qcustomplot\&.cpp\&.
+.PP
+References mData, QCPLayerable::mVisible, and pointDistance()\&.
+.PP
+.nf
+9479 {
+9480   if (mData->isEmpty() || !mVisible)
+9481     return -1;
+9482   
+9483   return pointDistance(pos);
+9484 }
+.fi
+.SS "void QCPCurve::setData (\fBQCPCurveDataMap\fP *data, boolcopy = \fCfalse\fP)"
+
+.PP
+Replaces the current data with the provided \fIdata\fP\&. If \fIcopy\fP is set to true, data points in \fIdata\fP will only be copied\&. if false, the plottable takes ownership of the passed data and replaces the internal data pointer with it\&. This is significantly faster than copying for large datasets\&. 
+.PP
+Definition at line 9246 of file qcustomplot\&.cpp\&.
+.PP
+References data(), and mData\&.
+.PP
+.nf
+9247 {
+9248   if (copy)
+9249   {
+9250     *mData = *data;
+9251   } else
+9252   {
+9253     delete mData;
+9254     mData = data;
+9255   }
+9256 }
+.fi
+.SS "void QCPCurve::setData (const QVector< double > &t, const QVector< double > &key, const QVector< double > &value)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Replaces the current data with the provided points in \fIt\fP, \fIkey\fP and \fIvalue\fP tuples\&. The provided vectors should have equal length\&. Else, the number of added points will be the size of the smallest vector\&. 
+.PP
+Definition at line 9264 of file qcustomplot\&.cpp\&.
+.PP
+References mData, and QCPCurveData::t\&.
+.PP
+.nf
+9265 {
+9266   mData->clear();
+9267   int n = t\&.size();
+9268   n = qMin(n, key\&.size());
+9269   n = qMin(n, value\&.size());
+9270   QCPCurveData newData;
+9271   for (int i=0; i<n; ++i)
+9272   {
+9273     newData\&.t = t[i];
+9274     newData\&.key = key[i];
+9275     newData\&.value = value[i];
+9276     mData->insertMulti(newData\&.t, newData);
+9277   }
+9278 }
+.fi
+.SS "void QCPCurve::setData (const QVector< double > &key, const QVector< double > &value)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Replaces the current data with the provided \fIkey\fP and \fIvalue\fP pairs\&. The t parameter of each data point will be set to the integer index of the respective key/value pair\&. 
+.PP
+Definition at line 9285 of file qcustomplot\&.cpp\&.
+.PP
+References mData, and QCPCurveData::t\&.
+.PP
+.nf
+9286 {
+9287   mData->clear();
+9288   int n = key\&.size();
+9289   n = qMin(n, value\&.size());
+9290   QCPCurveData newData;
+9291   for (int i=0; i<n; ++i)
+9292   {
+9293     newData\&.t = i; // no t vector given, so we assign t the index of the key/value pair
+9294     newData\&.key = key[i];
+9295     newData\&.value = value[i];
+9296     mData->insertMulti(newData\&.t, newData);
+9297   }
+9298 }
+.fi
+.SS "void QCPCurve::setLineStyle (\fBQCPCurve::LineStyle\fPstyle)"
+
+.PP
+Sets how the single data points are connected in the plot or how they are represented visually apart from the scatter symbol\&. For scatter-only plots, set \fIstyle\fP to \fBlsNone\fP and \fBsetScatterStyle\fP to the desired scatter style\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetScatterStyle\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9340 of file qcustomplot\&.cpp\&.
+.PP
+References mLineStyle\&.
+.PP
+Referenced by QCPCurve()\&.
+.PP
+.nf
+9341 {
+9342   mLineStyle = style;
+9343 }
+.fi
+.SS "void QCPCurve::setScatterPixmap (const QPixmap &pixmap)"
+
+.PP
+If the scatter style (\fBsetScatterStyle\fP) is set to ssPixmap, this function defines the QPixmap that will be drawn centered on the data point coordinate\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+ScatterStyle 
+.RE
+.PP
+
+.PP
+Definition at line 9328 of file qcustomplot\&.cpp\&.
+.PP
+References mScatterPixmap\&.
+.PP
+.nf
+9329 {
+9330   mScatterPixmap = pixmap;
+9331 }
+.fi
+.SS "void QCPCurve::setScatterSize (doublesize)"
+
+.PP
+This defines how big (in pixels) single scatters are drawn, if scatter style (\fBsetScatterStyle\fP) isn't \fBQCP::ssNone\fP, \fBQCP::ssDot\fP or \fBQCP::ssPixmap\fP\&. Floating point values are allowed for fine grained control over optical appearance with antialiased painting\&.
+.PP
+\fBSee also:\fP
+.RS 4
+ScatterStyle 
+.RE
+.PP
+
+.PP
+Definition at line 9317 of file qcustomplot\&.cpp\&.
+.PP
+References mScatterSize\&.
+.PP
+Referenced by QCPCurve()\&.
+.PP
+.nf
+9318 {
+9319   mScatterSize = size;
+9320 }
+.fi
+.SS "void QCPCurve::setScatterStyle (\fBQCP::ScatterStyle\fPstyle)"
+
+.PP
+Sets the visual appearance of single data points in the plot\&. If set to \fBQCP::ssNone\fP, no scatter points are drawn (e\&.g\&. for line-only-plots with appropriate line style)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+ScatterStyle, \fBsetLineStyle\fP 
+.RE
+.PP
+
+.PP
+Definition at line 9305 of file qcustomplot\&.cpp\&.
+.PP
+References mScatterStyle\&.
+.PP
+Referenced by QCPCurve()\&.
+.PP
+.nf
+9306 {
+9307   mScatterStyle = style;
+9308 }
+.fi
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBQCPLegend\fP\fC [friend]\fP"
+
+.PP
+Definition at line 647 of file qcustomplot\&.h\&.
+.SS "friend class \fBQCustomPlot\fP\fC [friend]\fP"
+
+.PP
+Definition at line 646 of file qcustomplot\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPCurveDataMap\fP* QCPCurve::mData\fC [protected]\fP"
+
+.PP
+Definition at line 627 of file qcustomplot\&.h\&.
+.PP
+Referenced by addData(), clearData(), draw(), getCurveData(), getKeyRange(), getValueRange(), pointDistance(), QCPCurve(), removeData(), removeDataAfter(), removeDataBefore(), selectTest(), setData(), and ~QCPCurve()\&.
+.SS "\fBLineStyle\fP QCPCurve::mLineStyle\fC [protected]\fP"
+
+.PP
+Definition at line 631 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawLegendIcon(), and setLineStyle()\&.
+.SS "QPixmap QCPCurve::mScatterPixmap\fC [protected]\fP"
+
+.PP
+Definition at line 630 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawLegendIcon(), drawScatterPlot(), and setScatterPixmap()\&.
+.SS "double QCPCurve::mScatterSize\fC [protected]\fP"
+
+.PP
+Definition at line 629 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawLegendIcon(), drawScatterPlot(), and setScatterSize()\&.
+.SS "\fBQCP::ScatterStyle\fP QCPCurve::mScatterStyle\fC [protected]\fP"
+
+.PP
+Definition at line 628 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), drawLegendIcon(), drawScatterPlot(), and setScatterStyle()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

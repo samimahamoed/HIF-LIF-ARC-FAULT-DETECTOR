@@ -1,0 +1,130 @@
+\hypertarget{a00070_source}{\section{sys\+\_\+traps.\+c}
+\label{a00070_source}\index{sys\+\_\+traps.\+c@{sys\+\_\+traps.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#include "p33Exxxx.h"}
+00010 \textcolor{preprocessor}{#include "..\(\backslash\)includes\(\backslash\)allheaders.h"} 
+00011 
+\hypertarget{a00070_source_l00012}{}\hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{00012} \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_OscillatorFail(\textcolor{keywordtype}{void});
+00013 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_AddressError(\textcolor{keywordtype}{void});
+00014 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_HardTrapError(\textcolor{keywordtype}{void});
+00015 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_StackError(\textcolor{keywordtype}{void});
+00016 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_MathError(\textcolor{keywordtype}{void});
+00017 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_DMACError(\textcolor{keywordtype}{void});
+00018 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_SoftTrapError(\textcolor{keywordtype}{void});
+00019 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_ReservedTrap7(\textcolor{keywordtype}{void});
+00020 
+00021 \textcolor{comment}{/* Primary Exception Vector handlers:}
+00022 \textcolor{comment}{These routines are used if INTCON2bits.ALTIVT = 0.}
+00023 \textcolor{comment}{All trap service routines in this file simply ensure that device}
+00024 \textcolor{comment}{continuously executes code within the trap service routine. Users}
+00025 \textcolor{comment}{may modify the basic framework provided here to suit to the needs}
+00026 \textcolor{comment}{of their application. */}
+00027 \textcolor{comment}{//================================================================}
+00028 \textcolor{comment}{// OSCFAIL: Oscillator Failure Trap Status bit}
+00029 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_OscillatorFail(\textcolor{keywordtype}{void})
+00030 \{ INTCON1bits.OSCFAIL = 0; \textcolor{comment}{//Clear the trap flag}
+00031 \textcolor{keywordflow}{while} (1)\{
+00032     
+00033 \};
+00034 \}
+00035 \textcolor{comment}{//================================================================}
+00036 \textcolor{comment}{// ADDRERR: Address Error Trap Status bit}
+00037 \textcolor{comment}{// DS read access when DSRPAG = 0x000 will force an Address Error trap.}
+00038 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_AddressError(\textcolor{keywordtype}{void})
+00039 \{ INTCON1bits.ADDRERR = 0; \textcolor{comment}{//Clear the trap flag}
+00040 \textcolor{keywordflow}{while} (1)\{
+00041     
+00042 \};
+00043 \}
+00044 \textcolor{comment}{//================================================================}
+00045 \textcolor{comment}{// SGHT: Software Generated Hard Trap Status bit}
+00046 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_HardTrapError(\textcolor{keywordtype}{void})
+00047 \{ INTCON4bits.SGHT = 0; \textcolor{comment}{//Clear the trap flag}
+00048 \textcolor{keywordflow}{while} (1)\{
+00049    
+00050 
+00051 \};
+00052 \}
+00053 \textcolor{comment}{//================================================================}
+00054 \textcolor{comment}{// STKERR: Stack Error Trap Status bit}
+00055 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_StackError(\textcolor{keywordtype}{void})
+00056 \{ INTCON1bits.STKERR = 0; \textcolor{comment}{//Clear the trap flag}
+00057 \textcolor{keywordflow}{while} (1)\{
+00058     
+00059 
+00060 \};
+00061 \}
+00062 \textcolor{comment}{//================================================================}
+00063 \textcolor{comment}{// MATHERR: Math Error Status bit}
+00064 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_MathError(\textcolor{keywordtype}{void})
+00065 \{ INTCON1bits.MATHERR = 0; \textcolor{comment}{//Clear the trap flag}
+00066 \textcolor{keywordflow}{while} (1)\{
+00067    
+00068 
+00069 \};
+00070 \}
+00071 \textcolor{comment}{//================================================================}
+00072 \textcolor{comment}{// DMACERR: DMAC Trap Flag bit}
+00073 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_DMACError(\textcolor{keywordtype}{void})
+00074 \{   INTCON1bits.DMACERR = 0; \textcolor{comment}{//Clear the trap flag}
+00075 \textcolor{keywordflow}{while} (1)\{
+00076    
+00077 \};
+00078 \}
+00079 \textcolor{comment}{//================================================================}
+00080 \textcolor{comment}{// SWTRAP: Software Trap Status bit}
+00081 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_SoftTrapError(\textcolor{keywordtype}{void})
+00082 \{   INTCON2bits.SWTRAP = 0; \textcolor{comment}{//Clear the trap flag}
+00083 \textcolor{keywordflow}{while} (1)\{
+00084   
+00085 \};
+00086 \}
+00087 \textcolor{comment}{//================================================================}
+00088 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_}((interrupt,no\_auto\_psv)) \_ReservedTrap7(\textcolor{keywordtype}{void})
+00089 \{   \textcolor{comment}{// INTCON1bits.DMACERR = 0; //Clear the trap flag}
+00090 \textcolor{keywordflow}{while} (1);
+00091 \}
+00092 \textcolor{comment}{//================================================================}
+00093 \textcolor{comment}{//================================================================}
+00094 \textcolor{comment}{// Interrupt Vector Not Trap}
+00095 \textcolor{comment}{//================================================================}
+00096 \textcolor{comment}{//================================================================}
+00097 \textcolor{comment}{//===================================================================}
+00098 \textcolor{comment}{//============================================================================}
+\hypertarget{a00070_source_l00099}{}\hyperlink{a00070_afe092795b3220f38b62c7e90763e2f30}{00099} \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_} (( interrupt, shadow, no\_auto\_psv )) \_QEI1Interrupt(\textcolor{keywordtype}{void})
+00100 \{
+00101 \textcolor{comment}{// Sources of QEI interrupts:}
+00102 \textcolor{comment}{// Position counter overflow or underflow event}
+00103 \textcolor{comment}{// Velocity counter overflow or underflow event}
+00104 \textcolor{comment}{// Position counter initialization process complete}
+00105 \textcolor{comment}{// Position counter greater than or equal compare interrupt }
+00106 \textcolor{comment}{// Position counter less than or equal compare interrupt}
+00107 \textcolor{comment}{// Index event interrupt}
+00108 \textcolor{comment}{// Home event interrupt}
+00109 \textcolor{comment}{//The QEI Status register (QEIxSTAT) contains the individual interrupt enable bits and the}
+00110 \textcolor{comment}{//corresponding interrupt status bits for each interrupt source. A status bit indicates that an}
+00111 \textcolor{comment}{//interrupt request has occurred. The module reduces all of the QEI interrupts to a single interrupt}
+00112 \textcolor{comment}{//signal to the interrupt controller module}
+00113 
+00114 IFS3bits.QEI1IF = 0; \textcolor{comment}{//Clear Flag}
+00115 \}
+00116 
+00117 \textcolor{comment}{//============================================================================}
+00118 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_} (( interrupt, shadow, no\_auto\_psv )) \_CRCInterrupt(\textcolor{keywordtype}{void})
+00119 \{
+00120 IFS4bits.CRCIF = 0; \textcolor{comment}{//Clear Flag}
+00121 \}
+00122 
+00123 \textcolor{comment}{//============================================================================}
+00124 \textcolor{keywordtype}{void} \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\_\_attribute\_\_} (( interrupt, shadow, no\_auto\_psv )) \_ICDInterrupt(\textcolor{keywordtype}{void})
+00125 \{
+00126 IFS8bits.ICDIF = 0; \textcolor{comment}{//Clear Flag}
+00127 \}
+00128 \textcolor{comment}{//============================================================================}
+00129 
+00130 
+00131 
+\end{DoxyCode}

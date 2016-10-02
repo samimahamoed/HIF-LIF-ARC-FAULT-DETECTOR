@@ -1,0 +1,8 @@
+<map id="QCPAxis::rangeChanged" name="QCPAxis::rangeChanged">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#a18f3a68f2b691af1fd34b6593c886630" title="If the scale type (setScaleType) is stLinear, diff is added to the lower and upper bounds of the rang..." alt="" coords="231,5,382,32"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#a7072ff96fe690148f1bbcdb4f773ea1c" title="Scales the range of this axis by factor around the coordinate center. " alt="" coords="231,56,383,83"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#aebdfea5d44c3a0ad2b4700cd4d25b641" title="Sets the range of the axis. " alt="" coords="237,107,376,133"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#afcf51227d337db28d1a9ce9a4d1bc91a" title="Sets the lower bound of the axis range, independently of the upper bound. " alt="" coords="220,157,393,184"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#acd3ca1247aa867b540cd5ec30ccd3bef" title="Sets the upper bound of the axis range, independently of the lower bound. " alt="" coords="220,208,393,235"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a7b8bd7e8d3a1d23a8595e9c6a6b76ef1" title="wheelEvent" alt="" coords="441,56,528,83"/>
+</map>

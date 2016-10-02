@@ -1,0 +1,4 @@
+<map id="serial_init" name="serial_init">
+<area shape="rect" id="node2" href="$dc/d3c/a00028.html#af15ca641f181de14f789d97b00c367ef" title="Init function for srv_serial service. " alt="" coords="139,5,293,32"/>
+<area shape="rect" id="node3" href="$dc/d3c/a00028.html#a7fc7421ed15d6e4516e9878e7455d715" title="Function which marks serial buffer as processed, so new command can be taken. " alt="" coords="131,56,301,83"/>
+</map>

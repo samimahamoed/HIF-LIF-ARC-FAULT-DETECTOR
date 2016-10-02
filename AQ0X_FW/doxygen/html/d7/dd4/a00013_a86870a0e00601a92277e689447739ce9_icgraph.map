@@ -1,0 +1,6 @@
+<map id="ir_sen_hif_check" name="ir_sen_hif_check">
+<area shape="rect" id="node2" href="$db/df3/a00034.html#a42ed16c7ef20e0c0031fe7ba7ae377b3" title="Main processing loop for algorithm module. " alt="" coords="172,31,284,57"/>
+<area shape="rect" id="node3" href="$d1/dc6/a00037.html#a2068c3c2584547dbc1c8b9bca2d55b18" title="Fast timer interrupt to scan sensor element analog values. " alt="" coords="343,5,441,32"/>
+<area shape="rect" id="node4" href="$db/df3/a00034.html#a93269cdec3e21934aa9395440a2de605" title="Algorithm module notification function. " alt="" coords="332,56,452,83"/>
+<area shape="rect" id="node5" href="$d5/df9/a00044.html#a840291bc02cba5474a4cb46a9b9566fe" title="System startup function. " alt="" coords="500,56,551,83"/>
+</map>

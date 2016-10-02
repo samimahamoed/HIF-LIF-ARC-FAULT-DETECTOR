@@ -1,0 +1,721 @@
+\hypertarget{a00030_source}{\section{srv\+\_\+serial.\+c}
+\label{a00030_source}\index{srv\+\_\+serial.\+c@{srv\+\_\+serial.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#include "..\(\backslash\)includes\(\backslash\)allheaders.h"} 
+00010 
+00011 
+\hypertarget{a00030_source_l00013}{}\hyperlink{a00030_aca346e181d2ffc089e22e75736a6ff63}{00013} \textcolor{preprocessor}{#define BRGVAL          ((FCY\_CPU/BAUDRATE)/16)-1}
+00014 
+\hypertarget{a00030_source_l00016}{}\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{00016} \textcolor{preprocessor}{#define HEX2VAL(cc)  (((cc >= '0' ) && (cc <= '9' )) ? (cc - '0') : (cc - 'A' + 10) )}
+00017 
+\hypertarget{a00030_source_l00018}{}\hyperlink{a00030_a70cf18090d97bf40a74a6ff7fd56d888}{00018} \textcolor{preprocessor}{#define CMD\_RESPONSE\_MSG\_HEADER\_SIZE     10}
+\hypertarget{a00030_source_l00019}{}\hyperlink{a00030_a7704c8abe93ef4188dd1562167bdbe63}{00019} \textcolor{preprocessor}{#define DATA\_TX\_MSG\_HEADER\_SIZE          21}
+\hypertarget{a00030_source_l00020}{}\hyperlink{a00030_ae744e762e849a4701bf982655b5dc2db}{00020} \textcolor{preprocessor}{#define TX\_MSG\_HEADER\_FRAME\_CHAR         '\{'}
+\hypertarget{a00030_source_l00021}{}\hyperlink{a00030_a5470c21188de014a742af7a64aeb23a0}{00021} \textcolor{preprocessor}{#define RC\_MSG\_HEADER\_FRAME\_CHAR         '['}
+\hypertarget{a00030_source_l00022}{}\hyperlink{a00030_a2c59f95209427bfe2c53a30515cfbeda}{00022} \textcolor{preprocessor}{#define ACK\_CHAR                         "06"}
+00023 
+00024 
+\hypertarget{a00030_source_l00025}{}\hyperlink{a00030_a448db071f92912b830a4aabd08c45d0c}{00025} \hyperlink{a00022_da/dc3/a00657}{pre\_act\_record\_buffer\_t} \hyperlink{a00030_a448db071f92912b830a4aabd08c45d0c}{pre\_data};
+00026 \textcolor{preprocessor}{#if(DMA\_SUPPORT == FALSE)}
+00027 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00029 \{
+\hypertarget{a00030_source_l00031}{}\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{00031}     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}     rc\_buffer[\hyperlink{a00031_aa49ab378520c95fea987f93a7f3c9abf}{RECEIVE\_BUFFER\_SIZE}];
+\hypertarget{a00030_source_l00033}{}\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{00033}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}    \hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length};
+\hypertarget{a00030_source_l00035}{}\hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{00035}     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}     \hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{msg\_ready};
+00036 
+\hypertarget{a00030_source_l00039}{}\hyperlink{a00030_a758ac775caab1899af08024d4635f7e3}{00039}     \textcolor{keywordtype}{int}    \hyperlink{a00030_a758ac775caab1899af08024d4635f7e3}{blocking\_mode};
+00040 
+\hypertarget{a00030_source_l00042}{}\hyperlink{a00030_a327864d2719b5145f0eded883fe321c5}{00042}     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}     tx\_buffer[\hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{TRANSMIT\_BUFFER\_SIZE}];
+\hypertarget{a00030_source_l00044}{}\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{00044}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}    \hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head};
+\hypertarget{a00030_source_l00046}{}\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{00046}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}    \hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail};
+00047 
+\hypertarget{a00030_source_l00049}{}\hyperlink{a00030_ab6b71c720d341035fb26d723364eb879}{00049}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  \hyperlink{a00030_ab6b71c720d341035fb26d723364eb879}{tx\_cnt};
+00050 
+\hypertarget{a00030_source_l00052}{}\hyperlink{a00030_a51eacf0fe4dbe4cfbdaf0aaa63693013}{00052}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  \hyperlink{a00030_a51eacf0fe4dbe4cfbdaf0aaa63693013}{rc\_cnt};
+00053 
+\hypertarget{a00030_source_l00054}{}\hyperlink{a00030_a15d632931355763426453b626cab774b}{00054}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  \hyperlink{a00030_a15d632931355763426453b626cab774b}{irq\_cnt};
+00055 \}\hyperlink{a00030_d8/db4/a00760}{serial\_data\_t};
+00056 
+00057 \textcolor{preprocessor}{#else}
+00058 
+00060 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00061 \{
+00062        \textcolor{keyword}{struct}\{
+00063         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} tx\_a[\hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{TRANSMIT\_BUFFER\_SIZE}/2] 
+      \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((space(dma)));
+00064         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} tx\_b[\hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{TRANSMIT\_BUFFER\_SIZE}/2] 
+      \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((space(dma)));
+00065 
+00067         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} rx\_a[\hyperlink{a00031_aa49ab378520c95fea987f93a7f3c9abf}{RECEIVE\_BUFFER\_SIZE}/2] 
+      \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((space(dma)));
+00068         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} rx\_b[\hyperlink{a00031_aa49ab378520c95fea987f93a7f3c9abf}{RECEIVE\_BUFFER\_SIZE}/2] 
+      \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((space(dma)));
+00069         \}dma\_buffer;
+00070 
+00071 \}\hyperlink{a00030_d8/db4/a00760}{serial\_data\_t};
+00072 
+00073 \textcolor{preprocessor}{#endif}
+00074 
+00075 
+00076 
+\hypertarget{a00030_source_l00078}{}\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{00078} \textcolor{keyword}{volatile} \hyperlink{a00030_d8/db4/a00760}{serial\_data\_t} \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data};
+00079 
+00080 
+00081 
+00082 
+00083 \textcolor{preprocessor}{#if(DMA\_SUPPORT == TRUE)}
+00084 
+00087 \textcolor{keywordtype}{void}   serial\_configure\_dma0\_uart\_tx\_init(\textcolor{keywordtype}{void})
+00088 \{
+00089 
+00090     DMA0CON = 0x2001;               \textcolor{comment}{// One-Shot, Post-Increment, RAM-to-Peripheral}
+00091     DMA0CNT = 100;                  \textcolor{comment}{/*Number of dma byte transfer count,}
+00092 \textcolor{comment}{                                     This is the maximum rc buffer size at the relay side */}
+00093 
+00094     DMA0REQ = 0x0C;               \textcolor{comment}{// peripheral IRQ to the DMA channel  0001100}
+00095 
+00096     DMA0PAD = (\textcolor{keyword}{volatile} \textcolor{keywordtype}{unsigned} int) &U1TXREG;
+00097     DMA0STAH:DMA0STAL = \_\_builtin\_dmaoffset(serial\_data.dma\_buffer.tx\_a);
+00098    \textcolor{comment}{// DMA0STBH:DMA0STBL = \_\_builtin\_dmaoffset(serial\_data.dma\_buffer.tx\_b);}
+00099 
+00100     IFS0bits.DMA0IF = 0;            \textcolor{comment}{// Clear DMA Interrupt Flag}
+00101     IEC0bits.DMA0IE = 1;            \textcolor{comment}{// Enable DMA interrupt}
+00102 
+00103     DMA0CONbits.CHEN = 1;           \textcolor{comment}{// Enable DMA Channel}
+00104 
+00105 \}
+00106 
+00107 
+00111 \textcolor{keywordtype}{void}   serial\_configure\_dma1\_uart\_rx\_init(\textcolor{keywordtype}{void})
+00112 \{
+00113 DMA1CON = 0x0002;                   \textcolor{comment}{// Continuous, Ping-Pong, Post-Inc., Periph-RAM}
+00114 DMA1CNT = 100;                      \textcolor{comment}{// 10 DMA requests}
+00115 DMA1REQ = 0x000B;                   \textcolor{comment}{// Select UART1 Receiver}
+00116 DMA1PAD = (\textcolor{keyword}{volatile} \textcolor{keywordtype}{unsigned} int) &U1RXREG;
+00117 DMA1STAH:DMA1STAL = \_\_builtin\_dmaoffset(serial\_data.dma\_buffer.rx\_a);
+00118 DMA1STBH:DMA1STBL = \_\_builtin\_dmaoffset(serial\_data.dma\_buffer.rx\_b);
+00119 IFS0bits.DMA1IF = 0;                \textcolor{comment}{// Clear DMA interrupt}
+00120 IEC0bits.DMA1IE = 1;                \textcolor{comment}{// Enable DMA interrupt}
+00121 DMA1CONbits.CHEN = 1;               \textcolor{comment}{// Enable DMA Channel}
+00122 
+00123 \}
+00124 
+00125 
+00126 \textcolor{preprocessor}{#endif}
+00127 
+00128 
+00129 
+00130 
+00137 \textcolor{keyword}{static} \textcolor{keywordtype}{void} serial\_enable\_transmitter(\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} enable)
+00138 \{
+00139 
+00140     \textcolor{keywordflow}{if}(enable)\{
+00141     ODCBbits.ODCB11    = 0;
+00142     U1STAbits.UTXEN    = 1;     \textcolor{comment}{// enable UART TX}
+00143     \textcolor{comment}{//LATBbits.LATB11    = 0;   //temporary solution to keep}
+00144                                 \textcolor{comment}{//the communication bus voltage low}
+00145     \}\textcolor{keywordflow}{else}\{
+00146     ODCBbits.ODCB11    = 1;
+00147     U1STAbits.UTXEN    = 0;     \textcolor{comment}{// disable UART TX}
+00148     \}
+00149 \}
+00150 
+00151 
+00152 
+\hypertarget{a00030_source_l00159}{}\hyperlink{a00030_ad2b461e9e9044364a28a61cfadcacdd8}{00159} \textcolor{keywordtype}{void}     \hyperlink{a00030_ad2b461e9e9044364a28a61cfadcacdd8}{serial\_init}(\textcolor{keywordtype}{void})
+00160 \{
+00161 
+00162     \textcolor{comment}{//gpio configuration and peripheral mapping procedure}
+00163          \_\_builtin\_write\_OSCCONL(OSCCON & 0xbf);
+00164              TRISBbits.TRISB10 = 1;
+00165              ODCBbits.ODCB11   = 0;
+00166              TRISBbits.TRISB11 = 0;
+00167       
+00168         
+00169              RPOR4bits.RP43R   = 1; \textcolor{comment}{//TX1}
+00170              RPINR18bits.U1RXR = 0x2A;
+00171          \_\_builtin\_write\_OSCCONL(OSCCON | 0x40);
+00172 
+00173 
+00174     U1MODE = 0x0000;            \textcolor{comment}{//Clear UART1 registers}
+00175     U1STA  = 0x0000;
+00176 
+00177     U1MODEbits.UARTEN = 1;      \textcolor{comment}{//Enable UART1 module}
+00178     U1MODEbits.PDSEL  = 0;      \textcolor{comment}{// 8 bits, no parity}
+00179     U1MODEbits.STSEL  = 0;      \textcolor{comment}{// 1 stop bit}
+00180 
+00181     U1BRG = \hyperlink{a00030_aca346e181d2ffc089e22e75736a6ff63}{BRGVAL};             \textcolor{comment}{//Load UART1 Baud Rate Generator}
+00182 
+00183     IFS0bits.U1RXIF   = 0;      \textcolor{comment}{//Clear UART1 Receiver Interrupt Flag}
+00184     IFS0bits.U1TXIF   = 0;      \textcolor{comment}{//Clear UART1 Transmitter Interrupt Flag}
+00185     IEC0bits.U1RXIE   = 1;      \textcolor{comment}{//Enable UART1 Receiver Interrupt}
+00186     IEC0bits.U1TXIE   = 1;      \textcolor{comment}{//Enable UART1 Transmitter Interrupt}
+00187 
+00188     U1STAbits.UTXISEL0 = 0;     \textcolor{comment}{// Interrupt after one TX character is transmitted}
+00189     U1STAbits.UTXISEL1 = 0;
+00190     U1STAbits.UTXINV   = 0;     \textcolor{comment}{// U1TX Idle state high}
+00191 
+00192     U1STAbits.URXISEL  = 1;     \textcolor{comment}{//Setup UART1  receiver to interrupt after character received}
+00193     IPC2bits.U1RXIP    = 0x07;
+00194     
+00195 
+00196     U1MODEbits.UARTEN  = 1;     \textcolor{comment}{// Enable UART}
+00197 
+00198     serial\_enable\_transmitter(\hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE});
+00199     
+00200 
+00201     serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} = 0;
+00202     serial\_data.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head} = serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} = 0;
+00203 
+00204     \hyperlink{a00030_af15ca641f181de14f789d97b00c367ef}{serial\_enable\_blocking}(\hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE});
+00205     \hyperlink{a00030_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+00206 
+00207 
+00208 
+00209 \}
+00210 
+00211 
+00212 
+\hypertarget{a00030_source_l00219}{}\hyperlink{a00030_af15ca641f181de14f789d97b00c367ef}{00219} \textcolor{keywordtype}{void}    \hyperlink{a00030_af15ca641f181de14f789d97b00c367ef}{serial\_enable\_blocking}(\textcolor{keywordtype}{int} enable)
+00220 \{
+00221         serial\_data.\hyperlink{a00030_a758ac775caab1899af08024d4635f7e3}{blocking\_mode} = enable;
+00222 \}
+00223 
+00224 
+00225 
+\hypertarget{a00030_source_l00263}{}\hyperlink{a00030_a366b2707f4c7d76f0efc1b5cdde8e37e}{00263} \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}   \hyperlink{a00030_a366b2707f4c7d76f0efc1b5cdde8e37e}{serial\_get\_command}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * cmd,\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} ** argStrPtr,
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * argLength)
+00264 \{
+00265     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} result = 1;
+00266     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} crc,calc\_crc = 0;
+00267    
+00268 
+00269     
+00270 
+00271     \textcolor{keywordflow}{if}(serial\_data.\hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{msg\_ready} != 0)
+00272     \{
+00273 
+00274         \textcolor{comment}{// Minimal message - 16 characters}
+00275         \textcolor{comment}{// [0000:000000:00]}
+00276         \textcolor{comment}{// 01234567890123}
+00277         \textcolor{comment}{// 00000000001111}
+00278         \textcolor{comment}{// Longer messages look like}
+00279         \textcolor{comment}{// [0000:000000000000000  ... 00000000000:00]}
+00280 
+00281 
+00282         \textcolor{keywordflow}{if}(serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} >= 14 )
+00283         \{
+00284 
+00285             *cmd = \hyperlink{a00030_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer},1);
+00286 
+00287             \textcolor{keywordflow}{if}( (serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}-5]==\textcolor{charliteral}{'C'}) && (
+      serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}-4]==\textcolor{charliteral}{'C'}))
+00288             \{
+00289                 \textcolor{comment}{// Manual mode, "CCCC" charaters instead of checksum}
+00290                 result = 0;
+00291             \}
+00292             \textcolor{keywordflow}{else}
+00293             \{
+00294 
+00295                 
+00296                 crc  = \hyperlink{a00030_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)serial\_data.
+      \hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer},serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}-5);
+00297                 
+00298            
+00299                 calc\_crc = \hyperlink{a00021_a6553827687db2137ee550ad6e1d2f316}{crc16}((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer},serial\_data.
+      \hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}-6);
+00300               \textcolor{comment}{/*}
+00301 \textcolor{comment}{                for(ii = 0; ii < 11;ii++)}
+00302 \textcolor{comment}{                \{}
+00303 \textcolor{comment}{                    calc\_crc = calc\_crc ^serial\_data.rc\_buffer[ii];}
+00304 \textcolor{comment}{                \}}
+00305 \textcolor{comment}{              */}
+00306                 \textcolor{keywordflow}{if}(crc == calc\_crc)
+00307                 \{
+00308                     result = 0;
+00309                 \}
+00310             \}
+00311 
+00312             *argStrPtr =  ((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)&serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[6]);
+00313             *argLength = serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} - 12;
+00314 
+00315        \}
+00316 
+00317        \textcolor{keywordflow}{if}(result != 0)
+00318        \{
+00319             \textcolor{comment}{// Faulty message, internmal ack}
+00320             \hyperlink{a00030_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+00321        \}
+00322 
+00323     \}
+00324 
+00325 
+00326 
+00327 
+00328     IEC0bits.U1RXIE = 1;
+00329 
+00330 
+00331     \textcolor{keywordflow}{return} result;
+00332 \}
+00333 
+00334 
+00335 
+00336 
+00337 
+00338 
+\hypertarget{a00030_source_l00343}{}\hyperlink{a00030_a7fc7421ed15d6e4516e9878e7455d715}{00343} \textcolor{keywordtype}{void}  \hyperlink{a00030_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}(\textcolor{keywordtype}{void})
+00344 \{
+00345     IEC0bits.U1RXIE = 0;
+00346     serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} = 0;
+00347     serial\_data.\hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{msg\_ready} = 0;
+00348     IEC0bits.U1RXIE = 1;
+00349 \}
+00350 
+00351 
+00352 
+00353 
+00354 
+00355 
+00356 
+00357 
+00358 
+\hypertarget{a00030_source_l00367}{}\hyperlink{a00030_aa76f5237babd71f1484bb2dbc6aa0f8d}{00367} \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  \hyperlink{a00030_aa76f5237babd71f1484bb2dbc6aa0f8d}{serial\_make8}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}* buf,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} idx)
+00368 \{
+00369     \textcolor{keywordflow}{return} ((\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+0])<<4)|(\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+1]))<<0);
+00370 \}
+00371 
+00372 
+\hypertarget{a00030_source_l00381}{}\hyperlink{a00030_abc17de32f14103a5be219df0d4ad9176}{00381} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  \hyperlink{a00030_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}* buf,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} idx)
+00382 \{
+00383     \textcolor{keywordflow}{return} ((\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+0])<<12)|(\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+1])<<8)|(
+      \hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+2])<<4)|(\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+3])<<0));
+00384 
+00385 \}
+00386 
+00387 
+00388 
+00389 
+00390 
+00391 
+\hypertarget{a00030_source_l00412}{}\hyperlink{a00030_a96a3f016ca5b0736424c2695fe9fbdf8}{00412} \textcolor{keywordtype}{void}   \hyperlink{a00030_a96a3f016ca5b0736424c2695fe9fbdf8}{serial\_send\_response}(\hyperlink{a00031_d3/d4f/a00761}{serial\_msg\_t} msg)
+00413 \{
+00414   
+00415     \textcolor{comment}{// \{CMD:CHSN00000000....:crc\}}
+00416     \textcolor{comment}{// 0123456789012345}
+00417     \textcolor{comment}{// 0000000000111111}
+00418 
+00419 
+00420 
+00421    \textcolor{comment}{//during this time i.e. while processing command, all incoming messages are ignored}
+00422    \textcolor{comment}{//hence, the receive buffer will be used temporarily while preparing response msg}
+00423 
+00424    \textcolor{keywordtype}{char}   *message = (\textcolor{keywordtype}{char} *)(serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer});
+00425 
+00426    \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  length = 0;
+00427 
+00428 
+00429   \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} type =  (((msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd}&0x00F0)>>4)== 0xE)?0xE:
+00430                  ((((msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd}&0x0F00)>>8)==6)?6:3);
+00431 
+00432  \textcolor{keywordflow}{if}(msg.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length > 0)type = 0xE; \textcolor{keywordflow}{else} type = msg.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt};
+00433 
+00434  \textcolor{keywordflow}{switch}(type)
+00435    \{
+00436        \textcolor{keywordflow}{case} 3\textcolor{comment}{/*3 arg msg*/}:
+00437        \{
+00438 
+00439        sprintf(message,\textcolor{stringliteral}{"\{%04X:%02X%02X%04X:"},msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd},msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[0],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1],msg.
+      \hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]);
+00440 
+00441        sprintf(message+15,\textcolor{stringliteral}{"%04X\}"},\hyperlink{a00021_a6553827687db2137ee550ad6e1d2f316}{crc16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)message,14));
+00442 
+00443        length = 20;
+00444        \}\textcolor{keywordflow}{break};
+00445 
+00446 
+00447        \textcolor{keywordflow}{case} 4\textcolor{comment}{/*4 arg msg*/}:
+00448        \{    sprintf(message,\textcolor{stringliteral}{"\{%04X:%02X%02X%04X%04X:"},msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd},msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[0],msg.
+      \hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]);
+00449 
+00450        sprintf(message+19,\textcolor{stringliteral}{"%04X\}"},\hyperlink{a00021_a6553827687db2137ee550ad6e1d2f316}{crc16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)message,18));
+00451 
+00452        length = 24;
+00453 
+00454        \}\textcolor{keywordflow}{break};
+00455 
+00456 
+00457        \textcolor{keywordflow}{case} 0xE \textcolor{comment}{/*data transfer*/}:
+00458        \{
+00459 
+00460        \textcolor{keyword}{const} \textcolor{keywordtype}{char} cnv[] = \textcolor{stringliteral}{"0123456789ABCDEF"};
+00461 
+00462        memset(message,0,\textcolor{keyword}{sizeof}(message));
+00463 
+00464        sprintf(message,\textcolor{stringliteral}{"\{%04X:%02X%02X%04X%04X"},msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd},
+00465                                             msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[0],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1],
+00466                                             msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]);
+00467 
+00468        \textcolor{comment}{//if(msg.attachment.offset == 0)}
+00469        \textcolor{comment}{//  memcpy((void *)((void *)&pre\_data + msg.attachment.offset),(void *)(msg.attachment.location +
+       msg.attachment.offset),sizeof(pre\_act\_record\_buffer\_t));}
+00470 
+00471        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} var;
+00472        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc = 0;
+00473 \textcolor{comment}{/*}
+00474 \textcolor{comment}{       for (var = 18; cc < msg.attachment.length; ) \{}
+00475 \textcolor{comment}{}
+00476 \textcolor{comment}{                   message[var]   =}
+00477 \textcolor{comment}{                    cnv[(*((((Uint8 *)&pre\_data + msg.attachment.offset))+(cc))>>4)&0x0F];}
+00478 \textcolor{comment}{}
+00479 \textcolor{comment}{                   message[var+1]   =}
+00480 \textcolor{comment}{                    cnv[(*((((Uint8 *)&pre\_data + msg.attachment.offset))+(cc++))>>0)&0x0F];}
+00481 \textcolor{comment}{}
+00482 \textcolor{comment}{                   var+=2;}
+00483 \textcolor{comment}{       \}}
+00484 \textcolor{comment}{*/}
+00485    
+00486        \textcolor{keywordflow}{for} (var = 18; cc < msg.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length; ) \{
+00487 
+00488                    message[var]   =
+00489                     cnv[(*((((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} *)msg.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location + msg.
+      \hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset))+(cc))>>4)&0x0F];
+00490 
+00491                    message[var+1]   =
+00492                     cnv[(*((((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} *)msg.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location + msg.
+      \hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset))+(cc++))>>0)&0x0F];
+00493 
+00494                    var+=2;
+00495        \}
+00496 
+00497   
+00498      
+00499 
+00500        message[var++]=\textcolor{charliteral}{':'};
+00501 
+00502        sprintf(message+var,\textcolor{stringliteral}{"%04X\}"},\hyperlink{a00021_a6553827687db2137ee550ad6e1d2f316}{crc16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)message,var-1));
+00503 
+00504        length = var+5;
+00505        
+00506        \}\textcolor{keywordflow}{break};
+00507 
+00508 
+00509         \textcolor{keywordflow}{default}:
+00510         \{
+00511 
+00512             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00513         \}
+00514 
+00515  \}
+00516 
+00517 
+00518 
+00519     \hyperlink{a00030_a17f65cf9dbacdfb97cb2536ed0097ccb}{serial\_send}(message,length);
+00520 \}
+00521 
+00522 
+00523 
+00524 
+00525 \textcolor{preprocessor}{#if(DMA\_SUPPORT == FALSE)}
+00526 
+00533 \textcolor{keyword}{static} \textcolor{keywordtype}{void}  serial\_wait\_sent(\textcolor{keywordtype}{void})
+00534 \{
+00535     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} tmp;
+00536 
+00537 
+00554     \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00555 
+00556     tmp = serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} ;
+00557     \textcolor{keywordflow}{while}(serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} != serial\_data.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head})
+00558     \{
+00559         \textcolor{keywordflow}{if}(tmp != serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} \textcolor{comment}{/*character is transmitted*/})
+00560         \{
+00561            tmp = serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail};
+00562            \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00563         \}
+00564     \}
+00565     \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00566 \}
+00567 
+00568 
+\hypertarget{a00030_source_l00577}{}\hyperlink{a00030_a17f65cf9dbacdfb97cb2536ed0097ccb}{00577} \textcolor{keywordtype}{void}  \hyperlink{a00030_a17f65cf9dbacdfb97cb2536ed0097ccb}{serial\_send}(\textcolor{keywordtype}{void} * msg,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length)
+00578 \{
+00579   
+00580     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} TrNewHead;
+00581     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  dummy;
+00582 
+00583     \hyperlink{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}{CChar} * buffer = (\hyperlink{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}{CChar} *)msg;
+00584 
+00585 
+00586     IEC0bits.U1TXIE    = 0;
+00587 
+00588     serial\_enable\_transmitter(\hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE});
+00589 
+00590     \hyperlink{a00033_a3b0017f6ec0e04a6435bba00fe325294}{Delay5us}(100);
+00591     
+00592     \textcolor{keywordflow}{while}((U1STAbits.URXDA != 0))dummy = U1RXREG;
+00593     
+00594 
+00595 
+00596     \textcolor{keywordflow}{if}(length > 0)
+00597     \{
+00598         \textcolor{keywordflow}{if}(serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} == serial\_data.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head})
+00599         \{
+00600             \textcolor{comment}{// Launch transmission ( if not already in progress )}
+00601             \textcolor{keywordflow}{while}(U1STAbits.UTXBF!=0)\textcolor{keywordflow}{continue}; \textcolor{comment}{// wait unitl FIFO is available}
+00602             U1TXREG = *buffer;
+00603             buffer++;
+00604             length--;
+00605         \}
+00606     \}
+00607 
+00608     \textcolor{keywordflow}{while} (length > 0)
+00609     \{
+00610         TrNewHead = (serial\_data.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head} + 1)%
+      \hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{TRANSMIT\_BUFFER\_SIZE};
+00611 
+00612         \textcolor{keywordflow}{if}(TrNewHead != serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail})
+00613         \{
+00614             serial\_data.\hyperlink{a00030_a327864d2719b5145f0eded883fe321c5}{tx\_buffer}[serial\_data.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head}] = *buffer;
+00615             buffer++;
+00616             length--;
+00617             serial\_data.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head} = TrNewHead;
+00618         \}
+00619         \textcolor{keywordflow}{else}
+00620         \{
+00621             \textcolor{keywordflow}{if}(serial\_data.\hyperlink{a00030_a758ac775caab1899af08024d4635f7e3}{blocking\_mode} == 0)
+00622             \{
+00623                 \textcolor{comment}{// Cut the message - does not fit into buffer :-(}
+00624                 length = 0;
+00625             \}
+00626             \textcolor{keywordflow}{else}
+00627             \{
+00628                 IEC0bits.U1TXIE   = 1;
+00629                 serial\_wait\_sent();
+00630                 IEC0bits.U1TXIE   = 0;
+00631 
+00632                 serial\_enable\_transmitter(\hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE});
+00633 
+00634                 \textcolor{keywordflow}{while}((U1STAbits.URXDA != 0))dummy = U1RXREG;
+00635                 IEC0bits.U1RXIE   = 1;
+00636                 length = 0;
+00637             \}
+00638         \}
+00639 
+00640     \}
+00641 
+00642     IEC0bits.U1TXIE   = 1;
+00643 
+00644 \}
+00645 
+00646 
+00647 
+00648 
+00649 
+00655 \textcolor{preprocessor}{#ifdef HI\_TECH\_C}
+00656 \textcolor{keywordtype}{void} interrupt \_U1RXInterrupt(\textcolor{keywordtype}{void}) @ U1RX\_VCTR
+00657 \textcolor{preprocessor}{#else}
+\hypertarget{a00030_source_l00658}{}\hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{00658} \textcolor{keywordtype}{void} \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((\_\_interrupt\_\_,auto\_psv)) \_U1RXInterrupt(\textcolor{keywordtype}{void})
+00659 \textcolor{preprocessor}{#endif}
+00660 \{
+00661      
+00662 
+00663      
+00664     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cc;
+00665     
+00666     
+00667    \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00668    
+00669 
+00670 
+00671    
+00672   \textcolor{keywordflow}{while} (U1STAbits.URXDA != 0)
+00673     \{
+00674         
+00675         \textcolor{keywordflow}{if}( (U1STAbits.FERR)||(U1STAbits.PERR))
+00676         \{
+00677             cc = U1RXREG;
+00678             \textcolor{keywordflow}{continue};
+00679         \}
+00680 
+00681      
+00682         cc = U1RXREG;
+00683     
+00684       
+00685 
+00686         \textcolor{keywordflow}{if}(serial\_data.\hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{msg\_ready} != 0)
+00687         \{
+00688             \textcolor{comment}{// Ignore messages until the old one is processed}
+00689             \textcolor{keywordflow}{continue};
+00690         \}
+00691 
+00692         \textcolor{keywordflow}{if}(serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} >= \textcolor{keyword}{sizeof}(serial\_data.
+      \hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}))
+00693         \{
+00694             serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} = 0;
+00695         \}
+00696 
+00697    
+00698         \textcolor{keywordflow}{if}(cc == \textcolor{charliteral}{'['} )
+00699         \{
+00700             serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} = 0;
+00701             serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}++] = cc;
+00702         \}
+00703         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (cc == \textcolor{charliteral}{']'})
+00704         \{
+00705             serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}++] = cc;
+00706 
+00707             \textcolor{comment}{// Full message arrived}
+00708             serial\_data.\hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{msg\_ready} = 1;
+00709             serial\_data.\hyperlink{a00030_a15d632931355763426453b626cab774b}{irq\_cnt}++;
+00710         \}
+00711         \textcolor{keywordflow}{else}
+00712         \{        
+00713             \textcolor{keywordflow}{if} ( ((cc >= \textcolor{charliteral}{'0'})&&(cc <= \textcolor{charliteral}{'9'})) || ((cc >= \textcolor{charliteral}{'A'})&&(cc <= \textcolor{charliteral}{'F'})) || ( cc == \textcolor{charliteral}{':'}) )
+00714             \{
+00715                 serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}++] = cc;
+00716             \}
+00717             \textcolor{keywordflow}{else}
+00718             \{
+00719                 serial\_data.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} = 0;
+00720             \}                          
+00721         \}
+00722     
+00723     \}
+00724     
+00725     \textcolor{comment}{// Clear errors}
+00726     \textcolor{keywordflow}{if}(U1STAbits.OERR)
+00727     \{
+00728         U1STAbits.OERR = 0;
+00729     \}
+00730          
+00731 
+00732 
+00733 
+00734 
+00735 
+00736 
+00737 
+00738     \textcolor{keywordflow}{if}((serial\_data.\hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{msg\_ready} == 1)&&(serial\_data.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[0]==\textcolor{charliteral}{'['}))
+00739          \hyperlink{a00021_a85471d58eae93d5d7e7e2b52e2b915d3}{algorithm\_message\_arrived\_ntf\_isr}(
+      \hyperlink{a00021_a286de80383de54438b3e38d9f149dfd0}{IRQ\_SOURCE\_SERIAL});
+00740            
+00741   
+00742  
+00743     
+00744     IFS0bits.U1RXIF = 0;  
+00745 
+00746     \hyperlink{a00015_a34d4c80d85281a545f3c7f1530803d65}{SET\_CPU\_IPL}(7);
+00747 \}
+00748 
+00749 
+00750 
+00755 \textcolor{preprocessor}{#ifdef HI\_TECH\_C}
+00756 \textcolor{keywordtype}{void} interrupt  \_U1TXInterrupt(\textcolor{keywordtype}{void}) @ U1TX\_VCTR
+00757 \textcolor{preprocessor}{#else}
+\hypertarget{a00030_source_l00758}{}\hyperlink{a00031_af419298e8d3acbb31667796fec870f76}{00758} \textcolor{keywordtype}{void} \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((\_\_interrupt\_\_,auto\_psv)) \_U1TXInterrupt(\textcolor{keywordtype}{void})
+00759 \textcolor{preprocessor}{#endif}
+00760 \{
+00761    \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} dummy;
+00762     \textcolor{keywordflow}{while} ((serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} != serial\_data.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head}) && (U1STAbits.
+      UTXBF==0))
+00763     \{
+00764         U1TXREG = serial\_data.\hyperlink{a00030_a327864d2719b5145f0eded883fe321c5}{tx\_buffer}[serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail}];
+00765         serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} = (serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} +1)%
+      \hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{TRANSMIT\_BUFFER\_SIZE};
+00766         serial\_data.\hyperlink{a00030_ab6b71c720d341035fb26d723364eb879}{tx\_cnt}++;
+00767         \textcolor{keywordflow}{while}(U1STAbits.TRMT == 0);
+00768         \textcolor{keywordflow}{while}(U1STAbits.URXDA !=0)dummy = U1RXREG;
+00769 
+00770         \textcolor{keywordflow}{if}(serial\_data.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} == serial\_data.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head})\{
+00771 
+00772           \textcolor{keywordflow}{if}((\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all&0xF0) != 0)
+00773               \textcolor{comment}{/*the last packet of data transfer response just completed */}
+00774               \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all = 0;
+00775 
+00776           \textcolor{keywordflow}{while}(U1STAbits.URXDA !=0)dummy = U1RXREG;
+00777           \textcolor{keywordflow}{if}(U1STAbits.OERR)U1STAbits.OERR = 0;
+00778           serial\_enable\_transmitter(\hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE});
+00779           IEC0bits.U1RXIE = 1;
+00780 
+00781 
+00782 
+00783         \}
+00784     \}
+00785     IFS0bits.U1TXIF = 0;
+00786 
+00787     \hyperlink{a00015_a34d4c80d85281a545f3c7f1530803d65}{SET\_CPU\_IPL}(5);
+00788 \}
+00789 \textcolor{preprocessor}{#endif}
+00790 
+00791 
+00792 \textcolor{preprocessor}{#if(DMA\_SUPPORT == TRUE)}
+00793 
+00794 \textcolor{keywordtype}{void} \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((\_\_interrupt\_\_,no\_auto\_psv)) \_U2EInterrupt(\textcolor{keywordtype}{void})
+00795 \{
+00796  \textcolor{comment}{// An error has occured on the last}
+00797  \textcolor{comment}{// reception. Check the last recieved}
+00798  \textcolor{comment}{// word.}
+00799 
+00800  \hyperlink{a00015_add50a2f6234409c3fc68ef352f72d89a}{\_U2EIF} = 0;
+00801  \textcolor{keywordtype}{int} lastWord;
+00802 
+00803  \textcolor{keywordflow}{if}(DMAPPSbits.PPST1 == 0)
+00804  \{
+00805  \textcolor{comment}{// Get the last word received from ping pong buffer A.}
+00806  lastWord = *(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *)((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int})serial\_data.dma\_buffer.rx\_a + DMA1STAH:DMA1STAL);
+00807  \}
+00808  \textcolor{keywordflow}{else}
+00809  \{
+00810  \textcolor{comment}{// Get the last word received from ping pong buffer B.}
+00811  lastWord = *(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} *)((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int})(serial\_data.dma\_buffer.rx\_b) + DMA1STBH:DMA1STBL);
+00812  \}
+00813 
+00814  \textcolor{keywordflow}{if}((lastWord & 0x800) != 0)
+00815  \{
+00816  \textcolor{comment}{//Check for Parity Error}
+00817   \textcolor{comment}{//wait for re transmission ,do nothing for now}
+00818  \}
+00819  \textcolor{comment}{// Check for framing error}
+00820  \textcolor{keywordflow}{if} ((lastWord & 0x400) != 0)
+00821  \{
+00822  \textcolor{comment}{// framing error}
+00823    \textcolor{comment}{//wait for re transmission ,do nothing for now}
+00824  \}
+00825 \}
+00826 
+00827 \textcolor{keywordtype}{void} \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((interrupt, no\_auto\_psv)) \_DMA0Interrupt(\textcolor{keywordtype}{void})
+00828 \{
+00829     IFS0bits.DMA0IF = 0;            \textcolor{comment}{// Clear the DMA0 Interrupt Flag;}
+00830         \textcolor{comment}{//flag set}
+00831 
+00832 \}
+00833 
+00834 
+00835 \textcolor{keywordtype}{void} \hyperlink{a00030_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((\_\_interrupt\_\_)) \_DMA1Interrupt(\textcolor{keywordtype}{void})
+00836 \{
+00837  \textcolor{keyword}{static} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} BufferCount = 0; \textcolor{comment}{// Keep record of which buffer}
+00838 \textcolor{comment}{// contains RX Data}
+00839  \textcolor{keywordflow}{if}(BufferCount == 0)
+00840  \{
+00841 
+00842 
+00843  \}
+00844  \textcolor{keywordflow}{else}
+00845  \{
+00846 
+00847  \}
+00848 
+00849  BufferCount ^= 1;
+00850  IFS0bits.DMA1IF = 0; \textcolor{comment}{// Clear the DMA1 Interrupt Flag}
+00851 \}
+00852 
+00853 
+00854 
+00855 \textcolor{preprocessor}{#endif}
+00856 
+00857 
+00858 
+\end{DoxyCode}

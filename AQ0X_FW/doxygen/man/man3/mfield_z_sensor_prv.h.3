@@ -1,0 +1,355 @@
+.TH "mfield_z_sensor_prv.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mfield_z_sensor_prv.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBmfield_z_sen_data_t\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_MSG_MFIELD_SENSOR_SV\fP   (\fBX_MSG_FREE\fP)"
+.br
+.RI "\fIInternal event message, initiates periodic supervision\&. \fP"
+.ti -1c
+.RI "#define \fBX_NTF_MFIELD_SENSOR_SV_TIMER\fP   (\fBX_NTF_FREE\fP + 2)"
+.br
+.RI "\fIInternal supervison timer\&. \fP"
+.ti -1c
+.RI "#define \fBSV_TIMER_PERIOD\fP   1000"
+.br
+.RI "\fITimeout\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFloat32\fP \fBmfield_z_sen_first_order_derivative\fP (\fBInt16\fP final_val, \fBInt16\fP init_val, \fBFloat32\fP period)"
+.br
+.RI "\fIClaculate first order derivative\&. \fP"
+.ti -1c
+.RI "\fBFloat32\fP \fBmfield_z_sen_calc_probablity\fP (\fBUint16\fP event, \fBUint16\fP obs)"
+.br
+.RI "\fIClaculates the event probablity\&. \fP"
+.ti -1c
+.RI "void \fBmfield_z_sen_sensor_element_sv_task\fP (void)"
+.br
+.RI "\fISupervise the status of the mfield sensor\&. \fP"
+.ti -1c
+.RI "void \fBmfield_z_sen_false_positive_correction_task\fP (void)"
+.br
+.RI "\fIchecks the number of false positives within supervision time window \fP"
+.ti -1c
+.RI "void \fBmfield_z_sen_mark_false_postives\fP (void)"
+.br
+.RI "\fIchecks the number of false positives within supervision (100ms | 5 cycle) time window \fP"
+.ti -1c
+.RI "\fBFloat32\fP \fBmfield_z_input_signal\fP (void)"
+.br
+.RI "\fIClaculate\&. \fP"
+.ti -1c
+.RI "\fBBool\fP \fBmfield_z_zero_cross\fP (void)"
+.br
+.RI "\fIClaculate\&. \fP"
+.ti -1c
+.RI "\fBBool\fP \fBmfield_z_observation_time_window_expired\fP (void)"
+.br
+.RI "\fIClaculate\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBmfield_z_sen_data_t\fP \fBmfield_z_sen_data\fP"
+.br
+.RI "\fIInternal mfield_z_sen module data\&. \fP"
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct mfield_z_sen_data_t"
+.PP 
+Definition at line 25 of file mfield_z_sensor_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfigured\fP stores user configuration details 
+.br
+.PP
+\fBdiagonesis_records_mfield_t\fP \fIdiagonesis_records\fP holds diagonesis data on the module operation 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP * \fIdisturbance_record\fP disturbance record storage , details starting form the first event detection to the duration of observation record length 
+.br
+.PP
+\fBmodule_status_mfield_t\fP \fImodule_status\fP holds details about the module current state 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fIsv_errors_flags\fP supervission error flags 
+.br
+.PP
+\fBx_notify_mfield_sen_sv_report\fP \fIsv_status_ntf\fP 
+.br
+.PP
+\fBx_event\fP \fIsv_task_event\fP Internal event for processing mfield module suppervission task\&. 
+.br
+.PP
+\fBx_notify\fP \fIsv_timer_ntf\fP Timer notification to initiate mfield module suppervission task\&. 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define SV_TIMER_PERIOD   1000"
+
+.PP
+Timeout\&. 
+.PP
+Definition at line 19 of file mfield_z_sensor_prv\&.h\&.
+.SS "#define X_MSG_MFIELD_SENSOR_SV   (\fBX_MSG_FREE\fP)"
+
+.PP
+Internal event message, initiates periodic supervision\&. 
+.PP
+Definition at line 12 of file mfield_z_sensor_prv\&.h\&.
+.SS "#define X_NTF_MFIELD_SENSOR_SV_TIMER   (\fBX_NTF_FREE\fP + 2)"
+
+.PP
+Internal supervison timer\&. 
+.PP
+Definition at line 15 of file mfield_z_sensor_prv\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBFloat32\fP mfield_z_input_signal (void)"
+
+.PP
+Claculate\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+TODO: determine the frquency type and 
+.PP
+Definition at line 255 of file mfield_z_sensor\&.c\&.
+.PP
+References state_data_mfield_t::change_per_time, module_status_mfield_t::current, mfield_z_compare(), mfield_z_sen_data_t::module_status, module_status_mfield_t::projected, and state_data_mfield_t::signal_level\&.
+.PP
+.nf
+255                                    {
+256 
+257     Float32 result;
+258     Float32 current_signal_level = 0;
+260               mfield_z_sen_data\&.module_status\&.projected\&.amplitude
+261               = mfield_z_sen_data\&.module_status\&.current\&.change_per_time/
+262                      (mfield_z_sen_data\&.module_status\&.projected\&.angular_freq
+263                       *cos(mfield_z_sen_data\&.module_status\&.projected\&.angular_freq*mfield_z_sen_data\&.module_status\&.current\&.time)
+264                       );
+265 
+266              current_signal_level = mfield_z_sen_data\&.module_status\&.projected\&.amplitude
+267                *sin(mfield_z_sen_data\&.module_status\&.projected\&.angular_freq*mfield_z_sen_data\&.module_status\&.current\&.time);
+268 
+269           result =  mfield_z_compare((Float32)(mfield_z_sen_data\&.module_status\&.current\&.signal_level)
+270                   ,current_signal_level,0\&.05/*TODO: user configurable*/);
+271 
+272           if(result == 0)
+273               mfield_z_sen_data\&.module_status\&.projected\&.positive_cnt++;
+274 
+275           return result;
+276 
+277 }
+.fi
+.SS "\fBBool\fP mfield_z_observation_time_window_expired (void)"
+
+.PP
+Claculate\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+
+.PP
+Definition at line 241 of file mfield_z_sensor\&.c\&.
+.PP
+References module_status_mfield_t::current, FALSE, mfield_z_sen_data_t::module_status, OBSERVATION_TIME_WINDOW, and TRUE\&.
+.PP
+.nf
+241                                                    {
+242 
+243     return (mfield_z_sen_data\&.module_status\&.current\&.time <= OBSERVATION_TIME_WINDOW)?FALSE:TRUE;
+244 }
+.fi
+.SS "\fBFloat32\fP mfield_z_sen_calc_probablity (\fBUint16\fPevent, \fBUint16\fPobs)"
+
+.PP
+Claculates the event probablity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+
+.PP
+Definition at line 191 of file mfield_z_sensor\&.c\&.
+.PP
+.nf
+191                                                              {
+192     return (Float32)event/(Float32)obs;
+193 }
+.fi
+.SS "void mfield_z_sen_false_positive_correction_task (void)"
+
+.PP
+checks the number of false positives within supervision time window 
+.PP
+Definition at line 733 of file mfield_z_sensor\&.c\&.
+.PP
+Referenced by mfield_z_sen_taskx()\&.
+.PP
+.nf
+733                                                       {
+734 
+735 
+736 
+737 }
+.fi
+.SS "\fBFloat32\fP mfield_z_sen_first_order_derivative (\fBInt16\fPfinal_val, \fBInt16\fPinit_val, \fBFloat32\fPperiod)"
+
+.PP
+Claculate first order derivative\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+
+.PP
+Definition at line 179 of file mfield_z_sensor\&.c\&.
+.PP
+.nf
+179                                                                                           {
+180     return (Float32)(final_val-init_val)/period;
+181 }
+.fi
+.SS "void mfield_z_sen_mark_false_postives (void)"
+
+.PP
+checks the number of false positives within supervision (100ms | 5 cycle) time window 
+.PP
+Definition at line 747 of file mfield_z_sensor\&.c\&.
+.PP
+References mfield_z_sen_data_t::configured, configured_t::dfdt_treshold_max, mfield_z_sen_data_t::diagonesis_records, mfield_z_sen_data_t::disturbance_record, module_disturbance_record_t::event_data, EXCEDED_AMP_TH, diagonesis_records_mfield_t::false_alarm, RANGE_MAX_32BIT, and RANGE_MAX_8BIT\&.
+.PP
+Referenced by mfield_z_sen_notifyx()\&.
+.PP
+.nf
+747                                            {
+748         if(mfield_z_sen_data\&.disturbance_record->event_data\&.event_history == EXCEDED_AMP_TH){
+749                if(
+750                 (mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.cnt < RANGE_MAX_8BIT)
+751                 &
+752                 (mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.accumulated_value < RANGE_MAX_32BIT)
+753                )
+754                {
+755                      mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.cnt++;
+756                      mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.accumulated_value
+757                      +=(mfield_z_sen_data\&.disturbance_record->event_data\&.buffer\&.signal_level[0]-mfield_z_sen_data\&.configured\&.amp_treshold_max);
+758                      mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.recorded_avg
+759                      = mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.accumulated_value/
+760                              (Float32)mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.cnt;
+761               }
+762 
+763              }else if(mfield_z_sen_data\&.disturbance_record->event_data\&.event_history > EXCEDED_AMP_TH){
+764              if(
+765                 (mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.cnt < RANGE_MAX_8BIT)
+766                 &
+767                 (mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.accumulated_value < RANGE_MAX_32BIT)
+768                )
+769              {
+770 
+771                  mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.cnt++;
+772                  mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.accumulated_value
+773                  +=(mfield_z_sen_data\&.disturbance_record->event_data\&.buffer\&.change_per_time[0]-mfield_z_sen_data\&.configured\&.dfdt_treshold_max);
+774                  mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.recorded_avg
+775                  = mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.accumulated_value/
+776                     (Float32)mfield_z_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.cnt;
+777 
+778              }
+779 
+780              }
+781 
+782 }
+.fi
+.SS "void mfield_z_sen_sensor_element_sv_task (void)"
+
+.PP
+Supervise the status of the mfield sensor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+Supervises mfield sensors element by measuring sensor respond for different illumination level 
+.PP
+Definition at line 721 of file mfield_z_sensor\&.c\&.
+.PP
+Referenced by mfield_z_sen_taskx()\&.
+.PP
+.nf
+722 {
+723 
+724 
+725 }
+.fi
+.SS "\fBBool\fP mfield_z_zero_cross (void)"
+
+.PP
+Claculate\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI\fP 
+.RE
+.PP
+TODO: angular freq = 2*PI/(this_time - last_cross_time) 
+.PP
+Definition at line 203 of file mfield_z_sensor\&.c\&.
+.PP
+References module_status_mfield_t::current, FALSE, mfield_z_sen_data_t::module_status, state_data_mfield_t::polarity, module_status_mfield_t::previous, and TRUE\&.
+.PP
+.nf
+203                               {
+204 
+205     if((mfield_z_sen_data\&.module_status\&.previous\&.polarity*mfield_z_sen_data\&.module_status\&.current\&.polarity)<=0)
+207     return TRUE;
+208     else
+209     return FALSE;
+210 
+211 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBmfield_z_sen_data_t\fP mfield_z_sen_data"
+
+.PP
+Internal mfield_z_sen module data\&. 
+.PP
+Definition at line 22 of file mfield_z_sensor\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

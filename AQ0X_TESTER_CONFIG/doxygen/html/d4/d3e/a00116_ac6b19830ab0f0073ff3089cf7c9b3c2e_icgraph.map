@@ -1,0 +1,11 @@
+<map id="graph" name="graph">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#ab7ad9174f701f9c6f64e378df77927a6" title="Adds the specified plottable to the plot and, if setAutoAddPlottableToLegend is enabled, to the legend. " alt="" coords="118,19,213,45"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#af3dafd56884208474f311d6226513ab2" title="Removes the specified plottable from the plot and, if necessary, from the legend. ..." alt="" coords="108,95,223,121"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a6fb2873d35a8a8089842d81a70a54167" title="Creates a new graph inside the plot. " alt="" coords="289,5,367,32"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#afc210e0021480f8119bccf37839dbcc8" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="271,56,385,83"/>
+<area shape="rect" id="node6" href="$d4/d3e/a00116.html#a9a409bb3201878adb7ffba1c89c4e004" title="Removes all plottables from the plot (and the legend, if necessary). " alt="" coords="274,107,382,133"/>
+<area shape="rect" id="node8" href="$d4/d3e/a00116.html#a903561be895fb6528a770d66ac5e6713" title="Removes the specified graph from the plot and, if necessary, from the legend. " alt="" coords="279,157,377,184"/>
+<area shape="rect" id="node7" href="$d4/d3e/a00116.html#a75d9b6f599dcae706e45efd425c5499e" title="~QCustomPlot" alt="" coords="433,107,541,133"/>
+<area shape="rect" id="node9" href="$d4/d3e/a00116.html#a9554b3d2d5b10c0f884bd4010b6c192c" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="438,157,537,184"/>
+<area shape="rect" id="node10" href="$d4/d3e/a00116.html#ab0f3abff2d2f7df3668b5836f39207fa" title="Removes all graphs from the plot (and the legend, if necessary). " alt="" coords="441,208,533,235"/>
+</map>

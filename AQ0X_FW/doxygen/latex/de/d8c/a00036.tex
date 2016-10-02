@@ -1,0 +1,1009 @@
+\hypertarget{a00036}{\section{sys\+\_\+eventx.\+h File Reference}
+\label{a00036}\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+}
+
+
+O\+S header file.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/dc5/a01705}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00036_de/d37/a00849}{x\+\_\+event}
+\begin{DoxyCompactList}\small\item\em O\+S event.  \hyperlink{a00036_de/d37/a00849}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00036_a4431051080c1f46fda1a2ce7d4931aa8}{X\+\_\+\+M\+S\+G\+\_\+\+N\+O\+N\+E}~0x0000
+\begin{DoxyCompactList}\small\item\em System reserved event id -\/ no message. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_a104f1137aafb33160da80932fe63c40d}{X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C}~0x0001
+\begin{DoxyCompactList}\small\item\em System reserved event id -\/ I\+R\+Q notification. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_a082eb6e82ded25b00f04da4f611c961e}{X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E}~0x0020
+\begin{DoxyCompactList}\small\item\em First event id to be used by user. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_afc95a839de2731289483d04a6cdaac1f}{X\+\_\+\+M\+S\+G\+\_\+\+L\+A\+S\+T}~0x1000
+\begin{DoxyCompactList}\small\item\em Last event id to be used by user. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}{X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T}~0x1001
+\begin{DoxyCompactList}\small\item\em System init notification. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_ab2eeea4643823a0c7c7731ddb83e3edc}{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E}~0x1003
+\begin{DoxyCompactList}\small\item\em First notification id to be used by user. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_a63072b0b734748ae21fd9e7435467683}{X\+\_\+\+N\+T\+F\+\_\+\+L\+A\+S\+T}~0x\+F\+F\+F\+F
+\begin{DoxyCompactList}\small\item\em Last notification id to be used by user. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_ac606e478c91dc9a2ddc0816152b18979}{X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}~1000 /$\ast$ Hz $\ast$/
+\begin{DoxyCompactList}\small\item\em O\+S timer tick -\/ 1ms. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_a1732cd929c486b3a225824bb2b3dba36}{X\+\_\+\+M\+S2\+T\+I\+C\+K}(x\+\_\+)~((x\+\_\+)/(1000/\hyperlink{a00036_ac606e478c91dc9a2ddc0816152b18979}{X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}))
+\begin{DoxyCompactList}\small\item\em Conversion of ms to O\+S ticks. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00036_a8c687347943f251bc052fa9a43a2b69b}{X\+\_\+\+T\+I\+C\+K2\+M\+S}(x\+\_\+)~((x\+\_\+)$\ast$(1000/\hyperlink{a00036_ac606e478c91dc9a2ddc0816152b18979}{X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}))
+\begin{DoxyCompactList}\small\item\em Conversion of O\+S ticks to ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\+\_\+task\+\_\+id}
+\begin{DoxyCompactList}\small\item\em Task identifier type. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{a00036_ace830f248538d21bb16ea9c00997fcd7}{x\+\_\+task\+\_\+fn} )(\hyperlink{a00036_de/d37/a00849}{x\+\_\+event} $\ast$)
+\begin{DoxyCompactList}\small\item\em Event processing function type ( for modules) \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{a00036_a29c1adcba84e0c3e83657c91e9b2b764}{x\+\_\+notify\+\_\+fn} )(\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify} $\ast$)
+\begin{DoxyCompactList}\small\item\em Notification processing function type ( for modules) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00036_a05f27d3148e368ee84a448f3c4b083dd}{x\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em O\+S internal init. \end{DoxyCompactList}\item 
+void \hyperlink{a00036_a1e79db5ed3ab326586129eb4d7b63d46}{x\+\_\+init\+\_\+task} (\hyperlink{a00036_ace830f248538d21bb16ea9c00997fcd7}{x\+\_\+task\+\_\+fn} task\+\_\+fn, \hyperlink{a00036_a29c1adcba84e0c3e83657c91e9b2b764}{x\+\_\+notify\+\_\+fn} notify\+\_\+fn, \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\+\_\+task\+\_\+id} $\ast$p\+Handle\+\_\+id, const char $\ast$task\+\_\+name)
+\begin{DoxyCompactList}\small\item\em O\+S task init function. \end{DoxyCompactList}\item 
+void \hyperlink{a00036_aea907663ecaf77bacfb9f0bfdc11f900}{x\+\_\+start} (void)
+\begin{DoxyCompactList}\small\item\em O\+S function which starts event scheduling. \end{DoxyCompactList}\item 
+void \hyperlink{a00036_a4bb7a012be733e061c913e7b98df642b}{x\+\_\+loop} (void)
+\begin{DoxyCompactList}\small\item\em O\+S function which should be called in idle loop. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00036_acc618db6c04f9d2dce6d3b14b5294e51}{x\+\_\+tick} (void)
+\begin{DoxyCompactList}\small\item\em O\+S time function. \end{DoxyCompactList}\item 
+void \hyperlink{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\+\_\+send\+\_\+event} (\hyperlink{a00036_de/d37/a00849}{x\+\_\+event} $\ast$event)
+\begin{DoxyCompactList}\small\item\em O\+S event scheduling function. \end{DoxyCompactList}\item 
+void \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\+\_\+send\+\_\+notify} (\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify} $\ast$notify)
+\begin{DoxyCompactList}\small\item\em O\+S notification processing request. \end{DoxyCompactList}\item 
+void \hyperlink{a00036_a9e3befaa21e83f196f74201deed85346}{x\+\_\+schedule\+\_\+timer} (\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify} $\ast$timer, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} ticks)
+\begin{DoxyCompactList}\small\item\em O\+S timer configuration request. \end{DoxyCompactList}\item 
+void \hyperlink{a00036_ab69e9af4cfa717e870d587906283635c}{x\+\_\+delete\+\_\+timer} (\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify} $\ast$timer)
+\begin{DoxyCompactList}\small\item\em O\+S timer delete request. \end{DoxyCompactList}\item 
+void \hyperlink{a00036_a9953756bc7c83e5f2c36830396136e75}{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync} (\hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\+\_\+task\+\_\+id} task\+\_\+id)
+\begin{DoxyCompactList}\small\item\em O\+S interrupt notification timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+O\+S header file. 
+
+
+
+Definition in file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+\subsection{Data Structure Documentation}
+\index{x\+\_\+event@{x\+\_\+event}}\label{de/d37/a00849}
+\hypertarget{a00036_de/d37/a00849}{}
+\subsubsection{struct x\+\_\+event}
+O\+S event. 
+
+Definition at line \hyperlink{a00036_source_l00060}{60} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+Collaboration diagram for x\+\_\+event\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/dbe/a01706}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00036_aee23fa6903f65a36a1f1727012b9ecfa}{\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}}\label{a00036_aee23fa6903f65a36a1f1727012b9ecfa}
+&
+dummy&
+Event target task id. \\
+\hline
+
+\hypertarget{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{struct \+\_\+x\+\_\+event $\ast$}\label{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}
+&
+link&
+\\
+\hline
+
+\hypertarget{a00036_adf9665938515a20c283eea2c978cf80d}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00036_adf9665938515a20c283eea2c978cf80d}
+&
+message&
+Internal, for O\+S only -\/ event linking. \\
+\hline
+
+\hypertarget{a00036_a21b41e494a28583d4da10f1afb1c5328}{\hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\+\_\+task\+\_\+id}}\label{a00036_a21b41e494a28583d4da10f1afb1c5328}
+&
+task\+\_\+id&
+Event message. \\
+\hline
+
+\end{DoxyFields}
+\index{x\+\_\+notify@{x\+\_\+notify}}\label{df/d4c/a00851}
+\hypertarget{a00036_df/d4c/a00851}{}
+\subsubsection{struct x\+\_\+notify}
+
+
+Definition at line \hyperlink{a00036_source_l00070}{70} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+Collaboration diagram for x\+\_\+notify\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{d0/d42/a01707}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00036_a11c9c2b8514210c037aa45241ca62fb3}{\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}}\label{a00036_a11c9c2b8514210c037aa45241ca62fb3}
+&
+active&
+Notification target task id. \\
+\hline
+
+\hypertarget{a00036_ac1b431c0d2de68ce090f223b32f212b5}{struct \+\_\+x\+\_\+notify $\ast$}\label{a00036_ac1b431c0d2de68ce090f223b32f212b5}
+&
+link&
+\\
+\hline
+
+\hypertarget{a00036_adf9665938515a20c283eea2c978cf80d}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00036_adf9665938515a20c283eea2c978cf80d}
+&
+message&
+Internal, for O\+S only -\/ used for timer notifications, tick perid. \\
+\hline
+
+\hypertarget{a00036_a21b41e494a28583d4da10f1afb1c5328}{\hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\+\_\+task\+\_\+id}}\label{a00036_a21b41e494a28583d4da10f1afb1c5328}
+&
+task\+\_\+id&
+Notification message. \\
+\hline
+
+\hypertarget{a00036_aca39a8370fadb7fdd20300deef646d8b}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00036_aca39a8370fadb7fdd20300deef646d8b}
+&
+ticks&
+Internal, for O\+S only -\/ notification linking. \\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00036_a1732cd929c486b3a225824bb2b3dba36}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+M\+S2\+T\+I\+C\+K@{X\+\_\+\+M\+S2\+T\+I\+C\+K}}
+\index{X\+\_\+\+M\+S2\+T\+I\+C\+K@{X\+\_\+\+M\+S2\+T\+I\+C\+K}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+M\+S2\+T\+I\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+M\+S2\+T\+I\+C\+K(
+\begin{DoxyParamCaption}
+\item[{}]{x\+\_\+}
+\end{DoxyParamCaption}
+)~((x\+\_\+)/(1000/{\bf X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}))}}\label{a00036_a1732cd929c486b3a225824bb2b3dba36}
+
+
+Conversion of ms to O\+S ticks. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00048}{48} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+Referenced by \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, \hyperlink{a00045_source_l00141}{ir\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00047_source_l00106}{light\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00050_source_l00107}{mfield\+\_\+x\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00053_source_l00114}{mfield\+\_\+z\+\_\+sen\+\_\+notifyx()}, and \hyperlink{a00073_source_l00141}{uv\+\_\+sen\+\_\+notifyx()}.
+
+\hypertarget{a00036_a082eb6e82ded25b00f04da4f611c961e}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E@{X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E}}
+\index{X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E@{X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E~0x0020}}\label{a00036_a082eb6e82ded25b00f04da4f611c961e}
+
+
+First event id to be used by user. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00024}{24} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+\hypertarget{a00036_a104f1137aafb33160da80932fe63c40d}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C@{X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C}}
+\index{X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C@{X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C~0x0001}}\label{a00036_a104f1137aafb33160da80932fe63c40d}
+
+
+System reserved event id -\/ I\+R\+Q notification. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00020}{20} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+Referenced by \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, and \hyperlink{a00037_source_l00231}{x\+\_\+loop()}.
+
+\hypertarget{a00036_afc95a839de2731289483d04a6cdaac1f}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+M\+S\+G\+\_\+\+L\+A\+S\+T@{X\+\_\+\+M\+S\+G\+\_\+\+L\+A\+S\+T}}
+\index{X\+\_\+\+M\+S\+G\+\_\+\+L\+A\+S\+T@{X\+\_\+\+M\+S\+G\+\_\+\+L\+A\+S\+T}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+M\+S\+G\+\_\+\+L\+A\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+M\+S\+G\+\_\+\+L\+A\+S\+T~0x1000}}\label{a00036_afc95a839de2731289483d04a6cdaac1f}
+
+
+Last event id to be used by user. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00026}{26} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+\hypertarget{a00036_a4431051080c1f46fda1a2ce7d4931aa8}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+M\+S\+G\+\_\+\+N\+O\+N\+E@{X\+\_\+\+M\+S\+G\+\_\+\+N\+O\+N\+E}}
+\index{X\+\_\+\+M\+S\+G\+\_\+\+N\+O\+N\+E@{X\+\_\+\+M\+S\+G\+\_\+\+N\+O\+N\+E}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+M\+S\+G\+\_\+\+N\+O\+N\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+M\+S\+G\+\_\+\+N\+O\+N\+E~0x0000}}\label{a00036_a4431051080c1f46fda1a2ce7d4931aa8}
+
+
+System reserved event id -\/ no message. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00017}{17} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+\hypertarget{a00036_ab2eeea4643823a0c7c7731ddb83e3edc}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E@{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E}}
+\index{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E@{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E~0x1003}}\label{a00036_ab2eeea4643823a0c7c7731ddb83e3edc}
+
+
+First notification id to be used by user. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00034}{34} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+\hypertarget{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T@{X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T}}
+\index{X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T@{X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T~0x1001}}\label{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}
+
+
+System init notification. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00030}{30} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+Referenced by \hyperlink{a00038_source_l02006}{algorithm\+\_\+notifyx()}, \hyperlink{a00045_source_l00141}{ir\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00047_source_l00106}{light\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00050_source_l00107}{mfield\+\_\+x\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00053_source_l00114}{mfield\+\_\+z\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00073_source_l00141}{uv\+\_\+sen\+\_\+notifyx()}, and \hyperlink{a00037_source_l00196}{x\+\_\+start()}.
+
+\hypertarget{a00036_a63072b0b734748ae21fd9e7435467683}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+N\+T\+F\+\_\+\+L\+A\+S\+T@{X\+\_\+\+N\+T\+F\+\_\+\+L\+A\+S\+T}}
+\index{X\+\_\+\+N\+T\+F\+\_\+\+L\+A\+S\+T@{X\+\_\+\+N\+T\+F\+\_\+\+L\+A\+S\+T}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+N\+T\+F\+\_\+\+L\+A\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+N\+T\+F\+\_\+\+L\+A\+S\+T~0x\+F\+F\+F\+F}}\label{a00036_a63072b0b734748ae21fd9e7435467683}
+
+
+Last notification id to be used by user. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00037}{37} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+\hypertarget{a00036_a8c687347943f251bc052fa9a43a2b69b}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+T\+I\+C\+K2\+M\+S@{X\+\_\+\+T\+I\+C\+K2\+M\+S}}
+\index{X\+\_\+\+T\+I\+C\+K2\+M\+S@{X\+\_\+\+T\+I\+C\+K2\+M\+S}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+T\+I\+C\+K2\+M\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+T\+I\+C\+K2\+M\+S(
+\begin{DoxyParamCaption}
+\item[{}]{x\+\_\+}
+\end{DoxyParamCaption}
+)~((x\+\_\+)$\ast$(1000/{\bf X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}))}}\label{a00036_a8c687347943f251bc052fa9a43a2b69b}
+
+
+Conversion of O\+S ticks to ms. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00051}{51} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+Referenced by \hyperlink{a00037_source_l00231}{x\+\_\+loop()}, and \hyperlink{a00037_source_l00435}{x\+\_\+send\+\_\+notify()}.
+
+\hypertarget{a00036_ac606e478c91dc9a2ddc0816152b18979}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K@{X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}}
+\index{X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K@{X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K~1000 /$\ast$ Hz $\ast$/}}\label{a00036_ac606e478c91dc9a2ddc0816152b18979}
+
+
+O\+S timer tick -\/ 1ms. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00045}{45} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+Referenced by \hyperlink{a00037_source_l00135}{x\+\_\+init()}.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{a00036_a29c1adcba84e0c3e83657c91e9b2b764}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+notify\+\_\+fn@{x\+\_\+notify\+\_\+fn}}
+\index{x\+\_\+notify\+\_\+fn@{x\+\_\+notify\+\_\+fn}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+notify\+\_\+fn}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  x\+\_\+notify\+\_\+fn)({\bf x\+\_\+notify} $\ast$)}}\label{a00036_a29c1adcba84e0c3e83657c91e9b2b764}
+
+
+Notification processing function type ( for modules) 
+
+
+
+Definition at line \hyperlink{a00036_source_l00084}{84} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+\hypertarget{a00036_ace830f248538d21bb16ea9c00997fcd7}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+task\+\_\+fn@{x\+\_\+task\+\_\+fn}}
+\index{x\+\_\+task\+\_\+fn@{x\+\_\+task\+\_\+fn}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+task\+\_\+fn}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$  x\+\_\+task\+\_\+fn)({\bf x\+\_\+event} $\ast$)}}\label{a00036_ace830f248538d21bb16ea9c00997fcd7}
+
+
+Event processing function type ( for modules) 
+
+
+
+Definition at line \hyperlink{a00036_source_l00081}{81} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+\hypertarget{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+task\+\_\+id@{x\+\_\+task\+\_\+id}}
+\index{x\+\_\+task\+\_\+id@{x\+\_\+task\+\_\+id}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+task\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf Uint8} {\bf x\+\_\+task\+\_\+id}}}\label{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}
+
+
+Task identifier type. 
+
+
+
+Definition at line \hyperlink{a00036_source_l00055}{55} of file \hyperlink{a00036_source}{sys\+\_\+eventx.\+h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00036_ab69e9af4cfa717e870d587906283635c}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+delete\+\_\+timer@{x\+\_\+delete\+\_\+timer}}
+\index{x\+\_\+delete\+\_\+timer@{x\+\_\+delete\+\_\+timer}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+delete\+\_\+timer}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+delete\+\_\+timer (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+notify} $\ast$}]{timer}
+\end{DoxyParamCaption}
+)}}\label{a00036_ab69e9af4cfa717e870d587906283635c}
+
+
+O\+S timer delete request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer} & Pointer to timer object\\
+\hline
+\end{DoxyParams}
+If timer is running, it is taken away from active timer queue. 
+
+Definition at line \hyperlink{a00037_source_l00482}{482} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00036_source_l00077}{x\+\_\+notify\+::active}, \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00036_source_l00072}{x\+\_\+notify\+::link}, and \hyperlink{a00037_source_l00081}{x\+\_\+system\+\_\+t\+::timer\+\_\+queue}.
+
+
+
+Referenced by \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, \hyperlink{a00045_source_l00141}{ir\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00047_source_l00106}{light\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00050_source_l00107}{mfield\+\_\+x\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00053_source_l00114}{mfield\+\_\+z\+\_\+sen\+\_\+notifyx()}, and \hyperlink{a00073_source_l00141}{uv\+\_\+sen\+\_\+notifyx()}.
+
+
+\begin{DoxyCode}
+00483 \{
+00484     \hyperlink{a00036_df/d4c/a00851}{x\_notify}  * timer\_curr;
+00485 
+00486     \textcolor{keywordflow}{if}(timer->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} == 1)
+00487     \{
+00488         timer\_curr = &\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue};
+00489 
+00490         \textcolor{keywordflow}{while}(timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link}!= NULL)
+00491         \{
+00492             \textcolor{keywordflow}{if}(timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} == timer)
+00493             \{
+00494                 \textcolor{comment}{// Timer found}
+00495                 timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = (timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link})->link;
+00496                 timer->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = NULL;
+00497                 timer->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} = 0;
+00498                 \textcolor{keywordflow}{return};
+00499             \}
+00500             timer\_curr = timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00501         \}
+00502 
+00503         \textcolor{comment}{// Does not exist ??}
+00504         \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00505     \}
+00506 
+00507 
+00508 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 0
+
+
+\hypertarget{a00036_a05f27d3148e368ee84a448f3c4b083dd}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+init@{x\+\_\+init}}
+\index{x\+\_\+init@{x\+\_\+init}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00036_a05f27d3148e368ee84a448f3c4b083dd}
+
+
+O\+S internal init. 
+
+
+
+Definition at line \hyperlink{a00037_source_l00135}{135} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00037_source_l00079}{x\+\_\+system\+\_\+t\+::event\+\_\+queue}, \hyperlink{a00072_source_l00035}{F\+O\+S\+C\+\_\+\+C\+P\+U}, \hyperlink{a00036_source_l00072}{x\+\_\+notify\+::link}, \hyperlink{a00037_source_l00081}{x\+\_\+system\+\_\+t\+::timer\+\_\+queue}, \hyperlink{a00037_source_l00096}{x\+\_\+system\+\_\+volatile\+\_\+t\+::x\+\_\+irq\+\_\+mask}, \hyperlink{a00037_source_l00076}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+count}, and \hyperlink{a00036_source_l00045}{X\+\_\+\+T\+I\+M\+E\+R\+\_\+\+T\+I\+C\+K}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00136 \{
+00137     \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}        = 0;
+00138     \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue}           = NULL;
+00139     \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue}.\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link}      = NULL;
+00140     \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask}           = 0;
+00141 
+00142 
+00143     \textcolor{comment}{// Setup system - Timer 1}
+00144     
+00145     T5CON = 0;                  \textcolor{comment}{// Clear the register}
+00146     T5CONbits.TCS   = 0;        \textcolor{comment}{// Internal clock Fosc/4}
+00147     T5CONbits.TCKPS = 1;        \textcolor{comment}{//    1:8 prescaling}
+00148 
+00149     PR5 = ((\hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{FOSC\_CPU}/2)/8)/\hyperlink{a00036_ac606e478c91dc9a2ddc0816152b18979}{X\_TIMER\_TICK};
+00150     
+00151     
+00152     IPC7bits.T5IP = 0x06;         \textcolor{comment}{// Set Timer5 Interrupt Priority Level}
+00153     IFS1bits.T5IF = 0;            \textcolor{comment}{//Clear the Timer1 Interrupt Flag}
+00154     IEC1bits.T5IE = 1;            \textcolor{comment}{//Enable Timer1 Interrupt Service Routine}
+00155     T5CONbits.TON = 1;            \textcolor{comment}{//Start Timer 1}
+00156 
+00157 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{a00036_a1e79db5ed3ab326586129eb4d7b63d46}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+init\+\_\+task@{x\+\_\+init\+\_\+task}}
+\index{x\+\_\+init\+\_\+task@{x\+\_\+init\+\_\+task}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+init\+\_\+task}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+init\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+task\+\_\+fn}}]{task\+\_\+fn, }
+\item[{{\bf x\+\_\+notify\+\_\+fn}}]{notify\+\_\+fn, }
+\item[{{\bf x\+\_\+task\+\_\+id} $\ast$}]{p\+Handle\+\_\+id, }
+\item[{const char $\ast$}]{task\+\_\+name}
+\end{DoxyParamCaption}
+)}}\label{a00036_a1e79db5ed3ab326586129eb4d7b63d46}
+
+
+O\+S task init function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task\+\_\+fn} & Module task event processing function \\
+\hline
+{\em notify\+\_\+fn} & Module task notification processing function \\
+\hline
+{\em p\+Handle\+\_\+id} & Pointer to module handle variable \\
+\hline
+{\em task\+\_\+name} & Task name (null terminated string) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00037_source_l00173}{173} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00037_source_l00063}{x\+\_\+module\+\_\+info\+\_\+t\+::notify\+\_\+fn}, \hyperlink{a00037_source_l00061}{x\+\_\+module\+\_\+info\+\_\+t\+::task\+\_\+fn}, \hyperlink{a00037_source_l00065}{x\+\_\+module\+\_\+info\+\_\+t\+::task\+\_\+name}, \hyperlink{a00037_source_l00052}{X\+\_\+\+M\+A\+X\+\_\+\+M\+O\+D\+U\+L\+E}, \hyperlink{a00037_source_l00076}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+count}, and \hyperlink{a00037_source_l00074}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+info}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00174 \{
+00175     \textcolor{keywordflow}{if}(\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count} < \hyperlink{a00037_a04282f21b2fb8a316c5d04a2dfd24eaa}{X\_MAX\_MODULE})
+00176     \{
+00177         \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.
+      \hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}].\hyperlink{a00037_ab14ce9c8fe0edb516f7f3d4e1e3a8854}{task\_fn}   = task\_fn;
+00178         \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.
+      \hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}].\hyperlink{a00037_af6e2104c75f84286ef0f813c7707ff11}{notify\_fn} = notify\_fn;
+00179         strncpy((\textcolor{keywordtype}{char}*)\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.
+      \hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},task\_name,\textcolor{keyword}{sizeof}(\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.
+      \hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}].
+      \hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name})-1);
+00180         *pHandle\_id = \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}++;
+00181     \}
+00182     \textcolor{keywordflow}{else}
+00183     \{
+00184         \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00185     \}
+00186 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{a00036_a4bb7a012be733e061c913e7b98df642b}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+loop@{x\+\_\+loop}}
+\index{x\+\_\+loop@{x\+\_\+loop}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+loop}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+loop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00036_a4bb7a012be733e061c913e7b98df642b}
+
+
+O\+S function which should be called in idle loop. 
+
+This function processes events and notifications. Watchdog kick -\/ before executing notification function with interrupt notification
+
+Watchdog kick -\/ before executing notification function with timer notification
+
+Watchdog kick -\/ before executing task event function with event from system queue
+
+Watchdog kick -\/ needed for idle cases
+
+Definition at line \hyperlink{a00037_source_l00231}{231} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00036_source_l00077}{x\+\_\+notify\+::active}, \hyperlink{a00040_source_l00066}{D\+\_\+\+E}, \hyperlink{a00040_source_l00059}{D\+\_\+\+T}, \hyperlink{a00037_source_l00079}{x\+\_\+system\+\_\+t\+::event\+\_\+queue}, \hyperlink{a00033_source_l00017}{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T}, \hyperlink{a00033_source_l00020}{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E}, \hyperlink{a00033_source_l00025}{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E}, \hyperlink{a00037_source_l00098}{x\+\_\+system\+\_\+volatile\+\_\+t\+::irq\+\_\+tick}, \hyperlink{a00036_source_l00062}{x\+\_\+event\+::link}, \hyperlink{a00036_source_l00072}{x\+\_\+notify\+::link}, \hyperlink{a00036_source_l00064}{x\+\_\+event\+::message}, \hyperlink{a00036_source_l00075}{x\+\_\+notify\+::message}, \hyperlink{a00037_source_l00063}{x\+\_\+module\+\_\+info\+\_\+t\+::notify\+\_\+fn}, \hyperlink{a00067_source_l00028}{srv\+\_\+wdg\+\_\+kick}, \hyperlink{a00037_source_l00085}{x\+\_\+system\+\_\+t\+::sys\+\_\+tick}, \hyperlink{a00037_source_l00061}{x\+\_\+module\+\_\+info\+\_\+t\+::task\+\_\+fn}, \hyperlink{a00036_source_l00065}{x\+\_\+event\+::task\+\_\+id}, \hyperlink{a00036_source_l00076}{x\+\_\+notify\+::task\+\_\+id}, \hyperlink{a00037_source_l00065}{x\+\_\+module\+\_\+info\+\_\+t\+::task\+\_\+name}, \hyperlink{a00036_source_l00073}{x\+\_\+notify\+::ticks}, \hyperlink{a00037_source_l00081}{x\+\_\+system\+\_\+t\+::timer\+\_\+queue}, \hyperlink{a00037_source_l00096}{x\+\_\+system\+\_\+volatile\+\_\+t\+::x\+\_\+irq\+\_\+mask}, \hyperlink{a00037_source_l00076}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+count}, \hyperlink{a00037_source_l00074}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+info}, \hyperlink{a00036_source_l00020}{X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C}, and \hyperlink{a00036_source_l00051}{X\+\_\+\+T\+I\+C\+K2\+M\+S}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00232 \{
+00233     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}            tmp;
+00234     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}            delta;
+00235     \textcolor{keywordtype}{int}               ii;
+00236     \hyperlink{a00036_de/d37/a00849}{x\_event}           irq\_event;
+00237     \hyperlink{a00036_df/d4c/a00851}{x\_notify}          * timer\_prev;
+00238     \hyperlink{a00036_df/d4c/a00851}{x\_notify}          * timer\_run;
+00239     \hyperlink{a00036_de/d37/a00849}{x\_event}           * event;
+00240     \hyperlink{a00036_de/d37/a00849}{x\_event}           * event\_run;
+00241     \hyperlink{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{IRQ\_CTX\_T}         irq\_ctx;
+00242 
+00243     \textcolor{comment}{// Service interrupt sync requests}
+00244     irq\_event.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id} = -1;
+00245     irq\_event.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message} = \hyperlink{a00036_a104f1137aafb33160da80932fe63c40d}{X\_MSG\_IRQ\_SYNC};
+00246 
+00247     \textcolor{keywordflow}{do}
+00248     \{
+00249 
+00250         \hyperlink{a00033_a357168bbe78739811cdb7b5576714ca6}{IRQ\_DISABLE}(irq\_ctx);
+00251 
+00252         tmp = \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask};
+00253         \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask} = 0;
+00254 
+00255 
+00256 
+00257         \hyperlink{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{IRQ\_ENABLE}(irq\_ctx);
+00258 
+00259         \textcolor{keywordflow}{if}(tmp != 0)
+00260         \{
+00261             \textcolor{keywordflow}{for}(ii = 0; ii < \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count};ii++)
+00262             \{
+00263                 \textcolor{keywordflow}{if}(tmp & ( 1<<ii))
+00264                 \{
+00273                     \textcolor{comment}{// Kick watchdog}
+00274                     \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00275                     \textcolor{comment}{// Execute notification function}
+00276                     \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[ii].\hyperlink{a00037_ab14ce9c8fe0edb516f7f3d4e1e3a8854}{task\_fn}(&irq\_event);
+00277                 \}
+00278             \}
+00279         \}
+00280     \}\textcolor{keywordflow}{while}(tmp != 0);
+00281 
+00282 
+00283     \textcolor{comment}{// Service timers}
+00284     \textcolor{keywordflow}{if}(\hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick} != \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aab260797348ca628ed4820714e229a74}{sys\_tick})
+00285     \{
+00286         delta =  \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick} - \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aab260797348ca628ed4820714e229a74}{sys\_tick};
+00287         \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aab260797348ca628ed4820714e229a74}{sys\_tick} = \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick};
+00288 
+00289         timer\_prev = &\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue};
+00290         \textcolor{keywordflow}{while}(timer\_prev != NULL)
+00291         \{
+00292             \textcolor{comment}{//Scan through all timers}
+00293             timer\_run  = timer\_prev->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00294             \textcolor{keywordflow}{if}(timer\_run != NULL)
+00295             \{
+00296                 \textcolor{keywordflow}{if}(timer\_run->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} > delta)
+00297                 \{
+00298                     timer\_run->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} -= delta;
+00299                 \}
+00300                 \textcolor{keywordflow}{else}
+00301                 \{
+00302                     timer\_run->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} = 0;
+00303                 \}
+00304 
+00305                 \textcolor{keywordflow}{if}(timer\_run->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} == 0)
+00306                 \{
+00307                     \textcolor{comment}{// Remove timer}
+00308                     timer\_prev->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = timer\_run->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00309                     \textcolor{comment}{// Launch timer}
+00310                     timer\_run->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link}   = NULL;
+00311                     timer\_run->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} = 0;
+00312                     \hyperlink{a00040_a5e876f6543757da83f9b3ddee08dece7}{D\_T}(fprintf(stdout,\textcolor{stringliteral}{"Timer Notification time:%u Task name:%s msg:%x\(\backslash\)n"},
+      \hyperlink{a00036_a8c687347943f251bc052fa9a43a2b69b}{X\_TICK2MS}(\hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick}),\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.
+      \hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[timer\_run->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},timer\_run->
+      \hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});)
+00318                     \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00319                     \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.x\_module\_info[timer\_run->task\_id].notify\_fn(timer\_run);
+00320                  \}
+00321             \}
+00322 
+00323             if(timer\_prev->link == NULL)
+00324             \{
+00325                 \textcolor{keywordflow}{break};
+00326             \}
+00327             \textcolor{keywordflow}{else}
+00328             \{
+00329                 timer\_prev = timer\_prev->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00330             \}
+00331         \}
+00332     \}
+00333 
+00334 
+00335     \textcolor{comment}{// Service events}
+00336     \textcolor{keyword}{event} = \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue};
+00337     \textcolor{keywordflow}{while}(event != NULL)
+00338     \{
+00339         \textcolor{comment}{// Send event}
+00340         event\_run = event;
+00341 
+00342         \textcolor{comment}{// First remove event from queue}
+00343         \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue} = \textcolor{keyword}{event}->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link};
+00344         \textcolor{keyword}{event} = \textcolor{keyword}{event}->link;
+00345 
+00346         \textcolor{comment}{// Clean event link ( which marks as executed)}
+00347         event\_run->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link} = NULL;
+00348         \hyperlink{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{D\_E}(fprintf(stdout,\textcolor{stringliteral}{"sending event time:%u task:%s msg:%x\(\backslash\)n"},\hyperlink{a00036_a8c687347943f251bc052fa9a43a2b69b}{X\_TICK2MS}(
+      \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick}),\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[event\_run->
+      \hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},event\_run->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});)
+00353         \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00354         \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.x\_module\_info[event\_run->task\_id].task\_fn(event\_run);
+00355     \}
+00356 
+00357 
+00362     \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00363 
+00364 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{a00036_a9e3befaa21e83f196f74201deed85346}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+schedule\+\_\+timer@{x\+\_\+schedule\+\_\+timer}}
+\index{x\+\_\+schedule\+\_\+timer@{x\+\_\+schedule\+\_\+timer}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+schedule\+\_\+timer}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+schedule\+\_\+timer (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+notify} $\ast$}]{timer, }
+\item[{{\bf Uint16}}]{ticks}
+\end{DoxyParamCaption}
+)}}\label{a00036_a9e3befaa21e83f196f74201deed85346}
+
+
+O\+S timer configuration request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timer} & Pointer to timer object \\
+\hline
+{\em ticks} & Timer timeout in O\+S ticks\\
+\hline
+\end{DoxyParams}
+The user is expexted to fill\+: message,task\+\_\+id and ticks fields. If the timer is running, the timer period will be updated. 
+
+Definition at line \hyperlink{a00037_source_l00456}{456} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00036_source_l00077}{x\+\_\+notify\+::active}, \hyperlink{a00036_source_l00072}{x\+\_\+notify\+::link}, \hyperlink{a00036_source_l00073}{x\+\_\+notify\+::ticks}, and \hyperlink{a00037_source_l00081}{x\+\_\+system\+\_\+t\+::timer\+\_\+queue}.
+
+
+
+Referenced by \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, \hyperlink{a00045_source_l00141}{ir\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00047_source_l00106}{light\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00050_source_l00107}{mfield\+\_\+x\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00053_source_l00114}{mfield\+\_\+z\+\_\+sen\+\_\+notifyx()}, and \hyperlink{a00073_source_l00141}{uv\+\_\+sen\+\_\+notifyx()}.
+
+
+\begin{DoxyCode}
+00457 \{
+00458 
+00459     \textcolor{keywordflow}{if}( ticks == 0)ticks = 1;
+00460     timer->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} = ticks;
+00461 
+00462     \textcolor{keywordflow}{if}( timer->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} == 0)
+00463     \{
+00464         \textcolor{comment}{// If not linked ( already scheduled) - link it}
+00465         timer->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue}.\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00466         \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue}.\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = timer;
+00467         timer->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} = 1;
+00468     \}
+00469 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+send\+\_\+event@{x\+\_\+send\+\_\+event}}
+\index{x\+\_\+send\+\_\+event@{x\+\_\+send\+\_\+event}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+send\+\_\+event}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+send\+\_\+event (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+event} $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}
+
+
+O\+S event scheduling function. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event} & The user is expexted to fill\+: message,task\+\_\+id.\\
+\hline
+\end{DoxyParams}
+The event will be placed in F\+I\+F\+O queue and send (during O\+S loop exectuion) to target task event function 
+
+Definition at line \hyperlink{a00037_source_l00381}{381} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00040_source_l00066}{D\+\_\+\+E}, \hyperlink{a00040_source_l00080}{D\+\_\+\+P}, \hyperlink{a00037_source_l00079}{x\+\_\+system\+\_\+t\+::event\+\_\+queue}, \hyperlink{a00036_source_l00062}{x\+\_\+event\+::link}, \hyperlink{a00036_source_l00064}{x\+\_\+event\+::message}, \hyperlink{a00036_source_l00065}{x\+\_\+event\+::task\+\_\+id}, \hyperlink{a00037_source_l00065}{x\+\_\+module\+\_\+info\+\_\+t\+::task\+\_\+name}, and \hyperlink{a00037_source_l00074}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+info}.
+
+
+
+Referenced by \hyperlink{a00038_source_l02006}{algorithm\+\_\+notifyx()}, \hyperlink{a00045_source_l00141}{ir\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00047_source_l00106}{light\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00050_source_l00107}{mfield\+\_\+x\+\_\+sen\+\_\+notifyx()}, \hyperlink{a00053_source_l00114}{mfield\+\_\+z\+\_\+sen\+\_\+notifyx()}, and \hyperlink{a00073_source_l00141}{uv\+\_\+sen\+\_\+notifyx()}.
+
+
+\begin{DoxyCode}
+00382 \{
+00383     \hyperlink{a00036_de/d37/a00849}{x\_event} *    event\_next;
+00384 
+00385 
+00386     \textcolor{keywordflow}{if}(\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue} == NULL)
+00387     \{
+00388         \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue} = event;
+00389         \textcolor{keyword}{event}->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link} = NULL;
+00390     \}
+00391     \textcolor{keywordflow}{else}
+00392     \{
+00393         event\_next = \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue};
+00394 
+00395         \textcolor{comment}{// Go through all linked events}
+00396         \textcolor{keywordflow}{while}(event\_next != NULL)
+00397         \{
+00398             \textcolor{keywordflow}{if}(event\_next == event)
+00399             \{
+00400                 \hyperlink{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{D\_E}(fprintf(stdout,\textcolor{stringliteral}{"Scheduling event :%s msg:%x\(\backslash\)n"},\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.
+      \hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[event->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},event->
+      \hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});)
+00401                 \hyperlink{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{D\_P}(fprintf(stdout,"Event already in queue");)
+00402                 
+00403                 return;
+00404             \}
+00405 
+00406             if(event\_next->link  == NULL)
+00407             \{
+00408                 \textcolor{comment}{// No more events - link new one as last}
+00409                 \hyperlink{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{D\_E}(fprintf(stdout,\textcolor{stringliteral}{"Scheduling new event:%s msg:%x\(\backslash\)n"},
+      \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[event->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},event->
+      \hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});    )
+00410                 event\_next->link = event;
+00411                 event->link = NULL;
+00412                 break;
+00413             \}
+00414             else
+00415             \{
+00416                 event\_next = event\_next->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link};
+00417             \}
+00418         \}
+00419     \}
+00420 
+00421 
+00422 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+send\+\_\+notify@{x\+\_\+send\+\_\+notify}}
+\index{x\+\_\+send\+\_\+notify@{x\+\_\+send\+\_\+notify}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+send\+\_\+notify}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+send\+\_\+notify (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+notify} $\ast$}]{notify}
+\end{DoxyParamCaption}
+)}}\label{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}
+
+
+O\+S notification processing request. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em notify} & Pointer to O\+S notification object\\
+\hline
+\end{DoxyParams}
+The user is expexted to fill message and task\+\_\+id fields 
+
+Definition at line \hyperlink{a00037_source_l00435}{435} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00040_source_l00073}{D\+\_\+\+N}, \hyperlink{a00037_source_l00098}{x\+\_\+system\+\_\+volatile\+\_\+t\+::irq\+\_\+tick}, \hyperlink{a00036_source_l00075}{x\+\_\+notify\+::message}, \hyperlink{a00037_source_l00063}{x\+\_\+module\+\_\+info\+\_\+t\+::notify\+\_\+fn}, \hyperlink{a00036_source_l00076}{x\+\_\+notify\+::task\+\_\+id}, \hyperlink{a00037_source_l00065}{x\+\_\+module\+\_\+info\+\_\+t\+::task\+\_\+name}, \hyperlink{a00037_source_l00074}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+info}, and \hyperlink{a00036_source_l00051}{X\+\_\+\+T\+I\+C\+K2\+M\+S}.
+
+
+
+Referenced by \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, \hyperlink{a00045_source_l00069}{ir\+\_\+sen\+\_\+taskx()}, \hyperlink{a00047_source_l00065}{light\+\_\+sen\+\_\+taskx()}, \hyperlink{a00050_source_l00071}{mfield\+\_\+x\+\_\+sen\+\_\+taskx()}, \hyperlink{a00053_source_l00073}{mfield\+\_\+z\+\_\+sen\+\_\+taskx()}, and \hyperlink{a00073_source_l00069}{uv\+\_\+sen\+\_\+taskx()}.
+
+
+\begin{DoxyCode}
+00436 \{
+00437     \hyperlink{a00040_afdf6a05ce2b9711e8bb4ef40fdb6930a}{D\_N}(fprintf(stdout,\textcolor{stringliteral}{"Notification time:%u task:%s msg:%x\(\backslash\)n"},\hyperlink{a00036_a8c687347943f251bc052fa9a43a2b69b}{X\_TICK2MS}(
+      \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick}),\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[notify->
+      \hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},notify->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});)
+00438     \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.x\_module\_info[notify->task\_id].notify\_fn(notify);
+00439 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{a00036_aea907663ecaf77bacfb9f0bfdc11f900}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+start@{x\+\_\+start}}
+\index{x\+\_\+start@{x\+\_\+start}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+start}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00036_aea907663ecaf77bacfb9f0bfdc11f900}
+
+
+O\+S function which starts event scheduling. 
+
+Watchdog kick -\/ before each module start
+
+Definition at line \hyperlink{a00037_source_l00196}{196} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00040_source_l00053}{D\+\_\+\+I}, \hyperlink{a00036_source_l00075}{x\+\_\+notify\+::message}, \hyperlink{a00037_source_l00063}{x\+\_\+module\+\_\+info\+\_\+t\+::notify\+\_\+fn}, \hyperlink{a00067_source_l00028}{srv\+\_\+wdg\+\_\+kick}, \hyperlink{a00036_source_l00076}{x\+\_\+notify\+::task\+\_\+id}, \hyperlink{a00037_source_l00065}{x\+\_\+module\+\_\+info\+\_\+t\+::task\+\_\+name}, \hyperlink{a00037_source_l00076}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+count}, \hyperlink{a00037_source_l00074}{x\+\_\+system\+\_\+t\+::x\+\_\+module\+\_\+info}, and \hyperlink{a00036_source_l00030}{X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00197 \{
+00198     \textcolor{keywordtype}{int}                 jj;
+00199     \hyperlink{a00036_df/d4c/a00851}{x\_notify}            ntf;
+00200 
+00201 
+00202     ntf.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id} = -1;
+00203     ntf.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message} = \hyperlink{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}{X\_NTF\_INIT};
+00204 
+00205 
+00206     \textcolor{keywordflow}{for}(jj = 0; jj < \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count};jj++)
+00207     \{
+00208 
+00214         \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00215 
+00216         ntf.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id} = jj;
+00217         \hyperlink{a00040_a41b841dd3ca98f243a56ff65652be225}{D\_I}(fprintf(stdout,\textcolor{stringliteral}{"Initalizing module:%s\(\backslash\)n"},\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.
+      \hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[jj].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name});)
+00218         \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system}.x\_module\_info[jj].notify\_fn(&ntf);
+00219     \}
+00220 
+00221 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{a00036_a9953756bc7c83e5f2c36830396136e75}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync@{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync}}
+\index{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync@{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync}]{\setlength{\rightskip}{0pt plus 5cm}void x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+task\+\_\+id}}]{task\+\_\+id}
+\end{DoxyParamCaption}
+)}}\label{a00036_a9953756bc7c83e5f2c36830396136e75}
+
+
+O\+S interrupt notification timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task\+\_\+id} & Task id to which timer notification should be sent\\
+\hline
+\end{DoxyParams}
+The receiver will get X\+\_\+\+M\+S\+G\+\_\+\+I\+R\+Q\+\_\+\+S\+Y\+N\+C notification 
+
+Definition at line \hyperlink{a00037_source_l00521}{521} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00033_source_l00017}{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T}, \hyperlink{a00033_source_l00020}{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E}, \hyperlink{a00033_source_l00025}{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E}, \hyperlink{a00037_source_l00096}{x\+\_\+system\+\_\+volatile\+\_\+t\+::x\+\_\+irq\+\_\+mask}, and \hyperlink{a00037_source_l00052}{X\+\_\+\+M\+A\+X\+\_\+\+M\+O\+D\+U\+L\+E}.
+
+
+
+Referenced by \hyperlink{a00038_source_l02104}{algorithm\+\_\+message\+\_\+arrived\+\_\+ntf\+\_\+isr()}.
+
+
+\begin{DoxyCode}
+00522 \{
+00523     \hyperlink{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{IRQ\_CTX\_T}   irq\_ctx;
+00524 
+00525 
+00526     \textcolor{keywordflow}{if}(task\_id < \hyperlink{a00037_a04282f21b2fb8a316c5d04a2dfd24eaa}{X\_MAX\_MODULE})
+00527     \{
+00528         \hyperlink{a00033_a357168bbe78739811cdb7b5576714ca6}{IRQ\_DISABLE}(irq\_ctx);
+00529 
+00530         \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask} |= (1<< task\_id);
+00531         \hyperlink{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{IRQ\_ENABLE}(irq\_ctx);
+00532     \}
+00533     \textcolor{keywordflow}{else}
+00534     \{
+00535         \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00536     \}
+00537 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{a00036_acc618db6c04f9d2dce6d3b14b5294e51}{\index{sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}!x\+\_\+tick@{x\+\_\+tick}}
+\index{x\+\_\+tick@{x\+\_\+tick}!sys\+\_\+eventx.\+h@{sys\+\_\+eventx.\+h}}
+\subsubsection[{x\+\_\+tick}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} x\+\_\+tick (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00036_acc618db6c04f9d2dce6d3b14b5294e51}
+
+
+O\+S time function. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em Returns} & current system tick counter \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \hyperlink{a00037_source_l00549}{549} of file \hyperlink{a00037_source}{sys\+\_\+eventx.\+c}.
+
+
+
+References \hyperlink{a00037_source_l00098}{x\+\_\+system\+\_\+volatile\+\_\+t\+::irq\+\_\+tick}.
+
+
+\begin{DoxyCode}
+00550 \{
+00551     \textcolor{keywordflow}{return} \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv}.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick};
+00552 \}
+\end{DoxyCode}

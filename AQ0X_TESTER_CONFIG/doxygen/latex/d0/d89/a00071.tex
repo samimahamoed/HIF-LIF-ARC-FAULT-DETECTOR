@@ -1,0 +1,181 @@
+\hypertarget{a00071}{\section{Q\+Window\+Function$<$ T $>$ Class Template Reference}
+\label{a00071}\index{Q\+Window\+Function$<$ T $>$@{Q\+Window\+Function$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$qwindowfunction.\+h$>$}
+
+
+
+Inheritance diagram for Q\+Window\+Function$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/de7/a00550}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+Window\+Function$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{d9/d87/a00551}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00071_aa4a4f988e1f4b65e4181a0c8c3245a00}{apply} (T $\ast$data, int size)
+\item 
+void \hyperlink{a00071_a23ec85a35c762367195a47898cc75380}{create} (int size)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00071_abde81294328ded8482380a7cfefab0b9}{fill\+Window} (int size)
+\item 
+virtual T \hyperlink{a00071_ad58fa8c208b487dc2cbe765053228068}{calculate} (int current\+Sample, int total\+Samples)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Window \hyperlink{a00071_ac0e8285a38390b8388bc0be152abcb0a}{m\+Window}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class Q\+Window\+Function$<$ T $>$}
+
+
+
+Definition at line \hyperlink{a00128_source_l00058}{58} of file \hyperlink{a00128_source}{qwindowfunction.\+h}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00071_aa4a4f988e1f4b65e4181a0c8c3245a00}{\index{Q\+Window\+Function@{Q\+Window\+Function}!apply@{apply}}
+\index{apply@{apply}!Q\+Window\+Function@{Q\+Window\+Function}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Q\+Window\+Function}$<$ T $>$\+::apply (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{data, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{a00071_aa4a4f988e1f4b65e4181a0c8c3245a00}
+
+
+Definition at line \hyperlink{a00127_source_l00051}{51} of file \hyperlink{a00127_source}{qwindowfunction.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00121_source_l00130}{Q\+Fourier\+Transformer\+::forward\+Transform()}.
+
+
+\begin{DoxyCode}
+00052 \{
+00053     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < size; ++i)
+00054     \{
+00055         data[i] *= \hyperlink{a00071_ac0e8285a38390b8388bc0be152abcb0a}{mWindow}[i];
+00056     \}
+00057 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d89/a00071_aa4a4f988e1f4b65e4181a0c8c3245a00_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00071_ad58fa8c208b487dc2cbe765053228068}{\index{Q\+Window\+Function@{Q\+Window\+Function}!calculate@{calculate}}
+\index{calculate@{calculate}!Q\+Window\+Function@{Q\+Window\+Function}}
+\subsubsection[{calculate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ virtual T {\bf Q\+Window\+Function}$<$ T $>$\+::calculate (
+\begin{DoxyParamCaption}
+\item[{int}]{current\+Sample, }
+\item[{int}]{total\+Samples}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{a00071_ad58fa8c208b487dc2cbe765053228068}
+
+
+Implemented in \hyperlink{a00057_a4c93ae740237871fc75e3bea81521f35}{Q\+Hann\+Function$<$ T $>$}, \hyperlink{a00056_a211906f8eb2b7b00b2edda7a9d0926a6}{Q\+Hamming\+Function$<$ T $>$}, and \hyperlink{a00062_add2d1c665e03d573a4349324acfdd0e6}{Q\+Rectangular\+Function$<$ T $>$}.
+
+\hypertarget{a00071_a23ec85a35c762367195a47898cc75380}{\index{Q\+Window\+Function@{Q\+Window\+Function}!create@{create}}
+\index{create@{create}!Q\+Window\+Function@{Q\+Window\+Function}}
+\subsubsection[{create}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf Q\+Window\+Function}$<$ T $>$\+::create (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{a00071_a23ec85a35c762367195a47898cc75380}
+
+
+Definition at line \hyperlink{a00127_source_l00060}{60} of file \hyperlink{a00127_source}{qwindowfunction.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00121_source_l00066}{Q\+Fourier\+Transformer\+::set\+Size()}, and \hyperlink{a00121_source_l00092}{Q\+Fourier\+Transformer\+::set\+Window\+Function()}.
+
+
+\begin{DoxyCode}
+00061 \{
+00062     \textcolor{keywordflow}{if}(size != \hyperlink{a00071_ac0e8285a38390b8388bc0be152abcb0a}{mWindow}.size())
+00063     \{
+00064         \hyperlink{a00071_ac0e8285a38390b8388bc0be152abcb0a}{mWindow}.clear();
+00065         \hyperlink{a00071_ac0e8285a38390b8388bc0be152abcb0a}{mWindow}.resize(size);
+00066         \hyperlink{a00071_abde81294328ded8482380a7cfefab0b9}{fillWindow}(size);
+00067     \}
+00068 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d89/a00071_a23ec85a35c762367195a47898cc75380_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00071_abde81294328ded8482380a7cfefab0b9}{\index{Q\+Window\+Function@{Q\+Window\+Function}!fill\+Window@{fill\+Window}}
+\index{fill\+Window@{fill\+Window}!Q\+Window\+Function@{Q\+Window\+Function}}
+\subsubsection[{fill\+Window}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf Q\+Window\+Function}$<$ T $>$\+::fill\+Window (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00071_abde81294328ded8482380a7cfefab0b9}
+
+
+Definition at line \hyperlink{a00127_source_l00071}{71} of file \hyperlink{a00127_source}{qwindowfunction.\+cpp}.
+
+
+\begin{DoxyCode}
+00072 \{
+00073     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < size; ++i)
+00074     \{
+00075         \hyperlink{a00071_ac0e8285a38390b8388bc0be152abcb0a}{mWindow}[i] = \hyperlink{a00071_ad58fa8c208b487dc2cbe765053228068}{calculate}(i, size);
+00076     \}
+00077 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00071_ac0e8285a38390b8388bc0be152abcb0a}{\index{Q\+Window\+Function@{Q\+Window\+Function}!m\+Window@{m\+Window}}
+\index{m\+Window@{m\+Window}!Q\+Window\+Function@{Q\+Window\+Function}}
+\subsubsection[{m\+Window}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ Q\+Window {\bf Q\+Window\+Function}$<$ T $>$\+::m\+Window\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00071_ac0e8285a38390b8388bc0be152abcb0a}
+
+
+Definition at line \hyperlink{a00128_source_l00075}{75} of file \hyperlink{a00128_source}{qwindowfunction.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00128}{qwindowfunction.\+h}\item 
+\hyperlink{a00127}{qwindowfunction.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,25 @@
+.TH "nov" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+nov \- Non volatile storage 
+The Nov block is responsible for non volatile storage of device data\&.
+.PP
+For non volatile storage requirement of this application an external microchip 25LC640A series serial EEPROM is used for storing device configuration data and disturbance records\&. The device can store 16KB data divided into 64Byte sized pages and can be accessed using \fBSPI\fP interface via provided instructions\&. The device supports data write operation per byte, per page size or any length data size up to 64byte can be transferred in a single write operation if stored in the same page\&. Likewise, data can be read per byte or the entire memory can be fetched in a single read operation\&. Furthermore, the device also provides instructions to access the status registers as well as read write control registers\&.
+.PP
+In this application there are three types of EEPROM data blocks namely:
+.PP
+Device id: includes both device serial number and device address\&. Four copies of each of these values are stored in the beginning address of the eeprom\&. Thus, on every reset the data will be retrieved and will be considered valid if two or more successive address’s contains equal values \&.
+.PP
+Configuration data: contains the device configuration parameters and supervi-sion records\&. Here, the data is stored in two identical copies starting from second copy and then the first copy to make sure that one copy is valid if the execution is interrupted due to power failure\&. During startup, first copy is read and checked for proper checksum (crc 16)\&. If valid, these parameters are used\&. If the copy is not valid, the module will attempt to use the second copy\&. If the second is also defective then this is fatal error hence the device will be configured with factory default values\&.
+.PP
+Disturbance record: mainly contains the modules disturbance record data including with the event history recording parameters (e\&.g\&. relative timestamp)\&. However, it is possible that emulation mode data can also be preserved across reset using the same block (see typedef:post_act_record_buffer_t, \fBnov_data\&.h\fP file)\&. Here, since this is considerably large amount of data only a single copy is stored and retrieved when external data transfer request is received\&.
+.PP
+Reads NOV storage from EEPROM
+.PP
+\fBReturn values:\fP
+.RS 4
+\fI0\fP if succesfull NOV retrival was performed
+.RE
+.PP
+Note: emulation mode data may be mode preserved across resets on production verssion\&. 

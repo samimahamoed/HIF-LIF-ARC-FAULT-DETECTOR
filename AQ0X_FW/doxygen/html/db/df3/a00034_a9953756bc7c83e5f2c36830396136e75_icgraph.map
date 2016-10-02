@@ -1,0 +1,8 @@
+<map id="x_task_send_irq_sync" name="x_task_send_irq_sync">
+<area shape="rect" id="node2" href="$de/d8c/a00036.html#a85471d58eae93d5d7e7e2b52e2b915d3" title="Causes that system will send notification to the module as this cannot be done directly because the f..." alt="" coords="205,23,384,65"/>
+<area shape="rect" id="node3" href="$dc/d3c/a00028.html#a2068c3c2584547dbc1c8b9bca2d55b18" title="Serial port receive interrupt. " alt="" coords="439,5,537,32"/>
+<area shape="rect" id="node4" href="$de/d8c/a00036.html#a42ed16c7ef20e0c0031fe7ba7ae377b3" title="Main processing loop for algorithm module. " alt="" coords="432,56,544,83"/>
+<area shape="rect" id="node5" href="$d3/de7/a00039.html#a2068c3c2584547dbc1c8b9bca2d55b18" title="Fast timer interrupt to scan sensor element analog values. " alt="" coords="603,31,701,57"/>
+<area shape="rect" id="node6" href="$de/d8c/a00036.html#a93269cdec3e21934aa9395440a2de605" title="Algorithm module notification function. " alt="" coords="592,81,712,108"/>
+<area shape="rect" id="node7" href="$d3/dea/a00046.html#a840291bc02cba5474a4cb46a9b9566fe" title="System startup function. " alt="" coords="760,81,811,108"/>
+</map>

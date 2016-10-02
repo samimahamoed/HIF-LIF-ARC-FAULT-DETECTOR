@@ -1,0 +1,351 @@
+.TH "uv_sensor.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+uv_sensor.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBanalog_sample_uv_t\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_uv_sen_configure\fP"
+.br
+.RI "\fINotification containing module operation configuration details ( from Algorithm module) \fP"
+.ti -1c
+.RI "struct \fBx_notify_uv_sen_sv_report\fP"
+.br
+.RI "\fINotification structure from uv_sen module to Algorithm module about supervision result\&. \fP"
+.ti -1c
+.RI "struct \fBx_notify_uv_sen_configure\&.message\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_uv_sen_sv_report\&.message\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_NTF_UV_SENSOR_CONFIG\fP   (\fBX_NTF_FREE\fP + 16)"
+.br
+.RI "\fINotification from Algorithm module to load data from nov\&. \fP"
+.ti -1c
+.RI "#define \fBUV_SEN_GAIN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBUV_SEN_NOISE_DENSITY_LEVEL\fP   0\&.05"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBevent_report_t\fP \fBuv_sen_get_status\fP (\fBUint16\fP adc_value, \fBBool\fP save_event)"
+.br
+.RI "\fISupervise the status of the uv sensor\&. \fP"
+.ti -1c
+.RI "void \fBuv_sen_taskx\fP (\fBx_event\fP *event)"
+.br
+.RI "\fIuv sensor module task function\&. \fP"
+.ti -1c
+.RI "void \fBuv_sen_notifyx\fP (\fBx_notify\fP *notify)"
+.br
+.RI "\fIuv module notification function\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBx_task_id\fP \fBuv_sen_id\fP"
+.br
+.RI "\fImfield_x_sen module handle \fP"
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct analog_sample_uv_t"
+.PP 
+Definition at line 23 of file uv_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIadc_val\fP 
+.br
+.PP
+\fBFloat32\fP \fIana_val\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_uv_sen_configure"
+.PP 
+Notification containing module operation configuration details ( from Algorithm module) 
+.PP
+Definition at line 31 of file uv_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_uv_sen_configure\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_uv_sen_sv_report"
+.PP 
+Notification structure from uv_sen module to Algorithm module about supervision result\&. 
+.PP
+Definition at line 49 of file uv_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_uv_sen_sv_report\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_uv_sen_configure\&.message"
+.PP 
+Definition at line 35 of file uv_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfigured\fP 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP * \fIdisturbance_record\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_uv_sen_sv_report\&.message"
+.PP 
+Definition at line 53 of file uv_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfig\fP 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fIerror_status_flags\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define UV_SEN_GAIN   1"
+
+.PP
+Definition at line 16 of file uv_sensor\&.h\&.
+.SS "#define UV_SEN_NOISE_DENSITY_LEVEL   0\&.05"
+
+.PP
+Definition at line 18 of file uv_sensor\&.h\&.
+.PP
+Referenced by uv_sen_get_status()\&.
+.SS "#define X_NTF_UV_SENSOR_CONFIG   (\fBX_NTF_FREE\fP + 16)"
+
+.PP
+Notification from Algorithm module to load data from nov\&. 
+.PP
+Definition at line 12 of file uv_sensor\&.h\&.
+.PP
+Referenced by uv_sen_notifyx()\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBevent_report_t\fP uv_sen_get_status (\fBUint16\fPadc_value, \fBBool\fPsave_event)"
+
+.PP
+Supervise the status of the uv sensor\&. REQ-1b: "A valid trip is issued, for few handres of microseconds after trip data will be saved at provided location\&.
+.PP
+Definition at line 302 of file uv_sensor\&.c\&.
+.PP
+References __1ST_ORDER_DERIVATIVE, __COMPARE_ZERO, __PROBABLITY, configured_t::amp_treshold, ASSERT, pre_act_record_buffer_t::buffer, state_data_light_t::change_per_time, uv_sen_data_t::configured, module_status_t::current, data_non_volatile, logv_t::data_tx_on_progress, configured_t::dfdt_treshold_impulse, configured_t::dfdt_treshold_max, configured_t::dfdt_treshold_min, uv_sen_data_t::disturbance_record, logv_t::disturbance_record, pre_act_record_buffer_t::elapsed, EMU_MODE_DATA_LENGTH, module_disturbance_record_t::event_data, module_disturbance_record_t::event_positive_cnt, FALSE, event_report_t::fields, pre_act_record_buffer_t::head, HOT, logv, configured_t::min_number_of_observation, uv_sen_data_t::module_status, module_disturbance_record_t::observation_cnt, module_disturbance_record_t::post_act_data, POST_ACT_RECORD_BUFF_SIZE, module_disturbance_record_t::pre_act_data, PRE_ACT_RECORD_BUFF_SIZE, module_status_t::previous, configured_t::probablity_treshold_max, configured_t::probablity_treshold_min, module_status_t::projected, state_data_light_t::signal_level, state_data_light_t::slop_polarity, state_data_light_t::state, STATE_0, STATE_1, STATE_2, STATE_3, pre_act_record_buffer_t::tail, logv_t::tick, TRUE, UV_SEN_NOISE_DENSITY_LEVEL, and logv_t::wr\&.
+.PP
+Referenced by __attribute__()\&.
+.SS "void uv_sen_notifyx (\fBx_notify\fP *notify)"
+
+.PP
+uv module notification function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP - system distributed notification 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file uv_sensor\&.c\&.
+.PP
+References ASSERT, uv_sen_data_t::configured, uv_sen_data_t::disturbance_record, configured_t::element_status_sv_en, sv_error_flags_ut::flags_all, x_notify_uv_sen_configure::message, x_notify::message, uv_sen_data_t::module_status, module_status_t::projected, SCAN_FREQ, uv_sen_data_t::sv_errors_flags, uv_sen_data_t::sv_task_event, uv_sen_data_t::sv_timer_ntf, SV_TIMER_PERIOD, configured_t::sys_freq, x_delete_timer(), X_MS2TICK, X_NTF_CLR_ALARM_UV_SEN, X_NTF_INIT, X_NTF_UV_SENSOR_CONFIG, X_NTF_UV_SENSOR_SV_TIMER, x_schedule_timer(), and x_send_event()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+142 {
+143 
+144 
+145     switch(notify->message)
+146     {
+147         case X_NTF_INIT:
+148         {
+149             uv_sen_init();
+150         }break;
+151 
+152 
+153         case X_NTF_UV_SENSOR_CONFIG:
+154         {
+155 
+156             // configuration details from algorithm module
+157             x_notify_uv_sen_configure * notify_configure = (x_notify_uv_sen_configure *)notify;
+158 
+159 
+160             uv_sen_data\&.configured = notify_configure->message\&.configured;
+161             uv_sen_data\&.disturbance_record = notify_configure->message\&.disturbance_record;
+162 
+163            uv_sen_data\&.module_status\&.projected\&.angular_freq             = 2*PI*uv_sen_data\&.configured\&.sys_freq;
+164            uv_sen_data\&.module_status\&.projected\&.samples_per_period       = (Uint16)(SCAN_FREQ/(Float32)(uv_sen_data\&.configured\&.sys_freq));
+165            uv_sen_data\&.module_status\&.projected\&.samples_per_period_1_2  = uv_sen_data\&.module_status\&.projected\&.samples_per_period/2;
+166            uv_sen_data\&.module_status\&.projected\&.samples_per_period_1_4  = uv_sen_data\&.module_status\&.projected\&.samples_per_period/4;
+167            uv_sen_data\&.module_status\&.projected\&.samples_per_period_1_8  = uv_sen_data\&.module_status\&.projected\&.samples_per_period/8;
+168             // Clear supervison state ( so errors will be reported if module have internal error )
+169           uv_sen_data\&.sv_errors_flags\&.flags_all = 0;
+170 
+171           x_delete_timer(&uv_sen_data\&.sv_timer_ntf);
+172 
+173           if(uv_sen_data\&.configured\&.element_status_sv_en)
+174           x_schedule_timer(&uv_sen_data\&.sv_timer_ntf,X_MS2TICK(SV_TIMER_PERIOD));
+175 
+176         }break;
+177 
+178 
+179         case X_NTF_CLR_ALARM_UV_SEN:
+180         {
+181 
+182            // Algorithm module alarm reset request
+183              //uv_sen_data\&.module_status\&.current\&.state = STATE_0;
+184              uv_sen_mark_false_postives();
+185              uv_sen_mark_false_postives();
+186              uv_sen_mark_false_postives();
+187 
+188 
+189         }break;
+190 
+191 
+192         case X_NTF_UV_SENSOR_SV_TIMER:
+193         {
+194            x_send_event(&uv_sen_data\&.sv_task_event);
+195         }break;
+196 
+197 
+198         default:
+199         {
+200             ASSERT(0);
+201         }
+202     }
+203 
+204 }
+.fi
+.SS "void uv_sen_taskx (\fBx_event\fP *event)"
+
+.PP
+uv sensor module task function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP - system distributed event 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file uv_sensor\&.c\&.
+.PP
+References configured_t::amp_treshold, ASSERT, uv_sen_data_t::configured, uv_sen_data_t::diagonesis_records, sv_error_flags_ut::flags_all, x_event::message, x_notify_module_sv_status_report_t::message, x_notify_module_sv_status_report_t::notify, diagonesis_records_light_t::signal_history, srv_wdg_kick, uv_sen_data_t::sv_errors_flags, uv_sen_data_t::sv_status_ntf, X_MSG_UV_SENSOR_SV, and x_send_notify()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+70 {
+71     switch(event->message)
+72     {
+73 
+74 
+75         case X_MSG_UV_SENSOR_SV:
+76         {
+77 
+78             srv_wdg_kick();
+79             uv_sen_sensor_element_sv_task();
+80 
+81             if(uv_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation >0)
+82                 uv_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.avg =
+83                         (uv_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.accumulated/
+84                         uv_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation);
+85 
+86             if(uv_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation >0){
+87                 uv_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.avg =
+88                         (uv_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.accumulated/
+89                         uv_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation);
+90 
+91                 uv_sen_data\&.diagonesis_records\&.signal_history\&.th_gap\&.avg
+92                     = (uv_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.avg - uv_sen_data\&.configured\&.amp_treshold\&.set_value);
+93             }
+94             else
+95             uv_sen_data\&.diagonesis_records\&.signal_history\&.th_gap\&.avg
+96                     = (uv_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.avg - uv_sen_data\&.configured\&.amp_treshold\&.set_value);
+97 
+98 
+99               uv_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.accumulated                 = 0;
+100               uv_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation           = 0;
+101               uv_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.accumulated         = 0;
+102               uv_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation   = 0;
+103 
+104 
+105 
+106              uv_sen_threshold_adjustment_task();
+107 
+108             if((uv_sen_data\&.sv_errors_flags\&.flags_all!=0)  || (uv_sen_data\&.configured\&.amp_treshold\&.adjusted == 1)){
+109              uv_sen_data\&.sv_status_ntf\&.message\&.error_flags = uv_sen_data\&.sv_errors_flags;
+110              uv_sen_data\&.sv_status_ntf\&.message\&.config = uv_sen_data\&.configured;
+111 
+112              // Send notification to Algorithm module about detected error
+113              x_send_notify(&uv_sen_data\&.sv_status_ntf\&.notify);
+114              uv_sen_data\&.sv_errors_flags\&.flags_all =0;
+115              uv_sen_data\&.configured\&.amp_treshold\&.adjusted = 0;
+116             }
+117 
+118 
+119 
+120         }break;
+121 
+122 
+123 
+124         default:
+125         {
+126             ASSERT(0);
+127         }
+128     }
+129 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBx_task_id\fP uv_sen_id"
+
+.PP
+mfield_x_sen module handle 
+.PP
+Definition at line 23 of file uv_sensor\&.c\&.
+.PP
+Referenced by main()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

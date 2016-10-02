@@ -1,0 +1,2074 @@
+\hypertarget{a00139_source}{\section{ui\+\_\+mainwindow.\+h}
+\label{a00139_source}\index{ui\+\_\+mainwindow.\+h@{ui\+\_\+mainwindow.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/********************************************************************************}
+00002 \textcolor{comment}{** Form generated from reading UI file 'mainwindow.ui'}
+00003 \textcolor{comment}{**}
+00004 \textcolor{comment}{** Created by: Qt User Interface Compiler version 5.2.0}
+00005 \textcolor{comment}{**}
+00006 \textcolor{comment}{** WARNING! All changes made in this file will be lost when recompiling UI file!}
+00007 \textcolor{comment}{********************************************************************************/}
+00008 
+00009 \textcolor{preprocessor}{#ifndef UI\_MAINWINDOW\_H}
+00010 \textcolor{preprocessor}{#define UI\_MAINWINDOW\_H}
+00011 
+00012 \textcolor{preprocessor}{#include <QtCore/QVariant>}
+00013 \textcolor{preprocessor}{#include <QtWidgets/QAction>}
+00014 \textcolor{preprocessor}{#include <QtWidgets/QApplication>}
+00015 \textcolor{preprocessor}{#include <QtWidgets/QButtonGroup>}
+00016 \textcolor{preprocessor}{#include <QtWidgets/QCheckBox>}
+00017 \textcolor{preprocessor}{#include <QtWidgets/QComboBox>}
+00018 \textcolor{preprocessor}{#include <QtWidgets/QDockWidget>}
+00019 \textcolor{preprocessor}{#include <QtWidgets/QGridLayout>}
+00020 \textcolor{preprocessor}{#include <QtWidgets/QGroupBox>}
+00021 \textcolor{preprocessor}{#include <QtWidgets/QHBoxLayout>}
+00022 \textcolor{preprocessor}{#include <QtWidgets/QHeaderView>}
+00023 \textcolor{preprocessor}{#include <QtWidgets/QLabel>}
+00024 \textcolor{preprocessor}{#include <QtWidgets/QMainWindow>}
+00025 \textcolor{preprocessor}{#include <QtWidgets/QMenu>}
+00026 \textcolor{preprocessor}{#include <QtWidgets/QMenuBar>}
+00027 \textcolor{preprocessor}{#include <QtWidgets/QPushButton>}
+00028 \textcolor{preprocessor}{#include <QtWidgets/QScrollArea>}
+00029 \textcolor{preprocessor}{#include <QtWidgets/QSpacerItem>}
+00030 \textcolor{preprocessor}{#include <QtWidgets/QSpinBox>}
+00031 \textcolor{preprocessor}{#include <QtWidgets/QStackedWidget>}
+00032 \textcolor{preprocessor}{#include <QtWidgets/QStatusBar>}
+00033 \textcolor{preprocessor}{#include <QtWidgets/QToolBar>}
+00034 \textcolor{preprocessor}{#include <QtWidgets/QTreeWidget>}
+00035 \textcolor{preprocessor}{#include <QtWidgets/QVBoxLayout>}
+00036 \textcolor{preprocessor}{#include <QtWidgets/QWidget>}
+00037 \textcolor{preprocessor}{#include "\hyperlink{a00088}{console.h}"}
+00038 
+00039 QT\_BEGIN\_NAMESPACE
+00040 
+\hypertarget{a00139_source_l00041}{}\hyperlink{a00080}{00041} \textcolor{keyword}{class }\hyperlink{a00080}{Ui\_MainWindow}
+00042 \{
+00043 \textcolor{keyword}{public}:
+\hypertarget{a00139_source_l00044}{}\hyperlink{a00080_aa0785566311fc48271690fb68b1d4c5f}{00044}     QAction *\hyperlink{a00080_aa0785566311fc48271690fb68b1d4c5f}{actionConnect};
+\hypertarget{a00139_source_l00045}{}\hyperlink{a00080_a8a16b3aef75b279eaaa887152d2f746b}{00045}     QAction *\hyperlink{a00080_a8a16b3aef75b279eaaa887152d2f746b}{actionDisconnect};
+\hypertarget{a00139_source_l00046}{}\hyperlink{a00080_a188c243f36a2dbc10e4e2a0ad94273b1}{00046}     QAction *\hyperlink{a00080_a188c243f36a2dbc10e4e2a0ad94273b1}{actionQuit};
+\hypertarget{a00139_source_l00047}{}\hyperlink{a00080_a3860abde3cfd3f6170e28fddde73f11e}{00047}     QAction *\hyperlink{a00080_a3860abde3cfd3f6170e28fddde73f11e}{actionConfigure};
+\hypertarget{a00139_source_l00048}{}\hyperlink{a00080_ac8539dcd87955047877cb256aff60453}{00048}     QAction *\hyperlink{a00080_ac8539dcd87955047877cb256aff60453}{actionClear};
+\hypertarget{a00139_source_l00049}{}\hyperlink{a00080_abdf2b43167c2cd0d3405f90b8c30e934}{00049}     QAction *\hyperlink{a00080_abdf2b43167c2cd0d3405f90b8c30e934}{actionAbout};
+\hypertarget{a00139_source_l00050}{}\hyperlink{a00080_a5772f39001f62b7f601aafe72caa10c0}{00050}     QAction *\hyperlink{a00080_a5772f39001f62b7f601aafe72caa10c0}{actionOpen};
+\hypertarget{a00139_source_l00051}{}\hyperlink{a00080_a3dccdc21d3df68b86550093b5e3c0356}{00051}     QAction *\hyperlink{a00080_a3dccdc21d3df68b86550093b5e3c0356}{actionCommands};
+\hypertarget{a00139_source_l00052}{}\hyperlink{a00080_a30075506c2116c3ed4ff25e07ae75f81}{00052}     QWidget *\hyperlink{a00080_a30075506c2116c3ed4ff25e07ae75f81}{centralWidget};
+\hypertarget{a00139_source_l00053}{}\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{00053}     QDockWidget *\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd};
+\hypertarget{a00139_source_l00054}{}\hyperlink{a00080_a23b450a9debad2b0fecc6f063772caf2}{00054}     QWidget *\hyperlink{a00080_a23b450a9debad2b0fecc6f063772caf2}{dockWidgetContents\_6};
+\hypertarget{a00139_source_l00055}{}\hyperlink{a00080_a6b2a0c5f7e8ff2a87134908dd770d2d2}{00055}     QGridLayout *\hyperlink{a00080_a6b2a0c5f7e8ff2a87134908dd770d2d2}{gridLayout\_2};
+\hypertarget{a00139_source_l00056}{}\hyperlink{a00080_aa66ece71395b435e915d384fb63bac1d}{00056}     QTreeWidget *\hyperlink{a00080_aa66ece71395b435e915d384fb63bac1d}{cmd\_list};
+\hypertarget{a00139_source_l00057}{}\hyperlink{a00080_a59e39bd3d716004e840a5be5dda18b96}{00057}     QStackedWidget *\hyperlink{a00080_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views};
+\hypertarget{a00139_source_l00058}{}\hyperlink{a00080_ad7d164376bef8649ee1f94697b859417}{00058}     QWidget *\hyperlink{a00080_ad7d164376bef8649ee1f94697b859417}{page};
+\hypertarget{a00139_source_l00059}{}\hyperlink{a00080_adcb6de4cebc6760fe319711f125010cc}{00059}     QWidget *\hyperlink{a00080_adcb6de4cebc6760fe319711f125010cc}{page\_2};
+\hypertarget{a00139_source_l00060}{}\hyperlink{a00080_a8ee86315639f324b17708efc7dbe8b19}{00060}     QGridLayout *\hyperlink{a00080_a8ee86315639f324b17708efc7dbe8b19}{gridLayout\_4};
+\hypertarget{a00139_source_l00061}{}\hyperlink{a00080_ad5c6667239e28060ba3b04ee0db97bac}{00061}     QGroupBox *\hyperlink{a00080_ad5c6667239e28060ba3b04ee0db97bac}{gBox\_cmd};
+\hypertarget{a00139_source_l00062}{}\hyperlink{a00080_a93c190b085c63a667c535ba0bbcfec7c}{00062}     QVBoxLayout *\hyperlink{a00080_a93c190b085c63a667c535ba0bbcfec7c}{verticalLayout\_6};
+\hypertarget{a00139_source_l00063}{}\hyperlink{a00080_a320d3d7ba1cb8fff7b7b95923ed10f5e}{00063}     QGroupBox *\hyperlink{a00080_a320d3d7ba1cb8fff7b7b95923ed10f5e}{groupBox\_3};
+\hypertarget{a00139_source_l00064}{}\hyperlink{a00080_ab96ab0f0578098521fa69a75aa5cdde8}{00064}     QWidget *\hyperlink{a00080_ab96ab0f0578098521fa69a75aa5cdde8}{layoutWidget};
+\hypertarget{a00139_source_l00065}{}\hyperlink{a00080_aecd96a04789fcfec3f98d80390ad8184}{00065}     QVBoxLayout *\hyperlink{a00080_aecd96a04789fcfec3f98d80390ad8184}{verticalLayout};
+\hypertarget{a00139_source_l00066}{}\hyperlink{a00080_a80867018070156432923d0266cc9fe25}{00066}     QHBoxLayout *\hyperlink{a00080_a80867018070156432923d0266cc9fe25}{horizontalLayout\_2};
+\hypertarget{a00139_source_l00067}{}\hyperlink{a00080_ad9c89133780f28e6efa2ec17ceb9cff5}{00067}     QLabel *\hyperlink{a00080_ad9c89133780f28e6efa2ec17ceb9cff5}{label};
+\hypertarget{a00139_source_l00068}{}\hyperlink{a00080_a2e2516d755e4dd53fc905dabddf2738a}{00068}     QLabel *\hyperlink{a00080_a2e2516d755e4dd53fc905dabddf2738a}{label\_2};
+\hypertarget{a00139_source_l00069}{}\hyperlink{a00080_acd6fdc9ebacc4b25b834162380d75ce8}{00069}     QHBoxLayout *\hyperlink{a00080_acd6fdc9ebacc4b25b834162380d75ce8}{horizontalLayout};
+\hypertarget{a00139_source_l00070}{}\hyperlink{a00080_a263fb43f2eff37a44ff7359ba41e2eeb}{00070}     QComboBox *\hyperlink{a00080_a263fb43f2eff37a44ff7359ba41e2eeb}{combo\_Ch};
+\hypertarget{a00139_source_l00071}{}\hyperlink{a00080_ad95005b5fcac8126171019298147b285}{00071}     QComboBox *\hyperlink{a00080_ad95005b5fcac8126171019298147b285}{combo\_Sen};
+\hypertarget{a00139_source_l00072}{}\hyperlink{a00080_afcc20a3d5058037a00cdc6122f231848}{00072}     QVBoxLayout *\hyperlink{a00080_afcc20a3d5058037a00cdc6122f231848}{verticalLayout\_5};
+\hypertarget{a00139_source_l00073}{}\hyperlink{a00080_ae4fe44aa026dd0e84e0f10cdcabca504}{00073}     QScrollArea *\hyperlink{a00080_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view};
+\hypertarget{a00139_source_l00074}{}\hyperlink{a00080_aa70fc2af9f9ea3b686db12823c5deb47}{00074}     QWidget *\hyperlink{a00080_aa70fc2af9f9ea3b686db12823c5deb47}{scrollAreaWidgetContents};
+\hypertarget{a00139_source_l00075}{}\hyperlink{a00080_af42ea7d4c2e893181caad21e28166932}{00075}     QGridLayout *\hyperlink{a00080_af42ea7d4c2e893181caad21e28166932}{gridLayout\_3};
+\hypertarget{a00139_source_l00076}{}\hyperlink{a00080_a2bdce9ad313cd4ee575613f36cbc4678}{00076}     QVBoxLayout *\hyperlink{a00080_a2bdce9ad313cd4ee575613f36cbc4678}{sAreaVLayout};
+\hypertarget{a00139_source_l00077}{}\hyperlink{a00080_a8384329c3663ff274e926a12024aab52}{00077}     QSpacerItem *\hyperlink{a00080_a8384329c3663ff274e926a12024aab52}{verticalSpacer};
+\hypertarget{a00139_source_l00078}{}\hyperlink{a00080_a1c7dd277b3eb0ab06b980e95e1b0be29}{00078}     QSpacerItem *\hyperlink{a00080_a1c7dd277b3eb0ab06b980e95e1b0be29}{verticalSpacer\_progress\_view};
+\hypertarget{a00139_source_l00079}{}\hyperlink{a00080_a17c8bb967f8ecc58406ac7ca1bec7b7e}{00079}     QHBoxLayout *\hyperlink{a00080_a17c8bb967f8ecc58406ac7ca1bec7b7e}{horizontalLayout\_23};
+\hypertarget{a00139_source_l00080}{}\hyperlink{a00080_a26ea4040157d183322b8c1e5d7a55c9f}{00080}     QPushButton *\hyperlink{a00080_a26ea4040157d183322b8c1e5d7a55c9f}{btn\_cancel};
+\hypertarget{a00139_source_l00081}{}\hyperlink{a00080_a9ea50d44e38316e4203933698cbc14a6}{00081}     QPushButton *\hyperlink{a00080_a9ea50d44e38316e4203933698cbc14a6}{btn\_execute\_cmd};
+\hypertarget{a00139_source_l00082}{}\hyperlink{a00080_ac682cb2a9b686ca7c3d29771ad9ccb48}{00082}     QWidget *\hyperlink{a00080_ac682cb2a9b686ca7c3d29771ad9ccb48}{page\_3};
+\hypertarget{a00139_source_l00083}{}\hyperlink{a00080_ad8a919e5634add9c41bfc319cb9fd338}{00083}     QGroupBox *\hyperlink{a00080_ad8a919e5634add9c41bfc319cb9fd338}{groupBox\_4};
+\hypertarget{a00139_source_l00084}{}\hyperlink{a00080_a8731b71c513ff94baf59614807823c5d}{00084}     QGridLayout *\hyperlink{a00080_a8731b71c513ff94baf59614807823c5d}{gridLayout\_5};
+\hypertarget{a00139_source_l00085}{}\hyperlink{a00080_ae183387a7d233b437a637b403ba39ffd}{00085}     QHBoxLayout *\hyperlink{a00080_ae183387a7d233b437a637b403ba39ffd}{horizontalLayout\_4};
+\hypertarget{a00139_source_l00086}{}\hyperlink{a00080_ae78fd3c777d081ab1ec1d0142bec3320}{00086}     QCheckBox *\hyperlink{a00080_ae78fd3c777d081ab1ec1d0142bec3320}{cb\_config\_ir\_max};
+\hypertarget{a00139_source_l00087}{}\hyperlink{a00080_a220706f1fd93857145032c897e55d9e3}{00087}     QSpinBox *\hyperlink{a00080_a220706f1fd93857145032c897e55d9e3}{dSB\_ir\_max};
+\hypertarget{a00139_source_l00088}{}\hyperlink{a00080_a14c9d4842c3e97e16e7873ef0aecdb1e}{00088}     QHBoxLayout *\hyperlink{a00080_a14c9d4842c3e97e16e7873ef0aecdb1e}{horizontalLayout\_5};
+\hypertarget{a00139_source_l00089}{}\hyperlink{a00080_a13ce5fddc83683d7b8b717f0b9a4e2cf}{00089}     QCheckBox *\hyperlink{a00080_a13ce5fddc83683d7b8b717f0b9a4e2cf}{cb\_config\_uv\_max};
+\hypertarget{a00139_source_l00090}{}\hyperlink{a00080_aa2872ada374dace81c4f1cc41d8e244d}{00090}     QSpinBox *\hyperlink{a00080_aa2872ada374dace81c4f1cc41d8e244d}{dSB\_uv\_max};
+\hypertarget{a00139_source_l00091}{}\hyperlink{a00080_ad6bab8fb8903b8f41afea1218ee52695}{00091}     QLabel *\hyperlink{a00080_ad6bab8fb8903b8f41afea1218ee52695}{label\_5};
+\hypertarget{a00139_source_l00092}{}\hyperlink{a00080_aab31b3dec8d767525dea6f163e029e48}{00092}     QWidget *\hyperlink{a00080_aab31b3dec8d767525dea6f163e029e48}{layoutWidget1};
+\hypertarget{a00139_source_l00093}{}\hyperlink{a00080_a2071e5a4c77a64f74d74ac246bbc683c}{00093}     QHBoxLayout *\hyperlink{a00080_a2071e5a4c77a64f74d74ac246bbc683c}{horizontalLayout\_22};
+\hypertarget{a00139_source_l00094}{}\hyperlink{a00080_a5a4e0ac94bd22955cc41bcc276a04278}{00094}     QPushButton *\hyperlink{a00080_a5a4e0ac94bd22955cc41bcc276a04278}{btn\_back\_thresholds};
+\hypertarget{a00139_source_l00095}{}\hyperlink{a00080_ac265ae0ccaa1154deaa634d19415f775}{00095}     QPushButton *\hyperlink{a00080_ac265ae0ccaa1154deaa634d19415f775}{btn\_save\_thresholds};
+\hypertarget{a00139_source_l00096}{}\hyperlink{a00080_ad52b1b3da7f1a695b9d3b521254c961d}{00096}     QWidget *\hyperlink{a00080_ad52b1b3da7f1a695b9d3b521254c961d}{page\_4};
+\hypertarget{a00139_source_l00097}{}\hyperlink{a00080_a663f728e6244926a795c6e6892673b1d}{00097}     QLabel *\hyperlink{a00080_a663f728e6244926a795c6e6892673b1d}{label\_6};
+\hypertarget{a00139_source_l00098}{}\hyperlink{a00080_a40a9931365fd3679efec4f0112073db2}{00098}     QGroupBox *\hyperlink{a00080_a40a9931365fd3679efec4f0112073db2}{groupBox\_6};
+\hypertarget{a00139_source_l00099}{}\hyperlink{a00080_a4c2d544352d423a361b8ab2e1d5636ec}{00099}     QGridLayout *\hyperlink{a00080_a4c2d544352d423a361b8ab2e1d5636ec}{gridLayout\_7};
+\hypertarget{a00139_source_l00100}{}\hyperlink{a00080_a8ead8fc876ee91c30864822eedb9c370}{00100}     QHBoxLayout *\hyperlink{a00080_a8ead8fc876ee91c30864822eedb9c370}{horizontalLayout\_8};
+\hypertarget{a00139_source_l00101}{}\hyperlink{a00080_a6b0d09f3b380fdb810d3da3f5208ccf5}{00101}     QCheckBox *\hyperlink{a00080_a6b0d09f3b380fdb810d3da3f5208ccf5}{cb\_config\_min\_distance};
+\hypertarget{a00139_source_l00102}{}\hyperlink{a00080_a01c23085590f4947828948bbd9f50cc7}{00102}     QSpinBox *\hyperlink{a00080_a01c23085590f4947828948bbd9f50cc7}{dSB\_min\_distance};
+\hypertarget{a00139_source_l00103}{}\hyperlink{a00080_a269faaef68e4ad4784635810fcae5698}{00103}     QGroupBox *\hyperlink{a00080_a269faaef68e4ad4784635810fcae5698}{groupBox\_7};
+\hypertarget{a00139_source_l00104}{}\hyperlink{a00080_a20728ed83bf740332bd908ea3e15ace6}{00104}     QGridLayout *\hyperlink{a00080_a20728ed83bf740332bd908ea3e15ace6}{gridLayout\_8};
+\hypertarget{a00139_source_l00105}{}\hyperlink{a00080_ab48e49d68609b4c66e5169e2f87e3eb9}{00105}     QHBoxLayout *\hyperlink{a00080_ab48e49d68609b4c66e5169e2f87e3eb9}{horizontalLayout\_9};
+\hypertarget{a00139_source_l00106}{}\hyperlink{a00080_af4863849ff58931ae3a38aa5b40b8158}{00106}     QCheckBox *\hyperlink{a00080_af4863849ff58931ae3a38aa5b40b8158}{cb\_config\_rated\_current};
+\hypertarget{a00139_source_l00107}{}\hyperlink{a00080_ab6d7c3a292c79cd73aff8735df48d30e}{00107}     QSpinBox *\hyperlink{a00080_ab6d7c3a292c79cd73aff8735df48d30e}{dSB\_rated\_current};
+\hypertarget{a00139_source_l00108}{}\hyperlink{a00080_af1a7bbeee705545b94c55c297299118d}{00108}     QHBoxLayout *\hyperlink{a00080_af1a7bbeee705545b94c55c297299118d}{horizontalLayout\_10};
+\hypertarget{a00139_source_l00109}{}\hyperlink{a00080_a541de6e510677e572ab233f7ecc25e2c}{00109}     QCheckBox *\hyperlink{a00080_a541de6e510677e572ab233f7ecc25e2c}{cb\_config\_sh\_ckt\_current};
+\hypertarget{a00139_source_l00110}{}\hyperlink{a00080_aab5fcfd5ceedb9c4e853139113f5c753}{00110}     QSpinBox *\hyperlink{a00080_aab5fcfd5ceedb9c4e853139113f5c753}{dSB\_sh\_ckt\_current};
+\hypertarget{a00139_source_l00111}{}\hyperlink{a00080_a9ab91d59aada4ff82309b36c9d5a0fa6}{00111}     QHBoxLayout *\hyperlink{a00080_a9ab91d59aada4ff82309b36c9d5a0fa6}{horizontalLayout\_16};
+\hypertarget{a00139_source_l00112}{}\hyperlink{a00080_a8f501acefacd6343a4ec99a67172f256}{00112}     QCheckBox *\hyperlink{a00080_a8f501acefacd6343a4ec99a67172f256}{cb\_config\_freq};
+\hypertarget{a00139_source_l00113}{}\hyperlink{a00080_abd528de839feccc001dc62b3aecddc9f}{00113}     QSpinBox *\hyperlink{a00080_abd528de839feccc001dc62b3aecddc9f}{dSB\_freq};
+\hypertarget{a00139_source_l00114}{}\hyperlink{a00080_a185129091df0a390d82417f2f52cb80f}{00114}     QWidget *\hyperlink{a00080_a185129091df0a390d82417f2f52cb80f}{layoutWidget\_3};
+\hypertarget{a00139_source_l00115}{}\hyperlink{a00080_a488ae2286c0922552e7a39a756e337d3}{00115}     QHBoxLayout *\hyperlink{a00080_a488ae2286c0922552e7a39a756e337d3}{horizontalLayout\_25};
+\hypertarget{a00139_source_l00116}{}\hyperlink{a00080_a72415fe77c8f6eb7b13d16177a14b39a}{00116}     QPushButton *\hyperlink{a00080_a72415fe77c8f6eb7b13d16177a14b39a}{btn\_cancel\_sys\_info};
+\hypertarget{a00139_source_l00117}{}\hyperlink{a00080_a5ccef61fb3372e70d59a662f4fde5db3}{00117}     QPushButton *\hyperlink{a00080_a5ccef61fb3372e70d59a662f4fde5db3}{btn\_save\_sys\_info};
+\hypertarget{a00139_source_l00118}{}\hyperlink{a00080_a421261d29369be60b551aabe8b097597}{00118}     QWidget *\hyperlink{a00080_a421261d29369be60b551aabe8b097597}{page\_5};
+\hypertarget{a00139_source_l00119}{}\hyperlink{a00080_a13936e6f18b1c90402b3c7a3c92b6cdb}{00119}     QLabel *\hyperlink{a00080_a13936e6f18b1c90402b3c7a3c92b6cdb}{label\_7};
+\hypertarget{a00139_source_l00120}{}\hyperlink{a00080_a1a1fe5ec77ba52ba39a16db29ff0f91a}{00120}     QGroupBox *\hyperlink{a00080_a1a1fe5ec77ba52ba39a16db29ff0f91a}{groupBox\_8};
+\hypertarget{a00139_source_l00121}{}\hyperlink{a00080_ad113cf7b76aaf178473555bdf64ff035}{00121}     QGridLayout *\hyperlink{a00080_ad113cf7b76aaf178473555bdf64ff035}{gridLayout\_6};
+\hypertarget{a00139_source_l00122}{}\hyperlink{a00080_a7b66d5d6ab55f3977317359d09a42345}{00122}     QVBoxLayout *\hyperlink{a00080_a7b66d5d6ab55f3977317359d09a42345}{verticalLayout\_7};
+\hypertarget{a00139_source_l00123}{}\hyperlink{a00080_abef4ef3d5d03026de5d5e172eb0335a6}{00123}     QCheckBox *\hyperlink{a00080_abef4ef3d5d03026de5d5e172eb0335a6}{cb\_config\_active\_modules\_ir};
+\hypertarget{a00139_source_l00124}{}\hyperlink{a00080_a72ad8a6b100948f9b1438cf3b949be5e}{00124}     QCheckBox *\hyperlink{a00080_a72ad8a6b100948f9b1438cf3b949be5e}{cb\_config\_active\_modules\_uv};
+\hypertarget{a00139_source_l00125}{}\hyperlink{a00080_abc96d02b5b7a9480a2a142008e99a100}{00125}     QCheckBox *\hyperlink{a00080_abc96d02b5b7a9480a2a142008e99a100}{cb\_config\_active\_modules\_mf};
+\hypertarget{a00139_source_l00126}{}\hyperlink{a00080_ab492988d340548c7f30e098419ef10ee}{00126}     QGroupBox *\hyperlink{a00080_ab492988d340548c7f30e098419ef10ee}{groupBox\_9};
+\hypertarget{a00139_source_l00127}{}\hyperlink{a00080_a79b264e6945e3b94a511427b1c270dd7}{00127}     QGridLayout *\hyperlink{a00080_a79b264e6945e3b94a511427b1c270dd7}{gridLayout\_10};
+\hypertarget{a00139_source_l00128}{}\hyperlink{a00080_ad81454913b05646674b1a41c595b8510}{00128}     QHBoxLayout *\hyperlink{a00080_ad81454913b05646674b1a41c595b8510}{horizontalLayout\_12};
+\hypertarget{a00139_source_l00129}{}\hyperlink{a00080_ae9e8f3f0d147a4cd21c8f36ffb3bd81f}{00129}     QCheckBox *\hyperlink{a00080_ae9e8f3f0d147a4cd21c8f36ffb3bd81f}{cb\_config\_observation\_length};
+\hypertarget{a00139_source_l00130}{}\hyperlink{a00080_a1fe1bf902f2a365c4c94612d2a2ffbcc}{00130}     QSpinBox *\hyperlink{a00080_a1fe1bf902f2a365c4c94612d2a2ffbcc}{dSB\_observation\_length};
+\hypertarget{a00139_source_l00131}{}\hyperlink{a00080_a3b24c4bb360d79ae2e886fe63c8fdac7}{00131}     QHBoxLayout *\hyperlink{a00080_a3b24c4bb360d79ae2e886fe63c8fdac7}{horizontalLayout\_13};
+\hypertarget{a00139_source_l00132}{}\hyperlink{a00080_ad0a7ea02564c112595f0d30efa75eef2}{00132}     QCheckBox *\hyperlink{a00080_ad0a7ea02564c112595f0d30efa75eef2}{cb\_config\_probablity\_max};
+\hypertarget{a00139_source_l00133}{}\hyperlink{a00080_a137b79e810736643ac4b15e221909871}{00133}     QSpinBox *\hyperlink{a00080_a137b79e810736643ac4b15e221909871}{dSB\_probablity\_max};
+\hypertarget{a00139_source_l00134}{}\hyperlink{a00080_aa53955f35b7d9f3d161525ed8639db84}{00134}     QHBoxLayout *\hyperlink{a00080_aa53955f35b7d9f3d161525ed8639db84}{horizontalLayout\_14};
+\hypertarget{a00139_source_l00135}{}\hyperlink{a00080_a6e32cc42adcf308df94cbbc9ac226f50}{00135}     QCheckBox *\hyperlink{a00080_a6e32cc42adcf308df94cbbc9ac226f50}{cb\_config\_probablity\_min};
+\hypertarget{a00139_source_l00136}{}\hyperlink{a00080_adfd6cf470c736f358c6982f9a635f04f}{00136}     QSpinBox *\hyperlink{a00080_adfd6cf470c736f358c6982f9a635f04f}{dSB\_probablity\_min};
+\hypertarget{a00139_source_l00137}{}\hyperlink{a00080_ac4725768128006ab5bea6e58b67959d0}{00137}     QWidget *\hyperlink{a00080_ac4725768128006ab5bea6e58b67959d0}{layoutWidget\_4};
+\hypertarget{a00139_source_l00138}{}\hyperlink{a00080_afb4ab27a4cd626c64c34ab3651fa8413}{00138}     QHBoxLayout *\hyperlink{a00080_afb4ab27a4cd626c64c34ab3651fa8413}{horizontalLayout\_26};
+\hypertarget{a00139_source_l00139}{}\hyperlink{a00080_a5704296b847187d5975858d04c8c2513}{00139}     QPushButton *\hyperlink{a00080_a5704296b847187d5975858d04c8c2513}{btn\_back\_analisis};
+\hypertarget{a00139_source_l00140}{}\hyperlink{a00080_a231adeaeca96ac21170495bfb1422e5e}{00140}     QPushButton *\hyperlink{a00080_a231adeaeca96ac21170495bfb1422e5e}{btn\_save\_analisis};
+\hypertarget{a00139_source_l00141}{}\hyperlink{a00080_af55cd87dbe0f7d42980b1012f15cae2d}{00141}     QGroupBox *\hyperlink{a00080_af55cd87dbe0f7d42980b1012f15cae2d}{groupBox\_12};
+\hypertarget{a00139_source_l00142}{}\hyperlink{a00080_aa03590dd5aac614bf717649a544c015f}{00142}     QGridLayout *\hyperlink{a00080_aa03590dd5aac614bf717649a544c015f}{gridLayout\_9};
+\hypertarget{a00139_source_l00143}{}\hyperlink{a00080_a1351e317cba7ca711b6b4d2212b6bf36}{00143}     QHBoxLayout *\hyperlink{a00080_a1351e317cba7ca711b6b4d2212b6bf36}{horizontalLayout\_6};
+\hypertarget{a00139_source_l00144}{}\hyperlink{a00080_a89574c631636929702a5928b2a159892}{00144}     QCheckBox *\hyperlink{a00080_a89574c631636929702a5928b2a159892}{cb\_config\_criteria};
+\hypertarget{a00139_source_l00145}{}\hyperlink{a00080_a2af463e4a88fddd219f2e41a386fbd68}{00145}     QComboBox *\hyperlink{a00080_a2af463e4a88fddd219f2e41a386fbd68}{combo\_alarm\_condition};
+\hypertarget{a00139_source_l00146}{}\hyperlink{a00080_a48c3dca01f963265cd2ffca998842e05}{00146}     QWidget *\hyperlink{a00080_a48c3dca01f963265cd2ffca998842e05}{page\_6};
+\hypertarget{a00139_source_l00147}{}\hyperlink{a00080_af183bfbfb9f38bbdd60caf92b15e23dc}{00147}     QLabel *\hyperlink{a00080_af183bfbfb9f38bbdd60caf92b15e23dc}{label\_8};
+\hypertarget{a00139_source_l00148}{}\hyperlink{a00080_a417cb0342ea95d3fe5f7e3f4feeb6515}{00148}     QGroupBox *\hyperlink{a00080_a417cb0342ea95d3fe5f7e3f4feeb6515}{groupBox\_11};
+\hypertarget{a00139_source_l00149}{}\hyperlink{a00080_adbbd44debcfc24db144006951bf7b3e1}{00149}     QGridLayout *\hyperlink{a00080_adbbd44debcfc24db144006951bf7b3e1}{gridLayout\_12};
+\hypertarget{a00139_source_l00150}{}\hyperlink{a00080_a49a16c34d46bb0d66edb10c3b92b226c}{00150}     QHBoxLayout *\hyperlink{a00080_a49a16c34d46bb0d66edb10c3b92b226c}{horizontalLayout\_18};
+\hypertarget{a00139_source_l00151}{}\hyperlink{a00080_a0a83284035ab2dbaeb39946522434986}{00151}     QCheckBox *\hyperlink{a00080_a0a83284035ab2dbaeb39946522434986}{cb\_config\_sv\_mfield};
+\hypertarget{a00139_source_l00152}{}\hyperlink{a00080_a8cfe172f7719cf363fc630c536cad6c3}{00152}     QHBoxLayout *\hyperlink{a00080_a8cfe172f7719cf363fc630c536cad6c3}{horizontalLayout\_17};
+\hypertarget{a00139_source_l00153}{}\hyperlink{a00080_a433ffc427e1103e6c2939f949ee5e5b5}{00153}     QCheckBox *\hyperlink{a00080_a433ffc427e1103e6c2939f949ee5e5b5}{cb\_config\_threshold\_adjust};
+\hypertarget{a00139_source_l00154}{}\hyperlink{a00080_a5a19bc8cf16dd2fbfa87ddaec41e2d75}{00154}     QHBoxLayout *\hyperlink{a00080_a5a19bc8cf16dd2fbfa87ddaec41e2d75}{horizontalLayout\_19};
+\hypertarget{a00139_source_l00155}{}\hyperlink{a00080_a3a93cd0a3f3738aad252d063a8677839}{00155}     QCheckBox *\hyperlink{a00080_a3a93cd0a3f3738aad252d063a8677839}{cb\_config\_sv\_uv};
+\hypertarget{a00139_source_l00156}{}\hyperlink{a00080_a4db3ccfbbf8c5222dd2f042d3073bbe8}{00156}     QCheckBox *\hyperlink{a00080_a4db3ccfbbf8c5222dd2f042d3073bbe8}{cb\_config\_sv\_ir};
+\hypertarget{a00139_source_l00157}{}\hyperlink{a00080_a11b1a1b252036633f800cedbf396286b}{00157}     QWidget *\hyperlink{a00080_a11b1a1b252036633f800cedbf396286b}{layoutWidget\_5};
+\hypertarget{a00139_source_l00158}{}\hyperlink{a00080_acbfe65f9d2895246b00c82c815b5369e}{00158}     QHBoxLayout *\hyperlink{a00080_acbfe65f9d2895246b00c82c815b5369e}{horizontalLayout\_27};
+\hypertarget{a00139_source_l00159}{}\hyperlink{a00080_a39d7e34aed8750622569f0819dd7c8c2}{00159}     QPushButton *\hyperlink{a00080_a39d7e34aed8750622569f0819dd7c8c2}{btn\_cancel\_options};
+\hypertarget{a00139_source_l00160}{}\hyperlink{a00080_a409e5b794dbab22d7b958be406b6a030}{00160}     QPushButton *\hyperlink{a00080_a409e5b794dbab22d7b958be406b6a030}{btn\_save\_options};
+\hypertarget{a00139_source_l00161}{}\hyperlink{a00080_a2a58b14a203be787ef1600453f795d71}{00161}     QWidget *\hyperlink{a00080_a2a58b14a203be787ef1600453f795d71}{page\_7};
+\hypertarget{a00139_source_l00162}{}\hyperlink{a00080_ad05944ce9c8afb0ab60549a326b8e0af}{00162}     QPushButton *\hyperlink{a00080_ad05944ce9c8afb0ab60549a326b8e0af}{btn\_set\_emu\_data};
+\hypertarget{a00139_source_l00163}{}\hyperlink{a00080_a873441ec9cec68e0d4eacee271765553}{00163}     QWidget *\hyperlink{a00080_a873441ec9cec68e0d4eacee271765553}{layoutWidget\_2};
+\hypertarget{a00139_source_l00164}{}\hyperlink{a00080_a9403b9a7c13814220caeb1748ef9e672}{00164}     QHBoxLayout *\hyperlink{a00080_a9403b9a7c13814220caeb1748ef9e672}{horizontalLayout\_24};
+\hypertarget{a00139_source_l00165}{}\hyperlink{a00080_ab6199bde688a9b2e91e192278190dda7}{00165}     QPushButton *\hyperlink{a00080_ab6199bde688a9b2e91e192278190dda7}{btn\_back\_emu\_data};
+\hypertarget{a00139_source_l00166}{}\hyperlink{a00080_a11126ea7922009f1354c9bfefb93f5e9}{00166}     QPushButton *\hyperlink{a00080_a11126ea7922009f1354c9bfefb93f5e9}{btn\_nxt\_emu\_data};
+\hypertarget{a00139_source_l00167}{}\hyperlink{a00080_a3c12d0504a310784c3820d1a9ad469c2}{00167}     QGroupBox *\hyperlink{a00080_a3c12d0504a310784c3820d1a9ad469c2}{gBox\_range};
+\hypertarget{a00139_source_l00168}{}\hyperlink{a00080_a0c01bad60d9f422a1258e710635a2f65}{00168}     QVBoxLayout *\hyperlink{a00080_a0c01bad60d9f422a1258e710635a2f65}{verticalLayout\_2};
+\hypertarget{a00139_source_l00169}{}\hyperlink{a00080_a03ce63974cc69b067c91bbf285cceca8}{00169}     QHBoxLayout *\hyperlink{a00080_a03ce63974cc69b067c91bbf285cceca8}{horizontalLayout\_3};
+\hypertarget{a00139_source_l00170}{}\hyperlink{a00080_a38b8a4b887f3b58e2a49e7905ae6f1f0}{00170}     QVBoxLayout *\hyperlink{a00080_a38b8a4b887f3b58e2a49e7905ae6f1f0}{verticalLayout\_3};
+\hypertarget{a00139_source_l00171}{}\hyperlink{a00080_a0376fd90247280e7c7957cc70628708c}{00171}     QLabel *\hyperlink{a00080_a0376fd90247280e7c7957cc70628708c}{label\_3};
+\hypertarget{a00139_source_l00172}{}\hyperlink{a00080_acb4d6609c580645dac5aee1f1ad59d01}{00172}     QSpinBox *\hyperlink{a00080_acb4d6609c580645dac5aee1f1ad59d01}{spinBox\_start};
+\hypertarget{a00139_source_l00173}{}\hyperlink{a00080_a6f40fc110b15410c00837a446d57bdbe}{00173}     QVBoxLayout *\hyperlink{a00080_a6f40fc110b15410c00837a446d57bdbe}{verticalLayout\_4};
+\hypertarget{a00139_source_l00174}{}\hyperlink{a00080_a78c7e10730b43c6700cd7216911ed76a}{00174}     QLabel *\hyperlink{a00080_a78c7e10730b43c6700cd7216911ed76a}{label\_4};
+\hypertarget{a00139_source_l00175}{}\hyperlink{a00080_a8ebeb5caa10878d7806d1f548913b449}{00175}     QSpinBox *\hyperlink{a00080_a8ebeb5caa10878d7806d1f548913b449}{spinBox\_end};
+\hypertarget{a00139_source_l00176}{}\hyperlink{a00080_ac8a083c4b66fb317a9b538409ce412e2}{00176}     QDockWidget *\hyperlink{a00080_ac8a083c4b66fb317a9b538409ce412e2}{dockWidget};
+\hypertarget{a00139_source_l00177}{}\hyperlink{a00080_a765ded8236736213d556f6f91941808e}{00177}     QWidget *\hyperlink{a00080_a765ded8236736213d556f6f91941808e}{dockWidgetContents};
+\hypertarget{a00139_source_l00178}{}\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{00178}     \hyperlink{a00005}{Console} *\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal};
+\hypertarget{a00139_source_l00179}{}\hyperlink{a00080_a2be1c24ec9adfca18e1dcc951931457f}{00179}     QMenuBar *\hyperlink{a00080_a2be1c24ec9adfca18e1dcc951931457f}{menuBar};
+\hypertarget{a00139_source_l00180}{}\hyperlink{a00080_a08372e1c0820afb98e2cdf98d1738036}{00180}     QMenu *\hyperlink{a00080_a08372e1c0820afb98e2cdf98d1738036}{menuConnection};
+\hypertarget{a00139_source_l00181}{}\hyperlink{a00080_a552c7b6d729252c2768c9a077679fef7}{00181}     QMenu *\hyperlink{a00080_a552c7b6d729252c2768c9a077679fef7}{menuTools};
+\hypertarget{a00139_source_l00182}{}\hyperlink{a00080_ab95dbfbb0550206aeac76db36f491548}{00182}     QMenu *\hyperlink{a00080_ab95dbfbb0550206aeac76db36f491548}{menuHelp};
+\hypertarget{a00139_source_l00183}{}\hyperlink{a00080_a50fa481337604bcc8bf68de18ab16ecd}{00183}     QStatusBar *\hyperlink{a00080_a50fa481337604bcc8bf68de18ab16ecd}{statusBar};
+\hypertarget{a00139_source_l00184}{}\hyperlink{a00080_ab84dc49349f514d7b7d3fe8e78de069b}{00184}     QToolBar *\hyperlink{a00080_ab84dc49349f514d7b7d3fe8e78de069b}{toolBar};
+\hypertarget{a00139_source_l00185}{}\hyperlink{a00080_a19105d0d919fa33b5f29f7677bbab054}{00185}     QDockWidget *\hyperlink{a00080_a19105d0d919fa33b5f29f7677bbab054}{dock\_central};
+\hypertarget{a00139_source_l00186}{}\hyperlink{a00080_aee633ff4cf1f7b57d7490ac2abf023de}{00186}     QWidget *\hyperlink{a00080_aee633ff4cf1f7b57d7490ac2abf023de}{dockWidgetContents\_27};
+\hypertarget{a00139_source_l00187}{}\hyperlink{a00080_a525ed3c5fe0784ac502ee222fba4e205}{00187}     QGridLayout *\hyperlink{a00080_a525ed3c5fe0784ac502ee222fba4e205}{gridLayout};
+\hypertarget{a00139_source_l00188}{}\hyperlink{a00080_a7e6140f8a0c9dd88512918a04bc46441}{00188}     QWidget *\hyperlink{a00080_a7e6140f8a0c9dd88512918a04bc46441}{widget\_20};
+\hypertarget{a00139_source_l00189}{}\hyperlink{a00080_aa9ccdb529e4396a7c1d52c07add8e4ab}{00189}     QGridLayout *\hyperlink{a00080_aa9ccdb529e4396a7c1d52c07add8e4ab}{gridLayout\_153};
+\hypertarget{a00139_source_l00190}{}\hyperlink{a00080_ab5c037236f041a2a7753d3e4efd3d0e8}{00190}     QLabel *\hyperlink{a00080_ab5c037236f041a2a7753d3e4efd3d0e8}{centralLogo};
+00191 
+\hypertarget{a00139_source_l00192}{}\hyperlink{a00080_acf4a0872c4c77d8f43a2ec66ed849b58}{00192}     \textcolor{keywordtype}{void} \hyperlink{a00080_acf4a0872c4c77d8f43a2ec66ed849b58}{setupUi}(\hyperlink{a00058}{QMainWindow} *\hyperlink{a00017}{MainWindow})
+00193     \{
+00194         \textcolor{keywordflow}{if} (MainWindow->objectName().isEmpty())
+00195             MainWindow->setObjectName(QStringLiteral(\textcolor{stringliteral}{"MainWindow"}));
+00196         MainWindow->resize(419, 665);
+00197         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+00198         sizePolicy.setHorizontalStretch(0);
+00199         sizePolicy.setVerticalStretch(0);
+00200         sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+00201         MainWindow->setSizePolicy(sizePolicy);
+00202         MainWindow->setMinimumSize(QSize(0, 0));
+00203         MainWindow->setMaximumSize(QSize(16777215, 16777215));
+00204         QIcon icon;
+00205         icon.addFile(QStringLiteral(\textcolor{stringliteral}{":/logo/logo"}), QSize(), QIcon::Normal, QIcon::Off);
+00206         MainWindow->setWindowIcon(icon);
+00207         actionConnect = \textcolor{keyword}{new} QAction(MainWindow);
+00208         actionConnect->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionConnect"}));
+00209         QIcon icon1;
+00210         icon1.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/connect"}), QSize(), QIcon::Normal, QIcon::Off);
+00211         actionConnect->setIcon(icon1);
+00212         actionDisconnect = \textcolor{keyword}{new} QAction(MainWindow);
+00213         actionDisconnect->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionDisconnect"}));
+00214         QIcon icon2;
+00215         icon2.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/disconnect"}), QSize(), QIcon::Normal, QIcon::Off);
+00216         actionDisconnect->setIcon(icon2);
+00217         actionQuit = \textcolor{keyword}{new} QAction(MainWindow);
+00218         actionQuit->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionQuit"}));
+00219         QIcon icon3;
+00220         icon3.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/exit"}), QSize(), QIcon::Normal, QIcon::Off);
+00221         actionQuit->setIcon(icon3);
+00222         actionConfigure = \textcolor{keyword}{new} QAction(MainWindow);
+00223         actionConfigure->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionConfigure"}));
+00224         QIcon icon4;
+00225         icon4.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/setting"}), QSize(), QIcon::Normal, QIcon::Off);
+00226         actionConfigure->setIcon(icon4);
+00227         actionConfigure->setText(QStringLiteral(\textcolor{stringliteral}{"Serial Configure"}));
+00228         actionClear = \textcolor{keyword}{new} QAction(MainWindow);
+00229         actionClear->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionClear"}));
+00230         QIcon icon5;
+00231         icon5.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/clear"}), QSize(), QIcon::Normal, QIcon::Off);
+00232         actionClear->setIcon(icon5);
+00233         actionAbout = \textcolor{keyword}{new} QAction(MainWindow);
+00234         actionAbout->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionAbout"}));
+00235         actionOpen = \textcolor{keyword}{new} QAction(MainWindow);
+00236         actionOpen->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionOpen"}));
+00237         QIcon icon6;
+00238         icon6.addFile(QStringLiteral(\textcolor{stringliteral}{":/logo/icons/open\_file-icon.gif"}), QSize(), QIcon::Normal, QIcon::Off
+      );
+00239         actionOpen->setIcon(icon6);
+00240         actionCommands = \textcolor{keyword}{new} QAction(MainWindow);
+00241         actionCommands->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionCommands"}));
+00242         actionCommands->setCheckable(\textcolor{keyword}{true});
+00243         centralWidget = \textcolor{keyword}{new} QWidget(MainWindow);
+00244         centralWidget->setObjectName(QStringLiteral(\textcolor{stringliteral}{"centralWidget"}));
+00245         dockWidget\_sen\_cmd = \textcolor{keyword}{new} QDockWidget(centralWidget);
+00246         dockWidget\_sen\_cmd->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidget\_sen\_cmd"}));
+00247         dockWidget\_sen\_cmd->setGeometry(QRect(40, 0, 740, 671));
+00248         sizePolicy.setHeightForWidth(dockWidget\_sen\_cmd->sizePolicy().hasHeightForWidth());
+00249         dockWidget\_sen\_cmd->setSizePolicy(sizePolicy);
+00250         dockWidget\_sen\_cmd->setMinimumSize(QSize(740, 344));
+00251         dockWidget\_sen\_cmd->setMaximumSize(QSize(800, 800));
+00252         dockWidget\_sen\_cmd->setAcceptDrops(\textcolor{keyword}{false});
+00253         dockWidget\_sen\_cmd->setFeatures(QDockWidget::AllDockWidgetFeatures);
+00254         dockWidget\_sen\_cmd->setAllowedAreas(Qt::BottomDockWidgetArea|Qt::RightDockWidgetArea|
+      Qt::TopDockWidgetArea);
+00255         dockWidgetContents\_6 = \textcolor{keyword}{new} QWidget();
+00256         dockWidgetContents\_6->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidgetContents\_6"}));
+00257         gridLayout\_2 = \textcolor{keyword}{new} QGridLayout(dockWidgetContents\_6);
+00258         gridLayout\_2->setSpacing(6);
+00259         gridLayout\_2->setContentsMargins(11, 11, 11, 11);
+00260         gridLayout\_2->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_2"}));
+00261         cmd\_list = \textcolor{keyword}{new} QTreeWidget(dockWidgetContents\_6);
+00262         QIcon icon7;
+00263         icon7.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/options.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00264         QTreeWidgetItem *\_\_qtreewidgetitem = \textcolor{keyword}{new} QTreeWidgetItem();
+00265         \_\_qtreewidgetitem->setIcon(0, icon7);
+00266         cmd\_list->setHeaderItem(\_\_qtreewidgetitem);
+00267         QIcon icon8;
+00268         icon8.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/Address"}), QSize(), QIcon::Normal, QIcon::Off);
+00269         QIcon icon9;
+00270         icon9.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/sys\_info"}), QSize(), QIcon::Normal, QIcon::Off);
+00271         QIcon icon10;
+00272         icon10.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/signal.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00273         QIcon icon11;
+00274         icon11.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/calculation.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00275         QIcon icon12;
+00276         icon12.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/system\_options.jpg"}), QSize(), QIcon::Normal, 
+      QIcon::Off);
+00277         QIcon icon13;
+00278         icon13.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/default.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00279         QIcon icon14;
+00280         icon14.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/upload.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00281         QIcon icon15;
+00282         icon15.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/confirm.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00283         QIcon icon16;
+00284         icon16.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/Download"}), QSize(), QIcon::Normal, QIcon::Off);
+00285         QIcon icon17;
+00286         icon17.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/conditional.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00287         QIcon icon18;
+00288         icon18.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/reset.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00289         QIcon icon19;
+00290         icon19.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/clear\_data.jpg"}), QSize(), QIcon::Normal, QIcon::Off);
+00291         QIcon icon20;
+00292         icon20.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/sv\_status.png"}), QSize(), QIcon::Normal, QIcon::Off);
+00293         QTreeWidgetItem *\_\_qtreewidgetitem1 = \textcolor{keyword}{new} QTreeWidgetItem(cmd\_list);
+00294         \_\_qtreewidgetitem1->setIcon(0, icon4);
+00295         QTreeWidgetItem *\_\_qtreewidgetitem2 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem1);
+00296         \_\_qtreewidgetitem2->setIcon(0, icon8);
+00297         QTreeWidgetItem *\_\_qtreewidgetitem3 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem1);
+00298         \_\_qtreewidgetitem3->setIcon(0, icon9);
+00299         QTreeWidgetItem *\_\_qtreewidgetitem4 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem1);
+00300         \_\_qtreewidgetitem4->setIcon(0, icon10);
+00301         QTreeWidgetItem *\_\_qtreewidgetitem5 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem1);
+00302         \_\_qtreewidgetitem5->setIcon(0, icon11);
+00303         QTreeWidgetItem *\_\_qtreewidgetitem6 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem1);
+00304         \_\_qtreewidgetitem6->setIcon(0, icon12);
+00305         QTreeWidgetItem *\_\_qtreewidgetitem7 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem1);
+00306         \_\_qtreewidgetitem7->setIcon(0, icon13);
+00307         QTreeWidgetItem *\_\_qtreewidgetitem8 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem1);
+00308         \_\_qtreewidgetitem8->setIcon(0, icon14);
+00309         QTreeWidgetItem *\_\_qtreewidgetitem9 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem1);
+00310         \_\_qtreewidgetitem9->setIcon(0, icon15);
+00311         QTreeWidgetItem *\_\_qtreewidgetitem10 = \textcolor{keyword}{new} QTreeWidgetItem(cmd\_list);
+00312         \_\_qtreewidgetitem10->setIcon(0, icon14);
+00313         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem10);
+00314         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem10);
+00315         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem10);
+00316         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem10);
+00317         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem10);
+00318         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem10);
+00319         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem10);
+00320         QTreeWidgetItem *\_\_qtreewidgetitem11 = \textcolor{keyword}{new} QTreeWidgetItem(cmd\_list);
+00321         \_\_qtreewidgetitem11->setIcon(0, icon16);
+00322         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00323         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00324         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00325         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00326         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00327         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00328         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00329         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00330         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00331         \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem11);
+00332         QTreeWidgetItem *\_\_qtreewidgetitem12 = \textcolor{keyword}{new} QTreeWidgetItem(cmd\_list);
+00333         \_\_qtreewidgetitem12->setIcon(0, icon17);
+00334         QTreeWidgetItem *\_\_qtreewidgetitem13 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem12);
+00335         \_\_qtreewidgetitem13->setIcon(0, icon18);
+00336         QTreeWidgetItem *\_\_qtreewidgetitem14 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem12);
+00337         \_\_qtreewidgetitem14->setIcon(0, icon19);
+00338         QTreeWidgetItem *\_\_qtreewidgetitem15 = \textcolor{keyword}{new} QTreeWidgetItem(\_\_qtreewidgetitem12);
+00339         \_\_qtreewidgetitem15->setIcon(0, icon20);
+00340         cmd\_list->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cmd\_list"}));
+00341         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Expanding);
+00342         sizePolicy1.setHorizontalStretch(0);
+00343         sizePolicy1.setVerticalStretch(0);
+00344         sizePolicy1.setHeightForWidth(cmd\_list->sizePolicy().hasHeightForWidth());
+00345         cmd\_list->setSizePolicy(sizePolicy1);
+00346         cmd\_list->setMinimumSize(QSize(300, 0));
+00347         cmd\_list->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+00348         cmd\_list->setEditTriggers(QAbstractItemView::NoEditTriggers);
+00349         cmd\_list->setAlternatingRowColors(\textcolor{keyword}{false});
+00350         cmd\_list->setColumnCount(1);
+00351         cmd\_list->header()->setCascadingSectionResizes(\textcolor{keyword}{true});
+00352         cmd\_list->header()->setHighlightSections(\textcolor{keyword}{true});
+00353         cmd\_list->header()->setProperty(\textcolor{stringliteral}{"showSortIndicator"}, QVariant(\textcolor{keyword}{false}));
+00354 
+00355         gridLayout\_2->addWidget(cmd\_list, 0, 0, 2, 1);
+00356 
+00357         stacked\_widget\_views = \textcolor{keyword}{new} QStackedWidget(dockWidgetContents\_6);
+00358         stacked\_widget\_views->setObjectName(QStringLiteral(\textcolor{stringliteral}{"stacked\_widget\_views"}));
+00359         QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+00360         sizePolicy2.setHorizontalStretch(0);
+00361         sizePolicy2.setVerticalStretch(0);
+00362         sizePolicy2.setHeightForWidth(stacked\_widget\_views->sizePolicy().hasHeightForWidth());
+00363         stacked\_widget\_views->setSizePolicy(sizePolicy2);
+00364         page = \textcolor{keyword}{new} QWidget();
+00365         page->setObjectName(QStringLiteral(\textcolor{stringliteral}{"page"}));
+00366         stacked\_widget\_views->addWidget(page);
+00367         page\_2 = \textcolor{keyword}{new} QWidget();
+00368         page\_2->setObjectName(QStringLiteral(\textcolor{stringliteral}{"page\_2"}));
+00369         gridLayout\_4 = \textcolor{keyword}{new} QGridLayout(page\_2);
+00370         gridLayout\_4->setSpacing(6);
+00371         gridLayout\_4->setContentsMargins(11, 11, 11, 11);
+00372         gridLayout\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_4"}));
+00373         gBox\_cmd = \textcolor{keyword}{new} QGroupBox(page\_2);
+00374         gBox\_cmd->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gBox\_cmd"}));
+00375         QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+00376         sizePolicy3.setHorizontalStretch(0);
+00377         sizePolicy3.setVerticalStretch(0);
+00378         sizePolicy3.setHeightForWidth(gBox\_cmd->sizePolicy().hasHeightForWidth());
+00379         gBox\_cmd->setSizePolicy(sizePolicy3);
+00380         gBox\_cmd->setMinimumSize(QSize(389, 180));
+00381         verticalLayout\_6 = \textcolor{keyword}{new} QVBoxLayout(gBox\_cmd);
+00382         verticalLayout\_6->setSpacing(6);
+00383         verticalLayout\_6->setContentsMargins(11, 11, 11, 11);
+00384         verticalLayout\_6->setObjectName(QStringLiteral(\textcolor{stringliteral}{"verticalLayout\_6"}));
+00385         groupBox\_3 = \textcolor{keyword}{new} QGroupBox(gBox\_cmd);
+00386         groupBox\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"groupBox\_3"}));
+00387         QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Fixed);
+00388         sizePolicy4.setHorizontalStretch(0);
+00389         sizePolicy4.setVerticalStretch(0);
+00390         sizePolicy4.setHeightForWidth(groupBox\_3->sizePolicy().hasHeightForWidth());
+00391         groupBox\_3->setSizePolicy(sizePolicy4);
+00392         groupBox\_3->setMinimumSize(QSize(361, 100));
+00393         groupBox\_3->setMaximumSize(QSize(16777215, 91));
+00394         layoutWidget = \textcolor{keyword}{new} QWidget(groupBox\_3);
+00395         layoutWidget->setObjectName(QStringLiteral(\textcolor{stringliteral}{"layoutWidget"}));
+00396         layoutWidget->setGeometry(QRect(10, 30, 331, 51));
+00397         verticalLayout = \textcolor{keyword}{new} QVBoxLayout(layoutWidget);
+00398         verticalLayout->setSpacing(6);
+00399         verticalLayout->setContentsMargins(11, 11, 11, 11);
+00400         verticalLayout->setObjectName(QStringLiteral(\textcolor{stringliteral}{"verticalLayout"}));
+00401         verticalLayout->setContentsMargins(0, 0, 0, 0);
+00402         horizontalLayout\_2 = \textcolor{keyword}{new} QHBoxLayout();
+00403         horizontalLayout\_2->setSpacing(6);
+00404         horizontalLayout\_2->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_2"}));
+00405         label = \textcolor{keyword}{new} QLabel(layoutWidget);
+00406         label->setObjectName(QStringLiteral(\textcolor{stringliteral}{"label"}));
+00407 
+00408         horizontalLayout\_2->addWidget(label);
+00409 
+00410         label\_2 = \textcolor{keyword}{new} QLabel(layoutWidget);
+00411         label\_2->setObjectName(QStringLiteral(\textcolor{stringliteral}{"label\_2"}));
+00412 
+00413         horizontalLayout\_2->addWidget(label\_2);
+00414 
+00415 
+00416         verticalLayout->addLayout(horizontalLayout\_2);
+00417 
+00418         horizontalLayout = \textcolor{keyword}{new} QHBoxLayout();
+00419         horizontalLayout->setSpacing(6);
+00420         horizontalLayout->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout"}));
+00421         combo\_Ch = \textcolor{keyword}{new} QComboBox(layoutWidget);
+00422         combo\_Ch->setObjectName(QStringLiteral(\textcolor{stringliteral}{"combo\_Ch"}));
+00423         combo\_Ch->setEditable(\textcolor{keyword}{false});
+00424 
+00425         horizontalLayout->addWidget(combo\_Ch);
+00426 
+00427         combo\_Sen = \textcolor{keyword}{new} QComboBox(layoutWidget);
+00428         combo\_Sen->setObjectName(QStringLiteral(\textcolor{stringliteral}{"combo\_Sen"}));
+00429         combo\_Sen->setEditable(\textcolor{keyword}{true});
+00430 
+00431         horizontalLayout->addWidget(combo\_Sen);
+00432 
+00433 
+00434         verticalLayout->addLayout(horizontalLayout);
+00435 
+00436 
+00437         verticalLayout\_6->addWidget(groupBox\_3);
+00438 
+00439         verticalLayout\_5 = \textcolor{keyword}{new} QVBoxLayout();
+00440         verticalLayout\_5->setSpacing(6);
+00441         verticalLayout\_5->setObjectName(QStringLiteral(\textcolor{stringliteral}{"verticalLayout\_5"}));
+00442         sArea\_progress\_view = \textcolor{keyword}{new} QScrollArea(gBox\_cmd);
+00443         sArea\_progress\_view->setObjectName(QStringLiteral(\textcolor{stringliteral}{"sArea\_progress\_view"}));
+00444         sArea\_progress\_view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+00445         sArea\_progress\_view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+00446         sArea\_progress\_view->setWidgetResizable(\textcolor{keyword}{true});
+00447         scrollAreaWidgetContents = \textcolor{keyword}{new} QWidget();
+00448         scrollAreaWidgetContents->setObjectName(QStringLiteral(\textcolor{stringliteral}{"scrollAreaWidgetContents"}));
+00449         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 340, 31));
+00450         gridLayout\_3 = \textcolor{keyword}{new} QGridLayout(scrollAreaWidgetContents);
+00451         gridLayout\_3->setSpacing(6);
+00452         gridLayout\_3->setContentsMargins(11, 11, 11, 11);
+00453         gridLayout\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_3"}));
+00454         sAreaVLayout = \textcolor{keyword}{new} QVBoxLayout();
+00455         sAreaVLayout->setSpacing(0);
+00456         sAreaVLayout->setObjectName(QStringLiteral(\textcolor{stringliteral}{"sAreaVLayout"}));
+00457 
+00458         gridLayout\_3->addLayout(sAreaVLayout, 0, 0, 1, 1);
+00459 
+00460         verticalSpacer = \textcolor{keyword}{new} QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+00461 
+00462         gridLayout\_3->addItem(verticalSpacer, 1, 0, 1, 1);
+00463 
+00464         sArea\_progress\_view->setWidget(scrollAreaWidgetContents);
+00465 
+00466         verticalLayout\_5->addWidget(sArea\_progress\_view);
+00467 
+00468         verticalSpacer\_progress\_view = \textcolor{keyword}{new} QSpacerItem(20, 40, QSizePolicy::Minimum, 
+      QSizePolicy::MinimumExpanding);
+00469 
+00470         verticalLayout\_5->addItem(verticalSpacer\_progress\_view);
+00471 
+00472         horizontalLayout\_23 = \textcolor{keyword}{new} QHBoxLayout();
+00473         horizontalLayout\_23->setSpacing(6);
+00474         horizontalLayout\_23->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_23"}));
+00475         btn\_cancel = \textcolor{keyword}{new} QPushButton(gBox\_cmd);
+00476         btn\_cancel->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_cancel"}));
+00477         btn\_cancel->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+00478 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00479 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00480 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00481 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00482 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00483 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00484 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00485 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00486 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00487 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00488 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00489 \textcolor{stringliteral}{"\(\backslash\)n"}
+00490 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00491 \textcolor{stringliteral}{"\(\backslash\)n"}
+00492 \textcolor{stringliteral}{"QPushButton:hover \{\(\backslash\)n"}
+00493 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00494 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+00495 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+00496 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00497 \textcolor{stringliteral}{"\(\backslash\)n"}
+00498 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+00499 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+00500 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+00501 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00502 \textcolor{stringliteral}{"\(\backslash\)n"}
+00503 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+00504 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+00505 \textcolor{stringliteral}{" \}"}));
+00506 
+00507         horizontalLayout\_23->addWidget(btn\_cancel);
+00508 
+00509         btn\_execute\_cmd = \textcolor{keyword}{new} QPushButton(gBox\_cmd);
+00510         btn\_execute\_cmd->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_execute\_cmd"}));
+00511         btn\_execute\_cmd->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+00512 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00513 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00514 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00515 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00516 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00517 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00518 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00519 \textcolor{stringliteral}{"     border-top-left-radius: 4px;\(\backslash\)n"}
+00520 \textcolor{stringliteral}{"     border-top-right-radius: 10px;\(\backslash\)n"}
+00521 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00522 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00523 \textcolor{stringliteral}{"\(\backslash\)n"}
+00524 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00525 \textcolor{stringliteral}{"\(\backslash\)n"}
+00526 \textcolor{stringliteral}{"\(\backslash\)n"}
+00527 \textcolor{stringliteral}{" \(\backslash\)n"}
+00528 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+00529 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00530 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+00531 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+00532 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00533 \textcolor{stringliteral}{"\(\backslash\)n"}
+00534 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+00535 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+00536 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+00537 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00538 \textcolor{stringliteral}{"\(\backslash\)n"}
+00539 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+00540 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+00541 \textcolor{stringliteral}{" \}"}));
+00542 
+00543         horizontalLayout\_23->addWidget(btn\_execute\_cmd);
+00544 
+00545 
+00546         verticalLayout\_5->addLayout(horizontalLayout\_23);
+00547 
+00548 
+00549         verticalLayout\_6->addLayout(verticalLayout\_5);
+00550 
+00551 
+00552         gridLayout\_4->addWidget(gBox\_cmd, 0, 0, 1, 1);
+00553 
+00554         stacked\_widget\_views->addWidget(page\_2);
+00555         page\_3 = \textcolor{keyword}{new} QWidget();
+00556         page\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"page\_3"}));
+00557         groupBox\_4 = \textcolor{keyword}{new} QGroupBox(page\_3);
+00558         groupBox\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"groupBox\_4"}));
+00559         groupBox\_4->setGeometry(QRect(10, 170, 376, 111));
+00560         QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
+00561         sizePolicy5.setHorizontalStretch(0);
+00562         sizePolicy5.setVerticalStretch(0);
+00563         sizePolicy5.setHeightForWidth(groupBox\_4->sizePolicy().hasHeightForWidth());
+00564         groupBox\_4->setSizePolicy(sizePolicy5);
+00565         groupBox\_4->setMinimumSize(QSize(361, 100));
+00566         groupBox\_4->setMaximumSize(QSize(16777215, 16777215));
+00567         gridLayout\_5 = \textcolor{keyword}{new} QGridLayout(groupBox\_4);
+00568         gridLayout\_5->setSpacing(6);
+00569         gridLayout\_5->setContentsMargins(11, 11, 11, 11);
+00570         gridLayout\_5->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_5"}));
+00571         horizontalLayout\_4 = \textcolor{keyword}{new} QHBoxLayout();
+00572         horizontalLayout\_4->setSpacing(6);
+00573         horizontalLayout\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_4"}));
+00574         cb\_config\_ir\_max = \textcolor{keyword}{new} QCheckBox(groupBox\_4);
+00575         cb\_config\_ir\_max->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_ir\_max"}));
+00576         sizePolicy5.setHeightForWidth(cb\_config\_ir\_max->sizePolicy().hasHeightForWidth());
+00577         cb\_config\_ir\_max->setSizePolicy(sizePolicy5);
+00578         cb\_config\_ir\_max->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+00579 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00580 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00581 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00582 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00583 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00584 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00585 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00586 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00587 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00588 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00589 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00590 \textcolor{stringliteral}{"\(\backslash\)n"}
+00591 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00592 \textcolor{stringliteral}{"\(\backslash\)n"}
+00593 \textcolor{stringliteral}{"\(\backslash\)n"}
+00594 \textcolor{stringliteral}{" "}));
+00595 
+00596         horizontalLayout\_4->addWidget(cb\_config\_ir\_max);
+00597 
+00598         dSB\_ir\_max = \textcolor{keyword}{new} QSpinBox(groupBox\_4);
+00599         dSB\_ir\_max->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_ir\_max"}));
+00600         QSizePolicy sizePolicy6(QSizePolicy::Fixed, QSizePolicy::Preferred);
+00601         sizePolicy6.setHorizontalStretch(0);
+00602         sizePolicy6.setVerticalStretch(0);
+00603         sizePolicy6.setHeightForWidth(dSB\_ir\_max->sizePolicy().hasHeightForWidth());
+00604         dSB\_ir\_max->setSizePolicy(sizePolicy6);
+00605         dSB\_ir\_max->setMinimumSize(QSize(100, 0));
+00606         dSB\_ir\_max->setMaximum(3000);
+00607 
+00608         horizontalLayout\_4->addWidget(dSB\_ir\_max);
+00609 
+00610 
+00611         gridLayout\_5->addLayout(horizontalLayout\_4, 0, 0, 1, 1);
+00612 
+00613         horizontalLayout\_5 = \textcolor{keyword}{new} QHBoxLayout();
+00614         horizontalLayout\_5->setSpacing(6);
+00615         horizontalLayout\_5->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_5"}));
+00616         cb\_config\_uv\_max = \textcolor{keyword}{new} QCheckBox(groupBox\_4);
+00617         cb\_config\_uv\_max->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_uv\_max"}));
+00618         sizePolicy5.setHeightForWidth(cb\_config\_uv\_max->sizePolicy().hasHeightForWidth());
+00619         cb\_config\_uv\_max->setSizePolicy(sizePolicy5);
+00620         cb\_config\_uv\_max->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+00621 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00622 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00623 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00624 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00625 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00626 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00627 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00628 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00629 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00630 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00631 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00632 \textcolor{stringliteral}{"\(\backslash\)n"}
+00633 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00634 \textcolor{stringliteral}{"\(\backslash\)n"}
+00635 \textcolor{stringliteral}{"\(\backslash\)n"}
+00636 \textcolor{stringliteral}{""}));
+00637 
+00638         horizontalLayout\_5->addWidget(cb\_config\_uv\_max);
+00639 
+00640         dSB\_uv\_max = \textcolor{keyword}{new} QSpinBox(groupBox\_4);
+00641         dSB\_uv\_max->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_uv\_max"}));
+00642         sizePolicy6.setHeightForWidth(dSB\_uv\_max->sizePolicy().hasHeightForWidth());
+00643         dSB\_uv\_max->setSizePolicy(sizePolicy6);
+00644         dSB\_uv\_max->setMinimumSize(QSize(100, 0));
+00645         dSB\_uv\_max->setMaximum(60000);
+00646 
+00647         horizontalLayout\_5->addWidget(dSB\_uv\_max);
+00648 
+00649 
+00650         gridLayout\_5->addLayout(horizontalLayout\_5, 1, 0, 1, 1);
+00651 
+00652         label\_5 = \textcolor{keyword}{new} QLabel(page\_3);
+00653         label\_5->setObjectName(QStringLiteral(\textcolor{stringliteral}{"label\_5"}));
+00654         label\_5->setGeometry(QRect(20, 30, 381, 131));
+00655         label\_5->setTextFormat(Qt::RichText);
+00656         label\_5->setScaledContents(\textcolor{keyword}{true});
+00657         label\_5->setWordWrap(\textcolor{keyword}{true});
+00658         layoutWidget1 = \textcolor{keyword}{new} QWidget(page\_3);
+00659         layoutWidget1->setObjectName(QStringLiteral(\textcolor{stringliteral}{"layoutWidget1"}));
+00660         layoutWidget1->setGeometry(QRect(10, 590, 381, 36));
+00661         horizontalLayout\_22 = \textcolor{keyword}{new} QHBoxLayout(layoutWidget1);
+00662         horizontalLayout\_22->setSpacing(6);
+00663         horizontalLayout\_22->setContentsMargins(11, 11, 11, 11);
+00664         horizontalLayout\_22->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_22"}));
+00665         horizontalLayout\_22->setContentsMargins(0, 0, 0, 0);
+00666         btn\_back\_thresholds = \textcolor{keyword}{new} QPushButton(layoutWidget1);
+00667         btn\_back\_thresholds->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_back\_thresholds"}));
+00668         btn\_back\_thresholds->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+00669 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00670 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00671 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00672 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00673 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00674 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00675 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00676 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00677 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00678 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00679 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00680 \textcolor{stringliteral}{"\(\backslash\)n"}
+00681 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00682 \textcolor{stringliteral}{"\(\backslash\)n"}
+00683 \textcolor{stringliteral}{"\(\backslash\)n"}
+00684 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+00685 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00686 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+00687 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+00688 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00689 \textcolor{stringliteral}{"\(\backslash\)n"}
+00690 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+00691 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+00692 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+00693 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00694 \textcolor{stringliteral}{"\(\backslash\)n"}
+00695 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+00696 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+00697 \textcolor{stringliteral}{" \}"}));
+00698 
+00699         horizontalLayout\_22->addWidget(btn\_back\_thresholds);
+00700 
+00701         btn\_save\_thresholds = \textcolor{keyword}{new} QPushButton(layoutWidget1);
+00702         btn\_save\_thresholds->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_save\_thresholds"}));
+00703         btn\_save\_thresholds->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+00704 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00705 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00706 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00707 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00708 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00709 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00710 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00711 \textcolor{stringliteral}{"     border-top-left-radius: 4px;\(\backslash\)n"}
+00712 \textcolor{stringliteral}{"     border-top-right-radius: 10px;\(\backslash\)n"}
+00713 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00714 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00715 \textcolor{stringliteral}{"\(\backslash\)n"}
+00716 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00717 \textcolor{stringliteral}{"\(\backslash\)n"}
+00718 \textcolor{stringliteral}{"\(\backslash\)n"}
+00719 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+00720 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00721 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+00722 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+00723 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00724 \textcolor{stringliteral}{"\(\backslash\)n"}
+00725 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+00726 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+00727 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+00728 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00729 \textcolor{stringliteral}{"\(\backslash\)n"}
+00730 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+00731 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+00732 \textcolor{stringliteral}{" \}"}));
+00733 
+00734         horizontalLayout\_22->addWidget(btn\_save\_thresholds);
+00735 
+00736         stacked\_widget\_views->addWidget(page\_3);
+00737         page\_4 = \textcolor{keyword}{new} QWidget();
+00738         page\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"page\_4"}));
+00739         label\_6 = \textcolor{keyword}{new} QLabel(page\_4);
+00740         label\_6->setObjectName(QStringLiteral(\textcolor{stringliteral}{"label\_6"}));
+00741         label\_6->setGeometry(QRect(10, 20, 381, 131));
+00742         label\_6->setTextFormat(Qt::RichText);
+00743         label\_6->setScaledContents(\textcolor{keyword}{true});
+00744         label\_6->setWordWrap(\textcolor{keyword}{true});
+00745         groupBox\_6 = \textcolor{keyword}{new} QGroupBox(page\_4);
+00746         groupBox\_6->setObjectName(QStringLiteral(\textcolor{stringliteral}{"groupBox\_6"}));
+00747         groupBox\_6->setGeometry(QRect(0, 360, 376, 71));
+00748         sizePolicy5.setHeightForWidth(groupBox\_6->sizePolicy().hasHeightForWidth());
+00749         groupBox\_6->setSizePolicy(sizePolicy5);
+00750         groupBox\_6->setMinimumSize(QSize(361, 0));
+00751         groupBox\_6->setMaximumSize(QSize(16777215, 16777215));
+00752         gridLayout\_7 = \textcolor{keyword}{new} QGridLayout(groupBox\_6);
+00753         gridLayout\_7->setSpacing(6);
+00754         gridLayout\_7->setContentsMargins(11, 11, 11, 11);
+00755         gridLayout\_7->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_7"}));
+00756         horizontalLayout\_8 = \textcolor{keyword}{new} QHBoxLayout();
+00757         horizontalLayout\_8->setSpacing(6);
+00758         horizontalLayout\_8->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_8"}));
+00759         cb\_config\_min\_distance = \textcolor{keyword}{new} QCheckBox(groupBox\_6);
+00760         cb\_config\_min\_distance->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_min\_distance"}));
+00761         sizePolicy5.setHeightForWidth(cb\_config\_min\_distance->sizePolicy().hasHeightForWidth());
+00762         cb\_config\_min\_distance->setSizePolicy(sizePolicy5);
+00763         cb\_config\_min\_distance->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+00764 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00765 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00766 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00767 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00768 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00769 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00770 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00771 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00772 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00773 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00774 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00775 \textcolor{stringliteral}{"\(\backslash\)n"}
+00776 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00777 \textcolor{stringliteral}{""}));
+00778 
+00779         horizontalLayout\_8->addWidget(cb\_config\_min\_distance);
+00780 
+00781         dSB\_min\_distance = \textcolor{keyword}{new} QSpinBox(groupBox\_6);
+00782         dSB\_min\_distance->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_min\_distance"}));
+00783         sizePolicy6.setHeightForWidth(dSB\_min\_distance->sizePolicy().hasHeightForWidth());
+00784         dSB\_min\_distance->setSizePolicy(sizePolicy6);
+00785         dSB\_min\_distance->setMinimumSize(QSize(100, 0));
+00786         dSB\_min\_distance->setMinimum(50);
+00787         dSB\_min\_distance->setMaximum(2000);
+00788 
+00789         horizontalLayout\_8->addWidget(dSB\_min\_distance);
+00790 
+00791 
+00792         gridLayout\_7->addLayout(horizontalLayout\_8, 0, 0, 1, 1);
+00793 
+00794         groupBox\_7 = \textcolor{keyword}{new} QGroupBox(page\_4);
+00795         groupBox\_7->setObjectName(QStringLiteral(\textcolor{stringliteral}{"groupBox\_7"}));
+00796         groupBox\_7->setGeometry(QRect(0, 160, 376, 151));
+00797         sizePolicy5.setHeightForWidth(groupBox\_7->sizePolicy().hasHeightForWidth());
+00798         groupBox\_7->setSizePolicy(sizePolicy5);
+00799         groupBox\_7->setMinimumSize(QSize(361, 100));
+00800         groupBox\_7->setMaximumSize(QSize(16777215, 16777215));
+00801         gridLayout\_8 = \textcolor{keyword}{new} QGridLayout(groupBox\_7);
+00802         gridLayout\_8->setSpacing(6);
+00803         gridLayout\_8->setContentsMargins(11, 11, 11, 11);
+00804         gridLayout\_8->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_8"}));
+00805         horizontalLayout\_9 = \textcolor{keyword}{new} QHBoxLayout();
+00806         horizontalLayout\_9->setSpacing(6);
+00807         horizontalLayout\_9->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_9"}));
+00808         cb\_config\_rated\_current = \textcolor{keyword}{new} QCheckBox(groupBox\_7);
+00809         cb\_config\_rated\_current->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_rated\_current"}));
+00810         sizePolicy5.setHeightForWidth(cb\_config\_rated\_current->sizePolicy().hasHeightForWidth());
+00811         cb\_config\_rated\_current->setSizePolicy(sizePolicy5);
+00812         cb\_config\_rated\_current->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+00813 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00814 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00815 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00816 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00817 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00818 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00819 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00820 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00821 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00822 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00823 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00824 \textcolor{stringliteral}{"\(\backslash\)n"}
+00825 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00826 \textcolor{stringliteral}{""}));
+00827 
+00828         horizontalLayout\_9->addWidget(cb\_config\_rated\_current);
+00829 
+00830         dSB\_rated\_current = \textcolor{keyword}{new} QSpinBox(groupBox\_7);
+00831         dSB\_rated\_current->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_rated\_current"}));
+00832         sizePolicy6.setHeightForWidth(dSB\_rated\_current->sizePolicy().hasHeightForWidth());
+00833         dSB\_rated\_current->setSizePolicy(sizePolicy6);
+00834         dSB\_rated\_current->setMinimumSize(QSize(100, 0));
+00835         dSB\_rated\_current->setMaximum(3000);
+00836 
+00837         horizontalLayout\_9->addWidget(dSB\_rated\_current);
+00838 
+00839 
+00840         gridLayout\_8->addLayout(horizontalLayout\_9, 0, 0, 1, 1);
+00841 
+00842         horizontalLayout\_10 = \textcolor{keyword}{new} QHBoxLayout();
+00843         horizontalLayout\_10->setSpacing(6);
+00844         horizontalLayout\_10->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_10"}));
+00845         cb\_config\_sh\_ckt\_current = \textcolor{keyword}{new} QCheckBox(groupBox\_7);
+00846         cb\_config\_sh\_ckt\_current->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_sh\_ckt\_current"}));
+00847         sizePolicy5.setHeightForWidth(cb\_config\_sh\_ckt\_current->sizePolicy().hasHeightForWidth());
+00848         cb\_config\_sh\_ckt\_current->setSizePolicy(sizePolicy5);
+00849         cb\_config\_sh\_ckt\_current->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+00850 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00851 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00852 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00853 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00854 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00855 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00856 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00857 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00858 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00859 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00860 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00861 \textcolor{stringliteral}{"\(\backslash\)n"}
+00862 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00863 \textcolor{stringliteral}{"\(\backslash\)n"}
+00864 \textcolor{stringliteral}{""}));
+00865 
+00866         horizontalLayout\_10->addWidget(cb\_config\_sh\_ckt\_current);
+00867 
+00868         dSB\_sh\_ckt\_current = \textcolor{keyword}{new} QSpinBox(groupBox\_7);
+00869         dSB\_sh\_ckt\_current->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_sh\_ckt\_current"}));
+00870         sizePolicy6.setHeightForWidth(dSB\_sh\_ckt\_current->sizePolicy().hasHeightForWidth());
+00871         dSB\_sh\_ckt\_current->setSizePolicy(sizePolicy6);
+00872         dSB\_sh\_ckt\_current->setMinimumSize(QSize(100, 0));
+00873         dSB\_sh\_ckt\_current->setMaximum(60000);
+00874 
+00875         horizontalLayout\_10->addWidget(dSB\_sh\_ckt\_current);
+00876 
+00877 
+00878         gridLayout\_8->addLayout(horizontalLayout\_10, 1, 0, 1, 1);
+00879 
+00880         horizontalLayout\_16 = \textcolor{keyword}{new} QHBoxLayout();
+00881         horizontalLayout\_16->setSpacing(6);
+00882         horizontalLayout\_16->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_16"}));
+00883         cb\_config\_freq = \textcolor{keyword}{new} QCheckBox(groupBox\_7);
+00884         cb\_config\_freq->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_freq"}));
+00885         sizePolicy5.setHeightForWidth(cb\_config\_freq->sizePolicy().hasHeightForWidth());
+00886         cb\_config\_freq->setSizePolicy(sizePolicy5);
+00887         cb\_config\_freq->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+00888 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00889 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00890 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00891 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00892 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00893 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00894 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00895 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00896 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00897 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00898 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00899 \textcolor{stringliteral}{"\(\backslash\)n"}
+00900 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00901 \textcolor{stringliteral}{"\(\backslash\)n"}
+00902 \textcolor{stringliteral}{""}));
+00903 
+00904         horizontalLayout\_16->addWidget(cb\_config\_freq);
+00905 
+00906         dSB\_freq = \textcolor{keyword}{new} QSpinBox(groupBox\_7);
+00907         dSB\_freq->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_freq"}));
+00908         sizePolicy6.setHeightForWidth(dSB\_freq->sizePolicy().hasHeightForWidth());
+00909         dSB\_freq->setSizePolicy(sizePolicy6);
+00910         dSB\_freq->setMinimumSize(QSize(100, 0));
+00911         dSB\_freq->setMaximum(100);
+00912 
+00913         horizontalLayout\_16->addWidget(dSB\_freq);
+00914 
+00915 
+00916         gridLayout\_8->addLayout(horizontalLayout\_16, 2, 0, 1, 1);
+00917 
+00918         layoutWidget\_3 = \textcolor{keyword}{new} QWidget(page\_4);
+00919         layoutWidget\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"layoutWidget\_3"}));
+00920         layoutWidget\_3->setGeometry(QRect(0, 580, 381, 36));
+00921         horizontalLayout\_25 = \textcolor{keyword}{new} QHBoxLayout(layoutWidget\_3);
+00922         horizontalLayout\_25->setSpacing(6);
+00923         horizontalLayout\_25->setContentsMargins(11, 11, 11, 11);
+00924         horizontalLayout\_25->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_25"}));
+00925         horizontalLayout\_25->setContentsMargins(0, 0, 0, 0);
+00926         btn\_cancel\_sys\_info = \textcolor{keyword}{new} QPushButton(layoutWidget\_3);
+00927         btn\_cancel\_sys\_info->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_cancel\_sys\_info"}));
+00928         btn\_cancel\_sys\_info->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+00929 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00930 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00931 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00932 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00933 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00934 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00935 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00936 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+00937 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+00938 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00939 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00940 \textcolor{stringliteral}{"\(\backslash\)n"}
+00941 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00942 \textcolor{stringliteral}{"\(\backslash\)n"}
+00943 \textcolor{stringliteral}{"\(\backslash\)n"}
+00944 \textcolor{stringliteral}{"\(\backslash\)n"}
+00945 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+00946 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00947 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+00948 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+00949 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00950 \textcolor{stringliteral}{"\(\backslash\)n"}
+00951 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+00952 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+00953 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+00954 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00955 \textcolor{stringliteral}{"\(\backslash\)n"}
+00956 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+00957 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+00958 \textcolor{stringliteral}{" \}"}));
+00959 
+00960         horizontalLayout\_25->addWidget(btn\_cancel\_sys\_info);
+00961 
+00962         btn\_save\_sys\_info = \textcolor{keyword}{new} QPushButton(layoutWidget\_3);
+00963         btn\_save\_sys\_info->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_save\_sys\_info"}));
+00964         btn\_save\_sys\_info->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+00965 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00966 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+00967 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+00968 \textcolor{stringliteral}{"     \(\backslash\)n"}
+00969 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+00970 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+00971 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+00972 \textcolor{stringliteral}{"     border-top-left-radius: 4px;\(\backslash\)n"}
+00973 \textcolor{stringliteral}{"     border-top-right-radius: 10px;\(\backslash\)n"}
+00974 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+00975 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+00976 \textcolor{stringliteral}{"\(\backslash\)n"}
+00977 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+00978 \textcolor{stringliteral}{"\(\backslash\)n"}
+00979 \textcolor{stringliteral}{"\(\backslash\)n"}
+00980 \textcolor{stringliteral}{"\(\backslash\)n"}
+00981 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+00982 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+00983 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+00984 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+00985 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00986 \textcolor{stringliteral}{"\(\backslash\)n"}
+00987 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+00988 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+00989 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+00990 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+00991 \textcolor{stringliteral}{"\(\backslash\)n"}
+00992 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+00993 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+00994 \textcolor{stringliteral}{" \}"}));
+00995 
+00996         horizontalLayout\_25->addWidget(btn\_save\_sys\_info);
+00997 
+00998         stacked\_widget\_views->addWidget(page\_4);
+00999         page\_5 = \textcolor{keyword}{new} QWidget();
+01000         page\_5->setObjectName(QStringLiteral(\textcolor{stringliteral}{"page\_5"}));
+01001         label\_7 = \textcolor{keyword}{new} QLabel(page\_5);
+01002         label\_7->setObjectName(QStringLiteral(\textcolor{stringliteral}{"label\_7"}));
+01003         label\_7->setGeometry(QRect(10, 20, 381, 131));
+01004         label\_7->setTextFormat(Qt::RichText);
+01005         label\_7->setScaledContents(\textcolor{keyword}{true});
+01006         label\_7->setWordWrap(\textcolor{keyword}{true});
+01007         groupBox\_8 = \textcolor{keyword}{new} QGroupBox(page\_5);
+01008         groupBox\_8->setObjectName(QStringLiteral(\textcolor{stringliteral}{"groupBox\_8"}));
+01009         groupBox\_8->setGeometry(QRect(10, 380, 371, 152));
+01010         sizePolicy5.setHeightForWidth(groupBox\_8->sizePolicy().hasHeightForWidth());
+01011         groupBox\_8->setSizePolicy(sizePolicy5);
+01012         groupBox\_8->setMinimumSize(QSize(40, 0));
+01013         groupBox\_8->setMaximumSize(QSize(16777215, 16777215));
+01014         gridLayout\_6 = \textcolor{keyword}{new} QGridLayout(groupBox\_8);
+01015         gridLayout\_6->setSpacing(6);
+01016         gridLayout\_6->setContentsMargins(11, 11, 11, 11);
+01017         gridLayout\_6->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_6"}));
+01018         verticalLayout\_7 = \textcolor{keyword}{new} QVBoxLayout();
+01019         verticalLayout\_7->setSpacing(6);
+01020         verticalLayout\_7->setObjectName(QStringLiteral(\textcolor{stringliteral}{"verticalLayout\_7"}));
+01021         cb\_config\_active\_modules\_ir = \textcolor{keyword}{new} QCheckBox(groupBox\_8);
+01022         cb\_config\_active\_modules\_ir->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_active\_modules\_ir"}));
+01023         sizePolicy5.setHeightForWidth(cb\_config\_active\_modules\_ir->sizePolicy().hasHeightForWidth());
+01024         cb\_config\_active\_modules\_ir->setSizePolicy(sizePolicy5);
+01025         cb\_config\_active\_modules\_ir->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01026 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01027 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01028 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01029 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01030 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01031 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01032 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01033 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01034 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01035 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01036 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01037 \textcolor{stringliteral}{"\(\backslash\)n"}
+01038 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01039 \textcolor{stringliteral}{"\(\backslash\)n"}
+01040 \textcolor{stringliteral}{"\(\backslash\)n"}
+01041 \textcolor{stringliteral}{""}));
+01042 
+01043         verticalLayout\_7->addWidget(cb\_config\_active\_modules\_ir);
+01044 
+01045         cb\_config\_active\_modules\_uv = \textcolor{keyword}{new} QCheckBox(groupBox\_8);
+01046         cb\_config\_active\_modules\_uv->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_active\_modules\_uv"}));
+01047         sizePolicy5.setHeightForWidth(cb\_config\_active\_modules\_uv->sizePolicy().hasHeightForWidth());
+01048         cb\_config\_active\_modules\_uv->setSizePolicy(sizePolicy5);
+01049         cb\_config\_active\_modules\_uv->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01050 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01051 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01052 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01053 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01054 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01055 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01056 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01057 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01058 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01059 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01060 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01061 \textcolor{stringliteral}{"\(\backslash\)n"}
+01062 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01063 \textcolor{stringliteral}{"\(\backslash\)n"}
+01064 \textcolor{stringliteral}{"\(\backslash\)n"}
+01065 \textcolor{stringliteral}{""}));
+01066 
+01067         verticalLayout\_7->addWidget(cb\_config\_active\_modules\_uv);
+01068 
+01069         cb\_config\_active\_modules\_mf = \textcolor{keyword}{new} QCheckBox(groupBox\_8);
+01070         cb\_config\_active\_modules\_mf->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_active\_modules\_mf"}));
+01071         sizePolicy5.setHeightForWidth(cb\_config\_active\_modules\_mf->sizePolicy().hasHeightForWidth());
+01072         cb\_config\_active\_modules\_mf->setSizePolicy(sizePolicy5);
+01073         cb\_config\_active\_modules\_mf->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01074 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01075 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01076 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01077 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01078 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01079 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01080 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01081 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01082 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01083 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01084 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01085 \textcolor{stringliteral}{"\(\backslash\)n"}
+01086 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01087 \textcolor{stringliteral}{"\(\backslash\)n"}
+01088 \textcolor{stringliteral}{"\(\backslash\)n"}
+01089 \textcolor{stringliteral}{""}));
+01090 
+01091         verticalLayout\_7->addWidget(cb\_config\_active\_modules\_mf);
+01092 
+01093 
+01094         gridLayout\_6->addLayout(verticalLayout\_7, 0, 0, 1, 1);
+01095 
+01096         groupBox\_9 = \textcolor{keyword}{new} QGroupBox(page\_5);
+01097         groupBox\_9->setObjectName(QStringLiteral(\textcolor{stringliteral}{"groupBox\_9"}));
+01098         groupBox\_9->setGeometry(QRect(10, 120, 376, 151));
+01099         sizePolicy5.setHeightForWidth(groupBox\_9->sizePolicy().hasHeightForWidth());
+01100         groupBox\_9->setSizePolicy(sizePolicy5);
+01101         groupBox\_9->setMinimumSize(QSize(361, 100));
+01102         groupBox\_9->setMaximumSize(QSize(16777215, 16777215));
+01103         gridLayout\_10 = \textcolor{keyword}{new} QGridLayout(groupBox\_9);
+01104         gridLayout\_10->setSpacing(6);
+01105         gridLayout\_10->setContentsMargins(11, 11, 11, 11);
+01106         gridLayout\_10->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_10"}));
+01107         horizontalLayout\_12 = \textcolor{keyword}{new} QHBoxLayout();
+01108         horizontalLayout\_12->setSpacing(6);
+01109         horizontalLayout\_12->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_12"}));
+01110         cb\_config\_observation\_length = \textcolor{keyword}{new} QCheckBox(groupBox\_9);
+01111         cb\_config\_observation\_length->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_observation\_length"}));
+01112         sizePolicy5.setHeightForWidth(cb\_config\_observation\_length->sizePolicy().hasHeightForWidth());
+01113         cb\_config\_observation\_length->setSizePolicy(sizePolicy5);
+01114         cb\_config\_observation\_length->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01115 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01116 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01117 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01118 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01119 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01120 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01121 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01122 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01123 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01124 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01125 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01126 \textcolor{stringliteral}{"\(\backslash\)n"}
+01127 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01128 \textcolor{stringliteral}{"\(\backslash\)n"}
+01129 \textcolor{stringliteral}{""}));
+01130 
+01131         horizontalLayout\_12->addWidget(cb\_config\_observation\_length);
+01132 
+01133         dSB\_observation\_length = \textcolor{keyword}{new} QSpinBox(groupBox\_9);
+01134         dSB\_observation\_length->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_observation\_length"}));
+01135         sizePolicy6.setHeightForWidth(dSB\_observation\_length->sizePolicy().hasHeightForWidth());
+01136         dSB\_observation\_length->setSizePolicy(sizePolicy6);
+01137         dSB\_observation\_length->setMinimumSize(QSize(100, 0));
+01138         dSB\_observation\_length->setMaximum(200);
+01139 
+01140         horizontalLayout\_12->addWidget(dSB\_observation\_length);
+01141 
+01142 
+01143         gridLayout\_10->addLayout(horizontalLayout\_12, 0, 0, 1, 1);
+01144 
+01145         horizontalLayout\_13 = \textcolor{keyword}{new} QHBoxLayout();
+01146         horizontalLayout\_13->setSpacing(6);
+01147         horizontalLayout\_13->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_13"}));
+01148         cb\_config\_probablity\_max = \textcolor{keyword}{new} QCheckBox(groupBox\_9);
+01149         cb\_config\_probablity\_max->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_probablity\_max"}));
+01150         sizePolicy5.setHeightForWidth(cb\_config\_probablity\_max->sizePolicy().hasHeightForWidth());
+01151         cb\_config\_probablity\_max->setSizePolicy(sizePolicy5);
+01152         cb\_config\_probablity\_max->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01153 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01154 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01155 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01156 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01157 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01158 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01159 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01160 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01161 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01162 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01163 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01164 \textcolor{stringliteral}{"\(\backslash\)n"}
+01165 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01166 \textcolor{stringliteral}{"\(\backslash\)n"}
+01167 \textcolor{stringliteral}{""}));
+01168 
+01169         horizontalLayout\_13->addWidget(cb\_config\_probablity\_max);
+01170 
+01171         dSB\_probablity\_max = \textcolor{keyword}{new} QSpinBox(groupBox\_9);
+01172         dSB\_probablity\_max->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_probablity\_max"}));
+01173         sizePolicy6.setHeightForWidth(dSB\_probablity\_max->sizePolicy().hasHeightForWidth());
+01174         dSB\_probablity\_max->setSizePolicy(sizePolicy6);
+01175         dSB\_probablity\_max->setMinimumSize(QSize(100, 0));
+01176         dSB\_probablity\_max->setMaximum(100);
+01177 
+01178         horizontalLayout\_13->addWidget(dSB\_probablity\_max);
+01179 
+01180 
+01181         gridLayout\_10->addLayout(horizontalLayout\_13, 1, 0, 1, 1);
+01182 
+01183         horizontalLayout\_14 = \textcolor{keyword}{new} QHBoxLayout();
+01184         horizontalLayout\_14->setSpacing(6);
+01185         horizontalLayout\_14->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_14"}));
+01186         cb\_config\_probablity\_min = \textcolor{keyword}{new} QCheckBox(groupBox\_9);
+01187         cb\_config\_probablity\_min->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_probablity\_min"}));
+01188         sizePolicy5.setHeightForWidth(cb\_config\_probablity\_min->sizePolicy().hasHeightForWidth());
+01189         cb\_config\_probablity\_min->setSizePolicy(sizePolicy5);
+01190         cb\_config\_probablity\_min->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01191 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01192 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01193 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01194 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01195 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01196 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01197 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01198 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01199 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01200 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01201 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01202 \textcolor{stringliteral}{"\(\backslash\)n"}
+01203 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01204 \textcolor{stringliteral}{"\(\backslash\)n"}
+01205 \textcolor{stringliteral}{""}));
+01206 
+01207         horizontalLayout\_14->addWidget(cb\_config\_probablity\_min);
+01208 
+01209         dSB\_probablity\_min = \textcolor{keyword}{new} QSpinBox(groupBox\_9);
+01210         dSB\_probablity\_min->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dSB\_probablity\_min"}));
+01211         sizePolicy6.setHeightForWidth(dSB\_probablity\_min->sizePolicy().hasHeightForWidth());
+01212         dSB\_probablity\_min->setSizePolicy(sizePolicy6);
+01213         dSB\_probablity\_min->setMinimumSize(QSize(100, 0));
+01214         dSB\_probablity\_min->setMaximum(100);
+01215 
+01216         horizontalLayout\_14->addWidget(dSB\_probablity\_min);
+01217 
+01218 
+01219         gridLayout\_10->addLayout(horizontalLayout\_14, 2, 0, 1, 1);
+01220 
+01221         layoutWidget\_4 = \textcolor{keyword}{new} QWidget(page\_5);
+01222         layoutWidget\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"layoutWidget\_4"}));
+01223         layoutWidget\_4->setGeometry(QRect(0, 580, 381, 36));
+01224         horizontalLayout\_26 = \textcolor{keyword}{new} QHBoxLayout(layoutWidget\_4);
+01225         horizontalLayout\_26->setSpacing(6);
+01226         horizontalLayout\_26->setContentsMargins(11, 11, 11, 11);
+01227         horizontalLayout\_26->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_26"}));
+01228         horizontalLayout\_26->setContentsMargins(0, 0, 0, 0);
+01229         btn\_back\_analisis = \textcolor{keyword}{new} QPushButton(layoutWidget\_4);
+01230         btn\_back\_analisis->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_back\_analisis"}));
+01231         btn\_back\_analisis->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+01232 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01233 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01234 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01235 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01236 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01237 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01238 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01239 \textcolor{stringliteral}{"     border-top-left-radius: 4px;\(\backslash\)n"}
+01240 \textcolor{stringliteral}{"     border-top-right-radius: 10px;\(\backslash\)n"}
+01241 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01242 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01243 \textcolor{stringliteral}{"\(\backslash\)n"}
+01244 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01245 \textcolor{stringliteral}{"\(\backslash\)n"}
+01246 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+01247 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01248 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+01249 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+01250 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01251 \textcolor{stringliteral}{"\(\backslash\)n"}
+01252 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+01253 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+01254 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+01255 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01256 \textcolor{stringliteral}{"\(\backslash\)n"}
+01257 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+01258 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+01259 \textcolor{stringliteral}{" \}"}));
+01260 
+01261         horizontalLayout\_26->addWidget(btn\_back\_analisis);
+01262 
+01263         btn\_save\_analisis = \textcolor{keyword}{new} QPushButton(layoutWidget\_4);
+01264         btn\_save\_analisis->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_save\_analisis"}));
+01265         btn\_save\_analisis->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+01266 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01267 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01268 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01269 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01270 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01271 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01272 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01273 \textcolor{stringliteral}{"     border-top-left-radius: 4px;\(\backslash\)n"}
+01274 \textcolor{stringliteral}{"     border-top-right-radius: 10px;\(\backslash\)n"}
+01275 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01276 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01277 \textcolor{stringliteral}{"\(\backslash\)n"}
+01278 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01279 \textcolor{stringliteral}{"\(\backslash\)n"}
+01280 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+01281 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01282 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+01283 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+01284 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01285 \textcolor{stringliteral}{"\(\backslash\)n"}
+01286 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+01287 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+01288 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+01289 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01290 \textcolor{stringliteral}{"\(\backslash\)n"}
+01291 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+01292 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+01293 \textcolor{stringliteral}{" \}"}));
+01294 
+01295         horizontalLayout\_26->addWidget(btn\_save\_analisis);
+01296 
+01297         groupBox\_12 = \textcolor{keyword}{new} QGroupBox(page\_5);
+01298         groupBox\_12->setObjectName(QStringLiteral(\textcolor{stringliteral}{"groupBox\_12"}));
+01299         groupBox\_12->setGeometry(QRect(10, 280, 371, 74));
+01300         sizePolicy5.setHeightForWidth(groupBox\_12->sizePolicy().hasHeightForWidth());
+01301         groupBox\_12->setSizePolicy(sizePolicy5);
+01302         groupBox\_12->setMinimumSize(QSize(40, 0));
+01303         groupBox\_12->setMaximumSize(QSize(16777215, 16777215));
+01304         gridLayout\_9 = \textcolor{keyword}{new} QGridLayout(groupBox\_12);
+01305         gridLayout\_9->setSpacing(6);
+01306         gridLayout\_9->setContentsMargins(11, 11, 11, 11);
+01307         gridLayout\_9->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_9"}));
+01308         horizontalLayout\_6 = \textcolor{keyword}{new} QHBoxLayout();
+01309         horizontalLayout\_6->setSpacing(6);
+01310         horizontalLayout\_6->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_6"}));
+01311         cb\_config\_criteria = \textcolor{keyword}{new} QCheckBox(groupBox\_12);
+01312         cb\_config\_criteria->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_criteria"}));
+01313         sizePolicy5.setHeightForWidth(cb\_config\_criteria->sizePolicy().hasHeightForWidth());
+01314         cb\_config\_criteria->setSizePolicy(sizePolicy5);
+01315         cb\_config\_criteria->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01316 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01317 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01318 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01319 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01320 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01321 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01322 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01323 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01324 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01325 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01326 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01327 \textcolor{stringliteral}{"\(\backslash\)n"}
+01328 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01329 \textcolor{stringliteral}{"\(\backslash\)n"}
+01330 \textcolor{stringliteral}{"\(\backslash\)n"}
+01331 \textcolor{stringliteral}{""}));
+01332 
+01333         horizontalLayout\_6->addWidget(cb\_config\_criteria);
+01334 
+01335         combo\_alarm\_condition = \textcolor{keyword}{new} QComboBox(groupBox\_12);
+01336         combo\_alarm\_condition->setObjectName(QStringLiteral(\textcolor{stringliteral}{"combo\_alarm\_condition"}));
+01337         combo\_alarm\_condition->setEditable(\textcolor{keyword}{true});
+01338 
+01339         horizontalLayout\_6->addWidget(combo\_alarm\_condition);
+01340 
+01341 
+01342         gridLayout\_9->addLayout(horizontalLayout\_6, 0, 0, 1, 1);
+01343 
+01344         stacked\_widget\_views->addWidget(page\_5);
+01345         page\_6 = \textcolor{keyword}{new} QWidget();
+01346         page\_6->setObjectName(QStringLiteral(\textcolor{stringliteral}{"page\_6"}));
+01347         label\_8 = \textcolor{keyword}{new} QLabel(page\_6);
+01348         label\_8->setObjectName(QStringLiteral(\textcolor{stringliteral}{"label\_8"}));
+01349         label\_8->setGeometry(QRect(10, 20, 381, 131));
+01350         label\_8->setTextFormat(Qt::RichText);
+01351         label\_8->setScaledContents(\textcolor{keyword}{true});
+01352         label\_8->setWordWrap(\textcolor{keyword}{true});
+01353         groupBox\_11 = \textcolor{keyword}{new} QGroupBox(page\_6);
+01354         groupBox\_11->setObjectName(QStringLiteral(\textcolor{stringliteral}{"groupBox\_11"}));
+01355         groupBox\_11->setGeometry(QRect(10, 30, 376, 191));
+01356         sizePolicy5.setHeightForWidth(groupBox\_11->sizePolicy().hasHeightForWidth());
+01357         groupBox\_11->setSizePolicy(sizePolicy5);
+01358         groupBox\_11->setMinimumSize(QSize(361, 100));
+01359         groupBox\_11->setMaximumSize(QSize(16777215, 16777215));
+01360         gridLayout\_12 = \textcolor{keyword}{new} QGridLayout(groupBox\_11);
+01361         gridLayout\_12->setSpacing(6);
+01362         gridLayout\_12->setContentsMargins(11, 11, 11, 11);
+01363         gridLayout\_12->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_12"}));
+01364         horizontalLayout\_18 = \textcolor{keyword}{new} QHBoxLayout();
+01365         horizontalLayout\_18->setSpacing(6);
+01366         horizontalLayout\_18->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_18"}));
+01367         cb\_config\_sv\_mfield = \textcolor{keyword}{new} QCheckBox(groupBox\_11);
+01368         cb\_config\_sv\_mfield->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_sv\_mfield"}));
+01369         sizePolicy5.setHeightForWidth(cb\_config\_sv\_mfield->sizePolicy().hasHeightForWidth());
+01370         cb\_config\_sv\_mfield->setSizePolicy(sizePolicy5);
+01371         cb\_config\_sv\_mfield->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01372 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01373 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01374 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01375 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01376 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01377 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01378 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01379 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01380 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01381 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01382 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01383 \textcolor{stringliteral}{"\(\backslash\)n"}
+01384 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01385 \textcolor{stringliteral}{"\(\backslash\)n"}
+01386 \textcolor{stringliteral}{""}));
+01387 
+01388         horizontalLayout\_18->addWidget(cb\_config\_sv\_mfield);
+01389 
+01390 
+01391         gridLayout\_12->addLayout(horizontalLayout\_18, 1, 0, 1, 1);
+01392 
+01393         horizontalLayout\_17 = \textcolor{keyword}{new} QHBoxLayout();
+01394         horizontalLayout\_17->setSpacing(6);
+01395         horizontalLayout\_17->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_17"}));
+01396         cb\_config\_threshold\_adjust = \textcolor{keyword}{new} QCheckBox(groupBox\_11);
+01397         cb\_config\_threshold\_adjust->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_threshold\_adjust"}));
+01398         sizePolicy5.setHeightForWidth(cb\_config\_threshold\_adjust->sizePolicy().hasHeightForWidth());
+01399         cb\_config\_threshold\_adjust->setSizePolicy(sizePolicy5);
+01400         cb\_config\_threshold\_adjust->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01401 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01402 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01403 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01404 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01405 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01406 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01407 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01408 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01409 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01410 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01411 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01412 \textcolor{stringliteral}{"\(\backslash\)n"}
+01413 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01414 \textcolor{stringliteral}{"\(\backslash\)n"}
+01415 \textcolor{stringliteral}{"\(\backslash\)n"}
+01416 \textcolor{stringliteral}{""}));
+01417 
+01418         horizontalLayout\_17->addWidget(cb\_config\_threshold\_adjust);
+01419 
+01420 
+01421         gridLayout\_12->addLayout(horizontalLayout\_17, 0, 0, 1, 1);
+01422 
+01423         horizontalLayout\_19 = \textcolor{keyword}{new} QHBoxLayout();
+01424         horizontalLayout\_19->setSpacing(6);
+01425         horizontalLayout\_19->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_19"}));
+01426         cb\_config\_sv\_uv = \textcolor{keyword}{new} QCheckBox(groupBox\_11);
+01427         cb\_config\_sv\_uv->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_sv\_uv"}));
+01428         sizePolicy5.setHeightForWidth(cb\_config\_sv\_uv->sizePolicy().hasHeightForWidth());
+01429         cb\_config\_sv\_uv->setSizePolicy(sizePolicy5);
+01430         cb\_config\_sv\_uv->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01431 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01432 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01433 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01434 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01435 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01436 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01437 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01438 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01439 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01440 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01441 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01442 \textcolor{stringliteral}{"\(\backslash\)n"}
+01443 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01444 \textcolor{stringliteral}{"\(\backslash\)n"}
+01445 \textcolor{stringliteral}{"\(\backslash\)n"}
+01446 \textcolor{stringliteral}{""}));
+01447 
+01448         horizontalLayout\_19->addWidget(cb\_config\_sv\_uv);
+01449 
+01450 
+01451         gridLayout\_12->addLayout(horizontalLayout\_19, 3, 0, 1, 1);
+01452 
+01453         cb\_config\_sv\_ir = \textcolor{keyword}{new} QCheckBox(groupBox\_11);
+01454         cb\_config\_sv\_ir->setObjectName(QStringLiteral(\textcolor{stringliteral}{"cb\_config\_sv\_ir"}));
+01455         sizePolicy5.setHeightForWidth(cb\_config\_sv\_ir->sizePolicy().hasHeightForWidth());
+01456         cb\_config\_sv\_ir->setSizePolicy(sizePolicy5);
+01457         cb\_config\_sv\_ir->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QCheckBox\{\(\backslash\)n"}
+01458 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01459 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01460 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01461 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01462 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01463 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01464 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01465 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01466 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01467 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01468 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01469 \textcolor{stringliteral}{"\(\backslash\)n"}
+01470 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01471 \textcolor{stringliteral}{"\(\backslash\)n"}
+01472 \textcolor{stringliteral}{"\(\backslash\)n"}
+01473 \textcolor{stringliteral}{""}));
+01474 
+01475         gridLayout\_12->addWidget(cb\_config\_sv\_ir, 2, 0, 1, 1);
+01476 
+01477         cb\_config\_sv\_ir->raise();
+01478         layoutWidget\_5 = \textcolor{keyword}{new} QWidget(page\_6);
+01479         layoutWidget\_5->setObjectName(QStringLiteral(\textcolor{stringliteral}{"layoutWidget\_5"}));
+01480         layoutWidget\_5->setGeometry(QRect(0, 580, 381, 36));
+01481         horizontalLayout\_27 = \textcolor{keyword}{new} QHBoxLayout(layoutWidget\_5);
+01482         horizontalLayout\_27->setSpacing(6);
+01483         horizontalLayout\_27->setContentsMargins(11, 11, 11, 11);
+01484         horizontalLayout\_27->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_27"}));
+01485         horizontalLayout\_27->setContentsMargins(0, 0, 0, 0);
+01486         btn\_cancel\_options = \textcolor{keyword}{new} QPushButton(layoutWidget\_5);
+01487         btn\_cancel\_options->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_cancel\_options"}));
+01488         btn\_cancel\_options->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+01489 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01490 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01491 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01492 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01493 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01494 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01495 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01496 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01497 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01498 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01499 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01500 \textcolor{stringliteral}{"\(\backslash\)n"}
+01501 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01502 \textcolor{stringliteral}{"\(\backslash\)n"}
+01503 \textcolor{stringliteral}{"\(\backslash\)n"}
+01504 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+01505 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01506 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+01507 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+01508 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01509 \textcolor{stringliteral}{"\(\backslash\)n"}
+01510 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+01511 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+01512 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+01513 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01514 \textcolor{stringliteral}{"\(\backslash\)n"}
+01515 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+01516 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+01517 \textcolor{stringliteral}{" \}"}));
+01518 
+01519         horizontalLayout\_27->addWidget(btn\_cancel\_options);
+01520 
+01521         btn\_save\_options = \textcolor{keyword}{new} QPushButton(layoutWidget\_5);
+01522         btn\_save\_options->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_save\_options"}));
+01523         btn\_save\_options->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+01524 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01525 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01526 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01527 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01528 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01529 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01530 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01531 \textcolor{stringliteral}{"     border-top-left-radius: 4px;\(\backslash\)n"}
+01532 \textcolor{stringliteral}{"     border-top-right-radius: 10px;\(\backslash\)n"}
+01533 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01534 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01535 \textcolor{stringliteral}{"\(\backslash\)n"}
+01536 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01537 \textcolor{stringliteral}{"\(\backslash\)n"}
+01538 \textcolor{stringliteral}{"\(\backslash\)n"}
+01539 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+01540 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01541 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+01542 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+01543 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01544 \textcolor{stringliteral}{"\(\backslash\)n"}
+01545 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+01546 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+01547 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+01548 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01549 \textcolor{stringliteral}{"\(\backslash\)n"}
+01550 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+01551 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+01552 \textcolor{stringliteral}{" \}"}));
+01553 
+01554         horizontalLayout\_27->addWidget(btn\_save\_options);
+01555 
+01556         stacked\_widget\_views->addWidget(page\_6);
+01557         page\_7 = \textcolor{keyword}{new} QWidget();
+01558         page\_7->setObjectName(QStringLiteral(\textcolor{stringliteral}{"page\_7"}));
+01559         btn\_set\_emu\_data = \textcolor{keyword}{new} QPushButton(page\_7);
+01560         btn\_set\_emu\_data->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_set\_emu\_data"}));
+01561         btn\_set\_emu\_data->setGeometry(QRect(20, 30, 371, 61));
+01562         layoutWidget\_2 = \textcolor{keyword}{new} QWidget(page\_7);
+01563         layoutWidget\_2->setObjectName(QStringLiteral(\textcolor{stringliteral}{"layoutWidget\_2"}));
+01564         layoutWidget\_2->setGeometry(QRect(10, 580, 381, 36));
+01565         horizontalLayout\_24 = \textcolor{keyword}{new} QHBoxLayout(layoutWidget\_2);
+01566         horizontalLayout\_24->setSpacing(6);
+01567         horizontalLayout\_24->setContentsMargins(11, 11, 11, 11);
+01568         horizontalLayout\_24->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_24"}));
+01569         horizontalLayout\_24->setContentsMargins(0, 0, 0, 0);
+01570         btn\_back\_emu\_data = \textcolor{keyword}{new} QPushButton(layoutWidget\_2);
+01571         btn\_back\_emu\_data->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_back\_emu\_data"}));
+01572         btn\_back\_emu\_data->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+01573 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01574 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01575 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01576 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01577 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01578 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01579 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01580 \textcolor{stringliteral}{"     border-top-left-radius: 4px;\(\backslash\)n"}
+01581 \textcolor{stringliteral}{"     border-top-right-radius: 10px;\(\backslash\)n"}
+01582 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01583 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01584 \textcolor{stringliteral}{"\(\backslash\)n"}
+01585 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01586 \textcolor{stringliteral}{"\(\backslash\)n"}
+01587 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+01588 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01589 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+01590 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+01591 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01592 \textcolor{stringliteral}{"\(\backslash\)n"}
+01593 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+01594 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+01595 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+01596 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01597 \textcolor{stringliteral}{"\(\backslash\)n"}
+01598 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+01599 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+01600 \textcolor{stringliteral}{" \}"}));
+01601 
+01602         horizontalLayout\_24->addWidget(btn\_back\_emu\_data);
+01603 
+01604         btn\_nxt\_emu\_data = \textcolor{keyword}{new} QPushButton(layoutWidget\_2);
+01605         btn\_nxt\_emu\_data->setObjectName(QStringLiteral(\textcolor{stringliteral}{"btn\_nxt\_emu\_data"}));
+01606         btn\_nxt\_emu\_data->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QPushButton\{\(\backslash\)n"}
+01607 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01608 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01609 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01610 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01611 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01612 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01613 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01614 \textcolor{stringliteral}{"     border-top-left-radius: 4px;\(\backslash\)n"}
+01615 \textcolor{stringliteral}{"     border-top-right-radius: 10px;\(\backslash\)n"}
+01616 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01617 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01618 \textcolor{stringliteral}{"\(\backslash\)n"}
+01619 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01620 \textcolor{stringliteral}{"\(\backslash\)n"}
+01621 \textcolor{stringliteral}{"  QPushButton:hover \{\(\backslash\)n"}
+01622 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01623 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+01624 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+01625 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01626 \textcolor{stringliteral}{"\(\backslash\)n"}
+01627 \textcolor{stringliteral}{"  QPushButton:selected \{\(\backslash\)n"}
+01628 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+01629 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+01630 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01631 \textcolor{stringliteral}{"\(\backslash\)n"}
+01632 \textcolor{stringliteral}{" QPushButton:!selected \{\(\backslash\)n"}
+01633 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+01634 \textcolor{stringliteral}{" \}"}));
+01635 
+01636         horizontalLayout\_24->addWidget(btn\_nxt\_emu\_data);
+01637 
+01638         stacked\_widget\_views->addWidget(page\_7);
+01639 
+01640         gridLayout\_2->addWidget(stacked\_widget\_views, 0, 1, 2, 1);
+01641 
+01642         dockWidget\_sen\_cmd->setWidget(dockWidgetContents\_6);
+01643         gBox\_range = \textcolor{keyword}{new} QGroupBox(centralWidget);
+01644         gBox\_range->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gBox\_range"}));
+01645         gBox\_range->setGeometry(QRect(780, 100, 324, 81));
+01646         sizePolicy4.setHeightForWidth(gBox\_range->sizePolicy().hasHeightForWidth());
+01647         gBox\_range->setSizePolicy(sizePolicy4);
+01648         gBox\_range->setMinimumSize(QSize(40, 0));
+01649         gBox\_range->setMaximumSize(QSize(16777215, 100));
+01650         verticalLayout\_2 = \textcolor{keyword}{new} QVBoxLayout(gBox\_range);
+01651         verticalLayout\_2->setSpacing(10);
+01652         verticalLayout\_2->setContentsMargins(11, 11, 11, 11);
+01653         verticalLayout\_2->setObjectName(QStringLiteral(\textcolor{stringliteral}{"verticalLayout\_2"}));
+01654         verticalLayout\_2->setContentsMargins(7, 7, 7, 7);
+01655         horizontalLayout\_3 = \textcolor{keyword}{new} QHBoxLayout();
+01656         horizontalLayout\_3->setSpacing(6);
+01657         horizontalLayout\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_3"}));
+01658         verticalLayout\_3 = \textcolor{keyword}{new} QVBoxLayout();
+01659         verticalLayout\_3->setSpacing(6);
+01660         verticalLayout\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"verticalLayout\_3"}));
+01661         label\_3 = \textcolor{keyword}{new} QLabel(gBox\_range);
+01662         label\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"label\_3"}));
+01663 
+01664         verticalLayout\_3->addWidget(label\_3);
+01665 
+01666         spinBox\_start = \textcolor{keyword}{new} QSpinBox(gBox\_range);
+01667         spinBox\_start->setObjectName(QStringLiteral(\textcolor{stringliteral}{"spinBox\_start"}));
+01668         spinBox\_start->setMaximum(254);
+01669         spinBox\_start->setValue(1);
+01670 
+01671         verticalLayout\_3->addWidget(spinBox\_start);
+01672 
+01673 
+01674         horizontalLayout\_3->addLayout(verticalLayout\_3);
+01675 
+01676         verticalLayout\_4 = \textcolor{keyword}{new} QVBoxLayout();
+01677         verticalLayout\_4->setSpacing(6);
+01678         verticalLayout\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"verticalLayout\_4"}));
+01679         label\_4 = \textcolor{keyword}{new} QLabel(gBox\_range);
+01680         label\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"label\_4"}));
+01681 
+01682         verticalLayout\_4->addWidget(label\_4);
+01683 
+01684         spinBox\_end = \textcolor{keyword}{new} QSpinBox(gBox\_range);
+01685         spinBox\_end->setObjectName(QStringLiteral(\textcolor{stringliteral}{"spinBox\_end"}));
+01686         spinBox\_end->setMaximum(255);
+01687         spinBox\_end->setValue(255);
+01688 
+01689         verticalLayout\_4->addWidget(spinBox\_end);
+01690 
+01691 
+01692         horizontalLayout\_3->addLayout(verticalLayout\_4);
+01693 
+01694 
+01695         verticalLayout\_2->addLayout(horizontalLayout\_3);
+01696 
+01697         dockWidget = \textcolor{keyword}{new} QDockWidget(centralWidget);
+01698         dockWidget->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidget"}));
+01699         dockWidget->setGeometry(QRect(210, 700, 356, 42));
+01700         dockWidget->setAllowedAreas(Qt::RightDockWidgetArea);
+01701         dockWidgetContents = \textcolor{keyword}{new} QWidget();
+01702         dockWidgetContents->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidgetContents"}));
+01703         terminal = \textcolor{keyword}{new} \hyperlink{a00005}{Console}(dockWidgetContents);
+01704         terminal->setObjectName(QStringLiteral(\textcolor{stringliteral}{"terminal"}));
+01705         terminal->setGeometry(QRect(10, 10, 71, 351));
+01706         dockWidget->setWidget(dockWidgetContents);
+01707         MainWindow->setCentralWidget(centralWidget);
+01708         menuBar = \textcolor{keyword}{new} QMenuBar(MainWindow);
+01709         menuBar->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuBar"}));
+01710         menuBar->setGeometry(QRect(0, 0, 419, 26));
+01711         menuConnection = \textcolor{keyword}{new} QMenu(menuBar);
+01712         menuConnection->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuConnection"}));
+01713         menuTools = \textcolor{keyword}{new} QMenu(menuBar);
+01714         menuTools->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuTools"}));
+01715         menuHelp = \textcolor{keyword}{new} QMenu(menuBar);
+01716         menuHelp->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuHelp"}));
+01717         MainWindow->setMenuBar(menuBar);
+01718         statusBar = \textcolor{keyword}{new} QStatusBar(MainWindow);
+01719         statusBar->setObjectName(QStringLiteral(\textcolor{stringliteral}{"statusBar"}));
+01720         MainWindow->setStatusBar(statusBar);
+01721         toolBar = \textcolor{keyword}{new} QToolBar(MainWindow);
+01722         toolBar->setObjectName(QStringLiteral(\textcolor{stringliteral}{"toolBar"}));
+01723         toolBar->setCursor(QCursor(Qt::CrossCursor));
+01724         toolBar->setMovable(\textcolor{keyword}{true});
+01725         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
+01726         dock\_central = \textcolor{keyword}{new} QDockWidget(MainWindow);
+01727         dock\_central->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dock\_central"}));
+01728         sizePolicy2.setHeightForWidth(dock\_central->sizePolicy().hasHeightForWidth());
+01729         dock\_central->setSizePolicy(sizePolicy2);
+01730         dock\_central->setMinimumSize(QSize(91, 374));
+01731         dock\_central->setMaximumSize(QSize(524287, 524287));
+01732         QPalette palette;
+01733         QBrush brush(QColor(255, 255, 255, 255));
+01734         brush.setStyle(Qt::SolidPattern);
+01735         palette.setBrush(QPalette::Active, QPalette::Base, brush);
+01736         QBrush brush1(QColor(135, 135, 135, 255));
+01737         brush1.setStyle(Qt::SolidPattern);
+01738         palette.setBrush(QPalette::Active, QPalette::Window, brush1);
+01739         palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+01740         palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+01741         palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+01742         palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+01743         dock\_central->setPalette(palette);
+01744         dock\_central->setAcceptDrops(\textcolor{keyword}{false});
+01745         dock\_central->setStyleSheet(QStringLiteral(\textcolor{stringliteral}{""}));
+01746         dock\_central->setFeatures(QDockWidget::NoDockWidgetFeatures);
+01747         dock\_central->setAllowedAreas(Qt::RightDockWidgetArea);
+01748         dockWidgetContents\_27 = \textcolor{keyword}{new} QWidget();
+01749         dockWidgetContents\_27->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidgetContents\_27"}));
+01750         gridLayout = \textcolor{keyword}{new} QGridLayout(dockWidgetContents\_27);
+01751         gridLayout->setSpacing(0);
+01752         gridLayout->setContentsMargins(11, 11, 11, 11);
+01753         gridLayout->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout"}));
+01754         gridLayout->setContentsMargins(0, 0, 0, 0);
+01755         widget\_20 = \textcolor{keyword}{new} QWidget(dockWidgetContents\_27);
+01756         widget\_20->setObjectName(QStringLiteral(\textcolor{stringliteral}{"widget\_20"}));
+01757         widget\_20->setStyleSheet(QLatin1String(\textcolor{stringliteral}{" QWidget\{\(\backslash\)n"}
+01758 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01759 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01760 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01761 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01762 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01763 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01764 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01765 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01766 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01767 \textcolor{stringliteral}{"     border-bottom-left-radius: 10px;\(\backslash\)n"}
+01768 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01769 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01770 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01771 \textcolor{stringliteral}{"\(\backslash\)n"}
+01772 \textcolor{stringliteral}{"\}\(\backslash\)n"}
+01773 \textcolor{stringliteral}{"\(\backslash\)n"}
+01774 \textcolor{stringliteral}{"\(\backslash\)n"}
+01775 \textcolor{stringliteral}{" QTabWidget::pane \{ /* The tab widget frame */\(\backslash\)n"}
+01776 \textcolor{stringliteral}{"  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01777 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01778 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01779 \textcolor{stringliteral}{"   border-bottom-left-radius: 10px; \(\backslash\)n"}
+01780 \textcolor{stringliteral}{"    border-bottom-right-radius: 10px;\(\backslash\)n"}
+01781 \textcolor{stringliteral}{" border-top-right-radius: 10px;\(\backslash\)n"}
+01782 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01783 \textcolor{stringliteral}{"\(\backslash\)n"}
+01784 \textcolor{stringliteral}{" QTabWidget::tab-bar \{\(\backslash\)n"}
+01785 \textcolor{stringliteral}{"     left: 0px; /* m"}
+01786                         \textcolor{stringliteral}{"ove to the right by 5px */\(\backslash\)n"}
+01787 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01788 \textcolor{stringliteral}{"\(\backslash\)n"}
+01789 \textcolor{stringliteral}{" QTabBar::tab \{\(\backslash\)n"}
+01790 \textcolor{stringliteral}{"\(\backslash\)n"}
+01791 \textcolor{stringliteral}{"     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01792 \textcolor{stringliteral}{"                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,\(\backslash\)n"}
+01793 \textcolor{stringliteral}{"                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);\(\backslash\)n"}
+01794 \textcolor{stringliteral}{"     \(\backslash\)n"}
+01795 \textcolor{stringliteral}{"/*     border: 1px solid #C4C4C3;\(\backslash\)n"}
+01796 \textcolor{stringliteral}{" border-top: 1px solid #C2C7CB;*/\(\backslash\)n"}
+01797 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/\(\backslash\)n"}
+01798 \textcolor{stringliteral}{"     border-top-left-radius: 10px;\(\backslash\)n"}
+01799 \textcolor{stringliteral}{"     border-top-right-radius: 4px;\(\backslash\)n"}
+01800 \textcolor{stringliteral}{"     min-width: 8ex;\(\backslash\)n"}
+01801 \textcolor{stringliteral}{"     padding: 8px;\(\backslash\)n"}
+01802 \textcolor{stringliteral}{"\(\backslash\)n"}
+01803 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01804 \textcolor{stringliteral}{"\(\backslash\)n"}
+01805 \textcolor{stringliteral}{" QWidget:hover \{\(\backslash\)n"}
+01806 \textcolor{stringliteral}{"background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\(\backslash\)n"}
+01807 \textcolor{stringliteral}{"                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,\(\backslash\)n"}
+01808 \textcolor{stringliteral}{"                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\(\backslash\)n"}
+01809 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01810 \textcolor{stringliteral}{"\(\backslash\)n"}
+01811 \textcolor{stringliteral}{" QWidget:selected \{\(\backslash\)n"}
+01812 \textcolor{stringliteral}{"     border-color: #9B9B9B;\(\backslash\)n"}
+01813 \textcolor{stringliteral}{"   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */\(\backslash\)n"}
+01814 \textcolor{stringliteral}{" \}\(\backslash\)n"}
+01815 \textcolor{stringliteral}{"\(\backslash\)n"}
+01816 \textcolor{stringliteral}{" QWidget:!selected \{\(\backslash\)n"}
+01817 \textcolor{stringliteral}{"     margin-top: 2px; /* make non-selected tabs look smaller */\(\backslash\)n"}
+01818 \textcolor{stringliteral}{""}
+01819                         \textcolor{stringliteral}{" \}"}));
+01820         gridLayout\_153 = \textcolor{keyword}{new} QGridLayout(widget\_20);
+01821         gridLayout\_153->setSpacing(0);
+01822         gridLayout\_153->setContentsMargins(11, 11, 11, 11);
+01823         gridLayout\_153->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_153"}));
+01824         gridLayout\_153->setContentsMargins(0, 0, 0, 0);
+01825         centralLogo = \textcolor{keyword}{new} QLabel(widget\_20);
+01826         centralLogo->setObjectName(QStringLiteral(\textcolor{stringliteral}{"centralLogo"}));
+01827         sizePolicy1.setHeightForWidth(centralLogo->sizePolicy().hasHeightForWidth());
+01828         centralLogo->setSizePolicy(sizePolicy1);
+01829         centralLogo->setPixmap(QPixmap(QString::fromUtf8(\textcolor{stringliteral}{":/logo/logo"})));
+01830         centralLogo->setScaledContents(\textcolor{keyword}{true});
+01831 
+01832         gridLayout\_153->addWidget(centralLogo, 0, 0, 1, 1);
+01833 
+01834 
+01835         gridLayout->addWidget(widget\_20, 0, 0, 1, 1);
+01836 
+01837         dock\_central->setWidget(dockWidgetContents\_27);
+01838         MainWindow->addDockWidget(static\_cast<Qt::DockWidgetArea>(2), dock\_central);
+01839 
+01840         menuBar->addAction(menuConnection->menuAction());
+01841         menuBar->addAction(menuTools->menuAction());
+01842         menuBar->addAction(menuHelp->menuAction());
+01843         menuConnection->addAction(actionOpen);
+01844         menuConnection->addAction(actionConnect);
+01845         menuConnection->addAction(actionDisconnect);
+01846         menuConnection->addAction(actionQuit);
+01847         menuTools->addAction(actionConfigure);
+01848         menuTools->addAction(actionClear);
+01849         menuTools->addAction(actionCommands);
+01850         menuHelp->addAction(actionAbout);
+01851         toolBar->addAction(actionConnect);
+01852         toolBar->addAction(actionDisconnect);
+01853         toolBar->addSeparator();
+01854         toolBar->addAction(actionConfigure);
+01855         toolBar->addAction(actionClear);
+01856         toolBar->addSeparator();
+01857         toolBar->addAction(actionQuit);
+01858 
+01859         \hyperlink{a00080_a097dd160c3534a204904cb374412c618}{retranslateUi}(MainWindow);
+01860 
+01861         stacked\_widget\_views->setCurrentIndex(5);
+01862 
+01863 
+01864         QMetaObject::connectSlotsByName(MainWindow);
+01865     \} \textcolor{comment}{// setupUi}
+01866 
+\hypertarget{a00139_source_l01867}{}\hyperlink{a00080_a097dd160c3534a204904cb374412c618}{01867}     \textcolor{keywordtype}{void} \hyperlink{a00080_a097dd160c3534a204904cb374412c618}{retranslateUi}(\hyperlink{a00058}{QMainWindow} *\hyperlink{a00017}{MainWindow})
+01868     \{
+01869         MainWindow->setWindowTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"DR\_DOWNLOADER"}, 0));
+01870         actionConnect->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Connect"}, 0));
+01871         actionDisconnect->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Disconnect"}, 0));
+01872         actionQuit->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Quit"}, 0));
+01873         actionClear->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Clear"}, 0));
+01874         actionAbout->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"About"}, 0));
+01875         actionOpen->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Open"}, 0));
+01876         actionCommands->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Single sensor commands "}, 0));
+01877         dockWidget\_sen\_cmd->setWindowTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Commands"}, 0));
+01878         QTreeWidgetItem *\_\_\_qtreewidgetitem = cmd\_list->headerItem();
+01879         \_\_\_qtreewidgetitem->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"COMMAND OPTIONS  "}, 0));
+01880 
+01881         \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \_\_sortingEnabled = cmd\_list->isSortingEnabled();
+01882         cmd\_list->setSortingEnabled(\textcolor{keyword}{false});
+01883         QTreeWidgetItem *\_\_\_qtreewidgetitem1 = cmd\_list->topLevelItem(0);
+01884         \_\_\_qtreewidgetitem1->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"CONFIG"}, 0));
+01885         QTreeWidgetItem *\_\_\_qtreewidgetitem2 = \_\_\_qtreewidgetitem1->child(0);
+01886         \_\_\_qtreewidgetitem2->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"DEVICE ADDRESS"}, 0));
+01887         QTreeWidgetItem *\_\_\_qtreewidgetitem3 = \_\_\_qtreewidgetitem1->child(1);
+01888         \_\_\_qtreewidgetitem3->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"INSTALLATION DITAILS"}, 0));
+01889         QTreeWidgetItem *\_\_\_qtreewidgetitem4 = \_\_\_qtreewidgetitem1->child(2);
+01890         \_\_\_qtreewidgetitem4->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"SIGNAL THRESHOLDS"}, 0));
+01891         QTreeWidgetItem *\_\_\_qtreewidgetitem5 = \_\_\_qtreewidgetitem1->child(3);
+01892         \_\_\_qtreewidgetitem5->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"EVENT ANALYSIS OPTIONS"}, 0))
+      ;
+01893         QTreeWidgetItem *\_\_\_qtreewidgetitem6 = \_\_\_qtreewidgetitem1->child(4);
+01894         \_\_\_qtreewidgetitem6->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"RUN TIME OPTIONS"}, 0));
+01895         QTreeWidgetItem *\_\_\_qtreewidgetitem7 = \_\_\_qtreewidgetitem1->child(5);
+01896         \_\_\_qtreewidgetitem7->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"FACTORY DEFAULT"}, 0));
+01897         QTreeWidgetItem *\_\_\_qtreewidgetitem8 = \_\_\_qtreewidgetitem1->child(6);
+01898         \_\_\_qtreewidgetitem8->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"LOAD HIF REFERENCE DATA"}, 0)
+      );
+01899         QTreeWidgetItem *\_\_\_qtreewidgetitem9 = \_\_\_qtreewidgetitem1->child(7);
+01900         \_\_\_qtreewidgetitem9->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"COMMIT"}, 0));
+01901         QTreeWidgetItem *\_\_\_qtreewidgetitem10 = cmd\_list->topLevelItem(1);
+01902         \_\_\_qtreewidgetitem10->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"EMULATION SETTING"}, 0));
+01903         QTreeWidgetItem *\_\_\_qtreewidgetitem11 = \_\_\_qtreewidgetitem10->child(0);
+01904         \_\_\_qtreewidgetitem11->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"LOAD IR DATA"}, 0));
+01905         QTreeWidgetItem *\_\_\_qtreewidgetitem12 = \_\_\_qtreewidgetitem10->child(1);
+01906         \_\_\_qtreewidgetitem12->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"LOAD UV DATA"}, 0));
+01907         QTreeWidgetItem *\_\_\_qtreewidgetitem13 = \_\_\_qtreewidgetitem10->child(2);
+01908         \_\_\_qtreewidgetitem13->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"LOAD MAGNETIC FIELD X DATA"}
+      , 0));
+01909         QTreeWidgetItem *\_\_\_qtreewidgetitem14 = \_\_\_qtreewidgetitem10->child(3);
+01910         \_\_\_qtreewidgetitem14->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"LOAD MAGNETIC FIELD Y DATA"}
+      , 0));
+01911         QTreeWidgetItem *\_\_\_qtreewidgetitem15 = \_\_\_qtreewidgetitem10->child(4);
+01912         \_\_\_qtreewidgetitem15->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"EMU MODE SET"}, 0));
+01913         QTreeWidgetItem *\_\_\_qtreewidgetitem16 = \_\_\_qtreewidgetitem10->child(5);
+01914         \_\_\_qtreewidgetitem16->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"EMU MODE RESET"}, 0));
+01915         QTreeWidgetItem *\_\_\_qtreewidgetitem17 = \_\_\_qtreewidgetitem10->child(6);
+01916         \_\_\_qtreewidgetitem17->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"CLEAR EMU DATA"}, 0));
+01917         QTreeWidgetItem *\_\_\_qtreewidgetitem18 = cmd\_list->topLevelItem(2);
+01918         \_\_\_qtreewidgetitem18->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"GET DATA"}, 0));
+01919         QTreeWidgetItem *\_\_\_qtreewidgetitem19 = \_\_\_qtreewidgetitem18->child(0);
+01920         \_\_\_qtreewidgetitem19->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"DEVICE DATA"}, 0));
+01921         QTreeWidgetItem *\_\_\_qtreewidgetitem20 = \_\_\_qtreewidgetitem18->child(1);
+01922         \_\_\_qtreewidgetitem20->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"IR DISTURBANCE RECORD"}, 0))
+      ;
+01923         QTreeWidgetItem *\_\_\_qtreewidgetitem21 = \_\_\_qtreewidgetitem18->child(2);
+01924         \_\_\_qtreewidgetitem21->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"UV DISTURBANCE RECORD"}, 0))
+      ;
+01925         QTreeWidgetItem *\_\_\_qtreewidgetitem22 = \_\_\_qtreewidgetitem18->child(3);
+01926         \_\_\_qtreewidgetitem22->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"MFIELD X  DISTURBANCE
+       RECORD"}, 0));
+01927         QTreeWidgetItem *\_\_\_qtreewidgetitem23 = \_\_\_qtreewidgetitem18->child(4);
+01928         \_\_\_qtreewidgetitem23->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"MFIELD Y  DISTURBANCE
+       RECORD"}, 0));
+01929         QTreeWidgetItem *\_\_\_qtreewidgetitem24 = \_\_\_qtreewidgetitem18->child(5);
+01930         \_\_\_qtreewidgetitem24->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"HIF\_DIAGNOSIS\_RECORD"}, 0));
+01931         QTreeWidgetItem *\_\_\_qtreewidgetitem25 = \_\_\_qtreewidgetitem18->child(6);
+01932         \_\_\_qtreewidgetitem25->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"IR CURRENT RECORD"}, 0));
+01933         QTreeWidgetItem *\_\_\_qtreewidgetitem26 = \_\_\_qtreewidgetitem18->child(7);
+01934         \_\_\_qtreewidgetitem26->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"UV CURRENT RECORD"}, 0));
+01935         QTreeWidgetItem *\_\_\_qtreewidgetitem27 = \_\_\_qtreewidgetitem18->child(8);
+01936         \_\_\_qtreewidgetitem27->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"MFIELD X  CURRENT RECORD"}, 
+      0));
+01937         QTreeWidgetItem *\_\_\_qtreewidgetitem28 = \_\_\_qtreewidgetitem18->child(9);
+01938         \_\_\_qtreewidgetitem28->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"MFIELD Y  CURRENT RECORD"}, 
+      0));
+01939         QTreeWidgetItem *\_\_\_qtreewidgetitem29 = cmd\_list->topLevelItem(3);
+01940         \_\_\_qtreewidgetitem29->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"MISCELLANEOUS"}, 0));
+01941         QTreeWidgetItem *\_\_\_qtreewidgetitem30 = \_\_\_qtreewidgetitem29->child(0);
+01942         \_\_\_qtreewidgetitem30->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"DEVICE RESET"}, 0));
+01943         QTreeWidgetItem *\_\_\_qtreewidgetitem31 = \_\_\_qtreewidgetitem29->child(1);
+01944         \_\_\_qtreewidgetitem31->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"CLEAR EEPROM"}, 0));
+01945         QTreeWidgetItem *\_\_\_qtreewidgetitem32 = \_\_\_qtreewidgetitem29->child(2);
+01946         \_\_\_qtreewidgetitem32->setText(0, QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"SUPERVISION STATUS"}, 0));
+01947         cmd\_list->setSortingEnabled(\_\_sortingEnabled);
+01948 
+01949         gBox\_cmd->setTitle(QString());
+01950         groupBox\_3->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Target Sensor"}, 0));
+01951         label->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Channel"}, 0));
+01952         label\_2->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Address"}, 0));
+01953         combo\_Ch->clear();
+01954         combo\_Ch->insertItems(0, QStringList()
+01955          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"-"}, 0)
+01956          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"1"}, 0)
+01957          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"2"}, 0)
+01958          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"3"}, 0)
+01959          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"4"}, 0)
+01960         );
+01961         combo\_Sen->clear();
+01962         combo\_Sen->insertItems(0, QStringList()
+01963          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"-"}, 0)
+01964          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Multiple Address"}, 0)
+01965          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"1"}, 0)
+01966          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"2"}, 0)
+01967          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"3"}, 0)
+01968         );
+01969         btn\_cancel->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<< Cancel"}, 0));
+01970         btn\_execute\_cmd->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Execute Command"}, 0));
+01971         groupBox\_4->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"LIGHT SIGNAL THRESHOLDS "}, 0));
+01972         cb\_config\_ir\_max->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"IR MAX "}, 0));
+01973         cb\_config\_uv\_max->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"UV MAX"}, 0));
+01974         label\_5->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<html><head/><body><p>The values set the
+       target sensor light signal threshold levels.  </p><p align=\(\backslash\)"justify\(\backslash\)">Hence the action affects the device
+       behavior make sure proper values are set and clear the corresponding checkbox to leave previous value
+       unaltered, use GET DEVICE DATA command to obtain the current setting of target device. </p><p><br/></p></body></html>
+      "}, 0));
+01975         btn\_back\_thresholds->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<< Cancel"}, 0));
+01976         btn\_save\_thresholds->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Next >>"}, 0));
+01977         label\_6->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<html><head/><body><p align=\(\backslash\)"justify\(\backslash\)">The
+       values provide the target sensor information\(\backslash\)342\(\backslash\)200\(\backslash\)231s about the installation environment which is used
+       to calculate threshold values. </p><p align=\(\backslash\)"justify\(\backslash\)">Hence the action affects the device behavior make
+       sure proper values are set and clear the corresponding checkbox to leave previous value unaltered, use GET
+       DEVICE DATA command to obtain the current setting of target device. </p><p><br/></p></body></html>"}, 0));
+01978         groupBox\_6->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"SENSOR INSTALLATION GEOMETRIC DETAILS "}
+      , 0));
+01979         cb\_config\_min\_distance->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"MIN CONDUCTOR DISTANCE (mm)"}
+      , 0));
+01980         groupBox\_7->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"POWER LINE CURRENT"}, 0));
+01981         cb\_config\_rated\_current->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"RATED CURRENT (A)"}, 0));
+01982         cb\_config\_sh\_ckt\_current->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"MAX SHORT CIRCUIT CURRENT
+       (A)"}, 0));
+01983         cb\_config\_freq->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"FREQUENCY (Hz)"}, 0));
+01984         btn\_cancel\_sys\_info->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<< Cancel"}, 0));
+01985         btn\_save\_sys\_info->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Next >>"}, 0));
+01986         label\_7->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<html><head/><body><p align=\(\backslash\)"justify\(\backslash\)"
+      >Hence the action affects the device behavior make sure proper values are set and clear the corresponding
+       checkbox to leave previous value unaltered, use GET DEVICE DATA command to obtain the current setting of target
+       device. </p><p><br/></p></body></html>"}, 0));
+01987         groupBox\_8->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"ACTIVE MODULES"}, 0));
+01988         cb\_config\_active\_modules\_ir->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"IR                "}, 0)
+      );
+01989         cb\_config\_active\_modules\_uv->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"UV            "}, 0));
+01990         cb\_config\_active\_modules\_mf->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"MAGNETIC FIELD"}, 0));
+01991         groupBox\_9->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"EVENT PROBABLITY ANALISIS"}, 0));
+01992         cb\_config\_observation\_length->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"OBSERVATION LENGTH"}, 0
+      ));
+01993         cb\_config\_probablity\_max->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"PROBABLITY MAX"}, 0));
+01994         cb\_config\_probablity\_min->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"PROBABLITY MIN"}, 0));
+01995         btn\_back\_analisis->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<< Cancel"}, 0));
+01996         btn\_save\_analisis->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Next >>"}, 0));
+01997         groupBox\_12->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"ALARM CONDITION "}, 0));
+01998         cb\_config\_criteria->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"ALARM CRITERIA"}, 0));
+01999         combo\_alarm\_condition->clear();
+02000         combo\_alarm\_condition->insertItems(0, QStringList()
+02001          << QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"DEFAULT"}, 0)
+02002         );
+02003         label\_8->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"
+      <html><head/><body><p><br/></p></body></html>"}, 0));
+02004         groupBox\_11->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"OPTIONS"}, 0));
+02005         cb\_config\_sv\_mfield->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"ENABLE MAGNETIC FIELD ELEMENT
+       SUPERVISION"}, 0));
+02006         cb\_config\_threshold\_adjust->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"ENABLE SELF THRESHOLD
+       ADJUST "}, 0));
+02007         cb\_config\_sv\_uv->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"ENABLE UV ELEMENT SUPERVISION"}, 0))
+      ;
+02008         cb\_config\_sv\_ir->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"ENABLE IR ELEMENT SUPERVISION"}, 0))
+      ;
+02009         btn\_cancel\_options->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<< Cancel"}, 0));
+02010         btn\_save\_options->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Next >>"}, 0));
+02011         btn\_set\_emu\_data->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Add Data"}, 0));
+02012         btn\_back\_emu\_data->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"<< Cancel"}, 0));
+02013         btn\_nxt\_emu\_data->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Next >>"}, 0));
+02014         gBox\_range->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Select Range"}, 0));
+02015         label\_3->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Start"}, 0));
+02016         label\_4->setText(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"End"}, 0));
+02017         menuConnection->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"File"}, 0));
+02018         menuTools->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Tools"}, 0));
+02019         menuHelp->setTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"Help"}, 0));
+02020         toolBar->setWindowTitle(QApplication::translate(\textcolor{stringliteral}{"MainWindow"}, \textcolor{stringliteral}{"toolBar"}, 0));
+02021         dock\_central->setWindowTitle(QString());
+02022         centralLogo->setText(QString());
+02023     \} \textcolor{comment}{// retranslateUi}
+02024 
+02025 \};
+02026 
+02027 \textcolor{keyword}{namespace }\hyperlink{a00145}{Ui} \{
+\hypertarget{a00139_source_l02028}{}\hyperlink{a00018}{02028}     \textcolor{keyword}{class }\hyperlink{a00018}{MainWindow}: \textcolor{keyword}{public} \hyperlink{a00080}{Ui\_MainWindow} \{\};
+02029 \} \textcolor{comment}{// namespace Ui}
+02030 
+02031 QT\_END\_NAMESPACE
+02032 
+02033 \textcolor{preprocessor}{#endif // UI\_MAINWINDOW\_H}
+\end{DoxyCode}

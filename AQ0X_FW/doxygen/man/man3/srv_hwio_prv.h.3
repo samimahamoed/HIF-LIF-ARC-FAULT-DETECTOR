@@ -1,0 +1,264 @@
+.TH "srv_hwio_prv.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srv_hwio_prv.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBsrv_hwio_data_t\fP"
+.br
+.RI "\fIStructure which contains emulation mode operation details\&. \fP"
+.ti -1c
+.RI "struct \fBsrv_hwio_data_t\&.emulation_mode\fP"
+.br
+.ti -1c
+.RI "union \fBsrv_hwio_data_t\&.emulation_mode\&.enabled\fP"
+.br
+.ti -1c
+.RI "struct \fBsrv_hwio_data_t\&.emulation_mode\&.enabled\&.bits\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBANALOG_HW_CHANNELS\fP   6"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_UV_ANSEL\fP   ANSELAbits\&.ANSA0"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_IR_ANSEL\fP   ANSELAbits\&.ANSA1"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_MFIELD_X_ANSEL\fP   ANSELBbits\&.ANSB0"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_MFIELD_Y_ANSEL\fP   ANSELBbits\&.ANSB1"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_SUPPLY_SV_A_ANSEL\fP   ANSELBbits\&.ANSB2"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_SUPPLY_SV_B_ANSEL\fP   ANSELBbits\&.ANSB3"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_UV_TRIS\fP   TRISAbits\&.TRISA0"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_IR_TRIS\fP   TRISAbits\&.TRISA1"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_MFIELD_X_TRIS\fP   TRISBbits\&.TRISB0"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_MFIELD_Y_TRIS\fP   TRISBbits\&.TRISB1"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_SUPPLY_SV_A_TRIS\fP   TRISBbits\&.TRISB2"
+.br
+.ti -1c
+.RI "#define \fBANA_SEL_SUPPLY_SV_B_TRIS\fP   TRISBbits\&.TRISB3"
+.br
+.ti -1c
+.RI "#define \fBDIG_TEST_LED_TRIS\fP   TRISBbits\&.TRISB15"
+.br
+.ti -1c
+.RI "#define \fBDIG_ALARM_OUTPUT_TRIS\fP   TRISBbits\&.TRISB14"
+.br
+.ti -1c
+.RI "#define \fBDIG_SUPERVISION_OUTPUT_TRIS\fP   TRISBbits\&.TRISB4"
+.br
+.ti -1c
+.RI "#define \fBDIG_HMC10XX_PULSE_OUTPUT_TRIS\fP   TRISAbits\&.TRISA4"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBsrv_hwio_data_t\fP \fBsrv_hwio_data\fP"
+.br
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct srv_hwio_data_t"
+.PP 
+Structure which contains emulation mode operation details\&. 
+
+Structure which contains all data used by srv_hwio module 
+.PP
+Definition at line 42 of file srv_hwio_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBsrv_hwio_data_t\fP \fIemulation_mode\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct srv_hwio_data_t\&.emulation_mode"
+.PP 
+Definition at line 44 of file srv_hwio_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP * \fIdata[\fBANALOG_HW_CHANNELS\fP]\fP 
+.br
+.PP
+\fBemulation_mode\fP \fIenabled\fP 
+.br
+.PP
+\fBUint16\fP \fIhead_ptr[\fBANALOG_HW_CHANNELS\fP]\fP 
+.br
+.PP
+\fBUint16\fP \fIsize\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union srv_hwio_data_t\&.emulation_mode\&.enabled"
+.PP 
+Definition at line 46 of file srv_hwio_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+\fBenabled\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct srv_hwio_data_t\&.emulation_mode\&.enabled\&.bits"
+.PP 
+Definition at line 48 of file srv_hwio_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIir:1\fP 
+.br
+.PP
+\fBUint8\fP \fIlight:1\fP 
+.br
+.PP
+\fBUint8\fP \fImfield_x:1\fP 
+.br
+.PP
+\fBUint8\fP \fImfield_y:1\fP 
+.br
+.PP
+\fBUint8\fP \fIuv:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ANA_SEL_IR_ANSEL   ANSELAbits\&.ANSA1"
+
+.PP
+Definition at line 15 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_analog_init()\&.
+.SS "#define ANA_SEL_IR_TRIS   TRISAbits\&.TRISA1"
+
+.PP
+Definition at line 23 of file srv_hwio_prv\&.h\&.
+.SS "#define ANA_SEL_MFIELD_X_ANSEL   ANSELBbits\&.ANSB0"
+
+.PP
+Definition at line 16 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_analog_init()\&.
+.SS "#define ANA_SEL_MFIELD_X_TRIS   TRISBbits\&.TRISB0"
+
+.PP
+Definition at line 24 of file srv_hwio_prv\&.h\&.
+.SS "#define ANA_SEL_MFIELD_Y_ANSEL   ANSELBbits\&.ANSB1"
+
+.PP
+Definition at line 17 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_analog_init()\&.
+.SS "#define ANA_SEL_MFIELD_Y_TRIS   TRISBbits\&.TRISB1"
+
+.PP
+Definition at line 25 of file srv_hwio_prv\&.h\&.
+.SS "#define ANA_SEL_SUPPLY_SV_A_ANSEL   ANSELBbits\&.ANSB2"
+
+.PP
+Definition at line 18 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_analog_init()\&.
+.SS "#define ANA_SEL_SUPPLY_SV_A_TRIS   TRISBbits\&.TRISB2"
+
+.PP
+Definition at line 26 of file srv_hwio_prv\&.h\&.
+.SS "#define ANA_SEL_SUPPLY_SV_B_ANSEL   ANSELBbits\&.ANSB3"
+
+.PP
+Definition at line 19 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_analog_init()\&.
+.SS "#define ANA_SEL_SUPPLY_SV_B_TRIS   TRISBbits\&.TRISB3"
+
+.PP
+Definition at line 27 of file srv_hwio_prv\&.h\&.
+.SS "#define ANA_SEL_UV_ANSEL   ANSELAbits\&.ANSA0"
+
+.PP
+Definition at line 14 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_analog_init()\&.
+.SS "#define ANA_SEL_UV_TRIS   TRISAbits\&.TRISA0"
+
+.PP
+Definition at line 22 of file srv_hwio_prv\&.h\&.
+.SS "#define ANALOG_HW_CHANNELS   6"
+
+.PP
+Definition at line 11 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_get_analog()\&.
+.SS "#define DIG_ALARM_OUTPUT_TRIS   TRISBbits\&.TRISB14"
+
+.PP
+Definition at line 32 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_init()\&.
+.SS "#define DIG_HMC10XX_PULSE_OUTPUT_TRIS   TRISAbits\&.TRISA4"
+
+.PP
+Definition at line 34 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_init()\&.
+.SS "#define DIG_SUPERVISION_OUTPUT_TRIS   TRISBbits\&.TRISB4"
+
+.PP
+Definition at line 33 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_init()\&.
+.SS "#define DIG_TEST_LED_TRIS   TRISBbits\&.TRISB15"
+
+.PP
+Definition at line 31 of file srv_hwio_prv\&.h\&.
+.PP
+Referenced by hwio_configure_init()\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBsrv_hwio_data_t\fP srv_hwio_data"
+
+.PP
+Definition at line 13 of file srv_hwio\&.c\&.
+.PP
+Referenced by algorithm_wake()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

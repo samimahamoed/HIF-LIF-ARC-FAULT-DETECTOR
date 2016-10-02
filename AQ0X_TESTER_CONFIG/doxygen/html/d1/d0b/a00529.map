@@ -1,0 +1,5 @@
+<map id="QFourierVariableCalculator" name="QFourierVariableCalculator">
+<area shape="rect" id="node2" href="$d1/d84/a00052.html" title="{QFourierCalculator\n||+ QFourierCalculator()\l+ ~QFourierCalculator()\l+ setData()\l+ setSize()\l+ size()\l+ forward()\l+ inverse()\l+ rescale()\l}" alt="" coords="9,248,168,428"/>
+<area shape="rect" id="node5" href="$d7/dec/a00010.html" title="{ffft::FFTReal\&lt; float \&gt;\n||+ FFTReal()\l+ ~FFTReal()\l+ get_length()\l+ do_fft()\l+ do_ifft()\l+ rescale()\l+ use_buffer()\l}" alt="" coords="192,255,332,421"/>
+<area shape="rect" id="node6" href="$d7/dec/a00010.html" title="{ffft::FFTReal\&lt; DT \&gt;\n||+ FFTReal()\l+ ~FFTReal()\l+ get_length()\l+ do_fft()\l+ do_ifft()\l+ rescale()\l+ use_buffer()\l}" alt="" coords="196,5,328,171"/>
+</map>

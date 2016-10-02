@@ -1,0 +1,5 @@
+<map id="QCPCurve::QCPCurve" name="QCPCurve::QCPCurve">
+<area shape="rect" id="node2" href="$dc/d3c/a00028.html#a4a377ec863ff81a1875c3094a6177c19" title="Sets how the single data points are connected in the plot or how they are represented visually apart ..." alt="" coords="213,5,375,32"/>
+<area shape="rect" id="node3" href="$dc/d3c/a00028.html#acbb799ad22e8b78b1abe58bae2a4c413" title="This defines how big (in pixels) single scatters are drawn, if scatter style (setScatterStyle) isn&#39;t ..." alt="" coords="206,56,382,83"/>
+<area shape="rect" id="node4" href="$dc/d3c/a00028.html#a478a6f67c135f354c0401ba01fc088a0" title="Sets the visual appearance of single data points in the plot. " alt="" coords="204,107,384,133"/>
+</map>

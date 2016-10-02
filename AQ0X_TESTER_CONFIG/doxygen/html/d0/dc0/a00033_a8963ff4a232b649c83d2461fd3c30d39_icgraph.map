@@ -1,0 +1,5 @@
+<map id="QCPItemBracket::pen" name="QCPItemBracket::pen">
+<area shape="rect" id="node2" href="$d0/dc0/a00033.html#ab13001d9cc5d8f9e56ea15bdda682acb" title="Sets the pen that will be used to draw the bracket. " alt="" coords="228,5,397,32"/>
+<area shape="rect" id="node4" href="$d0/dc0/a00033.html#a349785c31122778a520c64891fa204c5" title="Sets the pen that will be used to draw the bracket when selected. " alt="" coords="203,56,423,83"/>
+<area shape="rect" id="node3" href="$d0/dc0/a00033.html#a44ecfa37a76de5e3549e2d61f9d8ee56" title="Creates a bracket item and sets default values. " alt="" coords="471,31,697,57"/>
+</map>

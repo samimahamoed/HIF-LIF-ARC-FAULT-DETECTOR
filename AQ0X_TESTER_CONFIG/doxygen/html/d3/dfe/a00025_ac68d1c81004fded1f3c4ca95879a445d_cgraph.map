@@ -1,0 +1,6 @@
+<map id="QCPAxis::handleAxisSelection" name="QCPAxis::handleAxisSelection">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#a4e83e383fb5fbd9cf3759fab68f79aa6" title="QCPAxis::selectable" alt="" coords="261,5,404,32"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#a534509949b91a6aa08e38cca48b62c9e" title="QCPAxis::selected" alt="" coords="457,107,591,133"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#a940be5ef61f4fa0dc21e4f4c7a5875c2" title="Returns the part of the axis that is hit by pos (in pixels). " alt="" coords="261,107,405,133"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a24c13908da2f8d629b1bbbe9cbd63e39" title="Sets the selected state of the respective axis parts described by SelectablePart. ..." alt="" coords="256,157,409,184"/>
+</map>

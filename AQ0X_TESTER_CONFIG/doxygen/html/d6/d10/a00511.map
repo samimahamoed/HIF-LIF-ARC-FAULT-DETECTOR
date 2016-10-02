@@ -1,0 +1,12 @@
+<map id="QCPPlottableLegendItem" name="QCPPlottableLegendItem">
+<area shape="rect" id="node2" href="$d3/d52/a00023.html" title="The abstract base class for all items in a QCPLegend. " alt="" coords="210,1504,405,1772"/>
+<area shape="rect" id="node3" href="$d3/d8b/a00059.html" title="{QObject\n||}" alt="" coords="127,197,197,274"/>
+<area shape="rect" id="node8" href="$d5/df9/a00044.html" title="Base class for all objects that can be placed on layers. " alt="" coords="2511,432,2714,715"/>
+<area shape="rect" id="node7" href="$d6/d97/a00045.html" title="Manages a legend inside a QCustomPlot. " alt="" coords="1055,975,1258,1317"/>
+<area shape="rect" id="node23" href="$d3/dfe/a00025.html" title="Manages a single axis inside a QCustomPlot. " alt="" coords="3355,924,3558,1368"/>
+<area shape="rect" id="node22" href="$dc/de2/a00024.html" title="The abstract base class for all data representing objects in a plot. " alt="" coords="2389,1445,2567,1831"/>
+<area shape="rect" id="node9" href="$d6/d42/a00043.html" title="A layer that may contain objects, to control the rendering order. " alt="" coords="2721,145,2832,325"/>
+<area shape="rect" id="node11" href="$d5/d79/a00030.html#d8/d00/a00186" title="The central class of the library, the QWidget which displays the plot and interacts with the user..." alt="" coords="2565,5,2665,83"/>
+<area shape="rect" id="node25" href="$d2/dee/a00049.html" title="Represents the range an axis is encompassing. " alt="" coords="3411,469,3577,678"/>
+<area shape="rect" id="node31" href="$d5/d79/a00030.html#de/df3/a00185" title="Responsible for drawing the grid of a QCPAxis. " alt="" coords="4098,535,4173,612"/>
+</map>

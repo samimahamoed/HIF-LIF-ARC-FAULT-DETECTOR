@@ -1,0 +1,563 @@
+.TH "QCPItemEllipse" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemEllipse \- 
+.PP
+An ellipse\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemEllipse\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fICreates an ellipse item and sets default values\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPItemEllipse\fP ()"
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBbrush\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBselectedBrush\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the line of the ellipse\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the line of the ellipse when selected\&. \fP"
+.ti -1c
+.RI "void \fBsetBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fISets the brush that will be used to fill the ellipse\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fISets the brush that will be used to fill the ellipse when selected\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits an item or not\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBtopLeft\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBbottomRight\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBtopLeftRim\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBtop\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBtopRightRim\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBright\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBbottomRightRim\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBbottom\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBbottomLeftRim\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemAnchor\fP *const \fBleft\fP"
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAnchorIndex\fP { \fBaiTopLeftRim\fP, \fBaiTop\fP, \fBaiTopRightRim\fP, \fBaiRight\fP, \fBaiBottomRightRim\fP, \fBaiBottom\fP, \fBaiBottomLeftRim\fP, \fBaiLeft\fP }"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual QPointF \fBanchorPixelPoint\fP (int anchorId) const "
+.br
+.ti -1c
+.RI "QPen \fBmainPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBmainBrush\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedPen\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmBrush\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmSelectedBrush\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An ellipse\&. 
+
+Ellipse example\&. Blue dotted circles are anchors, solid blue discs are positions\&. It has two positions, \fItopLeft\fP and \fIbottomRight\fP, which define the rect the ellipse will be drawn in\&. 
+.PP
+Definition at line 970 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPItemEllipse::AnchorIndex\fP\fC [protected]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIaiTopLeftRim \fP\fP
+.TP
+\fB\fIaiTop \fP\fP
+.TP
+\fB\fIaiTopRightRim \fP\fP
+.TP
+\fB\fIaiRight \fP\fP
+.TP
+\fB\fIaiBottomRightRim \fP\fP
+.TP
+\fB\fIaiBottom \fP\fP
+.TP
+\fB\fIaiBottomLeftRim \fP\fP
+.TP
+\fB\fIaiLeft \fP\fP
+.PP
+Definition at line 1004 of file qcustomplot\&.h\&.
+.PP
+.nf
+1004 {aiTopLeftRim, aiTop, aiTopRightRim, aiRight, aiBottomRightRim, aiBottom, aiBottomLeftRim, aiLeft};
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemEllipse::QCPItemEllipse (\fBQCustomPlot\fP *parentPlot)"
+
+.PP
+Creates an ellipse item and sets default values\&. The constructed item can be added to the plot with QCustomPlot::addItem\&. 
+.PP
+Definition at line 12203 of file qcustomplot\&.cpp\&.
+.PP
+References bottomRight, setBrush(), QCPItemPosition::setCoords(), setPen(), setSelectedBrush(), setSelectedPen(), and topLeft\&.
+.PP
+.nf
+12203                                                       :
+12204   QCPAbstractItem(parentPlot),
+12205   topLeft(createPosition("topLeft")),
+12206   bottomRight(createPosition("bottomRight")),
+12207   topLeftRim(createAnchor("topLeftRim", aiTopLeftRim)),
+12208   top(createAnchor("top", aiTop)),
+12209   topRightRim(createAnchor("topRightRim", aiTopRightRim)),
+12210   right(createAnchor("right", aiRight)),
+12211   bottomRightRim(createAnchor("bottomRightRim", aiBottomRightRim)),
+12212   bottom(createAnchor("bottom", aiBottom)),
+12213   bottomLeftRim(createAnchor("bottomLeftRim", aiBottomLeftRim)),
+12214   left(createAnchor("left", aiLeft))
+12215 {
+12216   topLeft->setCoords(0, 1);
+12217   bottomRight->setCoords(1, 0);
+12218   
+12219   setPen(QPen(Qt::black));
+12220   setSelectedPen(QPen(Qt::blue, 2));
+12221   setBrush(Qt::NoBrush);
+12222   setSelectedBrush(Qt::NoBrush);
+12223 }
+.fi
+.SS "QCPItemEllipse::~QCPItemEllipse ()\fC [virtual]\fP"
+
+.PP
+Definition at line 12225 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+12226 {
+12227 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "QPointF QCPItemEllipse::anchorPixelPoint (intanchorId) const\fC [protected]\fP, \fC [virtual]\fP"
+Returns the pixel position of the anchor with Id \fIanchorId\fP\&. This function must be reimplemented in item subclasses if they want to provide anchors (\fBQCPItemAnchor\fP)\&.
+.PP
+For example, if the item has two anchors with id 0 and 1, this function takes one of these anchor ids and returns the respective pixel points of the specified anchor\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBcreateAnchor\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12320 of file qcustomplot\&.cpp\&.
+.PP
+References aiBottom, aiBottomLeftRim, aiBottomRightRim, aiLeft, aiRight, aiTop, aiTopLeftRim, aiTopRightRim, bottomRight, QCPItemPosition::pixelPoint(), and topLeft\&.
+.PP
+.nf
+12321 {
+12322   QRectF rect = QRectF(topLeft->pixelPoint(), bottomRight->pixelPoint());
+12323   switch (anchorId)
+12324   {
+12325     case aiTopLeftRim:     return rect\&.center()+(rect\&.topLeft()-rect\&.center())*1/qSqrt(2);
+12326     case aiTop:            return (rect\&.topLeft()+rect\&.topRight())*0\&.5;
+12327     case aiTopRightRim:    return rect\&.center()+(rect\&.topRight()-rect\&.center())*1/qSqrt(2);
+12328     case aiRight:          return (rect\&.topRight()+rect\&.bottomRight())*0\&.5;
+12329     case aiBottomRightRim: return rect\&.center()+(rect\&.bottomRight()-rect\&.center())*1/qSqrt(2);
+12330     case aiBottom:         return (rect\&.bottomLeft()+rect\&.bottomRight())*0\&.5;
+12331     case aiBottomLeftRim:  return rect\&.center()+(rect\&.bottomLeft()-rect\&.center())*1/qSqrt(2);
+12332     case aiLeft:           return (rect\&.topLeft()+rect\&.bottomLeft())*0\&.5;;
+12333   }
+12334   
+12335   qDebug() << Q_FUNC_INFO << "invalid anchorId" << anchorId;
+12336   return QPointF();
+12337 }
+.fi
+.SS "QBrush QCPItemEllipse::brush () const\fC [inline]\fP"
+
+.PP
+Definition at line 980 of file qcustomplot\&.h\&.
+.PP
+Referenced by setBrush(), and setSelectedBrush()\&.
+.PP
+.nf
+980 { return mBrush; }
+.fi
+.SS "void QCPItemEllipse::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this item with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible items\&.
+.PP
+The cliprect of the provided painter is set to the rect returned by \fBclipRect\fP before this function is called\&. For items this depends on the clipping settings defined by \fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12296 of file qcustomplot\&.cpp\&.
+.PP
+References bottomRight, QCPAbstractItem::clipRect(), mainBrush(), mainPen(), QCPItemPosition::pixelPoint(), QCPPainter::setPen(), QCPLayerable::setVisible(), and topLeft\&.
+.PP
+.nf
+12297 {
+12298   QPointF p1 = topLeft->pixelPoint();
+12299   QPointF p2 = bottomRight->pixelPoint();
+12300   if (p1\&.toPoint() == p2\&.toPoint())
+12301     return;
+12302   QRectF ellipseRect = QRectF(p1, p2)\&.normalized();
+12303   QRect clip = clipRect()\&.adjusted(-mainPen()\&.widthF(), -mainPen()\&.widthF(), mainPen()\&.widthF(), mainPen()\&.widthF());
+12304   if (ellipseRect\&.intersects(clip)) // only draw if bounding rect of ellipse is visible in cliprect
+12305   {
+12306     painter->setPen(mainPen());
+12307     painter->setBrush(mainBrush());
+12308     try
+12309     {
+12310       painter->drawEllipse(ellipseRect);
+12311     } catch (\&.\&.\&.)
+12312     {
+12313       qDebug() << Q_FUNC_INFO << "Item too large for memory, setting invisible";
+12314       setVisible(false);
+12315     }
+12316   }
+12317 }
+.fi
+.SS "QBrush QCPItemEllipse::mainBrush () const\fC [protected]\fP"
+Returns the brush that should be used for drawing fills of the item\&. Returns mBrush when the item is not selected and mSelectedBrush when it is\&. 
+.PP
+Definition at line 12354 of file qcustomplot\&.cpp\&.
+.PP
+References mBrush, QCPAbstractItem::mSelected, and mSelectedBrush\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+12355 {
+12356   return mSelected ? mSelectedBrush : mBrush;
+12357 }
+.fi
+.SS "QPen QCPItemEllipse::mainPen () const\fC [protected]\fP"
+Returns the pen that should be used for drawing lines\&. Returns mPen when the item is not selected and mSelectedPen when it is\&. 
+.PP
+Definition at line 12344 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, QCPAbstractItem::mSelected, and mSelectedPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+12345 {
+12346   return mSelected ? mSelectedPen : mPen;
+12347 }
+.fi
+.SS "QPen QCPItemEllipse::pen () const\fC [inline]\fP"
+
+.PP
+Definition at line 978 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by setPen(), and setSelectedPen()\&.
+.PP
+.nf
+978 { return mPen; }
+.fi
+.SS "QBrush QCPItemEllipse::selectedBrush () const\fC [inline]\fP"
+
+.PP
+Definition at line 981 of file qcustomplot\&.h\&.
+.PP
+.nf
+981 { return mSelectedBrush; }
+.fi
+.SS "QPen QCPItemEllipse::selectedPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 979 of file qcustomplot\&.h\&.
+.PP
+.nf
+979 { return mSelectedPen; }
+.fi
+.SS "double QCPItemEllipse::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits an item or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the item\&. If the item is either invisible or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the item is represented not by single lines but by an area like \fBQCPItemRect\fP or \fBQCPItemText\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12272 of file qcustomplot\&.cpp\&.
+.PP
+References bottomRight, mBrush, QCPLayerable::mParentPlot, QCPItemPosition::pixelPoint(), and topLeft\&.
+.PP
+.nf
+12273 {
+12274   double result = -1;
+12275   QPointF p1 = topLeft->pixelPoint();
+12276   QPointF p2 = bottomRight->pixelPoint();
+12277   QPointF center((p1+p2)/2\&.0);
+12278   double a = qAbs(p1\&.x()-p2\&.x())/2\&.0;
+12279   double b = qAbs(p1\&.y()-p2\&.y())/2\&.0;
+12280   double x = pos\&.x()-center\&.x();
+12281   double y = pos\&.y()-center\&.y();
+12282   
+12283   // distance to border:
+12284   double c = 1\&.0/qSqrt(x*x/(a*a)+y*y/(b*b));
+12285   result = qAbs(c-1)*qSqrt(x*x+y*y);
+12286   // filled ellipse, allow click inside to count as hit:
+12287   if (result > mParentPlot->selectionTolerance()*0\&.99 && mBrush\&.style() != Qt::NoBrush && mBrush\&.color()\&.alpha() != 0)
+12288   {
+12289     if (x*x/(a*a) + y*y/(b*b) <= 1)
+12290       result = mParentPlot->selectionTolerance()*0\&.99;
+12291   }
+12292   return result;
+12293 }
+.fi
+.SS "void QCPItemEllipse::setBrush (const QBrush &brush)"
+
+.PP
+Sets the brush that will be used to fill the ellipse\&. To disable filling, set \fIbrush\fP to Qt::NoBrush\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedBrush\fP, \fBsetPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12255 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mBrush\&.
+.PP
+Referenced by QCPItemEllipse()\&.
+.PP
+.nf
+12256 {
+12257   mBrush = brush;
+12258 }
+.fi
+.SS "void QCPItemEllipse::setPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the line of the ellipse\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedPen\fP, \fBsetBrush\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12234 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, and pen()\&.
+.PP
+Referenced by QCPItemEllipse()\&.
+.PP
+.nf
+12235 {
+12236   mPen = pen;
+12237 }
+.fi
+.SS "void QCPItemEllipse::setSelectedBrush (const QBrush &brush)"
+
+.PP
+Sets the brush that will be used to fill the ellipse when selected\&. To disable filling, set \fIbrush\fP to Qt::NoBrush\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetBrush\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12266 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mSelectedBrush\&.
+.PP
+Referenced by QCPItemEllipse()\&.
+.PP
+.nf
+12267 {
+12268   mSelectedBrush = brush;
+12269 }
+.fi
+.SS "void QCPItemEllipse::setSelectedPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the line of the ellipse when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12244 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedPen, and pen()\&.
+.PP
+Referenced by QCPItemEllipse()\&.
+.PP
+.nf
+12245 {
+12246   mSelectedPen = pen;
+12247 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPItemAnchor\fP* const QCPItemEllipse::bottom"
+
+.PP
+Definition at line 999 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemEllipse::bottomLeftRim"
+
+.PP
+Definition at line 1000 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemEllipse::bottomRight"
+
+.PP
+Definition at line 993 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), QCPItemEllipse(), and selectTest()\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemEllipse::bottomRightRim"
+
+.PP
+Definition at line 998 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemEllipse::left"
+
+.PP
+Definition at line 1001 of file qcustomplot\&.h\&.
+.SS "QBrush QCPItemEllipse::mBrush\fC [protected]\fP"
+
+.PP
+Definition at line 1006 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainBrush(), selectTest(), and setBrush()\&.
+.SS "QPen QCPItemEllipse::mPen\fC [protected]\fP"
+
+.PP
+Definition at line 1005 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setPen()\&.
+.SS "QBrush QCPItemEllipse::mSelectedBrush\fC [protected]\fP"
+
+.PP
+Definition at line 1006 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainBrush(), and setSelectedBrush()\&.
+.SS "QPen QCPItemEllipse::mSelectedPen\fC [protected]\fP"
+
+.PP
+Definition at line 1005 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setSelectedPen()\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemEllipse::right"
+
+.PP
+Definition at line 997 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemEllipse::top"
+
+.PP
+Definition at line 995 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemEllipse::topLeft"
+
+.PP
+Definition at line 992 of file qcustomplot\&.h\&.
+.PP
+Referenced by anchorPixelPoint(), draw(), QCPItemEllipse(), and selectTest()\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemEllipse::topLeftRim"
+
+.PP
+Definition at line 994 of file qcustomplot\&.h\&.
+.SS "\fBQCPItemAnchor\fP* const QCPItemEllipse::topRightRim"
+
+.PP
+Definition at line 996 of file qcustomplot\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

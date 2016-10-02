@@ -1,0 +1,336 @@
+\hypertarget{a00002}{\section{Console Class Reference}
+\label{a00002}\index{Console@{Console}}
+}
+
+
+{\ttfamily \#include $<$console.\+h$>$}
+
+
+
+Inheritance diagram for Console\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{dc/dc9/a00282}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Console\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{dd/dfe/a00283}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00002_a1976aad46ce1a77be730bc628275038f}{get\+Data} (const Q\+Byte\+Array \&data)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00002_a1219e6e2000327a02434c56c514bbeda}{Console} (Q\+Widget $\ast$parent=0)
+\item 
+void \hyperlink{a00002_aa744a0868e01a13a502710f895f01525}{put\+Data} (const Q\+Byte\+Array \&data)
+\item 
+void \hyperlink{a00002_a5a17c5b6bc6719a26f73a5d0ac3d7de1}{set\+Local\+Echo\+Enabled} (bool set)
+\item 
+Q\+String \hyperlink{a00002_a9194022b884875614a4f7056454881c1}{uint8\+\_\+to\+\_\+str} (quint8 val)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Palette \hyperlink{a00002_a097b52858dc4b9f1bec8d8d67518daf0}{p}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{a00002_a558b58e3e68a167a7897a77bee78536c}{key\+Press\+Event} (Q\+Key\+Event $\ast$e)
+\item 
+virtual void \hyperlink{a00002_a615736fd63c7fc70536e2b775b0ce745}{mouse\+Press\+Event} (Q\+Mouse\+Event $\ast$e)
+\item 
+virtual void \hyperlink{a00002_a1727cadc147a07ed86fd4cb91908fd5f}{mouse\+Double\+Click\+Event} (Q\+Mouse\+Event $\ast$e)
+\item 
+virtual void \hyperlink{a00002_a199dade448d3ae597d420dc65abca11c}{context\+Menu\+Event} (Q\+Context\+Menu\+Event $\ast$e)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line \hyperlink{a00033_source_l00048}{48} of file \hyperlink{a00033_source}{console.\+h}.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{a00002_a1219e6e2000327a02434c56c514bbeda}{\index{Console@{Console}!Console@{Console}}
+\index{Console@{Console}!Console@{Console}}
+\subsubsection[{Console}]{\setlength{\rightskip}{0pt plus 5cm}Console\+::\+Console (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{a00002_a1219e6e2000327a02434c56c514bbeda}
+
+
+Definition at line \hyperlink{a00032_source_l00049}{49} of file \hyperlink{a00032_source}{console.\+cpp}.
+
+
+
+References \hyperlink{a00033_source_l00064}{p}.
+
+
+\begin{DoxyCode}
+00050     : \hyperlink{a00011}{QPlainTextEdit}(parent)
+00051     , localEchoEnabled(\textcolor{keyword}{false})
+00052 \{
+00053     document()->setMaximumBlockCount(100);
+00054     \hyperlink{a00002_a097b52858dc4b9f1bec8d8d67518daf0}{p} = palette();
+00055     \hyperlink{a00002_a097b52858dc4b9f1bec8d8d67518daf0}{p}.setColor(QPalette::Base, Qt::black);
+00056     \hyperlink{a00002_a097b52858dc4b9f1bec8d8d67518daf0}{p}.setColor(QPalette::Text, Qt::green);
+00057     setPalette(\hyperlink{a00002_a097b52858dc4b9f1bec8d8d67518daf0}{p});
+00058 
+00059 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00002_a199dade448d3ae597d420dc65abca11c}{\index{Console@{Console}!context\+Menu\+Event@{context\+Menu\+Event}}
+\index{context\+Menu\+Event@{context\+Menu\+Event}!Console@{Console}}
+\subsubsection[{context\+Menu\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Console\+::context\+Menu\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Context\+Menu\+Event $\ast$}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00002_a199dade448d3ae597d420dc65abca11c}
+
+
+Definition at line \hyperlink{a00032_source_l00110}{110} of file \hyperlink{a00032_source}{console.\+cpp}.
+
+
+\begin{DoxyCode}
+00111 \{
+00112     Q\_UNUSED(e)
+00113 \}
+\end{DoxyCode}
+\hypertarget{a00002_a1976aad46ce1a77be730bc628275038f}{\index{Console@{Console}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!Console@{Console}}
+\subsubsection[{get\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void Console\+::get\+Data (
+\begin{DoxyParamCaption}
+\item[{const Q\+Byte\+Array \&}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00002_a1976aad46ce1a77be730bc628275038f}
+
+
+Definition at line \hyperlink{a00013_source_l00120}{120} of file \hyperlink{a00013_source}{moc\+\_\+console.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00032_source_l00082}{key\+Press\+Event()}.
+
+
+\begin{DoxyCode}
+00121 \{
+00122     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+00123     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, \_a);
+00124 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{d7/d46/a00002_a1976aad46ce1a77be730bc628275038f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00002_a558b58e3e68a167a7897a77bee78536c}{\index{Console@{Console}!key\+Press\+Event@{key\+Press\+Event}}
+\index{key\+Press\+Event@{key\+Press\+Event}!Console@{Console}}
+\subsubsection[{key\+Press\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Console\+::key\+Press\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Key\+Event $\ast$}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00002_a558b58e3e68a167a7897a77bee78536c}
+
+
+Definition at line \hyperlink{a00032_source_l00082}{82} of file \hyperlink{a00032_source}{console.\+cpp}.
+
+
+
+References \hyperlink{a00013_source_l00120}{get\+Data()}.
+
+
+\begin{DoxyCode}
+00083 \{
+00084     \textcolor{keywordflow}{switch} (e->key()) \{
+00085     \textcolor{keywordflow}{case} Qt::Key\_Backspace:
+00086     \textcolor{keywordflow}{case} Qt::Key\_Left:
+00087     \textcolor{keywordflow}{case} Qt::Key\_Right:
+00088     \textcolor{keywordflow}{case} Qt::Key\_Up:
+00089     \textcolor{keywordflow}{case} Qt::Key\_Down:
+00090         \textcolor{comment}{// skip processing}
+00091         \textcolor{keywordflow}{break};
+00092     \textcolor{keywordflow}{default}:
+00093         \textcolor{keywordflow}{if} (localEchoEnabled)
+00094             QPlainTextEdit::keyPressEvent(e);
+00095         emit \hyperlink{a00002_a1976aad46ce1a77be730bc628275038f}{getData}(e->text().toLocal8Bit());
+00096     \}
+00097 \}
+\end{DoxyCode}
+\hypertarget{a00002_a1727cadc147a07ed86fd4cb91908fd5f}{\index{Console@{Console}!mouse\+Double\+Click\+Event@{mouse\+Double\+Click\+Event}}
+\index{mouse\+Double\+Click\+Event@{mouse\+Double\+Click\+Event}!Console@{Console}}
+\subsubsection[{mouse\+Double\+Click\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Console\+::mouse\+Double\+Click\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Mouse\+Event $\ast$}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00002_a1727cadc147a07ed86fd4cb91908fd5f}
+
+
+Definition at line \hyperlink{a00032_source_l00105}{105} of file \hyperlink{a00032_source}{console.\+cpp}.
+
+
+\begin{DoxyCode}
+00106 \{
+00107     Q\_UNUSED(e)
+00108 \}
+\end{DoxyCode}
+\hypertarget{a00002_a615736fd63c7fc70536e2b775b0ce745}{\index{Console@{Console}!mouse\+Press\+Event@{mouse\+Press\+Event}}
+\index{mouse\+Press\+Event@{mouse\+Press\+Event}!Console@{Console}}
+\subsubsection[{mouse\+Press\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Console\+::mouse\+Press\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Mouse\+Event $\ast$}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{a00002_a615736fd63c7fc70536e2b775b0ce745}
+
+
+Definition at line \hyperlink{a00032_source_l00099}{99} of file \hyperlink{a00032_source}{console.\+cpp}.
+
+
+\begin{DoxyCode}
+00100 \{
+00101     Q\_UNUSED(e)
+00102     setFocus();
+00103 \}
+\end{DoxyCode}
+\hypertarget{a00002_aa744a0868e01a13a502710f895f01525}{\index{Console@{Console}!put\+Data@{put\+Data}}
+\index{put\+Data@{put\+Data}!Console@{Console}}
+\subsubsection[{put\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void Console\+::put\+Data (
+\begin{DoxyParamCaption}
+\item[{const Q\+Byte\+Array \&}]{data}
+\end{DoxyParamCaption}
+)}}\label{a00002_aa744a0868e01a13a502710f895f01525}
+
+
+Definition at line \hyperlink{a00032_source_l00061}{61} of file \hyperlink{a00032_source}{console.\+cpp}.
+
+
+
+References \hyperlink{a00032_source_l00116}{uint8\+\_\+to\+\_\+str()}.
+
+
+\begin{DoxyCode}
+00062 \{
+00063 
+00064     QString str;
+00065 
+00066 
+00067     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii =0;ii<data.length();ii++)
+00068         str.append(\hyperlink{a00002_a9194022b884875614a4f7056454881c1}{uint8\_to\_str}((quint8)data.at(ii)));
+00069 
+00070 
+00071     insertPlainText(QString(data));
+00072 
+00073     QScrollBar *bar = verticalScrollBar();
+00074     bar->setValue(bar->maximum());
+00075 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{d7/d46/a00002_aa744a0868e01a13a502710f895f01525_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00002_a5a17c5b6bc6719a26f73a5d0ac3d7de1}{\index{Console@{Console}!set\+Local\+Echo\+Enabled@{set\+Local\+Echo\+Enabled}}
+\index{set\+Local\+Echo\+Enabled@{set\+Local\+Echo\+Enabled}!Console@{Console}}
+\subsubsection[{set\+Local\+Echo\+Enabled}]{\setlength{\rightskip}{0pt plus 5cm}void Console\+::set\+Local\+Echo\+Enabled (
+\begin{DoxyParamCaption}
+\item[{bool}]{set}
+\end{DoxyParamCaption}
+)}}\label{a00002_a5a17c5b6bc6719a26f73a5d0ac3d7de1}
+
+
+Definition at line \hyperlink{a00032_source_l00077}{77} of file \hyperlink{a00032_source}{console.\+cpp}.
+
+
+\begin{DoxyCode}
+00078 \{
+00079     localEchoEnabled = set;
+00080 \}
+\end{DoxyCode}
+\hypertarget{a00002_a9194022b884875614a4f7056454881c1}{\index{Console@{Console}!uint8\+\_\+to\+\_\+str@{uint8\+\_\+to\+\_\+str}}
+\index{uint8\+\_\+to\+\_\+str@{uint8\+\_\+to\+\_\+str}!Console@{Console}}
+\subsubsection[{uint8\+\_\+to\+\_\+str}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Console\+::uint8\+\_\+to\+\_\+str (
+\begin{DoxyParamCaption}
+\item[{quint8}]{val}
+\end{DoxyParamCaption}
+)}}\label{a00002_a9194022b884875614a4f7056454881c1}
+
+
+Definition at line \hyperlink{a00032_source_l00116}{116} of file \hyperlink{a00032_source}{console.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00032_source_l00061}{put\+Data()}.
+
+
+\begin{DoxyCode}
+00117 \{
+00118     \textcolor{keyword}{const} \textcolor{keywordtype}{char} cnv[] = \textcolor{stringliteral}{"0123456789ABCDEF"};
+00119 
+00120     \textcolor{keywordflow}{return} QString(cnv[(val>>4)&0x0F]) + QString(cnv[(val>>0)&0x0F]);
+00121 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{d7/d46/a00002_a9194022b884875614a4f7056454881c1_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00002_a097b52858dc4b9f1bec8d8d67518daf0}{\index{Console@{Console}!p@{p}}
+\index{p@{p}!Console@{Console}}
+\subsubsection[{p}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Palette Console\+::p}}\label{a00002_a097b52858dc4b9f1bec8d8d67518daf0}
+
+
+Definition at line \hyperlink{a00033_source_l00064}{64} of file \hyperlink{a00033_source}{console.\+h}.
+
+
+
+Referenced by \hyperlink{a00032_source_l00049}{Console()}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00033}{console.\+h}\item 
+\hyperlink{a00032}{console.\+cpp}\item 
+\hyperlink{a00013}{moc\+\_\+console.\+cpp}\end{DoxyCompactItemize}

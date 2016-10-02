@@ -1,0 +1,6 @@
+<map id="QCPAbstractPlottable::selectable" name="QCPAbstractPlottable::selectable">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#ac1d1bc6ae4e13616fb02cef6d9e2188e" title="Returns the plottable at the pixel position pos. " alt="" coords="237,31,321,57"/>
+<area shape="rect" id="node5" href="$dc/de2/a00024.html#a22c69299eb5569e0f6bf084877a37dc4" title="Sets whether the user can (de&#45;)select this plottable by clicking on the QCustomPlot surface..." alt="" coords="204,82,355,123"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a881c8652ebb912345de27687817845cf" title="handlePlottableSelection" alt="" coords="403,5,568,32"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="616,31,756,57"/>
+</map>

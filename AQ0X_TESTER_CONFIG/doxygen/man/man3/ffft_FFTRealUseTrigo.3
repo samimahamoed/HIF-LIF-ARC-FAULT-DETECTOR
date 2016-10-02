@@ -1,0 +1,109 @@
+.TH "ffft::FFTRealUseTrigo< ALGO >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::FFTRealUseTrigo< ALGO > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <FFTRealUseTrigo\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef 
+.br
+\fBFFTRealFixLenParam::DataType\fP \fBDataType\fP"
+.br
+.ti -1c
+.RI "typedef \fBOscSinCos\fP< \fBDataType\fP > \fBOscType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<> void \fBprepare\fP (\fBOscType\fP &osc)"
+.br
+.ti -1c
+.RI "template<> void \fBiterate\fP (\fBOscType\fP &osc, \fBDataType\fP &c, \fBDataType\fP &s, const \fBDataType\fP cos_ptr[], long index_c, long index_s)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBffft_FORCEINLINE\fP void \fBprepare\fP (\fBOscType\fP &osc)"
+.br
+.ti -1c
+.RI "static \fBffft_FORCEINLINE\fP void \fBiterate\fP (\fBOscType\fP &osc, \fBDataType\fP &c, \fBDataType\fP &s, const \fBDataType\fP cos_ptr[], long index_c, long index_s)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<int ALGO>class ffft::FFTRealUseTrigo< ALGO >"
+
+.PP
+Definition at line 42 of file FFTRealUseTrigo\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<int ALGO> typedef \fBFFTRealFixLenParam::DataType\fP \fBffft::FFTRealUseTrigo\fP< ALGO >::\fBDataType\fP"
+
+.PP
+Definition at line 49 of file FFTRealUseTrigo\&.h\&.
+.SS "template<int ALGO> typedef \fBOscSinCos\fP<\fBDataType\fP> \fBffft::FFTRealUseTrigo\fP< ALGO >::\fBOscType\fP"
+
+.PP
+Definition at line 50 of file FFTRealUseTrigo\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int ALGO> void \fBffft::FFTRealUseTrigo\fP< ALGO >::iterate (\fBOscType\fP &osc, \fBDataType\fP &c, \fBDataType\fP &s, const \fBDataType\fPcos_ptr[], longindex_c, longindex_s)\fC [static]\fP"
+
+.PP
+Definition at line 58 of file FFTRealUseTrigo\&.hpp\&.
+.PP
+.nf
+59 {
+60     osc\&.step ();
+61     c = osc\&.get_cos ();
+62     s = osc\&.get_sin ();
+63 }
+.fi
+.SS "template<> void \fBffft::FFTRealUseTrigo\fP< 0 >::iterate (\fBOscType\fP &osc, \fBDataType\fP &c, \fBDataType\fP &s, const \fBDataType\fPcos_ptr[], longindex_c, longindex_s)\fC [inline]\fP"
+
+.PP
+Definition at line 66 of file FFTRealUseTrigo\&.hpp\&.
+.PP
+.nf
+67 {
+68     c = cos_ptr [index_c];
+69     s = cos_ptr [index_s];
+70 }
+.fi
+.SS "template<> void \fBffft::FFTRealUseTrigo\fP< 0 >::prepare (\fBOscType\fP &osc)\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file FFTRealUseTrigo\&.hpp\&.
+.PP
+.nf
+51 {
+52     // Nothing
+53 }
+.fi
+.SS "template<int ALGO> void \fBffft::FFTRealUseTrigo\fP< ALGO >::prepare (\fBOscType\fP &osc)\fC [static]\fP"
+
+.PP
+Definition at line 44 of file FFTRealUseTrigo\&.hpp\&.
+.PP
+.nf
+45 {
+46     osc\&.clear_buffers ();
+47 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

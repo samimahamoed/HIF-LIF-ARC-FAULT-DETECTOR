@@ -1,0 +1,200 @@
+.TH "mfield_x_sensor_prv.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mfield_x_sensor_prv.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBmfield_x_sen_data_t\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_MSG_MFIELD_SENSOR_SV\fP   (\fBX_MSG_FREE\fP + 3)"
+.br
+.RI "\fIInternal event message, initiates periodic supervision\&. \fP"
+.ti -1c
+.RI "#define \fBX_NTF_MFIELD_SENSOR_SV_TIMER\fP   (\fBX_NTF_FREE\fP + 15)"
+.br
+.RI "\fIInternal supervison timer\&. \fP"
+.ti -1c
+.RI "#define \fBSV_TIMER_PERIOD\fP   1000"
+.br
+.RI "\fITimeout\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFloat32\fP \fBmfield_x_sen_first_order_derivative\fP (\fBInt16\fP final_val, \fBInt16\fP init_val)"
+.br
+.RI "\fIClaculate first order derivative\&. \fP"
+.ti -1c
+.RI "\fBFloat32\fP \fBmfield_x_sen_calc_probablity\fP (\fBUint16\fP event, \fBUint16\fP obs)"
+.br
+.RI "\fIClaculates the event probablity\&. \fP"
+.ti -1c
+.RI "\fBInt8\fP \fBmfield_x_compare\fP (\fBFloat32\fP num, \fBFloat32\fP given_num, \fBFloat32\fP tolerance)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBmfield_x_sen_data_t\fP \fBmfield_x_sen_data\fP"
+.br
+.RI "\fIInternal mfield_x_sen module data\&. \fP"
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct mfield_x_sen_data_t"
+.PP 
+Definition at line 23 of file mfield_x_sensor_prv\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfigured\fP stores user configuration details 
+.br
+.PP
+\fBdiagonesis_records_mfield_t\fP \fIdiagonesis_records\fP holds diagonesis data on the module operation 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP * \fIdisturbance_record\fP disturbance record storage , details starting form the first event detection to the duration of observation record length 
+.br
+.PP
+\fBmodule_status_mfield_t\fP \fImodule_status\fP holds details about the module current state 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fIsv_errors_flags\fP supervission error flags 
+.br
+.PP
+\fBx_notify_mfield_sen_sv_report\fP \fIsv_status_ntf\fP 
+.br
+.PP
+\fBx_event\fP \fIsv_task_event\fP Internal event for processing mfield module suppervission task\&. 
+.br
+.PP
+\fBx_notify\fP \fIsv_timer_ntf\fP Timer notification to initiate mfield module suppervission task\&. 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define SV_TIMER_PERIOD   1000"
+
+.PP
+Timeout\&. 
+.PP
+Definition at line 19 of file mfield_x_sensor_prv\&.h\&.
+.SS "#define X_MSG_MFIELD_SENSOR_SV   (\fBX_MSG_FREE\fP + 3)"
+
+.PP
+Internal event message, initiates periodic supervision\&. 
+.PP
+Definition at line 12 of file mfield_x_sensor_prv\&.h\&.
+.PP
+Referenced by mfield_x_sen_taskx(), and mfield_z_sen_taskx()\&.
+.SS "#define X_NTF_MFIELD_SENSOR_SV_TIMER   (\fBX_NTF_FREE\fP + 15)"
+
+.PP
+Internal supervison timer\&. 
+.PP
+Definition at line 15 of file mfield_x_sensor_prv\&.h\&.
+.PP
+Referenced by mfield_x_sen_notifyx(), and mfield_z_sen_notifyx()\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBInt8\fP mfield_x_compare (\fBFloat32\fPnum1, \fBFloat32\fPnum2, \fBFloat32\fPtolerance)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fI\fP 
+.RE
+.PP
+
+.PP
+Definition at line 221 of file mfield_x_sensor\&.c\&.
+.PP
+References __COMPARE\&.
+.PP
+Referenced by mfield_x_sen_get_status(), and mfield_x_sen_hif_check()\&.
+.PP
+.nf
+221                                                                     {
+222 
+223      return __COMPARE((num1 - num2),tolerance);
+224    Float32 difference = num1 - num2;
+225 
+226    if(abs(difference) <= tolerance)
+227     return  0;
+228 
+229    if(difference > 0/*num1 > num2*/)
+230     return 1;
+231 
+232    if(difference < 0/*num1 < num2*/)
+233     return -1;
+234 
+235    return -2;
+236 }
+.fi
+.SS "\fBFloat32\fP mfield_x_sen_calc_probablity (\fBUint16\fPevent, \fBUint16\fPobs)"
+
+.PP
+Claculates the event probablity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent,positive\fP event count value 
+.br
+\fIobs,total\fP number of observation 
+.RE
+.PP
+
+.PP
+Definition at line 191 of file mfield_x_sensor\&.c\&.
+.PP
+.nf
+191                                                              {
+192 
+193     return (100L*((Float32)event/(Float32)obs));
+194 }
+.fi
+.SS "\fBFloat32\fP mfield_x_sen_first_order_derivative (\fBInt16\fPfinal_val, \fBInt16\fPinit_val)"
+
+.PP
+Claculate first order derivative\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+
+.PP
+Definition at line 178 of file mfield_x_sensor\&.c\&.
+.PP
+.nf
+178                                                                            {
+179      return ((Float32)final_val-(Float32)init_val);
+180 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBmfield_x_sen_data_t\fP mfield_x_sen_data"
+
+.PP
+Internal mfield_x_sen module data\&. 
+.PP
+Definition at line 23 of file mfield_x_sensor\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

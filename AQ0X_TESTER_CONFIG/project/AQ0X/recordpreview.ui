@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>recordPreview</class>
+ <widget class="QMainWindow" name="recordPreview">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="logo.qrc">
+    <normaloff>:/logo/logo</normaloff>:/logo/logo</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QDockWidget" name="dockWidgetPlot_event_history">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>0</y>
+      <width>91</width>
+      <height>509</height>
+     </rect>
+    </property>
+    <property name="windowIcon">
+     <iconset>
+      <normaloff>:/icon/Arcflash</normaloff>:/icon/Arcflash</iconset>
+    </property>
+    <property name="allowedAreas">
+     <set>Qt::RightDockWidgetArea</set>
+    </property>
+    <property name="windowTitle">
+     <string>Plot:change per time </string>
+    </property>
+    <widget class="QWidget" name="dockWidgetContents_4">
+     <layout class="QGridLayout" name="gridLayout_4">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QCustomPlot" name="curve_dfdt" native="true">
+          <property name="styleSheet">
+           <string notr="true">QWidget{
+border: 1px solid   #999999;
+border-radius:10px;
+border-style: inset;
+background-color:#7E7E7E;
+}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSave">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuSave_As">
+     <property name="title">
+      <string>Save As</string>
+     </property>
+     <widget class="QMenu" name="menuPDF">
+      <property name="title">
+       <string>PDF</string>
+      </property>
+      <property name="icon">
+       <iconset resource="icons.qrc">
+        <normaloff>:/icon/icons/PDF-icon.png</normaloff>:/icon/icons/PDF-icon.png</iconset>
+      </property>
+      <addaction name="actionData_Plot_pdf"/>
+      <addaction name="actionEvent_Plot_pdf"/>
+     </widget>
+     <widget class="QMenu" name="menuImage">
+      <property name="title">
+       <string>Image</string>
+      </property>
+      <property name="icon">
+       <iconset resource="icons.qrc">
+        <normaloff>:/icon/icons/image_icon.png</normaloff>:/icon/icons/image_icon.png</iconset>
+      </property>
+      <addaction name="actionData_plot_img"/>
+      <addaction name="actionEvent_Plot_img"/>
+     </widget>
+     <addaction name="actionCreateCSV"/>
+     <addaction name="menuPDF"/>
+     <addaction name="menuImage"/>
+    </widget>
+    <addaction name="menuSave_As"/>
+   </widget>
+   <widget class="QMenu" name="menuWindows">
+    <property name="title">
+     <string>Windows</string>
+    </property>
+    <addaction name="actionWinDataPlot"/>
+    <addaction name="actionWinEventPlot"/>
+   </widget>
+   <addaction name="menuSave"/>
+   <addaction name="menuWindows"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dockWidgetPlot">
+   <property name="windowIcon">
+    <iconset>
+     <normaloff>:/icon/Arcflash</normaloff>:/icon/Arcflash</iconset>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Plot:Data</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QGridLayout" name="gridLayout_3">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QCustomPlot" name="curve_data" native="true">
+         <property name="styleSheet">
+          <string notr="true">QWidget{
+border: 1px solid   #999999;
+border-radius:10px;
+border-style: inset;
+background-color:#7E7E7E;
+}</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionCreateCSV"/>
+  </widget>
+  <action name="actionCreateCSV">
+   <property name="icon">
+    <iconset resource="logo.qrc">
+     <normaloff>:/logo/icons/csv_file_icon.png</normaloff>:/logo/icons/csv_file_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>CSV</string>
+   </property>
+   <property name="iconText">
+    <string>Create CSV</string>
+   </property>
+   <property name="toolTip">
+    <string>Creates CSV using both light and pressure data</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionWinDataPlot">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Data plot</string>
+   </property>
+  </action>
+  <action name="actionData_Plot_pdf">
+   <property name="text">
+    <string>Data Plot</string>
+   </property>
+  </action>
+  <action name="actionEvent_Plot_pdf">
+   <property name="text">
+    <string>Event Plot</string>
+   </property>
+  </action>
+  <action name="actionData_plot_img">
+   <property name="text">
+    <string>Data plot</string>
+   </property>
+  </action>
+  <action name="actionEvent_Plot_img">
+   <property name="text">
+    <string>Event plot</string>
+   </property>
+  </action>
+  <action name="actionWinEventPlot">
+   <property name="text">
+    <string>Event plot</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header location="global">../qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="icons.qrc"/>
+  <include location="logo.qrc"/>
+ </resources>
+ <connections/>
+</ui>

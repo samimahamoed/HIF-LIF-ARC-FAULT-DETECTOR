@@ -1,0 +1,67 @@
+\hypertarget{a00058_source}{\section{srv\+\_\+hwio.\+h}
+\label{a00058_source}\index{srv\+\_\+hwio.\+h@{srv\+\_\+hwio.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef SRV\_HWIO\_H}
+00002 \textcolor{preprocessor}{#define SRV\_HWIO\_H}
+00003 
+00011 \textcolor{preprocessor}{#include "\hyperlink{a00072}{System.h}"}
+00012 \textcolor{preprocessor}{#include "\hyperlink{a00040}{allheaders.h}"}
+00013 
+00014 
+\hypertarget{a00058_source_l00016}{}\hyperlink{a00058_a00978ca9e8220475258dcbbbb7d29129}{00016} \textcolor{preprocessor}{#define ADC\_RESOLUTION                                       (1024L) // 10 bit}
+00017 
+\hypertarget{a00058_source_l00019}{}\hyperlink{a00058_ada92d3eeeec0cbeee41e76a52d145792}{00019} \textcolor{preprocessor}{#define ADC\_VAL\_MAPPING\_FACTOR                               ((3.3L}\textcolor{comment}{/*Vref*/}\textcolor{preprocessor}{)/(ADC\_RESOLUTION))}
+00020 
+00021 
+00022 
+00023 
+00024 
+\hypertarget{a00058_source_l00025}{}\hyperlink{a00058_af523b82e94e382153f1313307c5bd879}{00025} \textcolor{preprocessor}{#define ANA\_INDEX\_UV                   1}
+\hypertarget{a00058_source_l00026}{}\hyperlink{a00058_a1fae4d2e8dd35f504ec4170044da7e73}{00026} \textcolor{preprocessor}{#define ANA\_INDEX\_IR                   2}
+\hypertarget{a00058_source_l00027}{}\hyperlink{a00058_aa797210faae0317a1b0ddace04d1257e}{00027} \textcolor{preprocessor}{#define ANA\_INDEX\_MFIELD\_X             3}
+\hypertarget{a00058_source_l00028}{}\hyperlink{a00058_aa2f14d4d069c5888b1d230be59751a09}{00028} \textcolor{preprocessor}{#define ANA\_INDEX\_MFIELD\_Y             0}
+\hypertarget{a00058_source_l00029}{}\hyperlink{a00058_a43ed3aca409e3fc633f213bc648ff1cc}{00029} \textcolor{preprocessor}{#define ANA\_INDEX\_SUPPLY               4}
+00030 
+00031 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+00032 \textcolor{preprocessor}{#define ANA\_INDEX\_SV\_CURRENT           5}
+00033 \textcolor{preprocessor}{#endif}
+00034 
+00035 
+00036 
+00037 
+00038 
+\hypertarget{a00058_source_l00040}{}\hyperlink{a00058_aae186cdf37c0783bf64b0aed3f1e6eda}{00040} \textcolor{preprocessor}{#define         HWIO\_SV\_LED\_ON                              1}
+\hypertarget{a00058_source_l00041}{}\hyperlink{a00058_a8fe69ad7e533d2e88cec53c22a56f8fb}{00041} \textcolor{preprocessor}{#define         HWIO\_SV\_LED\_OFF                             2}
+\hypertarget{a00058_source_l00042}{}\hyperlink{a00058_abcbef2f48463bed54ae1c045303dbab8}{00042} \textcolor{preprocessor}{#define         HWIO\_ALARM\_ON                               3}
+\hypertarget{a00058_source_l00043}{}\hyperlink{a00058_a17401c2732dee3a19b55a210870b6d8d}{00043} \textcolor{preprocessor}{#define         HWIO\_ALARM\_OFF                              4}
+\hypertarget{a00058_source_l00044}{}\hyperlink{a00058_a6e93f09b80c1e730d60fbce52cc29818}{00044} \textcolor{preprocessor}{#define         HWIO\_HMC10XX\_PULSE\_SET                      5}
+\hypertarget{a00058_source_l00045}{}\hyperlink{a00058_ac5506797b126d9ef0f4495c899fb6ef6}{00045} \textcolor{preprocessor}{#define         HWIO\_HMC10XX\_PULSE\_RSET                     6}
+\hypertarget{a00058_source_l00046}{}\hyperlink{a00058_ab1278d6ffe9c661f55b9f146f82b0be6}{00046} \textcolor{preprocessor}{#define         HWIO\_SV\_LED\_PORT\_STATUS                     7}
+\hypertarget{a00058_source_l00047}{}\hyperlink{a00058_a584ae44c8dda691dd116f96dd76ccf84}{00047} \textcolor{preprocessor}{#define         HWIO\_ALARM\_PORT\_STATUS                      8}
+\hypertarget{a00058_source_l00048}{}\hyperlink{a00058_ad1bba8a70503545d912de4334f47100c}{00048} \textcolor{preprocessor}{#define         HWIO\_HMC10XX\_PULSE\_PORT\_STATUS              9}
+00049 
+00050 
+\hypertarget{a00058_source_l00051}{}\hyperlink{a00058_a4c044f78fb8b7ee19bfdb5d2b204b50e}{00051} \textcolor{preprocessor}{#define         DIG\_TEST\_LED\_LAT                        LATBbits.LATB15}
+\hypertarget{a00058_source_l00052}{}\hyperlink{a00058_adfa16e4e30e94462911794696252b2e2}{00052} \textcolor{preprocessor}{#define         DIG\_ALARM\_OUTPUT\_LAT                    LATBbits.LATB14}
+\hypertarget{a00058_source_l00053}{}\hyperlink{a00058_af90b9b01c8dc72faf22ed4f02d849cc8}{00053} \textcolor{preprocessor}{#define         DIG\_SUPERVISION\_OUTPUT\_LAT              LATBbits.LATB4}
+\hypertarget{a00058_source_l00054}{}\hyperlink{a00058_a257acf5e9bb0074bec6115ff3df89251}{00054} \textcolor{preprocessor}{#define         DIG\_HMC10XX\_SR\_PULSE\_OUTPUT\_LAT             LATAbits.LATA4}
+00055 
+00056 
+\hypertarget{a00058_source_l00057}{}\hyperlink{a00058_a4c186ff7c22309dad906674fb20c72a2}{00057} \textcolor{preprocessor}{#define         DIG\_TEST\_LED\_PORT                       PORTBbits.RB15}
+\hypertarget{a00058_source_l00058}{}\hyperlink{a00058_a740480cf500e2856ac89753c9fbf0b5b}{00058} \textcolor{preprocessor}{#define         DIG\_ALARM\_OUTPUT\_PORT                   PORTBbits.RB14}
+\hypertarget{a00058_source_l00059}{}\hyperlink{a00058_aa8b76bdd2ed9a9654ad4a311ca6f6064}{00059} \textcolor{preprocessor}{#define         DIG\_SUPERVISION\_OUTPUT\_PORT             PORTBbits.RB4}
+\hypertarget{a00058_source_l00060}{}\hyperlink{a00058_a4215a1b2a84b3308c07e27cebe0a1ea5}{00060} \textcolor{preprocessor}{#define         DIG\_HMC10XX\_SR\_PULSE\_OUTPUT\_PORT            PORTAbits.RA4}
+00061 
+00062 
+00063 
+00064 \textcolor{keywordtype}{void}            \hyperlink{a00058_a46e02bcdf3bfe45545879afb71919d47}{hwio\_configure\_init}(\textcolor{keywordtype}{void});
+00065 \textcolor{keywordtype}{void}            \hyperlink{a00058_a33a6b6b17536decccd19c7132479c20b}{hwio\_configure\_analog\_init}(\textcolor{keywordtype}{void});
+00066 \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8}            \hyperlink{a00058_a0af9eae455fbdf4e77def5bfffa109cb}{hwio\_execute\_gpio\_task}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cmd);
+00067 \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}          \hyperlink{a00058_a5770775aca185380868838e69ec20215}{hwio\_get\_analog}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} AnIdx);
+00068 
+00069 
+00070 \textcolor{preprocessor}{#endif //SRV\_HWIO\_H}
+00071 
+\end{DoxyCode}

@@ -1,0 +1,681 @@
+.TH "mfield_sensor.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mfield_sensor.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBanalog_sample_mfield_t\fP"
+.br
+.ti -1c
+.RI "struct \fBcalc_tresholds_mfield_t\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_mfield_sen_configure\fP"
+.br
+.RI "\fINotification containing module operation configuration details ( from Algorithm module) \fP"
+.ti -1c
+.RI "struct \fBx_notify_mfield_sen_sv_report\fP"
+.br
+.RI "\fINotification structure from mfield_sen module to Algorithm module about supervision error\&. \fP"
+.ti -1c
+.RI "struct \fBstate_data_mfield_t\fP"
+.br
+.ti -1c
+.RI "struct \fBmodule_status_mfield_t\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_mfield_t\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_mfield_sen_configure\&.message\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_mfield_sen_sv_report\&.message\fP"
+.br
+.ti -1c
+.RI "struct \fBmodule_status_mfield_t\&.projected\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_mfield_t\&.signal_history\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_mfield_t\&.signal_history\&.amp\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_mfield_t\&.signal_history\&.amp_exceded\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_mfield_t\&.false_alarm\fP"
+.br
+.RI "\fICounts and stores false positive details, the module uses the information to adjust the threshold values in order to reduce false positive occurrence (i\&.e\&. \fP"
+.ti -1c
+.RI "struct \fBdiagonesis_records_mfield_t\&.false_alarm\&.dfdt_exceded\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_mfield_t\&.false_alarm\&.amp_exceded\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_NTF_MFIELD_X_SENSOR_CONFIG\fP   (\fBX_NTF_FREE\fP  + 13)"
+.br
+.RI "\fINotification from Algorithm module configuration data update\&. \fP"
+.ti -1c
+.RI "#define \fBMFIELD_SEN_GAIN\fP   0\&.274"
+.br
+.RI "\fISensor Sensitivity = 1mV/V/gauss => S(3\&.3V) = 3\&.3mV/gauss With gain of 83\&.3 for full dynamic range +/- 6 gauss produces about a 0\&.274V/gauss transfer characteristic centered at half supply (1\&.65 volts)\&. \fP"
+.ti -1c
+.RI "#define \fBMFIELD_ADC_QUIESCENT_LEVEL\fP   512"
+.br
+.RI "\fIamplifier output at zero magnetic field \fP"
+.ti -1c
+.RI "#define \fBMFIELD_SEN_NOISE_DENSITY_LEVEL\fP   0"
+.br
+.ti -1c
+.RI "#define \fBREDUCTION_FACTOR\fP   100"
+.br
+.ti -1c
+.RI "#define \fBEXCEDED_AMP_TH\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBEXCEDED_DFDT_IMPULS\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBEXCEDED_DFDT_MAX\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBEXCEDED_DFDT_MIN\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBSINUSOID\fP   0"
+.br
+.ti -1c
+.RI "#define \fBMIN_ACCEPTABLE_CORRELATION\fP   0\&.90"
+.br
+.ti -1c
+.RI "#define \fBPRE_ACTIVATION_RECORD_LENGTH_MFIELD\fP   100"
+.br
+.ti -1c
+.RI "#define \fBOBSERVATION_TIME_WINDOW\fP   (1/2*\fBFAST_TIMER_SAMPLING_RATE_XU\fP + 100)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBevent_report_t\fP \fBmfield_x_sen_get_status\fP (\fBUint16\fP adc_value, \fBBool\fP save_event)"
+.br
+.RI "\fIfunction used to identify the measured signal waveform \fP"
+.ti -1c
+.RI "\fBevent_report_t\fP \fBmfield_y_sen_get_status\fP (\fBUint16\fP adc_value, \fBBool\fP save_event)"
+.br
+.ti -1c
+.RI "void \fBmfield_x_sen_taskx\fP (\fBx_event\fP *event)"
+.br
+.RI "\fImodule task function\&. \fP"
+.ti -1c
+.RI "void \fBmfield_x_sen_notifyx\fP (\fBx_notify\fP *notify)"
+.br
+.RI "\fImodule notification function\&. \fP"
+.ti -1c
+.RI "void \fBmfield_y_sen_taskx\fP (\fBx_event\fP *event)"
+.br
+.ti -1c
+.RI "void \fBmfield_y_sen_notifyx\fP (\fBx_notify\fP *notify)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBx_task_id\fP \fBmfield_x_sen_id\fP"
+.br
+.RI "\fImfield_x_sen module handle \fP"
+.ti -1c
+.RI "\fBx_task_id\fP \fBmfield_y_sen_id\fP"
+.br
+.RI "\fImfield_y_sen module handle \fP"
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct analog_sample_mfield_t"
+.PP 
+Definition at line 49 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBInt16\fP \fIadc_val\fP 
+.br
+.PP
+\fBFloat32\fP \fIcalculated_pick\fP 
+.br
+.PP
+\fBInt8\fP \fIpolarity\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct calc_tresholds_mfield_t"
+.PP 
+Definition at line 59 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBanalog_sample_mfield_t\fP \fIamp_treshold_max\fP 
+.br
+.PP
+\fBFloat32\fP \fIdl_impulse\fP 
+.br
+.PP
+\fBFloat32\fP \fIdl_treshold_max\fP 
+.br
+.PP
+\fBFloat32\fP \fIdl_treshold_min\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_mfield_sen_configure"
+.PP 
+Notification containing module operation configuration details ( from Algorithm module) 
+.PP
+Definition at line 72 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_mfield_sen_configure\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_mfield_sen_sv_report"
+.PP 
+Notification structure from mfield_sen module to Algorithm module about supervision error\&. 
+.PP
+Definition at line 88 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_mfield_sen_sv_report\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct state_data_mfield_t"
+.PP 
+Definition at line 100 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIchange_per_time\fP 
+.br
+.PP
+\fBInt8\fP \fIpolarity\fP 
+.br
+.PP
+\fBInt16\fP \fIsignal_level\fP 
+.br
+.PP
+\fBUint8\fP \fIstate\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct module_status_mfield_t"
+.PP 
+Definition at line 106 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBstate_data_mfield_t\fP \fIcurrent\fP 
+.br
+.PP
+\fBstate_data_mfield_t\fP \fIprevious\fP 
+.br
+.PP
+struct \fBmodule_status_mfield_t\fP \fIprojected\fP 
+.br
+.PP
+\fBUint16\fP \fItime\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_mfield_t"
+.PP 
+Definition at line 128 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBdiagonesis_records_mfield_t\fP \fIfalse_alarm\fP Counts and stores false positive details, the module uses the information to adjust the threshold values in order to reduce false positive occurrence (i\&.e\&. if the module is running in automatic adjust mode) 
+.br
+.PP
+struct \fBdiagonesis_records_mfield_t\fP \fIsignal_history\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_mfield_sen_configure\&.message"
+.PP 
+Definition at line 76 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfigured\fP 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP * \fIdisturbance_record\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_mfield_sen_sv_report\&.message"
+.PP 
+Definition at line 92 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBsv_error_flags_ut\fP \fIerror_status_flags\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct module_status_mfield_t\&.projected"
+.PP 
+Definition at line 112 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIamplitude\fP 
+.br
+.PP
+\fBFloat32\fP \fIangular_freq\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period_1_2\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period_1_4\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period_1_8\fP 
+.br
+.PP
+\fBFloat32\fP \fIwaveform\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_mfield_t\&.signal_history"
+.PP 
+Definition at line 130 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBsignal_history\fP \fIamp\fP 
+.br
+.PP
+\fBsignal_history\fP \fIamp_exceded\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_mfield_t\&.signal_history\&.amp"
+.PP 
+Definition at line 132 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIaccumulated\fP 
+.br
+.PP
+\fBFloat32\fP \fIavg\fP 
+.br
+.PP
+\fBUint16\fP \fImax\fP 
+.br
+.PP
+\fBUint16\fP \fImin\fP 
+.br
+.PP
+\fBUint16\fP \fItotal_observation\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_mfield_t\&.signal_history\&.amp_exceded"
+.PP 
+Definition at line 143 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint32\fP \fIaccumulated\fP 
+.br
+.PP
+\fBFloat32\fP \fIavg\fP 
+.br
+.PP
+\fBUint8\fP \fItotal_observation\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_mfield_t\&.false_alarm"
+.PP 
+Counts and stores false positive details, the module uses the information to adjust the threshold values in order to reduce false positive occurrence (i\&.e\&. 
+
+if the module is running in automatic adjust mode) 
+.PP
+Definition at line 156 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBfalse_alarm\fP \fIamp_exceded\fP 
+.br
+.PP
+\fBfalse_alarm\fP \fIdfdt_exceded\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_mfield_t\&.false_alarm\&.dfdt_exceded"
+.PP 
+Definition at line 157 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIavg\fP 
+.br
+.PP
+\fBUint16\fP \fIcnt\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_mfield_t\&.false_alarm\&.amp_exceded"
+.PP 
+Definition at line 163 of file mfield_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIavg\fP 
+.br
+.PP
+\fBUint16\fP \fIcnt\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define EXCEDED_AMP_TH   0x00"
+
+.PP
+Definition at line 36 of file mfield_sensor\&.h\&.
+.PP
+Referenced by light_sen_mark_false_postives(), and mfield_z_sen_mark_false_postives()\&.
+.SS "#define EXCEDED_DFDT_IMPULS   0x02"
+
+.PP
+Definition at line 37 of file mfield_sensor\&.h\&.
+.SS "#define EXCEDED_DFDT_MAX   0x04"
+
+.PP
+Definition at line 38 of file mfield_sensor\&.h\&.
+.SS "#define EXCEDED_DFDT_MIN   0x08"
+
+.PP
+Definition at line 39 of file mfield_sensor\&.h\&.
+.SS "#define MFIELD_ADC_QUIESCENT_LEVEL   512"
+
+.PP
+amplifier output at zero magnetic field 
+.PP
+Definition at line 29 of file mfield_sensor\&.h\&.
+.PP
+Referenced by mfield_x_sen_get_status()\&.
+.SS "#define MFIELD_SEN_GAIN   0\&.274"
+
+.PP
+Sensor Sensitivity = 1mV/V/gauss => S(3\&.3V) = 3\&.3mV/gauss With gain of 83\&.3 for full dynamic range +/- 6 gauss produces about a 0\&.274V/gauss transfer characteristic centered at half supply (1\&.65 volts)\&. 
+.PP
+Definition at line 24 of file mfield_sensor\&.h\&.
+.SS "#define MFIELD_SEN_NOISE_DENSITY_LEVEL   0"
+
+.PP
+Definition at line 31 of file mfield_sensor\&.h\&.
+.PP
+Referenced by mfield_x_sen_get_status()\&.
+.SS "#define MIN_ACCEPTABLE_CORRELATION   0\&.90"
+
+.PP
+Definition at line 44 of file mfield_sensor\&.h\&.
+.SS "#define OBSERVATION_TIME_WINDOW   (1/2*\fBFAST_TIMER_SAMPLING_RATE_XU\fP + 100)"
+
+.PP
+Definition at line 46 of file mfield_sensor\&.h\&.
+.PP
+Referenced by mfield_z_observation_time_window_expired()\&.
+.SS "#define PRE_ACTIVATION_RECORD_LENGTH_MFIELD   100"
+
+.PP
+Definition at line 45 of file mfield_sensor\&.h\&.
+.SS "#define REDUCTION_FACTOR   100"
+
+.PP
+Definition at line 34 of file mfield_sensor\&.h\&.
+.SS "#define SINUSOID   0"
+
+.PP
+Definition at line 43 of file mfield_sensor\&.h\&.
+.SS "#define X_NTF_MFIELD_X_SENSOR_CONFIG   (\fBX_NTF_FREE\fP  + 13)"
+
+.PP
+Notification from Algorithm module configuration data update\&. 
+.PP
+Definition at line 11 of file mfield_sensor\&.h\&.
+.PP
+Referenced by mfield_x_sen_notifyx()\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBevent_report_t\fP mfield_x_sen_get_status (\fBUint16\fPadc_value, \fBBool\fPsave_event)"
+
+.PP
+function used to identify the measured signal waveform function supervise the status of the mfield sensor
+.PP
+function used to identify the measured signal waveform req REQ-1b: "when a valid trip is issued,for few handres of microseconds after trip data will be to the provided location\&.
+.PP
+REQ-1b: "A valid trip is issued, for few handres of microseconds after trip data will be saved at provided location\&.
+.PP
+Definition at line 276 of file mfield_x_sensor\&.c\&.
+.PP
+References __1ST_ORDER_DERIVATIVE, __COMPARE_ZERO, __PROBABLITY, configured_t::amp_treshold, ASSERT, pre_act_record_buffer_t::buffer, state_data_mfield_t::change_per_time, mfield_x_sen_data_t::configured, module_status_mfield_t::current, data_non_volatile, logv_t::data_tx_on_progress, configured_t::dfdt_treshold_impulse, configured_t::dfdt_treshold_max, configured_t::dfdt_treshold_min, mfield_x_sen_data_t::disturbance_record, logv_t::disturbance_record, pre_act_record_buffer_t::elapsed, EMU_MODE_DATA_LENGTH, module_disturbance_record_t::event_data, module_disturbance_record_t::event_positive_cnt, FALSE, event_report_t::fields, pre_act_record_buffer_t::head, HOT, logv, MFIELD_ADC_QUIESCENT_LEVEL, MFIELD_SEN_NOISE_DENSITY_LEVEL, mfield_x_compare(), mfield_x_sen_calc_probablity(), mfield_x_sen_first_order_derivative(), configured_t::min_number_of_observation, mfield_x_sen_data_t::module_status, module_disturbance_record_t::observation_cnt, state_data_mfield_t::polarity, module_disturbance_record_t::post_act_data, POST_ACT_RECORD_BUFF_SIZE, module_disturbance_record_t::pre_act_data, PRE_ACT_RECORD_BUFF_SIZE, module_status_mfield_t::previous, configured_t::probablity_treshold_max, configured_t::probablity_treshold_min, module_status_mfield_t::projected, state_data_mfield_t::signal_level, state_data_mfield_t::state, STATE_0, STATE_1, STATE_2, STATE_3, pre_act_record_buffer_t::tail, logv_t::tick, logv_t::trip_active, TRUE, and logv_t::wr\&.
+.PP
+Referenced by __attribute__()\&.
+.SS "void mfield_x_sen_notifyx (\fBx_notify\fP *notify)"
+
+.PP
+module notification function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP - system distributed notification
+.RE
+.PP
+module notification function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP - system distributed notification 
+.RE
+.PP
+
+.PP
+Definition at line 107 of file mfield_x_sensor\&.c\&.
+.PP
+References ASSERT, mfield_x_sen_data_t::configured, module_status_mfield_t::current, mfield_x_sen_data_t::disturbance_record, configured_t::element_status_sv_en, sv_error_flags_ut::flags_all, x_notify::message, x_notify_mfield_sen_configure::message, mfield_x_sen_data_t::module_status, module_status_mfield_t::projected, SCAN_FREQ, state_data_mfield_t::state, STATE_0, mfield_x_sen_data_t::sv_errors_flags, mfield_x_sen_data_t::sv_task_event, mfield_x_sen_data_t::sv_timer_ntf, SV_TIMER_PERIOD, configured_t::sys_freq, x_delete_timer(), X_MS2TICK, X_NTF_CLR_ALARM_MFIELD_SEN, X_NTF_INIT, X_NTF_MFIELD_SENSOR_SV_TIMER, X_NTF_MFIELD_X_SENSOR_CONFIG, x_schedule_timer(), and x_send_event()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+108 {
+109 
+110 
+111     switch(notify->message)
+112     {
+113         case X_NTF_INIT:
+114         {
+115             mfield_x_sen_init();
+116         }break;
+117 
+118 
+119         case X_NTF_MFIELD_X_SENSOR_CONFIG:
+120         {
+121 
+122               // Algorithm module configuration reading
+123               x_notify_mfield_sen_configure * notify_configure = (x_notify_mfield_sen_configure *)notify;
+124 
+125               // Module configuration
+126               mfield_x_sen_data\&.configured = notify_configure->message\&.configured;
+127               mfield_x_sen_data\&.disturbance_record = notify_configure->message\&.disturbance_record;
+128 
+129 
+130               mfield_x_sen_data\&.module_status\&.projected\&.angular_freq             = 2*PI*mfield_x_sen_data\&.configured\&.sys_freq;
+131               mfield_x_sen_data\&.module_status\&.projected\&.samples_per_period       = (Uint16)(SCAN_FREQ/(Float32)(mfield_x_sen_data\&.configured\&.sys_freq));
+132               mfield_x_sen_data\&.module_status\&.projected\&.samples_per_period_1_2   = mfield_x_sen_data\&.module_status\&.projected\&.samples_per_period/2;
+133               mfield_x_sen_data\&.module_status\&.projected\&.samples_per_period_1_4   = mfield_x_sen_data\&.module_status\&.projected\&.samples_per_period/4;
+134               mfield_x_sen_data\&.module_status\&.projected\&.samples_per_period_1_8   = mfield_x_sen_data\&.module_status\&.projected\&.samples_per_period/8;
+135               // Clear supervison state ( so errors will be reported if module have internal error )
+136               mfield_x_sen_data\&.sv_errors_flags\&.flags_all = 0;
+137 
+138               x_delete_timer(&mfield_x_sen_data\&.sv_timer_ntf);
+139 
+140               if(mfield_x_sen_data\&.configured\&.element_status_sv_en)
+141               x_schedule_timer(&mfield_x_sen_data\&.sv_timer_ntf,X_MS2TICK(SV_TIMER_PERIOD));
+142 
+143         }break;
+144 
+145          case X_NTF_CLR_ALARM_MFIELD_SEN:
+146         {
+147 
+148            // Algorithm module alarm reset request
+149            //  mfield_x_sen_data\&.module_status\&.current\&.state = STATE_0;
+150              mfield_x_sen_mark_false_postives();
+151 
+152 
+153         }break;
+154 
+155 
+156         case X_NTF_MFIELD_SENSOR_SV_TIMER:
+157         {
+158            x_send_event(&mfield_x_sen_data\&.sv_task_event);
+159         }break;
+160 
+161 
+162         default:
+163         {
+164             ASSERT(0);
+165         }
+166     }
+167 
+168 }
+.fi
+.SS "void mfield_x_sen_taskx (\fBx_event\fP *event)"
+
+.PP
+module task function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP - system distributed event
+.RE
+.PP
+module task function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP - system distributed event 
+.RE
+.PP
+
+.PP
+Definition at line 71 of file mfield_x_sensor\&.c\&.
+.PP
+References configured_t::amp_treshold, ASSERT, mfield_x_sen_data_t::configured, mfield_x_sen_data_t::diagonesis_records, sv_error_flags_ut::flags_all, x_event::message, x_notify_mfield_sen_sv_report::message, x_notify_mfield_sen_sv_report::notify, diagonesis_records_mfield_t::signal_history, srv_wdg_kick, mfield_x_sen_data_t::sv_errors_flags, mfield_x_sen_data_t::sv_status_ntf, X_MSG_MFIELD_SENSOR_SV, and x_send_notify()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+72 {
+73     switch(event->message)
+74     {
+75 
+76         case X_MSG_MFIELD_SENSOR_SV:
+77         {
+78             srv_wdg_kick();
+79             mfield_x_sen_sensor_element_sv_task();
+80 
+81             if(mfield_x_sen_data\&.sv_errors_flags\&.flags_all!=0){
+82              mfield_x_sen_data\&.sv_status_ntf\&.message\&.error_status_flags = mfield_x_sen_data\&.sv_errors_flags;
+83              // Send notification to Algorithm module about error
+84              x_send_notify(&mfield_x_sen_data\&.sv_status_ntf\&.notify);
+85              mfield_x_sen_data\&.sv_errors_flags\&.flags_all =0;
+86             }
+87 
+88         }break;
+89 
+90         default:
+91         {
+92             ASSERT(0);
+93         }
+94     }
+95 }
+.fi
+.SS "\fBevent_report_t\fP mfield_y_sen_get_status (\fBUint16\fPadc_value, \fBBool\fPsave_event)"
+
+.PP
+Referenced by __attribute__()\&.
+.SS "void mfield_y_sen_notifyx (\fBx_notify\fP *notify)"
+
+.PP
+Referenced by main()\&.
+.SS "void mfield_y_sen_taskx (\fBx_event\fP *event)"
+
+.PP
+Referenced by main()\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBx_task_id\fP mfield_x_sen_id"
+
+.PP
+mfield_x_sen module handle 
+.PP
+Definition at line 24 of file mfield_x_sensor\&.c\&.
+.PP
+Referenced by main()\&.
+.SS "\fBx_task_id\fP mfield_y_sen_id"
+
+.PP
+mfield_y_sen module handle 
+.PP
+Referenced by main()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

@@ -1,0 +1,81 @@
+\hypertarget{a00031_source}{\section{srv\+\_\+serial.\+h}
+\label{a00031_source}\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef SRV\_SERIAL\_H}
+00002 \textcolor{preprocessor}{#define SRV\_SERIAL\_H}
+00003 
+00015 \textcolor{preprocessor}{#define BAUDRATE                 9600}
+00017 
+\hypertarget{a00031_source_l00018}{}\hyperlink{a00031_a973c680573b37fc359fc68d0707da355}{00018} \textcolor{preprocessor}{#define MAX\_PACKET\_LENGTH        240}
+00019                            
+\hypertarget{a00031_source_l00021}{}\hyperlink{a00031_aa49ab378520c95fea987f93a7f3c9abf}{00021} \textcolor{preprocessor}{#define RECEIVE\_BUFFER\_SIZE      MAX\_PACKET\_LENGTH}
+00022 
+\hypertarget{a00031_source_l00024}{}\hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{00024} \textcolor{preprocessor}{#define TRANSMIT\_BUFFER\_SIZE     MAX\_PACKET\_LENGTH}
+00025 
+00026 
+\hypertarget{a00031_source_l00027}{}\hyperlink{a00031}{00027} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }
+00028 \{
+\hypertarget{a00031_source_l00029}{}\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{00029}       \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd};
+\hypertarget{a00031_source_l00030}{}\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{00030}       \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} arg[10\textcolor{comment}{/*max arg length */}];
+\hypertarget{a00031_source_l00031}{}\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{00031}       \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  \hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt};
+00032 
+\hypertarget{a00031_source_l00033}{}\hyperlink{a00031}{00033}       \textcolor{keyword}{struct}\{
+00034       \textcolor{keywordtype}{void}         *location;
+00035       \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}        offset;
+00036       \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}        length;
+00037       \}attachment;
+00038 
+\hypertarget{a00031_source_l00039}{}\hyperlink{a00031_ac93426bd9983c1934abcbeddbb64e306}{00039}       \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} \hyperlink{a00031_ac93426bd9983c1934abcbeddbb64e306}{manula\_mode\_crc\_en};
+00040 
+00041 \}\hyperlink{a00031_d3/d4f/a00761}{serial\_msg\_t};
+00042 
+00043 
+00044 \textcolor{comment}{/*}
+00045 \textcolor{comment}{#define MAKE16(buf\_,idx\_)
+       ((HEX2VAL(buf\_[idx\_+0])<<12)|(HEX2VAL(buf\_[idx\_+1])<<8)|(HEX2VAL(buf\_[idx\_+2])<<4)|(HEX2VAL(buf\_[idx\_+3])<<0))}
+00046 \textcolor{comment}{#define MAKE8(buf\_,idx\_)  ((HEX2VAL(buf\_[idx\_+0])<<4)|(HEX2VAL(buf\_[idx\_+1]))<<0)}
+00047 \textcolor{comment}{*/}
+00048 
+\hypertarget{a00031_source_l00050}{}\hyperlink{a00031_a428b04d2e2f2da2ea031a6c731660a71}{00050} \textcolor{preprocessor}{#define HEX2VAL(cc)  (((cc >= '0' ) && (cc <= '9' )) ? (cc - '0') : (cc - 'A' + 10) )}
+00051 
+00052 
+00053 \textcolor{keywordtype}{void}                \hyperlink{a00031_ad2b461e9e9044364a28a61cfadcacdd8}{serial\_init}(\textcolor{keywordtype}{void});
+00054 \textcolor{keywordtype}{void}                \hyperlink{a00031_af15ca641f181de14f789d97b00c367ef}{serial\_enable\_blocking}(\textcolor{keywordtype}{int} enable);
+00055 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}              \hyperlink{a00031_a366b2707f4c7d76f0efc1b5cdde8e37e}{serial\_get\_command}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * cmd,
+      \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} ** argStrPtr,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * argLength);
+00056 \textcolor{keywordtype}{void}                \hyperlink{a00031_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}(\textcolor{keywordtype}{void});
+00057 \textcolor{keywordtype}{void}                \hyperlink{a00031_aaac89aaa2fbc24d91501b0695195b235}{serial\_send\_command}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  cmd,
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  arg);
+00058 \textcolor{keywordtype}{void}                            \hyperlink{a00031_ac9bd1d3814679f03e2a9bfa63a221946}{serial\_send\_data}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cmd,
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  arg,\textcolor{keywordtype}{void}* data,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length,\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} add\_crc);
+00059 \textcolor{keywordtype}{void}                \hyperlink{a00031_a17f65cf9dbacdfb97cb2536ed0097ccb}{serial\_send}(\textcolor{keywordtype}{void} * msg,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length);
+00060 \textcolor{keywordtype}{void}                            \hyperlink{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}{serial\_send\_response}(
+      \hyperlink{a00031_d3/d4f/a00761}{serial\_msg\_t} msg);
+00061 
+00062 
+00063 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}              \hyperlink{a00031_aa76f5237babd71f1484bb2dbc6aa0f8d}{serial\_make8}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}* buf,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} idx);
+00064 \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}            \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}* buf,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} idx);
+00065 
+00066 
+00067 
+00068 
+00069 
+00070 
+00071 
+00072 \textcolor{keywordtype}{void} \hyperlink{a00031_af419298e8d3acbb31667796fec870f76}{\_\_attribute\_\_}((\_\_interrupt\_\_,auto\_psv)) \_U1RXInterrupt(\textcolor{keywordtype}{void});
+00073 
+00074 \textcolor{comment}{/*void \_\_attribute\_\_((\_\_interrupt\_\_)) \_INT1Interrupt(void);}
+00075 \textcolor{comment}{void \_\_attribute\_\_((\_\_interrupt\_\_)) \_INT2Interrupt(void);}
+00076 \textcolor{comment}{}
+00077 \textcolor{comment}{}
+00078 \textcolor{comment}{void \_\_attribute\_\_((\_\_interrupt\_\_)) \_IC1Interrupt(void);}
+00079 \textcolor{comment}{void \_\_attribute\_\_((\_\_interrupt\_\_)) \_IC2Interrupt(void);*/}
+00080 
+00081 
+00082 \textcolor{preprocessor}{#endif //SRV\_SERIAL\_H}
+00083 
+00084 
+00085 
+\end{DoxyCode}

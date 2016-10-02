@@ -1,0 +1,7 @@
+<map id="afterReplot" name="afterReplot">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a563540b54b2a09c8ef092d42e9621f42" title="Causes a complete replot (axes, labels, graphs, etc.) into the internal buffer. " alt="" coords="137,81,192,108"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a13e05523a40c3f08875df5cde85cf0d9" title="resizeEvent" alt="" coords="265,5,355,32"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#ac64727a4f442770f6e5e6be2d0530843" title="mouseMoveEvent" alt="" coords="249,56,371,83"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="240,107,380,133"/>
+<area shape="rect" id="node6" href="$d4/d3e/a00116.html#a7b8bd7e8d3a1d23a8595e9c6a6b76ef1" title="wheelEvent" alt="" coords="267,157,353,184"/>
+</map>

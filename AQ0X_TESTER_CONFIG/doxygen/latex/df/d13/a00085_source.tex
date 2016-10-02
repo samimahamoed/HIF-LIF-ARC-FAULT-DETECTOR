@@ -1,0 +1,458 @@
+\hypertarget{a00085_source}{\section{cmd\+\_\+sensor.\+cpp}
+\label{a00085_source}\index{cmd\+\_\+sensor.\+cpp@{cmd\+\_\+sensor.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 
+00009 \textcolor{preprocessor}{#include "\hyperlink{a00110}{mainwindow.h}"}
+00010 \textcolor{preprocessor}{#include "\hyperlink{a00139}{ui\_mainwindow.h}"}
+00011 \textcolor{preprocessor}{#include "form.h"}
+00012 \textcolor{preprocessor}{#include "record\_preview.h"}
+00013 
+00023 \textcolor{keywordtype}{void} MainWindow::on\_actionToolReadSensor\_triggered(\textcolor{keywordtype}{bool} checked)
+00024 \{
+00025     \textcolor{keywordflow}{if}(checked)\{
+00026 
+00027         ui->dockWidget\_ReadSensor->setWindowFlags(Qt::Window);
+00028         ui->dockWidget\_ReadSensor->show();
+00029         ui->dockWidget\_ReadSensor->raise();
+00030         ui->dockWidget\_ReadSensor->activateWindow();
+00031 
+00032       \textcolor{comment}{//  if(!ui->dockWidget\_SelectSensor->isVisible())}
+00033            \textcolor{comment}{// ui->dockWidget\_ReadSensor->setEnabled(false);}
+00034     \}\textcolor{keywordflow}{else}\{
+00035         ui->dockWidget\_ReadSensor->close();
+00036     \}
+00037 
+00038 
+00039 \}
+00040 
+00041 
+00042 \textcolor{keywordtype}{void} MainWindow::on\_actionSensor\_Select\_triggered(\textcolor{keywordtype}{bool} checked)
+00043 \{
+00044 
+00045     \textcolor{keywordflow}{if}(checked)\{
+00046 
+00047         ui->dockWidget\_SelectSensor->setWindowFlags(Qt::Window);
+00048         ui->dockWidget\_SelectSensor->show();
+00049         ui->dockWidget\_SelectSensor->raise();
+00050         ui->dockWidget\_SelectSensor->activateWindow();
+00051 
+00052         ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->
+      stack\_widget\_target\_sen\_select\_option->indexOf(ui->page\_select\_ch\_readSen));
+00053 
+00054         ui->readSen\_ch\_no\_selection->setChecked(\textcolor{keyword}{true});
+00055         ui->readSen\_ch\_no\_selection->setVisible(\textcolor{keyword}{false});
+00056 
+00057         \textcolor{keywordflow}{if}(ui->dockWidget\_ReadSensor->isVisible())
+00058             ui->dockWidget\_ReadSensor->setEnabled(\textcolor{keyword}{true});
+00059     \}\textcolor{keywordflow}{else}\{
+00060         ui->dockWidget\_SelectSensor->close();
+00061     \}
+00062 \}
+00063 
+00064 
+00065 
+00067 
+00076 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_ch1\_clicked(\textcolor{keywordtype}{bool} checked)
+00077 \{
+00078     \textcolor{keywordflow}{if}(checked)\{
+00079          ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->
+      stack\_widget\_target\_sen\_select\_option->indexOf(ui->pageReadSenSelect\_option\_sen));
+00080          ui->readSen\_no\_selection->setChecked(\textcolor{keyword}{true});
+00081          ui->readSen\_no\_selection->setVisible(\textcolor{keyword}{false});
+00082    \}
+00083 \}
+00084 
+00093 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_ch3\_clicked(\textcolor{keywordtype}{bool} checked)
+00094 \{
+00095     \textcolor{keywordflow}{if}(checked)\{
+00096         ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->
+      stack\_widget\_target\_sen\_select\_option->indexOf(ui->pageReadSenSelect\_option\_sen));
+00097         ui->readSen\_no\_selection->setChecked(\textcolor{keyword}{true});
+00098         ui->readSen\_no\_selection->setVisible(\textcolor{keyword}{false});
+00099   \}
+00100 \}
+00101 
+00110 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_ch2\_clicked(\textcolor{keywordtype}{bool} checked)
+00111 \{
+00112     \textcolor{keywordflow}{if}(checked)\{
+00113         \textcolor{keywordflow}{if}(checked)\{
+00114              ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->
+      stack\_widget\_target\_sen\_select\_option->indexOf(ui->pageReadSenSelect\_option\_sen));
+00115              ui->readSen\_no\_selection->setChecked(\textcolor{keyword}{true});
+00116              ui->readSen\_no\_selection->setVisible(\textcolor{keyword}{false});
+00117        \}
+00118 
+00119    \}
+00120 \}
+00121 
+00130 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_ch4\_clicked(\textcolor{keywordtype}{bool} checked)
+00131 \{
+00132    \textcolor{keywordflow}{if}(checked)\{
+00133        \textcolor{keywordflow}{if}(checked)\{
+00134             ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->
+      stack\_widget\_target\_sen\_select\_option->indexOf(ui->pageReadSenSelect\_option\_sen));
+00135             ui->readSen\_no\_selection->setChecked(\textcolor{keyword}{true});
+00136             ui->readSen\_no\_selection->setVisible(\textcolor{keyword}{false});
+00137       \}
+00138    \}
+00139 \}
+00140 
+00141 
+00150 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_sen\_1\_clicked(\textcolor{keywordtype}{bool} checked)
+00151 \{
+00152 
+00153     \textcolor{keywordflow}{if}(checked)\{
+00154          ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->
+      stack\_widget\_target\_sen\_select\_option->indexOf(ui->page\_selection\_preview));
+00155 
+00156           ui->label\_selection\_preview->setText(selectedSenToStr());
+00157     \}
+00158 
+00159 
+00160 \}
+00161 
+00170 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_sen\_2\_clicked(\textcolor{keywordtype}{bool} checked)
+00171 \{
+00172 
+00173     \textcolor{keywordflow}{if}(checked)\{
+00174          ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->
+      stack\_widget\_target\_sen\_select\_option->indexOf(ui->page\_selection\_preview));
+00175      ui->label\_selection\_preview->setText(selectedSenToStr());
+00176     \}
+00177 
+00178 \}
+00179 
+00188 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_sen\_3\_clicked(\textcolor{keywordtype}{bool} checked)
+00189 \{
+00190 
+00191     \textcolor{keywordflow}{if}(checked)\{
+00192          ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->
+      stack\_widget\_target\_sen\_select\_option->indexOf(ui->page\_selection\_preview));
+00193 
+00194          ui->label\_selection\_preview->setText(selectedSenToStr());
+00195      \}
+00196 
+00197 \}
+00198 
+00199 
+00200 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_back\_senSelect\_clicked()
+00201 \{
+00202     ui->readSen\_no\_selection->setChecked(\textcolor{keyword}{true});
+00203     ui->readSen\_no\_selection->setVisible(\textcolor{keyword}{false});
+00204 
+00205   ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->stack\_widget\_target\_sen\_select\_option->
+      indexOf(ui->pageReadSenSelect\_option\_sen));
+00206 
+00207 \}
+00208 
+00209 
+00210 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_back\_chSelect\_clicked()
+00211 \{
+00212     ui->readSen\_ch\_no\_selection->setChecked(\textcolor{keyword}{true});
+00213     ui->readSen\_ch\_no\_selection->setVisible(\textcolor{keyword}{false});
+00214 
+00215     ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->stack\_widget\_target\_sen\_select\_option->
+      indexOf(ui->page\_select\_ch\_readSen));
+00216 
+00217 \}
+00218 
+00219 \textcolor{keywordtype}{void} MainWindow::on\_readSenGet\_btn\_clicked()
+00220 \{
+00221 
+00222        \textcolor{keywordflow}{if}((ui->readSenSelect\_cmd\_in->text().toLong() >= 0)&& !ui->readSenSelect\_cmd\_in->text().isEmpty() &&
+        !ui->readSenSelect\_cmd\_in->text().isNull())
+00223            sen\_cmd((ui->readSenSelect\_cmd\_in->text().toLong()));
+00224 
+00225 \}
+00226 
+00227 
+00228 \textcolor{keywordtype}{void} MainWindow::sen\_cmd(\textcolor{keywordtype}{int} arg\_val)
+00229 \{
+00230 
+00231                 \textcolor{keywordtype}{int} arg[1];
+00232                  \textcolor{keywordtype}{int} resp;
+00233 
+00234                 arg[0] = 0;            
+00235                 arg[0] |= (arg\_val<<8);
+00236 
+00237 
+00238                 qDebug()<<\textcolor{stringliteral}{"arg[0]---"}<<arg[0];
+00239                 \textcolor{keywordflow}{if}(ui->readSen\_ch1->isChecked())
+00240                 arg[0] |= (0x0010);
+00241                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch2->isChecked())
+00242                 arg[0] |= (0x0020);
+00243                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch3->isChecked())
+00244                 arg[0] |= (0x0030);
+00245                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch4->isChecked())
+00246                 arg[0] |= (0x0040);
+00247 
+00248                 \textcolor{keywordflow}{if}(ui->readSen\_sen\_1->isChecked())
+00249                 arg[0] |= (0x0001);
+00250                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_sen\_2->isChecked())
+00251                 arg[0] |= (0x0002);
+00252                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_sen\_3->isChecked())
+00253                 arg[0] |= (0x0003);
+00254 
+00255 
+00256 
+00257                  \textcolor{keywordflow}{if}(execute\_command(SM\_SEN\_CONTROL\_CMD,arg,1,&resp,\textcolor{keyword}{true},NULL) == 0)
+00258                  \{
+00259                      qDebug()<<\textcolor{stringliteral}{"Success send"};
+00260 
+00261                     Success();
+00262                  \}
+00263                  \textcolor{keywordflow}{else}
+00264                  \{
+00265                     Failure();
+00266                  \}
+00267 
+00268 
+00269 \}
+00270 
+00271 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_getSr\_no\_clicked(\textcolor{keywordtype}{bool} checked)
+00272 \{
+00273 
+00274      \textcolor{keywordtype}{int} arg[1];
+00275      \textcolor{keywordtype}{int} * resp;
+00276 
+00277     arg[0] = 0;
+00278     arg[0] |= (SR\_NUM\_REQUEST\_CMD<<8);
+00279 
+00280     \textcolor{keywordflow}{if}(ui->readSen\_ch1->isChecked())
+00281     arg[0] |= (0x0010);
+00282     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch2->isChecked())
+00283     arg[0] |= (0x0020);
+00284     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch3->isChecked())
+00285     arg[0] |= (0x0030);
+00286     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch4->isChecked())
+00287     arg[0] |= (0x0040);
+00288 
+00289     \textcolor{keywordflow}{if}(ui->readSen\_sen\_1->isChecked())
+00290     arg[0] |= (0x0001);
+00291     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_sen\_2->isChecked())
+00292     arg[0] |= (0x0002);
+00293     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_sen\_3->isChecked())
+00294     arg[0] |= (0x0003);
+00295 
+00296      \textcolor{keywordflow}{if}(execute\_command(SM\_SEN\_CONTROL\_CMD,arg,1,resp,\textcolor{keyword}{true},NULL) == 0)
+00297      \{
+00298 
+00299           \hyperlink{a00004_d5/de9/a00176}{msg\_u} \hyperlink{a00017_a6134b74dbfffbaf333e169bd09597b53}{msg};
+00300           msg.\hyperlink{a00004_a2763c4336b9376a5385ff279ba0a6591}{msg\_all}= \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(replay.toLatin1(),0);
+00301 
+00302 
+00303           \textcolor{keywordflow}{if}(msg.\hyperlink{a00004_afe8839ab9699466e2c9efd2327606b8e}{msg\_fields}.cmd != SR\_NUM\_REQUEST\_CMD)\{
+00304               ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"."});
+00305 
+00306               \textcolor{keywordflow}{return};
+00307           \}
+00308 
+00309 
+00310            replay = replay.remove(\textcolor{stringliteral}{":00\}"});
+00311            replay = replay.remove(0,2);
+00312 
+00313           \textcolor{keywordflow}{if}(replay.length()!=SERIAL\_NUMBER\_LENGTH)\{
+00314              \textcolor{comment}{//   emit ui->readSen\_getSr\_no->clicked(true);}
+00315 
+00316            \}
+00317 
+00318           \hyperlink{a00004_ab56a7153a5b218eac7698ff141009735}{Uint32} sr\_no = replay.toLong();
+00319 
+00320           ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"\(\backslash\)nResponse :"});
+00321           ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"CH"}+ QString::number(((arg[0]&0x00F0)>>4)) + \textcolor{stringliteral}{
+      " SEN"} + QString::number(msg.\hyperlink{a00004_afe8839ab9699466e2c9efd2327606b8e}{msg\_fields}.sender\_address) + \textcolor{stringliteral}{"\(\backslash\)n"} );
+00322           ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{">> Serial Number :"} +QString::number(sr\_no)+\textcolor{stringliteral}{"
+      \(\backslash\)n"});
+00323 
+00324 
+00325         Success();
+00326      \}
+00327      \textcolor{keywordflow}{else}
+00328      \{
+00329         Failure();
+00330      \}
+00331 
+00332 
+00333 \}
+00334 
+00335 
+00336 
+00337 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_getSTATUS\_Flag\_clicked(\textcolor{keywordtype}{bool} checked)
+00338 \{
+00339     \textcolor{keywordflow}{if}(!checked)
+00340         \textcolor{keywordflow}{return};
+00341        sen\_cmd(STATUS\_FLAG\_REQUEST);
+00342 \}
+00343 
+00344 
+00345 
+00346 \textcolor{keywordtype}{void} MainWindow::on\_readSen\_getData\_clicked(\textcolor{keywordtype}{bool} checked)
+00347 \{
+00348 
+00349     \textcolor{keywordtype}{int} arg[1];
+00350     \textcolor{keywordtype}{int} * resp;
+00351 
+00352    arg[0] = 0;
+00353    arg[0] |= (DATA\_REQUEST\_CMD<<8);
+00354 
+00355 
+00356    qDebug()<<\textcolor{stringliteral}{"arg[0]---"}<<arg[0];
+00357    \textcolor{keywordflow}{if}(ui->readSen\_ch1->isChecked())
+00358    arg[0] |= (0x0010);
+00359    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch2->isChecked())
+00360    arg[0] |= (0x0020);
+00361    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch3->isChecked())
+00362    arg[0] |= (0x0030);
+00363    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch4->isChecked())
+00364    arg[0] |= (0x0040);
+00365 
+00366    \textcolor{keywordflow}{if}(ui->readSen\_sen\_1->isChecked())
+00367    arg[0] |= (0x0001);
+00368    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_sen\_2->isChecked())
+00369    arg[0] |= (0x0002);
+00370    \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_sen\_3->isChecked())
+00371    arg[0] |= (0x0003);
+00372 
+00373 
+00374     \textcolor{keywordflow}{if}(execute\_command(SM\_SEN\_CONTROL\_CMD,arg,1,resp,\textcolor{keyword}{false},NULL) == 0)
+00375     \{
+00376       disconnect(serial, SIGNAL(readyRead()), \textcolor{keyword}{this}, SLOT(readData()));
+00377       \textcolor{keywordflow}{while}(serial->waitForReadyRead(1000));
+00378       \textcolor{keywordtype}{char} data[DATA\_PACKET\_SIZE];
+00379       \hyperlink{a00004_d5/de9/a00176}{msg\_u} \hyperlink{a00017_a6134b74dbfffbaf333e169bd09597b53}{msg};
+00380 
+00381       \textcolor{keywordtype}{int} length = serial->readLine(data,DATA\_PACKET\_SIZE);
+00382       QString rc\_data = QString(data);
+00383 
+00384 
+00385       \textcolor{keywordflow}{if}(!rc\_data.startsWith(\textcolor{stringliteral}{"\{A102:"}) && !rc\_data.endsWith(\textcolor{stringliteral}{"\}\(\backslash\)r\(\backslash\)n"}))\{
+00386 
+00387           \textcolor{comment}{//re emit signal may be?}
+00388           \textcolor{keywordflow}{return};
+00389       \}
+00390 
+00391       rc\_data = rc\_data.remove(\textcolor{stringliteral}{"\{A102:"});
+00392       msg.\hyperlink{a00004_a2763c4336b9376a5385ff279ba0a6591}{msg\_all}= \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),0);
+00393 
+00394       rc\_data = rc\_data.remove(0,2);
+00395       sen\_nov\_data\_u sen\_data;
+00396 
+00397        ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)n-------------------------------\(\backslash\)n"});
+00398       sen\_data.sen\_nov\_data.serial\_number =(((\hyperlink{a00004_ab56a7153a5b218eac7698ff141009735}{Uint32})\hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{make16}(rc\_data.toLatin1() + 6,
+      PTR\_SERIAL\_NUMBER)<<16)| (\hyperlink{a00004_ab56a7153a5b218eac7698ff141009735}{Uint32})\hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{make16}(rc\_data.toLatin1(),PTR\_SERIAL\_NUMBER+4));
+00399       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Device Serial Number :"} + QString::number(
+      sen\_data.sen\_nov\_data.serial\_number) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00400       sen\_data.sen\_nov\_data.event\_timestamp = (((\hyperlink{a00004_ab56a7153a5b218eac7698ff141009735}{Uint32})\hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{make16}(rc\_data.toLatin1(),
+      PTR\_EVENT\_TIMESTAMP)<<16)| (\hyperlink{a00004_ab56a7153a5b218eac7698ff141009735}{Uint32})\hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{make16}(rc\_data.toLatin1(),PTR\_EVENT\_TIMESTAMP+4));
+00401       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Event Time    :"} + QString::number(sen\_data.
+      sen\_nov\_data.event\_timestamp) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00402 
+00403       sen\_data.sen\_nov\_data.device\_address = \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),PTR\_DEVICE\_ADDRESS);
+00404       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Device Address  :"}+QString::number(sen\_data.
+      sen\_nov\_data.device\_address) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00405 
+00406       sen\_data.sen\_nov\_data.error.error\_all = \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),PTR\_ERROR);
+00407       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Error Flags  :"}+QString::number(sen\_data.
+      sen\_nov\_data.error.error\_all).toLatin1().toHex() + \textcolor{stringliteral}{"\(\backslash\)n"});
+00408 
+00409 
+00410       sen\_data.sen\_nov\_data.config\_serial\_num = \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),PTR\_SR\_NUM\_CONFIGURED);
+00411       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Serial Number configered:"}+QString((sen\_data.
+      sen\_nov\_data.config\_serial\_num == 1)?\textcolor{stringliteral}{"TRUE"}:\textcolor{stringliteral}{"FALSE"}) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00412       sen\_data.sen\_nov\_data.config\_device\_address = \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),
+      PTR\_DEVICE\_ADDRESS\_CONFIGURED);
+00413       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Device Address configered:"}+QString((sen\_data.
+      sen\_nov\_data.config\_device\_address==1)?\textcolor{stringliteral}{"TRUE"}:\textcolor{stringliteral}{"FALSE"}) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00414       sen\_data.sen\_nov\_data.config\_timestamp = \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),PTR\_TIMESTAMP\_CONFIGURED);
+00415       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Configered Time configered:"}+QString((sen\_data.
+      sen\_nov\_data.config\_timestamp==1)?\textcolor{stringliteral}{"TRUE"}:\textcolor{stringliteral}{"FALSE"}) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00416       sen\_data.sen\_nov\_data.config\_self\_test\_dis = \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),PTR\_SELF\_TEST\_EN\_DIS);
+00417       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Device self test enable :"}+QString((sen\_data.
+      sen\_nov\_data.config\_serial\_num==1)?\textcolor{stringliteral}{"FALSE"}:\textcolor{stringliteral}{"TRUE"}) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00418 
+00419       \textcolor{keywordtype}{int} ii = 0,cc = 0;
+00420       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii = 0;ii< \hyperlink{a00110_af55149bc1f05cf18af067a302e31e3f9}{DATA\_SIZE};ii++)\{
+00421           sen\_data.sen\_nov\_data.light\_samples[ii] = \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),PTR\_LIGHT\_DATA + cc );cc 
+      +=2;
+00422       \}
+00423 
+00424 
+00425       \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii = 0;ii< \hyperlink{a00110_af55149bc1f05cf18af067a302e31e3f9}{DATA\_SIZE};ii++)\{
+00426           sen\_data.sen\_nov\_data.light\_samples[ii] = \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(rc\_data.toLatin1(),PTR\_PRESSURE\_DATA + cc );
+      cc +=2;
+00427       \}
+00428 
+00429       sen\_data.sen\_nov\_data.reset\_count = \hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{make16}(rc\_data.toLatin1(),PTR\_RESET\_COUNT);
+00430 
+00431       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"Reset Counter   :"}+QString::number(sen\_data.
+      sen\_nov\_data.reset\_count) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00432       sen\_data.sen\_nov\_data.eeprom\_usage\_count = \hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{make16}(rc\_data.toLatin1(),PTR\_RESET\_COUNT);
+00433       ui->terminal\_win\_read\_cmd->textCursor().insertText(\textcolor{stringliteral}{"EEPROM usage  :"}+QString::number(sen\_data.
+      sen\_nov\_data.eeprom\_usage\_count) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00434       sen\_data.sen\_nov\_data.crc = \hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{make16}(rc\_data.toLatin1(),PTR\_RESET\_COUNT);
+00435 
+00436       \textcolor{comment}{//crc check}
+00437 
+00438 
+00439         Success();
+00440 
+00441         connect(serial, SIGNAL(readyRead()), \textcolor{keyword}{this}, SLOT(readData()));
+00442 
+00443         \hyperlink{a00073}{recordPreview}* prv = \textcolor{keyword}{new} \hyperlink{a00073}{recordPreview}();
+00444 
+00445         prv->readBuffer(sen\_data,\hyperlink{a00017_a773de5ed6b1b522f94b0347ef556137d}{eventRecoredList});
+00446         prv->show();
+00447         prv->raise();
+00448         prv->activateWindow();
+00449 
+00450     \}
+00451     \textcolor{keywordflow}{else}
+00452     \{
+00453        Failure();
+00454     \}
+00455 
+00456 \}
+00457 
+00458 
+00459 QString MainWindow::selectedSenToStr()
+00460 \{
+00461 
+00462         QString selection = \textcolor{stringliteral}{"Selected Sensor\(\backslash\)n"};
+00463 
+00464         \textcolor{keywordflow}{if}(ui->readSen\_ch1->isChecked())
+00465             selection += \textcolor{stringliteral}{"Channel: 1\(\backslash\)n"};
+00466         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch2->isChecked())
+00467             selection += \textcolor{stringliteral}{"Channel: 2\(\backslash\)n"};
+00468         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch3->isChecked())
+00469             selection += \textcolor{stringliteral}{"Channel: 3\(\backslash\)n"};
+00470         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_ch4->isChecked())
+00471             selection += \textcolor{stringliteral}{"Channel: 4\(\backslash\)n"};
+00472 
+00473         \textcolor{keywordflow}{if}(ui->readSen\_sen\_1->isChecked())
+00474         selection += \textcolor{stringliteral}{"Sensor Address : 1\(\backslash\)n"};
+00475         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_sen\_2->isChecked())
+00476         selection += \textcolor{stringliteral}{"Sensor Address : 2\(\backslash\)n"};
+00477         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(ui->readSen\_sen\_3->isChecked())
+00478         selection += \textcolor{stringliteral}{"Sensor Address : 3\(\backslash\)n"};
+00479 
+00480         \textcolor{keywordflow}{return} selection;
+00481 
+00482 
+00483 
+00484 
+00485 \}
+00486 
+00487 
+00488 \textcolor{keywordtype}{void} MainWindow::on\_selectTarget\_Btn\_clicked()
+00489 \{
+00490     ui->readSen\_ch\_no\_selection->setChecked(\textcolor{keyword}{true});
+00491     ui->readSen\_ch\_no\_selection->setVisible(\textcolor{keyword}{false});
+00492 
+00493     ui->stack\_widget\_target\_sen\_select\_option->setCurrentIndex(ui->stack\_widget\_target\_sen\_select\_option->
+      indexOf(ui->page\_select\_ch\_readSen));
+00494 
+00495 \}
+00496 
+\end{DoxyCode}

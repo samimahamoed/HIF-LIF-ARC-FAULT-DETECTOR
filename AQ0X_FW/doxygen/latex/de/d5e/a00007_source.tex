@@ -1,0 +1,281 @@
+\hypertarget{a00007_source}{\section{srv\+\_\+spi.\+h}
+\label{a00007_source}\index{srv\+\_\+spi.\+h@{srv\+\_\+spi.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef SRV\_SPI\_H}
+00002 \textcolor{preprocessor}{#define SRV\_SPI\_H}
+00003 
+00013 \textcolor{preprocessor}{#define POST\_SCALER                57600}
+00015 
+00016 
+\hypertarget{a00007_source_l00018}{}\hyperlink{a00007_a5c1fd7fa207a92f0b4b78d39bbd2f34b}{00018} \textcolor{preprocessor}{#define PRE\_SCALER                 57600}
+00019                 
+00020 \textcolor{preprocessor}{#define     SPI\_SS\_CTRL\_LAT          LATBbits.LATB12}
+00021 \textcolor{preprocessor}{#define     SPI\_SS\_TRIS              TRISBbits.TRISB12}
+00022 
+00023 \textcolor{preprocessor}{#define     SPI\_SCK\_TRIS             TRISBbits.TRISB7}
+00024 
+00025 \textcolor{preprocessor}{#define     SPI\_SDO\_TRIS             TRISBbits.TRISB8}
+00026 \textcolor{preprocessor}{#define     SPI\_SDO\_ANSEL            ANSELBbits.ANSB8}
+00027 
+00028 \textcolor{preprocessor}{#define     SPI\_SDI\_TRIS             TRISBbits.TRISB9}
+00029 
+00030 
+00031 \hyperlink{a00066_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00007_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(\hyperlink{a00066_af84840501dec18061d18a68c162a8fa2}{Uint8} data);
+00032 \textcolor{keywordtype}{void}  \hyperlink{a00007_ae909944aa85ae98323073c628be541aa}{spi\_init}(\textcolor{keywordtype}{void});
+00033 
+00034 
+00035 \textcolor{comment}{/**********************************************************************}
+00036 \textcolor{comment}{* ?2007 Microchip Technology Inc.}
+00037 \textcolor{comment}{*}
+00038 \textcolor{comment}{* FileName:        spieeprom.h}
+00039 \textcolor{comment}{* Dependencies:    Header (.h) files if applicable, see below}
+00040 \textcolor{comment}{* Processor:       PIC24Fxxxx}
+00041 \textcolor{comment}{* Compiler:        MPLAB?C30 v3.00 or higher}
+00042 \textcolor{comment}{*}
+00043 \textcolor{comment}{* SOFTWARE LICENSE AGREEMENT:}
+00044 \textcolor{comment}{* Microchip Technology Incorporated ("Microchip") retains all }
+00045 \textcolor{comment}{* ownership and intellectual property rights in the code accompanying}
+00046 \textcolor{comment}{* this message and in all derivatives hereto.  You may use this code,}
+00047 \textcolor{comment}{* and any derivatives created by any person or entity by or on your }
+00048 \textcolor{comment}{* behalf, exclusively with Microchip's proprietary products.  Your }
+00049 \textcolor{comment}{* acceptance and/or use of this code constitutes agreement to the }
+00050 \textcolor{comment}{* terms and conditions of this notice.}
+00051 \textcolor{comment}{*}
+00052 \textcolor{comment}{* CODE ACCOMPANYING THIS MESSAGE IS SUPPLIED BY MICROCHIP "AS IS". NO }
+00053 \textcolor{comment}{* WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT }
+00054 \textcolor{comment}{* NOT LIMITED TO, IMPLIED WARRANTIES OF NON-INFRINGEMENT, }
+00055 \textcolor{comment}{* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS }
+00056 \textcolor{comment}{* CODE, ITS INTERACTION WITH MICROCHIP'S PRODUCTS, COMBINATION WITH }
+00057 \textcolor{comment}{* ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION. }
+00058 \textcolor{comment}{*}
+00059 \textcolor{comment}{* YOU ACKNOWLEDGE AND AGREE THAT, IN NO EVENT, SHALL MICROCHIP BE }
+00060 \textcolor{comment}{* LIABLE, WHETHER IN CONTRACT, WARRANTY, TORT (INCLUDING NEGLIGENCE OR}
+00061 \textcolor{comment}{* BREACH OF STATUTORY DUTY), STRICT LIABILITY, INDEMNITY, }
+00062 \textcolor{comment}{* CONTRIBUTION, OR OTHERWISE, FOR ANY INDIRECT, SPECIAL, PUNITIVE, }
+00063 \textcolor{comment}{* EXEMPLARY, INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, FOR COST OR }
+00064 \textcolor{comment}{* EXPENSE OF ANY KIND WHATSOEVER RELATED TO THE CODE, HOWSOEVER }
+00065 \textcolor{comment}{* CAUSED, EVEN IF MICROCHIP HAS BEEN ADVISED OF THE POSSIBILITY OR THE}
+00066 \textcolor{comment}{* DAMAGES ARE FORESEEABLE.  TO THE FULLEST EXTENT ALLOWABLE BY LAW, }
+00067 \textcolor{comment}{* MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN ANY WAY RELATED TO THIS}
+00068 \textcolor{comment}{* CODE, SHALL NOT EXCEED THE PRICE YOU PAID DIRECTLY TO MICROCHIP }
+00069 \textcolor{comment}{* SPECIFICALLY TO HAVE THIS CODE DEVELOPED.}
+00070 \textcolor{comment}{*}
+00071 \textcolor{comment}{* You agree that you are solely responsible for testing the code and }
+00072 \textcolor{comment}{* determining its suitability.  Microchip has no obligation to modify,}
+00073 \textcolor{comment}{* test, certify, or support the code.}
+00074 \textcolor{comment}{*}
+00075 \textcolor{comment}{* REVISION HISTORY:}
+00076 \textcolor{comment}{*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+00077 \textcolor{comment}{* Author        Date        Comments on this revision}
+00078 \textcolor{comment}{*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+00079 \textcolor{comment}{* Albert Z.     05/16/08    First release of source file}
+00080 \textcolor{comment}{*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+00081 \textcolor{comment}{* }
+00082 \textcolor{comment}{* 25LC256 is connected to SPI2}
+00083 \textcolor{comment}{************************************************************************/}
+00084 
+00085 \textcolor{preprocessor}{#include "\hyperlink{a00009}{p33EP128MC202.h}"}
+00086 
+00087 \textcolor{comment}{// peripheral configurations}
+00088 \textcolor{preprocessor}{#define SPI\_MASTER  0x0120  // select 8-bit master mode, CKE=1, CKP=0}
+00089 \textcolor{preprocessor}{#define SPI\_ENABLE  0x8000  // enable SPI port, clear status}
+00090 
+00091 
+00092 \textcolor{comment}{/************************************************************************}
+00093 \textcolor{comment}{* EEPROM Commands                                                       *}
+00094 \textcolor{comment}{*                                                                       *    }
+00095 \textcolor{comment}{************************************************************************/}
+00096 \textcolor{preprocessor}{#define EEPROM\_PAGE\_SIZE    (unsigned)64}
+00097 \textcolor{preprocessor}{#define EEPROM\_PAGE\_MASK    (unsigned)0x003f}
+00098 \textcolor{preprocessor}{#define EEPROM\_CMD\_READ     (unsigned)0b00000011}
+00099 \textcolor{preprocessor}{#define EEPROM\_CMD\_WRITE    (unsigned)0b00000010}
+00100 \textcolor{preprocessor}{#define EEPROM\_CMD\_WRDI     (unsigned)0b00000100}
+00101 \textcolor{preprocessor}{#define EEPROM\_CMD\_WREN     (unsigned)0b00000110}
+00102 \textcolor{preprocessor}{#define EEPROM\_CMD\_RDSR     (unsigned)0b00000101}
+00103 \textcolor{preprocessor}{#define EEPROM\_CMD\_WRSR     (unsigned)0b00000001}
+00104 
+00105 \textcolor{comment}{/************************************************************************}
+00106 \textcolor{comment}{* Aliases for IOs registers related to SPI connected to EEPROM          *}
+00107 \textcolor{comment}{*                                                                       *    }
+00108 \textcolor{comment}{************************************************************************/}
+00109                 
+\hypertarget{a00007_source_l00110}{}\hyperlink{a00007_aa8b53e04161d178ebd9c01edf1584039}{00110} \textcolor{preprocessor}{#define     SPI\_SS\_CTRL\_LAT          LATBbits.LATB12}
+\hypertarget{a00007_source_l00111}{}\hyperlink{a00007_a1424f86a2482cfbcf68f709ce542e262}{00111} \textcolor{preprocessor}{#define     SPI\_SS\_TRIS              TRISBbits.TRISB12}
+00112 
+\hypertarget{a00007_source_l00113}{}\hyperlink{a00007_a98c4bd0ee0f76eb205e874355bf9cd33}{00113} \textcolor{preprocessor}{#define     SPI\_SCK\_TRIS             TRISBbits.TRISB7}
+00114 
+\hypertarget{a00007_source_l00115}{}\hyperlink{a00007_aa171067a2f57d1555ab4449c78847c72}{00115} \textcolor{preprocessor}{#define     SPI\_SDO\_TRIS             TRISBbits.TRISB8}
+\hypertarget{a00007_source_l00116}{}\hyperlink{a00007_a11571727bdbc21b0bfb7c701599e759b}{00116} \textcolor{preprocessor}{#define     SPI\_SDO\_ANSEL            ANSELBbits.ANSB8}
+00117 
+\hypertarget{a00007_source_l00118}{}\hyperlink{a00007_a40c85fd42ffb12b326b7cb9ee48f2ffb}{00118} \textcolor{preprocessor}{#define     SPI\_SDI\_TRIS             TRISBbits.TRISB9}
+00119 
+00120 
+\hypertarget{a00007_source_l00121}{}\hyperlink{a00023_a37dc9980ee3379d4bd3a66f7cf9d761e}{00121} \textcolor{preprocessor}{#define NOV\_HOLD\_CTRL\_TRIS                                     TRISBbits.TRISB13}
+\hypertarget{a00007_source_l00122}{}\hyperlink{a00023_aa03a6ff293decd7159ed1642ccbac971}{00122} \textcolor{preprocessor}{#define NOV\_HOLD\_CTRL\_LAT                                      LATBbits.LATB13}
+00123 
+00124 \textcolor{preprocessor}{#define EEPROM\_SS\_TRIS      TRISBbits.TRISB12}
+00125 \textcolor{preprocessor}{#define EEPROM\_SS\_PORT      LATBbits.LATB12}
+00126 \textcolor{comment}{//#define EEPROM\_SS\_PORT      PORTBbits.RB12}
+00127 \textcolor{preprocessor}{#define EEPROM\_SCK\_TRIS     TRISBbits.TRISB7}
+00128 \textcolor{preprocessor}{#define EEPROM\_SDO\_TRIS     TRISBbits.TRISB8}
+00129 \textcolor{preprocessor}{#define EEPROM\_SDI\_TRIS     TRISBbits.TRISB9}
+00130 
+00131 \textcolor{comment}{/************************************************************************}
+00132 \textcolor{comment}{* Structure STATREG and union \_EEPROMStatus\_                            *}
+00133 \textcolor{comment}{*                                                                       *}
+00134 \textcolor{comment}{* Overview: Provide a bits and byte access to EEPROM status value.      *}
+00135 \textcolor{comment}{*                                                                       *}
+00136 \textcolor{comment}{************************************************************************/}
+\hypertarget{a00007_source_l00137}{}\hyperlink{a00007}{00137} \textcolor{keyword}{struct  }\hyperlink{a00007_dc/d0c/a00783}{STATREG}\{
+\hypertarget{a00007_source_l00138}{}\hyperlink{a00007_ab9c53087b26832e54862ba3c7b41a05d}{00138}     \textcolor{keywordtype}{unsigned}    \hyperlink{a00007_ab9c53087b26832e54862ba3c7b41a05d}{WIP}:1;
+\hypertarget{a00007_source_l00139}{}\hyperlink{a00007_a30c6e84d13356eef9e4d20600c3b5433}{00139}     \textcolor{keywordtype}{unsigned}    \hyperlink{a00007_a30c6e84d13356eef9e4d20600c3b5433}{WEL}:1;
+\hypertarget{a00007_source_l00140}{}\hyperlink{a00007_ab3d9157e202ff59406f5ead250a755c4}{00140}     \textcolor{keywordtype}{unsigned}    \hyperlink{a00007_ab3d9157e202ff59406f5ead250a755c4}{BP0}:1;
+\hypertarget{a00007_source_l00141}{}\hyperlink{a00007_a15cb6e78e0c7f48b64595c2378ea646c}{00141}     \textcolor{keywordtype}{unsigned}    \hyperlink{a00007_a15cb6e78e0c7f48b64595c2378ea646c}{BP1}:1;
+\hypertarget{a00007_source_l00142}{}\hyperlink{a00007_a4ef10d89ed21189c926e11227bab7c3d}{00142}     \textcolor{keywordtype}{unsigned}    \hyperlink{a00007_a4ef10d89ed21189c926e11227bab7c3d}{RESERVED}:3;
+\hypertarget{a00007_source_l00143}{}\hyperlink{a00007_a55afe6de18b91f01a2d525bdf47b8554}{00143}     \textcolor{keywordtype}{unsigned}    \hyperlink{a00007_a55afe6de18b91f01a2d525bdf47b8554}{WPEN}:1;
+00144 \};
+00145 
+\hypertarget{a00007_source_l00146}{}\hyperlink{a00007}{00146} \textcolor{keyword}{union }\hyperlink{a00007_d2/db1/a00070}{\_EEPROMStatus\_}\{
+\hypertarget{a00007_source_l00147}{}\hyperlink{a00007_ab27a4d6dd2be64057b4adc7c0bdc4c07}{00147}     \textcolor{keyword}{struct  }\hyperlink{a00007_dc/d0c/a00783}{STATREG} \hyperlink{a00007_ab27a4d6dd2be64057b4adc7c0bdc4c07}{Bits};
+\hypertarget{a00007_source_l00148}{}\hyperlink{a00007_a4362ad9fde44c7f551e727c72cfa111b}{00148}     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}   \hyperlink{a00007_a4362ad9fde44c7f551e727c72cfa111b}{Char};
+00149 \};
+00150 
+00151 \textcolor{comment}{/************************************************************************}
+00152 \textcolor{comment}{* Macro: Lo                                                             *}
+00153 \textcolor{comment}{*                                                                       *}
+00154 \textcolor{comment}{* Preconditions: None                                                   *}
+00155 \textcolor{comment}{*                                                                       *}
+00156 \textcolor{comment}{* Overview: This macro extracts a low byte from a 2 byte word.          *}
+00157 \textcolor{comment}{*                                                                       *}
+00158 \textcolor{comment}{* Input: None.                                                          *}
+00159 \textcolor{comment}{*                                                                       *}
+00160 \textcolor{comment}{* Output: None.                                                         *}
+00161 \textcolor{comment}{*                                                                       *}
+00162 \textcolor{comment}{************************************************************************/}
+00163 \textcolor{preprocessor}{#define Lo(X)   (unsigned char)(X&0x00ff)}
+00164 
+00165 \textcolor{comment}{/************************************************************************}
+00166 \textcolor{comment}{* Macro: Hi                                                             *}
+00167 \textcolor{comment}{*                                                                       *}
+00168 \textcolor{comment}{* Preconditions: None                                                   *}
+00169 \textcolor{comment}{*                                                                       *}
+00170 \textcolor{comment}{* Overview: This macro extracts a high byte from a 2 byte word.         *}
+00171 \textcolor{comment}{*                                                                       *}
+00172 \textcolor{comment}{* Input: None.                                                          *}
+00173 \textcolor{comment}{*                                                                       *}
+00174 \textcolor{comment}{* Output: None.                                                         *}
+00175 \textcolor{comment}{*                                                                       *}
+00176 \textcolor{comment}{************************************************************************/}
+00177 \textcolor{preprocessor}{#define Hi(X)   (unsigned char)((X>>8)&0x00ff)}
+00178 
+00179 \textcolor{comment}{/************************************************************************}
+00180 \textcolor{comment}{* Macro: mEEPROMSSLow                                                   *}
+00181 \textcolor{comment}{*                                                                       *}
+00182 \textcolor{comment}{* Preconditions: SS IO must be configured as output.                    *}
+00183 \textcolor{comment}{*                                                                       *}
+00184 \textcolor{comment}{* Overview: This macro pulls down SS line                               *}
+00185 \textcolor{comment}{*           to start a new EEPROM operation.                            *}
+00186 \textcolor{comment}{*                                                                       *}
+00187 \textcolor{comment}{* Input: None.                                                          *}
+00188 \textcolor{comment}{*                                                                       *}
+00189 \textcolor{comment}{* Output: None.                                                         *}
+00190 \textcolor{comment}{*                                                                       *}
+00191 \textcolor{comment}{************************************************************************/}
+00192 \textcolor{preprocessor}{#define mEEPROMSSLow()      EEPROM\_SS\_PORT = 0;}
+00193 
+00194 \textcolor{comment}{/************************************************************************}
+00195 \textcolor{comment}{* Macro: mEEPROMSSHigh                                                  *}
+00196 \textcolor{comment}{*                                                                       *}
+00197 \textcolor{comment}{* Preconditions: SS IO must be configured as output.                    *}
+00198 \textcolor{comment}{*                                                                       *}
+00199 \textcolor{comment}{* Overview: This macro set SS line to high level                        *}
+00200 \textcolor{comment}{*           to start a new EEPROM operation.                            *}
+00201 \textcolor{comment}{*                                                                       *}
+00202 \textcolor{comment}{* Input: None.                                                          *}
+00203 \textcolor{comment}{*                                                                       *}
+00204 \textcolor{comment}{* Output: None.                                                         *}
+00205 \textcolor{comment}{*                                                                       *}
+00206 \textcolor{comment}{************************************************************************/}
+00207 \textcolor{preprocessor}{#define mEEPROMSSHigh()     EEPROM\_SS\_PORT = 1;}
+00208 
+00209 \textcolor{comment}{/************************************************************************}
+00210 \textcolor{comment}{* Function: EEPROMInit                                                  *}
+00211 \textcolor{comment}{*                                                                       *}
+00212 \textcolor{comment}{* Preconditions: SPI module must be configured to operate with          *}
+00213 \textcolor{comment}{*                 parameters: Master, MODE16 = 0, CKP = 1, SMP = 1.     *}
+00214 \textcolor{comment}{*                                                                       *}
+00215 \textcolor{comment}{* Overview: This function setup SPI IOs connected to EEPROM.            *}
+00216 \textcolor{comment}{*                                                                       *}
+00217 \textcolor{comment}{* Input: None.                                                          *}
+00218 \textcolor{comment}{*                                                                       *}
+00219 \textcolor{comment}{* Output: None.                                                         *}
+00220 \textcolor{comment}{*                                                                       *}
+00221 \textcolor{comment}{************************************************************************/}
+00222 \textcolor{keyword}{extern} \textcolor{keywordtype}{void} \hyperlink{a00007_a507081b071417d4dacd038af0d0e4c25}{EEPROMInit}(\textcolor{keywordtype}{void});
+00223 
+00224 \textcolor{comment}{/************************************************************************}
+00225 \textcolor{comment}{* Function: EEPROMReadStatus()                                          *}
+00226 \textcolor{comment}{*                                                                       *}
+00227 \textcolor{comment}{* Preconditions: SPI module must be configured to operate with  EEPROM. *}
+00228 \textcolor{comment}{*                                                                       *}
+00229 \textcolor{comment}{* Overview: This function reads status register from EEPROM.            *}
+00230 \textcolor{comment}{*                                                                       *}
+00231 \textcolor{comment}{* Input: None.                                                          *}
+00232 \textcolor{comment}{*                                                                       *}
+00233 \textcolor{comment}{* Output: Status register value.                                        *}
+00234 \textcolor{comment}{*                                                                       *}
+00235 \textcolor{comment}{************************************************************************/}
+00236 \textcolor{keyword}{extern} \textcolor{keyword}{union }\hyperlink{a00007_d2/db1/a00070}{\_EEPROMStatus\_} \hyperlink{a00007_a737bfe55bdc73b84f3fd5565c6baca2a}{EEPROMReadStatus}(void);
+00237 
+00238 \textcolor{comment}{/************************************************************************}
+00239 \textcolor{comment}{* Function: EEPROMWriteByte()                                           *}
+00240 \textcolor{comment}{*                                                                       *}
+00241 \textcolor{comment}{* Preconditions: SPI module must be configured to operate with  EEPROM. *}
+00242 \textcolor{comment}{*                                                                       *}
+00243 \textcolor{comment}{* Overview: This function writes a new value to address specified.      *}
+00244 \textcolor{comment}{*                                                                       *}
+00245 \textcolor{comment}{* Input: Data to be written and address.                                *}
+00246 \textcolor{comment}{*                                                                       *}
+00247 \textcolor{comment}{* Output: None.                                                         *}
+00248 \textcolor{comment}{*                                                                       *}
+00249 \textcolor{comment}{************************************************************************/}
+00250 \textcolor{keyword}{extern} \textcolor{keywordtype}{void} \hyperlink{a00007_ab651dc76a73eff7c347344cc8b5b0b21}{EEPROMWriteByte}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int});
+00251 
+00252 \textcolor{comment}{/************************************************************************}
+00253 \textcolor{comment}{* Function: EEPROMReadByte()                                            *}
+00254 \textcolor{comment}{*                                                                       *}
+00255 \textcolor{comment}{* Preconditions: SPI module must be configured to operate with  EEPROM. *}
+00256 \textcolor{comment}{*                                                                       *}
+00257 \textcolor{comment}{* Overview: This function reads a value from address specified.         *}
+00258 \textcolor{comment}{*                                                                       *}
+00259 \textcolor{comment}{* Input: Address.                                                       *}
+00260 \textcolor{comment}{*                                                                       *}
+00261 \textcolor{comment}{* Output: Data read.                                                    *}
+00262 \textcolor{comment}{*                                                                       *}
+00263 \textcolor{comment}{************************************************************************/}
+00264 \textcolor{keyword}{extern} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \hyperlink{a00007_a35883bb981f7b74f38bed25512568081}{EEPROMReadByte}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int});
+00265 
+00266 \textcolor{comment}{/************************************************************************}
+00267 \textcolor{comment}{* Function: EEPROMWriteEnable()                                         *}
+00268 \textcolor{comment}{*                                                                       *}
+00269 \textcolor{comment}{* Preconditions: SPI module must be configured to operate with EEPROM.  *}
+00270 \textcolor{comment}{*                                                                       *}
+00271 \textcolor{comment}{* Overview: This function allows a writing into EEPROM. Must be called  *}
+00272 \textcolor{comment}{* before every writing command.                                         *}
+00273 \textcolor{comment}{*                                                                       *}
+00274 \textcolor{comment}{* Input: None.                                                          *}
+00275 \textcolor{comment}{*                                                                       *}
+00276 \textcolor{comment}{* Output: None.                                                         *}
+00277 \textcolor{comment}{*                                                                       *}
+00278 \textcolor{comment}{************************************************************************/}
+00279 \textcolor{keyword}{extern} \textcolor{keywordtype}{void} \hyperlink{a00007_a615f233da8f99248295e6ea727d93bde}{EEPROMWriteEnable}(\textcolor{keywordtype}{void});
+00280 \textcolor{keyword}{extern} \textcolor{keywordtype}{void} \hyperlink{a00007_a985b143808edb68aca9c4dabc7af959d}{EEPROMWriteDisable}(\textcolor{keywordtype}{void});
+00281 
+00282 
+00283 
+00284 \textcolor{preprocessor}{#endif //SRV\_SPI\_H}
+00285 
+00286 
+\end{DoxyCode}

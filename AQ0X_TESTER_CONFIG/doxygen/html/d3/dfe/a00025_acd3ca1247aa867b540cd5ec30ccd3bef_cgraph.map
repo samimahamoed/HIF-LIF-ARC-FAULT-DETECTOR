@@ -1,0 +1,5 @@
+<map id="QCPAxis::setRangeUpper" name="QCPAxis::setRangeUpper">
+<area shape="rect" id="node2" href="$d2/dee/a00049.html#a1ff029704c29a75adbc1dc36cecaf44c" title="Returns a sanitized version of the range. " alt="" coords="229,5,411,47"/>
+<area shape="rect" id="node4" href="$d2/dee/a00049.html#aaf6a9046e78d91eeb8e89584fe46b034" title="Returns a sanitized version of the range. " alt="" coords="227,71,413,112"/>
+<area shape="rect" id="node3" href="$d2/dee/a00049.html#af914a7740269b0604d0827c634a878a9" title="Makes sure lower is numerically smaller than upper. " alt="" coords="461,46,612,73"/>
+</map>

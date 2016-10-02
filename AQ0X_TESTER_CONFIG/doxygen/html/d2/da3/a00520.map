@@ -1,0 +1,4 @@
+<map id="QFourierCalculator" name="QFourierCalculator">
+<area shape="rect" id="node2" href="$dc/dee/a00053.html" title="{QFourierFixedCalculator\&lt; T \&gt;\n|# mFourierTransform\l|+ QFourierFixedCalculator()\l+ setSize()\l+ forward()\l+ inverse()\l+ rescale()\l}" alt="" coords="5,270,199,406"/>
+<area shape="rect" id="node3" href="$d4/d6d/a00055.html" title="{QFourierVariableCalculator\n|# mFourierTransform\l|+ QFourierVariableCalculator()\l+ ~QFourierVariableCalculator()\l+ setSize()\l+ forward()\l+ inverse()\l+ rescale()\l}" alt="" coords="223,263,429,413"/>
+</map>

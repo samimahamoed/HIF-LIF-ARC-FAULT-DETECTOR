@@ -1,0 +1,9 @@
+<map id="QCPAbstractItem" name="QCPAbstractItem">
+<area shape="rect" id="node2" href="$d5/df9/a00044.html" title="Base class for all objects that can be placed on layers. " alt="" coords="307,432,510,715"/>
+<area shape="rect" id="node10" href="$d3/dfe/a00025.html" title="Manages a single axis inside a QCustomPlot. " alt="" coords="1359,924,1562,1368"/>
+<area shape="rect" id="node3" href="$d3/d8b/a00059.html" title="{QObject\n||}" alt="" coords="340,197,411,274"/>
+<area shape="rect" id="node4" href="$d6/d42/a00043.html" title="A layer that may contain objects, to control the rendering order. " alt="" coords="568,145,679,325"/>
+<area shape="rect" id="node6" href="$d5/d79/a00030.html#d8/d00/a00186" title="The central class of the library, the QWidget which displays the plot and interacts with the user..." alt="" coords="412,5,512,83"/>
+<area shape="rect" id="node13" href="$d2/dee/a00049.html" title="Represents the range an axis is encompassing. " alt="" coords="780,469,947,678"/>
+<area shape="rect" id="node20" href="$d5/d79/a00030.html#de/df3/a00185" title="Responsible for drawing the grid of a QCPAxis. " alt="" coords="1769,535,1843,612"/>
+</map>

@@ -1,0 +1,51 @@
+digraph "algorithm.c"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="algorithm.c",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="..\\..\\includes\\allheaders.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$db/df3/a00034.html",tooltip="All project header files together so modules can include just this one. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="string.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="stdlib.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="stddef.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="stdarg.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="stdio.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="math.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="libpic30.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="p33EP128MC202.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$da/da0/a00009.html"];
+  Node2 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="System.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/db3/a00066.html",tooltip="Generic project defines ( data types, basic hardware setting) "];
+  Node2 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="srv_watchdog.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/de8/a00061.html",tooltip="File with support for watchdog( for release version) and watchdog tunning (debug/release) ..."];
+  Node2 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="sys_eventx.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d79/a00030.html",tooltip="OS header file. "];
+  Node2 -> Node14 [color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="main.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d0/d33/a00027.html",tooltip="Few useful generic macros. "];
+  Node14 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node15 [color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="nov_data.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d7a/a00016.html",tooltip="Header for low level NOV support. "];
+  Node15 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node15 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node16 [color="midnightblue",fontsize="10",style="solid"];
+  Node16 [label="srv_serial.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/dfe/a00025.html",tooltip="Header for serial port driver. "];
+  Node2 -> Node17 [color="midnightblue",fontsize="10",style="solid"];
+  Node17 [label="srv_nov.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/d52/a00023.html",tooltip="Header for low level NOV support. "];
+  Node2 -> Node18 [color="midnightblue",fontsize="10",style="solid"];
+  Node18 [label="srv_spi.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d5e/a00007.html",tooltip="Header for spi port driver. "];
+  Node1 -> Node19 [color="midnightblue",fontsize="10",style="solid"];
+  Node19 [label="..\\..\\includes_prv\l\\aq0X\\algorithm_prv.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/dec/a00010.html",tooltip="Private Algorithm module header file. "];
+  Node1 -> Node20 [color="midnightblue",fontsize="10",style="solid"];
+  Node20 [label="..\\..\\includes_prv\l\\aq0X\\srv_hwio_prv.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/d3c/a00028.html"];
+  Node1 -> Node21 [color="midnightblue",fontsize="10",style="solid"];
+  Node21 [label="dsp.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+}

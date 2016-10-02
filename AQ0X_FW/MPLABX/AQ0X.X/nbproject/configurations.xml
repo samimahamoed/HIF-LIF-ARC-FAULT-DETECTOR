@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="62">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="Base" displayName="Base" projectFiles="true">
+        <itemPath>../../includes/sys_eventx.h</itemPath>
+        <itemPath>../../includes/System.h</itemPath>
+        <itemPath>../../includes/allheaders.h</itemPath>
+        <itemPath>../../includes/p33EP128MC202.h</itemPath>
+        <itemPath>../../includes/readme.h</itemPath>
+        <itemPath>../../includes/srv_hwio.h</itemPath>
+        <itemPath>../../includes/srv_nov.h</itemPath>
+        <itemPath>../../includes/srv_serial.h</itemPath>
+        <itemPath>../../includes/srv_spi.h</itemPath>
+        <itemPath>../../includes/srv_watchdog.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="BasePrv" displayName="BasePrv" projectFiles="true">
+        <itemPath>../../includes_prv/srv_nov_prv.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="Configs" displayName="Configs" projectFiles="true">
+      </logicalFolder>
+      <logicalFolder name="Product" displayName="Product" projectFiles="true">
+        <itemPath>../../includes/nov_data.h</itemPath>
+        <itemPath>../../includes/aq0X/algorithm.h</itemPath>
+        <itemPath>../../includes/aq0X/ir_sensor.h</itemPath>
+        <itemPath>../../includes/aq0X/mfield_sensor.h</itemPath>
+        <itemPath>../../includes/aq0X/uv_sensor.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="ProductPrv" displayName="ProductPrv" projectFiles="true">
+        <itemPath>../../includes_prv/aq0X/algorithm_prv.h</itemPath>
+        <itemPath>../../includes_prv/aq0X/ir_sensor_prv.h</itemPath>
+        <itemPath>../../includes_prv/aq0X/mfield_x_sensor_prv.h</itemPath>
+        <itemPath>../../includes_prv/aq0X/uv_sensor_prv.h</itemPath>
+        <itemPath>../../includes_prv/aq0X/srv_hwio_prv.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="LinkerScript"
+                   displayName="Linker Files"
+                   projectFiles="true">
+      <itemPath>../../gld/p33EP128MC202.gld</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="Base" displayName="Base" projectFiles="true">
+        <itemPath>../../modules/main.c</itemPath>
+        <itemPath>../../services/srv_serial.c</itemPath>
+        <itemPath>../../services/srv_spi.c</itemPath>
+        <itemPath>../../services/srv_nov.c</itemPath>
+        <itemPath>../../services/srv_hwio.c</itemPath>
+        <itemPath>../../services/srv_watchdog.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="Modules" displayName="Modules" projectFiles="true">
+        <itemPath>../../modules/aq0X/algorithm.c</itemPath>
+        <itemPath>../../modules/aq0X/analog_sv_scan.c</itemPath>
+        <itemPath>../../modules/aq0X/ir_sensor.c</itemPath>
+        <itemPath>../../modules/aq0X/mfield_x_sensor.c</itemPath>
+        <itemPath>../../modules/aq0X/uv_sensor.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="System" displayName="System" projectFiles="true">
+        <itemPath>../../system/sys_traps.c</itemPath>
+        <itemPath>../../services/srv_delay.s</itemPath>
+        <itemPath>../../system/sys_eventx.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../..</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="default" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice>dsPIC33EP128MC202</targetDevice>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
+        <platformTool>Simulator</platformTool>
+        <languageToolchain>C30</languageToolchain>
+        <languageToolchainVersion>3_31</languageToolchainVersion>
+        <platform>3</platform>
+      </toolsSet>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+        <archiverTool>
+        </archiverTool>
+        <loading>
+          <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <parseOnProdLoad>false</parseOnProdLoad>
+          <alternateLoadableFile></alternateLoadableFile>
+        </loading>
+      </compileType>
+      <makeCustomizationType>
+        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep></makeCustomizationPostStep>
+        <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
+        <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
+        <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
+      </makeCustomizationType>
+      <C30>
+        <property key="code-model" value="default"/>
+        <property key="const-model" value="default"/>
+        <property key="data-model" value="default"/>
+        <property key="enable-all-warnings" value="true"/>
+        <property key="enable-ansi-std" value="false"/>
+        <property key="enable-ansi-warnings" value="false"/>
+        <property key="enable-fatal-warnings" value="false"/>
+        <property key="enable-large-arrays" value="false"/>
+        <property key="enable-omit-frame-pointer" value="false"/>
+        <property key="enable-procedural-abstraction" value="false"/>
+        <property key="enable-short-double" value="false"/>
+        <property key="enable-symbols" value="true"/>
+        <property key="enable-unroll-loops" value="false"/>
+        <property key="extra-include-directories"
+                  value="../../../../includes;../../../includes;../../includes;../../includes_prv;../../includes/aq0X;../../includes_prv/aq0X;;."/>
+        <property key="isolate-each-function" value="false"/>
+        <property key="optimization-level" value="0"/>
+        <property key="post-instruction-scheduling" value="default"/>
+        <property key="pre-instruction-scheduling" value="default"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="scalar-model" value="default"/>
+      </C30>
+      <C30-AS>
+        <property key="assembler-symbols" value=""/>
+        <property key="expand-macros" value="false"/>
+        <property key="extra-include-directories-for-assembler" value="../..;;."/>
+        <property key="extra-include-directories-for-preprocessor" value=""/>
+        <property key="false-conditionals" value="false"/>
+        <property key="keep-locals" value="false"/>
+        <property key="list-assembly" value="false"/>
+        <property key="list-section-info" value="false"/>
+        <property key="list-source" value="false"/>
+        <property key="list-symbols" value="false"/>
+        <property key="oXC16asm-list-to-file" value="false"/>
+        <property key="omit-debug-dirs" value="false"/>
+        <property key="omit-forms" value="false"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="relax" value="false"/>
+        <property key="warning-level" value="emit-warnings"/>
+        <appendMe value="-g"/>
+      </C30-AS>
+      <C30-LD>
+        <property key="boot-eeprom" value="no_eeprom"/>
+        <property key="boot-flash" value="no_flash"/>
+        <property key="boot-ram" value="no_ram"/>
+        <property key="boot-write-protect" value="no_write_protect"/>
+        <property key="enable-check-sections" value="false"/>
+        <property key="enable-data-init" value="true"/>
+        <property key="enable-default-isr" value="true"/>
+        <property key="enable-handles" value="true"/>
+        <property key="enable-pack-data" value="true"/>
+        <property key="extra-lib-directories" value="../../gld;;."/>
+        <property key="general-code-protect" value="no_code_protect"/>
+        <property key="general-write-protect" value="no_write_protect"/>
+        <property key="generate-cross-reference-file" value="false"/>
+        <property key="heap-size" value=""/>
+        <property key="input-libraries" value=""/>
+        <property key="linker-symbols" value=""/>
+        <property key="map-file" value="&quot;${DISTDIR}/AQ0X.X.${IMAGE_TYPE}.map&quot;"/>
+        <property key="preprocessor-macros" value=""/>
+        <property key="remove-unused-sections" value="false"/>
+        <property key="report-memory-usage" value="true"/>
+        <property key="secure-eeprom" value="no_eeprom"/>
+        <property key="secure-flash" value="no_flash"/>
+        <property key="secure-ram" value="no_ram"/>
+        <property key="secure-write-protect" value="no_write_protect"/>
+        <property key="stack-size" value=""/>
+        <property key="symbol-stripping" value=""/>
+        <property key="trace-symbols" value=""/>
+        <property key="warn-section-align" value="false"/>
+      </C30-LD>
+      <C30Global>
+        <property key="fast-math" value="false"/>
+        <property key="legacy-libc" value="false"/>
+        <property key="output-file-format" value="elf"/>
+      </C30Global>
+      <Simulator>
+      </Simulator>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -1,0 +1,127 @@
+\hypertarget{a00087_source}{\section{console.\+cpp}
+\label{a00087_source}\index{console.\+cpp@{console.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/****************************************************************************}
+00002 \textcolor{comment}{**}
+00003 \textcolor{comment}{** Copyright (C) 2012 Denis Shienkov <denis.shienkov@gmail.com>}
+00004 \textcolor{comment}{** Copyright (C) 2012 Laszlo Papp <lpapp@kde.org>}
+00005 \textcolor{comment}{** Contact: http://www.qt-project.org/legal}
+00006 \textcolor{comment}{**}
+00007 \textcolor{comment}{** This file is part of the QtSerialPort module of the Qt Toolkit.}
+00008 \textcolor{comment}{**}
+00009 \textcolor{comment}{** $QT\_BEGIN\_LICENSE:LGPL$}
+00010 \textcolor{comment}{** Commercial License Usage}
+00011 \textcolor{comment}{** Licensees holding valid commercial Qt licenses may use this file in}
+00012 \textcolor{comment}{** accordance with the commercial license agreement provided with the}
+00013 \textcolor{comment}{** Software or, alternatively, in accordance with the terms contained in}
+00014 \textcolor{comment}{** a written agreement between you and Digia.  For licensing terms and}
+00015 \textcolor{comment}{** conditions see http://qt.digia.com/licensing.  For further information}
+00016 \textcolor{comment}{** use the contact form at http://qt.digia.com/contact-us.}
+00017 \textcolor{comment}{**}
+00018 \textcolor{comment}{** GNU Lesser General Public License Usage}
+00019 \textcolor{comment}{** Alternatively, this file may be used under the terms of the GNU Lesser}
+00020 \textcolor{comment}{** General Public License version 2.1 as published by the Free Software}
+00021 \textcolor{comment}{** Foundation and appearing in the file LICENSE.LGPL included in the}
+00022 \textcolor{comment}{** packaging of this file.  Please review the following information to}
+00023 \textcolor{comment}{** ensure the GNU Lesser General Public License version 2.1 requirements}
+00024 \textcolor{comment}{** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.}
+00025 \textcolor{comment}{**}
+00026 \textcolor{comment}{** In addition, as a special exception, Digia gives you certain additional}
+00027 \textcolor{comment}{** rights.  These rights are described in the Digia Qt LGPL Exception}
+00028 \textcolor{comment}{** version 1.1, included in the file LGPL\_EXCEPTION.txt in this package.}
+00029 \textcolor{comment}{**}
+00030 \textcolor{comment}{** GNU General Public License Usage}
+00031 \textcolor{comment}{** Alternatively, this file may be used under the terms of the GNU}
+00032 \textcolor{comment}{** General Public License version 3.0 as published by the Free Software}
+00033 \textcolor{comment}{** Foundation and appearing in the file LICENSE.GPL included in the}
+00034 \textcolor{comment}{** packaging of this file.  Please review the following information to}
+00035 \textcolor{comment}{** ensure the GNU General Public License version 3.0 requirements will be}
+00036 \textcolor{comment}{** met: http://www.gnu.org/copyleft/gpl.html.}
+00037 \textcolor{comment}{**}
+00038 \textcolor{comment}{**}
+00039 \textcolor{comment}{** $QT\_END\_LICENSE$}
+00040 \textcolor{comment}{**}
+00041 \textcolor{comment}{****************************************************************************/}
+00042 
+00043 \textcolor{preprocessor}{#include "\hyperlink{a00088}{console.h}"}
+00044 
+00045 \textcolor{preprocessor}{#include <QScrollBar>}
+00046 
+00047 \textcolor{preprocessor}{#include <QtCore/QDebug>}
+00048 
+\hypertarget{a00087_source_l00049}{}\hyperlink{a00005_a1219e6e2000327a02434c56c514bbeda}{00049} \hyperlink{a00005_a1219e6e2000327a02434c56c514bbeda}{Console::Console}(QWidget *parent)
+00050     : \hyperlink{a00061}{QPlainTextEdit}(parent)
+00051     , localEchoEnabled(false)
+00052 \{
+00053     document()->setMaximumBlockCount(100);
+00054     \hyperlink{a00005_a097b52858dc4b9f1bec8d8d67518daf0}{p} = palette();
+00055     \hyperlink{a00005_a097b52858dc4b9f1bec8d8d67518daf0}{p}.setColor(QPalette::Base, Qt::black);
+00056     \hyperlink{a00005_a097b52858dc4b9f1bec8d8d67518daf0}{p}.setColor(QPalette::Text, Qt::green);
+00057     setPalette(\hyperlink{a00005_a097b52858dc4b9f1bec8d8d67518daf0}{p});
+00058 
+00059 \}
+00060 
+\hypertarget{a00087_source_l00061}{}\hyperlink{a00005_aa744a0868e01a13a502710f895f01525}{00061} \textcolor{keywordtype}{void} \hyperlink{a00005_aa744a0868e01a13a502710f895f01525}{Console::putData}(\textcolor{keyword}{const} QByteArray &data)
+00062 \{
+00063 
+00064     QString str;
+00065 
+00066 
+00067     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii =0;ii<data.length();ii++)
+00068         str.append(\hyperlink{a00005_a9194022b884875614a4f7056454881c1}{uint8\_to\_str}((quint8)data.at(ii)));
+00069 
+00070 
+00071     insertPlainText(QString(data));
+00072 
+00073     QScrollBar *bar = verticalScrollBar();
+00074     bar->setValue(bar->maximum());
+00075 \}
+00076 
+\hypertarget{a00087_source_l00077}{}\hyperlink{a00005_a5a17c5b6bc6719a26f73a5d0ac3d7de1}{00077} \textcolor{keywordtype}{void} \hyperlink{a00005_a5a17c5b6bc6719a26f73a5d0ac3d7de1}{Console::setLocalEchoEnabled}(\textcolor{keywordtype}{bool} set)
+00078 \{
+00079     localEchoEnabled = set;
+00080 \}
+00081 
+\hypertarget{a00087_source_l00082}{}\hyperlink{a00005_a558b58e3e68a167a7897a77bee78536c}{00082} \textcolor{keywordtype}{void} \hyperlink{a00005_a558b58e3e68a167a7897a77bee78536c}{Console::keyPressEvent}(QKeyEvent *e)
+00083 \{
+00084     \textcolor{keywordflow}{switch} (e->key()) \{
+00085     \textcolor{keywordflow}{case} Qt::Key\_Backspace:
+00086     \textcolor{keywordflow}{case} Qt::Key\_Left:
+00087     \textcolor{keywordflow}{case} Qt::Key\_Right:
+00088     \textcolor{keywordflow}{case} Qt::Key\_Up:
+00089     \textcolor{keywordflow}{case} Qt::Key\_Down:
+00090         \textcolor{comment}{// skip processing}
+00091         \textcolor{keywordflow}{break};
+00092     \textcolor{keywordflow}{default}:
+00093         \textcolor{keywordflow}{if} (localEchoEnabled)
+00094             QPlainTextEdit::keyPressEvent(e);
+00095         emit \hyperlink{a00005_a1976aad46ce1a77be730bc628275038f}{getData}(e->text().toLocal8Bit());
+00096     \}
+00097 \}
+00098 
+\hypertarget{a00087_source_l00099}{}\hyperlink{a00005_a615736fd63c7fc70536e2b775b0ce745}{00099} \textcolor{keywordtype}{void} \hyperlink{a00005_a615736fd63c7fc70536e2b775b0ce745}{Console::mousePressEvent}(QMouseEvent *e)
+00100 \{
+00101     Q\_UNUSED(e)
+00102     setFocus();
+00103 \}
+00104 
+\hypertarget{a00087_source_l00105}{}\hyperlink{a00005_a1727cadc147a07ed86fd4cb91908fd5f}{00105} \textcolor{keywordtype}{void} \hyperlink{a00005_a1727cadc147a07ed86fd4cb91908fd5f}{Console::mouseDoubleClickEvent}(QMouseEvent *e)
+00106 \{
+00107     Q\_UNUSED(e)
+00108 \}
+00109 
+\hypertarget{a00087_source_l00110}{}\hyperlink{a00005_a199dade448d3ae597d420dc65abca11c}{00110} \textcolor{keywordtype}{void} \hyperlink{a00005_a199dade448d3ae597d420dc65abca11c}{Console::contextMenuEvent}(QContextMenuEvent *e)
+00111 \{
+00112     Q\_UNUSED(e)
+00113 \}
+00114 
+00115 
+\hypertarget{a00087_source_l00116}{}\hyperlink{a00005_a9194022b884875614a4f7056454881c1}{00116} QString \hyperlink{a00005_a9194022b884875614a4f7056454881c1}{Console::uint8\_to\_str}(quint8 val)
+00117 \{
+00118     \textcolor{keyword}{const} \textcolor{keywordtype}{char} cnv[] = \textcolor{stringliteral}{"0123456789ABCDEF"};
+00119 
+00120     \textcolor{keywordflow}{return} QString(cnv[(val>>4)&0x0F]) + QString(cnv[(val>>0)&0x0F]);
+00121 \}
+\end{DoxyCode}

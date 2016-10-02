@@ -1,0 +1,51 @@
+<map id="QCPAxis::orientation" name="QCPAxis::orientation">
+<area shape="rect" id="node2" href="$df/d61/a00031.html#a5fa7884620d7c54b81dfbd255d97b636" title="QCPGraph::addFillBasePoints" alt="" coords="695,218,893,244"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a10756afda0cd419fb24d09adb411dda7" title="QCPAxis::calculateMargin" alt="" coords="197,1198,372,1224"/>
+<area shape="rect" id="node6" href="$dc/de2/a00024.html#ade710a776104b14c1c835168ce1bfc5c" title="QCPAbstractPlottable\l::coordsToPixels" alt="" coords="458,573,609,614"/>
+<area shape="rect" id="node16" href="$d3/dfe/a00025.html#a985ae693b842fb0422b4390fe36d299a" title="Transforms value (in coordinates of the axis) to pixel coordinates of the QCustomPlot widget..." alt="" coords="205,636,364,663"/>
+<area shape="rect" id="node17" href="$d3/dfe/a00025.html#a258b1e783eda5cd14ec5552c696a424e" title="QCPAxis::draw" alt="" coords="478,1176,589,1203"/>
+<area shape="rect" id="node18" href="$df/d61/a00031.html#a4df6807066ce877705e999773e7ffbc4" title="QCPGraph::drawError" alt="" coords="459,740,607,767"/>
+<area shape="rect" id="node19" href="$df/d61/a00031.html#af1872a60bed7acb3f3b17bfae3f4764c" title="QCPGraph::drawScatterPlot" alt="" coords="701,800,887,827"/>
+<area shape="rect" id="node20" href="$d4/d3e/a00116.html#a3aff10e993f6625e255c19e4f97a09d8" title="drawGridLines" alt="" coords="481,791,585,818"/>
+<area shape="rect" id="node21" href="$d4/d3e/a00116.html#afa5d9d12de419e881f381f2ab7cb414d" title="drawSubGridLines" alt="" coords="470,842,597,868"/>
+<area shape="rect" id="node22" href="$df/d61/a00031.html#a0ff6e856387cc079b28592ead2a81f6c" title="QCPGraph::getImpulsePlotData" alt="" coords="430,268,637,295"/>
+<area shape="rect" id="node24" href="$df/d61/a00031.html#a0374b7268e35cab9802a6be2b5d726d7" title="QCPGraph::getChannelFill\lPolygon" alt="" coords="947,80,1122,121"/>
+<area shape="rect" id="node25" href="$df/d61/a00031.html#ac76804eb33446181f3e4f708b7639a75" title="QCPGraph::getLinePlotData" alt="" coords="441,319,626,346"/>
+<area shape="rect" id="node26" href="$df/d61/a00031.html#ac79dc75dd98db9948d9656447b463af5" title="QCPGraph::getStepCenterPlotData" alt="" coords="420,420,647,447"/>
+<area shape="rect" id="node27" href="$df/d61/a00031.html#a6b7c14e04deed69b70d552dbe70c4d28" title="QCPGraph::getStepLeftPlotData" alt="" coords="429,370,638,396"/>
+<area shape="rect" id="node28" href="$df/d61/a00031.html#ab2ad46716889c73ab977cf9280de0788" title="QCPGraph::getStepRightPlotData" alt="" coords="424,167,643,194"/>
+<area shape="rect" id="node29" href="$df/d61/a00031.html#a41f982e8ceaefe6a53eb7432f26d64b6" title="QCPGraph::lowerFillBasePoint" alt="" coords="433,522,633,548"/>
+<area shape="rect" id="node30" href="$d8/d41/a00038.html#ae490f9c76ee2ba33752c495d3b6e8fb5" title="Returns the final absolute pixel position of the QCPItemPosition on the QCustomPlot surface..." alt="" coords="440,1059,627,1086"/>
+<area shape="rect" id="node43" href="$df/d61/a00031.html#a363d066c179e0f46cc93c12bafb0bfba" title="QCPGraph::upperFillBasePoint" alt="" coords="432,471,635,498"/>
+<area shape="rect" id="node44" href="$d3/dfe/a00025.html#a436ea8b8621fa3b897d3ca23b48d990a" title="QCPAxis::drawTickLabel" alt="" coords="201,1096,368,1123"/>
+<area shape="rect" id="node45" href="$df/d61/a00031.html#a0899c4d6357aee19a3abff5897c3c8c5" title="QCPGraph::getScatterPlotData" alt="" coords="432,116,635,143"/>
+<area shape="rect" id="node46" href="$dc/de2/a00024.html#a10408828446e9e0681c46d65120f382e" title="QCPAbstractPlottable\l::pixelsToCoords" alt="" coords="458,944,609,985"/>
+<area shape="rect" id="node47" href="$d3/dfe/a00025.html#ae9289ef7043b9d966af88eaa95b037d1" title="Transforms value (in pixel coordinates of the QCustomPlot widget) to axis coordinates. " alt="" coords="205,995,364,1022"/>
+<area shape="rect" id="node48" href="$d8/d41/a00038.html#ab404e56d9ac2ac2df0382c57933a71ef" title="Sets the apparent pixel position. " alt="" coords="445,1110,622,1152"/>
+<area shape="rect" id="node49" href="$dc/de2/a00024.html#af78a036e40db6f53a31abadc5323715a" title="Constructs an abstract plottable which uses keyAxis as its key axis (&quot;x&quot;) and valueAxis as its value ..." alt="" coords="205,1249,364,1290"/>
+<area shape="rect" id="node50" href="$d3/dfe/a00025.html#af4bbd446dcaee5a83ac30ce9bcd6e125" title="Sets the range of this axis to have a certain scale ratio to otherAxis. " alt="" coords="202,1315,367,1342"/>
+<area shape="rect" id="node3" href="$df/d61/a00031.html#ad6d07926e6d6b7cfa70258780d47b7a0" title="QCPGraph::drawFill" alt="" coords="1192,146,1329,172"/>
+<area shape="rect" id="node4" href="$df/d61/a00031.html#a659218cc62c2a7786213d9dd429c1c8d" title="QCPGraph::draw" alt="" coords="1393,196,1513,223"/>
+<area shape="rect" id="node7" href="$d5/de0/a00050.html#a16fef8bc19e5a09d82033edcfe919495" title="QCPStatisticalBox::\ldrawMedian" alt="" coords="725,633,863,674"/>
+<area shape="rect" id="node8" href="$d5/de0/a00050.html#a60ebb332a497f51ace837767db5105b9" title="QCPStatisticalBox::\ldrawOutliers" alt="" coords="725,320,863,361"/>
+<area shape="rect" id="node9" href="$d5/de0/a00050.html#a9ad0abdb154fefb04e9872f0db8e2ec7" title="QCPStatisticalBox::\ldrawQuartileBox" alt="" coords="725,385,863,426"/>
+<area shape="rect" id="node10" href="$d5/de0/a00050.html#a6f8d093ec7e404529388d02da4c72b34" title="QCPStatisticalBox::\ldrawWhiskers" alt="" coords="725,450,863,492"/>
+<area shape="rect" id="node11" href="$d0/d33/a00027.html#a1d118a76662cfd691a78c6f573e3f78c" title="QCPBars::getBarPolygon" alt="" coords="709,516,879,543"/>
+<area shape="rect" id="node12" href="$dc/d3c/a00028.html#afa895f8ba9ae34fea6ecea295fd7b1e5" title="QCPCurve::getCurveData" alt="" coords="951,699,1118,726"/>
+<area shape="rect" id="node13" href="$dc/d3c/a00028.html#acd7a68c6f268ce1ab845eaf69fc2c6a6" title="QCPCurve::pointDistance" alt="" coords="1176,724,1345,751"/>
+<area shape="rect" id="node14" href="$dc/d3c/a00028.html#aec2099a1569775209f73bbb0d3da7c16" title="QCPCurve::outsideCoordsTo\lPixels" alt="" coords="701,568,887,609"/>
+<area shape="rect" id="node15" href="$df/d61/a00031.html#af93762a12a481a7edb4b3dd9e330dff1" title="QCPGraph::pointDistance" alt="" coords="949,146,1121,172"/>
+<area shape="rect" id="node42" href="$d5/de0/a00050.html#acf75fbec885886546ae11ca194ad2aec" title="This function is used to decide whether a click hits a plottable or not. " alt="" coords="725,852,863,893"/>
+<area shape="rect" id="node23" href="$df/d61/a00031.html#af66183533a29520be3e74489ad1449cc" title="QCPGraph::getPlotData" alt="" coords="713,167,875,194"/>
+<area shape="rect" id="node31" href="$d8/d41/a00038.html#aa476abf71ed8fa4c537457ebb1a754ad" title="Sets the type of the position. " alt="" coords="706,1471,882,1498"/>
+<area shape="rect" id="node32" href="$d8/d41/a00038.html#ac094d67a95d2dceafa0d50b9db3a7e51" title="Sets the parent of this QCPItemPosition to parentAnchor. " alt="" coords="941,1464,1128,1505"/>
+<area shape="rect" id="node33" href="$db/d3a/a00040.html#a8cd13e1da2d82613934401e2a9eec26d" title="This function is used to decide whether a click hits an item or not. " alt="" coords="722,1405,866,1446"/>
+<area shape="rect" id="node34" href="$db/d3a/a00040.html#a2daa1e1253216c26565d56a2d5530170" title="QCPItemStraightLine\l::draw" alt="" coords="722,917,866,958"/>
+<area shape="rect" id="node35" href="$de/d8c/a00036.html#abc195de27d00ffa02c9047489308a6a7" title="This function is used to decide whether a click hits an item or not. " alt="" coords="711,983,877,1010"/>
+<area shape="rect" id="node36" href="$de/d8c/a00036.html#a1fc045dd33919f8006df0692aeb0e84a" title="QCPItemLine::draw" alt="" coords="727,1034,861,1060"/>
+<area shape="rect" id="node37" href="$d4/d8c/a00035.html#ac456143773711ea2e3782e51ff2f7eb4" title="This function is used to decide whether a click hits an item or not. " alt="" coords="703,1084,885,1111"/>
+<area shape="rect" id="node38" href="$d4/d8c/a00035.html#afe97ec827adb05f000fe007783faae3c" title="QCPItemEllipse::draw" alt="" coords="719,1135,869,1162"/>
+<area shape="rect" id="node39" href="$d4/d8c/a00035.html#ad3c607304dba081e2f778b6a81b903bb" title="QCPItemEllipse::anchorPixel\lPoint" alt="" coords="699,1186,889,1228"/>
+<area shape="rect" id="node40" href="$d3/de7/a00039.html#a0406a7da87557006f63b5d98ee6c397b" title="This function is used to decide whether a click hits an item or not. " alt="" coords="709,1252,879,1279"/>
+<area shape="rect" id="node41" href="$d3/de7/a00039.html#a18cd583638b876cdd50f1a155ec182aa" title="QCPItemRect::draw" alt="" coords="725,1303,863,1330"/>
+</map>

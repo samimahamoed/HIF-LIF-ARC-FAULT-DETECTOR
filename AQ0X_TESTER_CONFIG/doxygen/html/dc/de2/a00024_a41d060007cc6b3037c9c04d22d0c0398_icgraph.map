@@ -1,0 +1,12 @@
+<map id="QCPAbstractPlottable::pen" name="QCPAbstractPlottable::pen">
+<area shape="rect" id="node2" href="$df/d61/a00031.html#abc01180629621f1e47e94559227d3d8c" title="QCPGraph::drawImpulsePlot" alt="" coords="232,5,420,32"/>
+<area shape="rect" id="node4" href="$df/d61/a00031.html#abd4c7f81939e10776ea64603a704f22a" title="Sets the pen with which the error bars will be drawn. " alt="" coords="245,56,407,83"/>
+<area shape="rect" id="node5" href="$d5/de0/a00050.html#a7260ac55b669f5d0a74f16d5ca84c52c" title="Sets the pen used for drawing the median indicator line inside the statistical box. " alt="" coords="257,107,395,149"/>
+<area shape="rect" id="node7" href="$d5/de0/a00050.html#ac9079d5e27f1daf4d546f5a21246fc28" title="Sets the pen used to draw the outlier data points. " alt="" coords="257,173,395,214"/>
+<area shape="rect" id="node8" href="$dc/de2/a00024.html#ab74b09ae4c0e7e13142fe4b5bf46cac7" title="The pen is used to draw basic lines that make up the plottable representation in the plot..." alt="" coords="251,238,401,279"/>
+<area shape="rect" id="node9" href="$dc/de2/a00024.html#a6911603cad23ab0469b108224517516f" title="When the plottable is selected, this pen is used to draw basic lines instead of the normal pen set vi..." alt="" coords="251,303,401,345"/>
+<area shape="rect" id="node10" href="$d5/de0/a00050.html#aa8d3e503897788e1abf68dc74b5f147f" title="Sets the pen used for drawing the whisker bars (Those are the lines parallel to the key axis at each ..." alt="" coords="257,369,395,410"/>
+<area shape="rect" id="node11" href="$d5/de0/a00050.html#a4a5034cb3b9b040444df05ab1684620b" title="Sets the pen used for drawing the whisker backbone (That&#39;s the line parallel to the value axis)..." alt="" coords="257,434,395,475"/>
+<area shape="rect" id="node3" href="$df/d61/a00031.html#a659218cc62c2a7786213d9dd429c1c8d" title="QCPGraph::draw" alt="" coords="477,5,597,32"/>
+<area shape="rect" id="node6" href="$d5/de0/a00050.html#a75c2b3e7fcd0741cc981693a2ba63b27" title="Constructs a statistical box which uses keyAxis as its key axis (&quot;x&quot;) and valueAxis as its value axis..." alt="" coords="468,271,607,313"/>
+</map>

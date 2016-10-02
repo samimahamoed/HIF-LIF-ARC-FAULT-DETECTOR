@@ -1,0 +1,105 @@
+.TH "ffft::Array< T, LEN >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::Array< T, LEN > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Array\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef T \fBDataType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBArray\fP ()"
+.br
+.ti -1c
+.RI "const \fBDataType\fP & \fBoperator[]\fP (long pos) const "
+.br
+.ti -1c
+.RI "\fBDataType\fP & \fBoperator[]\fP (long pos)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static long \fBsize\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T, long LEN>class ffft::Array< T, LEN >"
+
+.PP
+Definition at line 38 of file Array\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<class T, long LEN> typedef T \fBffft::Array\fP< T, LEN >::\fBDataType\fP"
+
+.PP
+Definition at line 45 of file Array\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class T , long LEN> \fBffft::Array\fP< T, LEN >::\fBArray\fP ()"
+
+.PP
+Definition at line 44 of file Array\&.hpp\&.
+.PP
+.nf
+45 {
+46     // Nothing
+47 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T , long LEN> const \fBArray\fP< T, LEN >::\fBDataType\fP & \fBffft::Array\fP< T, LEN >::operator[] (longpos) const\fC [inline]\fP"
+
+.PP
+Definition at line 52 of file Array\&.hpp\&.
+.PP
+.nf
+53 {
+54     assert (pos >= 0);
+55     assert (pos < LEN);
+56 
+57     return (_data_arr [pos]);
+58 }
+.fi
+.SS "template<class T , long LEN> \fBArray\fP< T, LEN >::\fBDataType\fP & \fBffft::Array\fP< T, LEN >::operator[] (longpos)\fC [inline]\fP"
+
+.PP
+Definition at line 63 of file Array\&.hpp\&.
+.PP
+.nf
+64 {
+65     assert (pos >= 0);
+66     assert (pos < LEN);
+67 
+68     return (_data_arr [pos]);
+69 }
+.fi
+.SS "template<class T , long LEN> long \fBffft::Array\fP< T, LEN >::size ()\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 74 of file Array\&.hpp\&.
+.PP
+.nf
+75 {
+76     return (LEN);
+77 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

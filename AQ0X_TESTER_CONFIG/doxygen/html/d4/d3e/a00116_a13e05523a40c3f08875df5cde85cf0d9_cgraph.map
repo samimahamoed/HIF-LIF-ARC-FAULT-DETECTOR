@@ -1,0 +1,8 @@
+<map id="resizeEvent" name="resizeEvent">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a563540b54b2a09c8ef092d42e9621f42" title="Causes a complete replot (axes, labels, graphs, etc.) into the internal buffer. " alt="" coords="173,69,227,96"/>
+<area shape="rect" id="node6" href="$d4/d3e/a00116.html#a428242419d3a1b63f2cbff637986c35c" title="updateAxisRect" alt="" coords="143,132,257,159"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a6f4fa624af060bc5919c5f266cf426a0" title="This signal is emitted immediately after a replot has taken place (caused by a call to the slot replo..." alt="" coords="341,5,425,32"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a0cd30e29b73efd6afe096e44bc5956f5" title="This signal is emitted immediately before a replot takes place (caused by a call to the slot replot)..." alt="" coords="335,56,430,83"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a2e9b3d14dffa43c79835869d488936c9" title="draw" alt="" coords="358,107,407,133"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#a0188c6248366fc9f9ff816dceee986e0" title="QCPAxis::setAxisRect" alt="" coords="305,157,460,184"/>
+</map>

@@ -1,0 +1,11 @@
+The Nov block is responsible for non volatile storage of device data.
+
+For non volatile storage requirement of this application an external microchip 25\+L\+C640\+A series serial E\+E\+P\+R\+O\+M is used for storing device configuration data and disturbance records. The device can store 16\+K\+B data divided into 64\+Byte sized pages and can be accessed using \hyperlink{a00014_d3/de3/a00763}{S\+P\+I} interface via provided instructions. The device supports data write operation per byte, per page size or any length data size up to 64byte can be transferred in a single write operation if stored in the same page. Likewise, data can be read per byte or the entire memory can be fetched in a single read operation. Furthermore, the device also provides instructions to access the status registers as well as read write control registers.
+
+In this application there are three types of E\+E\+P\+R\+O\+M data blocks namely\+:
+
+Device id\+: includes both device serial number and device address. Four copies of each of these values are stored in the beginning address of the eeprom. Thus, on every reset the data will be retrieved and will be considered valid if two or more successive address contains equal values .
+
+Configuration data\+: contains the device configuration parameters and supervi-\/sion records. Here, the data is stored in two identical copies starting from second copy and then the first copy to make sure that one copy is valid if the execution is interrupted due to power failure. During startup, first copy is read and checked for proper checksum (crc 16). If valid, these parameters are used. If the copy is not valid, the module will attempt to use the second copy. If the second is also defective then this is fatal error hence the device will be configured with factory default values.
+
+Disturbance record\+: mainly contains the modules disturbance record data including with the event history recording parameters (e.\+g. relative timestamp). However, it is possible that emulation mode data can also be preserved across reset using the same block (see typedef\+:post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t, \hyperlink{a00022}{nov\+\_\+data.\+h} file). Here, since this is considerably large amount of data only a single copy is stored and retrieved when external data transfer request is received. 

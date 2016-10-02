@@ -1,0 +1,5 @@
+<map id="QMainWindow" name="QMainWindow">
+<area shape="rect" id="node2" href="$d0/d0b/a00004.html" title="{emu_data_editor\n|+ win_title\l+ signal_type\l+ signal_freq\l+ signal_phase\l+ signal_amplitude\l+ edit_point_sets\l+ transformer\l+ emu_data_yvalue\l+ emu_data_xvalue\l+ fft_result\land 6 more...\l|+ emu_data_editor()\l+ ~emu_data_editor()\l+ update_curve()\l+ selection()\l# eventFilter()\l}" alt="" coords="5,160,152,443"/>
+<area shape="rect" id="node3" href="$de/d21/a00006.html" title="{MainWindow\n|+ eventRecoredList\l+ dir_default\l|+ MainWindow()\l+ ~MainWindow()\l+ msg()\l+ uint8_to_str()\l+ ListFiles()\l+ make8()\l+ make16()\l+ crc16()\l+ set_emu_data()\l+ save_to_file()\l+ data_open()\l+ srv_cmds_data_download\l_msg_handler()\l+ srv_cmds_data_transfer\l_msg_handler()\l+ srv_cmds_general_msg\l_handler()\l# eventFilter()\l}" alt="" coords="177,131,359,472"/>
+<area shape="rect" id="node4" href="$db/db2/a00020.html" title="{recordPreview\n||+ recordPreview()\l+ recordPreview()\l+ recordPreview()\l+ ~recordPreview()\l+ max()\l}" alt="" coords="384,233,515,369"/>
+</map>

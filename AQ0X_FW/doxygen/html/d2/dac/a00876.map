@@ -1,0 +1,14 @@
+<map id="algorithm.c" name="algorithm.c">
+<area shape="rect" id="node2" href="$db/d3a/a00040.html" title="All project header files together so modules can include just this one. " alt="" coords="681,87,849,114"/>
+<area shape="rect" id="node19" href="$d7/d7a/a00016.html" title="Private Algorithm module header file. " alt="" coords="873,80,1019,121"/>
+<area shape="rect" id="node20" href="$db/df3/a00034.html" title="..\\..\\includes_prv\l\\aq0X\\srv_hwio_prv.h" alt="" coords="1043,80,1185,121"/>
+<area shape="rect" id="node10" href="$dd/d1b/a00015.html" title="p33EP128MC202.h" alt="" coords="645,169,780,196"/>
+<area shape="rect" id="node11" href="$d6/d2c/a00072.html" title="Generic project defines ( data types, basic hardware setting) " alt="" coords="1105,244,1184,271"/>
+<area shape="rect" id="node12" href="$dc/ddf/a00067.html" title="File with support for watchdog( for release version) and watchdog tunning (debug/release) ..." alt="" coords="856,169,967,196"/>
+<area shape="rect" id="node13" href="$de/d8c/a00036.html" title="OS header file. " alt="" coords="991,169,1090,196"/>
+<area shape="rect" id="node14" href="$d0/dc0/a00033.html" title="Few useful generic macros. " alt="" coords="1114,169,1175,196"/>
+<area shape="rect" id="node15" href="$d7/de0/a00022.html" title="Header for low level NOV support. " alt="" coords="1200,169,1284,196"/>
+<area shape="rect" id="node16" href="$df/d61/a00031.html" title="Header for serial port driver. " alt="" coords="1308,169,1395,196"/>
+<area shape="rect" id="node17" href="$d5/d16/a00029.html" title="Header for low level NOV support. " alt="" coords="1419,169,1494,196"/>
+<area shape="rect" id="node18" href="$d7/dd4/a00013.html" title="Header for spi port driver. " alt="" coords="1519,169,1592,196"/>
+</map>

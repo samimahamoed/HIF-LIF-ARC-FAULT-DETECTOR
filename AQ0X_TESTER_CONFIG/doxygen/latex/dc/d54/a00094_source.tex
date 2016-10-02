@@ -1,0 +1,112 @@
+\hypertarget{a00094_source}{\section{emu\+\_\+data\+\_\+editor.\+h}
+\label{a00094_source}\index{emu\+\_\+data\+\_\+editor.\+h@{emu\+\_\+data\+\_\+editor.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef EMU\_DATA\_EDITOR\_H}
+00002 \textcolor{preprocessor}{#define EMU\_DATA\_EDITOR\_H}
+00003 
+00004 \textcolor{preprocessor}{#include <QMainWindow>}
+00005 \textcolor{preprocessor}{#include "\hyperlink{a00004}{typedef.h}"}
+00006 \textcolor{preprocessor}{#include "\hyperlink{a00090}{define.h}"}
+00007 \textcolor{preprocessor}{#include "\hyperlink{a00088}{console.h}"}
+00008 \textcolor{preprocessor}{#include "../fft/headers/qfouriertransformer.h"}
+00009 \textcolor{preprocessor}{#include <QVector>}
+00010 
+\hypertarget{a00094_source_l00011}{}\hyperlink{a00094_a958de936b60eb9d784cdb10be7d39373}{00011} \textcolor{preprocessor}{#define     NO\_OF\_SLIDERS            100}
+\hypertarget{a00094_source_l00012}{}\hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{00012} \textcolor{preprocessor}{#define     FFT\_SIZE                 256}
+\hypertarget{a00094_source_l00013}{}\hyperlink{a00094_a60ece807960441ee99b05b2e536cad76}{00013} \textcolor{preprocessor}{#define     MAX\_SPECTRUM\_MAGNITUDE   100}
+00014 
+\hypertarget{a00094_source_l00015}{}\hyperlink{a00145}{00015} \textcolor{keyword}{namespace }\hyperlink{a00145}{Ui} \{
+00016 \textcolor{keyword}{class }\hyperlink{a00009}{emu\_data\_editor};
+00017 \}
+00018 
+\hypertarget{a00094_source_l00019}{}\hyperlink{a00008}{00019} \textcolor{keyword}{class }\hyperlink{a00008}{emu\_data\_editor} : \textcolor{keyword}{public} \hyperlink{a00058}{QMainWindow}
+00020 \{
+00021     Q\_OBJECT
+00022 
+00023 
+00024 
+00025 signals:
+00026      \textcolor{keywordtype}{void} \hyperlink{a00008_a9aa2af0c329358fd96f7fb6b7f02bfe1}{edit\_point\_selection}(\textcolor{keywordtype}{bool} status);
+00027      \textcolor{keywordtype}{void} \hyperlink{a00008_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keywordtype}{bool} status);
+00028      \textcolor{keywordtype}{void} \hyperlink{a00008_a74d292de22b341313df1852cb1033704}{adjust\_value}(\hyperlink{a00004_a3985266aecb120f269789241c170850c}{Int16} val);
+00029      \textcolor{keywordtype}{void} \hyperlink{a00008_a9d26460f253a29dd961b20be0afb5358}{set\_value}(\hyperlink{a00004_a3985266aecb120f269789241c170850c}{Int16} val,\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} waveform);
+00030      \textcolor{keywordtype}{void} \hyperlink{a00008_a7c1fa0d7d1623b11d4badceb1854010e}{action\_set\_value}(\textcolor{keywordtype}{double} val,\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} type);
+00031      \textcolor{keywordtype}{void} \hyperlink{a00008_a7dfbddd62d6782b0f0ce809cbf2338ba}{update\_curve\_signal}();
+00032      \textcolor{keywordtype}{void} \hyperlink{a00008_ad5f20fdbb4731185020ff4e90cd1ead2}{update\_value}();
+00033      \textcolor{keywordtype}{void} \hyperlink{a00008_a9476424a86a6ed4f84c64d0ac77143cc}{set\_status}(\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} select);
+00034 \textcolor{keyword}{public}:
+00035     \textcolor{keyword}{explicit} \hyperlink{a00008_ace57d3f7e3dd136290777006218abca9}{emu\_data\_editor}(QString type,QWidget *parent = 0);
+00036     \hyperlink{a00008_ab897c9d3081a980c0ad94f09d5dbce99}{~emu\_data\_editor}();
+00037 
+\hypertarget{a00094_source_l00038}{}\hyperlink{a00008_a2abdde44f37258778dcc571e8cc7ed1a}{00038}     QString                          \hyperlink{a00008_a2abdde44f37258778dcc571e8cc7ed1a}{win\_title};
+\hypertarget{a00094_source_l00039}{}\hyperlink{a00008_a070edaec5aee6ba1f5a6866bc32c8ce4}{00039}     \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}                            \hyperlink{a00008_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type};
+\hypertarget{a00094_source_l00040}{}\hyperlink{a00008_a67039999d520fc483fab521fae5ddde4}{00040}     \textcolor{keywordtype}{double}                           \hyperlink{a00008_a67039999d520fc483fab521fae5ddde4}{signal\_freq};
+\hypertarget{a00094_source_l00041}{}\hyperlink{a00008_af08de88fdfe283086e3cca97a2965678}{00041}     \textcolor{keywordtype}{double}                           \hyperlink{a00008_af08de88fdfe283086e3cca97a2965678}{signal\_phase};
+\hypertarget{a00094_source_l00042}{}\hyperlink{a00008_a73dabe63bd74afe2776e8136211dc36e}{00042}     \textcolor{keywordtype}{double}                           \hyperlink{a00008_a73dabe63bd74afe2776e8136211dc36e}{signal\_amplitude};
+\hypertarget{a00094_source_l00043}{}\hyperlink{a00008_ab093b86d07b4eb96c36878089a7d97df}{00043}     QVector<emu\_data\_edit\_point\_t>   \hyperlink{a00008_ab093b86d07b4eb96c36878089a7d97df}{edit\_point\_sets};
+\hypertarget{a00094_source_l00044}{}\hyperlink{a00008_a0d6e12337ef942452edea37827e58cd4}{00044}     \hyperlink{a00054}{QFourierTransformer}              \hyperlink{a00008_a0d6e12337ef942452edea37827e58cd4}{transformer};
+\hypertarget{a00094_source_l00045}{}\hyperlink{a00008_ad922d05d1e988d84f404c115fe909f72}{00045}     QVector<double>                  \hyperlink{a00008_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue};
+\hypertarget{a00094_source_l00046}{}\hyperlink{a00008_a66d07ec51f26cd9b84994548faa336d6}{00046}     QVector<double>                  \hyperlink{a00008_a66d07ec51f26cd9b84994548faa336d6}{emu\_data\_xvalue};
+00047 
+00048     \textcolor{comment}{//dosent look good but this an effort to use existing libraries}
+\hypertarget{a00094_source_l00049}{}\hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{00049}     \textcolor{keywordtype}{float}                            \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[\hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}];
+\hypertarget{a00094_source_l00050}{}\hyperlink{a00008_a8782fc20094d65d56c04869b9692902e}{00050}     \textcolor{keywordtype}{float}                            \hyperlink{a00008_a8782fc20094d65d56c04869b9692902e}{fft\_inputs}[\hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}];
+\hypertarget{a00094_source_l00051}{}\hyperlink{a00008_a62129d59e218ab857cd50cb202205129}{00051}     QVector<double>                  \hyperlink{a00008_a62129d59e218ab857cd50cb202205129}{emu\_data\_freq\_value};
+\hypertarget{a00094_source_l00052}{}\hyperlink{a00008_ac3c515466f79ab8e60a58e8d15a3b991}{00052}     QVector<double>                  \hyperlink{a00008_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude};
+\hypertarget{a00094_source_l00053}{}\hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{00053}     \textcolor{keywordtype}{float}                            \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max};
+\hypertarget{a00094_source_l00054}{}\hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{00054}     \textcolor{keywordtype}{float}                            \hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min};
+\hypertarget{a00094_source_l00055}{}\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{00055}     QString \hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default};
+00056 
+00057 \textcolor{keyword}{public} slots:
+00058     \textcolor{keywordtype}{void} \hyperlink{a00008_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00059     \textcolor{keywordtype}{void} \hyperlink{a00008_a86f994dedec393af88b5d1a37b1e30b5}{selection}(\textcolor{keywordtype}{bool} clear);
+00060 \textcolor{keyword}{private} slots:
+00061 
+00062 
+00063     \textcolor{keywordtype}{void} action\_set\_value\_triggered(\textcolor{keywordtype}{double} val,\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} type);
+00064     \textcolor{keywordtype}{void} on\_actionWinEditor\_toggled(\textcolor{keywordtype}{bool} arg1);
+00065 
+00066     \textcolor{keywordtype}{void} on\_actionWinPlot\_toggled(\textcolor{keywordtype}{bool} arg1);
+00067 
+00068     \textcolor{keywordtype}{void} on\_actionOpen\_triggered();
+00069 
+00070     \textcolor{keywordtype}{void} on\_actionCSV\_triggered();
+00071 
+00072     \textcolor{keywordtype}{void} on\_btn\_save\_clicked();
+00073 
+00074     \textcolor{keywordtype}{void} on\_actionMakeImg\_triggered();
+00075 
+00076 \textcolor{keyword}{protected}:
+00077     \textcolor{keywordtype}{bool} \hyperlink{a00008_a48f610d23d17b2679113ea351d0968e4}{eventFilter}(\hyperlink{a00059}{QObject} *obj, QEvent *ev);
+00078     \textcolor{comment}{//void mousePressEvent(QGraphicsSceneMouseEvent *event);}
+00079     \textcolor{comment}{//void mouseMoveEvent(QGraphicsSceneMouseEvent *event);}
+00080     \textcolor{comment}{//void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);}
+00081 
+00082 \textcolor{keyword}{private}:
+00083     \hyperlink{a00009}{Ui::emu\_data\_editor} *ui;
+00084 
+00085     \textcolor{keywordtype}{void} gui\_init(\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} points);
+00086 
+00087     \textcolor{keywordtype}{void} plot\_curve(QVector<double> xvalue,QVector<double> yvalue);
+00088 
+00089     \textcolor{keywordtype}{void} plot\_curve\_fft(QVector<double> xvalue,QVector<double> yvalue);
+00090 
+00091     \textcolor{keywordtype}{void} saveEventRecored(QString FileName);
+00092 
+00093     \textcolor{keywordtype}{void} loadFile(QString file\_name);
+00094 
+00095 
+00096     QString fileName;
+00097 
+00098 
+00099 
+00100 
+00101 
+00102 
+00103 
+00104 \};
+00105 
+00106 \textcolor{preprocessor}{#endif // EMU\_DATA\_EDITOR\_H}
+\end{DoxyCode}

@@ -1,0 +1,883 @@
+\hypertarget{a00003}{\section{storage\+\_\+structure.\+h File Reference}
+\label{a00003}\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+}
+{\ttfamily \#include \char`\"{}typedef.\+h\char`\"{}}\\*
+Include dependency graph for storage\+\_\+structure.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/dc1/a00212}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/de1/a00213}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00003_d0/d89/a00071}{event\+\_\+data\+\_\+t}
+\item 
+union \hyperlink{a00003_db/df8/a00076}{global\+\_\+error\+\_\+flags\+\_\+ut}
+\begin{DoxyCompactList}\small\item\em sensor supervission replay status report structure  \hyperlink{a00003_db/df8/a00076}{More...}\end{DoxyCompactList}\item 
+union \hyperlink{a00003_d2/df5/a00137}{sv\+\_\+error\+\_\+flags\+\_\+ut}
+\begin{DoxyCompactList}\small\item\em sensor supervission replay status report structure  \hyperlink{a00003_d2/df5/a00137}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{a00003_d5/d5b/a00135}{supervision\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Supervision error handling -\/ contains current variable state reported by other modules and global error status.  \hyperlink{a00003_d5/d5b/a00135}{More...}\end{DoxyCompactList}\item 
+union \hyperlink{a00003_de/d14/a00139}{trip\+\_\+criteria\+\_\+ut}
+\begin{DoxyCompactList}\small\item\em Bit coded info about trip criteria.  \hyperlink{a00003_de/d14/a00139}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{a00003_d4/d7d/a00093}{pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t}
+\item 
+struct \hyperlink{a00008}{module\+\_\+disturbance\+\_\+record\+\_\+t}
+\item 
+struct \hyperlink{a00003_df/d5f/a00064}{disturbance\+\_\+record\+\_\+t}
+\item 
+struct \hyperlink{a00003_d1/d09/a00077}{global\+\_\+error\+\_\+flags\+\_\+ut.\+bits}
+\item 
+struct \hyperlink{a00003_d4/ddd/a00138}{sv\+\_\+error\+\_\+flags\+\_\+ut.\+bits}
+\item 
+struct \hyperlink{a00003_d0/d5e/a00136}{supervision\+\_\+t.\+error\+\_\+flags}
+\item 
+union \hyperlink{a00003_d5/db1/a00140}{trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules}
+\item 
+struct \hyperlink{a00003_d5/d4e/a00141}{trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules.\+bits}
+\item 
+union \hyperlink{a00003_d2/d82/a00142}{trip\+\_\+criteria\+\_\+ut.\+criterion}
+\item 
+struct \hyperlink{a00003_d7/dce/a00143}{trip\+\_\+criteria\+\_\+ut.\+criterion.\+bits}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00003_ad750d25410f340cb93a424349ccecdd3}{A\+Q0\+X\+\_\+\+V0}~0
+\begin{DoxyCompactList}\small\item\em Header for low level N\+O\+V support. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00003_a4fe07f06b0aa99b609cb9f3d37b30932}{A\+Q0\+X\+\_\+\+V1}~1
+\begin{DoxyCompactList}\small\item\em Device version 1 , include 2 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00003_a775d096fbc3988fb7ed858b79ef44e22}{D\+E\+V\+I\+C\+E}~\hyperlink{a00003_ad750d25410f340cb93a424349ccecdd3}{A\+Q0\+X\+\_\+\+V0}
+\item 
+\#define \hyperlink{a00003_a18dcecc16ded13fa622e0913e73442e6}{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}~200
+\item 
+\#define \hyperlink{a00003_ab1ad440de86fff80e517ad748de2ee39}{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}~800
+\item 
+\#define \hyperlink{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}~200
+\item 
+\#define \hyperlink{a00003_aa060aeb1ecb530b3c6f6d91060999b70}{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}~200
+\item 
+\#define \hyperlink{a00003_a18dcecc16ded13fa622e0913e73442e6}{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}~200
+\item 
+\#define \hyperlink{a00003_ab1ad440de86fff80e517ad748de2ee39}{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}~800
+\item 
+\#define \hyperlink{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}~200
+\item 
+\#define \hyperlink{a00003_aa060aeb1ecb530b3c6f6d91060999b70}{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}~200
+\item 
+\#define \hyperlink{a00003_a0ff9495f8521ea7698e83e7b4d6a6985}{D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+R\+I\+P\+\_\+\+C\+R\+I\+T\+E\+R\+I\+O\+N}~0b00001101
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00003_ad8187eb7fe09751a387e3dcb11c51565}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed, aligned(4)))
+\begin{DoxyCompactList}\small\item\em Data structure for variables stored in N\+O\+V. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00003_a4726b814166e222a6f13e21453f76d8d}{hif\+\_\+diagonesis\+\_\+records\+\_\+t}
+\item 
+\hyperlink{a00003_a826f1702f1b63c184df702204bea5122}{post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t}
+\item 
+\hyperlink{a00003_a95029dff9c90f6a6907353ba86eb3f33}{device\+\_\+data\+\_\+t}
+\item 
+\hyperlink{a00003_a8e66478e65e03ebc9434466e51c0ad0b}{data\+\_\+non\+\_\+volatile\+\_\+t}
+\end{DoxyCompactItemize}
+
+
+\subsection{Class Documentation}
+\index{event\+\_\+data\+\_\+t@{event\+\_\+data\+\_\+t}}\label{d0/d89/a00071}
+\hypertarget{a00003_d0/d89/a00071}{}
+\subsubsection{struct event\+\_\+data\+\_\+t}
+
+
+Definition at line \hyperlink{a00003_source_l00021}{21} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for event\+\_\+data\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{d3/dd1/a00214}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_abcdcf9a1889bf0892658828ceac54668}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_abcdcf9a1889bf0892658828ceac54668}
+&
+head\+\_\+ptr&
+\\
+\hline
+
+\hypertarget{a00003_a90588fed720ad404c18bcbb8fa84878e}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a90588fed720ad404c18bcbb8fa84878e}
+&
+offset&
+\\
+\hline
+
+\end{DoxyFields}
+\index{global\+\_\+error\+\_\+flags\+\_\+ut@{global\+\_\+error\+\_\+flags\+\_\+ut}}\label{db/df8/a00076}
+\hypertarget{a00003_db/df8/a00076}{}
+\subsubsection{union global\+\_\+error\+\_\+flags\+\_\+ut}
+sensor supervission replay status report structure 
+
+Definition at line \hyperlink{a00003_source_l00035}{35} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for global\+\_\+error\+\_\+flags\+\_\+ut\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{d3/dd5/a00215}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_acc32d0584c7a008086c95be78659191d}{struct \hyperlink{a00003_d1/d09/a00077}{global\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00003_acc32d0584c7a008086c95be78659191d}
+&
+bits&
+\\
+\hline
+
+\hypertarget{a00003_ab5bcfbc3ba785f199fd15527b12699f5}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_ab5bcfbc3ba785f199fd15527b12699f5}
+&
+flags\+\_\+all&
+\\
+\hline
+
+\end{DoxyFields}
+\index{sv\+\_\+error\+\_\+flags\+\_\+ut@{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{d2/df5/a00137}
+\hypertarget{a00003_d2/df5/a00137}{}
+\subsubsection{union sv\+\_\+error\+\_\+flags\+\_\+ut}
+sensor supervission replay status report structure 
+
+Definition at line \hyperlink{a00003_source_l00058}{58} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for sv\+\_\+error\+\_\+flags\+\_\+ut\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{d6/d43/a00216}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_afa2ba38f241c1ae65e907d56c9a68065}{struct \hyperlink{a00003_d4/ddd/a00138}{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00003_afa2ba38f241c1ae65e907d56c9a68065}
+&
+bits&
+\\
+\hline
+
+\hypertarget{a00003_a0f01d49aa613ecb0f5a785a154c7f626}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a0f01d49aa613ecb0f5a785a154c7f626}
+&
+flags\+\_\+all&
+\\
+\hline
+
+\end{DoxyFields}
+\index{supervision\+\_\+t@{supervision\+\_\+t}}\label{d5/d5b/a00135}
+\hypertarget{a00003_d5/d5b/a00135}{}
+\subsubsection{struct supervision\+\_\+t}
+Supervision error handling -\/ contains current variable state reported by other modules and global error status. 
+
+Definition at line \hyperlink{a00003_source_l00072}{72} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for supervision\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{df/d24/a00217}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_a480b184a5fd0c97b16550ac26640d1f0}{struct \hyperlink{a00003_d0/d5e/a00136}{supervision\+\_\+t}}\label{a00003_a480b184a5fd0c97b16550ac26640d1f0}
+&
+error\+\_\+flags&
+\\
+\hline
+
+\hypertarget{a00003_a7294ffc170c17b91f442d03081cb69fe}{\hyperlink{a00003_db/df8/a00076}{global\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00003_a7294ffc170c17b91f442d03081cb69fe}
+&
+system\+\_\+error\+\_\+flags&
+Combined supervision errors. \\
+\hline
+
+\end{DoxyFields}
+\index{trip\+\_\+criteria\+\_\+ut@{trip\+\_\+criteria\+\_\+ut}}\label{de/d14/a00139}
+\hypertarget{a00003_de/d14/a00139}{}
+\subsubsection{union trip\+\_\+criteria\+\_\+ut}
+Bit coded info about trip criteria. 
+
+Definition at line \hyperlink{a00003_source_l00096}{96} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for trip\+\_\+criteria\+\_\+ut\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{dc/d9a/a00218}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_af3735c35dd4a424469d58e0c59b6ed12}{union \hyperlink{a00003_d5/db1/a00140}{trip\+\_\+criteria\+\_\+ut}}\label{a00003_af3735c35dd4a424469d58e0c59b6ed12}
+&
+active\+\_\+modules&
+\\
+\hline
+
+\hypertarget{a00003_a3a4ea34ff84a869fc06d5088774a23dd}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_a3a4ea34ff84a869fc06d5088774a23dd}
+&
+all&
+\\
+\hline
+
+\hypertarget{a00003_a68e5d717776b2535a1677a3b4a8e9472}{union \hyperlink{a00003_d2/d82/a00142}{trip\+\_\+criteria\+\_\+ut}}\label{a00003_a68e5d717776b2535a1677a3b4a8e9472}
+&
+criterion&
+\\
+\hline
+
+\end{DoxyFields}
+\index{pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t@{pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t}}\label{d4/d7d/a00093}
+\hypertarget{a00003_d4/d7d/a00093}{}
+\subsubsection{struct pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t}
+
+
+Definition at line \hyperlink{a00003_source_l00150}{150} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for pre\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{dd/df3/a00219}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_a5f6608d29ecab36269ae25b2e7afb1f3}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_a5f6608d29ecab36269ae25b2e7afb1f3}
+&
+buffer\mbox{[}\hyperlink{a00003_a18dcecc16ded13fa622e0913e73442e6}{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}\mbox{]}&
+buffer ( circular) \\
+\hline
+
+\hypertarget{a00003_aaaf7d02164534ccd9a0f797aa73c624c}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_aaaf7d02164534ccd9a0f797aa73c624c}
+&
+elapsed&
+if set indicates that head is elapsed one or more time \\
+\hline
+
+\hypertarget{a00003_a4ffd130ffd2d0b15b3e187aaa678f475}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_a4ffd130ffd2d0b15b3e187aaa678f475}
+&
+head&
+Transmit buffer head. \\
+\hline
+
+\hypertarget{a00003_a3c4762f0dfae85a9efc17a36c6cb84a6}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_a3c4762f0dfae85a9efc17a36c6cb84a6}
+&
+tail&
+Transmit buffer tail. \\
+\hline
+
+\end{DoxyFields}
+\index{disturbance\+\_\+record\+\_\+t@{disturbance\+\_\+record\+\_\+t}}\label{df/d5f/a00064}
+\hypertarget{a00003_df/d5f/a00064}{}
+\subsubsection{struct disturbance\+\_\+record\+\_\+t}
+
+
+Definition at line \hyperlink{a00003_source_l00324}{324} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for disturbance\+\_\+record\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d0b/a00220}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_a460063751aa45dc40586a73349e4e381}{\hyperlink{a00003_a4726b814166e222a6f13e21453f76d8d}{hif\+\_\+diagonesis\+\_\+records\+\_\+t}}\label{a00003_a460063751aa45dc40586a73349e4e381}
+&
+hif\+\_\+diagonesis\+\_\+records&
+\\
+\hline
+
+\hypertarget{a00003_a0853f30aaeea71d87e16b602c74d6f1e}{\hyperlink{a00008}{module\+\_\+disturbance\+\_\+record\+\_\+t}}\label{a00003_a0853f30aaeea71d87e16b602c74d6f1e}
+&
+ir&
+\\
+\hline
+
+\hypertarget{a00003_a241d2538d580d57649cce4000fc4c743}{\hyperlink{a00008}{module\+\_\+disturbance\+\_\+record\+\_\+t}}\label{a00003_a241d2538d580d57649cce4000fc4c743}
+&
+mfield\+\_\+x&
+\\
+\hline
+
+\hypertarget{a00003_a86fcaabe527af58a854c14bc6fd79ef1}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_a86fcaabe527af58a854c14bc6fd79ef1}
+&
+new\+\_\+dr&
+\\
+\hline
+
+\hypertarget{a00003_a495d761510e9f18ac4788986eccc5059}{\hyperlink{a00008}{module\+\_\+disturbance\+\_\+record\+\_\+t}}\label{a00003_a495d761510e9f18ac4788986eccc5059}
+&
+uv&
+\\
+\hline
+
+\end{DoxyFields}
+\index{global\+\_\+error\+\_\+flags\+\_\+ut.\+bits@{global\+\_\+error\+\_\+flags\+\_\+ut.\+bits}}\label{d1/d09/a00077}
+\hypertarget{a00003_d1/d09/a00077}{}
+\subsubsection{struct global\+\_\+error\+\_\+flags\+\_\+ut.\+bits}
+
+
+Definition at line \hyperlink{a00003_source_l00038}{38} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for global\+\_\+error\+\_\+flags\+\_\+ut.\+bits\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{dd/d52/a00221}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_a660d9342b0a83c1a03b3082c4a110465}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_a660d9342b0a83c1a03b3082c4a110465}
+&
+ir\+\_\+sensor\+\_\+element\+:1&
+\\
+\hline
+
+\hypertarget{a00003_ae47f53b8f1a226d4fed0b0d7f81b9a1e}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_ae47f53b8f1a226d4fed0b0d7f81b9a1e}
+&
+mfield\+\_\+x\+\_\+sensor\+\_\+element\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a5b707c19ace588b0304807d6fff7b0d5}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_a5b707c19ace588b0304807d6fff7b0d5}
+&
+power\+\_\+supply\+:1&
+\\
+\hline
+
+\hypertarget{a00003_addecebdea58b5f264d27f1f7909bab74}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_addecebdea58b5f264d27f1f7909bab74}
+&
+storage\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a3020e09312bbf84a097b774fe0a187cd}{\hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}}\label{a00003_a3020e09312bbf84a097b774fe0a187cd}
+&
+uv\+\_\+sensor\+\_\+element\+:1&
+\\
+\hline
+
+\end{DoxyFields}
+\index{sv\+\_\+error\+\_\+flags\+\_\+ut.\+bits@{sv\+\_\+error\+\_\+flags\+\_\+ut.\+bits}}\label{d4/ddd/a00138}
+\hypertarget{a00003_d4/ddd/a00138}{}
+\subsubsection{struct sv\+\_\+error\+\_\+flags\+\_\+ut.\+bits}
+
+
+Definition at line \hyperlink{a00003_source_l00061}{61} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for sv\+\_\+error\+\_\+flags\+\_\+ut.\+bits\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{d0/d24/a00222}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_a587be3dd1f4afa15f556d70085096e86}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a587be3dd1f4afa15f556d70085096e86}
+&
+E\+L\+E\+M\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+R\+E\+S\+P\+O\+N\+D\+I\+N\+G\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a19777be47fcaa9d570e4fe573d533583}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a19777be47fcaa9d570e4fe573d533583}
+&
+F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a4f8d459be1a156962f3fec7d025c7c98}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a4f8d459be1a156962f3fec7d025c7c98}
+&
+F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+A\+M\+P\+\_\+\+T\+H\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a0c1a4805544c234baaaca401b6bba48a}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a0c1a4805544c234baaaca401b6bba48a}
+&
+F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+D\+F\+D\+T\+\_\+\+T\+H\+:1&
+\\
+\hline
+
+\end{DoxyFields}
+\index{supervision\+\_\+t.\+error\+\_\+flags@{supervision\+\_\+t.\+error\+\_\+flags}}\label{d0/d5e/a00136}
+\hypertarget{a00003_d0/d5e/a00136}{}
+\subsubsection{struct supervision\+\_\+t.\+error\+\_\+flags}
+
+
+Definition at line \hyperlink{a00003_source_l00077}{77} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for supervision\+\_\+t.\+error\+\_\+flags\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{dc/d28/a00223}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_ad74eea4899a61f9fcbc527ef988ea0ff}{\hyperlink{a00003_d2/df5/a00137}{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00003_ad74eea4899a61f9fcbc527ef988ea0ff}
+&
+ir&
+\\
+\hline
+
+\hypertarget{a00003_a46709d870ad5c3126599a53675c43291}{\hyperlink{a00003_d2/df5/a00137}{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00003_a46709d870ad5c3126599a53675c43291}
+&
+mfield\+\_\+x&
+\\
+\hline
+
+\hypertarget{a00003_a45210da832f9626829457a65e9e7c4d0}{\hyperlink{a00003_d2/df5/a00137}{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00003_a45210da832f9626829457a65e9e7c4d0}
+&
+uv&
+\\
+\hline
+
+\end{DoxyFields}
+\index{trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules@{trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules}}\label{d5/db1/a00140}
+\hypertarget{a00003_d5/db1/a00140}{}
+\subsubsection{union trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules}
+
+
+Definition at line \hyperlink{a00003_source_l00100}{100} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{d5/ddf/a00224}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_aa181a603769c1f98ad927e7367c7aa51}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_aa181a603769c1f98ad927e7367c7aa51}
+&
+all&
+\\
+\hline
+
+\hypertarget{a00003_acc411e6c13670e52124629b8ac83f7d0}{\hyperlink{a00003_d5/d4e/a00141}{active\+\_\+modules}}\label{a00003_acc411e6c13670e52124629b8ac83f7d0}
+&
+bits&
+\\
+\hline
+
+\end{DoxyFields}
+\index{trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules.\+bits@{trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules.\+bits}}\label{d5/d4e/a00141}
+\hypertarget{a00003_d5/d4e/a00141}{}
+\subsubsection{struct trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules.\+bits}
+
+
+Definition at line \hyperlink{a00003_source_l00103}{103} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for trip\+\_\+criteria\+\_\+ut.\+active\+\_\+modules.\+bits\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{dc/d98/a00225}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_a74a47a7eac047138ff811ede153943e6}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a74a47a7eac047138ff811ede153943e6}
+&
+\+\_\+\+\_\+pad0\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_abb67792e94e88254ca5afecf7c26c912}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_abb67792e94e88254ca5afecf7c26c912}
+&
+\+\_\+\+\_\+pad1\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a2780c6c77e1f937563d98e2f517c2aeb}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a2780c6c77e1f937563d98e2f517c2aeb}
+&
+\+\_\+\+\_\+pad2\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_ad30f3f7ff6b12f7b97db2c89403b4238}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_ad30f3f7ff6b12f7b97db2c89403b4238}
+&
+\+\_\+\+\_\+pad3\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a72d43dbd74859e7e4034c3a0b841b13b}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a72d43dbd74859e7e4034c3a0b841b13b}
+&
+\+\_\+\+\_\+pad4\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_ad74eea4899a61f9fcbc527ef988ea0ff}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_ad74eea4899a61f9fcbc527ef988ea0ff}
+&
+ir\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a46709d870ad5c3126599a53675c43291}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a46709d870ad5c3126599a53675c43291}
+&
+mfield\+\_\+x\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a45210da832f9626829457a65e9e7c4d0}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a45210da832f9626829457a65e9e7c4d0}
+&
+uv\+:1&
+\\
+\hline
+
+\end{DoxyFields}
+\index{trip\+\_\+criteria\+\_\+ut.\+criterion@{trip\+\_\+criteria\+\_\+ut.\+criterion}}\label{d2/d82/a00142}
+\hypertarget{a00003_d2/d82/a00142}{}
+\subsubsection{union trip\+\_\+criteria\+\_\+ut.\+criterion}
+
+
+Definition at line \hyperlink{a00003_source_l00120}{120} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for trip\+\_\+criteria\+\_\+ut.\+criterion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{dc/d55/a00226}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_aa181a603769c1f98ad927e7367c7aa51}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_aa181a603769c1f98ad927e7367c7aa51}
+&
+all&
+\\
+\hline
+
+\hypertarget{a00003_acc411e6c13670e52124629b8ac83f7d0}{\hyperlink{a00003_d7/dce/a00143}{criterion}}\label{a00003_acc411e6c13670e52124629b8ac83f7d0}
+&
+bits&
+\\
+\hline
+
+\end{DoxyFields}
+\index{trip\+\_\+criteria\+\_\+ut.\+criterion.\+bits@{trip\+\_\+criteria\+\_\+ut.\+criterion.\+bits}}\label{d7/dce/a00143}
+\hypertarget{a00003_d7/dce/a00143}{}
+\subsubsection{struct trip\+\_\+criteria\+\_\+ut.\+criterion.\+bits}
+
+
+Definition at line \hyperlink{a00003_source_l00123}{123} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Collaboration diagram for trip\+\_\+criteria\+\_\+ut.\+criterion.\+bits\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{d9/d01/a00227}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00003_a74a47a7eac047138ff811ede153943e6}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a74a47a7eac047138ff811ede153943e6}
+&
+\+\_\+\+\_\+pad0\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_abb67792e94e88254ca5afecf7c26c912}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_abb67792e94e88254ca5afecf7c26c912}
+&
+\+\_\+\+\_\+pad1\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a2780c6c77e1f937563d98e2f517c2aeb}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a2780c6c77e1f937563d98e2f517c2aeb}
+&
+\+\_\+\+\_\+pad2\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_ad30f3f7ff6b12f7b97db2c89403b4238}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_ad30f3f7ff6b12f7b97db2c89403b4238}
+&
+\+\_\+\+\_\+pad3\+\_\+\+\_\+\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a2dc2090faca603cc8979802e609d6fbf}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a2dc2090faca603cc8979802e609d6fbf}
+&
+case\+\_\+1\+:1&
+\\
+\hline
+
+\hypertarget{a00003_ae3dbe89a1e307d834912181da872fffd}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_ae3dbe89a1e307d834912181da872fffd}
+&
+case\+\_\+2\+:1&
+\\
+\hline
+
+\hypertarget{a00003_a4c5c54941d081abd8e54ac2086794458}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_a4c5c54941d081abd8e54ac2086794458}
+&
+case\+\_\+3\+:1&
+\\
+\hline
+
+\hypertarget{a00003_ad8cf339eb2bcc62ab9c0ca2a295056e0}{\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}}\label{a00003_ad8cf339eb2bcc62ab9c0ca2a295056e0}
+&
+case\+\_\+4\+:1&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00003_ad750d25410f340cb93a424349ccecdd3}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!A\+Q0\+X\+\_\+\+V0@{A\+Q0\+X\+\_\+\+V0}}
+\index{A\+Q0\+X\+\_\+\+V0@{A\+Q0\+X\+\_\+\+V0}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{A\+Q0\+X\+\_\+\+V0}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+Q0\+X\+\_\+\+V0~0}}\label{a00003_ad750d25410f340cb93a424349ccecdd3}
+
+
+Header for low level N\+O\+V support. 
+
+Device version 0 , include 3 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor, and 1 light sensor 
+
+Definition at line \hyperlink{a00003_source_l00010}{10} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_a4fe07f06b0aa99b609cb9f3d37b30932}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!A\+Q0\+X\+\_\+\+V1@{A\+Q0\+X\+\_\+\+V1}}
+\index{A\+Q0\+X\+\_\+\+V1@{A\+Q0\+X\+\_\+\+V1}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{A\+Q0\+X\+\_\+\+V1}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+Q0\+X\+\_\+\+V1~1}}\label{a00003_a4fe07f06b0aa99b609cb9f3d37b30932}
+
+
+Device version 1 , include 2 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor. 
+
+
+
+Definition at line \hyperlink{a00003_source_l00012}{12} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_a0ff9495f8521ea7698e83e7b4d6a6985}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+R\+I\+P\+\_\+\+C\+R\+I\+T\+E\+R\+I\+O\+N@{D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+R\+I\+P\+\_\+\+C\+R\+I\+T\+E\+R\+I\+O\+N}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+R\+I\+P\+\_\+\+C\+R\+I\+T\+E\+R\+I\+O\+N@{D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+R\+I\+P\+\_\+\+C\+R\+I\+T\+E\+R\+I\+O\+N}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+R\+I\+P\+\_\+\+C\+R\+I\+T\+E\+R\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+R\+I\+P\+\_\+\+C\+R\+I\+T\+E\+R\+I\+O\+N~0b00001101}}\label{a00003_a0ff9495f8521ea7698e83e7b4d6a6985}
+
+
+Definition at line \hyperlink{a00003_source_l00092}{92} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_a775d096fbc3988fb7ed858b79ef44e22}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!D\+E\+V\+I\+C\+E@{D\+E\+V\+I\+C\+E}}
+\index{D\+E\+V\+I\+C\+E@{D\+E\+V\+I\+C\+E}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{D\+E\+V\+I\+C\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+V\+I\+C\+E~{\bf A\+Q0\+X\+\_\+\+V0}}}\label{a00003_a775d096fbc3988fb7ed858b79ef44e22}
+
+
+Definition at line \hyperlink{a00003_source_l00014}{14} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H@{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}}
+\index{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H@{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H~200}}\label{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}
+
+
+Definition at line \hyperlink{a00003_source_l00031}{31} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor\+::emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{emu\+\_\+data\+\_\+editor\+::update\+\_\+curve()}.
+
+\hypertarget{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H@{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}}
+\index{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H@{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H~200}}\label{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}
+
+
+Definition at line \hyperlink{a00003_source_l00031}{31} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_aa060aeb1ecb530b3c6f6d91060999b70}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H@{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}}
+\index{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H@{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H~200}}\label{a00003_aa060aeb1ecb530b3c6f6d91060999b70}
+
+
+Definition at line \hyperlink{a00003_source_l00032}{32} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Referenced by \hyperlink{a00003_source_l00141}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}.
+
+\hypertarget{a00003_aa060aeb1ecb530b3c6f6d91060999b70}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H@{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}}
+\index{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H@{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H~200}}\label{a00003_aa060aeb1ecb530b3c6f6d91060999b70}
+
+
+Definition at line \hyperlink{a00003_source_l00032}{32} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_ab1ad440de86fff80e517ad748de2ee39}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E@{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}}
+\index{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E@{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E~800}}\label{a00003_ab1ad440de86fff80e517ad748de2ee39}
+
+
+Definition at line \hyperlink{a00003_source_l00030}{30} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_ab1ad440de86fff80e517ad748de2ee39}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E@{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}}
+\index{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E@{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E~800}}\label{a00003_ab1ad440de86fff80e517ad748de2ee39}
+
+
+Definition at line \hyperlink{a00003_source_l00030}{30} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_a18dcecc16ded13fa622e0913e73442e6}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E@{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}}
+\index{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E@{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E~200}}\label{a00003_a18dcecc16ded13fa622e0913e73442e6}
+
+
+Definition at line \hyperlink{a00003_source_l00029}{29} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+Referenced by \hyperlink{a00038_source_l00706}{Main\+Window\+::save\+\_\+to\+\_\+file()}.
+
+\hypertarget{a00003_a18dcecc16ded13fa622e0913e73442e6}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E@{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}}
+\index{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E@{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+E\+\_\+\+A\+C\+T\+\_\+\+R\+E\+C\+O\+R\+D\+\_\+\+B\+U\+F\+F\+\_\+\+S\+I\+Z\+E~200}}\label{a00003_a18dcecc16ded13fa622e0913e73442e6}
+
+
+Definition at line \hyperlink{a00003_source_l00029}{29} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00003_ad8187eb7fe09751a387e3dcb11c51565}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{\+\_\+\+\_\+attribute\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}struct \+\_\+\+\_\+attribute\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{(packed, aligned(4))}]{}
+\end{DoxyParamCaption}
+)}}\label{a00003_ad8187eb7fe09751a387e3dcb11c51565}
+
+
+Data structure for variables stored in N\+O\+V. 
+
+buffer ( circular)
+
+when set indicates that half the buffer is used for emulation data and vice versa
+
+Transmit buffer head
+
+Transmit buffer tail
+
+max short circuit current
+
+max rated circuit current
+
+minimum distance for live conductor
+
+system frequency
+
+light intensity measurement threshold value
+
+infrared intensity measurement threshold level
+
+ultraviolet intensity measurement threshold level
+
+the minimum number of event observation used by modules to validate probability calculation result
+
+used as a threshold value, above which the probablity
+
+used as a threshold value, below which the probablity
+
+bit coded info about trip criteria
+
+F\+W sub modules operation mode options
+
+Set to true when other fileds contain valid user configured data
+
+supervision record
+
+Installed options 
+
+Definition at line \hyperlink{a00003_source_l00141}{141} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+
+
+References \hyperlink{a00003_source_l00032}{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}.
+
+
+\begin{DoxyCode}
+00142 \{
+00143        \hyperlink{a00001_a87d38f886e617ced2698fc55afa07637}{Float32}                mean\_value;
+00144        \hyperlink{a00001_a87d38f886e617ced2698fc55afa07637}{Float32}                std\_deviation;
+00145        \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}                 head;
+00146        \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}                 padding;
+00147        \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}                 buffer[\hyperlink{a00003_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH}];
+00148 \}\hyperlink{a00003_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t};
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00003_a8e66478e65e03ebc9434466e51c0ad0b}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!data\+\_\+non\+\_\+volatile\+\_\+t@{data\+\_\+non\+\_\+volatile\+\_\+t}}
+\index{data\+\_\+non\+\_\+volatile\+\_\+t@{data\+\_\+non\+\_\+volatile\+\_\+t}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{data\+\_\+non\+\_\+volatile\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}data\+\_\+non\+\_\+volatile\+\_\+t}}\label{a00003_a8e66478e65e03ebc9434466e51c0ad0b}
+
+
+Definition at line \hyperlink{a00003_source_l00342}{342} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_a95029dff9c90f6a6907353ba86eb3f33}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!device\+\_\+data\+\_\+t@{device\+\_\+data\+\_\+t}}
+\index{device\+\_\+data\+\_\+t@{device\+\_\+data\+\_\+t}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{device\+\_\+data\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}device\+\_\+data\+\_\+t}}\label{a00003_a95029dff9c90f6a6907353ba86eb3f33}
+
+
+Definition at line \hyperlink{a00003_source_l00322}{322} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_a4726b814166e222a6f13e21453f76d8d}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!hif\+\_\+diagonesis\+\_\+records\+\_\+t@{hif\+\_\+diagonesis\+\_\+records\+\_\+t}}
+\index{hif\+\_\+diagonesis\+\_\+records\+\_\+t@{hif\+\_\+diagonesis\+\_\+records\+\_\+t}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{hif\+\_\+diagonesis\+\_\+records\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}hif\+\_\+diagonesis\+\_\+records\+\_\+t}}\label{a00003_a4726b814166e222a6f13e21453f76d8d}
+
+
+Definition at line \hyperlink{a00003_source_l00148}{148} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+
+\hypertarget{a00003_a826f1702f1b63c184df702204bea5122}{\index{storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}!post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t@{post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t}}
+\index{post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t@{post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t}!storage\+\_\+structure.\+h@{storage\+\_\+structure.\+h}}
+\subsubsection[{post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}post\+\_\+act\+\_\+record\+\_\+buffer\+\_\+t}}\label{a00003_a826f1702f1b63c184df702204bea5122}
+
+
+Definition at line \hyperlink{a00003_source_l00185}{185} of file \hyperlink{a00003_source}{storage\+\_\+structure.\+h}.
+

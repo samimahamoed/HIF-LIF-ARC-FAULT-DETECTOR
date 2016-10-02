@@ -1,0 +1,18 @@
+<map id="QCPItemPosition::setCoords" name="QCPItemPosition::setCoords">
+<area shape="rect" id="node2" href="$d7/de0/a00022.html#a75036d39c4d4e2e1a7dd145fff915d32" title="QCPAbstractItem::createPosition" alt="" coords="741,35,956,62"/>
+<area shape="rect" id="node3" href="$d0/dc0/a00033.html#a44ecfa37a76de5e3549e2d61f9d8ee56" title="Creates a bracket item and sets default values. " alt="" coords="243,267,469,294"/>
+<area shape="rect" id="node4" href="$db/df3/a00034.html#ac9b7508bb5c8827e1a7a6199f8c82bec" title="Creates a curve item and sets default values. " alt="" coords="256,318,456,344"/>
+<area shape="rect" id="node5" href="$d4/d8c/a00035.html#a759b77ef002515eba0263b5447ecb3fb" title="Creates an ellipse item and sets default values. " alt="" coords="249,368,463,395"/>
+<area shape="rect" id="node6" href="$de/d8c/a00036.html#a17804b7f64961c6accf25b61e85142e3" title="Creates a line item and sets default values. " alt="" coords="264,419,448,446"/>
+<area shape="rect" id="node7" href="$d1/dc6/a00037.html#aa6de42a37261b21a5480e7da122345c3" title="Creates a rectangle item and sets default values. " alt="" coords="244,470,468,496"/>
+<area shape="rect" id="node8" href="$d3/de7/a00039.html#a412ad1579f7a1fba453d0fa28c496cbc" title="Creates a rectangle item and sets default values. " alt="" coords="261,520,451,547"/>
+<area shape="rect" id="node9" href="$db/d3a/a00040.html#a41fd2e1f006983449eca9830930c3b10" title="Creates a straight line item and sets default values. " alt="" coords="280,572,432,613"/>
+<area shape="rect" id="node10" href="$dd/d32/a00041.html#a77ff96a2972a00872ff8f8c67143abbe" title="Creates a text item and sets default values. " alt="" coords="263,638,449,664"/>
+<area shape="rect" id="node11" href="$d8/d41/a00038.html#acc70b3abc143287f806e5f154e5e07b0" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="261,688,451,715"/>
+<area shape="rect" id="node12" href="$d8/d41/a00038.html#ac094d67a95d2dceafa0d50b9db3a7e51" title="Sets the parent of this QCPItemPosition to parentAnchor. " alt="" coords="755,108,942,149"/>
+<area shape="rect" id="node13" href="$d8/d41/a00038.html#ab404e56d9ac2ac2df0382c57933a71ef" title="Sets the apparent pixel position. " alt="" coords="267,100,445,141"/>
+<area shape="rect" id="node16" href="$d5/db6/a00042.html#a5b90296109e36384aedbc8908a670413" title="If the tracer is connected with a graph (setGraph), this function updates the tracer&#39;s position to re..." alt="" coords="253,216,459,243"/>
+<area shape="rect" id="node14" href="$d8/d41/a00038.html#aa476abf71ed8fa4c537457ebb1a754ad" title="Sets the type of the position. " alt="" coords="517,64,693,91"/>
+<area shape="rect" id="node15" href="$d5/db6/a00042.html#af5886f4ded8dd68cb4f3388f390790c0" title="Sets the QCPGraph this tracer sticks to. " alt="" coords="763,195,935,222"/>
+<area shape="rect" id="node17" href="$d5/db6/a00042.html#aaaf49b48382c730ec9be0e74c2538315" title="QCPItemTracer::draw" alt="" coords="532,267,679,294"/>
+</map>

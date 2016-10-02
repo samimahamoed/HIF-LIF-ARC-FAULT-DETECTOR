@@ -1,0 +1,8 @@
+<map id="QCPLegend::selected" name="QCPLegend::selected">
+<area shape="rect" id="node2" href="$d6/d97/a00045.html#a44cdc6af6cd6e62a2bd827c3236c7261" title="QCPLegend::handleLegendSelection" alt="" coords="420,5,655,32"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a1ea6297300c3e2770e65f95836411755" title="Returns the legends (typically one or zero) that currently have selected parts, i.e. " alt="" coords="227,43,347,69"/>
+<area shape="rect" id="node5" href="$d6/d97/a00045.html#a752c48b30f8ba870b55e79659385f107" title="Sets the selected state of the respective legend parts described by SelectablePart. " alt="" coords="203,93,372,120"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="703,5,843,32"/>
+<area shape="rect" id="node6" href="$d6/d97/a00045.html#a5dc42d73df80e7294414aee1170c4d2b" title="Constructs a new QCPLegend instance with parentPlot as the containing plot and default values..." alt="" coords="452,68,623,95"/>
+<area shape="rect" id="node7" href="$d4/d3e/a00116.html#a9d4808ab925b003054085246c92a257c" title="Deselects everything in the QCustomPlot (plottables, items, axes, legend and title). " alt="" coords="494,119,581,145"/>
+</map>

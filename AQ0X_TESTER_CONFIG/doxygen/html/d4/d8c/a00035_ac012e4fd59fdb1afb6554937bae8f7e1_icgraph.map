@@ -1,0 +1,5 @@
+<map id="QCPItemEllipse::brush" name="QCPItemEllipse::brush">
+<area shape="rect" id="node2" href="$d4/d8c/a00035.html#a49fc74e6965834e873d027d026def798" title="Sets the brush that will be used to fill the ellipse. " alt="" coords="216,5,391,32"/>
+<area shape="rect" id="node4" href="$d4/d8c/a00035.html#a9693501cfaa43a099655c75bed0dab3f" title="Sets the brush that will be used to fill the ellipse when selected. " alt="" coords="208,57,399,98"/>
+<area shape="rect" id="node3" href="$d4/d8c/a00035.html#a759b77ef002515eba0263b5447ecb3fb" title="Creates an ellipse item and sets default values. " alt="" coords="447,35,661,61"/>
+</map>

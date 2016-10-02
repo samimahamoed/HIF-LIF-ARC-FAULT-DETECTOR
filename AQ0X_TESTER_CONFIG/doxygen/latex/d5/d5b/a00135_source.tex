@@ -1,0 +1,30 @@
+\hypertarget{a00135_source}{\section{srv\+\_\+miscellaneous.\+cpp}
+\label{a00135_source}\index{srv\+\_\+miscellaneous.\+cpp@{srv\+\_\+miscellaneous.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{a00110}{mainwindow.h}"}
+00002 \textcolor{preprocessor}{#include "\hyperlink{a00004}{typedef.h}"}
+00003 \textcolor{preprocessor}{#include "\hyperlink{a00090}{define.h}"}
+00004 
+\hypertarget{a00135_source_l00005}{}\hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{00005} \hyperlink{a00004_aafb609548b1aa0152c46f9205b79d0f0}{Int8} \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{MainWindow::make8}(QString buf, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} idx)
+00006 \{
+00007     qint8 result;
+00008     result = ((\hyperlink{a00090_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint8)buf[idx+0].toLatin1())<<4)|(\hyperlink{a00090_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint8)buf[idx+1].toLatin1(
+      )))<<0);
+00009     \textcolor{keywordflow}{return} result;
+00010 \}
+00011 
+00012 
+\hypertarget{a00135_source_l00013}{}\hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{00013} \hyperlink{a00004_a3985266aecb120f269789241c170850c}{Int16}  \hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{MainWindow::make16}(QString buf, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} idx)
+00014 \{
+00015     qint16 result = ((\hyperlink{a00090_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint16)buf[idx+0].toLatin1())<<12)|
+00016             (\hyperlink{a00090_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint16)buf[idx+1].toLatin1())<<8)|
+00017             (\hyperlink{a00090_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint16)buf[idx+2].toLatin1())<<4)|
+00018             (\hyperlink{a00090_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}((qint16)buf[idx+3].toLatin1())<<0));
+00019 
+00020     \textcolor{keywordflow}{return} result;
+00021 \}
+00022 
+00023 
+\end{DoxyCode}

@@ -1,0 +1,500 @@
+.TH "nov_data.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+nov_data.h \- 
+.PP
+Header for low level NOV support\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'System\&.h'\fP
+.br
+\fC#include 'allheaders\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "union \fBglobal_error_flags_ut\fP"
+.br
+.RI "\fIsensor supervission replay status report structure \fP"
+.ti -1c
+.RI "union \fBsv_error_flags_ut\fP"
+.br
+.RI "\fIsensor supervission replay status report structure \fP"
+.ti -1c
+.RI "struct \fBsupervision_t\fP"
+.br
+.RI "\fISupervision error handling - contains current variable state reported by other modules and global error status\&. \fP"
+.ti -1c
+.RI "union \fBtrip_criteria_ut\fP"
+.br
+.RI "\fIBit coded info about trip criteria\&. \fP"
+.ti -1c
+.RI "struct \fBpre_act_record_buffer_t\fP"
+.br
+.ti -1c
+.RI "struct \fBmodule_disturbance_record_t\fP"
+.br
+.ti -1c
+.RI "struct \fBdisturbance_record_t\fP"
+.br
+.ti -1c
+.RI "struct \fBglobal_error_flags_ut\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBsv_error_flags_ut\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBsupervision_t\&.error_flags\fP"
+.br
+.ti -1c
+.RI "union \fBtrip_criteria_ut\&.active_modules\fP"
+.br
+.ti -1c
+.RI "struct \fBtrip_criteria_ut\&.active_modules\&.bits\fP"
+.br
+.ti -1c
+.RI "union \fBtrip_criteria_ut\&.criterion\fP"
+.br
+.ti -1c
+.RI "struct \fBtrip_criteria_ut\&.criterion\&.bits\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPRE_ACT_RECORD_BUFF_SIZE\fP   200"
+.br
+.ti -1c
+.RI "#define \fBPOST_ACT_RECORD_BUFF_SIZE\fP   800"
+.br
+.ti -1c
+.RI "#define \fBEMU_MODE_DATA_LENGTH\fP   200"
+.br
+.ti -1c
+.RI "#define \fBMAX_EVENT_OBSERVATION_LENGTH\fP   200"
+.br
+.ti -1c
+.RI "#define \fBDEFAULT_TRIP_CRITERION\fP   0b00001101"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "struct \fB__attribute__\fP ((packed, aligned(4)))"
+.br
+.RI "\fIData structure for variables stored in NOV\&. \fP"
+.ti -1c
+.RI "\fBdata_non_volatile_t\fP 
+.br
+\fBdata_non_volatile\fP \fB__attribute__\fP ((far))"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBhif_diagonesis_records_t\fP"
+.br
+.ti -1c
+.RI "\fBpost_act_record_buffer_t\fP"
+.br
+.ti -1c
+.RI "\fBdevice_data_t\fP"
+.br
+.ti -1c
+.RI "\fBdata_non_volatile_t\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Header for low level NOV support\&. 
+
+
+.PP
+Definition in file \fBnov_data\&.h\fP\&.
+.SH "Data Structure Documentation"
+.PP 
+.SH "union global_error_flags_ut"
+.PP 
+sensor supervission replay status report structure 
+.PP
+Definition at line 19 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBglobal_error_flags_ut\fP \fIbits\fP 
+.br
+.PP
+\fBUint16\fP \fIflags_all\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union sv_error_flags_ut"
+.PP 
+sensor supervission replay status report structure 
+.PP
+Definition at line 42 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBsv_error_flags_ut\fP \fIbits\fP 
+.br
+.PP
+\fBUint8\fP \fIflags_all\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct supervision_t"
+.PP 
+Supervision error handling - contains current variable state reported by other modules and global error status\&. 
+.PP
+Definition at line 56 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBsupervision_t\fP \fIerror_flags\fP 
+.br
+.PP
+\fBglobal_error_flags_ut\fP \fIsystem_error_flags\fP Combined supervision errors\&. 
+.br
+.PP
+.RE
+.PP
+.SH "union trip_criteria_ut"
+.PP 
+Bit coded info about trip criteria\&. 
+.PP
+Definition at line 80 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+union \fBtrip_criteria_ut\fP \fIactive_modules\fP 
+.br
+.PP
+\fBUint16\fP \fIall\fP 
+.br
+.PP
+union \fBtrip_criteria_ut\fP \fIcriterion\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct pre_act_record_buffer_t"
+.PP 
+Definition at line 134 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIbuffer[\fBPRE_ACT_RECORD_BUFF_SIZE\fP]\fP buffer ( circular) 
+.br
+.PP
+\fBUint16\fP \fIelapsed\fP if set indicates that head is elapsed one or more time 
+.br
+.PP
+\fBUint16\fP \fIhead\fP Transmit buffer head\&. 
+.br
+.PP
+\fBUint16\fP \fItail\fP Transmit buffer tail\&. 
+.br
+.PP
+.RE
+.PP
+.SH "struct disturbance_record_t"
+.PP 
+Definition at line 309 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBhif_diagonesis_records_t\fP \fIhif_diagonesis_records\fP 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP \fIir\fP 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP \fImfield_x\fP 
+.br
+.PP
+\fBUint16\fP \fInew_dr\fP 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP \fIuv\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct global_error_flags_ut\&.bits"
+.PP 
+Definition at line 22 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIir_sensor_element:1\fP 
+.br
+.PP
+\fBUint16\fP \fImfield_x_sensor_element:1\fP 
+.br
+.PP
+\fBUint16\fP \fIpower_supply:1\fP 
+.br
+.PP
+\fBUint16\fP \fIstorage:1\fP 
+.br
+.PP
+\fBUint16\fP \fIuv_sensor_element:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct sv_error_flags_ut\&.bits"
+.PP 
+Definition at line 45 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIELEMENT_NOT_RESPONDING:1\fP 
+.br
+.PP
+\fBUint8\fP \fIFALSE_POSITIVE:1\fP 
+.br
+.PP
+\fBUint8\fP \fIFALSE_POSITIVE_AMP_TH:1\fP 
+.br
+.PP
+\fBUint8\fP \fIFALSE_POSITIVE_DFDT_TH:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct supervision_t\&.error_flags"
+.PP 
+Definition at line 61 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBsv_error_flags_ut\fP \fIir\fP 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fImfield_x\fP 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fIuv\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union trip_criteria_ut\&.active_modules"
+.PP 
+Definition at line 84 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIall\fP 
+.br
+.PP
+\fBactive_modules\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct trip_criteria_ut\&.active_modules\&.bits"
+.PP 
+Definition at line 87 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fI__pad0__:1\fP 
+.br
+.PP
+\fBUint8\fP \fI__pad1__:1\fP 
+.br
+.PP
+\fBUint8\fP \fI__pad2__:1\fP 
+.br
+.PP
+\fBUint8\fP \fI__pad3__:1\fP 
+.br
+.PP
+\fBUint8\fP \fI__pad4__:1\fP 
+.br
+.PP
+\fBUint8\fP \fIir:1\fP 
+.br
+.PP
+\fBUint8\fP \fImfield_x:1\fP 
+.br
+.PP
+\fBUint8\fP \fIuv:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union trip_criteria_ut\&.criterion"
+.PP 
+Definition at line 104 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+\fBcriterion\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct trip_criteria_ut\&.criterion\&.bits"
+.PP 
+Definition at line 107 of file nov_data\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fI__pad0__:1\fP 
+.br
+.PP
+\fBUint8\fP \fI__pad1__:1\fP 
+.br
+.PP
+\fBUint8\fP \fI__pad2__:1\fP 
+.br
+.PP
+\fBUint8\fP \fI__pad3__:1\fP 
+.br
+.PP
+\fBUint8\fP \fIcase_1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIcase_2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIcase_3:1\fP 
+.br
+.PP
+\fBUint8\fP \fIcase_4:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define DEFAULT_TRIP_CRITERION   0b00001101"
+
+.PP
+Definition at line 76 of file nov_data\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define EMU_MODE_DATA_LENGTH   200"
+
+.PP
+Definition at line 15 of file nov_data\&.h\&.
+.PP
+Referenced by hwio_get_analog(), ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define MAX_EVENT_OBSERVATION_LENGTH   200"
+
+.PP
+Definition at line 16 of file nov_data\&.h\&.
+.PP
+Referenced by __attribute__(), algorithm_signal_proportionality(), and nov_set_default()\&.
+.SS "#define POST_ACT_RECORD_BUFF_SIZE   800"
+
+.PP
+Definition at line 14 of file nov_data\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define PRE_ACT_RECORD_BUFF_SIZE   200"
+
+.PP
+Definition at line 13 of file nov_data\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), ir_sen_hif_check(), light_sen_get_status(), mfield_x_sen_get_status(), mfield_x_sen_hif_check(), uv_sen_get_status(), and uv_sen_hif_check()\&.
+.SH "Function Documentation"
+.PP 
+.SS "struct __attribute__ ((packed, aligned(4)))"
+
+.PP
+Data structure for variables stored in NOV\&. buffer ( circular)
+.PP
+when set indicates that half the buffer is used for emulation data and vice versa
+.PP
+Transmit buffer head
+.PP
+Transmit buffer tail
+.PP
+max short circuit current
+.PP
+max rated circuit current
+.PP
+minimum distance for live conductor
+.PP
+system frequency
+.PP
+light intensity measurement threshold value
+.PP
+infrared intensity measurement threshold level
+.PP
+ultraviolet intensity measurement threshold level
+.PP
+the minimum number of event observation used by modules to validate probability calculation result
+.PP
+used as a threshold value, above which the probablity
+.PP
+used as a threshold value, below which the probablity
+.PP
+bit coded info about trip criteria
+.PP
+FW sub modules operation mode options
+.PP
+Set to true when other fileds contain valid user configured data
+.PP
+supervision record
+.PP
+Installed options 
+.PP
+Definition at line 125 of file nov_data\&.h\&.
+.PP
+References MAX_EVENT_OBSERVATION_LENGTH\&.
+.PP
+.nf
+126 {
+127        Float32                mean_value;
+128        Float32                std_deviation;
+129        Uint16                 head;
+130        Uint16                 valid;
+131        Uint16                 buffer[MAX_EVENT_OBSERVATION_LENGTH];
+132 }hif_diagonesis_records_t;
+.fi
+.SS "\fBdata_non_volatile_t\fP \fBdata_non_volatile\fP __attribute__ ((far))"
+
+.SH "Variable Documentation"
+.PP 
+.SS "data_non_volatile_t"
+
+.PP
+Definition at line 327 of file nov_data\&.h\&.
+.PP
+Referenced by nov_init()\&.
+.SS "device_data_t"
+
+.PP
+Definition at line 307 of file nov_data\&.h\&.
+.PP
+Referenced by nov_init()\&.
+.SS "hif_diagonesis_records_t"
+
+.PP
+Definition at line 132 of file nov_data\&.h\&.
+.SS "post_act_record_buffer_t"
+
+.PP
+Definition at line 169 of file nov_data\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

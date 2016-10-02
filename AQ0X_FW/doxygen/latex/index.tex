@@ -1,0 +1,30 @@
+\hypertarget{index_IDE}{}\section{I\+D\+E}\label{index_IDE}
+The project is created with M\+P\+L\+A\+B 8.\+92 , However, The new M\+P\+L\+A\+B X can also be used to open the project\hypertarget{index_files}{}\section{File organisation}\label{index_files}
+The project files have been placed in following directories
+\begin{DoxyItemize}
+\item mplab\textbackslash{}doxygen -\/ Doxygen related configuration files and doxygen output
+\item mplab\textbackslash{}includes -\/ Public include files from all functional/service/system modules
+\item mplab\textbackslash{}includes\+\_\+prv -\/ Private include files from all functional/service/system modules. These files are private for modules.
+\item mplab\textbackslash{}services -\/ Low-\/level stateless driver modules ( called services in this project)
+\item mplab\textbackslash{}system -\/ O\+S files and Microchip processor specific files
+\item mplab\textbackslash{}modules -\/ O\+S dependent and product specific system modules
+\end{DoxyItemize}\hypertarget{index_os}{}\section{Operating system}\label{index_os}
+The O\+S used in this project is simple event based scheduler. See here for details\+: \hyperlink{a00012}{Operating system design}\hypertarget{index_measurements}{}\section{Code timing}\label{index_measurements}
+S\+W 18.\+05.\+2014 The main load comes from 100us interrupt which scans sensors. C\+P\+U load
+\begin{DoxyItemize}
+\item 80\% of C\+P\+U time from the fast timer interrupt
+\item 30\% of C\+P\+U time is used of operating system routine with the exception 2.\+5s during startup
+\end{DoxyItemize}\hypertarget{index_genpri}{}\section{Generic principles}\label{index_genpri}
+
+\begin{DoxyItemize}
+\item The O\+S is started in ( \hyperlink{a00048}{main.\+c} ) file together with some O\+S independent services
+\item The O\+S calls ( by sending system notification) to all modules ( see e.\+g. \hyperlink{a00021_a93269cdec3e21934aa9395440a2de605}{algorithm\+\_\+notifyx()} and algorithm\+\_\+init() , all modules are desgined like that )
+\item The modules prepare system objects ( event/notification objects for using during runtime) and schedule timers for its periodical operations ( e.\+g. analog\+\_\+init() )
+\item The Algortihm module ( \hyperlink{a00038}{algorithm.\+c} ) launches N\+O\+V read and sends configuration notifications to other modules
+\item The modules execute supervison timers, in case of any alert send notifications to Algorithm module.
+\item The Algorithm module gets all notifications and sends event to itself to process them one by one in its main task loop. See \hyperlink{a00021_a93269cdec3e21934aa9395440a2de605}{algorithm\+\_\+notifyx()} and \hyperlink{a00016_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\+\_\+wake()}
+\end{DoxyItemize}\hypertarget{index_wdglist}{}\section{Watchdog related processing}\label{index_wdglist}
+See \hyperlink{a00010}{Watchdog initialization.}\hypertarget{index_nov}{}\section{Non volatile storage}\label{index_nov}
+See \hyperlink{a00006}{Non volatile storage}\hypertarget{index_hwio}{}\section{Software validation}\label{index_hwio}
+The firmware supports hardware reading redirection to allow testing firmware functionality. Basically, user can replace real hw reading with values supplied by serial commands\hypertarget{index_requirements}{}\section{List of requirements supported directly by the code}\label{index_requirements}
+See req 

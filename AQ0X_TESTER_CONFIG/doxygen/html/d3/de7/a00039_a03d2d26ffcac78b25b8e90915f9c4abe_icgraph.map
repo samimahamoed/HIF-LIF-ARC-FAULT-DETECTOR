@@ -1,0 +1,5 @@
+<map id="QCPItemRect::brush" name="QCPItemRect::brush">
+<area shape="rect" id="node2" href="$d3/de7/a00039.html#abbd4e346a03513ee466afc25d9c75446" title="Sets the brush that will be used to fill the rectangle. " alt="" coords="204,5,367,32"/>
+<area shape="rect" id="node4" href="$d3/de7/a00039.html#abd1792859844118dedee86223cede7af" title="Sets the brush that will be used to fill the rectangle when selected. " alt="" coords="196,57,375,98"/>
+<area shape="rect" id="node3" href="$d3/de7/a00039.html#a412ad1579f7a1fba453d0fa28c496cbc" title="Creates a rectangle item and sets default values. " alt="" coords="423,35,613,61"/>
+</map>

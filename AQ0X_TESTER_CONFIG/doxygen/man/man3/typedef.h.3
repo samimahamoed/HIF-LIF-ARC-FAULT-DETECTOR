@@ -1,0 +1,1333 @@
+.TH "typedef.h" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+typedef.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <QString>\fP
+.br
+\fC#include <QObject>\fP
+.br
+\fC#include <QLayout>\fP
+.br
+\fC#include <QLabel>\fP
+.br
+\fC#include <QPushButton>\fP
+.br
+\fC#include <QProgressBar>\fP
+.br
+\fC#include <QHBoxLayout>\fP
+.br
+\fC#include <QVBoxLayout>\fP
+.br
+\fC#include <QSlider>\fP
+.br
+\fC#include <QCheckBox>\fP
+.br
+\fC#include 'define\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "union \fBinputs_u\fP"
+.br
+.RI "\fIInput state structure\&. \fP"
+.ti -1c
+.RI "union \fBbtn_u\fP"
+.br
+.RI "\fIsensor supervission replay msg structure \fP"
+.ti -1c
+.RI "union \fBconfigured_u\fP"
+.br
+.RI "\fIsensor supervission replay msg structure \fP"
+.ti -1c
+.RI "union \fBleds_u\fP"
+.br
+.RI "\fILed control structure\&. \fP"
+.ti -1c
+.RI "union \fBsm_sen_info_u\fP"
+.br
+.RI "\fIsensors mask \fP"
+.ti -1c
+.RI "union \fBchannels_u\fP"
+.br
+.RI "\fIsmart sensors mask \fP"
+.ti -1c
+.RI "union \fBdsw_u\fP"
+.br
+.RI "\fIDipswitch state structure For AQ-110 option double amount of dip witches\&. \fP"
+.ti -1c
+.RI "union \fBfibers_u\fP"
+.br
+.RI "\fISensor state structure\&. \fP"
+.ti -1c
+.RI "union \fBmsg_u\fP"
+.br
+.RI "\fIsensor msg structure \fP"
+.ti -1c
+.RI "union \fBoperation\fP"
+.br
+.RI "\fIsensor msg structure \fP"
+.ti -1c
+.RI "union \fBbit_fileds_u\fP"
+.br
+.RI "\fIsensor msg structure \fP"
+.ti -1c
+.RI "union \fBgui_group\fP"
+.br
+.RI "\fIinternal use objects structure \fP"
+.ti -1c
+.RI "union \fBstatus_flags_u\fP"
+.br
+.RI "\fIsensor supervission replay msg structure \fP"
+.ti -1c
+.RI "union \fBerror_u\fP"
+.br
+.RI "\fIsensor supervission \fP"
+.ti -1c
+.RI "union \fBflags_u\fP"
+.br
+.RI "\fIsensor supervission \fP"
+.ti -1c
+.RI "struct \fBmult_sen_t\fP"
+.br
+.ti -1c
+.RI "struct \fBemu_data_edit_point_t\fP"
+.br
+.ti -1c
+.RI "struct \fBserial_msg_t\fP"
+.br
+.RI "\fIserial command record \fP"
+.ti -1c
+.RI "struct \fBinputs_u\&.inputs_bits\fP"
+.br
+.ti -1c
+.RI "struct \fBbtn_u\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBconfigured_u\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBleds_u\&.leds_bits\fP"
+.br
+.RI "\fIleds, order same as on the front device panel for AQ-110 mode more leds on second board \fP"
+.ti -1c
+.RI "struct \fBsm_sen_info_u\&.ch_1\fP"
+.br
+.ti -1c
+.RI "struct \fBsm_sen_info_u\&.ch_2\fP"
+.br
+.ti -1c
+.RI "struct \fBsm_sen_info_u\&.ch_3\fP"
+.br
+.ti -1c
+.RI "struct \fBsm_sen_info_u\&.ch_4\fP"
+.br
+.ti -1c
+.RI "struct \fBchannels_u\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBdsw_u\&.dsw_bits\fP"
+.br
+.ti -1c
+.RI "struct \fBfibers_u\&.fibers_bits\fP"
+.br
+.ti -1c
+.RI "struct \fBmsg_u\&.msg_fields\fP"
+.br
+.ti -1c
+.RI "struct \fBoperation\&.modes\fP"
+.br
+.ti -1c
+.RI "struct \fBoperation\&.flags\fP"
+.br
+.ti -1c
+.RI "struct \fBbit_fileds_u\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBgui_group\&.ob\fP"
+.br
+.ti -1c
+.RI "struct \fBgui_group\&.val\fP"
+.br
+.ti -1c
+.RI "struct \fBgui_group\&.val_str\fP"
+.br
+.ti -1c
+.RI "struct \fBstatus_flags_u\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBerror_u\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBflags_u\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBmult_sen_t\&.gui\fP"
+.br
+.ti -1c
+.RI "struct \fBemu_data_edit_point_t\&.gui\fP"
+.br
+.ti -1c
+.RI "struct \fBserial_msg_t\&.data_download\fP"
+.br
+.ti -1c
+.RI "struct \fBserial_msg_t\&.data_download\&.total_size\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBARG_MAX_LENGTH\fP   8"
+.br
+.ti -1c
+.RI "#define \fBARG_INDEX_CHANNEL\fP   0"
+.br
+.ti -1c
+.RI "#define \fBARG_INDEX_SELECTED_SENSOR\fP   1"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef quint8 \fBUint8\fP"
+.br
+.ti -1c
+.RI "typedef quint16 \fBUint16\fP"
+.br
+.ti -1c
+.RI "typedef quint32 \fBUint32\fP"
+.br
+.ti -1c
+.RI "typedef quint64 \fBUint64\fP"
+.br
+.ti -1c
+.RI "typedef float \fBFloat32\fP"
+.br
+.ti -1c
+.RI "typedef qint8 \fBInt8\fP"
+.br
+.ti -1c
+.RI "typedef qint16 \fBInt16\fP"
+.br
+.ti -1c
+.RI "typedef qint32 \fBInt32\fP"
+.br
+.ti -1c
+.RI "typedef qint64 \fBInt64\fP"
+.br
+.ti -1c
+.RI "typedef bool \fBBool\fP"
+.br
+.in -1c
+.SH "Class Documentation"
+.PP 
+.SH "union inputs_u"
+.PP 
+Input state structure\&. 
+.PP
+Definition at line 37 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIinputs_all\fP 
+.br
+.PP
+struct \fBinputs_u\fP \fIinputs_bits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union btn_u"
+.PP 
+sensor supervission replay msg structure 
+.PP
+Definition at line 52 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+struct \fBbtn_u\fP \fIbits\fP 
+.br
+.PP
+\fBUint8\fP \fIbtn_all\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union configured_u"
+.PP 
+sensor supervission replay msg structure 
+.PP
+Definition at line 73 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+struct \fBconfigured_u\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union leds_u"
+.PP 
+Led control structure\&. 
+.PP
+Definition at line 94 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint32\fP \fIleds_all\fP 
+.br
+.PP
+struct \fBleds_u\fP \fIleds_bits\fP leds, order same as on the front device panel for AQ-110 mode more leds on second board 
+.br
+.PP
+.RE
+.PP
+.SH "union sm_sen_info_u"
+.PP 
+sensors mask 
+.PP
+Definition at line 137 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+struct \fBsm_sen_info_u\fP \fIch_1\fP 
+.br
+.PP
+struct \fBsm_sen_info_u\fP \fIch_2\fP 
+.br
+.PP
+struct \fBsm_sen_info_u\fP \fIch_3\fP 
+.br
+.PP
+struct \fBsm_sen_info_u\fP \fIch_4\fP 
+.br
+.PP
+\fBUint16\fP \fIsensors_all\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union channels_u"
+.PP 
+smart sensors mask 
+.PP
+Definition at line 171 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+struct \fBchannels_u\fP \fIbits\fP 
+.br
+.PP
+\fBUint8\fP \fIch_all\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union dsw_u"
+.PP 
+Dipswitch state structure For AQ-110 option double amount of dip witches\&. 
+.PP
+Definition at line 187 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint16\fP \fIdsw_all\fP 
+.br
+.PP
+struct \fBdsw_u\fP \fIdsw_bits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union fibers_u"
+.PP 
+Sensor state structure\&. 
+.PP
+Definition at line 223 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIfibers_all\fP 
+.br
+.PP
+struct \fBfibers_u\fP \fIfibers_bits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union msg_u"
+.PP 
+sensor msg structure 
+.PP
+Definition at line 237 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fImsg_all\fP 
+.br
+.PP
+struct \fBmsg_u\fP \fImsg_fields\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union operation"
+.PP 
+sensor msg structure 
+.PP
+Definition at line 251 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+struct \fBoperation\fP \fIflags\fP 
+.br
+.PP
+struct \fBoperation\fP \fImodes\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union bit_fileds_u"
+.PP 
+sensor msg structure 
+.PP
+Definition at line 277 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint16\fP \fIall\fP 
+.br
+.PP
+struct \fBbit_fileds_u\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union gui_group"
+.PP 
+internal use objects structure 
+.PP
+Definition at line 308 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBbit_fileds_u\fP \fIbits_fileds\fP 
+.br
+.PP
+struct \fBgui_group\fP \fIob\fP 
+.br
+.PP
+\fBUint8\fP \fIob_type\fP 
+.br
+.PP
+struct \fBgui_group\fP \fIval\fP 
+.br
+.PP
+struct \fBgui_group\fP \fIval_str\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union status_flags_u"
+.PP 
+sensor supervission replay msg structure 
+.PP
+Definition at line 357 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+struct \fBstatus_flags_u\fP \fIbits\fP 
+.br
+.PP
+\fBUint8\fP \fIflags_all\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union error_u"
+.PP 
+sensor supervission 
+.PP
+Definition at line 379 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+struct \fBerror_u\fP \fIbits\fP 
+.br
+.PP
+\fBUint8\fP \fIerror_all\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union flags_u"
+.PP 
+sensor supervission 
+.PP
+Definition at line 405 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+struct \fBflags_u\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct mult_sen_t"
+.PP 
+Definition at line 426 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+int \fIaddress\fP 
+.br
+.PP
+int \fIcmd\fP 
+.br
+.PP
+QString \fIdata_dir_name\fP 
+.br
+.PP
+QString \fIdata_file_name\fP 
+.br
+.PP
+struct \fBmult_sen_t\fP \fIgui\fP 
+.br
+.PP
+bool \fIvarified\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct emu_data_edit_point_t"
+.PP 
+Definition at line 445 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+struct \fBemu_data_edit_point_t\fP \fIgui\fP 
+.br
+.PP
+unsigned int \fIval\fP 
+.br
+.PP
+bool \fIvarified\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct serial_msg_t"
+.PP 
+serial command record 
+.PP
+Definition at line 470 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint16\fP \fIarg[10]\fP 
+.br
+.PP
+\fBUint16\fP \fIarg_cnt\fP 
+.br
+.PP
+void * \fIattachment\fP 
+.br
+.PP
+\fBUint16\fP \fIattachment_length\fP 
+.br
+.PP
+\fBUint16\fP \fIcmd\fP 
+.br
+.PP
+char \fIcmd_type[50]\fP 
+.br
+.PP
+struct \fBserial_msg_t\fP \fIdata_download\fP 
+.br
+.PP
+\fBUint16\fP \fIdevice_response_cnt\fP 
+.br
+.PP
+\fBUint16\fP \fIlast_response_cnt\fP 
+.br
+.PP
+const char * \fIlistener_slot\fP 
+.br
+.PP
+bool \fImulti_address\fP 
+.br
+.PP
+bool \fIprocessed\fP 
+.br
+.PP
+\fBUint16\fP \fIvPos\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct inputs_u\&.inputs_bits"
+.PP 
+Definition at line 40 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIbin1_fixed:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbin1_pulse:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbin2:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct btn_u\&.bits"
+.PP 
+Definition at line 55 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIaqsim:1\fP 
+.br
+.PP
+\fBUint8\fP \fIconfig:1\fP 
+.br
+.PP
+\fBUint8\fP \fIdb:1\fP 
+.br
+.PP
+\fBUint8\fP \fIemu:1\fP 
+.br
+.PP
+\fBUint8\fP \fIhome:1\fP 
+.br
+.PP
+\fBUint8\fP \fIscaner:1\fP 
+.br
+.PP
+\fBUint8\fP \fIserial_log:1\fP 
+.br
+.PP
+\fBUint8\fP \fItester:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct configured_u\&.bits"
+.PP 
+Definition at line 76 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIdevice_address:1\fP 
+.br
+.PP
+\fBUint8\fP \fIreserved_1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIreserved_2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIreserved_3:1\fP 
+.br
+.PP
+\fBUint8\fP \fIreserved_4:1\fP 
+.br
+.PP
+\fBUint8\fP \fIself_test_dis:1\fP 
+.br
+.PP
+\fBUint8\fP \fIserial_num:1\fP 
+.br
+.PP
+\fBUint8\fP \fItimestamp:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct leds_u\&.leds_bits"
+.PP 
+leds, order same as on the front device panel for AQ-110 mode more leds on second board 
+.PP
+Definition at line 100 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint16\fP \fIbin1_fixed_or_pulse:1\fP 
+.br
+.PP
+\fBUint16\fP \fIbin2:1\fP 
+.br
+.PP
+\fBUint16\fP \fIbout:1\fP 
+.br
+.PP
+\fBUint16\fP \fIcbfp:1\fP 
+.br
+.PP
+\fBUint16\fP \fIerror:1\fP 
+.br
+.PP
+\fBUint16\fP \fIorange1:1\fP 
+.br
+.PP
+\fBUint16\fP \fIorange2:1\fP 
+.br
+.PP
+\fBUint16\fP \fIorange3:1\fP 
+.br
+.PP
+\fBUint16\fP \fIorange4:1\fP 
+.br
+.PP
+\fBUint16\fP \fIorange5:1\fP 
+.br
+.PP
+\fBUint16\fP \fIorange6:1\fP 
+.br
+.PP
+\fBUint16\fP \fIpower:1\fP 
+.br
+.PP
+\fBUint16\fP \fIred1:1\fP 
+.br
+.PP
+\fBUint16\fP \fIred2:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsen_1:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsen_2:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsen_3:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsen_4:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsen_5_fiber:1\fP 
+.br
+.PP
+\fBUint16\fP \fItrip:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct sm_sen_info_u\&.ch_1"
+.PP 
+Definition at line 140 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIsen_1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIsen_2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIsen_3:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct sm_sen_info_u\&.ch_2"
+.PP 
+Definition at line 147 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIsen_1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIsen_2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIsen_3:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct sm_sen_info_u\&.ch_3"
+.PP 
+Definition at line 154 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIsen_1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIsen_2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIsen_3:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct sm_sen_info_u\&.ch_4"
+.PP 
+Definition at line 161 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIsen_1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIsen_2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIsen_3:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct channels_u\&.bits"
+.PP 
+Definition at line 174 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIch_1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIch_2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIch_3:1\fP 
+.br
+.PP
+\fBUint8\fP \fIch_4:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct dsw_u\&.dsw_bits"
+.PP 
+Definition at line 190 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint16\fP \fIsw11:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw12:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw13:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw14:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw15:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw16:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw17:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw18:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw21:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw22:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw23:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw24:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw25:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw26:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw27:1\fP 
+.br
+.PP
+\fBUint16\fP \fIsw28:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct fibers_u\&.fibers_bits"
+.PP 
+Definition at line 226 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIsen_5:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct msg_u\&.msg_fields"
+.PP 
+Definition at line 240 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIcmd:4\fP 
+.br
+.PP
+\fBUint8\fP \fIreceiver_address:2\fP 
+.br
+.PP
+\fBUint8\fP \fIsender_address:2\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct operation\&.modes"
+.PP 
+Definition at line 254 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIaqsim:1\fP 
+.br
+.PP
+\fBUint8\fP \fIconfig:1\fP 
+.br
+.PP
+\fBUint8\fP \fIdb:1\fP 
+.br
+.PP
+\fBUint8\fP \fIemu:1\fP 
+.br
+.PP
+\fBUint8\fP \fInone:1\fP 
+.br
+.PP
+\fBUint8\fP \fIscan:1\fP 
+.br
+.PP
+\fBUint8\fP \fIserial_log:1\fP 
+.br
+.PP
+\fBUint8\fP \fItest:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct operation\&.flags"
+.PP 
+Definition at line 266 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIwait_for_response:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct bit_fileds_u\&.bits"
+.PP 
+Definition at line 280 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIval0:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval10:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval11:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval12:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval13:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval14:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval15:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval3:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval4:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval5:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval6:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval7:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval8:1\fP 
+.br
+.PP
+\fBUint8\fP \fIval9:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct gui_group\&.ob"
+.PP 
+Definition at line 313 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QObject * \fIOb0\fP 
+.br
+.PP
+QObject * \fIOb1\fP 
+.br
+.PP
+QObject * \fIOb2\fP 
+.br
+.PP
+QObject * \fIOb3\fP 
+.br
+.PP
+QObject * \fIOb4\fP 
+.br
+.PP
+QObject * \fIOb5\fP 
+.br
+.PP
+QObject * \fIOb6\fP 
+.br
+.PP
+QObject * \fIOb7\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct gui_group\&.val"
+.PP 
+Definition at line 326 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint16\fP \fIOb0\fP 
+.br
+.PP
+\fBUint16\fP \fIOb1\fP 
+.br
+.PP
+\fBUint16\fP \fIOb2\fP 
+.br
+.PP
+\fBUint16\fP \fIOb3\fP 
+.br
+.PP
+\fBUint16\fP \fIOb4\fP 
+.br
+.PP
+\fBUint16\fP \fIOb5\fP 
+.br
+.PP
+\fBUint16\fP \fIOb6\fP 
+.br
+.PP
+\fBUint16\fP \fIOb7\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct gui_group\&.val_str"
+.PP 
+Definition at line 338 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+wchar_t \fIOb0[32]\fP 
+.br
+.PP
+wchar_t \fIOb1[32]\fP 
+.br
+.PP
+wchar_t \fIOb2[32]\fP 
+.br
+.PP
+wchar_t \fIOb3[32]\fP 
+.br
+.PP
+wchar_t \fIOb4[32]\fP 
+.br
+.PP
+wchar_t \fIOb5[32]\fP 
+.br
+.PP
+wchar_t \fIOb6[32]\fP 
+.br
+.PP
+wchar_t \fIOb7[32]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct status_flags_u\&.bits"
+.PP 
+Definition at line 360 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIADDRESS_CONFIGURED:1\fP 
+.br
+.PP
+\fBUint8\fP \fIEVENT_DATA_NEW:1\fP 
+.br
+.PP
+\fBUint8\fP \fILIGHT_ACT:1\fP 
+.br
+.PP
+\fBUint8\fP \fINEW_CMD:1\fP 
+.br
+.PP
+\fBUint8\fP \fIPRESSURE_ACT:1\fP 
+.br
+.PP
+\fBUint8\fP \fISELF_TEST_EN:1\fP 
+.br
+.PP
+\fBUint8\fP \fISELF_TEST_ERROR:1\fP 
+.br
+.PP
+\fBUint8\fP \fISILENCE:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct error_u\&.bits"
+.PP 
+Definition at line 382 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIconfiguration_error:1\fP 
+.br
+.PP
+\fBUint8\fP \fIeeprom_error:1\fP 
+.br
+.PP
+\fBUint8\fP \fIlight_element_error:1\fP 
+.br
+.PP
+\fBUint8\fP \fIrc_error:1\fP 
+.br
+.PP
+\fBUint8\fP \fIreserved1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIreserved2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIreset:1\fP 
+.br
+.PP
+\fBUint8\fP \fItimestamp_invalid:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct flags_u\&.bits"
+.PP 
+Definition at line 408 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint8\fP \fIbit0:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbit1:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbit2:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbit3:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbit4:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbit5:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbit6:1\fP 
+.br
+.PP
+\fBUint8\fP \fIbit7:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct mult_sen_t\&.gui"
+.PP 
+Definition at line 430 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QPushButton * \fIbtn\fP 
+.br
+.PP
+bool \fIbtnCreated\fP 
+.br
+.PP
+QHBoxLayout * \fIhLayout\fP 
+.br
+.PP
+QLabel * \fIlabel\fP 
+.br
+.PP
+QProgressBar * \fIpBar\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct emu_data_edit_point_t\&.gui"
+.PP 
+Definition at line 449 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+bool \fIbtnCreated\fP 
+.br
+.PP
+QCheckBox * \fIchbox\fP 
+.br
+.PP
+QLabel * \fIlabel\fP 
+.br
+.PP
+\fBQSlider\fP * \fIslider\fP 
+.br
+.PP
+QVBoxLayout * \fIvLayout\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct serial_msg_t\&.data_download"
+.PP 
+Definition at line 478 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint16\fP \fIoffset\fP 
+.br
+.PP
+void * \fIstorage_location\fP 
+.br
+.PP
+\fBdata_download\fP \fItotal_size\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct serial_msg_t\&.data_download\&.total_size"
+.PP 
+Definition at line 480 of file typedef\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+\fBUint16\fP \fIcopied\fP 
+.br
+.PP
+\fBUint16\fP \fIexpected\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ARG_INDEX_CHANNEL   0"
+
+.PP
+Definition at line 464 of file typedef\&.h\&.
+.SS "#define ARG_INDEX_SELECTED_SENSOR   1"
+
+.PP
+Definition at line 465 of file typedef\&.h\&.
+.SS "#define ARG_MAX_LENGTH   8"
+
+.PP
+Definition at line 463 of file typedef\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef bool \fBBool\fP"
+
+.PP
+Definition at line 31 of file typedef\&.h\&.
+.SS "typedef float \fBFloat32\fP"
+
+.PP
+Definition at line 26 of file typedef\&.h\&.
+.SS "typedef qint16 \fBInt16\fP"
+
+.PP
+Definition at line 28 of file typedef\&.h\&.
+.SS "typedef qint32 \fBInt32\fP"
+
+.PP
+Definition at line 29 of file typedef\&.h\&.
+.SS "typedef qint64 \fBInt64\fP"
+
+.PP
+Definition at line 30 of file typedef\&.h\&.
+.SS "typedef qint8 \fBInt8\fP"
+
+.PP
+Definition at line 27 of file typedef\&.h\&.
+.SS "typedef quint16 \fBUint16\fP"
+
+.PP
+Definition at line 22 of file typedef\&.h\&.
+.SS "typedef quint32 \fBUint32\fP"
+
+.PP
+Definition at line 23 of file typedef\&.h\&.
+.SS "typedef quint64 \fBUint64\fP"
+
+.PP
+Definition at line 24 of file typedef\&.h\&.
+.SS "typedef quint8 \fBUint8\fP"
+
+.PP
+Definition at line 21 of file typedef\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

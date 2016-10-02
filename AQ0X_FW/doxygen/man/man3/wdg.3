@@ -1,0 +1,28 @@
+.TH "wdg" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+wdg \- Watchdog initialization\&. 
+File : \fBmain\&.c\fP 
+.PP
+.nf
+
+.fi
+.PP
+.PP
+The Watchdog Timer consists of a configurable prescaler and postscaler clocked with Low-Power RC (LPRC) 32kHz oscillator\&. The watchdog time-out period is selected by configuring the prescaler and postscaler dividers\&.
+.PP
+In release mode it is configured to \fB_FWDT(FWDTEN_ON & WINDIS_OFF & WDTPOST_PS8 & WDTPRE_PR32)\fP;- to obtain 8ms overflow
+.PP
+.PP
+.nf
+            TWTO = (N1)x(N2)x(TLPRC)
+
+            Where,
+            N1 = Prescaler divider ratio
+            N2 = Postscaler divider ratio
+            TLPRC = LPRC clock period (32 kHz)
+
+            TWTO = 32*8/(32*10E3) = 8ms.fi
+.PP
+ 

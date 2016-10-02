@@ -1,0 +1,1433 @@
+.TH "algorithm.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+algorithm.h \- 
+.PP
+Sub definitions ( for \fBalgorithm\&.h\fP)  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'dsp\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBconfigured_t\fP"
+.br
+.ti -1c
+.RI "union \fBhif_checklist_t\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_module_sv_status_report_t\fP"
+.br
+.RI "\fINotification structure\&. \fP"
+.ti -1c
+.RI "union \fBevent_report_t\fP"
+.br
+.ti -1c
+.RI "struct \fBlogv_t\fP"
+.br
+.ti -1c
+.RI "struct \fBconfigured_t\&.amp_treshold\fP"
+.br
+.ti -1c
+.RI "struct \fBhif_checklist_t\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_module_sv_status_report_t\&.message\fP"
+.br
+.ti -1c
+.RI "struct \fBevent_report_t\&.fields\fP"
+.br
+.ti -1c
+.RI "union \fBlogv_t\&.disturbance_record\fP"
+.br
+.ti -1c
+.RI "struct \fBlogv_t\&.disturbance_record\&.bits\fP"
+.br
+.ti -1c
+.RI "union \fBlogv_t\&.data_tx_on_progress\fP"
+.br
+.ti -1c
+.RI "struct \fBlogv_t\&.data_tx_on_progress\&.bits\fP"
+.br
+.ti -1c
+.RI "struct \fBlogv_t\&.sv_delay\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRANGE_MAX_8BIT\fP   ((2E8)  -(1))"
+.br
+.ti -1c
+.RI "#define \fBRANGE_MAX_16BIT\fP   ((2E16) -(1))"
+.br
+.ti -1c
+.RI "#define \fBRANGE_MAX_32BIT\fP   ((2E32) -(1))"
+.br
+.ti -1c
+.RI "#define \fB__COMPARE\fP(difference, tolerance)   ((abs(difference)<= tolerance) ? (0) : (((difference)> 0)?(1):(-1)))"
+.br
+.ti -1c
+.RI "#define \fB__COMPARE_U\fP(difference, tolerance)   (((difference)<= tolerance) ? (0) : 1)"
+.br
+.ti -1c
+.RI "#define \fB__COMPARE_ZERO\fP(difference)   ((difference == 0) ? (0) : (((difference)> 0)?(1):(-1)))"
+.br
+.ti -1c
+.RI "#define \fB__1ST_ORDER_DERIVATIVE\fP(final_val, init_val)   ((final_val-init_val))"
+.br
+.ti -1c
+.RI "#define \fB__PROBABLITY\fP(event, obs)   (100L*((event)/(obs)))"
+.br
+.ti -1c
+.RI "#define \fBSUPPLY_LOW\fP   990"
+.br
+.RI "\fISupply - Measured in real system 990 & 1000\&. \fP"
+.ti -1c
+.RI "#define \fBSUPPLY_HIGH\fP   1000"
+.br
+.RI "\fISupply -\&. \fP"
+.ti -1c
+.RI "#define \fBSV_CURREN_OUTPUT_LEVEL\fP   4"
+.br
+.ti -1c
+.RI "#define \fBIRQ_SOURCE_SERIAL\fP   0x0001"
+.br
+.RI "\fIexternal interrupts source identification number MIN : 0x0001 MAX : 0x00FF \fP"
+.ti -1c
+.RI "#define \fBIRQ_SOURCE_HIF_EVENT\fP   0x0100"
+.br
+.RI "\fIinternal software interrupts source identification number MIN : 0x0100 MAX : 0xFF00 \fP"
+.ti -1c
+.RI "#define \fBIRQ_DR_READY\fP   0x0200"
+.br
+.ti -1c
+.RI "#define \fBEVENT_SV_ALARM\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSV_ALERT\fP   1"
+.br
+.ti -1c
+.RI "#define \fBDR_RECHECK\fP   2"
+.br
+.ti -1c
+.RI "#define \fBHIF_EVENT_ALARM\fP   3"
+.br
+.ti -1c
+.RI "#define \fBEVENT_CLEARED\fP   4"
+.br
+.ti -1c
+.RI "#define \fBDR_RECHECK_TIME\fP   (\fBPOST_ACT_RECORD_BUFF_SIZE\fP + 10)"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_FREQ\fP   50"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_RATED_CURRENT\fP   2000"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_SHORT_CKT_CURRENT\fP   45000"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_MIN_INSTALLATION_DISTANCE\fP   1"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_IR_LEVEL_MAX\fP   300"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_UV_LEVEL_MAX\fP   300"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_LUX_LEVEL_MAX\fP   300"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_PROBABLITY_MAX\fP   90"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_PROBABLITY_MIN\fP   10"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_NO_OF_OBSERVATION\fP   4"
+.br
+.ti -1c
+.RI "#define \fBCONFIG__DEFAULT_MIN_DFDT\fP   3"
+.br
+.ti -1c
+.RI "#define \fBSCAN_FREQ\fP   10000L"
+.br
+.RI "\fISensor/input scan frequency - 10kHz, 100us period\&. \fP"
+.ti -1c
+.RI "#define \fBFAST_TIMER_SAMPLING_RATE\fP   100E-6"
+.br
+.ti -1c
+.RI "#define \fBFAST_TIMER_SAMPLING_RATE_XU\fP   100"
+.br
+.ti -1c
+.RI "#define \fBCMD_CONFIG\fP   0xE000"
+.br
+.ti -1c
+.RI "#define \fBCMD_DEVICE_ADDRESS\fP   0xE101"
+.br
+.ti -1c
+.RI "#define \fBCMD_SIGNAL_THRESHOLDS\fP   0xE203"
+.br
+.ti -1c
+.RI "#define \fBCMD_INSTALLATION_DITAILS\fP   0xE302"
+.br
+.ti -1c
+.RI "#define \fBCMD_EVENT_ANALYSIS\fP   0xE404"
+.br
+.ti -1c
+.RI "#define \fBCMD_RUN_TIME_OPTIONS\fP   0xE505"
+.br
+.ti -1c
+.RI "#define \fBCMD_FACTORY_DEFAULT\fP   0xE106"
+.br
+.ti -1c
+.RI "#define \fBCMD_COMMIT\fP   0xE107"
+.br
+.ti -1c
+.RI "#define \fBCMD_EMULATION_SETTING\fP   0xE008"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_IR_DATA\fP   0xE609"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_UV_DATA\fP   0xE60A"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_MAGNETIC_FIELD_X_DATA\fP   0xE60B"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_MAGNETIC_FIELD_Y_DATA\fP   0xE60C"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_HIF_REFERENCE_DATA\fP   0xE60D"
+.br
+.ti -1c
+.RI "#define \fBCMD_EMU_MODE_SET\fP   0xE10D"
+.br
+.ti -1c
+.RI "#define \fBCMD_EMU_MODE_RESET\fP   0xE10E"
+.br
+.ti -1c
+.RI "#define \fBCMD_CLEAR_EMU_DATA\fP   0xE10F"
+.br
+.ti -1c
+.RI "#define \fBCMD_MISCELLANEOUS\fP   0xE01A"
+.br
+.ti -1c
+.RI "#define \fBCMD_DEVICE_RESET\fP   0xE11B"
+.br
+.ti -1c
+.RI "#define \fBCMD_CLEAR_EEPROM\fP   0xE11C"
+.br
+.ti -1c
+.RI "#define \fBCMD_SUPERVISION_STATUS\fP   0xE11D"
+.br
+.ti -1c
+.RI "#define \fBCMD_GET_DATA\fP   0xE0E0"
+.br
+.ti -1c
+.RI "#define \fBCMD_DEVICE_DATA\fP   0xE1E1"
+.br
+.ti -1c
+.RI "#define \fBCMD_IR_DISTURBANCE_RECORD\fP   0xE1E2"
+.br
+.ti -1c
+.RI "#define \fBCMD_UV_DISTURBANCE_RECORD\fP   0xE1E3"
+.br
+.ti -1c
+.RI "#define \fBCMD_MFIELD_X_DISTURBANCE_RECORD\fP   0xE1E4"
+.br
+.ti -1c
+.RI "#define \fBCMD_MFIELD_Y_DISTURBANCE_RECORD\fP   0xE1E5"
+.br
+.ti -1c
+.RI "#define \fBCMD_IR_CURRENT_RECORD\fP   0xE1E6"
+.br
+.ti -1c
+.RI "#define \fBCMD_UV_CURRENT_RECORD\fP   0xE1E7"
+.br
+.ti -1c
+.RI "#define \fBCMD_MFIELD_X_CURRENT_RECORD\fP   0xE1E8"
+.br
+.ti -1c
+.RI "#define \fBCMD_MFIELD_Y_CURRENT_RECORD\fP   0xE1E9"
+.br
+.ti -1c
+.RI "#define \fBCMD_HIF_DIAGNOSIS_RECORD\fP   0xE1EA"
+.br
+.ti -1c
+.RI "#define \fBACK\fP   0x0006"
+.br
+.ti -1c
+.RI "#define \fBRC_ERROR\fP   0x0008"
+.br
+.ti -1c
+.RI "#define \fBCMD_ERROR\fP   0x0007"
+.br
+.ti -1c
+.RI "#define \fBSTATE_0\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSTATE_1\fP   1"
+.br
+.ti -1c
+.RI "#define \fBSTATE_2\fP   2"
+.br
+.ti -1c
+.RI "#define \fBSTATE_3\fP   3"
+.br
+.ti -1c
+.RI "#define \fBHOT\fP   4"
+.br
+.ti -1c
+.RI "#define \fBX_NTF_IR_SENSOR_SV_ALART\fP   (\fBX_NTF_FREE\fP + 0)"
+.br
+.RI "\fINotification to Algorithm module about persistent error\&. \fP"
+.ti -1c
+.RI "#define \fBX_NTF_LIGHT_SENSOR_SV_ALART\fP   (\fBX_NTF_FREE\fP + 1)"
+.br
+.RI "\fINotification to Algorithm module about persistent error\&. \fP"
+.ti -1c
+.RI "#define \fBX_NTF_MFIELD_X_SENSOR_SV_ALART\fP   (\fBX_NTF_FREE\fP + 2)"
+.br
+.RI "\fINotification to Algorithm module about persistent error\&. \fP"
+.ti -1c
+.RI "#define \fBX_NTF_MFIELD_Y_SENSOR_SV_ALART\fP   (\fBX_NTF_FREE\fP + 3)"
+.br
+.ti -1c
+.RI "#define \fBX_NTF_MFIELD_Z_SENSOR_SV_ALART\fP   (\fBX_NTF_FREE\fP + 4)"
+.br
+.ti -1c
+.RI "#define \fBX_NTF_UV_SENSOR_SV_ALART\fP   (\fBX_NTF_FREE\fP + 5)"
+.br
+.ti -1c
+.RI "#define \fBX_NTF_CLR_ALARM_IR_SEN\fP   (\fBX_NTF_FREE\fP + 7)"
+.br
+.RI "\fINotification from Algorithm to clear alarm recognized as false positive\&. \fP"
+.ti -1c
+.RI "#define \fBX_NTF_CLR_ALARM_UV_SEN\fP   (\fBX_NTF_FREE\fP + 8)"
+.br
+.ti -1c
+.RI "#define \fBX_NTF_CLR_ALARM_MFIELD_SEN\fP   (\fBX_NTF_FREE\fP + 9)"
+.br
+.ti -1c
+.RI "#define \fBX_NTF_ALG_ANALOG_SUPPLY_ALERT\fP   (\fBX_NTF_FREE\fP + 10)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUint16\fP \fBcrc16\fP (unsigned char *puchMsg, \fBUint16\fP usDataLen)"
+.br
+.RI "\fIStandard CRC16 routine\&. \fP"
+.ti -1c
+.RI "\fBFloat32\fP \fBalgorithm_get_mean\fP (\fBUint16\fP *vector, \fBUint16\fP SIZE)"
+.br
+.RI "\fIcalculates mean value \fP"
+.ti -1c
+.RI "void \fBmsg_to_mem\fP (void *dest, \fBUint8\fP *msg, \fBUint16\fP size, \fBUint8\fP base)"
+.br
+.RI "\fIcopy serially received data to given memory address \fP"
+.ti -1c
+.RI "void \fBalgorithm_message_arrived_ntf_isr\fP (\fBUint16\fP id)"
+.br
+.RI "\fICauses that system will send notification to the module as this cannot be done directly because the function is called from interrupt\&. \fP"
+.ti -1c
+.RI "void \fBalgorithm_taskx\fP (\fBx_event\fP *event)"
+.br
+.RI "\fIAlgorithm task function\&. \fP"
+.ti -1c
+.RI "void \fBalgorithm_notifyx\fP (\fBx_notify\fP *notify)"
+.br
+.RI "\fIAlgorithm module notification function\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBx_task_id\fP \fBalgorithm_id\fP"
+.br
+.RI "\fIALgorithm module handle\&. \fP"
+.ti -1c
+.RI "\fBlogv_t\fP \fBlogv\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Sub definitions ( for \fBalgorithm\&.h\fP) 
+
+
+.PP
+Definition in file \fBalgorithm\&.h\fP\&.
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct configured_t"
+.PP 
+Definition at line 186 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBconfigured_t\fP \fIamp_treshold\fP 
+.br
+.PP
+\fBFloat32\fP \fIdfdt_treshold_impulse\fP 
+.br
+.PP
+\fBFloat32\fP \fIdfdt_treshold_max\fP 
+.br
+.PP
+\fBFloat32\fP \fIdfdt_treshold_min\fP 
+.br
+.PP
+\fBBool\fP \fIelement_status_sv_en\fP 
+.br
+.PP
+\fBhif_diagonesis_records_t\fP * \fIhif_diagonesis_records\fP 
+.br
+.PP
+\fBUint16\fP \fImin_number_of_observation\fP 
+.br
+.PP
+\fBFloat32\fP \fIprobablity_treshold_max\fP 
+.br
+.PP
+\fBFloat32\fP \fIprobablity_treshold_min\fP 
+.br
+.PP
+\fBUint16\fP \fIsys_freq\fP 
+.br
+.PP
+\fBBool\fP \fIthreshold_adjust_manual\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union hif_checklist_t"
+.PP 
+Definition at line 209 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+struct \fBhif_checklist_t\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_module_sv_status_report_t"
+.PP 
+Notification structure\&. 
+.PP
+Definition at line 221 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_module_sv_status_report_t\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union event_report_t"
+.PP 
+Definition at line 234 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+struct \fBevent_report_t\fP \fIfields\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct logv_t"
+.PP 
+Definition at line 244 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+union \fBlogv_t\fP \fIdata_tx_on_progress\fP 
+.br
+.PP
+union \fBlogv_t\fP \fIdisturbance_record\fP 
+.br
+.PP
+\fBUint8\fP \fIevent_count\fP 
+.br
+.PP
+struct \fBlogv_t\fP \fIsv_delay\fP 
+.br
+.PP
+\fBUint32\fP \fItick\fP 
+.br
+.PP
+\fBBool\fP \fItrip_active\fP 
+.br
+.PP
+\fBBool\fP \fIwr\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct configured_t\&.amp_treshold"
+.PP 
+Definition at line 193 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBBool\fP \fIadjusted\fP 
+.br
+.PP
+\fBUint16\fP \fImax\fP 
+.br
+.PP
+\fBUint16\fP \fImin\fP 
+.br
+.PP
+\fBUint16\fP \fIset_value\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct hif_checklist_t\&.bits"
+.PP 
+Definition at line 211 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIcorrelation:1\fP 
+.br
+.PP
+\fBUint8\fP \fIitoi:1\fP 
+.br
+.PP
+\fBUint8\fP \fIptop:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_module_sv_status_report_t\&.message"
+.PP 
+Definition at line 225 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfig\fP 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fIerror_flags\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct event_report_t\&.fields"
+.PP 
+Definition at line 236 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIactive_signal:1\fP 
+.br
+.PP
+\fBUint8\fP \fIhif_data_ready:1\fP 
+.br
+.PP
+\fBUint8\fP \fIpost_act_data_ready:1\fP 
+.br
+.PP
+\fBUint8\fP \fIstate:3\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union logv_t\&.disturbance_record"
+.PP 
+Definition at line 252 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+\fBdisturbance_record\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct logv_t\&.disturbance_record\&.bits"
+.PP 
+Definition at line 254 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIloaded:1\fP 
+.br
+.PP
+\fBUint8\fP \fIready:1\fP 
+.br
+.PP
+\fBUint8\fP \fIwr:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "union logv_t\&.data_tx_on_progress"
+.PP 
+Definition at line 262 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIall\fP 
+.br
+.PP
+\fBdata_tx_on_progress\fP \fIbits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct logv_t\&.data_tx_on_progress\&.bits"
+.PP 
+Definition at line 264 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint8\fP \fIir:1\fP 
+.br
+.PP
+\fBUint8\fP \fIir_l:1\fP 
+.br
+.PP
+\fBUint8\fP \fImfield_x:1\fP 
+.br
+.PP
+\fBUint8\fP \fImfield_x_l:1\fP 
+.br
+.PP
+\fBUint8\fP \fImfield_y:1\fP 
+.br
+.PP
+\fBUint8\fP \fImfield_y_l:1\fP 
+.br
+.PP
+\fBUint8\fP \fIuv:1\fP 
+.br
+.PP
+\fBUint8\fP \fIuv_l:1\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct logv_t\&.sv_delay"
+.PP 
+Definition at line 277 of file algorithm\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIcnt\fP 
+.br
+.PP
+\fBBool\fP \fIset\fP 
+.br
+.PP
+\fBUint16\fP \fItype\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define __1ST_ORDER_DERIVATIVE(final_val, init_val)   ((final_val-init_val))"
+
+.PP
+Definition at line 30 of file algorithm\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define __COMPARE(difference, tolerance)   ((abs(difference)<= tolerance) ? (0) : (((difference)> 0)?(1):(-1)))"
+
+.PP
+Definition at line 23 of file algorithm\&.h\&.
+.PP
+Referenced by mfield_x_compare()\&.
+.SS "#define __COMPARE_U(difference, tolerance)   (((difference)<= tolerance) ? (0) : 1)"
+
+.PP
+Definition at line 25 of file algorithm\&.h\&.
+.PP
+Referenced by ir_sen_hif_check(), and uv_sen_hif_check()\&.
+.SS "#define __COMPARE_ZERO(difference)   ((difference == 0) ? (0) : (((difference)> 0)?(1):(-1)))"
+
+.PP
+Definition at line 27 of file algorithm\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define __PROBABLITY(event, obs)   (100L*((event)/(obs)))"
+
+.PP
+Definition at line 33 of file algorithm\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define ACK   0x0006"
+
+.PP
+Definition at line 142 of file algorithm\&.h\&.
+.SS "#define CMD_CLEAR_EEPROM   0xE11C"
+
+.PP
+Definition at line 125 of file algorithm\&.h\&.
+.SS "#define CMD_CLEAR_EMU_DATA   0xE10F"
+
+.PP
+Definition at line 122 of file algorithm\&.h\&.
+.SS "#define CMD_COMMIT   0xE107"
+
+.PP
+Definition at line 111 of file algorithm\&.h\&.
+.SS "#define CMD_CONFIG   0xE000"
+
+.PP
+Definition at line 104 of file algorithm\&.h\&.
+.SS "#define CMD_DEVICE_ADDRESS   0xE101"
+
+.PP
+Definition at line 105 of file algorithm\&.h\&.
+.SS "#define CMD_DEVICE_DATA   0xE1E1"
+
+.PP
+Definition at line 129 of file algorithm\&.h\&.
+.SS "#define CMD_DEVICE_RESET   0xE11B"
+
+.PP
+Definition at line 124 of file algorithm\&.h\&.
+.SS "#define CMD_EMU_MODE_RESET   0xE10E"
+
+.PP
+Definition at line 121 of file algorithm\&.h\&.
+.SS "#define CMD_EMU_MODE_SET   0xE10D"
+
+.PP
+Definition at line 120 of file algorithm\&.h\&.
+.SS "#define CMD_EMULATION_SETTING   0xE008"
+
+.PP
+Definition at line 113 of file algorithm\&.h\&.
+.SS "#define CMD_ERROR   0x0007"
+
+.PP
+Definition at line 144 of file algorithm\&.h\&.
+.SS "#define CMD_EVENT_ANALYSIS   0xE404"
+
+.PP
+Definition at line 108 of file algorithm\&.h\&.
+.SS "#define CMD_FACTORY_DEFAULT   0xE106"
+
+.PP
+Definition at line 110 of file algorithm\&.h\&.
+.SS "#define CMD_GET_DATA   0xE0E0"
+
+.PP
+Definition at line 128 of file algorithm\&.h\&.
+.SS "#define CMD_HIF_DIAGNOSIS_RECORD   0xE1EA"
+
+.PP
+Definition at line 138 of file algorithm\&.h\&.
+.SS "#define CMD_INSTALLATION_DITAILS   0xE302"
+
+.PP
+Definition at line 107 of file algorithm\&.h\&.
+.SS "#define CMD_IR_CURRENT_RECORD   0xE1E6"
+
+.PP
+Definition at line 134 of file algorithm\&.h\&.
+.SS "#define CMD_IR_DISTURBANCE_RECORD   0xE1E2"
+
+.PP
+Definition at line 130 of file algorithm\&.h\&.
+.SS "#define CMD_LOAD_HIF_REFERENCE_DATA   0xE60D"
+
+.PP
+Definition at line 118 of file algorithm\&.h\&.
+.SS "#define CMD_LOAD_IR_DATA   0xE609"
+
+.PP
+Definition at line 114 of file algorithm\&.h\&.
+.SS "#define CMD_LOAD_MAGNETIC_FIELD_X_DATA   0xE60B"
+
+.PP
+Definition at line 116 of file algorithm\&.h\&.
+.SS "#define CMD_LOAD_MAGNETIC_FIELD_Y_DATA   0xE60C"
+
+.PP
+Definition at line 117 of file algorithm\&.h\&.
+.SS "#define CMD_LOAD_UV_DATA   0xE60A"
+
+.PP
+Definition at line 115 of file algorithm\&.h\&.
+.SS "#define CMD_MFIELD_X_CURRENT_RECORD   0xE1E8"
+
+.PP
+Definition at line 136 of file algorithm\&.h\&.
+.SS "#define CMD_MFIELD_X_DISTURBANCE_RECORD   0xE1E4"
+
+.PP
+Definition at line 132 of file algorithm\&.h\&.
+.SS "#define CMD_MFIELD_Y_CURRENT_RECORD   0xE1E9"
+
+.PP
+Definition at line 137 of file algorithm\&.h\&.
+.SS "#define CMD_MFIELD_Y_DISTURBANCE_RECORD   0xE1E5"
+
+.PP
+Definition at line 133 of file algorithm\&.h\&.
+.SS "#define CMD_MISCELLANEOUS   0xE01A"
+
+.PP
+Definition at line 123 of file algorithm\&.h\&.
+.SS "#define CMD_RUN_TIME_OPTIONS   0xE505"
+
+.PP
+Definition at line 109 of file algorithm\&.h\&.
+.SS "#define CMD_SIGNAL_THRESHOLDS   0xE203"
+
+.PP
+Definition at line 106 of file algorithm\&.h\&.
+.SS "#define CMD_SUPERVISION_STATUS   0xE11D"
+
+.PP
+Definition at line 126 of file algorithm\&.h\&.
+.SS "#define CMD_UV_CURRENT_RECORD   0xE1E7"
+
+.PP
+Definition at line 135 of file algorithm\&.h\&.
+.SS "#define CMD_UV_DISTURBANCE_RECORD   0xE1E3"
+
+.PP
+Definition at line 131 of file algorithm\&.h\&.
+.SS "#define CONFIG__DEFAULT_MIN_DFDT   3"
+
+.PP
+Definition at line 90 of file algorithm\&.h\&.
+.SS "#define CONFIG_DEFAULT_FREQ   50"
+
+.PP
+Definition at line 78 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_IR_LEVEL_MAX   300"
+
+.PP
+Definition at line 83 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_LUX_LEVEL_MAX   300"
+
+.PP
+Definition at line 85 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_MIN_INSTALLATION_DISTANCE   1"
+
+.PP
+Definition at line 81 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_NO_OF_OBSERVATION   4"
+
+.PP
+Definition at line 88 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_PROBABLITY_MAX   90"
+
+.PP
+Definition at line 86 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_PROBABLITY_MIN   10"
+
+.PP
+Definition at line 87 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_RATED_CURRENT   2000"
+
+.PP
+Definition at line 79 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_SHORT_CKT_CURRENT   45000"
+
+.PP
+Definition at line 80 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define CONFIG_DEFAULT_UV_LEVEL_MAX   300"
+
+.PP
+Definition at line 84 of file algorithm\&.h\&.
+.PP
+Referenced by nov_set_default()\&.
+.SS "#define DR_RECHECK   2"
+
+.PP
+Definition at line 71 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_wake()\&.
+.SS "#define DR_RECHECK_TIME   (\fBPOST_ACT_RECORD_BUFF_SIZE\fP + 10)"
+
+.PP
+Definition at line 75 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_wake()\&.
+.SS "#define EVENT_CLEARED   4"
+
+.PP
+Definition at line 73 of file algorithm\&.h\&.
+.PP
+Referenced by __attribute__(), and algorithm_wake()\&.
+.SS "#define EVENT_SV_ALARM   0"
+
+.PP
+Definition at line 69 of file algorithm\&.h\&.
+.PP
+Referenced by __attribute__(), and algorithm_wake()\&.
+.SS "#define FAST_TIMER_SAMPLING_RATE   100E-6"
+
+.PP
+Definition at line 98 of file algorithm\&.h\&.
+.PP
+Referenced by light_sen_get_status(), and nov_set_default()\&.
+.SS "#define FAST_TIMER_SAMPLING_RATE_XU   100"
+
+.PP
+Definition at line 100 of file algorithm\&.h\&.
+.SS "#define HIF_EVENT_ALARM   3"
+
+.PP
+Definition at line 72 of file algorithm\&.h\&.
+.SS "#define HOT   4"
+
+.PP
+Definition at line 153 of file algorithm\&.h\&.
+.PP
+Referenced by __attribute__(), algorithm_wake(), ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define IRQ_DR_READY   0x0200"
+
+.PP
+Definition at line 64 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_taskx(), and algorithm_wake()\&.
+.SS "#define IRQ_SOURCE_HIF_EVENT   0x0100"
+
+.PP
+internal software interrupts source identification number MIN : 0x0100 MAX : 0xFF00 
+.PP
+Definition at line 63 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_taskx(), and algorithm_wake()\&.
+.SS "#define IRQ_SOURCE_SERIAL   0x0001"
+
+.PP
+external interrupts source identification number MIN : 0x0001 MAX : 0x00FF 
+.PP
+Definition at line 58 of file algorithm\&.h\&.
+.PP
+Referenced by __attribute__(), and algorithm_taskx()\&.
+.SS "#define RANGE_MAX_16BIT   ((2E16) -(1))"
+
+.PP
+Definition at line 14 of file algorithm\&.h\&.
+.PP
+Referenced by light_sen_get_status()\&.
+.SS "#define RANGE_MAX_32BIT   ((2E32) -(1))"
+
+.PP
+Definition at line 15 of file algorithm\&.h\&.
+.PP
+Referenced by light_sen_mark_false_postives(), and mfield_z_sen_mark_false_postives()\&.
+.SS "#define RANGE_MAX_8BIT   ((2E8)  -(1))"
+
+.PP
+Definition at line 13 of file algorithm\&.h\&.
+.PP
+Referenced by light_sen_mark_false_postives(), main(), and mfield_z_sen_mark_false_postives()\&.
+.SS "#define RC_ERROR   0x0008"
+
+.PP
+Definition at line 143 of file algorithm\&.h\&.
+.SS "#define SCAN_FREQ   10000L"
+
+.PP
+Sensor/input scan frequency - 10kHz, 100us period\&. 
+.PP
+Definition at line 96 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_sv_scan_timer_init(), ir_sen_notifyx(), mfield_x_sen_notifyx(), and uv_sen_notifyx()\&.
+.SS "#define STATE_0   0"
+
+.PP
+Definition at line 149 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_wake(), ir_sen_get_status(), light_sen_get_status(), light_sen_notifyx(), mfield_x_sen_get_status(), mfield_x_sen_notifyx(), mfield_z_sen_notifyx(), and uv_sen_get_status()\&.
+.SS "#define STATE_1   1"
+
+.PP
+Definition at line 150 of file algorithm\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define STATE_2   2"
+
+.PP
+Definition at line 151 of file algorithm\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define STATE_3   3"
+
+.PP
+Definition at line 152 of file algorithm\&.h\&.
+.PP
+Referenced by ir_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SS "#define SUPPLY_HIGH   1000"
+
+.PP
+Supply -\&. 
+.PP
+Definition at line 46 of file algorithm\&.h\&.
+.SS "#define SUPPLY_LOW   990"
+
+.PP
+Supply - Measured in real system 990 & 1000\&. 
+.PP
+Definition at line 43 of file algorithm\&.h\&.
+.SS "#define SV_ALERT   1"
+
+.PP
+Definition at line 70 of file algorithm\&.h\&.
+.SS "#define SV_CURREN_OUTPUT_LEVEL   4"
+
+.PP
+Definition at line 50 of file algorithm\&.h\&.
+.PP
+Referenced by main()\&.
+.SS "#define X_NTF_ALG_ANALOG_SUPPLY_ALERT   (\fBX_NTF_FREE\fP + 10)"
+
+.PP
+Definition at line 181 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_notifyx()\&.
+.SS "#define X_NTF_CLR_ALARM_IR_SEN   (\fBX_NTF_FREE\fP + 7)"
+
+.PP
+Notification from Algorithm to clear alarm recognized as false positive\&. 
+.PP
+Definition at line 171 of file algorithm\&.h\&.
+.PP
+Referenced by ir_sen_notifyx()\&.
+.SS "#define X_NTF_CLR_ALARM_MFIELD_SEN   (\fBX_NTF_FREE\fP + 9)"
+
+.PP
+Definition at line 177 of file algorithm\&.h\&.
+.PP
+Referenced by mfield_x_sen_notifyx()\&.
+.SS "#define X_NTF_CLR_ALARM_UV_SEN   (\fBX_NTF_FREE\fP + 8)"
+
+.PP
+Definition at line 174 of file algorithm\&.h\&.
+.PP
+Referenced by uv_sen_notifyx()\&.
+.SS "#define X_NTF_IR_SENSOR_SV_ALART   (\fBX_NTF_FREE\fP + 0)"
+
+.PP
+Notification to Algorithm module about persistent error\&. 
+.PP
+Definition at line 156 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_notifyx()\&.
+.SS "#define X_NTF_LIGHT_SENSOR_SV_ALART   (\fBX_NTF_FREE\fP + 1)"
+
+.PP
+Notification to Algorithm module about persistent error\&. 
+.PP
+Definition at line 159 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_notifyx()\&.
+.SS "#define X_NTF_MFIELD_X_SENSOR_SV_ALART   (\fBX_NTF_FREE\fP + 2)"
+
+.PP
+Notification to Algorithm module about persistent error\&. 
+.PP
+Definition at line 162 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_notifyx()\&.
+.SS "#define X_NTF_MFIELD_Y_SENSOR_SV_ALART   (\fBX_NTF_FREE\fP + 3)"
+
+.PP
+Definition at line 164 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_notifyx()\&.
+.SS "#define X_NTF_MFIELD_Z_SENSOR_SV_ALART   (\fBX_NTF_FREE\fP + 4)"
+
+.PP
+Definition at line 166 of file algorithm\&.h\&.
+.SS "#define X_NTF_UV_SENSOR_SV_ALART   (\fBX_NTF_FREE\fP + 5)"
+
+.PP
+Definition at line 168 of file algorithm\&.h\&.
+.PP
+Referenced by algorithm_notifyx()\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBFloat32\fP algorithm_get_mean (\fBUint16\fP *vector, \fBUint16\fPSIZE)"
+
+.PP
+calculates mean value 
+.PP
+Definition at line 47 of file algorithm\&.c\&.
+.PP
+.nf
+48 {
+49     
+50     
+51     register int result asm("A");
+52     result = __builtin_clr();
+53     Int16 cc;
+54 
+55     for(cc = 0;cc<SIZE;cc++)
+56         result = __builtin_add(result,*(vector+cc),0);
+57  
+58     cc = __builtin_sac(result,0);
+59 
+60 
+61     
+62     Float32 mean_val = (Float32)cc/(Float32)SIZE ;
+63     
+64 
+65     return  (mean_val);
+66 
+67 }
+.fi
+.SS "void algorithm_message_arrived_ntf_isr (\fBUint16\fPid)"
+
+.PP
+Causes that system will send notification to the module as this cannot be done directly because the function is called from interrupt\&. 
+.PP
+Definition at line 2104 of file algorithm\&.c\&.
+.PP
+References algorithm_id, algorithm_data_t::irq_src, and x_task_send_irq_sync()\&.
+.PP
+Referenced by __attribute__(), and algorithm_wake()\&.
+.PP
+.nf
+2105 {
+2106     if(id==0)
+2107         return;
+2108     if((0x00FF&id)!=0)
+2109     algorithm_data\&.irq_src\&.fields\&.external = (0x00FF&id);
+2110     else if(((0xFF00&id)>>8)!=0)
+2111     algorithm_data\&.irq_src\&.fields\&.internal = ((0xFF00&id)>>8);
+2112     x_task_send_irq_sync(algorithm_id);
+2113 }
+.fi
+.SS "void algorithm_notifyx (\fBx_notify\fP *notify)"
+
+.PP
+Algorithm module notification function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP - system distributed notification
+.RE
+.PP
+Services initialization notifications\&. Collects notifications from all other modules and internal OS timers (data is copied to internal data structures)\&. Such operation triggers sending wake event to main task to process notification data\&. 
+.PP
+Definition at line 2006 of file algorithm\&.c\&.
+.PP
+References algorithm_wake(), ASSERT, data_non_volatile, x_notify::message, x_notify_module_sv_status_report_t::message, algorithm_data_t::wake_event, X_NTF_ALG_ANALOG_SUPPLY_ALERT, X_NTF_INIT, X_NTF_IR_SENSOR_SV_ALART, X_NTF_LIGHT_SENSOR_SV_ALART, X_NTF_MFIELD_X_SENSOR_SV_ALART, X_NTF_MFIELD_Y_SENSOR_SV_ALART, X_NTF_SUPERVISION_TIMER, X_NTF_UV_SENSOR_SV_ALART, and x_send_event()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+2007 {
+2008 
+2009     switch(notify->message)
+2010     {
+2011         // System standrd messages 
+2012 
+2013         case X_NTF_INIT:
+2014         {
+2015             // Module intialization    
+2016             algorithm_init();            
+2017         }break;
+2018 
+2019 
+2020         case X_NTF_SUPERVISION_TIMER:
+2021         {
+2022            x_send_event(&algorithm_data\&.wake_event);
+2023         }break;
+2024 
+2025         case  X_NTF_ALG_ANALOG_SUPPLY_ALERT:            
+2026         {
+2027             data_non_volatile\&.device_data\&.sv_record\&.system_error_flags\&.bits\&.power_supply = 1;
+2028             algorithm_wake(0);
+2029         }break;
+2030 
+2031 #if(DEVICE == AQ0X_V1)
+2032          case  X_NTF_LIGHT_SENSOR_SV_ALART:
+2033         {
+2034             // supervission report indicating persistent error or when change is made on configured data
+2035             x_notify_module_sv_status_report_t *alarm = (x_notify_module_sv_status_report_t *)notify;
+2036             data_non_volatile\&.device_data\&.sv_record\&.error_flags\&.light = alarm->message\&.error_flags;
+2037              x_send_event(&algorithm_data\&.wake_event);
+2038         }break;
+2039 
+2040 #endif
+2041          case  X_NTF_IR_SENSOR_SV_ALART:
+2042         {
+2043             // supervission report indicating persistent error or when change is made on configured data
+2044             x_notify_module_sv_status_report_t *alarm = (x_notify_module_sv_status_report_t *)notify;
+2045             data_non_volatile\&.device_data\&.sv_record\&.error_flags\&.ir = alarm->message\&.error_flags;
+2046 
+2047             if(alarm->message\&.config\&.amp_treshold\&.adjusted == 1)
+2048                 data_non_volatile\&.device_data\&.installation\&.thresholds\&.ir_level_max
+2049                  = alarm->message\&.config\&.amp_treshold\&.set_value;
+2050 
+2051         }break;
+2052 
+2053          case  X_NTF_UV_SENSOR_SV_ALART:
+2054         {
+2055             // supervission report indicating persistent error or when change is made on configured data
+2056             x_notify_module_sv_status_report_t * alarm = (x_notify_module_sv_status_report_t *)notify;
+2057             data_non_volatile\&.device_data\&.sv_record\&.error_flags\&.uv = alarm->message\&.error_flags;
+2058 
+2059              if(alarm->message\&.config\&.amp_treshold\&.adjusted == 1)
+2060                 data_non_volatile\&.device_data\&.installation\&.thresholds\&.uv_level_max
+2061                  =alarm->message\&.config\&.amp_treshold\&.set_value;
+2062 
+2063         }break;
+2064 
+2065         case  X_NTF_MFIELD_X_SENSOR_SV_ALART:
+2066         {
+2067             // supervission report indicating persistent error
+2068             x_notify_module_sv_status_report_t * alarm = (x_notify_module_sv_status_report_t *)notify;
+2069             data_non_volatile\&.device_data\&.sv_record\&.error_flags\&.mfield_x = alarm->message\&.error_flags;
+2070       
+2071         }break;
+2072 
+2073 #ifdef MFIELD_Y
+2074         case  X_NTF_MFIELD_Y_SENSOR_SV_ALART:
+2075         {        
+2076             // supervission report indicating persistent error
+2077             x_notify_module_sv_status_report_t * alarm = (x_notify_module_sv_status_report_t *)notify;
+2078             data_non_volatile\&.device_data\&.sv_record\&.error_flags\&.mfield_y = alarm->message\&.error_flags;
+2079             
+2080         }break;
+2081 #endif
+2082 
+2083         default:
+2084         {
+2085 
+2086             ASSERT(0);
+2087         }
+2088         
+2089     }
+2090 }
+.fi
+.SS "void algorithm_taskx (\fBx_event\fP *event)"
+
+.PP
+Algorithm task function\&. Processes incoming events\&. more than 80% correlation is considered as strong similarity 
+.PP
+Definition at line 1905 of file algorithm\&.c\&.
+.PP
+References ASSERT, algorithm_data_t::clear_alarm_ir, algorithm_data_t::clear_alarm_mfield_x, algorithm_data_t::clear_alarm_uv, data_non_volatile, algorithm_data_t::diagnosis, logv_t::disturbance_record, FP_TOLERANCE, IRQ_DR_READY, IRQ_SOURCE_HIF_EVENT, IRQ_SOURCE_SERIAL, algorithm_data_t::irq_src, x_event::message, nov_store(), srv_wdg_kick, algorithm_data_t::supervision_timer, SV_TIMER_PERIOD, TRUE, x_delete_timer(), X_MS2TICK, X_MSG_CONFIGURE_EVENT, X_MSG_IRQ_SYNC, X_MSG_WAKE_EVENT, x_schedule_timer(), and x_send_notify()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+1906 {
+1907     switch(event->message)
+1908     {
+1909 
+1910 
+1911         case X_MSG_IRQ_SYNC:
+1912         {
+1913              srv_wdg_kick();
+1914             if(algorithm_data\&.irq_src\&.fields\&.external != 0){
+1915                     if(algorithm_data\&.irq_src\&.all == IRQ_SOURCE_SERIAL)
+1916                     algorithm_cmd_handler();
+1917 
+1918                   algorithm_data\&.irq_src\&.fields\&.external = 0;
+1919             }
+1920 
+1921 
+1922 
+1923             if(algorithm_data\&.irq_src\&.fields\&.internal != 0){
+1924                     if(algorithm_data\&.irq_src\&.all == IRQ_SOURCE_HIF_EVENT){
+1925                         Float32 result = algorithm_liner_correlation(&data_non_volatile\&.disturbance_record\&.hif_diagonesis_records,MAX_EVENT_OBSERVATION_LENGTH);
+1926                        //if(algorithm_liner_correlation(&data_non_volatile\&.disturbance_record\&.hif_diagonesis_records,MAX_EVENT_OBSERVATION_LENGTH) > 80){
+1927                          if(result >= 80){
+1929                             algorithm_data\&.diagnosis\&.hif\&.flags\&.result = 1;
+1930                             algorithm_data\&.diagnosis\&.hif\&.flags\&.ready  = 1;
+1931                          }else{
+1932                             algorithm_data\&.diagnosis\&.hif\&.flags\&.result = 0;
+1933                             algorithm_data\&.diagnosis\&.hif\&.flags\&.ready  = 1;
+1934                             memset(&data_non_volatile\&.disturbance_record\&.hif_diagonesis_records,0,sizeof(data_non_volatile\&.disturbance_record\&.hif_diagonesis_records));
+1935                          }
+1936                     }
+1937                     else
+1938                     if(algorithm_data\&.irq_src\&.all == IRQ_DR_READY)
+1939                     {
+1940                         
+1941                         nov_store();
+1942                         logv\&.disturbance_record\&.bits\&.ready = 1;
+1943                     }
+1944 
+1945                     algorithm_data\&.irq_src\&.fields\&.internal = 0;
+1946          }
+1947         }break;
+1948 
+1949 
+1950 
+1951         case X_MSG_WAKE_EVENT:
+1952         {
+1953               if(algorithm_data\&.diagnosis\&.false_alarm\&.ir\&.cnt++ > FP_TOLERANCE)
+1954               x_send_notify(&algorithm_data\&.clear_alarm_ir);
+1955 
+1956               if(algorithm_data\&.diagnosis\&.false_alarm\&.uv\&.cnt++ > FP_TOLERANCE)
+1957               x_send_notify(&algorithm_data\&.clear_alarm_uv);
+1958 
+1959               if(algorithm_data\&.diagnosis\&.false_alarm\&.mfield_x\&.cnt++ > FP_TOLERANCE)
+1960               x_send_notify(&algorithm_data\&.clear_alarm_mfield_x);
+1961 
+1962 
+1963 
+1964 
+1965         }break;
+1966 
+1967 
+1968         case X_MSG_CONFIGURE_EVENT:
+1969         {
+1970             algorithm_configure();
+1971             data_non_volatile\&.device_data\&.installation\&.is_valid = TRUE;
+1972 
+1973 #if(0)
+1974           x_delete_timer(&algorithm_data\&.supervision_timer);
+1975           x_schedule_timer(&algorithm_data\&.supervision_timer,X_MS2TICK(SV_TIMER_PERIOD));
+1976 #endif
+1977         }break;
+1978     
+1979         default:
+1980         {
+1981             ASSERT(0);
+1982         }break;
+1983     
+1984     };
+1985 
+1986 }
+.fi
+.SS "\fBUint16\fP crc16 (unsigned char *puchMsg, \fBUint16\fPusDataLen)"
+
+.PP
+Standard CRC16 routine\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpuchMsg\fP character stream 
+.br
+\fIusDataLen\fP stream length
+.RE
+.PP
+\fBReturn values:\fP
+.RS 4
+\fICRC16\fP value of given stream 
+.RE
+.PP
+
+.PP
+Definition at line 84 of file srv_nov\&.c\&.
+.PP
+Referenced by nov_init(), serial_get_command(), and serial_send_response()\&.
+.PP
+.nf
+85 {
+86     Uint8 crc_hi = 0xFF ;        /* high byte of CRC initialized */
+87     Uint8 crc_lo = 0xFF ;        /* low byte of CRC initialized */
+88     int table_index ;            /* index into CRC lookup table */
+89     
+90     while (usDataLen--)
+91     {
+92         table_index = crc_hi ^ *puchMsg++ ;            /* calculate the CRC */
+93         crc_hi = crc_lo ^ table_crc_hi[table_index] ;
+94         crc_lo = table_crc_lo[table_index] ;
+95     }
+96     return (crc_hi << 8 | crc_lo) ;
+97 }
+.fi
+.SS "void msg_to_mem (void *dest, \fBUint8\fP *msg, \fBUint16\fPsize, \fBUint8\fPbase)"
+
+.PP
+copy serially received data to given memory address 
+.PP
+Definition at line 950 of file algorithm\&.c\&.
+.PP
+References serial_make16(), and serial_make8()\&.
+.PP
+.nf
+950                                                              {
+951 
+952  
+953         Uint16 cc   = 0;
+954         Uint16 var  = 0;
+955         if(base == 8){
+956         Uint8* dst8 = (Uint8*)dest;
+957         for (var = 0; var < size; ++var) {         
+958             *(dst8+var)= serial_make8(msg,cc);
+959             cc +=2;
+960         }
+961         }
+962         else if(base == 16){
+963         Uint16* dst8 = (Uint16*)dest;    
+964             
+965         for (var = 0; var < size; ++var) {         
+966             *(dst8+var)= serial_make16(msg,cc);
+967             cc +=4;
+968         }
+969         }
+970 
+971 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBx_task_id\fP algorithm_id"
+
+.PP
+ALgorithm module handle\&. 
+.PP
+Definition at line 34 of file algorithm\&.c\&.
+.PP
+Referenced by algorithm_message_arrived_ntf_isr(), and main()\&.
+.SS "\fBlogv_t\fP logv"
+
+.PP
+Definition at line 36 of file algorithm\&.c\&.
+.PP
+Referenced by __attribute__(), ir_sen_get_status(), light_sen_get_status(), mfield_x_sen_get_status(), and uv_sen_get_status()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

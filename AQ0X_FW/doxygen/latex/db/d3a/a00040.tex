@@ -1,0 +1,273 @@
+\hypertarget{a00040}{\section{allheaders.\+h File Reference}
+\label{a00040}\index{allheaders.\+h@{allheaders.\+h}}
+}
+
+
+All project header files together so modules can include just this one.  
+
+
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stdlib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stddef.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stdarg.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}libpic30.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}p33\+E\+P128\+M\+C202.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}System.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}srv\+\_\+watchdog.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sys\+\_\+eventx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}nov\+\_\+data.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}srv\+\_\+serial.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}srv\+\_\+nov.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}srv\+\_\+spi.\+h\char`\"{}}\\*
+Include dependency graph for allheaders.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/d0a/a00904}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d5b/a00905}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00040_a3f5985ec802de602e1ec6c5f35cf45ac}{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+I\+N\+I\+T}~0
+\begin{DoxyCompactList}\small\item\em O\+S debug -\/ print init phase. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00040_a696094a227f00f646c71694eba56c239}{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+T\+I\+M\+E\+R\+S}~0
+\begin{DoxyCompactList}\small\item\em O\+S debug -\/ print timer notifications. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00040_ac99a26a91700184ca9c836b8837fc9c2}{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+E\+V\+E\+N\+T\+S}~0
+\begin{DoxyCompactList}\small\item\em O\+S debug -\/ print event notifications. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00040_aeba6fb01c031645d68a352c3e617724f}{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+N\+O\+T\+I\+F\+Y}~0
+\begin{DoxyCompactList}\small\item\em O\+S debug -\/ print standard notifications. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00040_ae48f2746c700061f944a2747a966863c}{D\+B\+G\+\_\+\+T\+E\+S\+T\+\_\+\+P\+O\+I\+N\+T}~0
+\begin{DoxyCompactList}\small\item\em debug -\/ print test point message \end{DoxyCompactList}\item 
+\#define \hyperlink{a00040_a41b841dd3ca98f243a56ff65652be225}{D\+\_\+\+I}(x\+\_\+)
+\item 
+\#define \hyperlink{a00040_a5e876f6543757da83f9b3ddee08dece7}{D\+\_\+\+T}(x\+\_\+)
+\item 
+\#define \hyperlink{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{D\+\_\+\+E}(x\+\_\+)
+\item 
+\#define \hyperlink{a00040_afdf6a05ce2b9711e8bb4ef40fdb6930a}{D\+\_\+\+N}(x\+\_\+)
+\item 
+\#define \hyperlink{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{D\+\_\+\+P}(x\+\_\+)
+\item 
+\#define \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+U\+E}~1
+\item 
+\#define \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+S\+E}~0
+\item 
+\#define \hyperlink{a00040_ab6d58cce6e97b6b549801e696ac9f4f6}{T\+E\+S\+T\+\_\+\+M\+O\+D\+E}~0
+\item 
+\#define \hyperlink{a00040_ad750d25410f340cb93a424349ccecdd3}{A\+Q0\+X\+\_\+\+V0}~0
+\begin{DoxyCompactList}\small\item\em Device version 0 , include 3 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor, and 1 light sensor. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00040_a4fe07f06b0aa99b609cb9f3d37b30932}{A\+Q0\+X\+\_\+\+V1}~1
+\begin{DoxyCompactList}\small\item\em Device version 1 , include 2 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00040_a775d096fbc3988fb7ed858b79ef44e22}{D\+E\+V\+I\+C\+E}~\hyperlink{a00040_ad750d25410f340cb93a424349ccecdd3}{A\+Q0\+X\+\_\+\+V0}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+All project header files together so modules can include just this one. 
+
+
+
+Definition in file \hyperlink{a00040_source}{allheaders.\+h}.
+
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00040_ad750d25410f340cb93a424349ccecdd3}{\index{allheaders.\+h@{allheaders.\+h}!A\+Q0\+X\+\_\+\+V0@{A\+Q0\+X\+\_\+\+V0}}
+\index{A\+Q0\+X\+\_\+\+V0@{A\+Q0\+X\+\_\+\+V0}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{A\+Q0\+X\+\_\+\+V0}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+Q0\+X\+\_\+\+V0~0}}\label{a00040_ad750d25410f340cb93a424349ccecdd3}
+
+
+Device version 0 , include 3 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor, and 1 light sensor. 
+
+
+
+Definition at line \hyperlink{a00040_source_l00092}{92} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_a4fe07f06b0aa99b609cb9f3d37b30932}{\index{allheaders.\+h@{allheaders.\+h}!A\+Q0\+X\+\_\+\+V1@{A\+Q0\+X\+\_\+\+V1}}
+\index{A\+Q0\+X\+\_\+\+V1@{A\+Q0\+X\+\_\+\+V1}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{A\+Q0\+X\+\_\+\+V1}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+Q0\+X\+\_\+\+V1~1}}\label{a00040_a4fe07f06b0aa99b609cb9f3d37b30932}
+
+
+Device version 1 , include 2 magnetic sensors,1 infrared sensor, 1 ultraviolet sensor. 
+
+
+
+Definition at line \hyperlink{a00040_source_l00094}{94} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{\index{allheaders.\+h@{allheaders.\+h}!D\+\_\+\+E@{D\+\_\+\+E}}
+\index{D\+\_\+\+E@{D\+\_\+\+E}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+\_\+\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+\_\+\+E(
+\begin{DoxyParamCaption}
+\item[{}]{x\+\_\+}
+\end{DoxyParamCaption}
+)}}\label{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}
+
+
+Definition at line \hyperlink{a00040_source_l00066}{66} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+
+
+Referenced by \hyperlink{a00037_source_l00231}{x\+\_\+loop()}, and \hyperlink{a00037_source_l00381}{x\+\_\+send\+\_\+event()}.
+
+\hypertarget{a00040_a41b841dd3ca98f243a56ff65652be225}{\index{allheaders.\+h@{allheaders.\+h}!D\+\_\+\+I@{D\+\_\+\+I}}
+\index{D\+\_\+\+I@{D\+\_\+\+I}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+\_\+\+I}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+\_\+\+I(
+\begin{DoxyParamCaption}
+\item[{}]{x\+\_\+}
+\end{DoxyParamCaption}
+)}}\label{a00040_a41b841dd3ca98f243a56ff65652be225}
+
+
+Definition at line \hyperlink{a00040_source_l00053}{53} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+
+
+Referenced by \hyperlink{a00037_source_l00196}{x\+\_\+start()}.
+
+\hypertarget{a00040_afdf6a05ce2b9711e8bb4ef40fdb6930a}{\index{allheaders.\+h@{allheaders.\+h}!D\+\_\+\+N@{D\+\_\+\+N}}
+\index{D\+\_\+\+N@{D\+\_\+\+N}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+\_\+\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+\_\+\+N(
+\begin{DoxyParamCaption}
+\item[{}]{x\+\_\+}
+\end{DoxyParamCaption}
+)}}\label{a00040_afdf6a05ce2b9711e8bb4ef40fdb6930a}
+
+
+Definition at line \hyperlink{a00040_source_l00073}{73} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+
+
+Referenced by \hyperlink{a00037_source_l00435}{x\+\_\+send\+\_\+notify()}.
+
+\hypertarget{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{\index{allheaders.\+h@{allheaders.\+h}!D\+\_\+\+P@{D\+\_\+\+P}}
+\index{D\+\_\+\+P@{D\+\_\+\+P}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+\_\+\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+\_\+\+P(
+\begin{DoxyParamCaption}
+\item[{}]{x\+\_\+}
+\end{DoxyParamCaption}
+)}}\label{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}
+
+
+Definition at line \hyperlink{a00040_source_l00080}{80} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+
+
+Referenced by \hyperlink{a00037_source_l00381}{x\+\_\+send\+\_\+event()}.
+
+\hypertarget{a00040_a5e876f6543757da83f9b3ddee08dece7}{\index{allheaders.\+h@{allheaders.\+h}!D\+\_\+\+T@{D\+\_\+\+T}}
+\index{D\+\_\+\+T@{D\+\_\+\+T}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+\_\+\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+\_\+\+T(
+\begin{DoxyParamCaption}
+\item[{}]{x\+\_\+}
+\end{DoxyParamCaption}
+)}}\label{a00040_a5e876f6543757da83f9b3ddee08dece7}
+
+
+Definition at line \hyperlink{a00040_source_l00059}{59} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+
+
+Referenced by \hyperlink{a00037_source_l00231}{x\+\_\+loop()}.
+
+\hypertarget{a00040_ac99a26a91700184ca9c836b8837fc9c2}{\index{allheaders.\+h@{allheaders.\+h}!D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+E\+V\+E\+N\+T\+S@{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+E\+V\+E\+N\+T\+S}}
+\index{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+E\+V\+E\+N\+T\+S@{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+E\+V\+E\+N\+T\+S}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+E\+V\+E\+N\+T\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+E\+V\+E\+N\+T\+S~0}}\label{a00040_ac99a26a91700184ca9c836b8837fc9c2}
+
+
+O\+S debug -\/ print event notifications. 
+
+
+
+Definition at line \hyperlink{a00040_source_l00040}{40} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_a3f5985ec802de602e1ec6c5f35cf45ac}{\index{allheaders.\+h@{allheaders.\+h}!D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+I\+N\+I\+T@{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+I\+N\+I\+T}}
+\index{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+I\+N\+I\+T@{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+I\+N\+I\+T}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+I\+N\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+I\+N\+I\+T~0}}\label{a00040_a3f5985ec802de602e1ec6c5f35cf45ac}
+
+
+O\+S debug -\/ print init phase. 
+
+
+
+Definition at line \hyperlink{a00040_source_l00034}{34} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_aeba6fb01c031645d68a352c3e617724f}{\index{allheaders.\+h@{allheaders.\+h}!D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+N\+O\+T\+I\+F\+Y@{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+N\+O\+T\+I\+F\+Y}}
+\index{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+N\+O\+T\+I\+F\+Y@{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+N\+O\+T\+I\+F\+Y}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+N\+O\+T\+I\+F\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+N\+O\+T\+I\+F\+Y~0}}\label{a00040_aeba6fb01c031645d68a352c3e617724f}
+
+
+O\+S debug -\/ print standard notifications. 
+
+
+
+Definition at line \hyperlink{a00040_source_l00043}{43} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_a696094a227f00f646c71694eba56c239}{\index{allheaders.\+h@{allheaders.\+h}!D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+T\+I\+M\+E\+R\+S@{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+T\+I\+M\+E\+R\+S}}
+\index{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+T\+I\+M\+E\+R\+S@{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+T\+I\+M\+E\+R\+S}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+T\+I\+M\+E\+R\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+B\+G\+\_\+\+S\+H\+O\+W\+\_\+\+T\+I\+M\+E\+R\+S~0}}\label{a00040_a696094a227f00f646c71694eba56c239}
+
+
+O\+S debug -\/ print timer notifications. 
+
+
+
+Definition at line \hyperlink{a00040_source_l00037}{37} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_ae48f2746c700061f944a2747a966863c}{\index{allheaders.\+h@{allheaders.\+h}!D\+B\+G\+\_\+\+T\+E\+S\+T\+\_\+\+P\+O\+I\+N\+T@{D\+B\+G\+\_\+\+T\+E\+S\+T\+\_\+\+P\+O\+I\+N\+T}}
+\index{D\+B\+G\+\_\+\+T\+E\+S\+T\+\_\+\+P\+O\+I\+N\+T@{D\+B\+G\+\_\+\+T\+E\+S\+T\+\_\+\+P\+O\+I\+N\+T}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+B\+G\+\_\+\+T\+E\+S\+T\+\_\+\+P\+O\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+B\+G\+\_\+\+T\+E\+S\+T\+\_\+\+P\+O\+I\+N\+T~0}}\label{a00040_ae48f2746c700061f944a2747a966863c}
+
+
+debug -\/ print test point message 
+
+
+
+Definition at line \hyperlink{a00040_source_l00046}{46} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_a775d096fbc3988fb7ed858b79ef44e22}{\index{allheaders.\+h@{allheaders.\+h}!D\+E\+V\+I\+C\+E@{D\+E\+V\+I\+C\+E}}
+\index{D\+E\+V\+I\+C\+E@{D\+E\+V\+I\+C\+E}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{D\+E\+V\+I\+C\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+V\+I\+C\+E~{\bf A\+Q0\+X\+\_\+\+V0}}}\label{a00040_a775d096fbc3988fb7ed858b79ef44e22}
+
+
+Definition at line \hyperlink{a00040_source_l00096}{96} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_aa93f0eb578d23995850d61f7d61c55c1}{\index{allheaders.\+h@{allheaders.\+h}!F\+A\+L\+S\+E@{F\+A\+L\+S\+E}}
+\index{F\+A\+L\+S\+E@{F\+A\+L\+S\+E}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{F\+A\+L\+S\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+A\+L\+S\+E~0}}\label{a00040_aa93f0eb578d23995850d61f7d61c55c1}
+
+
+Definition at line \hyperlink{a00040_source_l00086}{86} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+
+
+Referenced by \hyperlink{a00030_source_l00758}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, \hyperlink{a00038_source_l00242}{algorithm\+\_\+signal\+\_\+proportionality()}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00052_source_l00242}{mfield\+\_\+x\+\_\+sen\+\_\+calc\+\_\+probablity()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00053_source_l00241}{mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired()}, \hyperlink{a00053_source_l00203}{mfield\+\_\+z\+\_\+zero\+\_\+cross()}, \hyperlink{a00060_source_l00760}{nov\+\_\+set\+\_\+default()}, \hyperlink{a00030_source_l00159}{serial\+\_\+init()}, \hyperlink{a00030_source_l00577}{serial\+\_\+send()}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+
+\hypertarget{a00040_ab6d58cce6e97b6b549801e696ac9f4f6}{\index{allheaders.\+h@{allheaders.\+h}!T\+E\+S\+T\+\_\+\+M\+O\+D\+E@{T\+E\+S\+T\+\_\+\+M\+O\+D\+E}}
+\index{T\+E\+S\+T\+\_\+\+M\+O\+D\+E@{T\+E\+S\+T\+\_\+\+M\+O\+D\+E}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{T\+E\+S\+T\+\_\+\+M\+O\+D\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+S\+T\+\_\+\+M\+O\+D\+E~0}}\label{a00040_ab6d58cce6e97b6b549801e696ac9f4f6}
+
+
+Definition at line \hyperlink{a00040_source_l00089}{89} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+\hypertarget{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{\index{allheaders.\+h@{allheaders.\+h}!T\+R\+U\+E@{T\+R\+U\+E}}
+\index{T\+R\+U\+E@{T\+R\+U\+E}!allheaders.\+h@{allheaders.\+h}}
+\subsubsection[{T\+R\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+U\+E~1}}\label{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}
+
+
+Definition at line \hyperlink{a00040_source_l00084}{84} of file \hyperlink{a00040_source}{allheaders.\+h}.
+
+
+
+Referenced by \hyperlink{a00041_source_l00025}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, \hyperlink{a00038_source_l00242}{algorithm\+\_\+signal\+\_\+proportionality()}, \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00052_source_l00242}{mfield\+\_\+x\+\_\+sen\+\_\+calc\+\_\+probablity()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00053_source_l00241}{mfield\+\_\+z\+\_\+observation\+\_\+time\+\_\+window\+\_\+expired()}, \hyperlink{a00053_source_l00203}{mfield\+\_\+z\+\_\+zero\+\_\+cross()}, \hyperlink{a00060_source_l00760}{nov\+\_\+set\+\_\+default()}, \hyperlink{a00030_source_l00159}{serial\+\_\+init()}, \hyperlink{a00030_source_l00577}{serial\+\_\+send()}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+

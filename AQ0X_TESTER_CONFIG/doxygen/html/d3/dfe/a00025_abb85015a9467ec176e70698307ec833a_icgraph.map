@@ -1,0 +1,6 @@
+<map id="QCPAxis::padding" name="QCPAxis::padding">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#a4391192a766e5d20cfe5cbc17607a7a2" title="Sets the distance between the tick labels and the axis label. " alt="" coords="195,5,375,32"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#a5691441cb3de9e9844855d339c0db279" title="Sets the padding of the axis. " alt="" coords="210,56,359,83"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#af302c479af9dbc2e9f0e44e07c0012ee" title="Sets the distance between the axis base line (or any tick marks pointing outward) and the tick labels..." alt="" coords="183,107,387,133"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#a5a34dafa051be08d03e89c163c507f90" title="Constructs an Axis instance of Type type inside parentPlot. " alt="" coords="435,56,573,83"/>
+</map>

@@ -1,0 +1,314 @@
+\hypertarget{a00050_source}{\section{srv\+\_\+serial.\+cpp}
+\label{a00050_source}\index{srv\+\_\+serial.\+cpp@{srv\+\_\+serial.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 
+00002 \textcolor{preprocessor}{#include "\hyperlink{a00039}{mainwindow.h}"}
+00003 \textcolor{preprocessor}{#include "\hyperlink{a00052}{ui\_mainwindow.h}"}
+00004 \textcolor{preprocessor}{#include "\hyperlink{a00045}{settingsdialog.h}"}
+00005 \textcolor{preprocessor}{#include "\hyperlink{a00043}{recordpreview.h}"}
+00006 
+00007 \textcolor{preprocessor}{#include "\hyperlink{a00034}{define.h}"}
+00008 
+00009 \textcolor{preprocessor}{#include <QDebug>}
+00010 \textcolor{preprocessor}{#include <QThread>}
+00011 \textcolor{preprocessor}{#include <QTimer>}
+00012 
+00013 \textcolor{preprocessor}{#include <QtSerialPort/QSerialPort>}
+00014 \textcolor{preprocessor}{#include <QtSerialPort/QSerialPortInfo>}
+00015 \textcolor{preprocessor}{#include <QMessageBox>}
+00016 
+00017 
+00018 
+00020 \textcolor{keyword}{static} \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} table\_crc\_hi[] = \{
+00021 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81,
+00022 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+00023 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01,
+00024 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41,
+00025 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81,
+00026 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0,
+00027 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01,
+00028 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40,
+00029 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81,
+00030 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+00031 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01,
+00032 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+00033 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81,
+00034 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
+00035 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01,
+00036 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
+00037 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0, 0x80, 0x41, 0x00, 0xC1, 0x81,
+00038 0x40
+00039 \} ;
+00040 
+00042 \textcolor{keyword}{static} \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} table\_crc\_lo[] = \{
+00043 0x00, 0xC0, 0xC1, 0x01, 0xC3, 0x03, 0x02, 0xC2, 0xC6, 0x06, 0x07, 0xC7, 0x05, 0xC5, 0xC4,
+00044 0x04, 0xCC, 0x0C, 0x0D, 0xCD, 0x0F, 0xCF, 0xCE, 0x0E, 0x0A, 0xCA, 0xCB, 0x0B, 0xC9, 0x09,
+00045 0x08, 0xC8, 0xD8, 0x18, 0x19, 0xD9, 0x1B, 0xDB, 0xDA, 0x1A, 0x1E, 0xDE, 0xDF, 0x1F, 0xDD,
+00046 0x1D, 0x1C, 0xDC, 0x14, 0xD4, 0xD5, 0x15, 0xD7, 0x17, 0x16, 0xD6, 0xD2, 0x12, 0x13, 0xD3,
+00047 0x11, 0xD1, 0xD0, 0x10, 0xF0, 0x30, 0x31, 0xF1, 0x33, 0xF3, 0xF2, 0x32, 0x36, 0xF6, 0xF7,
+00048 0x37, 0xF5, 0x35, 0x34, 0xF4, 0x3C, 0xFC, 0xFD, 0x3D, 0xFF, 0x3F, 0x3E, 0xFE, 0xFA, 0x3A,
+00049 0x3B, 0xFB, 0x39, 0xF9, 0xF8, 0x38, 0x28, 0xE8, 0xE9, 0x29, 0xEB, 0x2B, 0x2A, 0xEA, 0xEE,
+00050 0x2E, 0x2F, 0xEF, 0x2D, 0xED, 0xEC, 0x2C, 0xE4, 0x24, 0x25, 0xE5, 0x27, 0xE7, 0xE6, 0x26,
+00051 0x22, 0xE2, 0xE3, 0x23, 0xE1, 0x21, 0x20, 0xE0, 0xA0, 0x60, 0x61, 0xA1, 0x63, 0xA3, 0xA2,
+00052 0x62, 0x66, 0xA6, 0xA7, 0x67, 0xA5, 0x65, 0x64, 0xA4, 0x6C, 0xAC, 0xAD, 0x6D, 0xAF, 0x6F,
+00053 0x6E, 0xAE, 0xAA, 0x6A, 0x6B, 0xAB, 0x69, 0xA9, 0xA8, 0x68, 0x78, 0xB8, 0xB9, 0x79, 0xBB,
+00054 0x7B, 0x7A, 0xBA, 0xBE, 0x7E, 0x7F, 0xBF, 0x7D, 0xBD, 0xBC, 0x7C, 0xB4, 0x74, 0x75, 0xB5,
+00055 0x77, 0xB7, 0xB6, 0x76, 0x72, 0xB2, 0xB3, 0x73, 0xB1, 0x71, 0x70, 0xB0, 0x50, 0x90, 0x91,
+00056 0x51, 0x93, 0x53, 0x52, 0x92, 0x96, 0x56, 0x57, 0x97, 0x55, 0x95, 0x94, 0x54, 0x9C, 0x5C,
+00057 0x5D, 0x9D, 0x5F, 0x9F, 0x9E, 0x5E, 0x5A, 0x9A, 0x9B, 0x5B, 0x99, 0x59, 0x58, 0x98, 0x88,
+00058 0x48, 0x49, 0x89, 0x4B, 0x8B, 0x8A, 0x4A, 0x4E, 0x8E, 0x8F, 0x4F, 0x8D, 0x4D, 0x4C, 0x8C,
+00059 0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86, 0x82, 0x42, 0x43, 0x83, 0x41, 0x81, 0x80,
+00060 0x40
+00061 \} ;
+00062 
+00063 
+00064 \textcolor{keywordtype}{void} MainWindow::openSerialPort()
+00065 \{
+00066     state=0;
+00067     \hyperlink{a00022_dc/dfe/a00125}{SettingsDialog::Settings} p = settings->\hyperlink{a00022_afeb533d711d0392b9856c63b40b65ad7}{settings}();
+00068     serial->setPortName(p.\hyperlink{a00022_a973c8cfb942a512f34fc4227c0caa6dd}{name});
+00069     \textcolor{keywordflow}{if} (serial->open(QIODevice::ReadWrite)) \{
+00070         \textcolor{keywordflow}{if} (serial->setBaudRate(p.\hyperlink{a00022_ac19cc9431552857a75c657a464ba0700}{baudRate})
+00071                 && serial->setDataBits(p.\hyperlink{a00022_a7dcd85d028a09508cb4567cf631b40e9}{dataBits})
+00072                 && serial->setParity(p.\hyperlink{a00022_ae08a00aa2e45218dade9046e3624cce7}{parity})
+00073                 && serial->setStopBits(p.\hyperlink{a00022_ab88ff384f7c1127bcbe2dd97b49696a4}{stopBits})
+00074                 && serial->setFlowControl(p.\hyperlink{a00022_aa962a6e7dbb8338af154305e4ff46cfc}{flowControl})) \{
+00075 
+00076             ui->\hyperlink{a00027_aa0785566311fc48271690fb68b1d4c5f}{actionConnect}->setEnabled(\textcolor{keyword}{false});
+00077             ui->\hyperlink{a00027_a8a16b3aef75b279eaaa887152d2f746b}{actionDisconnect}->setEnabled(\textcolor{keyword}{true});
+00078             ui->\hyperlink{a00027_a3860abde3cfd3f6170e28fddde73f11e}{actionConfigure}->setEnabled(\textcolor{keyword}{false});
+00079 
+00080             ui->\hyperlink{a00027_a50fa481337604bcc8bf68de18ab16ecd}{statusBar}->showMessage(tr(\textcolor{stringliteral}{"Connected to %1 : %2, %3, %4, %5, %6"})
+00081                                        .arg(p.\hyperlink{a00022_a973c8cfb942a512f34fc4227c0caa6dd}{name}).arg(p.\hyperlink{a00022_a54e9d461f783386f314bc24b96665e53}{stringBaudRate}).arg(p.
+      \hyperlink{a00022_ab589b733b78af17744ab75067bfce051}{stringDataBits})
+00082                                        .arg(p.\hyperlink{a00022_aa2c662b2fb315f038e827d63d83b059b}{stringParity}).arg(p.
+      \hyperlink{a00022_abde3c8410f779688ce6c2fcbbbb84f10}{stringStopBits}).arg(p.\hyperlink{a00022_a1b0a388ec5059bd2628acf9b7728f2f3}{stringFlowControl}));
+00083 
+00084 
+00085            rc\_buffer.clear();
+00086 
+00087            ui->\hyperlink{a00027_ac8a083c4b66fb317a9b538409ce412e2}{dockWidget}->setWidget(ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal});
+00088 
+00089            ui->\hyperlink{a00027_a19105d0d919fa33b5f29f7677bbab054}{dock\_central}->setVisible(\textcolor{keyword}{false});
+00090            ui->\hyperlink{a00027_a30075506c2116c3ed4ff25e07ae75f81}{centralWidget}->setVisible(\textcolor{keyword}{false});
+00091            ui->\hyperlink{a00027_ac8a083c4b66fb317a9b538409ce412e2}{dockWidget}->setVisible(\textcolor{keyword}{true});
+00092 
+00093            this->addDockWidget(Qt::RightDockWidgetArea,ui->\hyperlink{a00027_ac8a083c4b66fb317a9b538409ce412e2}{dockWidget});
+00094            ui->\hyperlink{a00027_ac8539dcd87955047877cb256aff60453}{actionClear}->setVisible(\textcolor{keyword}{true});
+00095            ui->\hyperlink{a00027_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->setEnabled(\textcolor{keyword}{true});
+00096 
+00097         \} \textcolor{keywordflow}{else} \{
+00098             serial->close();
+00099             QMessageBox::critical(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Error"}), serial->errorString());
+00100 
+00101             ui->\hyperlink{a00027_a50fa481337604bcc8bf68de18ab16ecd}{statusBar}->showMessage(tr(\textcolor{stringliteral}{"Open error"}));
+00102         \}
+00103     \} \textcolor{keywordflow}{else} \{
+00104         QMessageBox::critical(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Error"}), serial->errorString());
+00105 
+00106         ui->\hyperlink{a00027_a50fa481337604bcc8bf68de18ab16ecd}{statusBar}->showMessage(tr(\textcolor{stringliteral}{"Configure error"}));
+00107     \}
+00108 \}
+00109 
+00110 \textcolor{keywordtype}{void} MainWindow::closeSerialPort()
+00111 \{
+00112     serial->close();
+00113     console->setEnabled(\textcolor{keyword}{false});
+00114     ui->\hyperlink{a00027_aa0785566311fc48271690fb68b1d4c5f}{actionConnect}->setEnabled(\textcolor{keyword}{true});
+00115     ui->\hyperlink{a00027_a8a16b3aef75b279eaaa887152d2f746b}{actionDisconnect}->setEnabled(\textcolor{keyword}{false});
+00116     ui->\hyperlink{a00027_a3860abde3cfd3f6170e28fddde73f11e}{actionConfigure}->setEnabled(\textcolor{keyword}{true});
+00117     ui->\hyperlink{a00027_a50fa481337604bcc8bf68de18ab16ecd}{statusBar}->showMessage(tr(\textcolor{stringliteral}{"Disconnected"}));
+00118 
+00119 
+00120     ui->\hyperlink{a00027_ac8a083c4b66fb317a9b538409ce412e2}{dockWidget}->setVisible(\textcolor{keyword}{false});
+00121 
+00122 
+00123    ui->\hyperlink{a00027_a30075506c2116c3ed4ff25e07ae75f81}{centralWidget}->setVisible(\textcolor{keyword}{false});
+00124    ui->\hyperlink{a00027_a19105d0d919fa33b5f29f7677bbab054}{dock\_central}->setVisible(\textcolor{keyword}{true});
+00125 
+00126    ui->\hyperlink{a00027_ac8539dcd87955047877cb256aff60453}{actionClear}->setVisible(\textcolor{keyword}{false});
+00127       rc\_buffer.clear();
+00128 
+00129 \}
+00130 
+00131 
+00132 \textcolor{keywordtype}{void} MainWindow::handleError(QSerialPort::SerialPortError error)
+00133 \{
+00134     \textcolor{keywordflow}{if} (error == QSerialPort::ResourceError) \{
+00135         QMessageBox::critical(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Critical Error"}), serial->errorString());
+00136         closeSerialPort();
+00137     \}
+00138 \}
+00139 
+00140 \textcolor{keywordtype}{bool} MainWindow::comm\_Write(\textcolor{keywordtype}{char} *msg)\{
+00141 
+00142     QByteArray data =\hyperlink{a00006_a6134b74dbfffbaf333e169bd09597b53}{msg};
+00143     \textcolor{keywordflow}{if}(serial->write(data)!=-1)
+00144         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00145     \textcolor{keywordflow}{else}
+00146         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00147 \}
+00148 
+00149 
+00150 
+00151 \textcolor{keywordtype}{void} MainWindow::incoming\_data\_listener()
+00152 \{
+00153 
+00154     QByteArray rc\_data = serial->readLine();
+00155     ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->\hyperlink{a00002_aa744a0868e01a13a502710f895f01525}{putData}(rc\_data);
+00156     rc\_buffer.append(rc\_data);
+00157 
+00158 
+00159     \textcolor{keywordflow}{if}(rc\_buffer.contains(\textcolor{stringliteral}{"\{"}) && rc\_buffer.contains(\textcolor{stringliteral}{"\}\(\backslash\)r\(\backslash\)n"}) \textcolor{comment}{/*full msg*/})
+00160     \{
+00161 
+00162         QByteArray resp\_message = rc\_buffer;
+00163         rc\_buffer.clear();
+00164         \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}          frameIdx;
+00165         \textcolor{keywordtype}{bool}            frameOk=\textcolor{keyword}{false};
+00166         QString         frame;
+00167         \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}          kk;
+00168 
+00169 
+00170 
+00171              \textcolor{keywordflow}{if}(resp\_message.length() > 0)
+00172              \{
+00173                   \textcolor{keywordflow}{for}( kk = 0; kk < resp\_message.length();kk++)
+00174                   \{
+00175                       \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} cc = resp\_message[kk];
+00176                       frameIdx++;
+00177 
+00178                       \textcolor{keywordflow}{if}(cc == \textcolor{charliteral}{'\{'})\{
+00179                                   frame    = cc;
+00180                                   frameIdx = 0;
+00181                       \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( cc == \textcolor{charliteral}{'\}'})
+00182                       \{
+00183                                   frame.append(cc);
+00184                                   frameOk = \textcolor{keyword}{true};
+00185                                   \textcolor{keywordflow}{break};
+00186                       \}
+00187                       \textcolor{keywordflow}{else}
+00188                       \{
+00189 
+00190                                    \textcolor{keywordflow}{if}(( ((cc >= \textcolor{charliteral}{'0'})&&(cc <= \textcolor{charliteral}{'9'})) || ((cc >= \textcolor{charliteral}{'A'})&&(cc <= \textcolor{charliteral}{'F'})) || ( cc ==
+       \textcolor{charliteral}{':'}) ))
+00191                                    \{
+00192                                        frame.append(cc);
+00193                                    \}
+00194                                    \textcolor{keywordflow}{else}
+00195                                    \{
+00196                                        frameIdx = 0;
+00197                                    \}
+00198 
+00199                       \}
+00200 
+00201                  \}
+00202             \}
+00203        
+00204 
+00205 
+00206 
+00207         \textcolor{keywordflow}{if}(frameOk == \textcolor{keyword}{true})
+00208         \{
+00209 
+00213             last\_cmd.\hyperlink{a00001_a2b37e66e2555cf1dc26439ad7c30ea78}{device\_response\_cnt}++;
+00214             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}  arg\_cnt      =   0;
+00215             \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}   channel      =   0;
+00216             \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16}  sensor\_id    =   0;
+00217             QString resp         =   NULL;
+00218 
+00219             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  resp\_cmd     =   0;
+00220             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  crc          =   0;
+00221 
+00222 
+00223           QStringList replay     = frame.split(\textcolor{charliteral}{':'});
+00224 
+00225 
+00226           \textcolor{keywordflow}{if}(replay.length() == 3)\{
+00227           QString     sub\_frame  = replay.at(0);
+00228 
+00229           sub\_frame.remove(\textcolor{stringliteral}{"\{"});
+00230 
+00231           sub\_frame.remove(\textcolor{stringliteral}{":"});
+00232 
+00233           arg\_cnt = sscanf(sub\_frame.toLatin1(),\textcolor{stringliteral}{"%04X"},&resp\_cmd);
+00234 
+00235           \textcolor{keywordflow}{if}(arg\_cnt == 1 && resp\_cmd == last\_cmd.\hyperlink{a00001_af20664dc9ca2b752c73d524edee0e07a}{cmd})
+00236               resp = replay.at(1);
+00237 
+00238           resp.remove(\textcolor{stringliteral}{":"});
+00239 
+00240           channel    = \hyperlink{a00006_aebce94d5e6af7afff661daf74b208de1}{make8}(resp.toLatin1(),0);
+00241 
+00242           sensor\_id  = \hyperlink{a00006_aebce94d5e6af7afff661daf74b208de1}{make8}(resp.toLatin1(),2);
+00243 
+00244 
+00245           \textcolor{keywordflow}{if}(channel != last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0])
+00246               resp.append(\textcolor{stringliteral}{"\(\backslash\)n#Error:target sensor channel mismatch"});
+00247           \textcolor{keywordflow}{if}(sensor\_id != last\_cmd.\hyperlink{a00001_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00248               resp.append(\textcolor{stringliteral}{"\(\backslash\)n#Error:target sensor id mismatch"});
+00249 
+00250           QString substr = replay.at(2);
+00251            substr.remove(\textcolor{stringliteral}{"\}"});
+00252            substr.remove(\textcolor{stringliteral}{":"});
+00253 
+00254 
+00255           \textcolor{keywordflow}{if}(sscanf(substr.toLatin1(),\textcolor{stringliteral}{"%04X"},&crc)==1)
+00261               \textcolor{keywordflow}{if}((crc != 0XCCCC \textcolor{comment}{/*manula mode crc value*/}))\{
+00262               \textcolor{keywordflow}{if}(crc != \hyperlink{a00006_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}((\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} *)frame.toLocal8Bit().data(),frame.length()-6))
+00263                 resp.append(\textcolor{stringliteral}{"\(\backslash\)n#Error:crc mismatch"});
+00264               \}
+00265           \}\textcolor{keywordflow}{else}
+00266               resp = \textcolor{stringliteral}{"\(\backslash\)n#Error:Frame error "};
+00267 
+00268 
+00269               emit \hyperlink{a00006_a3f6396874778799cf07a7a0149e54977}{response\_ready}(resp);
+00270         \}
+00271     \}
+00272 
+00273 \}
+00274 
+00275 
+00276 \textcolor{keywordtype}{void} MainWindow::serial\_supervisor()\{
+00277 
+00278     \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a2b37e66e2555cf1dc26439ad7c30ea78}{device\_response\_cnt} == 0)\{
+00279         cancel\_processing\_cmd(\textcolor{keyword}{true});
+00280 
+00281         ui->\hyperlink{a00027_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(
+00282        QString(\textcolor{stringliteral}{"\(\backslash\)nNo response from the serial device "})
+00283        + QString(\textcolor{stringliteral}{"\(\backslash\)nCommand execution canceled"})
+00284                     );
+00285 
+00286         last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00287    \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00001_a3e88f779da9798a5da7dda227e2ca388}{processed} == \textcolor{keyword}{false})\{
+00288 
+00289         last\_cmd.\hyperlink{a00001_a2b37e66e2555cf1dc26439ad7c30ea78}{device\_response\_cnt} = 0;
+00290 
+00291         QTimer::singleShot(30000, \textcolor{keyword}{this}, SLOT(serial\_supervisor()));
+00292 
+00293     \}
+00294 \}
+00295 
+00296 
+00297 
+\hypertarget{a00050_source_l00298}{}\hyperlink{a00006_a09ae3cafdd3692fb9fb93bb90a0348d2}{00298} \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} \hyperlink{a00006_a09ae3cafdd3692fb9fb93bb90a0348d2}{MainWindow::crc16}(\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} *puchMsg, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} usDataLen)
+00299 \{
+00300     \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} crc\_hi = 0xFF ;        \textcolor{comment}{/* high byte of CRC initialized */}
+00301     \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} crc\_lo = 0xFF ;        \textcolor{comment}{/* low byte of CRC initialized */}
+00302     \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} table\_index ;            \textcolor{comment}{/* index into CRC lookup table */}
+00303 
+00304     \textcolor{keywordflow}{while} (usDataLen--)
+00305     \{
+00306         table\_index = crc\_hi ^ *puchMsg++ ;            \textcolor{comment}{/* calculate the CRC */}
+00307         crc\_hi = crc\_lo ^ table\_crc\_hi[table\_index] ;
+00308         crc\_lo = table\_crc\_lo[table\_index] ;
+00309     \}
+00310     \textcolor{keywordflow}{return} (crc\_hi << 8 | crc\_lo) ;
+00311 \}
+00312 
+00313 
+00314 
+00315 
+\end{DoxyCode}

@@ -1,0 +1,170 @@
+.TH "QFourierCalculator" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QFourierCalculator \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qfouriercalculator\&.h>\fP
+.PP
+Inherited by \fBQFourierFixedCalculator< T >\fP, and \fBQFourierVariableCalculator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQFourierCalculator\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~QFourierCalculator\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBsetData\fP (float input[], float output[]=0)"
+.br
+.ti -1c
+.RI "virtual void \fBsetSize\fP (int \fBsize\fP)"
+.br
+.ti -1c
+.RI "virtual int \fBsize\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBforward\fP ()=0"
+.br
+.ti -1c
+.RI "virtual void \fBinverse\fP ()=0"
+.br
+.ti -1c
+.RI "virtual void \fBrescale\fP ()=0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "float * \fBmInput\fP"
+.br
+.ti -1c
+.RI "float * \fBmOutput\fP"
+.br
+.ti -1c
+.RI "int \fBmSize\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 46 of file qfouriercalculator\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QFourierCalculator::QFourierCalculator ()"
+
+.PP
+Definition at line 44 of file qfouriercalculator\&.cpp\&.
+.PP
+References mInput, mOutput, and mSize\&.
+.PP
+.nf
+45 {
+46     mInput = 0;
+47     mOutput = 0;
+48     mSize = 0;
+49 }
+.fi
+.SS "QFourierCalculator::~QFourierCalculator ()\fC [virtual]\fP"
+
+.PP
+Definition at line 51 of file qfouriercalculator\&.cpp\&.
+.PP
+.nf
+52 {
+53 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void QFourierCalculator::forward ()\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBQFourierFixedCalculator< T >\fP, and \fBQFourierVariableCalculator\fP\&.
+.PP
+Referenced by QFourierTransformer::forwardTransform()\&.
+.SS "virtual void QFourierCalculator::inverse ()\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBQFourierFixedCalculator< T >\fP, and \fBQFourierVariableCalculator\fP\&.
+.PP
+Referenced by QFourierTransformer::inverseTransform()\&.
+.SS "virtual void QFourierCalculator::rescale ()\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBQFourierFixedCalculator< T >\fP, and \fBQFourierVariableCalculator\fP\&.
+.PP
+Referenced by QFourierTransformer::rescale()\&.
+.SS "void QFourierCalculator::setData (floatinput[], floatoutput[] = \fC0\fP)\fC [virtual]\fP"
+
+.PP
+Definition at line 55 of file qfouriercalculator\&.cpp\&.
+.PP
+References mInput, and mOutput\&.
+.PP
+Referenced by QFourierTransformer::forwardTransform(), QFourierTransformer::inverseTransform(), and QFourierTransformer::rescale()\&.
+.PP
+.nf
+56 {
+57     mInput = input;
+58     mOutput = output;
+59 }
+.fi
+.SS "void QFourierCalculator::setSize (intsize)\fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBQFourierFixedCalculator< T >\fP, and \fBQFourierVariableCalculator\fP\&.
+.PP
+Definition at line 61 of file qfouriercalculator\&.cpp\&.
+.PP
+References mSize, and size()\&.
+.PP
+Referenced by QFourierVariableCalculator::setSize(), and QFourierTransformer::setSize()\&.
+.PP
+.nf
+62 {
+63     mSize = size;
+64 }
+.fi
+.SS "int QFourierCalculator::size ()\fC [virtual]\fP"
+
+.PP
+Definition at line 66 of file qfouriercalculator\&.cpp\&.
+.PP
+References mSize\&.
+.PP
+Referenced by setSize()\&.
+.PP
+.nf
+67 {
+68     return mSize;
+69 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "float* QFourierCalculator::mInput\fC [protected]\fP"
+
+.PP
+Definition at line 63 of file qfouriercalculator\&.h\&.
+.PP
+Referenced by QFourierFixedCalculator< T >::forward(), QFourierVariableCalculator::forward(), QFourierFixedCalculator< T >::inverse(), QFourierVariableCalculator::inverse(), QFourierCalculator(), QFourierVariableCalculator::rescale(), QFourierFixedCalculator< T >::rescale(), and setData()\&.
+.SS "float* QFourierCalculator::mOutput\fC [protected]\fP"
+
+.PP
+Definition at line 64 of file qfouriercalculator\&.h\&.
+.PP
+Referenced by QFourierFixedCalculator< T >::forward(), QFourierVariableCalculator::forward(), QFourierFixedCalculator< T >::inverse(), QFourierVariableCalculator::inverse(), QFourierCalculator(), and setData()\&.
+.SS "int QFourierCalculator::mSize\fC [protected]\fP"
+
+.PP
+Definition at line 65 of file qfouriercalculator\&.h\&.
+.PP
+Referenced by QFourierCalculator(), setSize(), QFourierVariableCalculator::setSize(), and size()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

@@ -1,0 +1,798 @@
+\hypertarget{a00093_source}{\section{emu\+\_\+data\+\_\+editor.\+cpp}
+\label{a00093_source}\index{emu\+\_\+data\+\_\+editor.\+cpp@{emu\+\_\+data\+\_\+editor.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{a00110}{mainwindow.h}"}
+00002 \textcolor{preprocessor}{#include "\hyperlink{a00094}{emu\_data\_editor.h}"}
+00003 \textcolor{preprocessor}{#include "\hyperlink{a00138}{ui\_emu\_data\_editor.h}"}
+00004 \textcolor{preprocessor}{#include "\hyperlink{a00078}{slider.h}"}
+00005 \textcolor{preprocessor}{#include <QFileDialog>}
+00006 \textcolor{preprocessor}{#include <QDesktopServices>}
+00007 \textcolor{preprocessor}{#include <QDateTime>}
+00008 \textcolor{preprocessor}{#include <QMessageBox>}
+00009 \textcolor{preprocessor}{#include <QKeyEvent>}
+00010 
+00011 
+\hypertarget{a00093_source_l00012}{}\hyperlink{a00008_ace57d3f7e3dd136290777006218abca9}{00012} \hyperlink{a00008_ace57d3f7e3dd136290777006218abca9}{emu\_data\_editor ::emu\_data\_editor} (QString type,QWidget *parent) :
+00013     \hyperlink{a00058}{QMainWindow}(parent),
+00014     ui(new \hyperlink{a00145}{Ui}::\hyperlink{a00008}{emu\_data\_editor} )
+00015 \{
+00016 
+00017     ui->\hyperlink{a00079_a33af8ac054888d9cc0833b699028b690}{setupUi}(\textcolor{keyword}{this});
+00018     this->setWindowTitle(type);
+00019 
+00020     \hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default} = ((\hyperlink{a00017}{MainWindow} *)parent)->dir\_default;
+00021 
+00022     \hyperlink{a00008_a2abdde44f37258778dcc571e8cc7ed1a}{win\_title} = type;
+00023     \textcolor{keywordflow}{if}(type.contains(\textcolor{stringliteral}{"MAGNETIC FIELD"}))\{
+00024         \hyperlink{a00008_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} = \hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65};
+00025         \hyperlink{a00008_a73dabe63bd74afe2776e8136211dc36e}{signal\_amplitude} = 1.65;
+00026     \}\textcolor{keywordflow}{else}\{
+00027         \hyperlink{a00008_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} = \hyperlink{a00090_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3};
+00028         \hyperlink{a00008_a73dabe63bd74afe2776e8136211dc36e}{signal\_amplitude} = 3.3;
+00029     \}
+00030 
+00031     \hyperlink{a00008_a67039999d520fc483fab521fae5ddde4}{signal\_freq}      = \hyperlink{a00086_a985a153b3edd3d7d638137ae0b9e5e67}{CONFIG\_DEFAULT\_FREQ};
+00032     \hyperlink{a00008_af08de88fdfe283086e3cca97a2965678}{signal\_phase}     = 0;
+00033 
+00034 
+00035     ui->\hyperlink{a00079_afff870ab422d2b873976067827089af1}{centralwidget}->setVisible(\textcolor{keyword}{false});
+00036     ui->\hyperlink{a00079_a0edc87fb115fede171c0da1f99000874}{dockWidgetCurve\_plot}->setWidget(ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve});
+00037     ui->\hyperlink{a00079_a7474d72172d9e269e8f3cb22bbe2fc86}{dockWidgetCurve\_plot\_fft}->setWidget(ui->
+      \hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft});
+00038 
+00039     this->addDockWidget(Qt::TopDockWidgetArea,ui->\hyperlink{a00079_a7474d72172d9e269e8f3cb22bbe2fc86}{dockWidgetCurve\_plot\_fft});
+00040 
+00041 
+00042     ui->\hyperlink{a00079_aa5d56420958ab4fd1239e29714d75e18}{actionWinEditor}->setChecked(\textcolor{keyword}{true});
+00043     ui->\hyperlink{a00079_a0aeb289d8df9db6f4329e9000e44d511}{actionWinPlot}->setChecked(\textcolor{keyword}{true});
+00044 
+00045 
+00046 
+00047     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00006_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}; ++var) \{
+00048         \hyperlink{a00008_a66d07ec51f26cd9b84994548faa336d6}{emu\_data\_xvalue}.append(var);
+00049         \hyperlink{a00008_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}.append(0);
+00050     \}
+00051 
+00052     plot\_curve(\hyperlink{a00008_a66d07ec51f26cd9b84994548faa336d6}{emu\_data\_xvalue},\hyperlink{a00008_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue});
+00053 
+00054     memset(\hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result},0,\hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE});
+00055     memset(\hyperlink{a00008_a8782fc20094d65d56c04869b9692902e}{fft\_inputs},0,\hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE});
+00056 
+00057 
+00058     \hyperlink{a00008_a0d6e12337ef942452edea37827e58cd4}{transformer}.\hyperlink{a00054_aab762683a5ed505ed7be906c4340cb07}{setSize}(\hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE});
+00059     \textcolor{keywordflow}{if}(!\hyperlink{a00008_a0d6e12337ef942452edea37827e58cd4}{transformer}.\hyperlink{a00054_a8c8f0a2101aba7f6da70050c7ebdc36c}{setWindowFunction}(\textcolor{stringliteral}{"Rectangular"}))
+00060         qCritical()<<\textcolor{stringliteral}{"unable to set window funtion : emu\_data\_editor"};
+00061 
+00062     \hyperlink{a00008_a0d6e12337ef942452edea37827e58cd4}{transformer}.\hyperlink{a00054_a02bee79c9e9f978ed1fb012eda58ed5d}{forwardTransform}(\hyperlink{a00008_a8782fc20094d65d56c04869b9692902e}{fft\_inputs},
+      \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result});
+00063 
+00064 
+00065     \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} = 0;
+00066     \hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} = 0;
+00067 
+00068 
+00069 
+00070     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00071 
+00072         \hyperlink{a00008_a62129d59e218ab857cd50cb202205129}{emu\_data\_freq\_value}.append(
+00073                     (var)*\hyperlink{a00008_a67039999d520fc483fab521fae5ddde4}{signal\_freq}*
+00074                     ((\hyperlink{a00008_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} == \hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})?1:2));
+00075 
+00076         qDebug()<<\textcolor{stringliteral}{"f("}<<var<<\textcolor{stringliteral}{") = "}<< \hyperlink{a00008_a62129d59e218ab857cd50cb202205129}{emu\_data\_freq\_value}[var]<<\textcolor{stringliteral}{";"};
+00077         \hyperlink{a00008_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude}.append((\textcolor{keywordtype}{double})
+      \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var]);
+00078 
+00079         \textcolor{keywordflow}{if}(\hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var] > \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max})
+00080             \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} = \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var];
+00081         \textcolor{keywordflow}{if}(\hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var] < \hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min})
+00082             \hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} = \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var];
+00083 
+00084     \}
+00085 
+00086 
+00087 
+00088 
+00089 
+00090 
+00091 
+00092     plot\_curve\_fft(\hyperlink{a00008_a62129d59e218ab857cd50cb202205129}{emu\_data\_freq\_value},
+      \hyperlink{a00008_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude});
+00093     installEventFilter(\textcolor{keyword}{this});
+00094     gui\_init(EMU\_MODE\_DATA\_LENGTH/2);
+00095 
+00096 
+00097 
+00098 \}
+00099 
+00100 
+\hypertarget{a00093_source_l00101}{}\hyperlink{a00008_ab897c9d3081a980c0ad94f09d5dbce99}{00101} \hyperlink{a00008_ab897c9d3081a980c0ad94f09d5dbce99}{emu\_data\_editor ::~emu\_data\_editor} ()
+00102 \{
+00103     \textcolor{keyword}{delete} ui;
+00104 \}
+00105 
+00106 
+\hypertarget{a00093_source_l00107}{}\hyperlink{a00008_a48f610d23d17b2679113ea351d0968e4}{00107} \textcolor{keywordtype}{bool} \hyperlink{a00008_a48f610d23d17b2679113ea351d0968e4}{emu\_data\_editor::eventFilter}(\hyperlink{a00059}{QObject} *obj, QEvent *event)
+00108 \{
+00109 
+00110 
+00111     \textcolor{keywordflow}{if}(obj!=\textcolor{keyword}{this})
+00112         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00113 
+00114         \textcolor{keywordflow}{if} (event->type() == QEvent::KeyPress) \{
+00115             QKeyEvent *keyEvent = \textcolor{keyword}{static\_cast<}QKeyEvent*\textcolor{keyword}{>}(event);
+00116             \textcolor{keywordflow}{switch} (keyEvent->key()) \{
+00117             \textcolor{keywordflow}{case} Qt::Key\_Shift:
+00118                     emit \hyperlink{a00008_a9aa2af0c329358fd96f7fb6b7f02bfe1}{edit\_point\_selection}(\textcolor{keyword}{true});
+00119                   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00120                  \textcolor{keywordflow}{break};
+00121 
+00122 
+00123             \textcolor{keywordflow}{case} Qt::Key\_Plus:
+00124 
+00125                     emit \hyperlink{a00008_a74d292de22b341313df1852cb1033704}{adjust\_value}(10);
+00126                     \hyperlink{a00008_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00127                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00128                  \textcolor{keywordflow}{break};
+00129 
+00130             \textcolor{keywordflow}{case} Qt::Key\_Minus:
+00131 
+00132                     emit \hyperlink{a00008_a74d292de22b341313df1852cb1033704}{adjust\_value}(-10);
+00133                     \hyperlink{a00008_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00134                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00135                 \textcolor{keywordflow}{break};
+00136             \textcolor{keywordflow}{case} Qt::Key\_Left:
+00137 
+00138 
+00139                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00140                 \textcolor{keywordflow}{break};
+00141 
+00142             \textcolor{keywordflow}{case} Qt::Key\_Clear:
+00143                     emit \hyperlink{a00008_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keyword}{true});
+00144                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00145                      \textcolor{keywordflow}{break};
+00146 
+00147 
+00148             \textcolor{keywordflow}{case} Qt::Key\_Control:
+00149                     emit \hyperlink{a00008_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keyword}{true});
+00150                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00151                  \textcolor{keywordflow}{break};
+00152 
+00153 
+00154             \textcolor{keywordflow}{case} Qt::Key\_Right:
+00155 
+00156 
+00157             \textcolor{keywordflow}{case} Qt::Key\_Enter:
+00158 
+00159                  \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00160                 \textcolor{keywordflow}{break};
+00161             \textcolor{keywordflow}{case} Qt::Key\_Return:
+00162 
+00163 
+00164                  \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00165                 \textcolor{keywordflow}{break};
+00166 
+00167             \textcolor{keywordflow}{default}:
+00168 
+00169 
+00170                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00171 
+00172                \textcolor{keywordflow}{break};
+00173 
+00174             \}
+00175 
+00176         \} \textcolor{keywordflow}{else}  \textcolor{keywordflow}{if} (event->type() == QEvent::KeyRelease) \{
+00177             QKeyEvent *keyEvent = \textcolor{keyword}{static\_cast<}QKeyEvent*\textcolor{keyword}{>}(event);
+00178 
+00179 
+00180             \textcolor{keywordflow}{switch} (keyEvent->key()) \{
+00181 
+00182             \textcolor{keywordflow}{case} Qt::Key\_Shift:
+00183                    emit \hyperlink{a00008_a9aa2af0c329358fd96f7fb6b7f02bfe1}{edit\_point\_selection}(\textcolor{keyword}{false});
+00184                   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00185                  \textcolor{keywordflow}{break};
+00186 
+00187             \textcolor{keywordflow}{case} Qt::Key\_Clear:
+00188                     emit \hyperlink{a00008_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keyword}{false});
+00189                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00190                      \textcolor{keywordflow}{break};
+00191 
+00192 
+00193             \textcolor{keywordflow}{case} Qt::Key\_Control:
+00194                     emit \hyperlink{a00008_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keyword}{false});
+00195                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00196                      \textcolor{keywordflow}{break};
+00197 
+00198             \textcolor{keywordflow}{case} Qt::Key\_Delete:
+00199 
+00200                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00201                      \textcolor{keywordflow}{break};
+00202             \textcolor{keywordflow}{case} Qt::Key\_Left:
+00203 
+00204             \textcolor{keywordflow}{case} Qt::Key\_Right:
+00205             \textcolor{keywordflow}{case} Qt::Key\_Up:
+00206             \textcolor{keywordflow}{case} Qt::Key\_Down:
+00207                 \textcolor{comment}{// skip processing}
+00208                 \textcolor{keywordflow}{break};
+00209             \textcolor{keywordflow}{case} Qt::Key\_Enter:
+00210 
+00211                  \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00212                 \textcolor{keywordflow}{break};
+00213             \textcolor{keywordflow}{case} Qt::Key\_Return:
+00214 
+00215 
+00216                  \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00217                 \textcolor{keywordflow}{break};
+00218 
+00219             \textcolor{keywordflow}{default}:
+00220 
+00221 
+00222                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00223 
+00224                \textcolor{keywordflow}{break};
+00225 
+00226             \}
+00227 
+00228         \} \textcolor{keywordflow}{else} \{
+00229             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00230         \}
+00231 
+00232         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00233 \}
+00234 
+00235 
+00236 
+00237 \textcolor{keywordtype}{void} emu\_data\_editor::gui\_init(\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} points)
+00238 \{
+00239           \hyperlink{a00008_ab093b86d07b4eb96c36878089a7d97df}{edit\_point\_sets}.clear();
+00240 
+00241           \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < points; ++var) \{
+00242 
+00243            \hyperlink{a00004_d1/db7/a00157}{emu\_data\_edit\_point\_t} edit\_point;
+00244 
+00245            edit\_point.\hyperlink{a00004_aaf35f240371007fbceb3387f76ad53a7}{val} = 0;
+00246 
+00247            edit\_point.\hyperlink{a00004_ad927f72d9047284b972a0aaa5aa94b93}{gui}.slider  = \textcolor{keyword}{new} \hyperlink{a00077}{Slider}(var,\textcolor{keyword}{this});
+00248            edit\_point.\hyperlink{a00004_ad927f72d9047284b972a0aaa5aa94b93}{gui}.slider->setMaximum(\hyperlink{a00086_a00978ca9e8220475258dcbbbb7d29129}{ADC\_RESOLUTION});
+00249 
+00250            edit\_point.\hyperlink{a00004_ad927f72d9047284b972a0aaa5aa94b93}{gui}.vLayout = \textcolor{keyword}{new} QVBoxLayout();
+00251            edit\_point.\hyperlink{a00004_ad927f72d9047284b972a0aaa5aa94b93}{gui}.vLayout->addWidget(edit\_point.\hyperlink{a00004_ad927f72d9047284b972a0aaa5aa94b93}{gui}.slider);
+00252 
+00253 
+00254 
+00255            edit\_point.\hyperlink{a00004_ad927f72d9047284b972a0aaa5aa94b93}{gui}.vLayout->sizeHint();
+00256 
+00257 
+00258 
+00259            \hyperlink{a00008_ab093b86d07b4eb96c36878089a7d97df}{edit\_point\_sets}.append(edit\_point);
+00260 
+00261            ui->\hyperlink{a00079_ae08b661288ecee049945e4a63d0c0af0}{horizontalLayout\_edit\_points}->addLayout(edit\_point.
+      \hyperlink{a00004_ad927f72d9047284b972a0aaa5aa94b93}{gui}.vLayout);
+00262            ui->\hyperlink{a00079_ae08b661288ecee049945e4a63d0c0af0}{horizontalLayout\_edit\_points}->sizeHint();
+00263 
+00264 
+00265 
+00266 
+00267           \}
+00268 
+00269 
+00270           emit \hyperlink{a00008_a7c1fa0d7d1623b11d4badceb1854010e}{action\_set\_value}(0,\hyperlink{a00090_afd1036bf6329d2ac31913e14c1f56725}{SET\_TYPE\_DEFAULT});
+00271 
+00272           \hyperlink{a00008_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00273 
+00274 
+00275 
+00276 
+00277 
+00278 \}
+00279 
+00280 
+00281 
+00282 
+00283 
+\hypertarget{a00093_source_l00284}{}\hyperlink{a00008_a15cbcf5f0a17281468800f47898f60c1}{00284} \textcolor{keywordtype}{void} \hyperlink{a00008_a15cbcf5f0a17281468800f47898f60c1}{emu\_data\_editor ::update\_curve}()\{
+00285 
+00286      ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->graph(0)->setData(\hyperlink{a00008_a66d07ec51f26cd9b84994548faa336d6}{emu\_data\_xvalue}, 
+      \hyperlink{a00008_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue});
+00287 
+00288      \hyperlink{a00004_a3985266aecb120f269789241c170850c}{Int16} head = 0;
+00289 
+00290      \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00291          \hyperlink{a00008_a8782fc20094d65d56c04869b9692902e}{fft\_inputs}[var] = (float)\hyperlink{a00008_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[head];
+00292          head = (head + 1)%\hyperlink{a00006_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH};
+00293      \}
+00294 
+00295      \hyperlink{a00008_a0d6e12337ef942452edea37827e58cd4}{transformer}.\hyperlink{a00054_a02bee79c9e9f978ed1fb012eda58ed5d}{forwardTransform}(\hyperlink{a00008_a8782fc20094d65d56c04869b9692902e}{fft\_inputs}, 
+      \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result});
+00296 
+00297      \hyperlink{a00008_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude}.clear();
+00298 
+00299 
+00300      \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} = 0;
+00301      \hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} = 0;
+00302 
+00303      \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00304 
+00305          \hyperlink{a00008_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude}.append((\textcolor{keywordtype}{float})
+      \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var]);
+00306 
+00307 
+00308          \textcolor{keywordflow}{if}(\hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var] > \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max})
+00309              \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} = \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var];
+00310          \textcolor{keywordflow}{if}(\hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var] < \hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min})
+00311              \hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} = \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var];
+00312      \}
+00313 
+00314 \textcolor{preprocessor}{#if(0)}
+00315 
+00316      \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00317           qDebug()<<\textcolor{stringliteral}{"A("}<<var+1<<\textcolor{stringliteral}{") = "}<< \hyperlink{a00008_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var]<<\textcolor{stringliteral}{";"};
+00318      \}
+00319 
+00320      \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00094_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00321           qDebug()<<\textcolor{stringliteral}{"B("}<<var+1<<\textcolor{stringliteral}{") = "}<< \hyperlink{a00008_a8782fc20094d65d56c04869b9692902e}{fft\_inputs}[var];
+00322      \}
+00323 \textcolor{preprocessor}{#endif}
+00324 
+00325 
+00326 
+00327      ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->graph(0)->setData(\hyperlink{a00008_a62129d59e218ab857cd50cb202205129}{emu\_data\_freq\_value},
+      \hyperlink{a00008_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude});
+00328      ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setRange(\hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} - 2,
+00329                                          \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} + 2);
+00330 
+00331 
+00332 
+00333      ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00334      ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->replot();
+00335      ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->replot();
+00336 
+00337 
+00338 \}
+00339 
+\hypertarget{a00093_source_l00340}{}\hyperlink{a00008_a86f994dedec393af88b5d1a37b1e30b5}{00340} \textcolor{keywordtype}{void} \hyperlink{a00008_a86f994dedec393af88b5d1a37b1e30b5}{emu\_data\_editor::selection}(\textcolor{keywordtype}{bool} clear)
+00341 \{
+00342 
+00343     emit \hyperlink{a00008_a9476424a86a6ed4f84c64d0ac77143cc}{set\_status}(clear?2\textcolor{comment}{/*deselect action*/}:1\textcolor{comment}{/*select action*/});
+00344 
+00345 \}
+00346 
+00347 \textcolor{keywordtype}{void} emu\_data\_editor ::plot\_curve(QVector<double> xvalue,QVector<double> yvalue)
+00348 \{
+00349 
+00350   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->addGraph();
+00351   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00352 
+00353   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->graph(0)->setPen(QPen(Qt::green));
+00354   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->graph(0)->setData(xvalue, yvalue);
+00355 
+00356   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setLabel(\textcolor{stringliteral}{"t = (n x 100us)"});
+00357   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setLabel(\textcolor{stringliteral}{"A(t)(V)"});
+00358 
+00359   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setLabelColor(QColor(\textcolor{stringliteral}{"black"}));
+00360   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setLabelColor(QColor(\textcolor{stringliteral}{"black"}));
+00361 
+00362   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setGridPen(QPen(Qt::gray));
+00363   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setGridPen(QPen(Qt::gray));
+00364   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis2->setGridPen(QPen(Qt::gray));
+00365   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis2->setGridPen(QPen(Qt::gray));
+00366 
+00367   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setTickPen(QPen(Qt::gray));
+00368   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setTickPen(QPen(Qt::gray));
+00369 
+00370   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setBasePen(QPen(Qt::gray));
+00371   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setBasePen(QPen(Qt::gray));
+00372 
+00373   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00374   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00375 
+00376   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setTicks(\textcolor{keyword}{true});
+00377 
+00378 
+00379 
+00380   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setSubGrid(\textcolor{keyword}{true});
+00381   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setTickStep(1.0);
+00382 
+00383   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setSubGridPen(QPen(Qt::gray));
+00384   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setSubGridPen(QPen(Qt::gray));
+00385 
+00386   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis2->setVisible(\textcolor{keyword}{true});
+00387   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis2->setTickLabels(\textcolor{keyword}{false});
+00388   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis2->setVisible(\textcolor{keyword}{true});
+00389   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis2->setTickLabels(\textcolor{keyword}{false});
+00390   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis2->setBasePen(QPen(Qt::gray));
+00391   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis2->setBasePen(QPen(Qt::gray));
+00392 
+00393    ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setGrid(\textcolor{keyword}{true});
+00394    ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setGrid(\textcolor{keyword}{true});
+00395 
+00396 
+00397   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->xAxis->setRange(0, \hyperlink{a00006_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH});
+00398   \textcolor{keywordflow}{if}(this->\hyperlink{a00008_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} == \hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00399   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setRange(-1.65, 1.65);
+00400   \textcolor{keywordflow}{else}
+00401   ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->yAxis->setRange(0, 3.34);
+00402 \}
+00403 
+00404 
+00405 
+00406 \textcolor{keywordtype}{void} emu\_data\_editor ::plot\_curve\_fft(QVector<double> xvalue,QVector<double> yvalue)
+00407 \{
+00408 
+00409 
+00410   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->addGraph();
+00411   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00412 
+00413   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->graph(0)->setPen(QPen(Qt::green));
+00414   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->graph(0)->setData(xvalue, yvalue);
+00415 
+00416   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setLabel(\textcolor{stringliteral}{"f "});
+00417   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setLabel(\textcolor{stringliteral}{"A(f)(V)"});
+00418 
+00419   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setLabelColor(QColor(\textcolor{stringliteral}{"black"}));
+00420   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setLabelColor(QColor(\textcolor{stringliteral}{"black"}));
+00421 
+00422   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setGridPen(QPen(Qt::gray));
+00423   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setGridPen(QPen(Qt::gray));
+00424   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis2->setGridPen(QPen(Qt::gray));
+00425   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis2->setGridPen(QPen(Qt::gray));
+00426 
+00427   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setTickPen(QPen(Qt::gray));
+00428   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setTickPen(QPen(Qt::gray));
+00429 
+00430   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setBasePen(QPen(Qt::gray));
+00431   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setBasePen(QPen(Qt::gray));
+00432 
+00433   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00434   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00435 
+00436   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setTicks(\textcolor{keyword}{true});
+00437 
+00438 
+00439 
+00440   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setSubGrid(\textcolor{keyword}{true});
+00441   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setTickStep(1
+00442                                          );
+00443 
+00444   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setSubGridPen(QPen(Qt::gray));
+00445   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setSubGridPen(QPen(Qt::gray));
+00446 
+00447   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis2->setVisible(\textcolor{keyword}{true});
+00448   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis2->setTickLabels(\textcolor{keyword}{false});
+00449   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis2->setVisible(\textcolor{keyword}{true});
+00450   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis2->setTickLabels(\textcolor{keyword}{false});
+00451   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis2->setBasePen(QPen(Qt::gray));
+00452   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis2->setBasePen(QPen(Qt::gray));
+00453 
+00454    ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setGrid(\textcolor{keyword}{true});
+00455    ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setGrid(\textcolor{keyword}{true});
+00456 
+00457 
+00458 
+00459   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->xAxis->setRange(0,
+00460                                        2000);
+00461   ui->\hyperlink{a00079_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setRange(\hyperlink{a00008_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} - 2,
+00462                                       \hyperlink{a00008_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} + 2);
+00463 \}
+00464 
+00465 
+00466 
+00467 \textcolor{keywordtype}{void} emu\_data\_editor ::saveEventRecored(QString FileName)\{
+00468 
+00469     QString EventRecordFileName;
+00470 
+00471             QDir default\_dir;
+00472 
+00473             \textcolor{keywordflow}{if}(!default\_dir.exists(default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default})))
+00474                 default\_dir.mkdir(default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default}));
+00475 
+00476             EventRecordFileName = default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default})+ 
+      \hyperlink{a00110_a8d4ad2cd60e024f6e0f37dbac40768a1}{EVENT\_RECORD\_FILE};
+00477 
+00478 
+00479        QFile outputFile(EventRecordFileName);
+00480 
+00481        \textcolor{keywordflow}{if}(outputFile.exists())
+00482        outputFile.open(QIODevice::WriteOnly | QIODevice::Append);
+00483        \textcolor{keywordflow}{else}
+00484        outputFile.open(QIODevice::WriteOnly);
+00485 
+00486        \textcolor{keywordflow}{if}(!outputFile.isOpen())\{
+00487            ((\hyperlink{a00017}{MainWindow} *)parent())->msg(1,\textcolor{stringliteral}{"Error, unable to open "} + EventRecordFileName + \textcolor{stringliteral}{" "});
+00488 
+00489             \textcolor{keywordflow}{return};
+00490        \}
+00491 
+00492        QTextStream outStream(&outputFile);
+00493 
+00494        outStream << FileName<<\textcolor{stringliteral}{"\(\backslash\)n"};
+00495        outputFile.close();
+00496 \}
+00497 
+00498 
+00499 
+00500 
+00501 
+00502 \textcolor{keywordtype}{void} emu\_data\_editor::action\_set\_value\_triggered(\textcolor{keywordtype}{double} val, \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} type)
+00503 \{
+00504 
+00505     \textcolor{keywordflow}{if}(type == \hyperlink{a00090_ac1c2065e42f20c51064c84c0db23e9f5}{SET\_TYPE\_SIGNAL\_FREQ})
+00506         \hyperlink{a00008_a67039999d520fc483fab521fae5ddde4}{signal\_freq} = val;
+00507     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(type == \hyperlink{a00090_ada31d976cd5e22a05ba8ff5e80c16d06}{SET\_TYPE\_PHASE\_SHIFT})
+00508         \hyperlink{a00008_af08de88fdfe283086e3cca97a2965678}{signal\_phase} = val/M\_PI;
+00509     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(type == \hyperlink{a00090_a32500d8cf5fb09339cc8f97d52206b41}{SET\_TYPE\_SIGNAL\_AMP})
+00510         \hyperlink{a00008_a73dabe63bd74afe2776e8136211dc36e}{signal\_amplitude} = val;
+00511 
+00512     emit \hyperlink{a00008_a7c1fa0d7d1623b11d4badceb1854010e}{action\_set\_value}(val,type);
+00513     \hyperlink{a00008_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00514 \}
+00515 
+00516 
+00517 
+00518 \textcolor{keywordtype}{void} emu\_data\_editor::on\_actionWinEditor\_toggled(\textcolor{keywordtype}{bool} arg1)
+00519 \{
+00520      ui->\hyperlink{a00079_aa5d56420958ab4fd1239e29714d75e18}{actionWinEditor}->setChecked(arg1);
+00521 
+00522      \textcolor{keywordflow}{if}(arg1)
+00523          ui->\hyperlink{a00079_a0edc87fb115fede171c0da1f99000874}{dockWidgetCurve\_plot}->show();
+00524      \textcolor{keywordflow}{else}
+00525          ui->\hyperlink{a00079_a0edc87fb115fede171c0da1f99000874}{dockWidgetCurve\_plot}->close();
+00526 
+00527 \}
+00528 
+00529 \textcolor{keywordtype}{void} emu\_data\_editor::on\_actionWinPlot\_toggled(\textcolor{keywordtype}{bool} arg1)
+00530 \{
+00531      ui->\hyperlink{a00079_a0aeb289d8df9db6f4329e9000e44d511}{actionWinPlot}->setChecked(arg1);
+00532 
+00533      \textcolor{keywordflow}{if}(arg1)
+00534          ui->\hyperlink{a00079_a83360bdd61e994537715aa7c38e4e5b6}{dockWidgetCurve\_edit}->show();
+00535      \textcolor{keywordflow}{else}
+00536          ui->\hyperlink{a00079_a83360bdd61e994537715aa7c38e4e5b6}{dockWidgetCurve\_edit}->close();
+00537 \}
+00538 
+00539 \textcolor{keywordtype}{void} emu\_data\_editor::on\_actionOpen\_triggered()
+00540 \{
+00541     QDir   default\_dir;
+00542     QString SelectedFilesName;
+00543 
+00544 
+00545     \textcolor{keywordflow}{if}(default\_dir.exists(default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default})))
+00546         default\_dir.mkdir(default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default}));
+00547 
+00548 
+00549 
+00550 
+00551     SelectedFilesName = QFileDialog::getOpenFileName(
+00552         \textcolor{keyword}{this},
+00553         tr(\textcolor{stringliteral}{"Open File"}),
+00554         \textcolor{stringliteral}{""},
+00555         tr(\textcolor{stringliteral}{"Comma Separated Values (*.csv)"}));
+00556 
+00557 
+00558      loadFile(SelectedFilesName);
+00559 
+00560 \}
+00561 
+00562 \textcolor{keywordtype}{void} emu\_data\_editor::loadFile(QString file\_name)\{
+00563 
+00564     \textcolor{keywordtype}{bool}   sucess = \textcolor{keyword}{true};
+00565 
+00566     \textcolor{keywordflow}{if} (file\_name.isEmpty()) \textcolor{keywordflow}{return};
+00567 
+00568         QFile file(file\_name);
+00569 
+00570         \textcolor{keywordflow}{if} (!file.open(QIODevice::ReadOnly)) \{
+00571             QMessageBox::information(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Unable to open file"}), file.errorString());
+00572             \textcolor{keywordflow}{return};
+00573         \}
+00574 
+00575 
+00576 QTextStream stream(&file);
+00577 \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} arg\_cnt;
+00578 \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} time;
+00579 
+00580 
+00581        QString line = stream.readLine();
+00582 
+00583 
+00584        \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii=0;ii<(\hyperlink{a00006_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}/2);ii++)\{
+00585 
+00586              line = stream.readLine();
+00587 
+00588              arg\_cnt = sscanf(line.toLatin1(),\textcolor{stringliteral}{"%u%*1c%u"},&time,&(\hyperlink{a00008_ab093b86d07b4eb96c36878089a7d97df}{edit\_point\_sets}[ii].val)
+00589                               );
+00590 
+00591 
+00592              \textcolor{keywordflow}{if}(arg\_cnt!=2 ||time!= ii)\{
+00593 
+00594                  QMessageBox::StandardButton reply;
+00595                  reply = QMessageBox::question(\textcolor{keyword}{this}, \textcolor{stringliteral}{"Error Report"},
+00596                                                \textcolor{stringliteral}{"This file is corrupted, do you want to open anyway"},
+00597                                                QMessageBox::Yes|QMessageBox::No);
+00598                  \textcolor{keywordflow}{if} (reply == QMessageBox::No)
+00599                   sucess = \textcolor{keyword}{false};
+00600                   \textcolor{keywordflow}{break};
+00601              \}\textcolor{keywordflow}{else} \{
+00602 
+00603                   \hyperlink{a00008_ab093b86d07b4eb96c36878089a7d97df}{edit\_point\_sets}[ii].gui.slider->setValue(
+      \hyperlink{a00008_ab093b86d07b4eb96c36878089a7d97df}{edit\_point\_sets}[ii].val);
+00604              \}
+00605              \}
+00606 
+00607        stream.flush();
+00608        file.close();
+00609 
+00610 
+00611 
+00612 
+00613 
+00614        emit \hyperlink{a00008_ad5f20fdbb4731185020ff4e90cd1ead2}{update\_value}();
+00615        \hyperlink{a00008_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00616 
+00617 
+00618 \}
+00619 
+00620 
+00621 \textcolor{keywordtype}{void} emu\_data\_editor::on\_actionCSV\_triggered()
+00622 \{
+00623 
+00624     QDir default\_dir;
+00625 
+00626 
+00627 
+00628     \textcolor{keywordflow}{if}(default\_dir.exists(default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default})))
+00629         default\_dir.mkdir(default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default}));
+00630 
+00631     QString DefaultFileName =  default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default})+(
+      \hyperlink{a00008_a2abdde44f37258778dcc571e8cc7ed1a}{win\_title}
+00632                                                                             +\textcolor{stringliteral}{"\_File\_Saved\_At\_"} +
+00633                                QDateTime::currentDateTime().toString(Qt::SystemLocaleLongDate)
+00634                                );
+00635 
+00636 
+00637     DefaultFileName.replace(\textcolor{charliteral}{':'},\textcolor{stringliteral}{"-"}).replace(\textcolor{charliteral}{' '},\textcolor{stringliteral}{"\_"});
+00638 
+00639 
+00640     QString SelectedFilesName = QFileDialog::getSaveFileName(
+00641         \textcolor{keyword}{this},
+00642         tr(\textcolor{stringliteral}{"Save As"}),
+00643         DefaultFileName,
+00644         tr(\textcolor{stringliteral}{"Comma Separated Values (*.csv)"}));
+00645 
+00646 
+00647     \textcolor{keywordflow}{if}(SelectedFilesName == NULL)
+00648         \textcolor{keywordflow}{return};
+00649 
+00650      fileName = SelectedFilesName;
+00651     \textcolor{keywordflow}{if} (fileName.isEmpty()) \textcolor{keywordflow}{return};
+00652     \textcolor{keywordflow}{else} \{
+00653         QFile file(fileName);
+00654         \textcolor{keywordflow}{if} (!file.open(QIODevice::WriteOnly)) \{
+00655             QMessageBox::information(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Unable to open file"}), file.errorString());
+00656             \textcolor{keywordflow}{return};
+00657         \}
+00658 
+00659         QTextStream stream(&file);
+00660 
+00661         stream << \textcolor{stringliteral}{"TIME, DATA\(\backslash\)n"};
+00662 
+00663         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii=0;ii < (\hyperlink{a00006_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}/2)\textcolor{comment}{/*data edit points*/};ii++)
+00664            stream << QString::number(ii) +\textcolor{stringliteral}{","}+QString::number(\hyperlink{a00008_ab093b86d07b4eb96c36878089a7d97df}{edit\_point\_sets}[ii].gui.slider
+      ->value())+\textcolor{stringliteral}{"\(\backslash\)n"};
+00665 
+00666 
+00667 
+00668         file.close();
+00669 
+00670 
+00671 
+00672         \textcolor{keywordflow}{try} \{
+00673             QDesktopServices::openUrl(QUrl(\textcolor{stringliteral}{"file:"}+ fileName));
+00674 
+00675         \} \textcolor{keywordflow}{catch} (...) \{
+00676 
+00677         \}
+00678     \}
+00679 
+00680 
+00681 \}
+00682 
+00683 
+00684 
+00685 \textcolor{keywordtype}{void} emu\_data\_editor::on\_btn\_save\_clicked()
+00686 \{
+00687 
+00688     \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} data[\hyperlink{a00006_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}];
+00689     \textcolor{keywordtype}{double} adjust = windowTitle().contains(\textcolor{stringliteral}{"MAGNETIC FIELD"})?1.65:0;
+00690 
+00691 
+00692     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00008_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}.length(); ++var) \{
+00693          data[var]=((\hyperlink{a00008_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[var]+adjust)/
+      \hyperlink{a00086_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR});
+00694     \}
+00695 
+00696     ((\hyperlink{a00017}{MainWindow} *)this->parent())->set\_emu\_data(\textcolor{keyword}{this},data,\textcolor{keyword}{sizeof}(data));
+00697 
+00698 \}
+00699 
+00700 \textcolor{keywordtype}{void} emu\_data\_editor::on\_actionMakeImg\_triggered()
+00701 \{
+00702 
+00703     QDir default\_dir;
+00704 
+00705     \textcolor{keywordflow}{if}(!default\_dir.exists(default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default})))
+00706         default\_dir.mkdir(default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default}));
+00707 
+00708     QString DefaultFileName = this->windowTitle();
+00709 
+00710 
+00711 
+00712     DefaultFileName.replace(\textcolor{charliteral}{':'},\textcolor{stringliteral}{"-"}).replace(\textcolor{charliteral}{' '},\textcolor{stringliteral}{"\_"}).replace(\textcolor{charliteral}{'.'},\textcolor{stringliteral}{"\_"});
+00713 
+00714     DefaultFileName = default\_dir.toNativeSeparators(\hyperlink{a00008_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default})+ DefaultFileName;
+00715 
+00716     QString SelectedFilesName = QFileDialog::getSaveFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save File"}),
+00717                                                         DefaultFileName,
+00718                                                          tr(\textcolor{stringliteral}{"Images (*.png *.jpg *.bmp)"}));
+00719 
+00720     \textcolor{keywordflow}{if}(SelectedFilesName == NULL)
+00721         \textcolor{keywordflow}{return};
+00722 
+00723     ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->graph(0)->setPen(QPen(Qt::green));
+00724     \textcolor{comment}{/*}
+00725 \textcolor{comment}{    ui->plot\_curve->graph(1)->setPen(QPen(Qt::red));}
+00726 \textcolor{comment}{    ui->plot\_curve->graph(1)->setPen(QPen(Qt::DotLine));}
+00727 \textcolor{comment}{    ui->plot\_curve->graph(1)->setBrush(QBrush(Qt::gray));}
+00728 \textcolor{comment}{    */}
+00729 
+00730     ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->setColor(QColor(\textcolor{stringliteral}{"white"}));
+00731     ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->replot();
+00732 
+00733 
+00734 
+00735 
+00736     \textcolor{keywordflow}{if}(SelectedFilesName.indexOf(\textcolor{charliteral}{'.'})==-1)
+00737         SelectedFilesName.append(\textcolor{stringliteral}{".jpg"});
+00738 
+00739     \textcolor{keywordflow}{if}((SelectedFilesName.indexOf(\textcolor{charliteral}{'.'})==SelectedFilesName.length()-4))\{
+00740     \textcolor{keywordflow}{if}(SelectedFilesName.endsWith(\textcolor{stringliteral}{".jpg"}))\{
+00741        \textcolor{keywordflow}{if}(
+00742         !ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->saveJpg(SelectedFilesName
+00743                                 ,800,600))
+00744             ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Error: Couldn't save data"});
+00745     \}\textcolor{keywordflow}{else}
+00746 
+00747     \textcolor{keywordflow}{if}(SelectedFilesName.endsWith(\textcolor{stringliteral}{".png"}))\{
+00748            \textcolor{keywordflow}{if}(
+00749             !ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->savePng(SelectedFilesName
+00750                                     ,800,600))
+00751                 ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Error: Couldn't save data"});
+00752 
+00753     \}\textcolor{keywordflow}{else}
+00754 
+00755     \textcolor{keywordflow}{if}(SelectedFilesName.endsWith(\textcolor{stringliteral}{".bmp"}))\{
+00756                   \textcolor{keywordflow}{if}(
+00757                    !ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->saveBmp(SelectedFilesName
+00758                                            ,800,600))
+00759                        ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Error: Couldn't save
+       data"});
+00760 
+00761      \}
+00762 
+00763     \}
+00764      ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->graph(0)->setPen(QPen(Qt::green));
+00765 
+00766      \textcolor{comment}{/*}
+00767 \textcolor{comment}{     ui->plot\_curve->graph(1)->setPen(QPen(Qt::yellow));}
+00768 \textcolor{comment}{     ui->plot\_curve->graph(1)->setBrush(QBrush(Qt::yellow));}
+00769 \textcolor{comment}{     */}
+00770      ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00771      ui->\hyperlink{a00079_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->replot();
+00772 
+00773        \textcolor{keywordflow}{if}(!QDesktopServices::openUrl(QUrl(SelectedFilesName)))
+00774            ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Couldn't open the file"}+
+      SelectedFilesName);
+00775 
+00776 \}
+\end{DoxyCode}

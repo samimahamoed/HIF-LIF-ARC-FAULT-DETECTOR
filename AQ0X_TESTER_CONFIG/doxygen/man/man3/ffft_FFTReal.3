@@ -1,0 +1,268 @@
+.TH "ffft::FFTReal< DT >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::FFTReal< DT > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <FFTReal\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBMAX_BIT_DEPTH\fP = 30 }"
+.br
+.ti -1c
+.RI "typedef DT \fBDataType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFFTReal\fP (long length)"
+.br
+.ti -1c
+.RI "virtual \fB~FFTReal\fP ()"
+.br
+.ti -1c
+.RI "long \fBget_length\fP () const "
+.br
+.ti -1c
+.RI "void \fBdo_fft\fP (\fBDataType\fP f[], const \fBDataType\fP x[]) const "
+.br
+.ti -1c
+.RI "void \fBdo_ifft\fP (const \fBDataType\fP f[], \fBDataType\fP x[]) const "
+.br
+.ti -1c
+.RI "void \fBrescale\fP (\fBDataType\fP x[]) const "
+.br
+.ti -1c
+.RI "\fBDataType\fP * \fBuse_buffer\fP () const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class DT>class ffft::FFTReal< DT >"
+
+.PP
+Definition at line 42 of file FFTReal\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<class DT> typedef DT \fBffft::FFTReal\fP< DT >::\fBDataType\fP"
+
+.PP
+Definition at line 51 of file FFTReal\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "template<class DT> anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMAX_BIT_DEPTH \fP\fP
+.PP
+Definition at line 49 of file FFTReal\&.h\&.
+.PP
+.nf
+49 {           MAX_BIT_DEPTH   = 30    };  // So length can be represented as long int
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class DT > \fBffft::FFTReal\fP< DT >::\fBFFTReal\fP (longlength)\fC [explicit]\fP"
+
+.PP
+Definition at line 90 of file FFTReal\&.hpp\&.
+.PP
+.nf
+91 :  _length (length)
+92 ,   _nbr_bits (FFTReal_get_next_pow2 (length))
+93 ,   _br_lut ()
+94 ,   _trigo_lut ()
+95 ,   _buffer (length)
+96 ,   _trigo_osc ()
+97 {
+98     assert (FFTReal_is_pow2 (length));
+99     assert (_nbr_bits <= MAX_BIT_DEPTH);
+100 
+101     init_br_lut ();
+102     init_trigo_lut ();
+103     init_trigo_osc ();
+104 }
+.fi
+.SS "template<class DT> virtual \fBffft::FFTReal\fP< DT >::~\fBFFTReal\fP ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 54 of file FFTReal\&.h\&.
+.PP
+.nf
+54 {}
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class DT > void \fBffft::FFTReal\fP< DT >::do_fft (\fBDataType\fPf[], const \fBDataType\fPx[]) const"
+
+.PP
+Definition at line 143 of file FFTReal\&.hpp\&.
+.PP
+Referenced by QFourierVariableCalculator::forward()\&.
+.PP
+.nf
+144 {
+145     assert (f != 0);
+146     assert (f != use_buffer ());
+147     assert (x != 0);
+148     assert (x != use_buffer ());
+149     assert (x != f);
+150 
+151     // General case
+152     if (_nbr_bits > 2)
+153     {
+154         compute_fft_general (f, x);
+155     }
+156 
+157     // 4-point FFT
+158     else if (_nbr_bits == 2)
+159     {
+160         f [1] = x [0] - x [2];
+161         f [3] = x [1] - x [3];
+162 
+163         const DataType  b_0 = x [0] + x [2];
+164         const DataType  b_2 = x [1] + x [3];
+165         
+166         f [0] = b_0 + b_2;
+167         f [2] = b_0 - b_2;
+168     }
+169 
+170     // 2-point FFT
+171     else if (_nbr_bits == 1)
+172     {
+173         f [0] = x [0] + x [1];
+174         f [1] = x [0] - x [1];
+175     }
+176 
+177     // 1-point FFT
+178     else
+179     {
+180         f [0] = x [0];
+181     }
+182 }
+.fi
+.SS "template<class DT > void \fBffft::FFTReal\fP< DT >::do_ifft (const \fBDataType\fPf[], \fBDataType\fPx[]) const"
+
+.PP
+Definition at line 204 of file FFTReal\&.hpp\&.
+.PP
+Referenced by QFourierVariableCalculator::inverse()\&.
+.PP
+.nf
+205 {
+206     assert (f != 0);
+207     assert (f != use_buffer ());
+208     assert (x != 0);
+209     assert (x != use_buffer ());
+210     assert (x != f);
+211 
+212     // General case
+213     if (_nbr_bits > 2)
+214     {
+215         compute_ifft_general (f, x);
+216     }
+217 
+218     // 4-point IFFT
+219     else if (_nbr_bits == 2)
+220     {
+221         const DataType  b_0 = f [0] + f [2];
+222         const DataType  b_2 = f [0] - f [2];
+223 
+224         x [0] = b_0 + f [1] * 2;
+225         x [2] = b_0 - f [1] * 2;
+226         x [1] = b_2 + f [3] * 2;
+227         x [3] = b_2 - f [3] * 2;
+228     }
+229 
+230     // 2-point IFFT
+231     else if (_nbr_bits == 1)
+232     {
+233         x [0] = f [0] + f [1];
+234         x [1] = f [0] - f [1];
+235     }
+236 
+237     // 1-point IFFT
+238     else
+239     {
+240         x [0] = f [0];
+241     }
+242 }
+.fi
+.SS "template<class DT > long \fBffft::FFTReal\fP< DT >::get_length () const"
+
+.PP
+Definition at line 119 of file FFTReal\&.hpp\&.
+.PP
+Referenced by QFourierVariableCalculator::setSize()\&.
+.PP
+.nf
+120 {
+121     return (_length);
+122 }
+.fi
+.SS "template<class DT > void \fBffft::FFTReal\fP< DT >::rescale (\fBDataType\fPx[]) const"
+
+.PP
+Definition at line 259 of file FFTReal\&.hpp\&.
+.PP
+Referenced by QFourierVariableCalculator::rescale()\&.
+.PP
+.nf
+260 {
+261     const DataType  mul = DataType (1\&.0 / _length);
+262 
+263     if (_length < 4)
+264     {
+265         long                i = _length - 1;
+266         do
+267         {
+268             x [i] *= mul;
+269             --i;
+270         }
+271         while (i >= 0);
+272     }
+273 
+274     else
+275     {
+276         assert ((_length & 3) == 0);
+277 
+278         // Could be optimized with SIMD instruction sets (needs alignment check)
+279         long                i = _length - 4;
+280         do
+281         {
+282             x [i + 0] *= mul;
+283             x [i + 1] *= mul;
+284             x [i + 2] *= mul;
+285             x [i + 3] *= mul;
+286             i -= 4;
+287         }
+288         while (i >= 0);
+289     }
+290 }
+.fi
+.SS "template<class DT > \fBFFTReal\fP< DT >::\fBDataType\fP * \fBffft::FFTReal\fP< DT >::use_buffer () const"
+
+.PP
+Definition at line 310 of file FFTReal\&.hpp\&.
+.PP
+.nf
+311 {
+312     return (&_buffer [0]);
+313 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

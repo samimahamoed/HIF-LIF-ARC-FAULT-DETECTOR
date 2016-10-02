@@ -1,0 +1,8 @@
+<map id="QCPAxis::setupTickVectors" name="QCPAxis::setupTickVectors">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#a626eef437c874148df1a5ac78506d463" title="QCPAxis::generateAutoTicks" alt="" coords="239,115,431,141"/>
+<area shape="rect" id="node6" href="$d2/dee/a00049.html#afa57c13049b965edb6fd1c00ac56338a" title="Returns the size of the range, i.e. " alt="" coords="513,173,631,200"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#a06320a944d1120732cc0d72fe1306d8b" title="QCPAxis::visibleTickBounds" alt="" coords="241,220,428,247"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#a1385765db2419ee5fb5505a6cf9130fb" title="QCPAxis::baseLog" alt="" coords="505,5,639,32"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#a97d69f021a05126fcb978d0aefea47b8" title="QCPAxis::basePow" alt="" coords="503,56,641,83"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a3c5c045019fcdc0843a3e064eda7478a" title="QCPAxis::calculateAutoSub\lTickCount" alt="" coords="479,107,665,149"/>
+</map>

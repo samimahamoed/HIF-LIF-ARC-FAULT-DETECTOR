@@ -1,0 +1,5 @@
+<map id="light_sen_taskx" name="light_sen_taskx">
+<area shape="rect" id="node2" href="$dd/d32/a00041.html#a05bd338db50fc948cf13db4f250894da" title="checks the number of false positives within supervision (100ms | 5 cycle) time window ..." alt="" coords="174,5,333,47"/>
+<area shape="rect" id="node3" href="$dd/d32/a00041.html#ae68a20cad10654012eae75a1941f53db" title="Supervises light sensors element by measuring sensor respond for different illumination level..." alt="" coords="167,71,340,112"/>
+<area shape="rect" id="node4" href="$d5/d79/a00030.html#ae17b0bb16da3c471bb6074bb4c4d0fee" title="OS notification processing request. " alt="" coords="202,137,305,163"/>
+</map>

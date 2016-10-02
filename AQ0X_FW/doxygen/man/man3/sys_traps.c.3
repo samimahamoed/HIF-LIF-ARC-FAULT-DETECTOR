@@ -1,0 +1,73 @@
+.TH "sys_traps.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+sys_traps.c \- 
+.PP
+System hooks to catch fatal errors\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'p33Exxxx\&.h'\fP
+.br
+\fC#include '\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB__attribute__\fP ((interrupt, no_auto_psv))"
+.br
+.ti -1c
+.RI "void \fB__attribute__\fP ((interrupt, shadow, no_auto_psv))"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+System hooks to catch fatal errors\&. 
+
+Provided by Microchip\&. 
+.PP
+Definition in file \fBsys_traps\&.c\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "void __attribute__ ((interrupt, no_auto_psv))"
+
+.PP
+Definition at line 12 of file sys_traps\&.c\&.
+.PP
+.nf
+30 { INTCON1bits\&.OSCFAIL = 0; //Clear the trap flag
+31 while (1){
+32     
+33 };
+34 }
+.fi
+.SS "void __attribute__ ((interrupt, shadow, no_auto_psv))"
+
+.PP
+Definition at line 99 of file sys_traps\&.c\&.
+.PP
+.nf
+100 {
+101 // Sources of QEI interrupts:
+102 // Position counter overflow or underflow event
+103 // Velocity counter overflow or underflow event
+104 // Position counter initialization process complete
+105 // Position counter greater than or equal compare interrupt 
+106 // Position counter less than or equal compare interrupt
+107 // Index event interrupt
+108 // Home event interrupt
+109 //The QEI Status register (QEIxSTAT) contains the individual interrupt enable bits and the
+110 //corresponding interrupt status bits for each interrupt source\&. A status bit indicates that an
+111 //interrupt request has occurred\&. The module reduces all of the QEI interrupts to a single interrupt
+112 //signal to the interrupt controller module
+113 
+114 IFS3bits\&.QEI1IF = 0; //Clear Flag
+115 }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

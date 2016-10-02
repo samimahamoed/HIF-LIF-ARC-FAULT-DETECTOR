@@ -1,0 +1,18 @@
+.TH "test_transport" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+test_transport \- Test/Emulation module Transport layer 
+Following data format is used:
+.PP
+.IP "\(bu" 2
+minimal request '[0000:00000000:00]' ( [cccc:aaaa:cr] )
+.IP "\(bu" 2
+request can be longer - then the middle part contains more hex characters - e\&.g\&. '[0000:00000000000000000000000:00]'
+.IP "\(bu" 2
+response '{0000:0000:00}' ( {cccc:aaaa:cr} )
+.PP
+.PP
+where 'cccc' is 16 bit hex command, 'aaaa' is a stream of hex characters and 'cr' is 8 bit hex crc\&.
+.PP
+If 'CC' is used as crc value, the command is treated as manually entered command and accepted Crc is counted as XOR sum of first 11 characters 

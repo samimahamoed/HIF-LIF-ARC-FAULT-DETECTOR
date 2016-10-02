@@ -1,0 +1,800 @@
+.TH "QCPItemTracer" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemTracer \- 
+.PP
+Item that sticks to \fBQCPGraph\fP data points\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractItem\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTracerStyle\fP { \fBtsNone\fP, \fBtsPlus\fP, \fBtsCrosshair\fP, \fBtsCircle\fP, \fBtsSquare\fP }"
+.br
+.RI "\fIThe different visual appearances a tracer item can have\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQ_ENUMS\fP (\fBTracerStyle\fP) \fBQCPItemTracer\fP(\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~QCPItemTracer\fP ()"
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBbrush\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBselectedBrush\fP () const "
+.br
+.ti -1c
+.RI "double \fBsize\fP () const "
+.br
+.ti -1c
+.RI "\fBTracerStyle\fP \fBstyle\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPGraph\fP * \fBgraph\fP () const "
+.br
+.ti -1c
+.RI "double \fBgraphKey\fP () const "
+.br
+.ti -1c
+.RI "bool \fBinterpolating\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the line of the tracer\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the line of the tracer when selected\&. \fP"
+.ti -1c
+.RI "void \fBsetBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fISets the brush that will be used to draw any fills of the tracer\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedBrush\fP (const QBrush &\fBbrush\fP)"
+.br
+.RI "\fISets the brush that will be used to draw any fills of the tracer, when selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSize\fP (double \fBsize\fP)"
+.br
+.RI "\fISets the size of the tracer in pixels, if the style supports setting a size (e\&.g\&. \fP"
+.ti -1c
+.RI "void \fBsetStyle\fP (\fBTracerStyle\fP \fBstyle\fP)"
+.br
+.RI "\fISets the style/visual appearance of the tracer\&. \fP"
+.ti -1c
+.RI "void \fBsetGraph\fP (\fBQCPGraph\fP *\fBgraph\fP)"
+.br
+.RI "\fISets the \fBQCPGraph\fP this tracer sticks to\&. \fP"
+.ti -1c
+.RI "void \fBsetGraphKey\fP (double \fBkey\fP)"
+.br
+.RI "\fISets the key of the graph's data point the tracer will be positioned at\&. \fP"
+.ti -1c
+.RI "void \fBsetInterpolating\fP (bool enabled)"
+.br
+.RI "\fISets whether the value of the graph's data points shall be interpolated, when positioning the tracer\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits an item or not\&. \fP"
+.ti -1c
+.RI "void \fBupdatePosition\fP ()"
+.br
+.RI "\fIIf the tracer is connected with a graph (\fBsetGraph\fP), this function updates the tracer's \fIposition\fP to reside on the graph data, depending on the configured key (\fBsetGraphKey\fP)\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBposition\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "QPen \fBmainPen\fP () const "
+.br
+.ti -1c
+.RI "QBrush \fBmainBrush\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedPen\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmBrush\fP"
+.br
+.ti -1c
+.RI "QBrush \fBmSelectedBrush\fP"
+.br
+.ti -1c
+.RI "double \fBmSize\fP"
+.br
+.ti -1c
+.RI "\fBTracerStyle\fP \fBmStyle\fP"
+.br
+.ti -1c
+.RI "\fBQCPGraph\fP * \fBmGraph\fP"
+.br
+.ti -1c
+.RI "double \fBmGraphKey\fP"
+.br
+.ti -1c
+.RI "bool \fBmInterpolating\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Item that sticks to \fBQCPGraph\fP data points\&. 
+
+Tracer example\&. Blue dotted circles are anchors, solid blue discs are positions\&. The tracer can be connected with a \fBQCPGraph\fP via \fBsetGraph\fP\&. Then it will automatically adopt the coordinate axes of the graph and update its \fIposition\fP to be on the graph's data\&. This means the key stays controllable via \fBsetGraphKey\fP, but the value will follow the graph data\&. If a \fBQCPGraph\fP is connected, note that setting the coordinates directly via \fIposition\fP will have no effect, i\&.e\&. be overriden in the next redraw (this is when the coodinate update happens)\&.
+.PP
+If the specified key in \fBsetGraphKey\fP is outside the key bounds of the graph, the tracer will stay at the respective end of the graph\&.
+.PP
+With \fBsetInterpolating\fP you may specify whether the tracer may only stay exactly on data points or whether it interpolates data points linearly, if given a key that lies between two data points of the graph\&.
+.PP
+The tracer has different visual styles, see \fBsetStyle\fP\&. It is also possible to make the tracer have no own visual appearance (set the style to \fBtsNone\fP), and just connect other item positions to the tracer \fIposition\fP (used as an anchor) via \fBQCPItemPosition::setParentAnchor\fP\&.
+.PP
+\fBNote:\fP
+.RS 4
+The tracer position is only automatically updated upon redraws\&. This means when, for example, the data of the graph changes and you immediately afterwards (without a redraw) read the \fIposition\fP coordinates of the tracer, they will not reflect the updated data of the graph\&. In this case you should call \fBupdatePosition\fP manually, prior to reading the tracer coordinates\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1264 of file qcustomplot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQCPItemTracer::TracerStyle\fP"
+
+.PP
+The different visual appearances a tracer item can have\&. Some styles size may be controlled with \fBsetSize\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetStyle\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fItsNone \fP\fP
+The tracer is not visible\&. 
+.TP
+\fB\fItsPlus \fP\fP
+A plus shaped crosshair with limited size\&. 
+.TP
+\fB\fItsCrosshair \fP\fP
+A plus shaped crosshair which spans the complete axis rect\&. 
+.TP
+\fB\fItsCircle \fP\fP
+A circle\&. 
+.TP
+\fB\fItsSquare \fP\fP
+A square\&. 
+.PP
+Definition at line 1273 of file qcustomplot\&.h\&.
+.PP
+.nf
+1273                    { tsNone        
+1274                      ,tsPlus       
+1275                      ,tsCrosshair  
+1276                      ,tsCircle     
+1277                      ,tsSquare     
+1278                    };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemTracer::~QCPItemTracer ()\fC [virtual]\fP"
+
+.PP
+Definition at line 14724 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+14725 {
+14726 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "QBrush QCPItemTracer::brush () const\fC [inline]\fP"
+
+.PP
+Definition at line 1287 of file qcustomplot\&.h\&.
+.PP
+Referenced by setBrush(), and setSelectedBrush()\&.
+.PP
+.nf
+1287 { return mBrush; }
+.fi
+.SS "void QCPItemTracer::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this item with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible items\&.
+.PP
+The cliprect of the provided painter is set to the rect returned by \fBclipRect\fP before this function is called\&. For items this depends on the clipping settings defined by \fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 14904 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::clipRect(), QCPPainter::drawLine(), mainBrush(), mainPen(), mSize, mStyle, QCPItemPosition::pixelPoint(), position, QCPPainter::setPen(), tsCircle, tsCrosshair, tsNone, tsPlus, tsSquare, and updatePosition()\&.
+.PP
+.nf
+14905 {
+14906   updatePosition();
+14907   if (mStyle == tsNone)
+14908     return;
+14909 
+14910   painter->setPen(mainPen());
+14911   painter->setBrush(mainBrush());
+14912   QPointF center(position->pixelPoint());
+14913   double w = mSize/2\&.0;
+14914   QRect clip = clipRect();
+14915   switch (mStyle)
+14916   {
+14917     case tsNone: return;
+14918     case tsPlus:
+14919     {
+14920       if (clip\&.intersects(QRectF(center-QPointF(w, w), center+QPointF(w, w))\&.toRect()))
+14921       {
+14922         painter->drawLine(QLineF(center+QPointF(-w, 0), center+QPointF(w, 0)));
+14923         painter->drawLine(QLineF(center+QPointF(0, -w), center+QPointF(0, w)));
+14924       }
+14925       break;
+14926     }
+14927     case tsCrosshair:
+14928     {
+14929       if (center\&.y() > clip\&.top() && center\&.y() < clip\&.bottom())
+14930         painter->drawLine(QLineF(clip\&.left(), center\&.y(), clip\&.right(), center\&.y()));
+14931       if (center\&.x() > clip\&.left() && center\&.x() < clip\&.right())
+14932         painter->drawLine(QLineF(center\&.x(), clip\&.top(), center\&.x(), clip\&.bottom()));
+14933       break;
+14934     }
+14935     case tsCircle:
+14936     {
+14937       if (clip\&.intersects(QRectF(center-QPointF(w, w), center+QPointF(w, w))\&.toRect()))
+14938         painter->drawEllipse(center, w, w);
+14939       break;
+14940     }
+14941     case tsSquare:
+14942     {
+14943       if (clip\&.intersects(QRectF(center-QPointF(w, w), center+QPointF(w, w))\&.toRect()))
+14944         painter->drawRect(QRectF(center-QPointF(w, w), center+QPointF(w, w)));
+14945       break;
+14946     }
+14947   }
+14948 }
+.fi
+.SS "\fBQCPGraph\fP* QCPItemTracer::graph () const\fC [inline]\fP"
+
+.PP
+Definition at line 1291 of file qcustomplot\&.h\&.
+.PP
+Referenced by setGraph()\&.
+.PP
+.nf
+1291 { return mGraph; }
+.fi
+.SS "double QCPItemTracer::graphKey () const\fC [inline]\fP"
+
+.PP
+Definition at line 1292 of file qcustomplot\&.h\&.
+.PP
+.nf
+1292 { return mGraphKey; }
+.fi
+.SS "bool QCPItemTracer::interpolating () const\fC [inline]\fP"
+
+.PP
+Definition at line 1293 of file qcustomplot\&.h\&.
+.PP
+.nf
+1293 { return mInterpolating; }
+.fi
+.SS "QBrush QCPItemTracer::mainBrush () const\fC [protected]\fP"
+Returns the brush that should be used for drawing fills of the item\&. Returns mBrush when the item is not selected and mSelectedBrush when it is\&. 
+.PP
+Definition at line 15024 of file qcustomplot\&.cpp\&.
+.PP
+References mBrush, QCPAbstractItem::mSelected, and mSelectedBrush\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+15025 {
+15026   return mSelected ? mSelectedBrush : mBrush;
+15027 }
+.fi
+.SS "QPen QCPItemTracer::mainPen () const\fC [protected]\fP"
+Returns the pen that should be used for drawing lines\&. Returns mPen when the item is not selected and mSelectedPen when it is\&. 
+.PP
+Definition at line 15014 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, QCPAbstractItem::mSelected, and mSelectedPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+15015 {
+15016   return mSelected ? mSelectedPen : mPen;
+15017 }
+.fi
+.SS "QPen QCPItemTracer::pen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1285 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by setPen(), and setSelectedPen()\&.
+.PP
+.nf
+1285 { return mPen; }
+.fi
+.SS "QCPItemTracer::Q_ENUMS (\fBTracerStyle\fP)"
+
+.SS "QBrush QCPItemTracer::selectedBrush () const\fC [inline]\fP"
+
+.PP
+Definition at line 1288 of file qcustomplot\&.h\&.
+.PP
+.nf
+1288 { return mSelectedBrush; }
+.fi
+.SS "QPen QCPItemTracer::selectedPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 1286 of file qcustomplot\&.h\&.
+.PP
+.nf
+1286 { return mSelectedPen; }
+.fi
+.SS "double QCPItemTracer::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits an item or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the item\&. If the item is either invisible or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the item is represented not by single lines but by an area like \fBQCPItemRect\fP or \fBQCPItemText\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 14847 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::clipRect(), QCPAbstractItem::distSqrToLine(), mBrush, QCPLayerable::mParentPlot, mSize, mStyle, QCPLayerable::mVisible, QCPItemPosition::pixelPoint(), position, QCPAbstractItem::rectSelectTest(), tsCircle, tsCrosshair, tsNone, tsPlus, and tsSquare\&.
+.PP
+.nf
+14848 {
+14849   if (!mVisible || mStyle == tsNone)
+14850     return -1;
+14851 
+14852   QPointF center(position->pixelPoint());
+14853   double w = mSize/2\&.0;
+14854   QRect clip = clipRect();
+14855   switch (mStyle)
+14856   {
+14857     case tsNone: return -1;
+14858     case tsPlus:
+14859     {
+14860       if (clipRect()\&.intersects(QRectF(center-QPointF(w, w), center+QPointF(w, w))\&.toRect()))
+14861         return qSqrt(qMin(distSqrToLine(center+QPointF(-w, 0), center+QPointF(w, 0), pos),
+14862                           distSqrToLine(center+QPointF(0, -w), center+QPointF(0, w), pos)));
+14863       break;
+14864     }
+14865     case tsCrosshair:
+14866     {
+14867       return qSqrt(qMin(distSqrToLine(QPointF(clip\&.left(), center\&.y()), QPointF(clip\&.right(), center\&.y()), pos),
+14868                         distSqrToLine(QPointF(center\&.x(), clip\&.top()), QPointF(center\&.x(), clip\&.bottom()), pos)));
+14869       break;
+14870     }
+14871     case tsCircle:
+14872     {
+14873       if (clip\&.intersects(QRectF(center-QPointF(w, w), center+QPointF(w, w))\&.toRect()))
+14874       {
+14875         // distance to border:
+14876         double centerDist = QVector2D(center-pos)\&.length();
+14877         double circleLine = w;
+14878         double result = qAbs(centerDist-circleLine);
+14879         // filled ellipse, allow click inside to count as hit:
+14880         if (result > mParentPlot->selectionTolerance()*0\&.99 && mBrush\&.style() != Qt::NoBrush && mBrush\&.color()\&.alpha() != 0)
+14881         {
+14882           if (centerDist <= circleLine)
+14883             result = mParentPlot->selectionTolerance()*0\&.99;
+14884         }
+14885         return result;
+14886       }
+14887       break;
+14888     }
+14889     case tsSquare:
+14890     {
+14891       if (clip\&.intersects(QRectF(center-QPointF(w, w), center+QPointF(w, w))\&.toRect()))
+14892       {
+14893         QRectF rect = QRectF(center-QPointF(w, w), center+QPointF(w, w));
+14894         bool filledRect = mBrush\&.style() != Qt::NoBrush && mBrush\&.color()\&.alpha() != 0;
+14895         return rectSelectTest(rect, pos, filledRect);
+14896       }
+14897       break;
+14898     }
+14899   }
+14900   return -1;
+14901 }
+.fi
+.SS "void QCPItemTracer::setBrush (const QBrush &brush)"
+
+.PP
+Sets the brush that will be used to draw any fills of the tracer\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedBrush\fP, \fBsetPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14753 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mBrush\&.
+.PP
+.nf
+14754 {
+14755   mBrush = brush;
+14756 }
+.fi
+.SS "void QCPItemTracer::setGraph (\fBQCPGraph\fP *graph)"
+
+.PP
+Sets the \fBQCPGraph\fP this tracer sticks to\&. The tracer \fIposition\fP will be set to type \fBQCPItemPosition::ptPlotCoords\fP and the axes will be set to the axes of \fIgraph\fP\&.
+.PP
+To free the tracer from any graph, set \fIgraph\fP to 0\&. The tracer \fIposition\fP can then be placed freely like any other item position\&. This is the state the tracer will assume when its graph gets deleted while still attached to it\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetGraphKey\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14798 of file qcustomplot\&.cpp\&.
+.PP
+References graph(), QCPAbstractPlottable::keyAxis(), mGraph, QCPLayerable::mParentPlot, QCPLayerable::parentPlot(), position, QCPItemPosition::ptPlotCoords, QCPItemPosition::setAxes(), QCPItemPosition::setType(), updatePosition(), and QCPGraph::valueAxis\&.
+.PP
+.nf
+14799 {
+14800   if (graph)
+14801   {
+14802     if (graph->parentPlot() == mParentPlot)
+14803     {
+14804       position->setType(QCPItemPosition::ptPlotCoords);
+14805       position->setAxes(graph->keyAxis(), graph->valueAxis());
+14806       mGraph = graph;
+14807       updatePosition();
+14808     } else
+14809       qDebug() << Q_FUNC_INFO << "graph isn't in same QCustomPlot instance as this item";
+14810   } else
+14811   {
+14812     mGraph = 0;
+14813   }
+14814 }
+.fi
+.SS "void QCPItemTracer::setGraphKey (doublekey)"
+
+.PP
+Sets the key of the graph's data point the tracer will be positioned at\&. This is the only free cordinate of a tracer when attached to a graph\&.
+.PP
+Depending on \fBsetInterpolating\fP, the tracer will be either positioned on the data point closest to \fIkey\fP, or will stay exactly at \fIkey\fP and interpolate the value linearly\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetGraph\fP, \fBsetInterpolating\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14825 of file qcustomplot\&.cpp\&.
+.PP
+References key, and mGraphKey\&.
+.PP
+.nf
+14826 {
+14827   mGraphKey = key;
+14828 }
+.fi
+.SS "void QCPItemTracer::setInterpolating (boolenabled)"
+
+.PP
+Sets whether the value of the graph's data points shall be interpolated, when positioning the tracer\&. If \fIenabled\fP is set to false and a key is given with \fBsetGraphKey\fP, the tracer is placed on the data point of the graph which is closest to the key, but which is not necessarily exactly there\&. If \fIenabled\fP is true, the tracer will be positioned exactly at the specified key, and the appropriate value will be interpolated from the graph's data points linearly\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetGraph\fP, \fBsetGraphKey\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14841 of file qcustomplot\&.cpp\&.
+.PP
+References mInterpolating\&.
+.PP
+.nf
+14842 {
+14843   mInterpolating = enabled;
+14844 }
+.fi
+.SS "void QCPItemTracer::setPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the line of the tracer\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedPen\fP, \fBsetBrush\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14733 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, and pen()\&.
+.PP
+.nf
+14734 {
+14735   mPen = pen;
+14736 }
+.fi
+.SS "void QCPItemTracer::setSelectedBrush (const QBrush &brush)"
+
+.PP
+Sets the brush that will be used to draw any fills of the tracer, when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetBrush\fP, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14763 of file qcustomplot\&.cpp\&.
+.PP
+References brush(), and mSelectedBrush\&.
+.PP
+.nf
+14764 {
+14765   mSelectedBrush = brush;
+14766 }
+.fi
+.SS "void QCPItemTracer::setSelectedPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the line of the tracer when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14743 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedPen, and pen()\&.
+.PP
+.nf
+14744 {
+14745   mSelectedPen = pen;
+14746 }
+.fi
+.SS "void QCPItemTracer::setSize (doublesize)"
+
+.PP
+Sets the size of the tracer in pixels, if the style supports setting a size (e\&.g\&. \fBtsSquare\fP does, \fBtsCrosshair\fP does not)\&. 
+.PP
+Definition at line 14772 of file qcustomplot\&.cpp\&.
+.PP
+References mSize, and size()\&.
+.PP
+.nf
+14773 {
+14774   mSize = size;
+14775 }
+.fi
+.SS "void QCPItemTracer::setStyle (\fBQCPItemTracer::TracerStyle\fPstyle)"
+
+.PP
+Sets the style/visual appearance of the tracer\&. If you only want to use the tracer \fIposition\fP as an anchor for other items, set \fIstyle\fP to \fBtsNone\fP\&. 
+.PP
+Definition at line 14783 of file qcustomplot\&.cpp\&.
+.PP
+References mStyle, and style()\&.
+.PP
+.nf
+14784 {
+14785   mStyle = style;
+14786 }
+.fi
+.SS "double QCPItemTracer::size () const\fC [inline]\fP"
+
+.PP
+Definition at line 1289 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSize()\&.
+.PP
+.nf
+1289 { return mSize; }
+.fi
+.SS "\fBTracerStyle\fP QCPItemTracer::style () const\fC [inline]\fP"
+
+.PP
+Definition at line 1290 of file qcustomplot\&.h\&.
+.PP
+Referenced by setStyle()\&.
+.PP
+.nf
+1290 { return mStyle; }
+.fi
+.SS "void QCPItemTracer::updatePosition ()"
+
+.PP
+If the tracer is connected with a graph (\fBsetGraph\fP), this function updates the tracer's \fIposition\fP to reside on the graph data, depending on the configured key (\fBsetGraphKey\fP)\&. It is called automatically on every redraw and normally doesn't need to be called manually\&. One exception is when you want to read the tracer coordinates via \fIposition\fP and are not sure that the graph's data (or the tracer key with \fBsetGraphKey\fP) hasn't changed since the last redraw\&. In that situation, call this function before accessing \fIposition\fP, to make sure you don't get out-of-date coordinates\&.
+.PP
+If there is no graph set on this tracer, this function does nothing\&. 
+.PP
+Definition at line 14962 of file qcustomplot\&.cpp\&.
+.PP
+References QCPGraph::data(), mGraph, mGraphKey, mInterpolating, QCPLayerable::mParentPlot, position, and QCPItemPosition::setCoords()\&.
+.PP
+Referenced by draw(), and setGraph()\&.
+.PP
+.nf
+14963 {
+14964   if (mGraph)
+14965   {
+14966     if (mParentPlot->hasPlottable(mGraph))
+14967     {
+14968       if (mGraph->data()->size() > 1)
+14969       {
+14970         QCPDataMap::const_iterator first = mGraph->data()->constBegin();
+14971         QCPDataMap::const_iterator last = mGraph->data()->constEnd()-1;
+14972         if (mGraphKey < first\&.key())
+14973           position->setCoords(first\&.key(), first\&.value()\&.value);
+14974         else if (mGraphKey > last\&.key())
+14975           position->setCoords(last\&.key(), last\&.value()\&.value);
+14976         else
+14977         {
+14978           QCPDataMap::const_iterator it = first;
+14979           it = mGraph->data()->lowerBound(mGraphKey);
+14980           if (it != first) // mGraphKey is somewhere between iterators
+14981           {
+14982             QCPDataMap::const_iterator prevIt = it-1;
+14983             if (mInterpolating)
+14984             {
+14985               // interpolate between iterators around mGraphKey:
+14986               double slope = (it\&.value()\&.value-prevIt\&.value()\&.value)/(it\&.key()-prevIt\&.key());
+14987               position->setCoords(mGraphKey, (mGraphKey-prevIt\&.key())*slope+prevIt\&.value()\&.value);
+14988             } else
+14989             {
+14990               // find iterator with key closest to mGraphKey:
+14991               if (mGraphKey < (prevIt\&.key()+it\&.key())*0\&.5)
+14992                 it = prevIt;
+14993               position->setCoords(it\&.key(), it\&.value()\&.value);
+14994             }
+14995           } else // mGraphKey is exactly on first iterator
+14996             position->setCoords(it\&.key(), it\&.value()\&.value);
+14997         }
+14998       } else if (mGraph->data()->size() == 1)
+14999       {
+15000         QCPDataMap::const_iterator it = mGraph->data()->constBegin();
+15001         position->setCoords(it\&.key(), it\&.value()\&.value);
+15002       } else
+15003         qDebug() << Q_FUNC_INFO << "graph has no data";
+15004     } else
+15005       qDebug() << Q_FUNC_INFO << "graph not contained in QCustomPlot instance (anymore)";
+15006   }
+15007 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "QBrush QCPItemTracer::mBrush\fC [protected]\fP"
+
+.PP
+Definition at line 1314 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainBrush(), selectTest(), and setBrush()\&.
+.SS "\fBQCPGraph\fP* QCPItemTracer::mGraph\fC [protected]\fP"
+
+.PP
+Definition at line 1317 of file qcustomplot\&.h\&.
+.PP
+Referenced by setGraph(), and updatePosition()\&.
+.SS "double QCPItemTracer::mGraphKey\fC [protected]\fP"
+
+.PP
+Definition at line 1318 of file qcustomplot\&.h\&.
+.PP
+Referenced by setGraphKey(), and updatePosition()\&.
+.SS "bool QCPItemTracer::mInterpolating\fC [protected]\fP"
+
+.PP
+Definition at line 1319 of file qcustomplot\&.h\&.
+.PP
+Referenced by setInterpolating(), and updatePosition()\&.
+.SS "QPen QCPItemTracer::mPen\fC [protected]\fP"
+
+.PP
+Definition at line 1313 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setPen()\&.
+.SS "QBrush QCPItemTracer::mSelectedBrush\fC [protected]\fP"
+
+.PP
+Definition at line 1314 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainBrush(), and setSelectedBrush()\&.
+.SS "QPen QCPItemTracer::mSelectedPen\fC [protected]\fP"
+
+.PP
+Definition at line 1313 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setSelectedPen()\&.
+.SS "double QCPItemTracer::mSize\fC [protected]\fP"
+
+.PP
+Definition at line 1315 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), selectTest(), and setSize()\&.
+.SS "\fBTracerStyle\fP QCPItemTracer::mStyle\fC [protected]\fP"
+
+.PP
+Definition at line 1316 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), selectTest(), and setStyle()\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemTracer::position"
+
+.PP
+Definition at line 1310 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), selectTest(), setGraph(), and updatePosition()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

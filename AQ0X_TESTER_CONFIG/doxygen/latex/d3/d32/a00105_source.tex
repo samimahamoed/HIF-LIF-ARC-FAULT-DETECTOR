@@ -1,0 +1,69 @@
+\hypertarget{a00105_source}{\section{F\+F\+T\+Real\+Select.\+hpp}
+\label{a00105_source}\index{F\+F\+T\+Real\+Select.\+hpp@{F\+F\+T\+Real\+Select.\+hpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*****************************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{        FFTRealSelect.hpp}
+00004 \textcolor{comment}{        By Laurent de Soras}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{--- Legal stuff ---}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{This program is free software. It comes without any warranty, to}
+00009 \textcolor{comment}{the extent permitted by applicable law. You can redistribute it}
+00010 \textcolor{comment}{and/or modify it under the terms of the Do What The Fuck You Want}
+00011 \textcolor{comment}{To Public License, Version 2, as published by Sam Hocevar. See}
+00012 \textcolor{comment}{http://sam.zoy.org/wtfpl/COPYING for more details.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{*Tab=3***********************************************************************/}
+00015 
+00016 
+00017 
+00018 \textcolor{preprocessor}{#if defined (ffft\_FFTRealSelect\_CURRENT\_CODEHEADER)}
+00019 \textcolor{preprocessor}{    #error Recursive inclusion of FFTRealSelect code header.}
+00020 \textcolor{preprocessor}{#endif}
+\hypertarget{a00105_source_l00021}{}\hyperlink{a00105_afbb96f675b29fc93ca1201baac6549a6}{00021} \textcolor{preprocessor}{#define ffft\_FFTRealSelect\_CURRENT\_CODEHEADER}
+00022 
+00023 \textcolor{preprocessor}{#if ! defined (ffft\_FFTRealSelect\_CODEHEADER\_INCLUDED)}
+\hypertarget{a00105_source_l00024}{}\hyperlink{a00105_af126899a30fc9910f64861b24cdd2631}{00024} \textcolor{preprocessor}{#define ffft\_FFTRealSelect\_CODEHEADER\_INCLUDED}
+00025 
+00026 
+00027 
+00028 \textcolor{keyword}{namespace }\hyperlink{a00142}{ffft}
+00029 \{
+00030 
+00031 
+00032 
+00033 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PUBLIC \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00034 
+00035 
+00036 
+00037 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} P>
+\hypertarget{a00105_source_l00038}{}\hyperlink{a00015_a6659db9f9be1816f182d1c5988cd3859}{00038} \textcolor{keywordtype}{float} * \hyperlink{a00015}{FFTRealSelect <P>::sel\_bin} (\textcolor{keywordtype}{float} *e\_ptr, \textcolor{keywordtype}{float} *o\_ptr)
+00039 \{
+00040     \textcolor{keywordflow}{return} (o\_ptr);
+00041 \}
+00042 
+00043 
+00044 
+00045 \textcolor{keyword}{template} <>
+\hypertarget{a00105_source_l00046}{}\hyperlink{a00015_a29de94bf4932f6ba723aae1138afabbb}{00046} \textcolor{keyword}{inline} \textcolor{keywordtype}{float} *  \hyperlink{a00015}{FFTRealSelect <0>::sel\_bin} (\textcolor{keywordtype}{float} *e\_ptr, \textcolor{keywordtype}{float} *o\_ptr)
+00047 \{
+00048     \textcolor{keywordflow}{return} (e\_ptr);
+00049 \}
+00050 
+00051 
+00052 
+00053 \}   \textcolor{comment}{// namespace ffft}
+00054 
+00055 
+00056 
+00057 \textcolor{preprocessor}{#endif  // ffft\_FFTRealSelect\_CODEHEADER\_INCLUDED}
+00058 
+00059 \textcolor{preprocessor}{#undef ffft\_FFTRealSelect\_CURRENT\_CODEHEADER}
+00060 
+00061 
+00062 
+00063 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) EOF \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+\end{DoxyCode}

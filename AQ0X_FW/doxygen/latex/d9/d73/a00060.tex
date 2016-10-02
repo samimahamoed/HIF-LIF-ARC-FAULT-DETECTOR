@@ -1,0 +1,1182 @@
+\hypertarget{a00060}{\section{srv\+\_\+nov.\+c File Reference}
+\label{a00060}\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+}
+
+
+Low level N\+O\+V support.  
+
+
+{\ttfamily \#include \char`\"{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}..\textbackslash{}includes\+\_\+prv\textbackslash{}aq0\+X\textbackslash{}algorithm\+\_\+prv.\+h\char`\"{}}\\*
+Include dependency graph for srv\+\_\+nov.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{de/d96/a01685}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00060_a6553827687db2137ee550ad6e1d2f316}{crc16} (unsigned char $\ast$puch\+Msg, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} us\+Data\+Len)
+\begin{DoxyCompactList}\small\item\em Standard C\+R\+C16 routine. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00060_a8ad2f815848f1668763c01ff9d45a01b}{nov\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Reads N\+O\+V storage from E\+E\+P\+R\+O\+M. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00060_aeb181884e4c104cd984afdd6eb2a2782}{nov\+\_\+destroy} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} copy)
+\begin{DoxyCompactList}\small\item\em Function for N\+O\+V testing, destroys N\+O\+V C\+R\+C. \end{DoxyCompactList}\item 
+void \hyperlink{a00060_a90aef186f45a15d94bf0247122194991}{nov\+\_\+store} (void)
+\begin{DoxyCompactList}\small\item\em Writes N\+O\+V storage to E\+E\+P\+R\+O\+M. \end{DoxyCompactList}\item 
+void \hyperlink{a00060_a9aa94b184db1bd55b6a4a61a34c14c8d}{nov\+\_\+store\+\_\+device\+\_\+id} (\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32} id, \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} type)
+\begin{DoxyCompactList}\small\item\em Stores in E\+E\+P\+R\+O\+M serial number. \end{DoxyCompactList}\item 
+\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32} \hyperlink{a00060_a86b863ea185628aff5a00b4defbbb6e1}{nov\+\_\+get\+\_\+serial\+\_\+number} (void)
+\begin{DoxyCompactList}\small\item\em Reads from E\+E\+P\+R\+O\+M device serial number. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8} \hyperlink{a00060_a1a59d5ac1c5e9a022c19d8c333bf3b60}{nov\+\_\+get\+\_\+device\+\_\+address} (void)
+\begin{DoxyCompactList}\small\item\em Reads from E\+E\+P\+R\+O\+M device serial number. \end{DoxyCompactList}\item 
+void \hyperlink{a00060_a7b698f4b0088c4e28951c2204b7b821e}{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cmd)
+\begin{DoxyCompactList}\small\item\em set or reset write enable latch, the proceedure is drived from the information provided in microchip 25\+X\+X640\+A series serial eeprom dataseet. \end{DoxyCompactList}\item 
+\hyperlink{a00029_d0/d1c/a00605}{N\+O\+V\+\_\+\+S\+T\+A\+T\+R\+E\+G} \hyperlink{a00060_af9ccbc198ed63feb4fd6c18dd934590d}{nov\+\_\+get\+\_\+status} ()
+\begin{DoxyCompactList}\small\item\em reads status register from E\+E\+P\+R\+O\+M. \end{DoxyCompactList}\item 
+void \hyperlink{a00060_a495e93d64734be469f6725de24dd44e1}{nov\+\_\+write\+\_\+status} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} value)
+\begin{DoxyCompactList}\small\item\em write E\+E\+P\+R\+O\+M status register. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00060_a3f47e1f5179297e173ae8508c7185632}{nov\+\_\+byte\+\_\+write} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} data, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} address)
+\begin{DoxyCompactList}\small\item\em writes a single byte to the specified eeprom address. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00060_adf5af9eb34f1cd301648dfa3c71fe392}{nov\+\_\+byte\+\_\+read} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} address)
+\begin{DoxyCompactList}\small\item\em reads single from the specified eeprom address. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00060_aeb021b0e002db120ad733c24f3e179bc}{nov\+\_\+page\+\_\+cpy} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} page\+\_\+address, void $\ast$src, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length)
+\begin{DoxyCompactList}\small\item\em Function transfer data from R\+A\+M to E\+E\+P\+R\+O\+M over spi port. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00060_a3ff681f3af83ec441535611dac6ada16}{nov\+\_\+memcpy} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} starting\+\_\+address, void $\ast$dest, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length)
+\begin{DoxyCompactList}\small\item\em Standard library memcpy() replacement function to copy data from serial E\+E\+P\+R\+O\+M to the specified R\+A\+M memory address via spi interface. \end{DoxyCompactList}\item 
+void \hyperlink{a00060_ada4ee53cb163a9ed3e2b4a5c7192690a}{nov\+\_\+set\+\_\+default} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} overwrite)
+\begin{DoxyCompactList}\small\item\em Updates internal structures with default factory settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00022_a8e66478e65e03ebc9434466e51c0ad0b}{data\+\_\+non\+\_\+volatile\+\_\+t} \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\+\_\+non\+\_\+volatile}
+\begin{DoxyCompactList}\small\item\em E\+E\+P\+R\+O\+M data storage copy 1. \end{DoxyCompactList}\item 
+\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32} \hyperlink{a00060_a728c5fe7bc16e168a8f93fba18ee5561}{serial\+\_\+number}
+\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00060_a56fe014653ebdce270aeac664bf86e65}{nov\+\_\+wr\+\_\+inprogress}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Low level N\+O\+V support. 
+
+
+
+Definition in file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00060_a6553827687db2137ee550ad6e1d2f316}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!crc16@{crc16}}
+\index{crc16@{crc16}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{crc16}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} crc16 (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{puch\+Msg, }
+\item[{{\bf Uint16}}]{us\+Data\+Len}
+\end{DoxyParamCaption}
+)}}\label{a00060_a6553827687db2137ee550ad6e1d2f316}
+
+
+Standard C\+R\+C16 routine. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em puch\+Msg} & character stream \\
+\hline
+\mbox{\tt in}  & {\em us\+Data\+Len} & stream length\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em C\+R\+C16} & value of given stream \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \hyperlink{a00060_source_l00084}{84} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+Referenced by \hyperlink{a00060_source_l00159}{nov\+\_\+init()}, \hyperlink{a00030_source_l00263}{serial\+\_\+get\+\_\+command()}, and \hyperlink{a00030_source_l00412}{serial\+\_\+send\+\_\+response()}.
+
+
+\begin{DoxyCode}
+00085 \{
+00086     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} crc\_hi = 0xFF ;        \textcolor{comment}{/* high byte of CRC initialized */}
+00087     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} crc\_lo = 0xFF ;        \textcolor{comment}{/* low byte of CRC initialized */}
+00088     \textcolor{keywordtype}{int} table\_index ;            \textcolor{comment}{/* index into CRC lookup table */}
+00089     
+00090     \textcolor{keywordflow}{while} (usDataLen--)
+00091     \{
+00092         table\_index = crc\_hi ^ *puchMsg++ ;            \textcolor{comment}{/* calculate the CRC */}
+00093         crc\_hi = crc\_lo ^ table\_crc\_hi[table\_index] ;
+00094         crc\_lo = table\_crc\_lo[table\_index] ;
+00095     \}
+00096     \textcolor{keywordflow}{return} (crc\_hi << 8 | crc\_lo) ;
+00097 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{d9/d73/a00060_a6553827687db2137ee550ad6e1d2f316_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_adf5af9eb34f1cd301648dfa3c71fe392}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+byte\+\_\+read@{nov\+\_\+byte\+\_\+read}}
+\index{nov\+\_\+byte\+\_\+read@{nov\+\_\+byte\+\_\+read}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+byte\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} nov\+\_\+byte\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{address}
+\end{DoxyParamCaption}
+)}}\label{a00060_adf5af9eb34f1cd301648dfa3c71fe392}
+
+
+reads single from the specified eeprom address. 
+
+
+
+Definition at line \hyperlink{a00060_source_l00633}{633} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00029_source_l00042}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+R\+E\+A\+D}, \hyperlink{a00029_source_l00045}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+E\+N}, \hyperlink{a00060_source_l00553}{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch()}, \hyperlink{a00032_source_l00097}{spi\+\_\+put\+\_\+data()}, and \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}.
+
+
+\begin{DoxyCode}
+00634 \{
+00635     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cc;
+00636     \hyperlink{a00060_a7b698f4b0088c4e28951c2204b7b821e}{nov\_set\_write\_enable\_latch}(\hyperlink{a00029_acc9f91a7c7d40a32755560dda080cf98}{NOV\_CMD\_WREN});
+00637     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 0;
+00638     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(\hyperlink{a00029_a9d4dca4a65e8cabd1d733922725309e4}{NOV\_CMD\_READ});
+00639     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}((address>>8)&0x00ff);
+00640     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(address&0x00ff);
+00641     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(0);
+00642     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 1;
+00643 
+00644     \textcolor{keywordflow}{return} cc;
+00645 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_adf5af9eb34f1cd301648dfa3c71fe392_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_a3f47e1f5179297e173ae8508c7185632}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+byte\+\_\+write@{nov\+\_\+byte\+\_\+write}}
+\index{nov\+\_\+byte\+\_\+write@{nov\+\_\+byte\+\_\+write}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+byte\+\_\+write}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} nov\+\_\+byte\+\_\+write (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{data, }
+\item[{{\bf Uint16}}]{address}
+\end{DoxyParamCaption}
+)}}\label{a00060_a3f47e1f5179297e173ae8508c7185632}
+
+
+writes a single byte to the specified eeprom address. 
+
+
+
+Definition at line \hyperlink{a00060_source_l00608}{608} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00029_source_l00044}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+D\+I}, \hyperlink{a00029_source_l00045}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+E\+N}, \hyperlink{a00029_source_l00043}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+I\+T\+E}, \hyperlink{a00060_source_l00567}{nov\+\_\+get\+\_\+status()}, \hyperlink{a00060_source_l00553}{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch()}, \hyperlink{a00032_source_l00097}{spi\+\_\+put\+\_\+data()}, and \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}.
+
+
+\begin{DoxyCode}
+00609 \{
+00610     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cc;
+00611     \hyperlink{a00060_a7b698f4b0088c4e28951c2204b7b821e}{nov\_set\_write\_enable\_latch}(\hyperlink{a00029_acc9f91a7c7d40a32755560dda080cf98}{NOV\_CMD\_WREN});
+00612     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 0;
+00613     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(\hyperlink{a00029_a031aab76ddb1258273541a65d70acbe1}{NOV\_CMD\_WRITE});
+00614     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}((address>>8)&0x00ff);
+00615     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(address&0x00ff);
+00616     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(data);
+00617     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 1;
+00618 
+00619     \textcolor{comment}{// wait for completion of previous write operation}
+00620     \textcolor{keywordflow}{while}(\hyperlink{a00060_af9ccbc198ed63feb4fd6c18dd934590d}{nov\_get\_status}().bits.WIP);
+00621 
+00622     \hyperlink{a00060_a7b698f4b0088c4e28951c2204b7b821e}{nov\_set\_write\_enable\_latch}(\hyperlink{a00029_a3924df5fbf1e1ff642a9bde06e17b69d}{NOV\_CMD\_WRDI});
+00623 
+00624     \textcolor{keywordflow}{return} 0;
+00625 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_a3f47e1f5179297e173ae8508c7185632_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_aeb181884e4c104cd984afdd6eb2a2782}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+destroy@{nov\+\_\+destroy}}
+\index{nov\+\_\+destroy@{nov\+\_\+destroy}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} nov\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{copy}
+\end{DoxyParamCaption}
+)}}\label{a00060_aeb181884e4c104cd984afdd6eb2a2782}
+
+
+Function for N\+O\+V testing, destroys N\+O\+V C\+R\+C. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em copy} & N\+O\+V copy index ( 0 or 1)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & if the operation was succesfull \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \hyperlink{a00060_source_l00247}{247} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+\begin{DoxyCode}
+00248 \{
+00249 
+00250     \textcolor{keywordflow}{if}(copy == 0)
+00251     \{
+00252          nov\_store\_copy(0,0xDEAD);
+00253     \}
+00254     \textcolor{keywordflow}{else}\{
+00255          nov\_store\_copy(1,0xDEAD);
+00256 
+00257     \}
+00258        
+00259     \textcolor{keywordflow}{return} 0;
+00260 \}
+\end{DoxyCode}
+\hypertarget{a00060_a1a59d5ac1c5e9a022c19d8c333bf3b60}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+get\+\_\+device\+\_\+address@{nov\+\_\+get\+\_\+device\+\_\+address}}
+\index{nov\+\_\+get\+\_\+device\+\_\+address@{nov\+\_\+get\+\_\+device\+\_\+address}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+get\+\_\+device\+\_\+address}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int8} nov\+\_\+get\+\_\+device\+\_\+address (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00060_a1a59d5ac1c5e9a022c19d8c333bf3b60}
+
+
+Reads from E\+E\+P\+R\+O\+M device serial number. 
+
+
+
+Definition at line \hyperlink{a00060_source_l00508}{508} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00029_source_l00031}{N\+O\+V\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+I\+D\+\_\+\+M\+E\+M\+\_\+\+A\+D\+D\+R\+E\+S\+S}, and \hyperlink{a00060_source_l00723}{nov\+\_\+memcpy()}.
+
+
+\begin{DoxyCode}
+00509 \{
+00510 
+00511     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  tmp[4];
+00512 
+00513     \hyperlink{a00060_a3ff681f3af83ec441535611dac6ada16}{nov\_memcpy}(\hyperlink{a00029_a3ddbe5b40319c96bfe46429e902f8d33}{NOV\_DEVICE\_ID\_MEM\_ADDRESS},&tmp,\textcolor{keyword}{sizeof}(tmp));
+00514 
+00515 
+00516     \textcolor{keywordflow}{if}(tmp[0] == tmp[1])
+00517     \{
+00518         \textcolor{keywordflow}{if}(tmp[0] != 0xFF || tmp[0] != 0)
+00519         \{
+00520             \textcolor{keywordflow}{return}  tmp[0];
+00521         \}
+00522     \}
+00523 
+00524     \textcolor{keywordflow}{if}(tmp[2] == tmp[3])
+00525     \{
+00526         \textcolor{keywordflow}{if}(tmp[2] != 0xFF || tmp[2] != 0)
+00527         \{
+00528             \textcolor{keywordflow}{return}  tmp[2];
+00529         \}
+00530     \}
+00531 
+00532     \textcolor{keywordflow}{return} -1;
+00533 
+00534 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_a1a59d5ac1c5e9a022c19d8c333bf3b60_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_a86b863ea185628aff5a00b4defbbb6e1}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+get\+\_\+serial\+\_\+number@{nov\+\_\+get\+\_\+serial\+\_\+number}}
+\index{nov\+\_\+get\+\_\+serial\+\_\+number@{nov\+\_\+get\+\_\+serial\+\_\+number}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+get\+\_\+serial\+\_\+number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint32} nov\+\_\+get\+\_\+serial\+\_\+number (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00060_a86b863ea185628aff5a00b4defbbb6e1}
+
+
+Reads from E\+E\+P\+R\+O\+M device serial number. 
+
+
+
+Definition at line \hyperlink{a00060_source_l00464}{464} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00060_source_l00723}{nov\+\_\+memcpy()}, and \hyperlink{a00029_source_l00029}{N\+O\+V\+\_\+\+S\+E\+R\+I\+A\+L\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+M\+E\+M\+\_\+\+A\+D\+D\+R\+E\+S\+S}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00465 \{
+00466 
+00467 
+00468     \textcolor{keyword}{union}
+00469     \{
+00470         \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32} tmp32[4];
+00471         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  tmp8[4*\textcolor{keyword}{sizeof}(\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32})];
+00472     \}tmp;
+00473 
+00474 
+00475 
+00476     \hyperlink{a00060_a3ff681f3af83ec441535611dac6ada16}{nov\_memcpy}(\hyperlink{a00029_ab7dc1ea8a7f6e16cf27fbfe88efd7285}{NOV\_SERIAL\_NUMBER\_MEM\_ADDRESS},&tmp,\textcolor{keyword}{sizeof}(tmp));
+00477 
+00478 
+00479     \textcolor{keywordflow}{if}(tmp.tmp32[0] == tmp.tmp32[1])
+00480     \{
+00481         \textcolor{keywordflow}{if}(tmp.tmp32[0] != 0xFFFFFFFF || tmp.tmp32[0] != 0)
+00482         \{
+00483             \textcolor{keywordflow}{return}  tmp.tmp32[0];
+00484         \}
+00485     \}
+00486 
+00487     \textcolor{keywordflow}{if}(tmp.tmp32[2] == tmp.tmp32[3])
+00488     \{
+00489         \textcolor{keywordflow}{if}(tmp.tmp32[2] != 0xFFFFFFFF || tmp.tmp32[2] != 0)
+00490         \{
+00491             \textcolor{keywordflow}{return}  tmp.tmp32[2];
+00492         \}
+00493     \}
+00494 
+00495     \textcolor{comment}{// backup plan}
+00496     \textcolor{keywordflow}{return} 0;
+00497         
+00498 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_a86b863ea185628aff5a00b4defbbb6e1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{d9/d73/a00060_a86b863ea185628aff5a00b4defbbb6e1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_af9ccbc198ed63feb4fd6c18dd934590d}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+get\+\_\+status@{nov\+\_\+get\+\_\+status}}
+\index{nov\+\_\+get\+\_\+status@{nov\+\_\+get\+\_\+status}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+get\+\_\+status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf N\+O\+V\+\_\+\+S\+T\+A\+T\+R\+E\+G} nov\+\_\+get\+\_\+status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00060_af9ccbc198ed63feb4fd6c18dd934590d}
+
+
+reads status register from E\+E\+P\+R\+O\+M. 
+
+
+
+Definition at line \hyperlink{a00060_source_l00567}{567} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00029_source_l00046}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+R\+D\+S\+R}, \hyperlink{a00032_source_l00097}{spi\+\_\+put\+\_\+data()}, and \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}.
+
+
+
+Referenced by \hyperlink{a00060_source_l00608}{nov\+\_\+byte\+\_\+write()}, \hyperlink{a00060_source_l00663}{nov\+\_\+page\+\_\+cpy()}, and \hyperlink{a00060_source_l00586}{nov\+\_\+write\+\_\+status()}.
+
+
+\begin{DoxyCode}
+00568 \{
+00569     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cc;
+00570 
+00571     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 0;
+00572     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(\hyperlink{a00029_a55309727a3055fdebf8df6e9d0f72fea}{NOV\_CMD\_RDSR});
+00573     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(0);
+00574     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 1;
+00575 
+00576     \textcolor{keywordflow}{return} (\hyperlink{a00029_d0/d1c/a00605}{NOV\_STATREG})cc;
+00577 
+00578 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{d9/d73/a00060_af9ccbc198ed63feb4fd6c18dd934590d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_af9ccbc198ed63feb4fd6c18dd934590d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_a8ad2f815848f1668763c01ff9d45a01b}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+init@{nov\+\_\+init}}
+\index{nov\+\_\+init@{nov\+\_\+init}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} nov\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00060_a8ad2f815848f1668763c01ff9d45a01b}
+
+
+Reads N\+O\+V storage from E\+E\+P\+R\+O\+M. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & if succesfull N\+O\+V retrival was performed\\
+\hline
+\end{DoxyRetVals}
+Note\+: emulation mode data may be mode preserved across resets on production verssion. R\+E\+Q-\/nov\+\_\+2a\+: \char`\"{}\+C\+R\+C checksum protection\char`\"{} C\+R\+C16 used.
+
+first N\+O\+V copy is invalid
+
+second N\+O\+V copy is invalid 
+
+Definition at line \hyperlink{a00060_source_l00159}{159} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00060_source_l00084}{crc16()}, \hyperlink{a00060_source_l00016}{data\+\_\+non\+\_\+volatile}, \hyperlink{a00022_source_l00327}{data\+\_\+non\+\_\+volatile\+\_\+t}, \hyperlink{a00022_source_l00307}{device\+\_\+data\+\_\+t}, \hyperlink{a00029_source_l00033}{N\+O\+V\+\_\+\+F\+I\+R\+S\+T\+\_\+\+D\+A\+T\+A\+\_\+\+S\+E\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S}, \hyperlink{a00060_source_l00723}{nov\+\_\+memcpy()}, and \hyperlink{a00029_source_l00035}{N\+O\+V\+\_\+\+S\+E\+C\+O\+N\+D\+\_\+\+D\+A\+T\+A\+\_\+\+S\+E\+T\+\_\+\+A\+D\+D\+R\+E\+S\+S}.
+
+
+\begin{DoxyCode}
+00160 \{
+00161     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}                result = 1;
+00162     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}               crc;
+00163     \hyperlink{a00022_a95029dff9c90f6a6907353ba86eb3f33}{device\_data\_t}        tmp\_data;
+00164     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}               state = 0;
+00165 
+00173     memset(&\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile},0,\textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}));
+00174 
+00175     \textcolor{comment}{// Try first copy}
+00176     \hyperlink{a00060_a3ff681f3af83ec441535611dac6ada16}{nov\_memcpy}(\hyperlink{a00029_a3d5917eef9709c44acd2e6314619f440}{NOV\_FIRST\_DATA\_SET\_ADDRESS},&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile},\textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}));
+00177 
+00178     crc = \hyperlink{a00060_a6553827687db2137ee550ad6e1d2f316}{crc16}((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)&\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile},offsetof(
+      \hyperlink{a00022_a8e66478e65e03ebc9434466e51c0ad0b}{data\_non\_volatile\_t},device\_data.configured\_data\_crc));
+00179 
+00180 
+00181 
+00182     \textcolor{keywordflow}{if}(crc == \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.configured\_data\_crc)
+00183     \{
+00184 
+00185      
+00186 
+00187         \textcolor{comment}{// Copy valid}
+00188         result = 0;
+00189         state |= 0x01;
+00190     \}
+00191     \textcolor{keywordflow}{else}
+00192     \{
+00194         state |= 0x02;
+00195     \}
+00196 
+00197 
+00198    \textcolor{comment}{//   Try backup copy}
+00199       \hyperlink{a00060_a3ff681f3af83ec441535611dac6ada16}{nov\_memcpy}(\hyperlink{a00029_ab062741a69ee7156fbdf317ec627b4ca}{NOV\_SECOND\_DATA\_SET\_ADDRESS},&tmp\_data,\textcolor{keyword}{sizeof}(tmp\_data
+      ));
+00200       crc = \hyperlink{a00060_a6553827687db2137ee550ad6e1d2f316}{crc16}((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)&tmp\_data,offsetof(\hyperlink{a00022_a95029dff9c90f6a6907353ba86eb3f33}{device\_data\_t},configured\_data\_crc));
+00201 
+00202     \textcolor{keywordflow}{if}(crc == tmp\_data.configured\_data\_crc)
+00203     \{
+00204         state |= 0x04;
+00205         \textcolor{keywordflow}{if}(result != 0)
+00206         \{
+00207             state |= 0x08;
+00208             \textcolor{comment}{// Only second copy valid - restore first copy configuration data}
+00209              memcpy(&\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data,&tmp\_data,\textcolor{keyword}{sizeof}(
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data));
+00210              nov\_store\_copy(0,0);
+00211              result = 0;
+00212         \}
+00213     \}
+00214     \textcolor{keywordflow}{else}
+00215     \{
+00217         state |= 0x10;
+00218         \textcolor{keywordflow}{if}(result == 0)
+00219         \{
+00220             state |= 0x20;
+00221             \textcolor{comment}{// First was valid, second corrupted. Restore second.}
+00222              nov\_store\_copy(1,0);
+00223         \}
+00224     \}
+00225 
+00226     \textcolor{keywordflow}{return} result;
+00227 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{d9/d73/a00060_a8ad2f815848f1668763c01ff9d45a01b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_a3ff681f3af83ec441535611dac6ada16}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+memcpy@{nov\+\_\+memcpy}}
+\index{nov\+\_\+memcpy@{nov\+\_\+memcpy}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+memcpy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} nov\+\_\+memcpy (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{starting\+\_\+address, }
+\item[{void $\ast$}]{dest, }
+\item[{{\bf Uint16}}]{length}
+\end{DoxyParamCaption}
+)}}\label{a00060_a3ff681f3af83ec441535611dac6ada16}
+
+
+Standard library memcpy() replacement function to copy data from serial E\+E\+P\+R\+O\+M to the specified R\+A\+M memory address via spi interface. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em starting} & address of eeprom memory , i.\+e. to read from \\
+\hline
+\mbox{\tt in}  & {\em pointer} & to the destination object which is in R\+A\+M \\
+\hline
+\mbox{\tt in}  & {\em length} & of the data to copy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00060_source_l00723}{723} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00029_source_l00022}{N\+O\+V\+\_\+\+C\+H\+I\+P\+\_\+\+S\+I\+Z\+E}, \hyperlink{a00029_source_l00042}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+R\+E\+A\+D}, \hyperlink{a00032_source_l00097}{spi\+\_\+put\+\_\+data()}, and \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}.
+
+
+
+Referenced by \hyperlink{a00060_source_l00508}{nov\+\_\+get\+\_\+device\+\_\+address()}, \hyperlink{a00060_source_l00464}{nov\+\_\+get\+\_\+serial\+\_\+number()}, and \hyperlink{a00060_source_l00159}{nov\+\_\+init()}.
+
+
+\begin{DoxyCode}
+00724 \{
+00725     \textcolor{keywordflow}{if}((\hyperlink{a00029_acbac04a78072f0322171ea94017f246e}{NOV\_CHIP\_SIZE}-starting\_address) < length)
+00726         \textcolor{keywordflow}{return} 1;
+00727 
+00728     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}* dst8 = (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)dest;
+00729     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  cc;
+00730     \textcolor{comment}{// Launch transmission}
+00731     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 0;
+00732     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(\hyperlink{a00029_a9d4dca4a65e8cabd1d733922725309e4}{NOV\_CMD\_READ});
+00733     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}((starting\_address>>8)&0x00ff);
+00734     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(starting\_address&0x00ff);
+00735 
+00736     \textcolor{keywordflow}{while} (length > 0)
+00737     \{
+00738            *(dst8++) = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(0);
+00739            length--;
+00740     \}
+00741 
+00742     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} =1;
+00743 
+00744     IFS0bits.SPI1IF = 0;   \textcolor{comment}{//no need but it's good to clear it}
+00745     \textcolor{keywordflow}{return} 0;
+00746 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{d9/d73/a00060_a3ff681f3af83ec441535611dac6ada16_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_a3ff681f3af83ec441535611dac6ada16_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_aeb021b0e002db120ad733c24f3e179bc}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+page\+\_\+cpy@{nov\+\_\+page\+\_\+cpy}}
+\index{nov\+\_\+page\+\_\+cpy@{nov\+\_\+page\+\_\+cpy}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+page\+\_\+cpy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} nov\+\_\+page\+\_\+cpy (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{page\+\_\+address, }
+\item[{void $\ast$}]{src, }
+\item[{{\bf Uint16}}]{length}
+\end{DoxyParamCaption}
+)}}\label{a00060_aeb021b0e002db120ad733c24f3e179bc}
+
+
+Function transfer data from R\+A\+M to E\+E\+P\+R\+O\+M over spi port. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em pointer} & to R\+A\+M memory address, i.\+e. to read from \\
+\hline
+\mbox{\tt in}  & {\em length} & of the data (should be less than page size) \\
+\hline
+\mbox{\tt in}  & {\em eeprom} & page address\\
+\hline
+\end{DoxyParams}
+data can only be written until the end of the eeprom page. the page is either 64 bytes max (refer to datasheet). 
+
+Definition at line \hyperlink{a00060_source_l00663}{663} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00029_source_l00044}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+D\+I}, \hyperlink{a00029_source_l00045}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+E\+N}, \hyperlink{a00029_source_l00043}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+I\+T\+E}, \hyperlink{a00060_source_l00567}{nov\+\_\+get\+\_\+status()}, \hyperlink{a00029_source_l00024}{N\+O\+V\+\_\+\+P\+A\+G\+E\+\_\+\+S\+I\+Z\+E}, \hyperlink{a00060_source_l00553}{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch()}, \hyperlink{a00060_source_l00019}{nov\+\_\+wr\+\_\+inprogress}, \hyperlink{a00032_source_l00097}{spi\+\_\+put\+\_\+data()}, and \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}.
+
+
+
+Referenced by \hyperlink{a00060_source_l00411}{nov\+\_\+store\+\_\+device\+\_\+id()}.
+
+
+\begin{DoxyCode}
+00664 \{
+00665     \textcolor{keyword}{volatile} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} ii =1 ;
+00666     
+00667 
+00668     \textcolor{keywordflow}{while}(page\_address > ii*\hyperlink{a00029_aad44ced0f63ecf5d2ced5bc0bf220287}{NOV\_PAGE\_SIZE})ii++;
+00669 
+00670     
+00671     \textcolor{keywordflow}{if}((ii*NOV\_PAGE\_SIZE - page\_address -1) < length)\hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);  \textcolor{comment}{/*page write operations attempts to
+       cross page boundary.*/}
+00672           
+00673     \textcolor{keywordflow}{if}(length > ii*NOV\_PAGE\_SIZE)\textcolor{keywordflow}{return} 1;
+00674 
+00675     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}* src8 = (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)src;
+00676 
+00677     \hyperlink{a00060_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress} = 1;
+00678 
+00679     \textcolor{comment}{// Launch transmission}
+00680     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cc;
+00681     \hyperlink{a00060_a7b698f4b0088c4e28951c2204b7b821e}{nov\_set\_write\_enable\_latch}(\hyperlink{a00029_acc9f91a7c7d40a32755560dda080cf98}{NOV\_CMD\_WREN});
+00682     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 0;
+00683     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(\hyperlink{a00029_a031aab76ddb1258273541a65d70acbe1}{NOV\_CMD\_WRITE});
+00684     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}((page\_address>>8)&0x00ff);
+00685     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(page\_address&0x00ff);
+00686     \textcolor{keywordflow}{while} (length > 0)
+00687     \{
+00688            cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(*(src8++));  
+00689            length--;
+00690     \}
+00691    
+00692     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 1;
+00693 
+00694 
+00695 
+00696 
+00697 
+00698     \textcolor{comment}{// wait for completion of previous write operation}
+00699     \textcolor{keywordflow}{while}(\hyperlink{a00060_af9ccbc198ed63feb4fd6c18dd934590d}{nov\_get\_status}().bits.WIP);
+00700     
+00701 
+00702 
+00703     \hyperlink{a00060_a7b698f4b0088c4e28951c2204b7b821e}{nov\_set\_write\_enable\_latch}(\hyperlink{a00029_a3924df5fbf1e1ff642a9bde06e17b69d}{NOV\_CMD\_WRDI});
+00704 
+00705     \hyperlink{a00060_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress} = 0;
+00706     IFS0bits.SPI1IF = 0;   \textcolor{comment}{//no need but good to clear}
+00707     \textcolor{keywordflow}{return} 0;
+00708 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_aeb021b0e002db120ad733c24f3e179bc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{d9/d73/a00060_aeb021b0e002db120ad733c24f3e179bc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_ada4ee53cb163a9ed3e2b4a5c7192690a}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+set\+\_\+default@{nov\+\_\+set\+\_\+default}}
+\index{nov\+\_\+set\+\_\+default@{nov\+\_\+set\+\_\+default}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+set\+\_\+default}]{\setlength{\rightskip}{0pt plus 5cm}void nov\+\_\+set\+\_\+default (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{overwrite}
+\end{DoxyParamCaption}
+)}}\label{a00060_ada4ee53cb163a9ed3e2b4a5c7192690a}
+
+
+Updates internal structures with default factory settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em set\+\_\+default\+\_\+calibration} & If set to non-\/zero value, then also analog calibration is overwritten\\
+\hline
+\end{DoxyParams}
+Note\+: 
+
+Definition at line \hyperlink{a00060_source_l00760}{760} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00058_source_l00016}{A\+D\+C\+\_\+\+R\+E\+S\+O\+L\+U\+T\+I\+O\+N}, \hyperlink{a00038_source_l00033}{algorithm\+\_\+data}, \hyperlink{a00038_source_l00096}{algorithm\+\_\+get\+\_\+std\+\_\+deviation()}, \hyperlink{a00021_source_l00078}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+R\+E\+Q}, \hyperlink{a00021_source_l00083}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+I\+R\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+A\+X}, \hyperlink{a00021_source_l00085}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+U\+X\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+A\+X}, \hyperlink{a00021_source_l00081}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+I\+N\+\_\+\+I\+N\+S\+T\+A\+L\+L\+A\+T\+I\+O\+N\+\_\+\+D\+I\+S\+T\+A\+N\+C\+E}, \hyperlink{a00021_source_l00088}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+N\+O\+\_\+\+O\+F\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N}, \hyperlink{a00021_source_l00086}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+R\+O\+B\+A\+B\+L\+I\+T\+Y\+\_\+\+M\+A\+X}, \hyperlink{a00021_source_l00087}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+R\+O\+B\+A\+B\+L\+I\+T\+Y\+\_\+\+M\+I\+N}, \hyperlink{a00021_source_l00079}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+R\+A\+T\+E\+D\+\_\+\+C\+U\+R\+R\+E\+N\+T}, \hyperlink{a00021_source_l00080}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+H\+O\+R\+T\+\_\+\+C\+K\+T\+\_\+\+C\+U\+R\+R\+E\+N\+T}, \hyperlink{a00021_source_l00084}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+U\+V\+\_\+\+L\+E\+V\+E\+L\+\_\+\+M\+A\+X}, \hyperlink{a00060_source_l00016}{data\+\_\+non\+\_\+volatile}, \hyperlink{a00022_source_l00076}{D\+E\+F\+A\+U\+L\+T\+\_\+\+T\+R\+I\+P\+\_\+\+C\+R\+I\+T\+E\+R\+I\+O\+N}, \hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{algorithm\+\_\+data\+\_\+t\+::diagnosis}, \hyperlink{a00040_source_l00086}{F\+A\+L\+S\+E}, \hyperlink{a00021_source_l00098}{F\+A\+S\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G\+\_\+\+R\+A\+T\+E}, \hyperlink{a00022_source_l00016}{M\+A\+X\+\_\+\+E\+V\+E\+N\+T\+\_\+\+O\+B\+S\+E\+R\+V\+A\+T\+I\+O\+N\+\_\+\+L\+E\+N\+G\+T\+H}, \hyperlink{a00029_source_l00019}{N\+O\+V\+\_\+\+O\+V\+E\+R\+W\+R\+I\+T\+E\+\_\+\+A\+L\+L}, and \hyperlink{a00040_source_l00084}{T\+R\+U\+E}.
+
+
+\begin{DoxyCode}
+00761 \{
+00762 
+00763         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq                     = 
+      \hyperlink{a00021_a985a153b3edd3d7d638137ae0b9e5e67}{CONFIG\_DEFAULT\_FREQ};
+00764         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.rated\_current            = 
+      \hyperlink{a00021_ae329eb408f386777cbb443c27ca7c1c5}{CONFIG\_DEFAULT\_RATED\_CURRENT};
+00765         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.sh\_current               = 
+      \hyperlink{a00021_a9b142f2e7d26511af74c411c0e524384}{CONFIG\_DEFAULT\_SHORT\_CKT\_CURRENT};
+00766         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.min\_distance             = 
+      \hyperlink{a00021_aad4ef21bb535ed8bbba5a4f2d0451711}{CONFIG\_DEFAULT\_MIN\_INSTALLATION\_DISTANCE};
+00767 
+00768         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.ir\_element\_sv\_en        = 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00769         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.uv\_element\_sv\_en        = 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00770         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.mfield\_element\_sv\_en    = 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00771 
+00772         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.threshold\_adjust\_manual = 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00773 
+00774 
+00775         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.ir\_level\_max              = 
+      \hyperlink{a00021_adf882de105367de21f0cbfe4490a046f}{CONFIG\_DEFAULT\_IR\_LEVEL\_MAX};
+00776         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.uv\_level\_max              = 
+      \hyperlink{a00021_a29f761c18bae89d087200e4f1891c651}{CONFIG\_DEFAULT\_UV\_LEVEL\_MAX};
+00777         
+00778         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.lux\_level\_max             = 
+      \hyperlink{a00021_a04ab25767fbb61ec61784da889ec8c09}{CONFIG\_DEFAULT\_LUX\_LEVEL\_MAX};
+00779         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_max            = 
+      \hyperlink{a00021_a96cf926b530a1d5968881620d2f10445}{CONFIG\_DEFAULT\_PROBABLITY\_MAX};
+00780         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_min            = 
+      \hyperlink{a00021_a599be42d4b357badb7c9b16a124a186a}{CONFIG\_DEFAULT\_PROBABLITY\_MIN};
+00781         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.min\_number\_of\_observation = 
+      \hyperlink{a00021_af69b35a9f07bfcfe500538565d898c65}{CONFIG\_DEFAULT\_NO\_OF\_OBSERVATION};
+00782 
+00783 
+00784 
+00785         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.criterion.all          = 
+      \hyperlink{a00022_a0ff9495f8521ea7698e83e7b4d6a6985}{DEFAULT\_TRIP\_CRITERION};
+00786 
+00787 
+00788         
+00789 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V0)}
+00790         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.ir   
+              = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00791         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.uv   
+              = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00792         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.
+      mfield\_x     = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00793 \textcolor{preprocessor}{        #ifdef MFIELD\_Y}
+00794         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.
+      mfield\_y     = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00795 \textcolor{preprocessor}{        #endif}
+00796 
+00797 \textcolor{preprocessor}{#else}
+00798         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.ir   
+              = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00799         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.uv   
+              = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00800         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.light
+              = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00801         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.
+      mfield\_x     = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00802         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.active\_modules.bits.
+      mfield\_y     = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00803 \textcolor{preprocessor}{#endif}
+00804 
+00805 
+00806 
+00807     \{
+00808         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc;
+00809         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} zero\_point\_start = (\hyperlink{a00016_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data}.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.samples\_per\_period
+      /4);
+00810         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} zero\_point\_end   = zero\_point\_start + 25;
+00811 
+00812         memset(&\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal,0,\textcolor{keyword}{sizeof}(
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal));
+00813 
+00814         \textcolor{keywordflow}{for}(cc = 0; cc < \hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH};cc++)\{
+00815 
+00816         \textcolor{keywordflow}{if}(!((cc > zero\_point\_end)&&(cc < zero\_point\_end)))
+00817         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.buffer[cc]  = abs(cos(2*PI*
+      \hyperlink{a00021_a985a153b3edd3d7d638137ae0b9e5e67}{CONFIG\_DEFAULT\_FREQ}*\hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE}*cc)*
+      \hyperlink{a00058_a00978ca9e8220475258dcbbbb7d29129}{ADC\_RESOLUTION});
+00818 
+00819         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value +=
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.buffer[cc];
+00820 
+00821         \}
+00822 
+00823 
+00824           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value /=
+      \hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH};
+00825 
+00826           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.std\_deviation = 
+      \hyperlink{a00016_a97eb6437dda088f144d791e49cd3dc2a}{algorithm\_get\_std\_deviation}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      ref\_signal.buffer
+00827                                                                                                ,
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value
+00828                                                                                                ,
+      MAX\_EVENT\_OBSERVATION\_LENGTH);
+00829 
+00830           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.valid = 0x0000;
+00831 
+00832     \}
+00833         \textcolor{keywordflow}{if}(overwrite == \hyperlink{a00029_aa3471d8e4814035dc24211c0890899bb}{NOV\_OVERWRITE\_ALL})
+00834         \{
+00835             \textcolor{comment}{//TODO: Calibration data}
+00836 
+00837 
+00838 
+00839         \}
+00840 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{d9/d73/a00060_ada4ee53cb163a9ed3e2b4a5c7192690a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_a7b698f4b0088c4e28951c2204b7b821e}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch@{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch}}
+\index{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch@{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch}]{\setlength{\rightskip}{0pt plus 5cm}void nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{cmd}
+\end{DoxyParamCaption}
+)}}\label{a00060_a7b698f4b0088c4e28951c2204b7b821e}
+
+
+set or reset write enable latch, the proceedure is drived from the information provided in microchip 25\+X\+X640\+A series serial eeprom dataseet. 
+
+the function must be called prior to any attempt to write data to the 25\+X\+X640\+A with write enable command. and it's a recommended practice to reset this latch after the wright operation completed. 
+
+Definition at line \hyperlink{a00060_source_l00553}{553} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00032_source_l00097}{spi\+\_\+put\+\_\+data()}, and \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}.
+
+
+
+Referenced by \hyperlink{a00060_source_l00633}{nov\+\_\+byte\+\_\+read()}, \hyperlink{a00060_source_l00608}{nov\+\_\+byte\+\_\+write()}, \hyperlink{a00060_source_l00663}{nov\+\_\+page\+\_\+cpy()}, and \hyperlink{a00060_source_l00586}{nov\+\_\+write\+\_\+status()}.
+
+
+\begin{DoxyCode}
+00554 \{
+00555     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cc;
+00556     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 0;
+00557     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(cmd);
+00558     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 1;
+00559 
+00560 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{d9/d73/a00060_a7b698f4b0088c4e28951c2204b7b821e_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_a7b698f4b0088c4e28951c2204b7b821e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_a90aef186f45a15d94bf0247122194991}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+store@{nov\+\_\+store}}
+\index{nov\+\_\+store@{nov\+\_\+store}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+store}]{\setlength{\rightskip}{0pt plus 5cm}void nov\+\_\+store (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00060_a90aef186f45a15d94bf0247122194991}
+
+
+Writes N\+O\+V storage to E\+E\+P\+R\+O\+M. 
+
+Note\+: Updates both copies -\/ one after another 
+
+Definition at line \hyperlink{a00060_source_l00397}{397} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+Referenced by \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, and \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}.
+
+
+\begin{DoxyCode}
+00398 \{
+00399 
+00400      nov\_store\_copy(1,0);
+00401      nov\_store\_copy(0,0);
+00402 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_a90aef186f45a15d94bf0247122194991_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_a9aa94b184db1bd55b6a4a61a34c14c8d}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+store\+\_\+device\+\_\+id@{nov\+\_\+store\+\_\+device\+\_\+id}}
+\index{nov\+\_\+store\+\_\+device\+\_\+id@{nov\+\_\+store\+\_\+device\+\_\+id}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+store\+\_\+device\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}void nov\+\_\+store\+\_\+device\+\_\+id (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint32}}]{id, }
+\item[{{\bf Uint8}}]{type}
+\end{DoxyParamCaption}
+)}}\label{a00060_a9aa94b184db1bd55b6a4a61a34c14c8d}
+
+
+Stores in E\+E\+P\+R\+O\+M serial number. 
+
+
+
+Definition at line \hyperlink{a00060_source_l00411}{411} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00029_source_l00016}{D\+E\+V\+I\+C\+E\+\_\+\+A\+D\+D\+R\+E\+S\+S}, \hyperlink{a00029_source_l00031}{N\+O\+V\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+I\+D\+\_\+\+M\+E\+M\+\_\+\+A\+D\+D\+R\+E\+S\+S}, \hyperlink{a00060_source_l00663}{nov\+\_\+page\+\_\+cpy()}, \hyperlink{a00029_source_l00029}{N\+O\+V\+\_\+\+S\+E\+R\+I\+A\+L\+\_\+\+N\+U\+M\+B\+E\+R\+\_\+\+M\+E\+M\+\_\+\+A\+D\+D\+R\+E\+S\+S}, and \hyperlink{a00029_source_l00015}{S\+E\+R\+I\+A\+L\+\_\+\+N\+U\+M\+B\+E\+R}.
+
+
+\begin{DoxyCode}
+00412 \{
+00413     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}       nov\_address = \hyperlink{a00029_a3ddbe5b40319c96bfe46429e902f8d33}{NOV\_DEVICE\_ID\_MEM\_ADDRESS};
+00414     \textcolor{keywordtype}{void}*        data = NULL;
+00415     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}        size = 0;
+00416 
+00417 
+00418     \textcolor{keywordflow}{if}(type == \hyperlink{a00029_ad8a20d143f6a7579ed227578aeddec21}{SERIAL\_NUMBER})\{
+00419     nov\_address = \hyperlink{a00029_ab7dc1ea8a7f6e16cf27fbfe88efd7285}{NOV\_SERIAL\_NUMBER\_MEM\_ADDRESS};
+00420 
+00421     \textcolor{keyword}{union}
+00422     \{
+00423         \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32} tmp32[4];
+00424         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  tmp8[4*\textcolor{keyword}{sizeof}(\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32})];
+00425     \}tmp;
+00426 
+00427 
+00428     tmp.tmp32[0] = id;
+00429     tmp.tmp32[1] = id;
+00430     tmp.tmp32[2] = id;
+00431     tmp.tmp32[3] = id;
+00432     
+00433     data = &tmp;
+00434     size = \textcolor{keyword}{sizeof}(tmp);
+00435 
+00436     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(type == \hyperlink{a00029_a457be1c5e5fee67ed7d01f5887c2d656}{DEVICE\_ADDRESS})\{
+00437        \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  tmp[4];
+00438 
+00439 
+00440         tmp[0] = id;
+00441         tmp[1] = id;
+00442         tmp[2] = id;
+00443         tmp[3] = id;
+00444 
+00445         data = &tmp;
+00446         size = \textcolor{keyword}{sizeof}(tmp);
+00447 
+00448     \}
+00449  
+00450     \hyperlink{a00060_aeb021b0e002db120ad733c24f3e179bc}{nov\_page\_cpy}(nov\_address,data,size);
+00451 
+00452     
+00453 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_a9aa94b184db1bd55b6a4a61a34c14c8d_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00060_a495e93d64734be469f6725de24dd44e1}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+write\+\_\+status@{nov\+\_\+write\+\_\+status}}
+\index{nov\+\_\+write\+\_\+status@{nov\+\_\+write\+\_\+status}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+write\+\_\+status}]{\setlength{\rightskip}{0pt plus 5cm}void nov\+\_\+write\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{value}
+\end{DoxyParamCaption}
+)}}\label{a00060_a495e93d64734be469f6725de24dd44e1}
+
+
+write E\+E\+P\+R\+O\+M status register. 
+
+
+
+Definition at line \hyperlink{a00060_source_l00586}{586} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+References \hyperlink{a00029_source_l00044}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+D\+I}, \hyperlink{a00029_source_l00045}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+E\+N}, \hyperlink{a00029_source_l00047}{N\+O\+V\+\_\+\+C\+M\+D\+\_\+\+W\+R\+S\+R}, \hyperlink{a00060_source_l00567}{nov\+\_\+get\+\_\+status()}, \hyperlink{a00060_source_l00553}{nov\+\_\+set\+\_\+write\+\_\+enable\+\_\+latch()}, \hyperlink{a00032_source_l00097}{spi\+\_\+put\+\_\+data()}, and \hyperlink{a00013_source_l00110}{S\+P\+I\+\_\+\+S\+S\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}.
+
+
+\begin{DoxyCode}
+00587 \{
+00588     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cc;
+00589     \hyperlink{a00060_a7b698f4b0088c4e28951c2204b7b821e}{nov\_set\_write\_enable\_latch}(\hyperlink{a00029_acc9f91a7c7d40a32755560dda080cf98}{NOV\_CMD\_WREN});
+00590     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 0;
+00591     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(\hyperlink{a00029_a8e00cafebecc8bdde750bb02e504b124}{NOV\_CMD\_WRSR});
+00592     cc = \hyperlink{a00013_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(value);
+00593     \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT} = 1;
+00594 
+00595     \textcolor{comment}{// wait for completion of previous write operation}
+00596     \textcolor{keywordflow}{while}(\hyperlink{a00060_af9ccbc198ed63feb4fd6c18dd934590d}{nov\_get\_status}().bits.WIP);
+00597 
+00598     \hyperlink{a00060_a7b698f4b0088c4e28951c2204b7b821e}{nov\_set\_write\_enable\_latch}(\hyperlink{a00029_a3924df5fbf1e1ff642a9bde06e17b69d}{NOV\_CMD\_WRDI});
+00599 
+00600 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d73/a00060_a495e93d64734be469f6725de24dd44e1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!data\+\_\+non\+\_\+volatile@{data\+\_\+non\+\_\+volatile}}
+\index{data\+\_\+non\+\_\+volatile@{data\+\_\+non\+\_\+volatile}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{data\+\_\+non\+\_\+volatile}]{\setlength{\rightskip}{0pt plus 5cm}{\bf data\+\_\+non\+\_\+volatile\+\_\+t} data\+\_\+non\+\_\+volatile}}\label{a00060_a76ac5f917f5308dcd83de0d7c94559fb}
+
+
+E\+E\+P\+R\+O\+M data storage copy 1. 
+
+
+
+Definition at line \hyperlink{a00060_source_l00016}{16} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+Referenced by \hyperlink{a00041_source_l00025}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, \hyperlink{a00038_source_l02006}{algorithm\+\_\+notifyx()}, \hyperlink{a00038_source_l01905}{algorithm\+\_\+taskx()}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00056_source_l00041}{hwio\+\_\+configure\+\_\+init()}, \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00047_source_l00204}{light\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00048_source_l00080}{main()}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00060_source_l00159}{nov\+\_\+init()}, \hyperlink{a00060_source_l00760}{nov\+\_\+set\+\_\+default()}, and \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}.
+
+\hypertarget{a00060_a56fe014653ebdce270aeac664bf86e65}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!nov\+\_\+wr\+\_\+inprogress@{nov\+\_\+wr\+\_\+inprogress}}
+\index{nov\+\_\+wr\+\_\+inprogress@{nov\+\_\+wr\+\_\+inprogress}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{nov\+\_\+wr\+\_\+inprogress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} nov\+\_\+wr\+\_\+inprogress}}\label{a00060_a56fe014653ebdce270aeac664bf86e65}
+
+
+Definition at line \hyperlink{a00060_source_l00019}{19} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+
+
+
+Referenced by \hyperlink{a00041_source_l00025}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, \hyperlink{a00060_source_l00663}{nov\+\_\+page\+\_\+cpy()}, and \hyperlink{a00032_source_l00030}{spi\+\_\+init()}.
+
+\hypertarget{a00060_a728c5fe7bc16e168a8f93fba18ee5561}{\index{srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}!serial\+\_\+number@{serial\+\_\+number}}
+\index{serial\+\_\+number@{serial\+\_\+number}!srv\+\_\+nov.\+c@{srv\+\_\+nov.\+c}}
+\subsubsection[{serial\+\_\+number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint32} serial\+\_\+number}}\label{a00060_a728c5fe7bc16e168a8f93fba18ee5561}
+
+
+Definition at line \hyperlink{a00060_source_l00018}{18} of file \hyperlink{a00060_source}{srv\+\_\+nov.\+c}.
+

@@ -1,0 +1,2629 @@
+\hypertarget{a00016_source}{\section{moc\+\_\+qcustomplot.\+cpp}
+\label{a00016_source}\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/****************************************************************************}
+00002 \textcolor{comment}{** Meta object code from reading C++ file 'qcustomplot.h'}
+00003 \textcolor{comment}{**}
+00004 \textcolor{comment}{** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.0)}
+00005 \textcolor{comment}{**}
+00006 \textcolor{comment}{** WARNING! All changes made in this file will be lost!}
+00007 \textcolor{comment}{*****************************************************************************/}
+00008 
+00009 \textcolor{preprocessor}{#include "../../qcustomplot.h"}
+00010 \textcolor{preprocessor}{#include <QtCore/qbytearray.h>}
+00011 \textcolor{preprocessor}{#include <QtCore/qmetatype.h>}
+00012 \textcolor{preprocessor}{#include <QtCore/QVector>}
+00013 \textcolor{preprocessor}{#if !defined(Q\_MOC\_OUTPUT\_REVISION)}
+00014 \textcolor{preprocessor}{#error "The header file 'qcustomplot.h' doesn't include <QObject>."}
+00015 \textcolor{preprocessor}{#elif Q\_MOC\_OUTPUT\_REVISION != 67}
+00016 \textcolor{preprocessor}{#error "This file was generated using the moc from 5.2.0. It"}
+00017 \textcolor{preprocessor}{#error "cannot be used with the include files from this version of Qt."}
+00018 \textcolor{preprocessor}{#error "(The moc has changed too much.)"}
+00019 \textcolor{preprocessor}{#endif}
+00020 
+00021 QT\_BEGIN\_MOC\_NAMESPACE
+\hypertarget{a00016_source_l00022}{}\hyperlink{a00016}{00022} \textcolor{keyword}{struct }\hyperlink{a00016_d8/d17/a00114}{qt\_meta\_stringdata\_QCPLayerable\_t} \{
+\hypertarget{a00016_source_l00023}{}\hyperlink{a00016_a08a4a1de23442a83952a11d68453ab4d}{00023}     QByteArrayData \hyperlink{a00016_a08a4a1de23442a83952a11d68453ab4d}{data}[1];
+\hypertarget{a00016_source_l00024}{}\hyperlink{a00016_a4dff397c178a0aa24e1087e6ab89c187}{00024}     \textcolor{keywordtype}{char} \hyperlink{a00016_a4dff397c178a0aa24e1087e6ab89c187}{stringdata}[14];
+00025 \};
+00026 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00027 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00028 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPLayerable\_t, stringdata) + ofs \(\backslash\)}
+00029 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00030 \textcolor{preprocessor}{    )}
+00031 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d8/d17/a00114}{qt\_meta\_stringdata\_QCPLayerable\_t} 
+      qt\_meta\_stringdata\_QCPLayerable = \{
+00032     \{
+00033 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 12)
+00034     \},
+00035     \textcolor{stringliteral}{"QCPLayerable\(\backslash\)0"}
+00036 \};
+00037 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00038 
+00039 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPLayerable[] = \{
+00040 
+00041  \textcolor{comment}{// content:}
+00042        7,       \textcolor{comment}{// revision}
+00043        0,       \textcolor{comment}{// classname}
+00044        0,    0, \textcolor{comment}{// classinfo}
+00045        0,    0, \textcolor{comment}{// methods}
+00046        0,    0, \textcolor{comment}{// properties}
+00047        0,    0, \textcolor{comment}{// enums/sets}
+00048        0,    0, \textcolor{comment}{// constructors}
+00049        0,       \textcolor{comment}{// flags}
+00050        0,       \textcolor{comment}{// signalCount}
+00051 
+00052        0        \textcolor{comment}{// eod}
+00053 \};
+00054 
+00055 \textcolor{keywordtype}{void} QCPLayerable::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00056 \{
+00057     Q\_UNUSED(\_o);
+00058     Q\_UNUSED(\_id);
+00059     Q\_UNUSED(\_c);
+00060     Q\_UNUSED(\_a);
+00061 \}
+00062 
+00063 \textcolor{keyword}{const} QMetaObject QCPLayerable::staticMetaObject = \{
+00064     \{ &QObject::staticMetaObject, qt\_meta\_stringdata\_QCPLayerable.\hyperlink{a00016_a08a4a1de23442a83952a11d68453ab4d}{data},
+00065       qt\_meta\_data\_QCPLayerable,  qt\_static\_metacall, 0, 0\}
+00066 \};
+00067 
+00068 
+00069 \textcolor{keyword}{const} QMetaObject *QCPLayerable::metaObject()\textcolor{keyword}{ const}
+00070 \textcolor{keyword}{}\{
+00071     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00072 \}
+00073 
+00074 \textcolor{keywordtype}{void} *QCPLayerable::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00075 \{
+00076     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00077     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPLayerable.\hyperlink{a00016_a4dff397c178a0aa24e1087e6ab89c187}{stringdata}))
+00078         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPLayerable*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00079     \textcolor{keywordflow}{return} QObject::qt\_metacast(\_clname);
+00080 \}
+00081 
+00082 \textcolor{keywordtype}{int} QCPLayerable::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00083 \{
+00084     \_id = QObject::qt\_metacall(\_c, \_id, \_a);
+00085     \textcolor{keywordflow}{if} (\_id < 0)
+00086         \textcolor{keywordflow}{return} \_id;
+00087     \textcolor{keywordflow}{return} \_id;
+00088 \}
+\hypertarget{a00016_source_l00089}{}\hyperlink{a00016}{00089} \textcolor{keyword}{struct }\hyperlink{a00016_da/d74/a00099}{qt\_meta\_stringdata\_QCPAbstractPlottable\_t} \{
+\hypertarget{a00016_source_l00090}{}\hyperlink{a00016_ac951832cc81d6220c552b96fc4354c89}{00090}     QByteArrayData \hyperlink{a00016_ac951832cc81d6220c552b96fc4354c89}{data}[4];
+\hypertarget{a00016_source_l00091}{}\hyperlink{a00016_ab78c50bc348c723bab72ef878f28856c}{00091}     \textcolor{keywordtype}{char} \hyperlink{a00016_ab78c50bc348c723bab72ef878f28856c}{stringdata}[49];
+00092 \};
+00093 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00094 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00095 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPAbstractPlottable\_t, stringdata) + ofs \(\backslash\)}
+00096 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00097 \textcolor{preprocessor}{    )}
+00098 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_da/d74/a00099}{qt\_meta\_stringdata\_QCPAbstractPlottable\_t} 
+      qt\_meta\_stringdata\_QCPAbstractPlottable = \{
+00099     \{
+00100 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 20),
+00101 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(1, 21, 16),
+00102 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(2, 38, 0),
+00103 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(3, 39, 8)
+00104     \},
+00105     \textcolor{stringliteral}{"QCPAbstractPlottable\(\backslash\)0selectionChanged\(\backslash\)0"}
+00106     \textcolor{stringliteral}{"\(\backslash\)0selected\(\backslash\)0"}
+00107 \};
+00108 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00109 
+00110 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPAbstractPlottable[] = \{
+00111 
+00112  \textcolor{comment}{// content:}
+00113        7,       \textcolor{comment}{// revision}
+00114        0,       \textcolor{comment}{// classname}
+00115        0,    0, \textcolor{comment}{// classinfo}
+00116        1,   14, \textcolor{comment}{// methods}
+00117        0,    0, \textcolor{comment}{// properties}
+00118        0,    0, \textcolor{comment}{// enums/sets}
+00119        0,    0, \textcolor{comment}{// constructors}
+00120        0,       \textcolor{comment}{// flags}
+00121        1,       \textcolor{comment}{// signalCount}
+00122 
+00123  \textcolor{comment}{// signals: name, argc, parameters, tag, flags}
+00124        1,    1,   19,    2, 0x06,
+00125 
+00126  \textcolor{comment}{// signals: parameters}
+00127     QMetaType::Void, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool},    3,
+00128 
+00129        0        \textcolor{comment}{// eod}
+00130 \};
+00131 
+00132 \textcolor{keywordtype}{void} QCPAbstractPlottable::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00133 \{
+00134     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+00135         QCPAbstractPlottable *\_t = \textcolor{keyword}{static\_cast<}QCPAbstractPlottable *\textcolor{keyword}{>}(\_o);
+00136         \textcolor{keywordflow}{switch} (\_id) \{
+00137         \textcolor{keywordflow}{case} 0: \_t->selectionChanged((*\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+00138         \textcolor{keywordflow}{default}: ;
+00139         \}
+00140     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::IndexOfMethod) \{
+00141         \textcolor{keywordtype}{int} *result = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} *\textcolor{keyword}{>}(\_a[0]);
+00142         \textcolor{keywordtype}{void} **func = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void} **\textcolor{keyword}{>}(\_a[1]);
+00143         \{
+00144             \textcolor{keyword}{typedef} void (QCPAbstractPlottable::*\_t)(bool );
+00145             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCPAbstractPlottable::selectionChanged)) 
+      \{
+00146                 *result = 0;
+00147             \}
+00148         \}
+00149     \}
+00150 \}
+00151 
+00152 \textcolor{keyword}{const} QMetaObject QCPAbstractPlottable::staticMetaObject = \{
+00153     \{ &QCPLayerable::staticMetaObject, qt\_meta\_stringdata\_QCPAbstractPlottable.
+      \hyperlink{a00016_ac951832cc81d6220c552b96fc4354c89}{data},
+00154       qt\_meta\_data\_QCPAbstractPlottable,  qt\_static\_metacall, 0, 0\}
+00155 \};
+00156 
+00157 
+00158 \textcolor{keyword}{const} QMetaObject *QCPAbstractPlottable::metaObject()\textcolor{keyword}{ const}
+00159 \textcolor{keyword}{}\{
+00160     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00161 \}
+00162 
+00163 \textcolor{keywordtype}{void} *QCPAbstractPlottable::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00164 \{
+00165     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00166     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPAbstractPlottable.\hyperlink{a00016_ab78c50bc348c723bab72ef878f28856c}{stringdata}))
+00167         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPAbstractPlottable*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00168     \textcolor{keywordflow}{return} QCPLayerable::qt\_metacast(\_clname);
+00169 \}
+00170 
+00171 \textcolor{keywordtype}{int} QCPAbstractPlottable::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00172 \{
+00173     \_id = QCPLayerable::qt\_metacall(\_c, \_id, \_a);
+00174     \textcolor{keywordflow}{if} (\_id < 0)
+00175         \textcolor{keywordflow}{return} \_id;
+00176     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+00177         \textcolor{keywordflow}{if} (\_id < 1)
+00178             qt\_static\_metacall(\textcolor{keyword}{this}, \_c, \_id, \_a);
+00179         \_id -= 1;
+00180     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterMethodArgumentMetaType) \{
+00181         \textcolor{keywordflow}{if} (\_id < 1)
+00182             *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1;
+00183         \_id -= 1;
+00184     \}
+00185     \textcolor{keywordflow}{return} \_id;
+00186 \}
+00187 
+00188 \textcolor{comment}{// SIGNAL 0}
+00189 \textcolor{keywordtype}{void} QCPAbstractPlottable::selectionChanged(\textcolor{keywordtype}{bool} \_t1)
+00190 \{
+00191     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+00192     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, \_a);
+00193 \}
+\hypertarget{a00016_source_l00194}{}\hyperlink{a00016}{00194} \textcolor{keyword}{struct }\hyperlink{a00016_d5/d1e/a00103}{qt\_meta\_stringdata\_QCPGraph\_t} \{
+\hypertarget{a00016_source_l00195}{}\hyperlink{a00016_a52173b02d8396dce2aa3a046123398ea}{00195}     QByteArrayData \hyperlink{a00016_a52173b02d8396dce2aa3a046123398ea}{data}[13];
+\hypertarget{a00016_source_l00196}{}\hyperlink{a00016_a8d599799df5356cb10dc7a790a0e26a2}{00196}     \textcolor{keywordtype}{char} \hyperlink{a00016_a8d599799df5356cb10dc7a790a0e26a2}{stringdata}[118];
+00197 \};
+00198 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00199 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00200 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPGraph\_t, stringdata) + ofs \(\backslash\)}
+00201 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00202 \textcolor{preprocessor}{    )}
+00203 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d5/d1e/a00103}{qt\_meta\_stringdata\_QCPGraph\_t} qt\_meta\_stringdata\_QCPGraph = \{
+00204     \{
+00205 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 8),
+00206 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(1, 9, 9),
+00207 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(2, 19, 6),
+00208 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(3, 26, 6),
+00209 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(4, 33, 10),
+00210 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(5, 44, 11),
+00211 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(6, 56, 12),
+00212 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(7, 69, 9),
+00213 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(8, 79, 9),
+00214 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(9, 89, 6),
+00215 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(10, 96, 5),
+00216 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(11, 102, 7),
+00217 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(12, 110, 6)
+00218     \},
+00219     \textcolor{stringliteral}{"QCPGraph\(\backslash\)0LineStyle\(\backslash\)0lsNone\(\backslash\)0lsLine\(\backslash\)0"}
+00220     \textcolor{stringliteral}{"lsStepLeft\(\backslash\)0lsStepRight\(\backslash\)0lsStepCenter\(\backslash\)0"}
+00221     \textcolor{stringliteral}{"lsImpulse\(\backslash\)0ErrorType\(\backslash\)0etNone\(\backslash\)0etKey\(\backslash\)0"}
+00222     \textcolor{stringliteral}{"etValue\(\backslash\)0etBoth\(\backslash\)0"}
+00223 \};
+00224 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00225 
+00226 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPGraph[] = \{
+00227 
+00228  \textcolor{comment}{// content:}
+00229        7,       \textcolor{comment}{// revision}
+00230        0,       \textcolor{comment}{// classname}
+00231        0,    0, \textcolor{comment}{// classinfo}
+00232        0,    0, \textcolor{comment}{// methods}
+00233        0,    0, \textcolor{comment}{// properties}
+00234        2,   14, \textcolor{comment}{// enums/sets}
+00235        0,    0, \textcolor{comment}{// constructors}
+00236        0,       \textcolor{comment}{// flags}
+00237        0,       \textcolor{comment}{// signalCount}
+00238 
+00239  \textcolor{comment}{// enums: name, flags, count, data}
+00240        1, 0x0,    6,   22,
+00241        8, 0x0,    4,   34,
+00242 
+00243  \textcolor{comment}{// enum data: key, value}
+00244        2, uint(QCPGraph::lsNone),
+00245        3, uint(QCPGraph::lsLine),
+00246        4, uint(QCPGraph::lsStepLeft),
+00247        5, uint(QCPGraph::lsStepRight),
+00248        6, uint(QCPGraph::lsStepCenter),
+00249        7, uint(QCPGraph::lsImpulse),
+00250        9, uint(QCPGraph::etNone),
+00251       10, uint(QCPGraph::etKey),
+00252       11, uint(QCPGraph::etValue),
+00253       12, uint(QCPGraph::etBoth),
+00254 
+00255        0        \textcolor{comment}{// eod}
+00256 \};
+00257 
+00258 \textcolor{keywordtype}{void} QCPGraph::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00259 \{
+00260     Q\_UNUSED(\_o);
+00261     Q\_UNUSED(\_id);
+00262     Q\_UNUSED(\_c);
+00263     Q\_UNUSED(\_a);
+00264 \}
+00265 
+00266 \textcolor{keyword}{const} QMetaObject QCPGraph::staticMetaObject = \{
+00267     \{ &QCPAbstractPlottable::staticMetaObject, qt\_meta\_stringdata\_QCPGraph.\hyperlink{a00016_a52173b02d8396dce2aa3a046123398ea}{data},
+00268       qt\_meta\_data\_QCPGraph,  qt\_static\_metacall, 0, 0\}
+00269 \};
+00270 
+00271 
+00272 \textcolor{keyword}{const} QMetaObject *QCPGraph::metaObject()\textcolor{keyword}{ const}
+00273 \textcolor{keyword}{}\{
+00274     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00275 \}
+00276 
+00277 \textcolor{keywordtype}{void} *QCPGraph::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00278 \{
+00279     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00280     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPGraph.\hyperlink{a00016_a8d599799df5356cb10dc7a790a0e26a2}{stringdata}))
+00281         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPGraph*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00282     \textcolor{keywordflow}{return} QCPAbstractPlottable::qt\_metacast(\_clname);
+00283 \}
+00284 
+00285 \textcolor{keywordtype}{int} QCPGraph::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00286 \{
+00287     \_id = QCPAbstractPlottable::qt\_metacall(\_c, \_id, \_a);
+00288     \textcolor{keywordflow}{if} (\_id < 0)
+00289         \textcolor{keywordflow}{return} \_id;
+00290     \textcolor{keywordflow}{return} \_id;
+00291 \}
+\hypertarget{a00016_source_l00292}{}\hyperlink{a00016}{00292} \textcolor{keyword}{struct }\hyperlink{a00016_d9/dcc/a00102}{qt\_meta\_stringdata\_QCPCurve\_t} \{
+\hypertarget{a00016_source_l00293}{}\hyperlink{a00016_ac2243b1095d588f9864242ffc67f432f}{00293}     QByteArrayData \hyperlink{a00016_ac2243b1095d588f9864242ffc67f432f}{data}[1];
+\hypertarget{a00016_source_l00294}{}\hyperlink{a00016_ad141d5092cc25ae43c6c60a782ca04ee}{00294}     \textcolor{keywordtype}{char} \hyperlink{a00016_ad141d5092cc25ae43c6c60a782ca04ee}{stringdata}[10];
+00295 \};
+00296 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00297 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00298 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPCurve\_t, stringdata) + ofs \(\backslash\)}
+00299 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00300 \textcolor{preprocessor}{    )}
+00301 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d9/dcc/a00102}{qt\_meta\_stringdata\_QCPCurve\_t} qt\_meta\_stringdata\_QCPCurve = \{
+00302     \{
+00303 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 8)
+00304     \},
+00305     \textcolor{stringliteral}{"QCPCurve\(\backslash\)0"}
+00306 \};
+00307 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00308 
+00309 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPCurve[] = \{
+00310 
+00311  \textcolor{comment}{// content:}
+00312        7,       \textcolor{comment}{// revision}
+00313        0,       \textcolor{comment}{// classname}
+00314        0,    0, \textcolor{comment}{// classinfo}
+00315        0,    0, \textcolor{comment}{// methods}
+00316        0,    0, \textcolor{comment}{// properties}
+00317        0,    0, \textcolor{comment}{// enums/sets}
+00318        0,    0, \textcolor{comment}{// constructors}
+00319        0,       \textcolor{comment}{// flags}
+00320        0,       \textcolor{comment}{// signalCount}
+00321 
+00322        0        \textcolor{comment}{// eod}
+00323 \};
+00324 
+00325 \textcolor{keywordtype}{void} QCPCurve::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00326 \{
+00327     Q\_UNUSED(\_o);
+00328     Q\_UNUSED(\_id);
+00329     Q\_UNUSED(\_c);
+00330     Q\_UNUSED(\_a);
+00331 \}
+00332 
+00333 \textcolor{keyword}{const} QMetaObject QCPCurve::staticMetaObject = \{
+00334     \{ &QCPAbstractPlottable::staticMetaObject, qt\_meta\_stringdata\_QCPCurve.\hyperlink{a00016_ac2243b1095d588f9864242ffc67f432f}{data},
+00335       qt\_meta\_data\_QCPCurve,  qt\_static\_metacall, 0, 0\}
+00336 \};
+00337 
+00338 
+00339 \textcolor{keyword}{const} QMetaObject *QCPCurve::metaObject()\textcolor{keyword}{ const}
+00340 \textcolor{keyword}{}\{
+00341     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00342 \}
+00343 
+00344 \textcolor{keywordtype}{void} *QCPCurve::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00345 \{
+00346     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00347     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPCurve.\hyperlink{a00016_ad141d5092cc25ae43c6c60a782ca04ee}{stringdata}))
+00348         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPCurve*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00349     \textcolor{keywordflow}{return} QCPAbstractPlottable::qt\_metacast(\_clname);
+00350 \}
+00351 
+00352 \textcolor{keywordtype}{int} QCPCurve::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00353 \{
+00354     \_id = QCPAbstractPlottable::qt\_metacall(\_c, \_id, \_a);
+00355     \textcolor{keywordflow}{if} (\_id < 0)
+00356         \textcolor{keywordflow}{return} \_id;
+00357     \textcolor{keywordflow}{return} \_id;
+00358 \}
+\hypertarget{a00016_source_l00359}{}\hyperlink{a00016}{00359} \textcolor{keyword}{struct }\hyperlink{a00016_d4/d3a/a00101}{qt\_meta\_stringdata\_QCPBars\_t} \{
+\hypertarget{a00016_source_l00360}{}\hyperlink{a00016_a5237dfd2ea3d5be916ce7c562d734ff4}{00360}     QByteArrayData \hyperlink{a00016_a5237dfd2ea3d5be916ce7c562d734ff4}{data}[1];
+\hypertarget{a00016_source_l00361}{}\hyperlink{a00016_a07ece80e538a4239e2a3b6d4b9782407}{00361}     \textcolor{keywordtype}{char} \hyperlink{a00016_a07ece80e538a4239e2a3b6d4b9782407}{stringdata}[9];
+00362 \};
+00363 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00364 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00365 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPBars\_t, stringdata) + ofs \(\backslash\)}
+00366 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00367 \textcolor{preprocessor}{    )}
+00368 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d4/d3a/a00101}{qt\_meta\_stringdata\_QCPBars\_t} qt\_meta\_stringdata\_QCPBars = \{
+00369     \{
+00370 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 7)
+00371     \},
+00372     \textcolor{stringliteral}{"QCPBars\(\backslash\)0"}
+00373 \};
+00374 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00375 
+00376 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPBars[] = \{
+00377 
+00378  \textcolor{comment}{// content:}
+00379        7,       \textcolor{comment}{// revision}
+00380        0,       \textcolor{comment}{// classname}
+00381        0,    0, \textcolor{comment}{// classinfo}
+00382        0,    0, \textcolor{comment}{// methods}
+00383        0,    0, \textcolor{comment}{// properties}
+00384        0,    0, \textcolor{comment}{// enums/sets}
+00385        0,    0, \textcolor{comment}{// constructors}
+00386        0,       \textcolor{comment}{// flags}
+00387        0,       \textcolor{comment}{// signalCount}
+00388 
+00389        0        \textcolor{comment}{// eod}
+00390 \};
+00391 
+00392 \textcolor{keywordtype}{void} QCPBars::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00393 \{
+00394     Q\_UNUSED(\_o);
+00395     Q\_UNUSED(\_id);
+00396     Q\_UNUSED(\_c);
+00397     Q\_UNUSED(\_a);
+00398 \}
+00399 
+00400 \textcolor{keyword}{const} QMetaObject QCPBars::staticMetaObject = \{
+00401     \{ &QCPAbstractPlottable::staticMetaObject, qt\_meta\_stringdata\_QCPBars.\hyperlink{a00016_a5237dfd2ea3d5be916ce7c562d734ff4}{data},
+00402       qt\_meta\_data\_QCPBars,  qt\_static\_metacall, 0, 0\}
+00403 \};
+00404 
+00405 
+00406 \textcolor{keyword}{const} QMetaObject *QCPBars::metaObject()\textcolor{keyword}{ const}
+00407 \textcolor{keyword}{}\{
+00408     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00409 \}
+00410 
+00411 \textcolor{keywordtype}{void} *QCPBars::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00412 \{
+00413     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00414     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPBars.\hyperlink{a00016_a07ece80e538a4239e2a3b6d4b9782407}{stringdata}))
+00415         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPBars*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00416     \textcolor{keywordflow}{return} QCPAbstractPlottable::qt\_metacast(\_clname);
+00417 \}
+00418 
+00419 \textcolor{keywordtype}{int} QCPBars::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00420 \{
+00421     \_id = QCPAbstractPlottable::qt\_metacall(\_c, \_id, \_a);
+00422     \textcolor{keywordflow}{if} (\_id < 0)
+00423         \textcolor{keywordflow}{return} \_id;
+00424     \textcolor{keywordflow}{return} \_id;
+00425 \}
+\hypertarget{a00016_source_l00426}{}\hyperlink{a00016}{00426} \textcolor{keyword}{struct }\hyperlink{a00016_d9/d4b/a00117}{qt\_meta\_stringdata\_QCPStatisticalBox\_t} \{
+\hypertarget{a00016_source_l00427}{}\hyperlink{a00016_a5e26535af2751ed72a5c0a296eff07f6}{00427}     QByteArrayData \hyperlink{a00016_a5e26535af2751ed72a5c0a296eff07f6}{data}[1];
+\hypertarget{a00016_source_l00428}{}\hyperlink{a00016_a69ea5a8754685d08ddf21f3f6478bb52}{00428}     \textcolor{keywordtype}{char} \hyperlink{a00016_a69ea5a8754685d08ddf21f3f6478bb52}{stringdata}[19];
+00429 \};
+00430 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00431 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00432 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPStatisticalBox\_t, stringdata) + ofs \(\backslash\)}
+00433 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00434 \textcolor{preprocessor}{    )}
+00435 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d9/d4b/a00117}{qt\_meta\_stringdata\_QCPStatisticalBox\_t} 
+      qt\_meta\_stringdata\_QCPStatisticalBox = \{
+00436     \{
+00437 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 17)
+00438     \},
+00439     \textcolor{stringliteral}{"QCPStatisticalBox\(\backslash\)0"}
+00440 \};
+00441 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00442 
+00443 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPStatisticalBox[] = \{
+00444 
+00445  \textcolor{comment}{// content:}
+00446        7,       \textcolor{comment}{// revision}
+00447        0,       \textcolor{comment}{// classname}
+00448        0,    0, \textcolor{comment}{// classinfo}
+00449        0,    0, \textcolor{comment}{// methods}
+00450        0,    0, \textcolor{comment}{// properties}
+00451        0,    0, \textcolor{comment}{// enums/sets}
+00452        0,    0, \textcolor{comment}{// constructors}
+00453        0,       \textcolor{comment}{// flags}
+00454        0,       \textcolor{comment}{// signalCount}
+00455 
+00456        0        \textcolor{comment}{// eod}
+00457 \};
+00458 
+00459 \textcolor{keywordtype}{void} QCPStatisticalBox::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00460 \{
+00461     Q\_UNUSED(\_o);
+00462     Q\_UNUSED(\_id);
+00463     Q\_UNUSED(\_c);
+00464     Q\_UNUSED(\_a);
+00465 \}
+00466 
+00467 \textcolor{keyword}{const} QMetaObject QCPStatisticalBox::staticMetaObject = \{
+00468     \{ &QCPAbstractPlottable::staticMetaObject, qt\_meta\_stringdata\_QCPStatisticalBox.
+      \hyperlink{a00016_a5e26535af2751ed72a5c0a296eff07f6}{data},
+00469       qt\_meta\_data\_QCPStatisticalBox,  qt\_static\_metacall, 0, 0\}
+00470 \};
+00471 
+00472 
+00473 \textcolor{keyword}{const} QMetaObject *QCPStatisticalBox::metaObject()\textcolor{keyword}{ const}
+00474 \textcolor{keyword}{}\{
+00475     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00476 \}
+00477 
+00478 \textcolor{keywordtype}{void} *QCPStatisticalBox::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00479 \{
+00480     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00481     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPStatisticalBox.\hyperlink{a00016_a69ea5a8754685d08ddf21f3f6478bb52}{stringdata}))
+00482         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPStatisticalBox*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00483     \textcolor{keywordflow}{return} QCPAbstractPlottable::qt\_metacast(\_clname);
+00484 \}
+00485 
+00486 \textcolor{keywordtype}{int} QCPStatisticalBox::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00487 \{
+00488     \_id = QCPAbstractPlottable::qt\_metacall(\_c, \_id, \_a);
+00489     \textcolor{keywordflow}{if} (\_id < 0)
+00490         \textcolor{keywordflow}{return} \_id;
+00491     \textcolor{keywordflow}{return} \_id;
+00492 \}
+\hypertarget{a00016_source_l00493}{}\hyperlink{a00016}{00493} \textcolor{keyword}{struct }\hyperlink{a00016_d1/d84/a00097}{qt\_meta\_stringdata\_QCPAbstractItem\_t} \{
+\hypertarget{a00016_source_l00494}{}\hyperlink{a00016_ab4317fd8db7c91bab9009e558b7cb145}{00494}     QByteArrayData \hyperlink{a00016_ab4317fd8db7c91bab9009e558b7cb145}{data}[4];
+\hypertarget{a00016_source_l00495}{}\hyperlink{a00016_ade6e562aa7d6defc621f68d53679440b}{00495}     \textcolor{keywordtype}{char} \hyperlink{a00016_ade6e562aa7d6defc621f68d53679440b}{stringdata}[44];
+00496 \};
+00497 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00498 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00499 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPAbstractItem\_t, stringdata) + ofs \(\backslash\)}
+00500 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00501 \textcolor{preprocessor}{    )}
+00502 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d1/d84/a00097}{qt\_meta\_stringdata\_QCPAbstractItem\_t} 
+      qt\_meta\_stringdata\_QCPAbstractItem = \{
+00503     \{
+00504 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 15),
+00505 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(1, 16, 16),
+00506 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(2, 33, 0),
+00507 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(3, 34, 8)
+00508     \},
+00509     \textcolor{stringliteral}{"QCPAbstractItem\(\backslash\)0selectionChanged\(\backslash\)0\(\backslash\)0"}
+00510     \textcolor{stringliteral}{"selected\(\backslash\)0"}
+00511 \};
+00512 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00513 
+00514 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPAbstractItem[] = \{
+00515 
+00516  \textcolor{comment}{// content:}
+00517        7,       \textcolor{comment}{// revision}
+00518        0,       \textcolor{comment}{// classname}
+00519        0,    0, \textcolor{comment}{// classinfo}
+00520        1,   14, \textcolor{comment}{// methods}
+00521        0,    0, \textcolor{comment}{// properties}
+00522        0,    0, \textcolor{comment}{// enums/sets}
+00523        0,    0, \textcolor{comment}{// constructors}
+00524        0,       \textcolor{comment}{// flags}
+00525        1,       \textcolor{comment}{// signalCount}
+00526 
+00527  \textcolor{comment}{// signals: name, argc, parameters, tag, flags}
+00528        1,    1,   19,    2, 0x06,
+00529 
+00530  \textcolor{comment}{// signals: parameters}
+00531     QMetaType::Void, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool},    3,
+00532 
+00533        0        \textcolor{comment}{// eod}
+00534 \};
+00535 
+00536 \textcolor{keywordtype}{void} QCPAbstractItem::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00537 \{
+00538     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+00539         QCPAbstractItem *\_t = \textcolor{keyword}{static\_cast<}QCPAbstractItem *\textcolor{keyword}{>}(\_o);
+00540         \textcolor{keywordflow}{switch} (\_id) \{
+00541         \textcolor{keywordflow}{case} 0: \_t->selectionChanged((*\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+00542         \textcolor{keywordflow}{default}: ;
+00543         \}
+00544     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::IndexOfMethod) \{
+00545         \textcolor{keywordtype}{int} *result = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} *\textcolor{keyword}{>}(\_a[0]);
+00546         \textcolor{keywordtype}{void} **func = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void} **\textcolor{keyword}{>}(\_a[1]);
+00547         \{
+00548             \textcolor{keyword}{typedef} void (QCPAbstractItem::*\_t)(bool );
+00549             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCPAbstractItem::selectionChanged)) \{
+00550                 *result = 0;
+00551             \}
+00552         \}
+00553     \}
+00554 \}
+00555 
+00556 \textcolor{keyword}{const} QMetaObject QCPAbstractItem::staticMetaObject = \{
+00557     \{ &QCPLayerable::staticMetaObject, qt\_meta\_stringdata\_QCPAbstractItem.\hyperlink{a00016_ab4317fd8db7c91bab9009e558b7cb145}{data},
+00558       qt\_meta\_data\_QCPAbstractItem,  qt\_static\_metacall, 0, 0\}
+00559 \};
+00560 
+00561 
+00562 \textcolor{keyword}{const} QMetaObject *QCPAbstractItem::metaObject()\textcolor{keyword}{ const}
+00563 \textcolor{keyword}{}\{
+00564     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00565 \}
+00566 
+00567 \textcolor{keywordtype}{void} *QCPAbstractItem::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00568 \{
+00569     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00570     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPAbstractItem.\hyperlink{a00016_ade6e562aa7d6defc621f68d53679440b}{stringdata}))
+00571         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPAbstractItem*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00572     \textcolor{keywordflow}{return} QCPLayerable::qt\_metacast(\_clname);
+00573 \}
+00574 
+00575 \textcolor{keywordtype}{int} QCPAbstractItem::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00576 \{
+00577     \_id = QCPLayerable::qt\_metacall(\_c, \_id, \_a);
+00578     \textcolor{keywordflow}{if} (\_id < 0)
+00579         \textcolor{keywordflow}{return} \_id;
+00580     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+00581         \textcolor{keywordflow}{if} (\_id < 1)
+00582             qt\_static\_metacall(\textcolor{keyword}{this}, \_c, \_id, \_a);
+00583         \_id -= 1;
+00584     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterMethodArgumentMetaType) \{
+00585         \textcolor{keywordflow}{if} (\_id < 1)
+00586             *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1;
+00587         \_id -= 1;
+00588     \}
+00589     \textcolor{keywordflow}{return} \_id;
+00590 \}
+00591 
+00592 \textcolor{comment}{// SIGNAL 0}
+00593 \textcolor{keywordtype}{void} QCPAbstractItem::selectionChanged(\textcolor{keywordtype}{bool} \_t1)
+00594 \{
+00595     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+00596     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, \_a);
+00597 \}
+\hypertarget{a00016_source_l00598}{}\hyperlink{a00016}{00598} \textcolor{keyword}{struct }\hyperlink{a00016_dd/d6d/a00111}{qt\_meta\_stringdata\_QCPItemStraightLine\_t} \{
+\hypertarget{a00016_source_l00599}{}\hyperlink{a00016_a86cfd75cdbd69fb7bac81f44368368a2}{00599}     QByteArrayData \hyperlink{a00016_a86cfd75cdbd69fb7bac81f44368368a2}{data}[1];
+\hypertarget{a00016_source_l00600}{}\hyperlink{a00016_a4fcd4918ec3f5999a6ee9ce08ebcdb96}{00600}     \textcolor{keywordtype}{char} \hyperlink{a00016_a4fcd4918ec3f5999a6ee9ce08ebcdb96}{stringdata}[21];
+00601 \};
+00602 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00603 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00604 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemStraightLine\_t, stringdata) + ofs \(\backslash\)}
+00605 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00606 \textcolor{preprocessor}{    )}
+00607 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_dd/d6d/a00111}{qt\_meta\_stringdata\_QCPItemStraightLine\_t} 
+      qt\_meta\_stringdata\_QCPItemStraightLine = \{
+00608     \{
+00609 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 19)
+00610     \},
+00611     \textcolor{stringliteral}{"QCPItemStraightLine\(\backslash\)0"}
+00612 \};
+00613 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00614 
+00615 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemStraightLine[] = \{
+00616 
+00617  \textcolor{comment}{// content:}
+00618        7,       \textcolor{comment}{// revision}
+00619        0,       \textcolor{comment}{// classname}
+00620        0,    0, \textcolor{comment}{// classinfo}
+00621        0,    0, \textcolor{comment}{// methods}
+00622        0,    0, \textcolor{comment}{// properties}
+00623        0,    0, \textcolor{comment}{// enums/sets}
+00624        0,    0, \textcolor{comment}{// constructors}
+00625        0,       \textcolor{comment}{// flags}
+00626        0,       \textcolor{comment}{// signalCount}
+00627 
+00628        0        \textcolor{comment}{// eod}
+00629 \};
+00630 
+00631 \textcolor{keywordtype}{void} QCPItemStraightLine::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00632 \{
+00633     Q\_UNUSED(\_o);
+00634     Q\_UNUSED(\_id);
+00635     Q\_UNUSED(\_c);
+00636     Q\_UNUSED(\_a);
+00637 \}
+00638 
+00639 \textcolor{keyword}{const} QMetaObject QCPItemStraightLine::staticMetaObject = \{
+00640     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemStraightLine.
+      \hyperlink{a00016_a86cfd75cdbd69fb7bac81f44368368a2}{data},
+00641       qt\_meta\_data\_QCPItemStraightLine,  qt\_static\_metacall, 0, 0\}
+00642 \};
+00643 
+00644 
+00645 \textcolor{keyword}{const} QMetaObject *QCPItemStraightLine::metaObject()\textcolor{keyword}{ const}
+00646 \textcolor{keyword}{}\{
+00647     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00648 \}
+00649 
+00650 \textcolor{keywordtype}{void} *QCPItemStraightLine::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00651 \{
+00652     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00653     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemStraightLine.\hyperlink{a00016_a4fcd4918ec3f5999a6ee9ce08ebcdb96}{stringdata}))
+00654         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemStraightLine*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00655     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+00656 \}
+00657 
+00658 \textcolor{keywordtype}{int} QCPItemStraightLine::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00659 \{
+00660     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+00661     \textcolor{keywordflow}{if} (\_id < 0)
+00662         \textcolor{keywordflow}{return} \_id;
+00663     \textcolor{keywordflow}{return} \_id;
+00664 \}
+\hypertarget{a00016_source_l00665}{}\hyperlink{a00016}{00665} \textcolor{keyword}{struct }\hyperlink{a00016_d1/dd6/a00108}{qt\_meta\_stringdata\_QCPItemLine\_t} \{
+\hypertarget{a00016_source_l00666}{}\hyperlink{a00016_a02b269c84618a73b8cefdb4c4ae888c6}{00666}     QByteArrayData \hyperlink{a00016_a02b269c84618a73b8cefdb4c4ae888c6}{data}[1];
+\hypertarget{a00016_source_l00667}{}\hyperlink{a00016_ac705c65b9062c112f8ff0dd2a2915160}{00667}     \textcolor{keywordtype}{char} \hyperlink{a00016_ac705c65b9062c112f8ff0dd2a2915160}{stringdata}[13];
+00668 \};
+00669 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00670 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00671 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemLine\_t, stringdata) + ofs \(\backslash\)}
+00672 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00673 \textcolor{preprocessor}{    )}
+00674 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d1/dd6/a00108}{qt\_meta\_stringdata\_QCPItemLine\_t} 
+      qt\_meta\_stringdata\_QCPItemLine = \{
+00675     \{
+00676 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 11)
+00677     \},
+00678     \textcolor{stringliteral}{"QCPItemLine\(\backslash\)0"}
+00679 \};
+00680 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00681 
+00682 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemLine[] = \{
+00683 
+00684  \textcolor{comment}{// content:}
+00685        7,       \textcolor{comment}{// revision}
+00686        0,       \textcolor{comment}{// classname}
+00687        0,    0, \textcolor{comment}{// classinfo}
+00688        0,    0, \textcolor{comment}{// methods}
+00689        0,    0, \textcolor{comment}{// properties}
+00690        0,    0, \textcolor{comment}{// enums/sets}
+00691        0,    0, \textcolor{comment}{// constructors}
+00692        0,       \textcolor{comment}{// flags}
+00693        0,       \textcolor{comment}{// signalCount}
+00694 
+00695        0        \textcolor{comment}{// eod}
+00696 \};
+00697 
+00698 \textcolor{keywordtype}{void} QCPItemLine::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00699 \{
+00700     Q\_UNUSED(\_o);
+00701     Q\_UNUSED(\_id);
+00702     Q\_UNUSED(\_c);
+00703     Q\_UNUSED(\_a);
+00704 \}
+00705 
+00706 \textcolor{keyword}{const} QMetaObject QCPItemLine::staticMetaObject = \{
+00707     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemLine.\hyperlink{a00016_a02b269c84618a73b8cefdb4c4ae888c6}{data},
+00708       qt\_meta\_data\_QCPItemLine,  qt\_static\_metacall, 0, 0\}
+00709 \};
+00710 
+00711 
+00712 \textcolor{keyword}{const} QMetaObject *QCPItemLine::metaObject()\textcolor{keyword}{ const}
+00713 \textcolor{keyword}{}\{
+00714     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00715 \}
+00716 
+00717 \textcolor{keywordtype}{void} *QCPItemLine::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00718 \{
+00719     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00720     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemLine.\hyperlink{a00016_ac705c65b9062c112f8ff0dd2a2915160}{stringdata}))
+00721         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemLine*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00722     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+00723 \}
+00724 
+00725 \textcolor{keywordtype}{int} QCPItemLine::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00726 \{
+00727     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+00728     \textcolor{keywordflow}{if} (\_id < 0)
+00729         \textcolor{keywordflow}{return} \_id;
+00730     \textcolor{keywordflow}{return} \_id;
+00731 \}
+\hypertarget{a00016_source_l00732}{}\hyperlink{a00016}{00732} \textcolor{keyword}{struct }\hyperlink{a00016_df/d98/a00107}{qt\_meta\_stringdata\_QCPItemEllipse\_t} \{
+\hypertarget{a00016_source_l00733}{}\hyperlink{a00016_a7efd0687e2b0fbd2c4df25855b74af30}{00733}     QByteArrayData \hyperlink{a00016_a7efd0687e2b0fbd2c4df25855b74af30}{data}[1];
+\hypertarget{a00016_source_l00734}{}\hyperlink{a00016_a35ee014e43cf9f75fa027534df3b222d}{00734}     \textcolor{keywordtype}{char} \hyperlink{a00016_a35ee014e43cf9f75fa027534df3b222d}{stringdata}[16];
+00735 \};
+00736 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00737 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00738 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemEllipse\_t, stringdata) + ofs \(\backslash\)}
+00739 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00740 \textcolor{preprocessor}{    )}
+00741 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_df/d98/a00107}{qt\_meta\_stringdata\_QCPItemEllipse\_t} 
+      qt\_meta\_stringdata\_QCPItemEllipse = \{
+00742     \{
+00743 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 14)
+00744     \},
+00745     \textcolor{stringliteral}{"QCPItemEllipse\(\backslash\)0"}
+00746 \};
+00747 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00748 
+00749 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemEllipse[] = \{
+00750 
+00751  \textcolor{comment}{// content:}
+00752        7,       \textcolor{comment}{// revision}
+00753        0,       \textcolor{comment}{// classname}
+00754        0,    0, \textcolor{comment}{// classinfo}
+00755        0,    0, \textcolor{comment}{// methods}
+00756        0,    0, \textcolor{comment}{// properties}
+00757        0,    0, \textcolor{comment}{// enums/sets}
+00758        0,    0, \textcolor{comment}{// constructors}
+00759        0,       \textcolor{comment}{// flags}
+00760        0,       \textcolor{comment}{// signalCount}
+00761 
+00762        0        \textcolor{comment}{// eod}
+00763 \};
+00764 
+00765 \textcolor{keywordtype}{void} QCPItemEllipse::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00766 \{
+00767     Q\_UNUSED(\_o);
+00768     Q\_UNUSED(\_id);
+00769     Q\_UNUSED(\_c);
+00770     Q\_UNUSED(\_a);
+00771 \}
+00772 
+00773 \textcolor{keyword}{const} QMetaObject QCPItemEllipse::staticMetaObject = \{
+00774     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemEllipse.\hyperlink{a00016_a7efd0687e2b0fbd2c4df25855b74af30}{data},
+00775       qt\_meta\_data\_QCPItemEllipse,  qt\_static\_metacall, 0, 0\}
+00776 \};
+00777 
+00778 
+00779 \textcolor{keyword}{const} QMetaObject *QCPItemEllipse::metaObject()\textcolor{keyword}{ const}
+00780 \textcolor{keyword}{}\{
+00781     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00782 \}
+00783 
+00784 \textcolor{keywordtype}{void} *QCPItemEllipse::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00785 \{
+00786     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00787     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemEllipse.\hyperlink{a00016_a35ee014e43cf9f75fa027534df3b222d}{stringdata}))
+00788         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemEllipse*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00789     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+00790 \}
+00791 
+00792 \textcolor{keywordtype}{int} QCPItemEllipse::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00793 \{
+00794     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+00795     \textcolor{keywordflow}{if} (\_id < 0)
+00796         \textcolor{keywordflow}{return} \_id;
+00797     \textcolor{keywordflow}{return} \_id;
+00798 \}
+\hypertarget{a00016_source_l00799}{}\hyperlink{a00016}{00799} \textcolor{keyword}{struct }\hyperlink{a00016_d4/d81/a00110}{qt\_meta\_stringdata\_QCPItemRect\_t} \{
+\hypertarget{a00016_source_l00800}{}\hyperlink{a00016_abb87c72758ddd18aa3c36a7ee960fa1f}{00800}     QByteArrayData \hyperlink{a00016_abb87c72758ddd18aa3c36a7ee960fa1f}{data}[1];
+\hypertarget{a00016_source_l00801}{}\hyperlink{a00016_a8006d9df79f24f9dc9846ce4485c145a}{00801}     \textcolor{keywordtype}{char} \hyperlink{a00016_a8006d9df79f24f9dc9846ce4485c145a}{stringdata}[13];
+00802 \};
+00803 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00804 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00805 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemRect\_t, stringdata) + ofs \(\backslash\)}
+00806 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00807 \textcolor{preprocessor}{    )}
+00808 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d4/d81/a00110}{qt\_meta\_stringdata\_QCPItemRect\_t} 
+      qt\_meta\_stringdata\_QCPItemRect = \{
+00809     \{
+00810 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 11)
+00811     \},
+00812     \textcolor{stringliteral}{"QCPItemRect\(\backslash\)0"}
+00813 \};
+00814 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00815 
+00816 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemRect[] = \{
+00817 
+00818  \textcolor{comment}{// content:}
+00819        7,       \textcolor{comment}{// revision}
+00820        0,       \textcolor{comment}{// classname}
+00821        0,    0, \textcolor{comment}{// classinfo}
+00822        0,    0, \textcolor{comment}{// methods}
+00823        0,    0, \textcolor{comment}{// properties}
+00824        0,    0, \textcolor{comment}{// enums/sets}
+00825        0,    0, \textcolor{comment}{// constructors}
+00826        0,       \textcolor{comment}{// flags}
+00827        0,       \textcolor{comment}{// signalCount}
+00828 
+00829        0        \textcolor{comment}{// eod}
+00830 \};
+00831 
+00832 \textcolor{keywordtype}{void} QCPItemRect::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00833 \{
+00834     Q\_UNUSED(\_o);
+00835     Q\_UNUSED(\_id);
+00836     Q\_UNUSED(\_c);
+00837     Q\_UNUSED(\_a);
+00838 \}
+00839 
+00840 \textcolor{keyword}{const} QMetaObject QCPItemRect::staticMetaObject = \{
+00841     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemRect.\hyperlink{a00016_abb87c72758ddd18aa3c36a7ee960fa1f}{data},
+00842       qt\_meta\_data\_QCPItemRect,  qt\_static\_metacall, 0, 0\}
+00843 \};
+00844 
+00845 
+00846 \textcolor{keyword}{const} QMetaObject *QCPItemRect::metaObject()\textcolor{keyword}{ const}
+00847 \textcolor{keyword}{}\{
+00848     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00849 \}
+00850 
+00851 \textcolor{keywordtype}{void} *QCPItemRect::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00852 \{
+00853     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00854     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemRect.\hyperlink{a00016_a8006d9df79f24f9dc9846ce4485c145a}{stringdata}))
+00855         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemRect*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00856     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+00857 \}
+00858 
+00859 \textcolor{keywordtype}{int} QCPItemRect::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00860 \{
+00861     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+00862     \textcolor{keywordflow}{if} (\_id < 0)
+00863         \textcolor{keywordflow}{return} \_id;
+00864     \textcolor{keywordflow}{return} \_id;
+00865 \}
+\hypertarget{a00016_source_l00866}{}\hyperlink{a00016}{00866} \textcolor{keyword}{struct }\hyperlink{a00016_dd/d42/a00109}{qt\_meta\_stringdata\_QCPItemPixmap\_t} \{
+\hypertarget{a00016_source_l00867}{}\hyperlink{a00016_ac2c2965eddf58c85d34bd6a8bc3608fe}{00867}     QByteArrayData \hyperlink{a00016_ac2c2965eddf58c85d34bd6a8bc3608fe}{data}[1];
+\hypertarget{a00016_source_l00868}{}\hyperlink{a00016_a4cee80f7af4fafbb06fc161890ced10e}{00868}     \textcolor{keywordtype}{char} \hyperlink{a00016_a4cee80f7af4fafbb06fc161890ced10e}{stringdata}[15];
+00869 \};
+00870 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00871 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00872 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemPixmap\_t, stringdata) + ofs \(\backslash\)}
+00873 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00874 \textcolor{preprocessor}{    )}
+00875 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_dd/d42/a00109}{qt\_meta\_stringdata\_QCPItemPixmap\_t} 
+      qt\_meta\_stringdata\_QCPItemPixmap = \{
+00876     \{
+00877 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 13)
+00878     \},
+00879     \textcolor{stringliteral}{"QCPItemPixmap\(\backslash\)0"}
+00880 \};
+00881 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00882 
+00883 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemPixmap[] = \{
+00884 
+00885  \textcolor{comment}{// content:}
+00886        7,       \textcolor{comment}{// revision}
+00887        0,       \textcolor{comment}{// classname}
+00888        0,    0, \textcolor{comment}{// classinfo}
+00889        0,    0, \textcolor{comment}{// methods}
+00890        0,    0, \textcolor{comment}{// properties}
+00891        0,    0, \textcolor{comment}{// enums/sets}
+00892        0,    0, \textcolor{comment}{// constructors}
+00893        0,       \textcolor{comment}{// flags}
+00894        0,       \textcolor{comment}{// signalCount}
+00895 
+00896        0        \textcolor{comment}{// eod}
+00897 \};
+00898 
+00899 \textcolor{keywordtype}{void} QCPItemPixmap::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00900 \{
+00901     Q\_UNUSED(\_o);
+00902     Q\_UNUSED(\_id);
+00903     Q\_UNUSED(\_c);
+00904     Q\_UNUSED(\_a);
+00905 \}
+00906 
+00907 \textcolor{keyword}{const} QMetaObject QCPItemPixmap::staticMetaObject = \{
+00908     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemPixmap.\hyperlink{a00016_ac2c2965eddf58c85d34bd6a8bc3608fe}{data},
+00909       qt\_meta\_data\_QCPItemPixmap,  qt\_static\_metacall, 0, 0\}
+00910 \};
+00911 
+00912 
+00913 \textcolor{keyword}{const} QMetaObject *QCPItemPixmap::metaObject()\textcolor{keyword}{ const}
+00914 \textcolor{keyword}{}\{
+00915     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00916 \}
+00917 
+00918 \textcolor{keywordtype}{void} *QCPItemPixmap::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00919 \{
+00920     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00921     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemPixmap.\hyperlink{a00016_a4cee80f7af4fafbb06fc161890ced10e}{stringdata}))
+00922         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemPixmap*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00923     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+00924 \}
+00925 
+00926 \textcolor{keywordtype}{int} QCPItemPixmap::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00927 \{
+00928     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+00929     \textcolor{keywordflow}{if} (\_id < 0)
+00930         \textcolor{keywordflow}{return} \_id;
+00931     \textcolor{keywordflow}{return} \_id;
+00932 \}
+\hypertarget{a00016_source_l00933}{}\hyperlink{a00016}{00933} \textcolor{keyword}{struct }\hyperlink{a00016_db/d57/a00112}{qt\_meta\_stringdata\_QCPItemText\_t} \{
+\hypertarget{a00016_source_l00934}{}\hyperlink{a00016_ae37b5edc1ab54bceebcfba0fb33002ec}{00934}     QByteArrayData \hyperlink{a00016_ae37b5edc1ab54bceebcfba0fb33002ec}{data}[1];
+\hypertarget{a00016_source_l00935}{}\hyperlink{a00016_aff2bfa25f79dd85cdbd854d9e51371a9}{00935}     \textcolor{keywordtype}{char} \hyperlink{a00016_aff2bfa25f79dd85cdbd854d9e51371a9}{stringdata}[13];
+00936 \};
+00937 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+00938 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+00939 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemText\_t, stringdata) + ofs \(\backslash\)}
+00940 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+00941 \textcolor{preprocessor}{    )}
+00942 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_db/d57/a00112}{qt\_meta\_stringdata\_QCPItemText\_t} 
+      qt\_meta\_stringdata\_QCPItemText = \{
+00943     \{
+00944 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 11)
+00945     \},
+00946     \textcolor{stringliteral}{"QCPItemText\(\backslash\)0"}
+00947 \};
+00948 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+00949 
+00950 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemText[] = \{
+00951 
+00952  \textcolor{comment}{// content:}
+00953        7,       \textcolor{comment}{// revision}
+00954        0,       \textcolor{comment}{// classname}
+00955        0,    0, \textcolor{comment}{// classinfo}
+00956        0,    0, \textcolor{comment}{// methods}
+00957        0,    0, \textcolor{comment}{// properties}
+00958        0,    0, \textcolor{comment}{// enums/sets}
+00959        0,    0, \textcolor{comment}{// constructors}
+00960        0,       \textcolor{comment}{// flags}
+00961        0,       \textcolor{comment}{// signalCount}
+00962 
+00963        0        \textcolor{comment}{// eod}
+00964 \};
+00965 
+00966 \textcolor{keywordtype}{void} QCPItemText::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00967 \{
+00968     Q\_UNUSED(\_o);
+00969     Q\_UNUSED(\_id);
+00970     Q\_UNUSED(\_c);
+00971     Q\_UNUSED(\_a);
+00972 \}
+00973 
+00974 \textcolor{keyword}{const} QMetaObject QCPItemText::staticMetaObject = \{
+00975     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemText.\hyperlink{a00016_ae37b5edc1ab54bceebcfba0fb33002ec}{data},
+00976       qt\_meta\_data\_QCPItemText,  qt\_static\_metacall, 0, 0\}
+00977 \};
+00978 
+00979 
+00980 \textcolor{keyword}{const} QMetaObject *QCPItemText::metaObject()\textcolor{keyword}{ const}
+00981 \textcolor{keyword}{}\{
+00982     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+00983 \}
+00984 
+00985 \textcolor{keywordtype}{void} *QCPItemText::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+00986 \{
+00987     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+00988     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemText.\hyperlink{a00016_aff2bfa25f79dd85cdbd854d9e51371a9}{stringdata}))
+00989         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemText*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+00990     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+00991 \}
+00992 
+00993 \textcolor{keywordtype}{int} QCPItemText::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+00994 \{
+00995     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+00996     \textcolor{keywordflow}{if} (\_id < 0)
+00997         \textcolor{keywordflow}{return} \_id;
+00998     \textcolor{keywordflow}{return} \_id;
+00999 \}
+\hypertarget{a00016_source_l01000}{}\hyperlink{a00016}{01000} \textcolor{keyword}{struct }\hyperlink{a00016_d7/d70/a00106}{qt\_meta\_stringdata\_QCPItemCurve\_t} \{
+\hypertarget{a00016_source_l01001}{}\hyperlink{a00016_a0424f9a0b87bc8cefa2966874c4c5667}{01001}     QByteArrayData \hyperlink{a00016_a0424f9a0b87bc8cefa2966874c4c5667}{data}[1];
+\hypertarget{a00016_source_l01002}{}\hyperlink{a00016_af1db92bb182f435f88c938cc13a52a2c}{01002}     \textcolor{keywordtype}{char} \hyperlink{a00016_af1db92bb182f435f88c938cc13a52a2c}{stringdata}[14];
+01003 \};
+01004 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01005 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01006 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemCurve\_t, stringdata) + ofs \(\backslash\)}
+01007 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01008 \textcolor{preprocessor}{    )}
+01009 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d7/d70/a00106}{qt\_meta\_stringdata\_QCPItemCurve\_t} 
+      qt\_meta\_stringdata\_QCPItemCurve = \{
+01010     \{
+01011 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 12)
+01012     \},
+01013     \textcolor{stringliteral}{"QCPItemCurve\(\backslash\)0"}
+01014 \};
+01015 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+01016 
+01017 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemCurve[] = \{
+01018 
+01019  \textcolor{comment}{// content:}
+01020        7,       \textcolor{comment}{// revision}
+01021        0,       \textcolor{comment}{// classname}
+01022        0,    0, \textcolor{comment}{// classinfo}
+01023        0,    0, \textcolor{comment}{// methods}
+01024        0,    0, \textcolor{comment}{// properties}
+01025        0,    0, \textcolor{comment}{// enums/sets}
+01026        0,    0, \textcolor{comment}{// constructors}
+01027        0,       \textcolor{comment}{// flags}
+01028        0,       \textcolor{comment}{// signalCount}
+01029 
+01030        0        \textcolor{comment}{// eod}
+01031 \};
+01032 
+01033 \textcolor{keywordtype}{void} QCPItemCurve::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01034 \{
+01035     Q\_UNUSED(\_o);
+01036     Q\_UNUSED(\_id);
+01037     Q\_UNUSED(\_c);
+01038     Q\_UNUSED(\_a);
+01039 \}
+01040 
+01041 \textcolor{keyword}{const} QMetaObject QCPItemCurve::staticMetaObject = \{
+01042     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemCurve.\hyperlink{a00016_a0424f9a0b87bc8cefa2966874c4c5667}{data},
+01043       qt\_meta\_data\_QCPItemCurve,  qt\_static\_metacall, 0, 0\}
+01044 \};
+01045 
+01046 
+01047 \textcolor{keyword}{const} QMetaObject *QCPItemCurve::metaObject()\textcolor{keyword}{ const}
+01048 \textcolor{keyword}{}\{
+01049     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+01050 \}
+01051 
+01052 \textcolor{keywordtype}{void} *QCPItemCurve::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+01053 \{
+01054     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+01055     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemCurve.\hyperlink{a00016_af1db92bb182f435f88c938cc13a52a2c}{stringdata}))
+01056         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemCurve*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+01057     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+01058 \}
+01059 
+01060 \textcolor{keywordtype}{int} QCPItemCurve::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01061 \{
+01062     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+01063     \textcolor{keywordflow}{if} (\_id < 0)
+01064         \textcolor{keywordflow}{return} \_id;
+01065     \textcolor{keywordflow}{return} \_id;
+01066 \}
+\hypertarget{a00016_source_l01067}{}\hyperlink{a00016}{01067} \textcolor{keyword}{struct }\hyperlink{a00016_d3/d32/a00105}{qt\_meta\_stringdata\_QCPItemBracket\_t} \{
+\hypertarget{a00016_source_l01068}{}\hyperlink{a00016_a15ff7a0bed3ecf746215a57a076c296b}{01068}     QByteArrayData \hyperlink{a00016_a15ff7a0bed3ecf746215a57a076c296b}{data}[1];
+\hypertarget{a00016_source_l01069}{}\hyperlink{a00016_a2e0cf4afc3bc921fbe6f35930bfbd9af}{01069}     \textcolor{keywordtype}{char} \hyperlink{a00016_a2e0cf4afc3bc921fbe6f35930bfbd9af}{stringdata}[16];
+01070 \};
+01071 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01072 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01073 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemBracket\_t, stringdata) + ofs \(\backslash\)}
+01074 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01075 \textcolor{preprocessor}{    )}
+01076 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d3/d32/a00105}{qt\_meta\_stringdata\_QCPItemBracket\_t} 
+      qt\_meta\_stringdata\_QCPItemBracket = \{
+01077     \{
+01078 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 14)
+01079     \},
+01080     \textcolor{stringliteral}{"QCPItemBracket\(\backslash\)0"}
+01081 \};
+01082 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+01083 
+01084 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemBracket[] = \{
+01085 
+01086  \textcolor{comment}{// content:}
+01087        7,       \textcolor{comment}{// revision}
+01088        0,       \textcolor{comment}{// classname}
+01089        0,    0, \textcolor{comment}{// classinfo}
+01090        0,    0, \textcolor{comment}{// methods}
+01091        0,    0, \textcolor{comment}{// properties}
+01092        0,    0, \textcolor{comment}{// enums/sets}
+01093        0,    0, \textcolor{comment}{// constructors}
+01094        0,       \textcolor{comment}{// flags}
+01095        0,       \textcolor{comment}{// signalCount}
+01096 
+01097        0        \textcolor{comment}{// eod}
+01098 \};
+01099 
+01100 \textcolor{keywordtype}{void} QCPItemBracket::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01101 \{
+01102     Q\_UNUSED(\_o);
+01103     Q\_UNUSED(\_id);
+01104     Q\_UNUSED(\_c);
+01105     Q\_UNUSED(\_a);
+01106 \}
+01107 
+01108 \textcolor{keyword}{const} QMetaObject QCPItemBracket::staticMetaObject = \{
+01109     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemBracket.\hyperlink{a00016_a15ff7a0bed3ecf746215a57a076c296b}{data},
+01110       qt\_meta\_data\_QCPItemBracket,  qt\_static\_metacall, 0, 0\}
+01111 \};
+01112 
+01113 
+01114 \textcolor{keyword}{const} QMetaObject *QCPItemBracket::metaObject()\textcolor{keyword}{ const}
+01115 \textcolor{keyword}{}\{
+01116     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+01117 \}
+01118 
+01119 \textcolor{keywordtype}{void} *QCPItemBracket::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+01120 \{
+01121     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+01122     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemBracket.\hyperlink{a00016_a2e0cf4afc3bc921fbe6f35930bfbd9af}{stringdata}))
+01123         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemBracket*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+01124     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+01125 \}
+01126 
+01127 \textcolor{keywordtype}{int} QCPItemBracket::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01128 \{
+01129     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+01130     \textcolor{keywordflow}{if} (\_id < 0)
+01131         \textcolor{keywordflow}{return} \_id;
+01132     \textcolor{keywordflow}{return} \_id;
+01133 \}
+\hypertarget{a00016_source_l01134}{}\hyperlink{a00016}{01134} \textcolor{keyword}{struct }\hyperlink{a00016_d3/d00/a00113}{qt\_meta\_stringdata\_QCPItemTracer\_t} \{
+\hypertarget{a00016_source_l01135}{}\hyperlink{a00016_a87c91fdce2044ef334c2cfd91e38ac00}{01135}     QByteArrayData \hyperlink{a00016_a87c91fdce2044ef334c2cfd91e38ac00}{data}[7];
+\hypertarget{a00016_source_l01136}{}\hyperlink{a00016_a28c4c1cde887cbe6b6af18ce9d6ed867}{01136}     \textcolor{keywordtype}{char} \hyperlink{a00016_a28c4c1cde887cbe6b6af18ce9d6ed867}{stringdata}[71];
+01137 \};
+01138 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01139 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01140 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPItemTracer\_t, stringdata) + ofs \(\backslash\)}
+01141 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01142 \textcolor{preprocessor}{    )}
+01143 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d3/d00/a00113}{qt\_meta\_stringdata\_QCPItemTracer\_t} 
+      qt\_meta\_stringdata\_QCPItemTracer = \{
+01144     \{
+01145 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 13),
+01146 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(1, 14, 11),
+01147 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(2, 26, 6),
+01148 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(3, 33, 6),
+01149 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(4, 40, 11),
+01150 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(5, 52, 8),
+01151 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(6, 61, 8)
+01152     \},
+01153     \textcolor{stringliteral}{"QCPItemTracer\(\backslash\)0TracerStyle\(\backslash\)0tsNone\(\backslash\)0"}
+01154     \textcolor{stringliteral}{"tsPlus\(\backslash\)0tsCrosshair\(\backslash\)0tsCircle\(\backslash\)0tsSquare\(\backslash\)0"}
+01155 \};
+01156 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+01157 
+01158 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPItemTracer[] = \{
+01159 
+01160  \textcolor{comment}{// content:}
+01161        7,       \textcolor{comment}{// revision}
+01162        0,       \textcolor{comment}{// classname}
+01163        0,    0, \textcolor{comment}{// classinfo}
+01164        0,    0, \textcolor{comment}{// methods}
+01165        0,    0, \textcolor{comment}{// properties}
+01166        1,   14, \textcolor{comment}{// enums/sets}
+01167        0,    0, \textcolor{comment}{// constructors}
+01168        0,       \textcolor{comment}{// flags}
+01169        0,       \textcolor{comment}{// signalCount}
+01170 
+01171  \textcolor{comment}{// enums: name, flags, count, data}
+01172        1, 0x0,    5,   18,
+01173 
+01174  \textcolor{comment}{// enum data: key, value}
+01175        2, uint(QCPItemTracer::tsNone),
+01176        3, uint(QCPItemTracer::tsPlus),
+01177        4, uint(QCPItemTracer::tsCrosshair),
+01178        5, uint(QCPItemTracer::tsCircle),
+01179        6, uint(QCPItemTracer::tsSquare),
+01180 
+01181        0        \textcolor{comment}{// eod}
+01182 \};
+01183 
+01184 \textcolor{keywordtype}{void} QCPItemTracer::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01185 \{
+01186     Q\_UNUSED(\_o);
+01187     Q\_UNUSED(\_id);
+01188     Q\_UNUSED(\_c);
+01189     Q\_UNUSED(\_a);
+01190 \}
+01191 
+01192 \textcolor{keyword}{const} QMetaObject QCPItemTracer::staticMetaObject = \{
+01193     \{ &QCPAbstractItem::staticMetaObject, qt\_meta\_stringdata\_QCPItemTracer.\hyperlink{a00016_a87c91fdce2044ef334c2cfd91e38ac00}{data},
+01194       qt\_meta\_data\_QCPItemTracer,  qt\_static\_metacall, 0, 0\}
+01195 \};
+01196 
+01197 
+01198 \textcolor{keyword}{const} QMetaObject *QCPItemTracer::metaObject()\textcolor{keyword}{ const}
+01199 \textcolor{keyword}{}\{
+01200     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+01201 \}
+01202 
+01203 \textcolor{keywordtype}{void} *QCPItemTracer::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+01204 \{
+01205     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+01206     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPItemTracer.\hyperlink{a00016_a28c4c1cde887cbe6b6af18ce9d6ed867}{stringdata}))
+01207         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPItemTracer*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+01208     \textcolor{keywordflow}{return} QCPAbstractItem::qt\_metacast(\_clname);
+01209 \}
+01210 
+01211 \textcolor{keywordtype}{int} QCPItemTracer::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01212 \{
+01213     \_id = QCPAbstractItem::qt\_metacall(\_c, \_id, \_a);
+01214     \textcolor{keywordflow}{if} (\_id < 0)
+01215         \textcolor{keywordflow}{return} \_id;
+01216     \textcolor{keywordflow}{return} \_id;
+01217 \}
+\hypertarget{a00016_source_l01218}{}\hyperlink{a00016}{01218} \textcolor{keyword}{struct }\hyperlink{a00016_d1/d44/a00098}{qt\_meta\_stringdata\_QCPAbstractLegendItem\_t} \{
+\hypertarget{a00016_source_l01219}{}\hyperlink{a00016_a98fcd80c37c93a0b0b71f18405466d42}{01219}     QByteArrayData \hyperlink{a00016_a98fcd80c37c93a0b0b71f18405466d42}{data}[4];
+\hypertarget{a00016_source_l01220}{}\hyperlink{a00016_a007f69edf60f3475c27481b80fb00e7f}{01220}     \textcolor{keywordtype}{char} \hyperlink{a00016_a007f69edf60f3475c27481b80fb00e7f}{stringdata}[50];
+01221 \};
+01222 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01223 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01224 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPAbstractLegendItem\_t, stringdata) + ofs \(\backslash\)}
+01225 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01226 \textcolor{preprocessor}{    )}
+01227 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d1/d44/a00098}{qt\_meta\_stringdata\_QCPAbstractLegendItem\_t} 
+      qt\_meta\_stringdata\_QCPAbstractLegendItem = \{
+01228     \{
+01229 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 21),
+01230 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(1, 22, 16),
+01231 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(2, 39, 0),
+01232 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(3, 40, 8)
+01233     \},
+01234     \textcolor{stringliteral}{"QCPAbstractLegendItem\(\backslash\)0selectionChanged\(\backslash\)0"}
+01235     \textcolor{stringliteral}{"\(\backslash\)0selected\(\backslash\)0"}
+01236 \};
+01237 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+01238 
+01239 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPAbstractLegendItem[] = \{
+01240 
+01241  \textcolor{comment}{// content:}
+01242        7,       \textcolor{comment}{// revision}
+01243        0,       \textcolor{comment}{// classname}
+01244        0,    0, \textcolor{comment}{// classinfo}
+01245        1,   14, \textcolor{comment}{// methods}
+01246        0,    0, \textcolor{comment}{// properties}
+01247        0,    0, \textcolor{comment}{// enums/sets}
+01248        0,    0, \textcolor{comment}{// constructors}
+01249        0,       \textcolor{comment}{// flags}
+01250        1,       \textcolor{comment}{// signalCount}
+01251 
+01252  \textcolor{comment}{// signals: name, argc, parameters, tag, flags}
+01253        1,    1,   19,    2, 0x06,
+01254 
+01255  \textcolor{comment}{// signals: parameters}
+01256     QMetaType::Void, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool},    3,
+01257 
+01258        0        \textcolor{comment}{// eod}
+01259 \};
+01260 
+01261 \textcolor{keywordtype}{void} QCPAbstractLegendItem::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01262 \{
+01263     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+01264         QCPAbstractLegendItem *\_t = \textcolor{keyword}{static\_cast<}QCPAbstractLegendItem *\textcolor{keyword}{>}(\_o);
+01265         \textcolor{keywordflow}{switch} (\_id) \{
+01266         \textcolor{keywordflow}{case} 0: \_t->selectionChanged((*\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+01267         \textcolor{keywordflow}{default}: ;
+01268         \}
+01269     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::IndexOfMethod) \{
+01270         \textcolor{keywordtype}{int} *result = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} *\textcolor{keyword}{>}(\_a[0]);
+01271         \textcolor{keywordtype}{void} **func = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void} **\textcolor{keyword}{>}(\_a[1]);
+01272         \{
+01273             \textcolor{keyword}{typedef} void (QCPAbstractLegendItem::*\_t)(bool );
+01274             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCPAbstractLegendItem::selectionChanged))
+       \{
+01275                 *result = 0;
+01276             \}
+01277         \}
+01278     \}
+01279 \}
+01280 
+01281 \textcolor{keyword}{const} QMetaObject QCPAbstractLegendItem::staticMetaObject = \{
+01282     \{ &QObject::staticMetaObject, qt\_meta\_stringdata\_QCPAbstractLegendItem.\hyperlink{a00016_a98fcd80c37c93a0b0b71f18405466d42}{data},
+01283       qt\_meta\_data\_QCPAbstractLegendItem,  qt\_static\_metacall, 0, 0\}
+01284 \};
+01285 
+01286 
+01287 \textcolor{keyword}{const} QMetaObject *QCPAbstractLegendItem::metaObject()\textcolor{keyword}{ const}
+01288 \textcolor{keyword}{}\{
+01289     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+01290 \}
+01291 
+01292 \textcolor{keywordtype}{void} *QCPAbstractLegendItem::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+01293 \{
+01294     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+01295     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPAbstractLegendItem.\hyperlink{a00016_a007f69edf60f3475c27481b80fb00e7f}{stringdata}))
+01296         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPAbstractLegendItem*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+01297     \textcolor{keywordflow}{return} QObject::qt\_metacast(\_clname);
+01298 \}
+01299 
+01300 \textcolor{keywordtype}{int} QCPAbstractLegendItem::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01301 \{
+01302     \_id = QObject::qt\_metacall(\_c, \_id, \_a);
+01303     \textcolor{keywordflow}{if} (\_id < 0)
+01304         \textcolor{keywordflow}{return} \_id;
+01305     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+01306         \textcolor{keywordflow}{if} (\_id < 1)
+01307             qt\_static\_metacall(\textcolor{keyword}{this}, \_c, \_id, \_a);
+01308         \_id -= 1;
+01309     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterMethodArgumentMetaType) \{
+01310         \textcolor{keywordflow}{if} (\_id < 1)
+01311             *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1;
+01312         \_id -= 1;
+01313     \}
+01314     \textcolor{keywordflow}{return} \_id;
+01315 \}
+01316 
+01317 \textcolor{comment}{// SIGNAL 0}
+01318 \textcolor{keywordtype}{void} QCPAbstractLegendItem::selectionChanged(\textcolor{keywordtype}{bool} \_t1)
+01319 \{
+01320     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+01321     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, \_a);
+01322 \}
+\hypertarget{a00016_source_l01323}{}\hyperlink{a00016}{01323} \textcolor{keyword}{struct }\hyperlink{a00016_d4/d3e/a00116}{qt\_meta\_stringdata\_QCPPlottableLegendItem\_t} \{
+\hypertarget{a00016_source_l01324}{}\hyperlink{a00016_a56d928faacdea012d9b501b879ef98a8}{01324}     QByteArrayData \hyperlink{a00016_a56d928faacdea012d9b501b879ef98a8}{data}[1];
+\hypertarget{a00016_source_l01325}{}\hyperlink{a00016_a25e998eb002b6a9f9e969afa5247748f}{01325}     \textcolor{keywordtype}{char} \hyperlink{a00016_a25e998eb002b6a9f9e969afa5247748f}{stringdata}[24];
+01326 \};
+01327 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01328 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01329 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPPlottableLegendItem\_t, stringdata) + ofs \(\backslash\)}
+01330 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01331 \textcolor{preprocessor}{    )}
+01332 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d4/d3e/a00116}{qt\_meta\_stringdata\_QCPPlottableLegendItem\_t} 
+      qt\_meta\_stringdata\_QCPPlottableLegendItem = \{
+01333     \{
+01334 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 22)
+01335     \},
+01336     \textcolor{stringliteral}{"QCPPlottableLegendItem\(\backslash\)0"}
+01337 \};
+01338 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+01339 
+01340 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPPlottableLegendItem[] = \{
+01341 
+01342  \textcolor{comment}{// content:}
+01343        7,       \textcolor{comment}{// revision}
+01344        0,       \textcolor{comment}{// classname}
+01345        0,    0, \textcolor{comment}{// classinfo}
+01346        0,    0, \textcolor{comment}{// methods}
+01347        0,    0, \textcolor{comment}{// properties}
+01348        0,    0, \textcolor{comment}{// enums/sets}
+01349        0,    0, \textcolor{comment}{// constructors}
+01350        0,       \textcolor{comment}{// flags}
+01351        0,       \textcolor{comment}{// signalCount}
+01352 
+01353        0        \textcolor{comment}{// eod}
+01354 \};
+01355 
+01356 \textcolor{keywordtype}{void} QCPPlottableLegendItem::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01357 \{
+01358     Q\_UNUSED(\_o);
+01359     Q\_UNUSED(\_id);
+01360     Q\_UNUSED(\_c);
+01361     Q\_UNUSED(\_a);
+01362 \}
+01363 
+01364 \textcolor{keyword}{const} QMetaObject QCPPlottableLegendItem::staticMetaObject = \{
+01365     \{ &QCPAbstractLegendItem::staticMetaObject, qt\_meta\_stringdata\_QCPPlottableLegendItem.
+      \hyperlink{a00016_a56d928faacdea012d9b501b879ef98a8}{data},
+01366       qt\_meta\_data\_QCPPlottableLegendItem,  qt\_static\_metacall, 0, 0\}
+01367 \};
+01368 
+01369 
+01370 \textcolor{keyword}{const} QMetaObject *QCPPlottableLegendItem::metaObject()\textcolor{keyword}{ const}
+01371 \textcolor{keyword}{}\{
+01372     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+01373 \}
+01374 
+01375 \textcolor{keywordtype}{void} *QCPPlottableLegendItem::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+01376 \{
+01377     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+01378     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPPlottableLegendItem.\hyperlink{a00016_a25e998eb002b6a9f9e969afa5247748f}{stringdata}))
+01379         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPPlottableLegendItem*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+01380     \textcolor{keywordflow}{return} QCPAbstractLegendItem::qt\_metacast(\_clname);
+01381 \}
+01382 
+01383 \textcolor{keywordtype}{int} QCPPlottableLegendItem::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01384 \{
+01385     \_id = QCPAbstractLegendItem::qt\_metacall(\_c, \_id, \_a);
+01386     \textcolor{keywordflow}{if} (\_id < 0)
+01387         \textcolor{keywordflow}{return} \_id;
+01388     \textcolor{keywordflow}{return} \_id;
+01389 \}
+\hypertarget{a00016_source_l01390}{}\hyperlink{a00016}{01390} \textcolor{keyword}{struct }\hyperlink{a00016_d2/da3/a00115}{qt\_meta\_stringdata\_QCPLegend\_t} \{
+\hypertarget{a00016_source_l01391}{}\hyperlink{a00016_abb2a7af4ffa957bddb891b5663c0aa55}{01391}     QByteArrayData \hyperlink{a00016_abb2a7af4ffa957bddb891b5663c0aa55}{data}[19];
+\hypertarget{a00016_source_l01392}{}\hyperlink{a00016_a26b79395b8d9f94641f81b197841ede1}{01392}     \textcolor{keywordtype}{char} \hyperlink{a00016_a26b79395b8d9f94641f81b197841ede1}{stringdata}[209];
+01393 \};
+01394 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01395 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01396 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPLegend\_t, stringdata) + ofs \(\backslash\)}
+01397 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01398 \textcolor{preprocessor}{    )}
+01399 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d2/da3/a00115}{qt\_meta\_stringdata\_QCPLegend\_t} qt\_meta\_stringdata\_QCPLegend = \{
+01400     \{
+01401 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 9),
+01402 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(1, 10, 16),
+01403 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(2, 27, 0),
+01404 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(3, 28, 26),
+01405 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(4, 55, 9),
+01406 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(5, 65, 13),
+01407 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(6, 79, 8),
+01408 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(7, 88, 9),
+01409 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(8, 98, 5),
+01410 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(9, 104, 10),
+01411 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(10, 115, 7),
+01412 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(11, 123, 13),
+01413 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(12, 137, 8),
+01414 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(13, 146, 12),
+01415 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(14, 159, 6),
+01416 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(15, 166, 14),
+01417 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(16, 181, 6),
+01418 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(17, 188, 11),
+01419 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(18, 200, 7)
+01420     \},
+01421     \textcolor{stringliteral}{"QCPLegend\(\backslash\)0selectionChanged\(\backslash\)0\(\backslash\)0"}
+01422     \textcolor{stringliteral}{"QCPLegend::SelectableParts\(\backslash\)0selection\(\backslash\)0"}
+01423     \textcolor{stringliteral}{"PositionStyle\(\backslash\)0psManual\(\backslash\)0psTopLeft\(\backslash\)0psTop\(\backslash\)0"}
+01424     \textcolor{stringliteral}{"psTopRight\(\backslash\)0psRight\(\backslash\)0psBottomRight\(\backslash\)0"}
+01425     \textcolor{stringliteral}{"psBottom\(\backslash\)0psBottomLeft\(\backslash\)0psLeft\(\backslash\)0"}
+01426     \textcolor{stringliteral}{"SelectablePart\(\backslash\)0spNone\(\backslash\)0spLegendBox\(\backslash\)0"}
+01427     \textcolor{stringliteral}{"spItems\(\backslash\)0"}
+01428 \};
+01429 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+01430 
+01431 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPLegend[] = \{
+01432 
+01433  \textcolor{comment}{// content:}
+01434        7,       \textcolor{comment}{// revision}
+01435        0,       \textcolor{comment}{// classname}
+01436        0,    0, \textcolor{comment}{// classinfo}
+01437        1,   14, \textcolor{comment}{// methods}
+01438        0,    0, \textcolor{comment}{// properties}
+01439        2,   22, \textcolor{comment}{// enums/sets}
+01440        0,    0, \textcolor{comment}{// constructors}
+01441        0,       \textcolor{comment}{// flags}
+01442        1,       \textcolor{comment}{// signalCount}
+01443 
+01444  \textcolor{comment}{// signals: name, argc, parameters, tag, flags}
+01445        1,    1,   19,    2, 0x06,
+01446 
+01447  \textcolor{comment}{// signals: parameters}
+01448     QMetaType::Void, 0x80000000 | 3,    4,
+01449 
+01450  \textcolor{comment}{// enums: name, flags, count, data}
+01451        5, 0x0,    9,   30,
+01452       15, 0x0,    3,   48,
+01453 
+01454  \textcolor{comment}{// enum data: key, value}
+01455        6, uint(QCPLegend::psManual),
+01456        7, uint(QCPLegend::psTopLeft),
+01457        8, uint(QCPLegend::psTop),
+01458        9, uint(QCPLegend::psTopRight),
+01459       10, uint(QCPLegend::psRight),
+01460       11, uint(QCPLegend::psBottomRight),
+01461       12, uint(QCPLegend::psBottom),
+01462       13, uint(QCPLegend::psBottomLeft),
+01463       14, uint(QCPLegend::psLeft),
+01464       16, uint(QCPLegend::spNone),
+01465       17, uint(QCPLegend::spLegendBox),
+01466       18, uint(QCPLegend::spItems),
+01467 
+01468        0        \textcolor{comment}{// eod}
+01469 \};
+01470 
+01471 \textcolor{keywordtype}{void} QCPLegend::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01472 \{
+01473     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+01474         QCPLegend *\_t = \textcolor{keyword}{static\_cast<}QCPLegend *\textcolor{keyword}{>}(\_o);
+01475         \textcolor{keywordflow}{switch} (\_id) \{
+01476         \textcolor{keywordflow}{case} 0: \_t->selectionChanged((*\textcolor{keyword}{reinterpret\_cast<} QCPLegend::SelectableParts(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+01477         \textcolor{keywordflow}{default}: ;
+01478         \}
+01479     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::IndexOfMethod) \{
+01480         \textcolor{keywordtype}{int} *result = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} *\textcolor{keyword}{>}(\_a[0]);
+01481         \textcolor{keywordtype}{void} **func = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void} **\textcolor{keyword}{>}(\_a[1]);
+01482         \{
+01483             \textcolor{keyword}{typedef} void (QCPLegend::*\_t)(QCPLegend::SelectableParts );
+01484             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCPLegend::selectionChanged)) \{
+01485                 *result = 0;
+01486             \}
+01487         \}
+01488     \}
+01489 \}
+01490 
+01491 \textcolor{keyword}{const} QMetaObject QCPLegend::staticMetaObject = \{
+01492     \{ &QCPLayerable::staticMetaObject, qt\_meta\_stringdata\_QCPLegend.\hyperlink{a00016_abb2a7af4ffa957bddb891b5663c0aa55}{data},
+01493       qt\_meta\_data\_QCPLegend,  qt\_static\_metacall, 0, 0\}
+01494 \};
+01495 
+01496 
+01497 \textcolor{keyword}{const} QMetaObject *QCPLegend::metaObject()\textcolor{keyword}{ const}
+01498 \textcolor{keyword}{}\{
+01499     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+01500 \}
+01501 
+01502 \textcolor{keywordtype}{void} *QCPLegend::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+01503 \{
+01504     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+01505     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPLegend.\hyperlink{a00016_a26b79395b8d9f94641f81b197841ede1}{stringdata}))
+01506         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPLegend*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+01507     \textcolor{keywordflow}{return} QCPLayerable::qt\_metacast(\_clname);
+01508 \}
+01509 
+01510 \textcolor{keywordtype}{int} QCPLegend::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01511 \{
+01512     \_id = QCPLayerable::qt\_metacall(\_c, \_id, \_a);
+01513     \textcolor{keywordflow}{if} (\_id < 0)
+01514         \textcolor{keywordflow}{return} \_id;
+01515     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+01516         \textcolor{keywordflow}{if} (\_id < 1)
+01517             qt\_static\_metacall(\textcolor{keyword}{this}, \_c, \_id, \_a);
+01518         \_id -= 1;
+01519     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterMethodArgumentMetaType) \{
+01520         \textcolor{keywordflow}{if} (\_id < 1)
+01521             *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1;
+01522         \_id -= 1;
+01523     \}
+01524     \textcolor{keywordflow}{return} \_id;
+01525 \}
+01526 
+01527 \textcolor{comment}{// SIGNAL 0}
+01528 \textcolor{keywordtype}{void} QCPLegend::selectionChanged(QCPLegend::SelectableParts \_t1)
+01529 \{
+01530     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+01531     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, \_a);
+01532 \}
+\hypertarget{a00016_source_l01533}{}\hyperlink{a00016}{01533} \textcolor{keyword}{struct }\hyperlink{a00016_d0/dc2/a00104}{qt\_meta\_stringdata\_QCPGrid\_t} \{
+\hypertarget{a00016_source_l01534}{}\hyperlink{a00016_a7e6e5bd7ca3eb3f18073d11e635e5cb9}{01534}     QByteArrayData \hyperlink{a00016_a7e6e5bd7ca3eb3f18073d11e635e5cb9}{data}[1];
+\hypertarget{a00016_source_l01535}{}\hyperlink{a00016_a0bcd248c91a252f9ad93a353181ea07e}{01535}     \textcolor{keywordtype}{char} \hyperlink{a00016_a0bcd248c91a252f9ad93a353181ea07e}{stringdata}[9];
+01536 \};
+01537 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01538 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01539 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPGrid\_t, stringdata) + ofs \(\backslash\)}
+01540 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01541 \textcolor{preprocessor}{    )}
+01542 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d0/dc2/a00104}{qt\_meta\_stringdata\_QCPGrid\_t} qt\_meta\_stringdata\_QCPGrid = \{
+01543     \{
+01544 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 7)
+01545     \},
+01546     \textcolor{stringliteral}{"QCPGrid\(\backslash\)0"}
+01547 \};
+01548 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+01549 
+01550 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPGrid[] = \{
+01551 
+01552  \textcolor{comment}{// content:}
+01553        7,       \textcolor{comment}{// revision}
+01554        0,       \textcolor{comment}{// classname}
+01555        0,    0, \textcolor{comment}{// classinfo}
+01556        0,    0, \textcolor{comment}{// methods}
+01557        0,    0, \textcolor{comment}{// properties}
+01558        0,    0, \textcolor{comment}{// enums/sets}
+01559        0,    0, \textcolor{comment}{// constructors}
+01560        0,       \textcolor{comment}{// flags}
+01561        0,       \textcolor{comment}{// signalCount}
+01562 
+01563        0        \textcolor{comment}{// eod}
+01564 \};
+01565 
+01566 \textcolor{keywordtype}{void} QCPGrid::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01567 \{
+01568     Q\_UNUSED(\_o);
+01569     Q\_UNUSED(\_id);
+01570     Q\_UNUSED(\_c);
+01571     Q\_UNUSED(\_a);
+01572 \}
+01573 
+01574 \textcolor{keyword}{const} QMetaObject QCPGrid::staticMetaObject = \{
+01575     \{ &QCPLayerable::staticMetaObject, qt\_meta\_stringdata\_QCPGrid.\hyperlink{a00016_a7e6e5bd7ca3eb3f18073d11e635e5cb9}{data},
+01576       qt\_meta\_data\_QCPGrid,  qt\_static\_metacall, 0, 0\}
+01577 \};
+01578 
+01579 
+01580 \textcolor{keyword}{const} QMetaObject *QCPGrid::metaObject()\textcolor{keyword}{ const}
+01581 \textcolor{keyword}{}\{
+01582     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+01583 \}
+01584 
+01585 \textcolor{keywordtype}{void} *QCPGrid::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+01586 \{
+01587     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+01588     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPGrid.\hyperlink{a00016_a0bcd248c91a252f9ad93a353181ea07e}{stringdata}))
+01589         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPGrid*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+01590     \textcolor{keywordflow}{return} QCPLayerable::qt\_metacast(\_clname);
+01591 \}
+01592 
+01593 \textcolor{keywordtype}{int} QCPGrid::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01594 \{
+01595     \_id = QCPLayerable::qt\_metacall(\_c, \_id, \_a);
+01596     \textcolor{keywordflow}{if} (\_id < 0)
+01597         \textcolor{keywordflow}{return} \_id;
+01598     \textcolor{keywordflow}{return} \_id;
+01599 \}
+\hypertarget{a00016_source_l01600}{}\hyperlink{a00016}{01600} \textcolor{keyword}{struct }\hyperlink{a00016_d0/d61/a00100}{qt\_meta\_stringdata\_QCPAxis\_t} \{
+\hypertarget{a00016_source_l01601}{}\hyperlink{a00016_a6de5289a2e23a98b0352a48533dedbd4}{01601}     QByteArrayData \hyperlink{a00016_a6de5289a2e23a98b0352a48533dedbd4}{data}[64];
+\hypertarget{a00016_source_l01602}{}\hyperlink{a00016_a1fe440f64883a266431cf43cff1b5052}{01602}     \textcolor{keywordtype}{char} \hyperlink{a00016_a1fe440f64883a266431cf43cff1b5052}{stringdata}[708];
+01603 \};
+01604 \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01605 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01606 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCPAxis\_t, stringdata) + ofs \(\backslash\)}
+01607 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01608 \textcolor{preprocessor}{    )}
+01609 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d0/d61/a00100}{qt\_meta\_stringdata\_QCPAxis\_t} qt\_meta\_stringdata\_QCPAxis = \{
+01610     \{
+01611 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 7),
+01612 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(1, 8, 12),
+01613 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(2, 21, 0),
+01614 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(3, 22, 12),
+01615 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(4, 35, 8),
+01616 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(5, 44, 8),
+01617 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(6, 53, 16),
+01618 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(7, 70, 24),
+01619 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(8, 95, 9),
+01620 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(9, 105, 8),
+01621 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(10, 114, 5),
+01622 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(11, 120, 13),
+01623 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(12, 134, 10),
+01624 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(13, 145, 11),
+01625 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(14, 157, 8),
+01626 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(15, 166, 8),
+01627 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(16, 175, 8),
+01628 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(17, 184, 9),
+01629 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(18, 194, 9),
+01630 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(19, 204, 12),
+01631 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(20, 217, 8),
+01632 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(21, 226, 4),
+01633 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(22, 231, 7),
+01634 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(23, 239, 9),
+01635 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(24, 249, 13),
+01636 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(25, 263, 14),
+01637 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(26, 278, 12),
+01638 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(27, 291, 12),
+01639 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(28, 304, 5),
+01640 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(29, 310, 10),
+01641 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(30, 321, 16),
+01642 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(31, 338, 13),
+01643 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(32, 352, 9),
+01644 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(33, 362, 13),
+01645 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(34, 376, 17),
+01646 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(35, 394, 14),
+01647 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(36, 409, 12),
+01648 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(37, 422, 8),
+01649 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(38, 431, 10),
+01650 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(39, 442, 15),
+01651 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(40, 458, 16),
+01652 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(41, 475, 16),
+01653 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(42, 492, 12),
+01654 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(43, 505, 7),
+01655 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(44, 513, 7),
+01656 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(45, 521, 10),
+01657 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(46, 532, 7),
+01658 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(47, 540, 10),
+01659 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(48, 551, 9),
+01660 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(49, 561, 5),
+01661 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(50, 567, 12),
+01662 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(51, 580, 6),
+01663 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(52, 587, 7),
+01664 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(53, 595, 5),
+01665 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(54, 601, 8),
+01666 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(55, 610, 8),
+01667 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(56, 619, 10),
+01668 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(57, 630, 8),
+01669 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(58, 639, 13),
+01670 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(59, 653, 14),
+01671 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(60, 668, 6),
+01672 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(61, 675, 6),
+01673 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(62, 682, 12),
+01674 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(63, 695, 11)
+01675     \},
+01676     \textcolor{stringliteral}{"QCPAxis\(\backslash\)0ticksRequest\(\backslash\)0\(\backslash\)0rangeChanged\(\backslash\)0"}
+01677     \textcolor{stringliteral}{"QCPRange\(\backslash\)0newRange\(\backslash\)0selectionChanged\(\backslash\)0"}
+01678     \textcolor{stringliteral}{"QCPAxis::SelectableParts\(\backslash\)0selection\(\backslash\)0"}
+01679     \textcolor{stringliteral}{"setRange\(\backslash\)0range\(\backslash\)0setSelectable\(\backslash\)0selectable\(\backslash\)0"}
+01680     \textcolor{stringliteral}{"setSelected\(\backslash\)0selected\(\backslash\)0axisType\(\backslash\)0AxisType\(\backslash\)0"}
+01681     \textcolor{stringliteral}{"scaleType\(\backslash\)0ScaleType\(\backslash\)0scaleLogBase\(\backslash\)0"}
+01682     \textcolor{stringliteral}{"axisRect\(\backslash\)0grid\(\backslash\)0subGrid\(\backslash\)0autoTicks\(\backslash\)0"}
+01683     \textcolor{stringliteral}{"autoTickCount\(\backslash\)0autoTickLabels\(\backslash\)0autoTickStep\(\backslash\)0"}
+01684     \textcolor{stringliteral}{"autoSubTicks\(\backslash\)0ticks\(\backslash\)0tickLabels\(\backslash\)0"}
+01685     \textcolor{stringliteral}{"tickLabelPadding\(\backslash\)0tickLabelType\(\backslash\)0LabelType\(\backslash\)0"}
+01686     \textcolor{stringliteral}{"tickLabelFont\(\backslash\)0tickLabelRotation\(\backslash\)0"}
+01687     \textcolor{stringliteral}{"dateTimeFormat\(\backslash\)0numberFormat\(\backslash\)0tickStep\(\backslash\)0"}
+01688     \textcolor{stringliteral}{"tickVector\(\backslash\)0QVector<double>\(\backslash\)0tickVectorLabels\(\backslash\)0"}
+01689     \textcolor{stringliteral}{"QVector<QString>\(\backslash\)0subTickCount\(\backslash\)0basePen\(\backslash\)0"}
+01690     \textcolor{stringliteral}{"gridPen\(\backslash\)0subGridPen\(\backslash\)0tickPen\(\backslash\)0subTickPen\(\backslash\)0"}
+01691     \textcolor{stringliteral}{"labelFont\(\backslash\)0label\(\backslash\)0labelPadding\(\backslash\)0atLeft\(\backslash\)0"}
+01692     \textcolor{stringliteral}{"atRight\(\backslash\)0atTop\(\backslash\)0atBottom\(\backslash\)0ltNumber\(\backslash\)0"}
+01693     \textcolor{stringliteral}{"ltDateTime\(\backslash\)0stLinear\(\backslash\)0stLogarithmic\(\backslash\)0"}
+01694     \textcolor{stringliteral}{"SelectablePart\(\backslash\)0spNone\(\backslash\)0spAxis\(\backslash\)0spTickLabels\(\backslash\)0"}
+01695     \textcolor{stringliteral}{"spAxisLabel\(\backslash\)0"}
+01696 \};
+01697 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+01698 
+01699 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCPAxis[] = \{
+01700 
+01701  \textcolor{comment}{// content:}
+01702        7,       \textcolor{comment}{// revision}
+01703        0,       \textcolor{comment}{// classname}
+01704        0,    0, \textcolor{comment}{// classinfo}
+01705        6,   14, \textcolor{comment}{// methods}
+01706       32,   60, \textcolor{comment}{// properties}
+01707        4,  156, \textcolor{comment}{// enums/sets}
+01708        0,    0, \textcolor{comment}{// constructors}
+01709        0,       \textcolor{comment}{// flags}
+01710        3,       \textcolor{comment}{// signalCount}
+01711 
+01712  \textcolor{comment}{// signals: name, argc, parameters, tag, flags}
+01713        1,    0,   44,    2, 0x06,
+01714        3,    1,   45,    2, 0x06,
+01715        6,    1,   48,    2, 0x06,
+01716 
+01717  \textcolor{comment}{// slots: name, argc, parameters, tag, flags}
+01718        9,    1,   51,    2, 0x0a,
+01719       11,    1,   54,    2, 0x0a,
+01720       13,    1,   57,    2, 0x0a,
+01721 
+01722  \textcolor{comment}{// signals: parameters}
+01723     QMetaType::Void,
+01724     QMetaType::Void, 0x80000000 | 4,    5,
+01725     QMetaType::Void, 0x80000000 | 7,    8,
+01726 
+01727  \textcolor{comment}{// slots: parameters}
+01728     QMetaType::Void, 0x80000000 | 4,   10,
+01729     QMetaType::Void, 0x80000000 | 7,   12,
+01730     QMetaType::Void, 0x80000000 | 7,   14,
+01731 
+01732  \textcolor{comment}{// properties: name, type, flags}
+01733       15, 0x80000000 | 16, 0x0009510b,
+01734       17, 0x80000000 | 18, 0x0009510b,
+01735       19, QMetaType::Double, 0x00095103,
+01736       20, QMetaType::QRect, 0x00095103,
+01737       10, 0x80000000 | 4, 0x0009510b,
+01738       21, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool}, 0x00095103,
+01739       22, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool}, 0x00095103,
+01740       23, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool}, 0x00095103,
+01741       24, QMetaType::Int, 0x00095103,
+01742       25, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool}, 0x00095103,
+01743       26, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool}, 0x00095103,
+01744       27, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool}, 0x00095103,
+01745       28, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool}, 0x00095103,
+01746       29, \hyperlink{a00001_a76a8b016e5ad61faf9062cc387df5016}{QMetaType::Bool}, 0x00095103,
+01747       30, QMetaType::Int, 0x00095103,
+01748       31, 0x80000000 | 32, 0x0009510b,
+01749       33, QMetaType::QFont, 0x00095103,
+01750       34, QMetaType::Double, 0x00095103,
+01751       35, QMetaType::QString, 0x00095103,
+01752       36, QMetaType::QString, 0x00095103,
+01753       37, QMetaType::Double, 0x00095103,
+01754       38, 0x80000000 | 39, 0x0009510b,
+01755       40, 0x80000000 | 41, 0x0009510b,
+01756       42, QMetaType::Int, 0x00095103,
+01757       43, QMetaType::QPen, 0x00095103,
+01758       44, QMetaType::QPen, 0x00095103,
+01759       45, QMetaType::QPen, 0x00095103,
+01760       46, QMetaType::QPen, 0x00095103,
+01761       47, QMetaType::QPen, 0x00095103,
+01762       48, QMetaType::QFont, 0x00095103,
+01763       49, QMetaType::QString, 0x00095103,
+01764       50, QMetaType::Int, 0x00095103,
+01765 
+01766  \textcolor{comment}{// enums: name, flags, count, data}
+01767       16, 0x0,    4,  172,
+01768       32, 0x0,    2,  180,
+01769       18, 0x0,    2,  184,
+01770       59, 0x0,    4,  188,
+01771 
+01772  \textcolor{comment}{// enum data: key, value}
+01773       51, uint(QCPAxis::atLeft),
+01774       52, uint(QCPAxis::atRight),
+01775       53, uint(QCPAxis::atTop),
+01776       54, uint(QCPAxis::atBottom),
+01777       55, uint(QCPAxis::ltNumber),
+01778       56, uint(QCPAxis::ltDateTime),
+01779       57, uint(QCPAxis::stLinear),
+01780       58, uint(QCPAxis::stLogarithmic),
+01781       60, uint(QCPAxis::spNone),
+01782       61, uint(QCPAxis::spAxis),
+01783       62, uint(QCPAxis::spTickLabels),
+01784       63, uint(QCPAxis::spAxisLabel),
+01785 
+01786        0        \textcolor{comment}{// eod}
+01787 \};
+01788 
+01789 \textcolor{keywordtype}{void} QCPAxis::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01790 \{
+01791     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+01792         QCPAxis *\_t = \textcolor{keyword}{static\_cast<}QCPAxis *\textcolor{keyword}{>}(\_o);
+01793         \textcolor{keywordflow}{switch} (\_id) \{
+01794         \textcolor{keywordflow}{case} 0: \_t->ticksRequest(); \textcolor{keywordflow}{break};
+01795         \textcolor{keywordflow}{case} 1: \_t->rangeChanged((*\textcolor{keyword}{reinterpret\_cast<} \textcolor{keyword}{const }QCPRange(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+01796         \textcolor{keywordflow}{case} 2: \_t->selectionChanged((*\textcolor{keyword}{reinterpret\_cast<} QCPAxis::SelectableParts(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+01797         \textcolor{keywordflow}{case} 3: \_t->setRange((*\textcolor{keyword}{reinterpret\_cast<} \textcolor{keyword}{const }QCPRange(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+01798         \textcolor{keywordflow}{case} 4: \_t->setSelectable((*\textcolor{keyword}{reinterpret\_cast<} \textcolor{keyword}{const }QCPAxis::SelectableParts(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+01799         \textcolor{keywordflow}{case} 5: \_t->setSelected((*\textcolor{keyword}{reinterpret\_cast<} \textcolor{keyword}{const }QCPAxis::SelectableParts(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+01800         \textcolor{keywordflow}{default}: ;
+01801         \}
+01802     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::IndexOfMethod) \{
+01803         \textcolor{keywordtype}{int} *result = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} *\textcolor{keyword}{>}(\_a[0]);
+01804         \textcolor{keywordtype}{void} **func = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void} **\textcolor{keyword}{>}(\_a[1]);
+01805         \{
+01806             \textcolor{keyword}{typedef} void (QCPAxis::*\_t)();
+01807             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCPAxis::ticksRequest)) \{
+01808                 *result = 0;
+01809             \}
+01810         \}
+01811         \{
+01812             \textcolor{keyword}{typedef} void (QCPAxis::*\_t)(\textcolor{keyword}{const} QCPRange & );
+01813             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCPAxis::rangeChanged)) \{
+01814                 *result = 1;
+01815             \}
+01816         \}
+01817         \{
+01818             \textcolor{keyword}{typedef} void (QCPAxis::*\_t)(QCPAxis::SelectableParts );
+01819             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCPAxis::selectionChanged)) \{
+01820                 *result = 2;
+01821             \}
+01822         \}
+01823     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterPropertyMetaType) \{
+01824         \textcolor{keywordflow}{switch} (\_id) \{
+01825         \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+01826         \textcolor{keywordflow}{case} 22:
+01827             *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QVector<QString> >(); \textcolor{keywordflow}{break};
+01828         \textcolor{keywordflow}{case} 21:
+01829             *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QVector<double> >(); \textcolor{keywordflow}{break};
+01830         \}
+01831     \}
+01832 
+01833 \}
+01834 
+01835 \textcolor{keyword}{const} QMetaObject QCPAxis::staticMetaObject = \{
+01836     \{ &QCPLayerable::staticMetaObject, qt\_meta\_stringdata\_QCPAxis.\hyperlink{a00016_a6de5289a2e23a98b0352a48533dedbd4}{data},
+01837       qt\_meta\_data\_QCPAxis,  qt\_static\_metacall, 0, 0\}
+01838 \};
+01839 
+01840 
+01841 \textcolor{keyword}{const} QMetaObject *QCPAxis::metaObject()\textcolor{keyword}{ const}
+01842 \textcolor{keyword}{}\{
+01843     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+01844 \}
+01845 
+01846 \textcolor{keywordtype}{void} *QCPAxis::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+01847 \{
+01848     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+01849     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCPAxis.\hyperlink{a00016_a1fe440f64883a266431cf43cff1b5052}{stringdata}))
+01850         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCPAxis*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+01851     \textcolor{keywordflow}{return} QCPLayerable::qt\_metacast(\_clname);
+01852 \}
+01853 
+01854 \textcolor{keywordtype}{int} QCPAxis::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+01855 \{
+01856     \_id = QCPLayerable::qt\_metacall(\_c, \_id, \_a);
+01857     \textcolor{keywordflow}{if} (\_id < 0)
+01858         \textcolor{keywordflow}{return} \_id;
+01859     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+01860         \textcolor{keywordflow}{if} (\_id < 6)
+01861             qt\_static\_metacall(\textcolor{keyword}{this}, \_c, \_id, \_a);
+01862         \_id -= 6;
+01863     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterMethodArgumentMetaType) \{
+01864         \textcolor{keywordflow}{if} (\_id < 6)
+01865             *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1;
+01866         \_id -= 6;
+01867     \}
+01868 \textcolor{preprocessor}{#ifndef QT\_NO\_PROPERTIES}
+01869       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::ReadProperty) \{
+01870         \textcolor{keywordtype}{void} *\_v = \_a[0];
+01871         \textcolor{keywordflow}{switch} (\_id) \{
+01872         \textcolor{keywordflow}{case} 0: *\textcolor{keyword}{reinterpret\_cast<} AxisType*\textcolor{keyword}{>}(\_v) = axisType(); \textcolor{keywordflow}{break};
+01873         \textcolor{keywordflow}{case} 1: *\textcolor{keyword}{reinterpret\_cast<} ScaleType*\textcolor{keyword}{>}(\_v) = scaleType(); \textcolor{keywordflow}{break};
+01874         \textcolor{keywordflow}{case} 2: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{double}*\textcolor{keyword}{>}(\_v) = scaleLogBase(); \textcolor{keywordflow}{break};
+01875         \textcolor{keywordflow}{case} 3: *\textcolor{keyword}{reinterpret\_cast<} QRect*\textcolor{keyword}{>}(\_v) = axisRect(); \textcolor{keywordflow}{break};
+01876         \textcolor{keywordflow}{case} 4: *\textcolor{keyword}{reinterpret\_cast<} QCPRange*\textcolor{keyword}{>}(\_v) = range(); \textcolor{keywordflow}{break};
+01877         \textcolor{keywordflow}{case} 5: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\_v) = grid(); \textcolor{keywordflow}{break};
+01878         \textcolor{keywordflow}{case} 6: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\_v) = subGrid(); \textcolor{keywordflow}{break};
+01879         \textcolor{keywordflow}{case} 7: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\_v) = autoTicks(); \textcolor{keywordflow}{break};
+01880         \textcolor{keywordflow}{case} 8: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = autoTickCount(); \textcolor{keywordflow}{break};
+01881         \textcolor{keywordflow}{case} 9: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\_v) = autoTickLabels(); \textcolor{keywordflow}{break};
+01882         \textcolor{keywordflow}{case} 10: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\_v) = autoTickStep(); \textcolor{keywordflow}{break};
+01883         \textcolor{keywordflow}{case} 11: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\_v) = autoSubTicks(); \textcolor{keywordflow}{break};
+01884         \textcolor{keywordflow}{case} 12: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\_v) = ticks(); \textcolor{keywordflow}{break};
+01885         \textcolor{keywordflow}{case} 13: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{bool}*\textcolor{keyword}{>}(\_v) = tickLabels(); \textcolor{keywordflow}{break};
+01886         \textcolor{keywordflow}{case} 14: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = tickLabelPadding(); \textcolor{keywordflow}{break};
+01887         \textcolor{keywordflow}{case} 15: *\textcolor{keyword}{reinterpret\_cast<} LabelType*\textcolor{keyword}{>}(\_v) = tickLabelType(); \textcolor{keywordflow}{break};
+01888         \textcolor{keywordflow}{case} 16: *\textcolor{keyword}{reinterpret\_cast<} QFont*\textcolor{keyword}{>}(\_v) = tickLabelFont(); \textcolor{keywordflow}{break};
+01889         \textcolor{keywordflow}{case} 17: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{double}*\textcolor{keyword}{>}(\_v) = tickLabelRotation(); \textcolor{keywordflow}{break};
+01890         \textcolor{keywordflow}{case} 18: *\textcolor{keyword}{reinterpret\_cast<} QString*\textcolor{keyword}{>}(\_v) = dateTimeFormat(); \textcolor{keywordflow}{break};
+01891         \textcolor{keywordflow}{case} 19: *\textcolor{keyword}{reinterpret\_cast<} QString*\textcolor{keyword}{>}(\_v) = numberFormat(); \textcolor{keywordflow}{break};
+01892         \textcolor{keywordflow}{case} 20: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{double}*\textcolor{keyword}{>}(\_v) = tickStep(); \textcolor{keywordflow}{break};
+01893         \textcolor{keywordflow}{case} 21: *\textcolor{keyword}{reinterpret\_cast<} QVector<double>*\textcolor{keyword}{>}(\_v) = tickVector(); \textcolor{keywordflow}{break};
+01894         \textcolor{keywordflow}{case} 22: *\textcolor{keyword}{reinterpret\_cast<} QVector<QString>*\textcolor{keyword}{>}(\_v) = tickVectorLabels(); \textcolor{keywordflow}{break};
+01895         \textcolor{keywordflow}{case} 23: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = subTickCount(); \textcolor{keywordflow}{break};
+01896         \textcolor{keywordflow}{case} 24: *\textcolor{keyword}{reinterpret\_cast<} QPen*\textcolor{keyword}{>}(\_v) = basePen(); \textcolor{keywordflow}{break};
+01897         \textcolor{keywordflow}{case} 25: *\textcolor{keyword}{reinterpret\_cast<} QPen*\textcolor{keyword}{>}(\_v) = gridPen(); \textcolor{keywordflow}{break};
+01898         \textcolor{keywordflow}{case} 26: *\textcolor{keyword}{reinterpret\_cast<} QPen*\textcolor{keyword}{>}(\_v) = subGridPen(); \textcolor{keywordflow}{break};
+01899         \textcolor{keywordflow}{case} 27: *\textcolor{keyword}{reinterpret\_cast<} QPen*\textcolor{keyword}{>}(\_v) = tickPen(); \textcolor{keywordflow}{break};
+01900         \textcolor{keywordflow}{case} 28: *\textcolor{keyword}{reinterpret\_cast<} QPen*\textcolor{keyword}{>}(\_v) = subTickPen(); \textcolor{keywordflow}{break};
+01901         \textcolor{keywordflow}{case} 29: *\textcolor{keyword}{reinterpret\_cast<} QFont*\textcolor{keyword}{>}(\_v) = labelFont(); \textcolor{keywordflow}{break};
+01902         \textcolor{keywordflow}{case} 30: *\textcolor{keyword}{reinterpret\_cast<} QString*\textcolor{keyword}{>}(\_v) = label(); \textcolor{keywordflow}{break};
+01903         \textcolor{keywordflow}{case} 31: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = labelPadding(); \textcolor{keywordflow}{break};
+01904         \}
+01905         \_id -= 32;
+01906     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::WriteProperty) \{
+01907         \textcolor{keywordtype}{void} *\_v = \_a[0];
+01908         \textcolor{keywordflow}{switch} (\_id) \{
+01909         \textcolor{keywordflow}{case} 0: setAxisType(*reinterpret\_cast< AxisType*>(\_v)); \textcolor{keywordflow}{break};
+01910         \textcolor{keywordflow}{case} 1: setScaleType(*reinterpret\_cast< ScaleType*>(\_v)); \textcolor{keywordflow}{break};
+01911         \textcolor{keywordflow}{case} 2: setScaleLogBase(*reinterpret\_cast< double*>(\_v)); \textcolor{keywordflow}{break};
+01912         \textcolor{keywordflow}{case} 3: setAxisRect(*reinterpret\_cast< QRect*>(\_v)); \textcolor{keywordflow}{break};
+01913         \textcolor{keywordflow}{case} 4: setRange(*reinterpret\_cast< QCPRange*>(\_v)); \textcolor{keywordflow}{break};
+01914         \textcolor{keywordflow}{case} 5: setGrid(*reinterpret\_cast< bool*>(\_v)); \textcolor{keywordflow}{break};
+01915         \textcolor{keywordflow}{case} 6: setSubGrid(*reinterpret\_cast< bool*>(\_v)); \textcolor{keywordflow}{break};
+01916         \textcolor{keywordflow}{case} 7: setAutoTicks(*reinterpret\_cast< bool*>(\_v)); \textcolor{keywordflow}{break};
+01917         \textcolor{keywordflow}{case} 8: setAutoTickCount(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+01918         \textcolor{keywordflow}{case} 9: setAutoTickLabels(*reinterpret\_cast< bool*>(\_v)); \textcolor{keywordflow}{break};
+01919         \textcolor{keywordflow}{case} 10: setAutoTickStep(*reinterpret\_cast< bool*>(\_v)); \textcolor{keywordflow}{break};
+01920         \textcolor{keywordflow}{case} 11: setAutoSubTicks(*reinterpret\_cast< bool*>(\_v)); \textcolor{keywordflow}{break};
+01921         \textcolor{keywordflow}{case} 12: setTicks(*reinterpret\_cast< bool*>(\_v)); \textcolor{keywordflow}{break};
+01922         \textcolor{keywordflow}{case} 13: setTickLabels(*reinterpret\_cast< bool*>(\_v)); \textcolor{keywordflow}{break};
+01923         \textcolor{keywordflow}{case} 14: setTickLabelPadding(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+01924         \textcolor{keywordflow}{case} 15: setTickLabelType(*reinterpret\_cast< LabelType*>(\_v)); \textcolor{keywordflow}{break};
+01925         \textcolor{keywordflow}{case} 16: setTickLabelFont(*reinterpret\_cast< QFont*>(\_v)); \textcolor{keywordflow}{break};
+01926         \textcolor{keywordflow}{case} 17: setTickLabelRotation(*reinterpret\_cast< double*>(\_v)); \textcolor{keywordflow}{break};
+01927         \textcolor{keywordflow}{case} 18: setDateTimeFormat(*reinterpret\_cast< QString*>(\_v)); \textcolor{keywordflow}{break};
+01928         \textcolor{keywordflow}{case} 19: setNumberFormat(*reinterpret\_cast< QString*>(\_v)); \textcolor{keywordflow}{break};
+01929         \textcolor{keywordflow}{case} 20: setTickStep(*reinterpret\_cast< double*>(\_v)); \textcolor{keywordflow}{break};
+01930         \textcolor{keywordflow}{case} 21: setTickVector(*\textcolor{keyword}{reinterpret\_cast<} QVector<double>*\textcolor{keyword}{>}(\_v)); \textcolor{keywordflow}{break};
+01931         \textcolor{keywordflow}{case} 22: setTickVectorLabels(*\textcolor{keyword}{reinterpret\_cast<} QVector<QString>*\textcolor{keyword}{>}(\_v)); \textcolor{keywordflow}{break};
+01932         \textcolor{keywordflow}{case} 23: setSubTickCount(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+01933         \textcolor{keywordflow}{case} 24: setBasePen(*reinterpret\_cast< QPen*>(\_v)); \textcolor{keywordflow}{break};
+01934         \textcolor{keywordflow}{case} 25: setGridPen(*reinterpret\_cast< QPen*>(\_v)); \textcolor{keywordflow}{break};
+01935         \textcolor{keywordflow}{case} 26: setSubGridPen(*reinterpret\_cast< QPen*>(\_v)); \textcolor{keywordflow}{break};
+01936         \textcolor{keywordflow}{case} 27: setTickPen(*reinterpret\_cast< QPen*>(\_v)); \textcolor{keywordflow}{break};
+01937         \textcolor{keywordflow}{case} 28: setSubTickPen(*reinterpret\_cast< QPen*>(\_v)); \textcolor{keywordflow}{break};
+01938         \textcolor{keywordflow}{case} 29: setLabelFont(*reinterpret\_cast< QFont*>(\_v)); \textcolor{keywordflow}{break};
+01939         \textcolor{keywordflow}{case} 30: setLabel(*reinterpret\_cast< QString*>(\_v)); \textcolor{keywordflow}{break};
+01940         \textcolor{keywordflow}{case} 31: setLabelPadding(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+01941         \}
+01942         \_id -= 32;
+01943     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::ResetProperty) \{
+01944         \_id -= 32;
+01945     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyDesignable) \{
+01946         \_id -= 32;
+01947     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyScriptable) \{
+01948         \_id -= 32;
+01949     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyStored) \{
+01950         \_id -= 32;
+01951     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyEditable) \{
+01952         \_id -= 32;
+01953     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyUser) \{
+01954         \_id -= 32;
+01955     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterPropertyMetaType) \{
+01956         \textcolor{keywordflow}{if} (\_id < 32)
+01957             qt\_static\_metacall(\textcolor{keyword}{this}, \_c, \_id, \_a);
+01958         \_id -= 32;
+01959     \}
+01960 \textcolor{preprocessor}{#endif // QT\_NO\_PROPERTIES}
+01961     \textcolor{keywordflow}{return} \_id;
+01962 \}
+01963 
+01964 \textcolor{comment}{// SIGNAL 0}
+01965 \textcolor{keywordtype}{void} QCPAxis::ticksRequest()
+01966 \{
+01967     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, 0);
+01968 \}
+01969 
+01970 \textcolor{comment}{// SIGNAL 1}
+01971 \textcolor{keywordtype}{void} QCPAxis::rangeChanged(\textcolor{keyword}{const} QCPRange & \_t1)
+01972 \{
+01973     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+01974     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 1, \_a);
+01975 \}
+01976 
+01977 \textcolor{comment}{// SIGNAL 2}
+01978 \textcolor{keywordtype}{void} QCPAxis::selectionChanged(QCPAxis::SelectableParts \_t1)
+01979 \{
+01980     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+01981     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 2, \_a);
+01982 \}
+\hypertarget{a00016_source_l01983}{}\hyperlink{a00016}{01983} \textcolor{keyword}{struct }\hyperlink{a00016_d8/d87/a00118}{qt\_meta\_stringdata\_QCustomPlot\_t} \{
+\hypertarget{a00016_source_l01984}{}\hyperlink{a00016_a294e0b700c66ea0a3f528f255fa52fff}{01984}     QByteArrayData \hyperlink{a00016_a294e0b700c66ea0a3f528f255fa52fff}{data}[60];
+\hypertarget{a00016_source_l01985}{}\hyperlink{a00016_a06c7bf819765fdc7a40739cfb2bb681c}{01985}     \textcolor{keywordtype}{char} \hyperlink{a00016_a06c7bf819765fdc7a40739cfb2bb681c}{stringdata}[737];
+01986 \};
+\hypertarget{a00016_source_l01987}{}\hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{01987} \textcolor{preprocessor}{#define QT\_MOC\_LITERAL(idx, ofs, len) \(\backslash\)}
+01988 \textcolor{preprocessor}{    Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)}
+01989 \textcolor{preprocessor}{    offsetof(qt\_meta\_stringdata\_QCustomPlot\_t, stringdata) + ofs \(\backslash\)}
+01990 \textcolor{preprocessor}{        - idx * sizeof(QByteArrayData) \(\backslash\)}
+01991 \textcolor{preprocessor}{    )}
+01992 \textcolor{keyword}{static} \textcolor{keyword}{const} \hyperlink{a00016_d8/d87/a00118}{qt\_meta\_stringdata\_QCustomPlot\_t} 
+      qt\_meta\_stringdata\_QCustomPlot = \{
+01993     \{
+01994 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(0, 0, 11),
+01995 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(1, 12, 16),
+01996 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(2, 29, 0),
+01997 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(3, 30, 12),
+01998 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(4, 43, 5),
+01999 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(5, 49, 10),
+02000 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(6, 60, 9),
+02001 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(7, 70, 12),
+02002 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(8, 83, 10),
+02003 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(9, 94, 12),
+02004 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(10, 107, 14),
+02005 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(11, 122, 21),
+02006 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(12, 144, 9),
+02007 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(13, 154, 20),
+02008 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(14, 175, 9),
+02009 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(15, 185, 16),
+02010 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(16, 202, 4),
+02011 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(17, 207, 15),
+02012 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(18, 223, 9),
+02013 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(19, 233, 8),
+02014 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(20, 242, 4),
+02015 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(21, 247, 23),
+02016 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(22, 271, 4),
+02017 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(23, 276, 15),
+02018 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(24, 292, 11),
+02019 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(25, 304, 10),
+02020 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(26, 315, 6),
+02021 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(27, 322, 22),
+02022 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(28, 345, 17),
+02023 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(29, 363, 10),
+02024 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(30, 374, 16),
+02025 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(31, 391, 22),
+02026 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(32, 414, 12),
+02027 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(33, 427, 11),
+02028 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(34, 439, 11),
+02029 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(35, 451, 6),
+02030 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(36, 458, 11),
+02031 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(37, 470, 5),
+02032 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(38, 476, 8),
+02033 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(39, 485, 10),
+02034 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(40, 496, 11),
+02035 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(41, 508, 9),
+02036 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(42, 518, 12),
+02037 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(43, 531, 10),
+02038 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(44, 542, 5),
+02039 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(45, 548, 9),
+02040 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(46, 558, 16),
+02041 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(47, 575, 9),
+02042 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(48, 585, 11),
+02043 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(49, 597, 10),
+02044 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(50, 608, 10),
+02045 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(51, 619, 12),
+02046 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(52, 632, 12),
+02047 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(53, 645, 17),
+02048 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(54, 663, 11),
+02049 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(55, 675, 13),
+02050 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(56, 689, 12),
+02051 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(57, 702, 15),
+02052 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(58, 718, 8),
+02053 \hyperlink{a00016_a75bb9482d242cde0a06c9dbdc6b83abe}{QT\_MOC\_LITERAL}(59, 727, 8)
+02054     \},
+02055     \textcolor{stringliteral}{"QCustomPlot\(\backslash\)0mouseDoubleClick\(\backslash\)0\(\backslash\)0"}
+02056     \textcolor{stringliteral}{"QMouseEvent*\(\backslash\)0event\(\backslash\)0mousePress\(\backslash\)0mouseMove\(\backslash\)0"}
+02057     \textcolor{stringliteral}{"mouseRelease\(\backslash\)0mouseWheel\(\backslash\)0QWheelEvent*\(\backslash\)0"}
+02058     \textcolor{stringliteral}{"plottableClick\(\backslash\)0QCPAbstractPlottable*\(\backslash\)0"}
+02059     \textcolor{stringliteral}{"plottable\(\backslash\)0plottableDoubleClick\(\backslash\)0itemClick\(\backslash\)0"}
+02060     \textcolor{stringliteral}{"QCPAbstractItem*\(\backslash\)0item\(\backslash\)0itemDoubleClick\(\backslash\)0"}
+02061     \textcolor{stringliteral}{"axisClick\(\backslash\)0QCPAxis*\(\backslash\)0axis\(\backslash\)0QCPAxis::SelectablePart\(\backslash\)0"}
+02062     \textcolor{stringliteral}{"part\(\backslash\)0axisDoubleClick\(\backslash\)0legendClick\(\backslash\)0"}
+02063     \textcolor{stringliteral}{"QCPLegend*\(\backslash\)0legend\(\backslash\)0QCPAbstractLegendItem*\(\backslash\)0"}
+02064     \textcolor{stringliteral}{"legendDoubleClick\(\backslash\)0titleClick\(\backslash\)0"}
+02065     \textcolor{stringliteral}{"titleDoubleClick\(\backslash\)0selectionChangedByUser\(\backslash\)0"}
+02066     \textcolor{stringliteral}{"beforeReplot\(\backslash\)0afterReplot\(\backslash\)0deselectAll\(\backslash\)0"}
+02067     \textcolor{stringliteral}{"replot\(\backslash\)0rescaleAxes\(\backslash\)0title\(\backslash\)0axisRect\(\backslash\)0"}
+02068     \textcolor{stringliteral}{"marginLeft\(\backslash\)0marginRight\(\backslash\)0marginTop\(\backslash\)0"}
+02069     \textcolor{stringliteral}{"marginBottom\(\backslash\)0autoMargin\(\backslash\)0color\(\backslash\)0rangeDrag\(\backslash\)0"}
+02070     \textcolor{stringliteral}{"Qt::Orientations\(\backslash\)0rangeZoom\(\backslash\)0Interaction\(\backslash\)0"}
+02071     \textcolor{stringliteral}{"iRangeDrag\(\backslash\)0iRangeZoom\(\backslash\)0iMultiSelect\(\backslash\)0"}
+02072     \textcolor{stringliteral}{"iSelectTitle\(\backslash\)0iSelectPlottables\(\backslash\)0"}
+02073     \textcolor{stringliteral}{"iSelectAxes\(\backslash\)0iSelectLegend\(\backslash\)0iSelectItems\(\backslash\)0"}
+02074     \textcolor{stringliteral}{"LayerInsertMode\(\backslash\)0limBelow\(\backslash\)0limAbove\(\backslash\)0"}
+02075 \};
+02076 \textcolor{preprocessor}{#undef QT\_MOC\_LITERAL}
+02077 
+02078 \textcolor{keyword}{static} \textcolor{keyword}{const} uint qt\_meta\_data\_QCustomPlot[] = \{
+02079 
+02080  \textcolor{comment}{// content:}
+02081        7,       \textcolor{comment}{// revision}
+02082        0,       \textcolor{comment}{// classname}
+02083        0,    0, \textcolor{comment}{// classinfo}
+02084       21,   14, \textcolor{comment}{// methods}
+02085       10,  194, \textcolor{comment}{// properties}
+02086        2,  224, \textcolor{comment}{// enums/sets}
+02087        0,    0, \textcolor{comment}{// constructors}
+02088        0,       \textcolor{comment}{// flags}
+02089       18,       \textcolor{comment}{// signalCount}
+02090 
+02091  \textcolor{comment}{// signals: name, argc, parameters, tag, flags}
+02092        1,    1,  119,    2, 0x06,
+02093        5,    1,  122,    2, 0x06,
+02094        6,    1,  125,    2, 0x06,
+02095        7,    1,  128,    2, 0x06,
+02096        8,    1,  131,    2, 0x06,
+02097       10,    2,  134,    2, 0x06,
+02098       13,    2,  139,    2, 0x06,
+02099       14,    2,  144,    2, 0x06,
+02100       17,    2,  149,    2, 0x06,
+02101       18,    3,  154,    2, 0x06,
+02102       23,    3,  161,    2, 0x06,
+02103       24,    3,  168,    2, 0x06,
+02104       28,    3,  175,    2, 0x06,
+02105       29,    1,  182,    2, 0x06,
+02106       30,    1,  185,    2, 0x06,
+02107       31,    0,  188,    2, 0x06,
+02108       32,    0,  189,    2, 0x06,
+02109       33,    0,  190,    2, 0x06,
+02110 
+02111  \textcolor{comment}{// slots: name, argc, parameters, tag, flags}
+02112       34,    0,  191,    2, 0x0a,
+02113       35,    0,  192,    2, 0x0a,
+02114       36,    0,  193,    2, 0x0a,
+02115 
+02116  \textcolor{comment}{// signals: parameters}
+02117     QMetaType::Void, 0x80000000 | 3,    4,
+02118     QMetaType::Void, 0x80000000 | 3,    4,
+02119     QMetaType::Void, 0x80000000 | 3,    4,
+02120     QMetaType::Void, 0x80000000 | 3,    4,
+02121     QMetaType::Void, 0x80000000 | 9,    4,
+02122     QMetaType::Void, 0x80000000 | 11, 0x80000000 | 3,   12,    4,
+02123     QMetaType::Void, 0x80000000 | 11, 0x80000000 | 3,   12,    4,
+02124     QMetaType::Void, 0x80000000 | 15, 0x80000000 | 3,   16,    4,
+02125     QMetaType::Void, 0x80000000 | 15, 0x80000000 | 3,   16,    4,
+02126     QMetaType::Void, 0x80000000 | 19, 0x80000000 | 21, 0x80000000 | 3,   20,   22,    4,
+02127     QMetaType::Void, 0x80000000 | 19, 0x80000000 | 21, 0x80000000 | 3,   20,   22,    4,
+02128     QMetaType::Void, 0x80000000 | 25, 0x80000000 | 27, 0x80000000 | 3,   26,   16,    4,
+02129     QMetaType::Void, 0x80000000 | 25, 0x80000000 | 27, 0x80000000 | 3,   26,   16,    4,
+02130     QMetaType::Void, 0x80000000 | 3,    4,
+02131     QMetaType::Void, 0x80000000 | 3,    4,
+02132     QMetaType::Void,
+02133     QMetaType::Void,
+02134     QMetaType::Void,
+02135 
+02136  \textcolor{comment}{// slots: parameters}
+02137     QMetaType::Void,
+02138     QMetaType::Void,
+02139     QMetaType::Void,
+02140 
+02141  \textcolor{comment}{// properties: name, type, flags}
+02142       37, QMetaType::QString, 0x00095103,
+02143       38, QMetaType::QRect, 0x00095103,
+02144       39, QMetaType::Int, 0x00095103,
+02145       40, QMetaType::Int, 0x00095103,
+02146       41, QMetaType::Int, 0x00095103,
+02147       42, QMetaType::Int, 0x00095103,
+02148       43, QMetaType::Int, 0x00095103,
+02149       44, QMetaType::QColor, 0x00095103,
+02150       45, 0x80000000 | 46, 0x0009510b,
+02151       47, 0x80000000 | 46, 0x0009510b,
+02152 
+02153  \textcolor{comment}{// enums: name, flags, count, data}
+02154       48, 0x0,    8,  232,
+02155       57, 0x0,    2,  248,
+02156 
+02157  \textcolor{comment}{// enum data: key, value}
+02158       49, uint(QCustomPlot::iRangeDrag),
+02159       50, uint(QCustomPlot::iRangeZoom),
+02160       51, uint(QCustomPlot::iMultiSelect),
+02161       52, uint(QCustomPlot::iSelectTitle),
+02162       53, uint(QCustomPlot::iSelectPlottables),
+02163       54, uint(QCustomPlot::iSelectAxes),
+02164       55, uint(QCustomPlot::iSelectLegend),
+02165       56, uint(QCustomPlot::iSelectItems),
+02166       58, uint(QCustomPlot::limBelow),
+02167       59, uint(QCustomPlot::limAbove),
+02168 
+02169        0        \textcolor{comment}{// eod}
+02170 \};
+02171 
+02172 \textcolor{keywordtype}{void} QCustomPlot::qt\_static\_metacall(QObject *\_o, QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+02173 \{
+02174     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+02175         QCustomPlot *\_t = \textcolor{keyword}{static\_cast<}QCustomPlot *\textcolor{keyword}{>}(\_o);
+02176         \textcolor{keywordflow}{switch} (\_id) \{
+02177         \textcolor{keywordflow}{case} 0: \_t->mouseDoubleClick((*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+02178         \textcolor{keywordflow}{case} 1: \_t->mousePress((*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+02179         \textcolor{keywordflow}{case} 2: \_t->mouseMove((*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+02180         \textcolor{keywordflow}{case} 3: \_t->mouseRelease((*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+02181         \textcolor{keywordflow}{case} 4: \_t->mouseWheel((*\textcolor{keyword}{reinterpret\_cast<} QWheelEvent*(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+02182         \textcolor{keywordflow}{case} 5: \_t->plottableClick((*\textcolor{keyword}{reinterpret\_cast<} QCPAbstractPlottable*(*)\textcolor{keyword}{>}(\_a[1])),(*\textcolor{keyword}{
+      reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[2]))); \textcolor{keywordflow}{break};
+02183         \textcolor{keywordflow}{case} 6: \_t->plottableDoubleClick((*\textcolor{keyword}{reinterpret\_cast<} QCPAbstractPlottable*(*)\textcolor{keyword}{>}(\_a[1])),(*\textcolor{keyword}{
+      reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[2]))); \textcolor{keywordflow}{break};
+02184         \textcolor{keywordflow}{case} 7: \_t->itemClick((*\textcolor{keyword}{reinterpret\_cast<} QCPAbstractItem*(*)\textcolor{keyword}{>}(\_a[1])),(*\textcolor{keyword}{reinterpret\_cast<} 
+      QMouseEvent*(*)\textcolor{keyword}{>}(\_a[2]))); \textcolor{keywordflow}{break};
+02185         \textcolor{keywordflow}{case} 8: \_t->itemDoubleClick((*\textcolor{keyword}{reinterpret\_cast<} QCPAbstractItem*(*)\textcolor{keyword}{>}(\_a[1])),(*\textcolor{keyword}{reinterpret\_cast<} 
+      QMouseEvent*(*)\textcolor{keyword}{>}(\_a[2]))); \textcolor{keywordflow}{break};
+02186         \textcolor{keywordflow}{case} 9: \_t->axisClick((*\textcolor{keyword}{reinterpret\_cast<} QCPAxis*(*)\textcolor{keyword}{>}(\_a[1])),(*\textcolor{keyword}{reinterpret\_cast<} 
+      QCPAxis::SelectablePart(*)\textcolor{keyword}{>}(\_a[2])),(*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[3]))); \textcolor{keywordflow}{break};
+02187         \textcolor{keywordflow}{case} 10: \_t->axisDoubleClick((*\textcolor{keyword}{reinterpret\_cast<} QCPAxis*(*)\textcolor{keyword}{>}(\_a[1])),(*\textcolor{keyword}{reinterpret\_cast<} 
+      QCPAxis::SelectablePart(*)\textcolor{keyword}{>}(\_a[2])),(*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[3]))); \textcolor{keywordflow}{break};
+02188         \textcolor{keywordflow}{case} 11: \_t->legendClick((*\textcolor{keyword}{reinterpret\_cast<} QCPLegend*(*)\textcolor{keyword}{>}(\_a[1])),(*\textcolor{keyword}{reinterpret\_cast<} 
+      QCPAbstractLegendItem*(*)\textcolor{keyword}{>}(\_a[2])),(*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[3]))); \textcolor{keywordflow}{break};
+02189         \textcolor{keywordflow}{case} 12: \_t->legendDoubleClick((*\textcolor{keyword}{reinterpret\_cast<} QCPLegend*(*)\textcolor{keyword}{>}(\_a[1])),(*\textcolor{keyword}{reinterpret\_cast<} 
+      QCPAbstractLegendItem*(*)\textcolor{keyword}{>}(\_a[2])),(*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[3]))); \textcolor{keywordflow}{break};
+02190         \textcolor{keywordflow}{case} 13: \_t->titleClick((*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+02191         \textcolor{keywordflow}{case} 14: \_t->titleDoubleClick((*\textcolor{keyword}{reinterpret\_cast<} QMouseEvent*(*)\textcolor{keyword}{>}(\_a[1]))); \textcolor{keywordflow}{break};
+02192         \textcolor{keywordflow}{case} 15: \_t->selectionChangedByUser(); \textcolor{keywordflow}{break};
+02193         \textcolor{keywordflow}{case} 16: \_t->beforeReplot(); \textcolor{keywordflow}{break};
+02194         \textcolor{keywordflow}{case} 17: \_t->afterReplot(); \textcolor{keywordflow}{break};
+02195         \textcolor{keywordflow}{case} 18: \_t->deselectAll(); \textcolor{keywordflow}{break};
+02196         \textcolor{keywordflow}{case} 19: \_t->replot(); \textcolor{keywordflow}{break};
+02197         \textcolor{keywordflow}{case} 20: \_t->rescaleAxes(); \textcolor{keywordflow}{break};
+02198         \textcolor{keywordflow}{default}: ;
+02199         \}
+02200     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterMethodArgumentMetaType) \{
+02201         \textcolor{keywordflow}{switch} (\_id) \{
+02202         \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02203         \textcolor{keywordflow}{case} 5:
+02204             \textcolor{keywordflow}{switch} (*reinterpret\_cast<int*>(\_a[1])) \{
+02205             \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02206             \textcolor{keywordflow}{case} 0:
+02207                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPAbstractPlottable* >(); \textcolor{keywordflow}{break};
+02208             \}
+02209             \textcolor{keywordflow}{break};
+02210         \textcolor{keywordflow}{case} 6:
+02211             \textcolor{keywordflow}{switch} (*reinterpret\_cast<int*>(\_a[1])) \{
+02212             \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02213             \textcolor{keywordflow}{case} 0:
+02214                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPAbstractPlottable* >(); \textcolor{keywordflow}{break};
+02215             \}
+02216             \textcolor{keywordflow}{break};
+02217         \textcolor{keywordflow}{case} 7:
+02218             \textcolor{keywordflow}{switch} (*reinterpret\_cast<int*>(\_a[1])) \{
+02219             \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02220             \textcolor{keywordflow}{case} 0:
+02221                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPAbstractItem* >(); \textcolor{keywordflow}{break};
+02222             \}
+02223             \textcolor{keywordflow}{break};
+02224         \textcolor{keywordflow}{case} 8:
+02225             \textcolor{keywordflow}{switch} (*reinterpret\_cast<int*>(\_a[1])) \{
+02226             \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02227             \textcolor{keywordflow}{case} 0:
+02228                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPAbstractItem* >(); \textcolor{keywordflow}{break};
+02229             \}
+02230             \textcolor{keywordflow}{break};
+02231         \textcolor{keywordflow}{case} 9:
+02232             \textcolor{keywordflow}{switch} (*reinterpret\_cast<int*>(\_a[1])) \{
+02233             \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02234             \textcolor{keywordflow}{case} 0:
+02235                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPAxis* >(); \textcolor{keywordflow}{break};
+02236             \}
+02237             \textcolor{keywordflow}{break};
+02238         \textcolor{keywordflow}{case} 10:
+02239             \textcolor{keywordflow}{switch} (*reinterpret\_cast<int*>(\_a[1])) \{
+02240             \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02241             \textcolor{keywordflow}{case} 0:
+02242                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPAxis* >(); \textcolor{keywordflow}{break};
+02243             \}
+02244             \textcolor{keywordflow}{break};
+02245         \textcolor{keywordflow}{case} 11:
+02246             \textcolor{keywordflow}{switch} (*reinterpret\_cast<int*>(\_a[1])) \{
+02247             \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02248             \textcolor{keywordflow}{case} 1:
+02249                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPAbstractLegendItem* >(); \textcolor{keywordflow}{break};
+02250             \textcolor{keywordflow}{case} 0:
+02251                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPLegend* >(); \textcolor{keywordflow}{break};
+02252             \}
+02253             \textcolor{keywordflow}{break};
+02254         \textcolor{keywordflow}{case} 12:
+02255             \textcolor{keywordflow}{switch} (*reinterpret\_cast<int*>(\_a[1])) \{
+02256             \textcolor{keywordflow}{default}: *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1; \textcolor{keywordflow}{break};
+02257             \textcolor{keywordflow}{case} 1:
+02258                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPAbstractLegendItem* >(); \textcolor{keywordflow}{break};
+02259             \textcolor{keywordflow}{case} 0:
+02260                 *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = qRegisterMetaType< QCPLegend* >(); \textcolor{keywordflow}{break};
+02261             \}
+02262             \textcolor{keywordflow}{break};
+02263         \}
+02264     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::IndexOfMethod) \{
+02265         \textcolor{keywordtype}{int} *result = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int} *\textcolor{keyword}{>}(\_a[0]);
+02266         \textcolor{keywordtype}{void} **func = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void} **\textcolor{keyword}{>}(\_a[1]);
+02267         \{
+02268             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QMouseEvent * );
+02269             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::mouseDoubleClick)) \{
+02270                 *result = 0;
+02271             \}
+02272         \}
+02273         \{
+02274             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QMouseEvent * );
+02275             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::mousePress)) \{
+02276                 *result = 1;
+02277             \}
+02278         \}
+02279         \{
+02280             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QMouseEvent * );
+02281             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::mouseMove)) \{
+02282                 *result = 2;
+02283             \}
+02284         \}
+02285         \{
+02286             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QMouseEvent * );
+02287             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::mouseRelease)) \{
+02288                 *result = 3;
+02289             \}
+02290         \}
+02291         \{
+02292             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QWheelEvent * );
+02293             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::mouseWheel)) \{
+02294                 *result = 4;
+02295             \}
+02296         \}
+02297         \{
+02298             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QCPAbstractPlottable * , QMouseEvent * );
+02299             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::plottableClick)) \{
+02300                 *result = 5;
+02301             \}
+02302         \}
+02303         \{
+02304             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QCPAbstractPlottable * , QMouseEvent * );
+02305             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::plottableDoubleClick)) \{
+02306                 *result = 6;
+02307             \}
+02308         \}
+02309         \{
+02310             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QCPAbstractItem * , QMouseEvent * );
+02311             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::itemClick)) \{
+02312                 *result = 7;
+02313             \}
+02314         \}
+02315         \{
+02316             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QCPAbstractItem * , QMouseEvent * );
+02317             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::itemDoubleClick)) \{
+02318                 *result = 8;
+02319             \}
+02320         \}
+02321         \{
+02322             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QCPAxis * , QCPAxis::SelectablePart , QMouseEvent * );
+02323             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::axisClick)) \{
+02324                 *result = 9;
+02325             \}
+02326         \}
+02327         \{
+02328             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QCPAxis * , QCPAxis::SelectablePart , QMouseEvent * );
+02329             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::axisDoubleClick)) \{
+02330                 *result = 10;
+02331             \}
+02332         \}
+02333         \{
+02334             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QCPLegend * , QCPAbstractLegendItem * , QMouseEvent * );
+02335             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::legendClick)) \{
+02336                 *result = 11;
+02337             \}
+02338         \}
+02339         \{
+02340             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QCPLegend * , QCPAbstractLegendItem * , QMouseEvent * );
+02341             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::legendDoubleClick)) \{
+02342                 *result = 12;
+02343             \}
+02344         \}
+02345         \{
+02346             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QMouseEvent * );
+02347             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::titleClick)) \{
+02348                 *result = 13;
+02349             \}
+02350         \}
+02351         \{
+02352             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)(QMouseEvent * );
+02353             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::titleDoubleClick)) \{
+02354                 *result = 14;
+02355             \}
+02356         \}
+02357         \{
+02358             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)();
+02359             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::selectionChangedByUser)) \{
+02360                 *result = 15;
+02361             \}
+02362         \}
+02363         \{
+02364             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)();
+02365             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::beforeReplot)) \{
+02366                 *result = 16;
+02367             \}
+02368         \}
+02369         \{
+02370             \textcolor{keyword}{typedef} void (QCustomPlot::*\_t)();
+02371             \textcolor{keywordflow}{if} (*reinterpret\_cast<\_t *>(func) == \textcolor{keyword}{static\_cast<}\_t\textcolor{keyword}{>}(&QCustomPlot::afterReplot)) \{
+02372                 *result = 17;
+02373             \}
+02374         \}
+02375     \}
+02376 \}
+02377 
+02378 \textcolor{keyword}{const} QMetaObject QCustomPlot::staticMetaObject = \{
+02379     \{ &QWidget::staticMetaObject, qt\_meta\_stringdata\_QCustomPlot.\hyperlink{a00016_a294e0b700c66ea0a3f528f255fa52fff}{data},
+02380       qt\_meta\_data\_QCustomPlot,  qt\_static\_metacall, 0, 0\}
+02381 \};
+02382 
+02383 
+02384 \textcolor{keyword}{const} QMetaObject *QCustomPlot::metaObject()\textcolor{keyword}{ const}
+02385 \textcolor{keyword}{}\{
+02386     \textcolor{keywordflow}{return} QObject::d\_ptr->metaObject ? QObject::d\_ptr->dynamicMetaObject() : &staticMetaObject;
+02387 \}
+02388 
+02389 \textcolor{keywordtype}{void} *QCustomPlot::qt\_metacast(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\_clname)
+02390 \{
+02391     \textcolor{keywordflow}{if} (!\_clname) \textcolor{keywordflow}{return} 0;
+02392     \textcolor{keywordflow}{if} (!strcmp(\_clname, qt\_meta\_stringdata\_QCustomPlot.\hyperlink{a00016_a06c7bf819765fdc7a40739cfb2bb681c}{stringdata}))
+02393         \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{const\_cast<} QCustomPlot*\textcolor{keyword}{>}(\textcolor{keyword}{this}));
+02394     \textcolor{keywordflow}{return} QWidget::qt\_metacast(\_clname);
+02395 \}
+02396 
+02397 \textcolor{keywordtype}{int} QCustomPlot::qt\_metacall(QMetaObject::Call \_c, \textcolor{keywordtype}{int} \_id, \textcolor{keywordtype}{void} **\_a)
+02398 \{
+02399     \_id = QWidget::qt\_metacall(\_c, \_id, \_a);
+02400     \textcolor{keywordflow}{if} (\_id < 0)
+02401         \textcolor{keywordflow}{return} \_id;
+02402     \textcolor{keywordflow}{if} (\_c == QMetaObject::InvokeMetaMethod) \{
+02403         \textcolor{keywordflow}{if} (\_id < 21)
+02404             qt\_static\_metacall(\textcolor{keyword}{this}, \_c, \_id, \_a);
+02405         \_id -= 21;
+02406     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterMethodArgumentMetaType) \{
+02407         \textcolor{keywordflow}{if} (\_id < 21)
+02408             qt\_static\_metacall(\textcolor{keyword}{this}, \_c, \_id, \_a);
+02409         \_id -= 21;
+02410     \}
+02411 \textcolor{preprocessor}{#ifndef QT\_NO\_PROPERTIES}
+02412       \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::ReadProperty) \{
+02413         \textcolor{keywordtype}{void} *\_v = \_a[0];
+02414         \textcolor{keywordflow}{switch} (\_id) \{
+02415         \textcolor{keywordflow}{case} 0: *\textcolor{keyword}{reinterpret\_cast<} QString*\textcolor{keyword}{>}(\_v) = title(); \textcolor{keywordflow}{break};
+02416         \textcolor{keywordflow}{case} 1: *\textcolor{keyword}{reinterpret\_cast<} QRect*\textcolor{keyword}{>}(\_v) = axisRect(); \textcolor{keywordflow}{break};
+02417         \textcolor{keywordflow}{case} 2: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = marginLeft(); \textcolor{keywordflow}{break};
+02418         \textcolor{keywordflow}{case} 3: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = marginRight(); \textcolor{keywordflow}{break};
+02419         \textcolor{keywordflow}{case} 4: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = marginTop(); \textcolor{keywordflow}{break};
+02420         \textcolor{keywordflow}{case} 5: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = marginBottom(); \textcolor{keywordflow}{break};
+02421         \textcolor{keywordflow}{case} 6: *\textcolor{keyword}{reinterpret\_cast<} \textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_v) = autoMargin(); \textcolor{keywordflow}{break};
+02422         \textcolor{keywordflow}{case} 7: *\textcolor{keyword}{reinterpret\_cast<} QColor*\textcolor{keyword}{>}(\_v) = color(); \textcolor{keywordflow}{break};
+02423         \textcolor{keywordflow}{case} 8: *\textcolor{keyword}{reinterpret\_cast<} Qt::Orientations*\textcolor{keyword}{>}(\_v) = rangeDrag(); \textcolor{keywordflow}{break};
+02424         \textcolor{keywordflow}{case} 9: *\textcolor{keyword}{reinterpret\_cast<} Qt::Orientations*\textcolor{keyword}{>}(\_v) = rangeZoom(); \textcolor{keywordflow}{break};
+02425         \}
+02426         \_id -= 10;
+02427     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::WriteProperty) \{
+02428         \textcolor{keywordtype}{void} *\_v = \_a[0];
+02429         \textcolor{keywordflow}{switch} (\_id) \{
+02430         \textcolor{keywordflow}{case} 0: setTitle(*reinterpret\_cast< QString*>(\_v)); \textcolor{keywordflow}{break};
+02431         \textcolor{keywordflow}{case} 1: setAxisRect(*reinterpret\_cast< QRect*>(\_v)); \textcolor{keywordflow}{break};
+02432         \textcolor{keywordflow}{case} 2: setMarginLeft(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+02433         \textcolor{keywordflow}{case} 3: setMarginRight(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+02434         \textcolor{keywordflow}{case} 4: setMarginTop(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+02435         \textcolor{keywordflow}{case} 5: setMarginBottom(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+02436         \textcolor{keywordflow}{case} 6: setAutoMargin(*reinterpret\_cast< int*>(\_v)); \textcolor{keywordflow}{break};
+02437         \textcolor{keywordflow}{case} 7: setColor(*reinterpret\_cast< QColor*>(\_v)); \textcolor{keywordflow}{break};
+02438         \textcolor{keywordflow}{case} 8: setRangeDrag(*reinterpret\_cast< Qt::Orientations*>(\_v)); \textcolor{keywordflow}{break};
+02439         \textcolor{keywordflow}{case} 9: setRangeZoom(*reinterpret\_cast< Qt::Orientations*>(\_v)); \textcolor{keywordflow}{break};
+02440         \}
+02441         \_id -= 10;
+02442     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::ResetProperty) \{
+02443         \_id -= 10;
+02444     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyDesignable) \{
+02445         \_id -= 10;
+02446     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyScriptable) \{
+02447         \_id -= 10;
+02448     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyStored) \{
+02449         \_id -= 10;
+02450     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyEditable) \{
+02451         \_id -= 10;
+02452     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::QueryPropertyUser) \{
+02453         \_id -= 10;
+02454     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\_c == QMetaObject::RegisterPropertyMetaType) \{
+02455         \textcolor{keywordflow}{if} (\_id < 10)
+02456             *\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{int}*\textcolor{keyword}{>}(\_a[0]) = -1;
+02457         \_id -= 10;
+02458     \}
+02459 \textcolor{preprocessor}{#endif // QT\_NO\_PROPERTIES}
+02460     \textcolor{keywordflow}{return} \_id;
+02461 \}
+02462 
+02463 \textcolor{comment}{// SIGNAL 0}
+02464 \textcolor{keywordtype}{void} QCustomPlot::mouseDoubleClick(QMouseEvent * \_t1)
+02465 \{
+02466     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+02467     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, \_a);
+02468 \}
+02469 
+02470 \textcolor{comment}{// SIGNAL 1}
+02471 \textcolor{keywordtype}{void} QCustomPlot::mousePress(QMouseEvent * \_t1)
+02472 \{
+02473     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+02474     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 1, \_a);
+02475 \}
+02476 
+02477 \textcolor{comment}{// SIGNAL 2}
+02478 \textcolor{keywordtype}{void} QCustomPlot::mouseMove(QMouseEvent * \_t1)
+02479 \{
+02480     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+02481     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 2, \_a);
+02482 \}
+02483 
+02484 \textcolor{comment}{// SIGNAL 3}
+02485 \textcolor{keywordtype}{void} QCustomPlot::mouseRelease(QMouseEvent * \_t1)
+02486 \{
+02487     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+02488     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 3, \_a);
+02489 \}
+02490 
+02491 \textcolor{comment}{// SIGNAL 4}
+02492 \textcolor{keywordtype}{void} QCustomPlot::mouseWheel(QWheelEvent * \_t1)
+02493 \{
+02494     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+02495     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 4, \_a);
+02496 \}
+02497 
+02498 \textcolor{comment}{// SIGNAL 5}
+02499 \textcolor{keywordtype}{void} QCustomPlot::plottableClick(QCPAbstractPlottable * \_t1, QMouseEvent * \_t2)
+02500 \{
+02501     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)) \};
+02502     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 5, \_a);
+02503 \}
+02504 
+02505 \textcolor{comment}{// SIGNAL 6}
+02506 \textcolor{keywordtype}{void} QCustomPlot::plottableDoubleClick(QCPAbstractPlottable * \_t1, QMouseEvent * \_t2)
+02507 \{
+02508     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)) \};
+02509     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 6, \_a);
+02510 \}
+02511 
+02512 \textcolor{comment}{// SIGNAL 7}
+02513 \textcolor{keywordtype}{void} QCustomPlot::itemClick(QCPAbstractItem * \_t1, QMouseEvent * \_t2)
+02514 \{
+02515     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)) \};
+02516     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 7, \_a);
+02517 \}
+02518 
+02519 \textcolor{comment}{// SIGNAL 8}
+02520 \textcolor{keywordtype}{void} QCustomPlot::itemDoubleClick(QCPAbstractItem * \_t1, QMouseEvent * \_t2)
+02521 \{
+02522     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)) \};
+02523     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 8, \_a);
+02524 \}
+02525 
+02526 \textcolor{comment}{// SIGNAL 9}
+02527 \textcolor{keywordtype}{void} QCustomPlot::axisClick(QCPAxis * \_t1, QCPAxis::SelectablePart \_t2, QMouseEvent * \_t3)
+02528 \{
+02529     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t3)) \};
+02530     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 9, \_a);
+02531 \}
+02532 
+02533 \textcolor{comment}{// SIGNAL 10}
+02534 \textcolor{keywordtype}{void} QCustomPlot::axisDoubleClick(QCPAxis * \_t1, QCPAxis::SelectablePart \_t2, QMouseEvent * \_t3)
+02535 \{
+02536     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t3)) \};
+02537     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 10, \_a);
+02538 \}
+02539 
+02540 \textcolor{comment}{// SIGNAL 11}
+02541 \textcolor{keywordtype}{void} QCustomPlot::legendClick(QCPLegend * \_t1, QCPAbstractLegendItem * \_t2, QMouseEvent * \_t3)
+02542 \{
+02543     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t3)) \};
+02544     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 11, \_a);
+02545 \}
+02546 
+02547 \textcolor{comment}{// SIGNAL 12}
+02548 \textcolor{keywordtype}{void} QCustomPlot::legendDoubleClick(QCPLegend * \_t1, QCPAbstractLegendItem * \_t2, QMouseEvent * \_t3)
+02549 \{
+02550     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t3)) \};
+02551     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 12, \_a);
+02552 \}
+02553 
+02554 \textcolor{comment}{// SIGNAL 13}
+02555 \textcolor{keywordtype}{void} QCustomPlot::titleClick(QMouseEvent * \_t1)
+02556 \{
+02557     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+02558     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 13, \_a);
+02559 \}
+02560 
+02561 \textcolor{comment}{// SIGNAL 14}
+02562 \textcolor{keywordtype}{void} QCustomPlot::titleDoubleClick(QMouseEvent * \_t1)
+02563 \{
+02564     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+02565     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 14, \_a);
+02566 \}
+02567 
+02568 \textcolor{comment}{// SIGNAL 15}
+02569 \textcolor{keywordtype}{void} QCustomPlot::selectionChangedByUser()
+02570 \{
+02571     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 15, 0);
+02572 \}
+02573 
+02574 \textcolor{comment}{// SIGNAL 16}
+02575 \textcolor{keywordtype}{void} QCustomPlot::beforeReplot()
+02576 \{
+02577     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 16, 0);
+02578 \}
+02579 
+02580 \textcolor{comment}{// SIGNAL 17}
+02581 \textcolor{keywordtype}{void} QCustomPlot::afterReplot()
+02582 \{
+02583     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 17, 0);
+02584 \}
+02585 QT\_END\_MOC\_NAMESPACE
+\end{DoxyCode}

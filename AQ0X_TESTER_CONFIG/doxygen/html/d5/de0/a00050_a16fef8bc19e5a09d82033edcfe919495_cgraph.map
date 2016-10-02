@@ -1,0 +1,15 @@
+<map id="QCPStatisticalBox::drawMedian" name="QCPStatisticalBox::drawMedian">
+<area shape="rect" id="node2" href="$dc/de2/a00024.html#a76e9d6cc7972dc1528f526d163766aca" title="QCPAbstractPlottable\l::applyDefaultAntialiasingHint" alt="" coords="192,25,383,66"/>
+<area shape="rect" id="node5" href="$dc/de2/a00024.html#ade710a776104b14c1c835168ce1bfc5c" title="QCPAbstractPlottable\l::coordsToPixels" alt="" coords="212,99,363,141"/>
+<area shape="rect" id="node10" href="$d6/d2d/a00047.html#a0b4b1b9bd495e182c731774dc800e6e0" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="212,165,363,192"/>
+<area shape="rect" id="node11" href="$d6/d2d/a00047.html#af9c7a4cd1791403901f8c5b82a150195" title="Sets the pen of the painter and applies certain fixes to it, depending on the mode of this QCPPainter..." alt="" coords="217,216,357,243"/>
+<area shape="rect" id="node3" href="$d5/df9/a00044.html#a62bd552d1a45aa9accb24b310542279e" title="QCPLayerable::applyAntialiasingHint" alt="" coords="431,15,665,41"/>
+<area shape="rect" id="node4" href="$d6/d2d/a00047.html#aaba1deb9188244d9ea65b035112b4d05" title="Sets whether painting uses antialiasing or not. " alt="" coords="713,5,897,32"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#a985ae693b842fb0422b4390fe36d299a" title="Transforms value (in coordinates of the axis) to pixel coordinates of the QCustomPlot widget..." alt="" coords="469,107,627,133"/>
+<area shape="rect" id="node8" href="$d3/dfe/a00025.html#a57483f2f60145ddc9e63f3af53959265" title="Returns the orientation of the axis. " alt="" coords="733,157,877,184"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#a1385765db2419ee5fb5505a6cf9130fb" title="QCPAxis::baseLog" alt="" coords="739,56,872,83"/>
+<area shape="rect" id="node9" href="$d2/dee/a00049.html#afa57c13049b965edb6fd1c00ac56338a" title="Returns the size of the range, i.e. " alt="" coords="746,107,865,133"/>
+<area shape="rect" id="node12" href="$d6/d2d/a00047.html#a27af07a62c335faf79191b797306b218" title="Provides a workaround for a QPainter bug that prevents scaling of pen widths for pens with width 0..." alt="" coords="461,212,635,239"/>
+<area shape="rect" id="node14" href="$d4/d3e/a00116.html#a499165f4744b6d22da7b24295910fb2c" title="setPen" alt="" coords="774,263,837,289"/>
+<area shape="rect" id="node13" href="$d4/d3e/a00116.html#a1f13fffa0a0faac34ec342973e613a4a" title="pen" alt="" coords="784,212,827,239"/>
+</map>

@@ -1,0 +1,46 @@
+.TH "QHannFunction< T >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QHannFunction< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwindowfunction\&.h>\fP
+.PP
+Inherits \fBQWindowFunction< T >\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "T \fBcalculate\fP (int currentSample, int totalSamples)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>class QHannFunction< T >"
+
+.PP
+Definition at line 127 of file qwindowfunction\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > T \fBQHannFunction\fP< T >::calculate (intcurrentSample, inttotalSamples)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBQWindowFunction< T >\fP\&.
+.PP
+Definition at line 155 of file qwindowfunction\&.cpp\&.
+.PP
+.nf
+156 {
+157     return 0\&.5 * (1 - qCos((2 * M_PI * currentSample) / (totalSamples - 1)));
+158 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

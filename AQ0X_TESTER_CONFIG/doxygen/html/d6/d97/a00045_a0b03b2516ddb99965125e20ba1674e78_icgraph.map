@@ -1,0 +1,6 @@
+<map id="QCPLegend::size" name="QCPLegend::size">
+<area shape="rect" id="node2" href="$d6/d97/a00045.html#a8b0740cce488bf7010da6beda6898984" title="Sets the size of legend icons. " alt="" coords="192,5,360,32"/>
+<area shape="rect" id="node4" href="$d6/d97/a00045.html#a012c09cb070eabe01cfb598ab188a4fc" title="Sets the minimum size of the legend when setAutoSize is enabled. " alt="" coords="177,56,375,83"/>
+<area shape="rect" id="node5" href="$d6/d97/a00045.html#ae1d42dbf91b0046f7324dd07a16dd43f" title="Sets the size of the legend. " alt="" coords="204,107,348,133"/>
+<area shape="rect" id="node3" href="$d6/d97/a00045.html#a5dc42d73df80e7294414aee1170c4d2b" title="Constructs a new QCPLegend instance with parentPlot as the containing plot and default values..." alt="" coords="423,56,593,83"/>
+</map>

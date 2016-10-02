@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['sdboth',['sdBoth',['../dc/de2/a00024.html#a661743478a1d3c09d28ec2711d7653d8a082b98cfb91a7363a3b5cd17b0c1cd60',1,'QCPAbstractPlottable']]],
+  ['sdnegative',['sdNegative',['../dc/de2/a00024.html#a661743478a1d3c09d28ec2711d7653d8a0fc9a70796ef60ad18ddd18056e6dc63',1,'QCPAbstractPlottable']]],
+  ['sdpositive',['sdPositive',['../dc/de2/a00024.html#a661743478a1d3c09d28ec2711d7653d8a02951859f243a4d24e779cfbb5471030',1,'QCPAbstractPlottable']]],
+  ['sscircle',['ssCircle',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa13ed43d724ecefa84baae4179de3bd8d',1,'QCP']]],
+  ['sscross',['ssCross',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fab1d52c10ee4b09fe17854be238055f30',1,'QCP']]],
+  ['sscrosscircle',['ssCrossCircle',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa32c6bc5b7596ba0cca2342ef6e846fbe',1,'QCP']]],
+  ['sscrosssquare',['ssCrossSquare',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26faa830c1cd1028a60eece7b84768face5e',1,'QCP']]],
+  ['ssdiamond',['ssDiamond',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa6daa1761cab7e529768b84460f2b5141',1,'QCP']]],
+  ['ssdisc',['ssDisc',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa6d1fd37ccd5f6fdea72992feb522a342',1,'QCP']]],
+  ['ssdot',['ssDot',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa56816c1386f1356417bcc013adf0367c',1,'QCP']]],
+  ['ssnone',['ssNone',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa3ee9f603bc4623e9b98011e8829aad1d',1,'QCP']]],
+  ['sspeace',['ssPeace',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fae2ed4e86e8d0676b7c1476a1e8692070',1,'QCP']]],
+  ['sspixmap',['ssPixmap',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa3046d385199d0903dd492322ba133e75',1,'QCP']]],
+  ['ssplus',['ssPlus',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa82b8526e3bfa7d0cccc1fd5eb16505ac',1,'QCP']]],
+  ['sspluscircle',['ssPlusCircle',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa78f2658826f26f4d266962845a1bb827',1,'QCP']]],
+  ['ssplussquare',['ssPlusSquare',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa2322889660847e07337730222ee373c1',1,'QCP']]],
+  ['sssquare',['ssSquare',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fae613e80d80910579c17a5ed90e9137b0',1,'QCP']]],
+  ['ssstar',['ssStar',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa8d380c3956b53e1d12d8248de77e4f3c',1,'QCP']]],
+  ['sstriangle',['ssTriangle',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa71324858fe181ad5d5ff36b6eca4f448',1,'QCP']]],
+  ['sstriangleinverted',['ssTriangleInverted',['../d7/dce/a00143.html#af66d0711d42fe78d96c28abadc67f26fa17fd9aa8f51529e09ecacdacbe920271',1,'QCP']]]
+];

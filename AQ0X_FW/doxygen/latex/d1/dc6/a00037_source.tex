@@ -1,0 +1,397 @@
+\hypertarget{a00037_source}{\section{sys\+\_\+eventx.\+c}
+\label{a00037_source}\index{sys\+\_\+eventx.\+c@{sys\+\_\+eventx.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00010 \textcolor{preprocessor}{#include "..\(\backslash\)includes\(\backslash\)allheaders.h"} 
+00011 
+00012 
+00013 
+00014 
+00051 \textcolor{preprocessor}{#define X\_MAX\_MODULE    }
+00053 
+00054 
+00055 
+00056 
+\hypertarget{a00037_source_l00058}{}\hyperlink{a00037}{00058} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00059 \{
+\hypertarget{a00037_source_l00061}{}\hyperlink{a00037_ab14ce9c8fe0edb516f7f3d4e1e3a8854}{00061}     \hyperlink{a00036_ace830f248538d21bb16ea9c00997fcd7}{x\_task\_fn}      \hyperlink{a00037_ab14ce9c8fe0edb516f7f3d4e1e3a8854}{task\_fn};
+\hypertarget{a00037_source_l00063}{}\hyperlink{a00037_af6e2104c75f84286ef0f813c7707ff11}{00063}     \hyperlink{a00036_a29c1adcba84e0c3e83657c91e9b2b764}{x\_notify\_fn}  \hyperlink{a00037_af6e2104c75f84286ef0f813c7707ff11}{notify\_fn};
+\hypertarget{a00037_source_l00065}{}\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{00065}     \textcolor{keyword}{const} \textcolor{keywordtype}{char}      task\_name[10];
+00066 \}\hyperlink{a00037_dc/d0a/a00850}{x\_module\_info\_t};
+00067 
+00068 
+00069 
+\hypertarget{a00037_source_l00071}{}\hyperlink{a00037}{00071} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00072 \{
+\hypertarget{a00037_source_l00074}{}\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{00074}     \hyperlink{a00037_dc/d0a/a00850}{x\_module\_info\_t}    x\_module\_info[\hyperlink{a00037_a04282f21b2fb8a316c5d04a2dfd24eaa}{X\_MAX\_MODULE}];
+\hypertarget{a00037_source_l00076}{}\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{00076}     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}            \hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count};
+00077 
+\hypertarget{a00037_source_l00079}{}\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{00079}     \hyperlink{a00036_de/d37/a00849}{x\_event}             *   \hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue};
+\hypertarget{a00037_source_l00081}{}\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{00081}     \hyperlink{a00036_df/d4c/a00851}{x\_notify}                \hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue};
+00082 
+00083 
+\hypertarget{a00037_source_l00085}{}\hyperlink{a00037_aab260797348ca628ed4820714e229a74}{00085}     \textcolor{keywordtype}{int}                        \hyperlink{a00037_aab260797348ca628ed4820714e229a74}{sys\_tick};
+00086 
+00087 
+00088 
+00089 \}\hyperlink{a00037_da/d98/a00870}{x\_system\_t};
+00090 
+00091 
+\hypertarget{a00037_source_l00093}{}\hyperlink{a00037}{00093} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00094 \{
+\hypertarget{a00037_source_l00096}{}\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{00096}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}    \hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask};
+\hypertarget{a00037_source_l00098}{}\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{00098}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}     \hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick};
+00099 
+00100 \}\hyperlink{a00037_dd/de1/a00871}{x\_system\_volatile\_t};
+00101 
+00102 
+\hypertarget{a00037_source_l00104}{}\hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{00104} \hyperlink{a00037_da/d98/a00870}{x\_system\_t}            \hyperlink{a00037_ae4d7967b507ca26e3ee1231215b03321}{x\_system};
+00105 
+\hypertarget{a00037_source_l00107}{}\hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{00107} \hyperlink{a00037_dd/de1/a00871}{x\_system\_volatile\_t}    \hyperlink{a00037_ad839c033d3d00cdcc6032038182be270}{x\_systemv};
+00108 
+00109 
+00110 
+00112 \textcolor{preprocessor}{#ifdef HI\_TECH\_C}
+00113 \textcolor{keywordtype}{void} interrupt  \_T5Interrupt(\textcolor{keywordtype}{void}) @ T5\_VCTR
+00114 \textcolor{preprocessor}{#else}
+\hypertarget{a00037_source_l00115}{}\hyperlink{a00037_a2068c3c2584547dbc1c8b9bca2d55b18}{00115} \textcolor{keywordtype}{void} \hyperlink{a00037_a2068c3c2584547dbc1c8b9bca2d55b18}{\_\_attribute\_\_}((\_\_interrupt\_\_,auto\_psv)) \_T5Interrupt(\textcolor{keywordtype}{void})
+00116 \textcolor{preprocessor}{#endif}
+00117 \{
+00118     x\_systemv.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick}++;
+00119 
+00120     IFS1bits.T5IF = 0;
+00121     \hyperlink{a00015_a34d4c80d85281a545f3c7f1530803d65}{SET\_CPU\_IPL}(6);
+00122    
+00123 \}
+00124 
+00125 
+00126 
+00127 
+00128 
+\hypertarget{a00037_source_l00135}{}\hyperlink{a00037_a05f27d3148e368ee84a448f3c4b083dd}{00135} \textcolor{keywordtype}{void}  \hyperlink{a00037_a05f27d3148e368ee84a448f3c4b083dd}{x\_init}(\textcolor{keywordtype}{void})
+00136 \{
+00137     x\_system.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}        = 0;
+00138     x\_system.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue}           = NULL;
+00139     x\_system.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue}.\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link}      = NULL;
+00140     x\_systemv.\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask}           = 0;
+00141 
+00142 
+00143     \textcolor{comment}{// Setup system - Timer 1}
+00144     
+00145     T5CON = 0;                  \textcolor{comment}{// Clear the register}
+00146     T5CONbits.TCS   = 0;        \textcolor{comment}{// Internal clock Fosc/4}
+00147     T5CONbits.TCKPS = 1;        \textcolor{comment}{//    1:8 prescaling}
+00148 
+00149     PR5 = ((\hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{FOSC\_CPU}/2)/8)/\hyperlink{a00036_ac606e478c91dc9a2ddc0816152b18979}{X\_TIMER\_TICK};
+00150     
+00151     
+00152     IPC7bits.T5IP = 0x06;         \textcolor{comment}{// Set Timer5 Interrupt Priority Level}
+00153     IFS1bits.T5IF = 0;            \textcolor{comment}{//Clear the Timer1 Interrupt Flag}
+00154     IEC1bits.T5IE = 1;            \textcolor{comment}{//Enable Timer1 Interrupt Service Routine}
+00155     T5CONbits.TON = 1;            \textcolor{comment}{//Start Timer 1}
+00156 
+00157 \}
+00158 
+00159 
+00160 
+00161 
+\hypertarget{a00037_source_l00173}{}\hyperlink{a00037_a1e79db5ed3ab326586129eb4d7b63d46}{00173} \textcolor{keywordtype}{void}  \hyperlink{a00037_a1e79db5ed3ab326586129eb4d7b63d46}{x\_init\_task}(\hyperlink{a00036_ace830f248538d21bb16ea9c00997fcd7}{x\_task\_fn} task\_fn,\hyperlink{a00036_a29c1adcba84e0c3e83657c91e9b2b764}{x\_notify\_fn} notify\_fn,
+      \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\_task\_id} * pHandle\_id,\textcolor{keyword}{const} \textcolor{keywordtype}{char} * task\_name)
+00174 \{
+00175     \textcolor{keywordflow}{if}(x\_system.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count} < \hyperlink{a00037_a04282f21b2fb8a316c5d04a2dfd24eaa}{X\_MAX\_MODULE})
+00176     \{
+00177         x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[x\_system.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}].
+      \hyperlink{a00037_ab14ce9c8fe0edb516f7f3d4e1e3a8854}{task\_fn}   = task\_fn;
+00178         x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[x\_system.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}].
+      \hyperlink{a00037_af6e2104c75f84286ef0f813c7707ff11}{notify\_fn} = notify\_fn;
+00179         strncpy((\textcolor{keywordtype}{char}*)x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[x\_system.
+      \hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},task\_name,\textcolor{keyword}{sizeof}(x\_system.
+      \hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[x\_system.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name})-1);
+00180         *pHandle\_id = x\_system.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count}++;
+00181     \}
+00182     \textcolor{keywordflow}{else}
+00183     \{
+00184         \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00185     \}
+00186 \}
+00187 
+00188 
+00189 
+\hypertarget{a00037_source_l00196}{}\hyperlink{a00037_aea907663ecaf77bacfb9f0bfdc11f900}{00196} \textcolor{keywordtype}{void}  \hyperlink{a00037_aea907663ecaf77bacfb9f0bfdc11f900}{x\_start}(\textcolor{keywordtype}{void})
+00197 \{
+00198     \textcolor{keywordtype}{int}                 jj;
+00199     \hyperlink{a00036_df/d4c/a00851}{x\_notify}            ntf;
+00200 
+00201 
+00202     ntf.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id} = -1;
+00203     ntf.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message} = \hyperlink{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}{X\_NTF\_INIT};
+00204 
+00205 
+00206     \textcolor{keywordflow}{for}(jj = 0; jj < x\_system.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count};jj++)
+00207     \{
+00208 
+00214         \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00215 
+00216         ntf.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id} = jj;
+00217         \hyperlink{a00040_a41b841dd3ca98f243a56ff65652be225}{D\_I}(fprintf(stdout,\textcolor{stringliteral}{"Initalizing module:%s\(\backslash\)n"},x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[jj].
+      \hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name});)
+00218         x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[jj].\hyperlink{a00037_af6e2104c75f84286ef0f813c7707ff11}{notify\_fn}(&ntf);
+00219     \}
+00220 
+00221 \}
+00222 
+00223 
+\hypertarget{a00037_source_l00231}{}\hyperlink{a00037_a4bb7a012be733e061c913e7b98df642b}{00231} \textcolor{keywordtype}{void}  \hyperlink{a00037_a4bb7a012be733e061c913e7b98df642b}{x\_loop}(\textcolor{keywordtype}{void})
+00232 \{
+00233     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}            tmp;
+00234     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}            delta;
+00235     \textcolor{keywordtype}{int}               ii;
+00236     \hyperlink{a00036_de/d37/a00849}{x\_event}           irq\_event;
+00237     \hyperlink{a00036_df/d4c/a00851}{x\_notify}          * timer\_prev;
+00238     \hyperlink{a00036_df/d4c/a00851}{x\_notify}          * timer\_run;
+00239     \hyperlink{a00036_de/d37/a00849}{x\_event}           * event;
+00240     \hyperlink{a00036_de/d37/a00849}{x\_event}           * event\_run;
+00241     \hyperlink{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{IRQ\_CTX\_T}         irq\_ctx;
+00242 
+00243     \textcolor{comment}{// Service interrupt sync requests}
+00244     irq\_event.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id} = -1;
+00245     irq\_event.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message} = \hyperlink{a00036_a104f1137aafb33160da80932fe63c40d}{X\_MSG\_IRQ\_SYNC};
+00246 
+00247     \textcolor{keywordflow}{do}
+00248     \{
+00249 
+00250         \hyperlink{a00033_a357168bbe78739811cdb7b5576714ca6}{IRQ\_DISABLE}(irq\_ctx);
+00251 
+00252         tmp = x\_systemv.\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask};
+00253         x\_systemv.\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask} = 0;
+00254 
+00255 
+00256 
+00257         \hyperlink{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{IRQ\_ENABLE}(irq\_ctx);
+00258 
+00259         \textcolor{keywordflow}{if}(tmp != 0)
+00260         \{
+00261             \textcolor{keywordflow}{for}(ii = 0; ii < x\_system.\hyperlink{a00037_a80c19e87a59b3ee9def711195641cd26}{x\_module\_count};ii++)
+00262             \{
+00263                 \textcolor{keywordflow}{if}(tmp & ( 1<<ii))
+00264                 \{
+00273                     \textcolor{comment}{// Kick watchdog}
+00274                     \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00275                     \textcolor{comment}{// Execute notification function}
+00276                     x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[ii].\hyperlink{a00037_ab14ce9c8fe0edb516f7f3d4e1e3a8854}{task\_fn}(&irq\_event);
+00277                 \}
+00278             \}
+00279         \}
+00280     \}\textcolor{keywordflow}{while}(tmp != 0);
+00281 
+00282 
+00283     \textcolor{comment}{// Service timers}
+00284     \textcolor{keywordflow}{if}(x\_systemv.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick} != x\_system.\hyperlink{a00037_aab260797348ca628ed4820714e229a74}{sys\_tick})
+00285     \{
+00286         delta =  x\_systemv.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick} - x\_system.\hyperlink{a00037_aab260797348ca628ed4820714e229a74}{sys\_tick};
+00287         x\_system.\hyperlink{a00037_aab260797348ca628ed4820714e229a74}{sys\_tick} = x\_systemv.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick};
+00288 
+00289         timer\_prev = &x\_system.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue};
+00290         \textcolor{keywordflow}{while}(timer\_prev != NULL)
+00291         \{
+00292             \textcolor{comment}{//Scan through all timers}
+00293             timer\_run  = timer\_prev->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00294             \textcolor{keywordflow}{if}(timer\_run != NULL)
+00295             \{
+00296                 \textcolor{keywordflow}{if}(timer\_run->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} > delta)
+00297                 \{
+00298                     timer\_run->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} -= delta;
+00299                 \}
+00300                 \textcolor{keywordflow}{else}
+00301                 \{
+00302                     timer\_run->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} = 0;
+00303                 \}
+00304 
+00305                 \textcolor{keywordflow}{if}(timer\_run->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} == 0)
+00306                 \{
+00307                     \textcolor{comment}{// Remove timer}
+00308                     timer\_prev->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = timer\_run->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00309                     \textcolor{comment}{// Launch timer}
+00310                     timer\_run->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link}   = NULL;
+00311                     timer\_run->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} = 0;
+00312                     \hyperlink{a00040_a5e876f6543757da83f9b3ddee08dece7}{D\_T}(fprintf(stdout,\textcolor{stringliteral}{"Timer Notification time:%u Task name:%s msg:%x\(\backslash\)n"},
+      \hyperlink{a00036_a8c687347943f251bc052fa9a43a2b69b}{X\_TICK2MS}(x\_systemv.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick}),x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[timer\_run->
+      \hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},timer\_run->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});)
+00318                     \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00319                     x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[timer\_run->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].
+      \hyperlink{a00037_af6e2104c75f84286ef0f813c7707ff11}{notify\_fn}(timer\_run);
+00320                  \}
+00321             \}
+00322 
+00323             \textcolor{keywordflow}{if}(timer\_prev->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} == NULL)
+00324             \{
+00325                 \textcolor{keywordflow}{break};
+00326             \}
+00327             \textcolor{keywordflow}{else}
+00328             \{
+00329                 timer\_prev = timer\_prev->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00330             \}
+00331         \}
+00332     \}
+00333 
+00334 
+00335     \textcolor{comment}{// Service events}
+00336     \textcolor{keyword}{event} = x\_system.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue};
+00337     \textcolor{keywordflow}{while}(event != NULL)
+00338     \{
+00339         \textcolor{comment}{// Send event}
+00340         event\_run = event;
+00341 
+00342         \textcolor{comment}{// First remove event from queue}
+00343         x\_system.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue} = \textcolor{keyword}{event}->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link};
+00344         \textcolor{keyword}{event} = \textcolor{keyword}{event}->link;
+00345 
+00346         \textcolor{comment}{// Clean event link ( which marks as executed)}
+00347         event\_run->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link} = NULL;
+00348         \hyperlink{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{D\_E}(fprintf(stdout,\textcolor{stringliteral}{"sending event time:%u task:%s msg:%x\(\backslash\)n"},\hyperlink{a00036_a8c687347943f251bc052fa9a43a2b69b}{X\_TICK2MS}(x\_systemv.
+      \hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick}),x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[event\_run->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].
+      \hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},event\_run->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});)
+00353         \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00354         x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[event\_run->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_ab14ce9c8fe0edb516f7f3d4e1e3a8854}{task\_fn}(event\_run);
+00355     \}
+00356 
+00357 
+00362     \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+00363 
+00364 \}
+00365 
+00366 
+00367 
+00368 
+\hypertarget{a00037_source_l00381}{}\hyperlink{a00037_a4bc3d03c8d62c8237329ed4e969fbc1b}{00381} \textcolor{keywordtype}{void}  \hyperlink{a00037_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\_send\_event}(\hyperlink{a00036_de/d37/a00849}{x\_event} * event)
+00382 \{
+00383     \hyperlink{a00036_de/d37/a00849}{x\_event} *    event\_next;
+00384 
+00385 
+00386     \textcolor{keywordflow}{if}(x\_system.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue} == NULL)
+00387     \{
+00388         x\_system.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue} = event;
+00389         \textcolor{keyword}{event}->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link} = NULL;
+00390     \}
+00391     \textcolor{keywordflow}{else}
+00392     \{
+00393         event\_next = x\_system.\hyperlink{a00037_aae3e0af6b968bca8cea3ebff4b8918cb}{event\_queue};
+00394 
+00395         \textcolor{comment}{// Go through all linked events}
+00396         \textcolor{keywordflow}{while}(event\_next != NULL)
+00397         \{
+00398             \textcolor{keywordflow}{if}(event\_next == event)
+00399             \{
+00400                 \hyperlink{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{D\_E}(fprintf(stdout,\textcolor{stringliteral}{"Scheduling event :%s msg:%x\(\backslash\)n"},x\_system.
+      \hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[event->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},event->
+      \hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});)
+00401                 \hyperlink{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{D\_P}(fprintf(stdout,\textcolor{stringliteral}{"Event already in queue"});)
+00402                 
+00403                 \textcolor{keywordflow}{return};
+00404             \}
+00405 
+00406             \textcolor{keywordflow}{if}(event\_next->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link}  == NULL)
+00407             \{
+00408                 \textcolor{comment}{// No more events - link new one as last}
+00409                 \hyperlink{a00040_ae8251f649f2077b9d0de5a10e6c2cf79}{D\_E}(fprintf(stdout,\textcolor{stringliteral}{"Scheduling new event:%s msg:%x\(\backslash\)n"},x\_system.
+      \hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[event->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},event->
+      \hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});    )
+00410                 event\_next->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link} = event;
+00411                 \textcolor{keyword}{event}->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link} = NULL;
+00412                 \textcolor{keywordflow}{break};
+00413             \}
+00414             \textcolor{keywordflow}{else}
+00415             \{
+00416                 event\_next = event\_next->\hyperlink{a00036_aab03e4ec45a7b861ab6ed51f64f58fda}{link};
+00417             \}
+00418         \}
+00419     \}
+00420 
+00421 
+00422 \}
+00423 
+\hypertarget{a00037_source_l00435}{}\hyperlink{a00037_ae17b0bb16da3c471bb6074bb4c4d0fee}{00435} \textcolor{keywordtype}{void}  \hyperlink{a00037_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(\hyperlink{a00036_df/d4c/a00851}{x\_notify} * notify)
+00436 \{
+00437     \hyperlink{a00040_afdf6a05ce2b9711e8bb4ef40fdb6930a}{D\_N}(fprintf(stdout,\textcolor{stringliteral}{"Notification time:%u task:%s msg:%x\(\backslash\)n"},\hyperlink{a00036_a8c687347943f251bc052fa9a43a2b69b}{X\_TICK2MS}(x\_systemv.
+      \hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick}),x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[notify->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].
+      \hyperlink{a00037_a530a0539bc1522a85f661b6e1c9ebebd}{task\_name},notify->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message});)
+00438     x\_system.\hyperlink{a00037_a6724d1e1430a0e89c134b30152988385}{x\_module\_info}[notify->\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}].\hyperlink{a00037_af6e2104c75f84286ef0f813c7707ff11}{notify\_fn}(notify);
+00439 \}
+00440 
+00441 
+\hypertarget{a00037_source_l00456}{}\hyperlink{a00037_a9e3befaa21e83f196f74201deed85346}{00456} \textcolor{keywordtype}{void}  \hyperlink{a00037_a9e3befaa21e83f196f74201deed85346}{x\_schedule\_timer}(\hyperlink{a00036_df/d4c/a00851}{x\_notify}  *  timer,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} ticks)
+00457 \{
+00458 
+00459     \textcolor{keywordflow}{if}( ticks == 0)ticks = 1;
+00460     timer->\hyperlink{a00036_aca39a8370fadb7fdd20300deef646d8b}{ticks} = ticks;
+00461 
+00462     \textcolor{keywordflow}{if}( timer->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} == 0)
+00463     \{
+00464         \textcolor{comment}{// If not linked ( already scheduled) - link it}
+00465         timer->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = x\_system.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue}.\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00466         x\_system.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue}.\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = timer;
+00467         timer->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} = 1;
+00468     \}
+00469 \}
+00470 
+\hypertarget{a00037_source_l00482}{}\hyperlink{a00037_ab69e9af4cfa717e870d587906283635c}{00482} \textcolor{keywordtype}{void}  \hyperlink{a00037_ab69e9af4cfa717e870d587906283635c}{x\_delete\_timer}(\hyperlink{a00036_df/d4c/a00851}{x\_notify}  *  timer)
+00483 \{
+00484     \hyperlink{a00036_df/d4c/a00851}{x\_notify}  * timer\_curr;
+00485 
+00486     \textcolor{keywordflow}{if}(timer->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} == 1)
+00487     \{
+00488         timer\_curr = &x\_system.\hyperlink{a00037_a10669284e4e6a0d578a68a0b5fbe0d5b}{timer\_queue};
+00489 
+00490         \textcolor{keywordflow}{while}(timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link}!= NULL)
+00491         \{
+00492             \textcolor{keywordflow}{if}(timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} == timer)
+00493             \{
+00494                 \textcolor{comment}{// Timer found}
+00495                 timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = (timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link})->link;
+00496                 timer->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link} = NULL;
+00497                 timer->\hyperlink{a00036_a11c9c2b8514210c037aa45241ca62fb3}{active} = 0;
+00498                 \textcolor{keywordflow}{return};
+00499             \}
+00500             timer\_curr = timer\_curr->\hyperlink{a00036_ac1b431c0d2de68ce090f223b32f212b5}{link};
+00501         \}
+00502 
+00503         \textcolor{comment}{// Does not exist ??}
+00504         \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00505     \}
+00506 
+00507 
+00508 \}
+00509 
+00510 
+00511 
+00512 
+\hypertarget{a00037_source_l00521}{}\hyperlink{a00037_a9953756bc7c83e5f2c36830396136e75}{00521} \textcolor{keywordtype}{void}  \hyperlink{a00037_a9953756bc7c83e5f2c36830396136e75}{x\_task\_send\_irq\_sync}(\hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\_task\_id} task\_id)
+00522 \{
+00523     \hyperlink{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{IRQ\_CTX\_T}   irq\_ctx;
+00524 
+00525 
+00526     \textcolor{keywordflow}{if}(task\_id < \hyperlink{a00037_a04282f21b2fb8a316c5d04a2dfd24eaa}{X\_MAX\_MODULE})
+00527     \{
+00528         \hyperlink{a00033_a357168bbe78739811cdb7b5576714ca6}{IRQ\_DISABLE}(irq\_ctx);
+00529 
+00530         x\_systemv.\hyperlink{a00037_a1385e454a9fbfdfe2af2b8a743789483}{x\_irq\_mask} |= (1<< task\_id);
+00531         \hyperlink{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{IRQ\_ENABLE}(irq\_ctx);
+00532     \}
+00533     \textcolor{keywordflow}{else}
+00534     \{
+00535         \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00536     \}
+00537 \}
+00538 
+00539 
+\hypertarget{a00037_source_l00549}{}\hyperlink{a00037_acc618db6c04f9d2dce6d3b14b5294e51}{00549} \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  \hyperlink{a00037_acc618db6c04f9d2dce6d3b14b5294e51}{x\_tick}(\textcolor{keywordtype}{void})
+00550 \{
+00551     \textcolor{keywordflow}{return} x\_systemv.\hyperlink{a00037_ab73fa103937ad39e7e2fc55783c4c370}{irq\_tick};
+00552 \}
+00553 
+00554 
+00555 
+00556 
+\end{DoxyCode}

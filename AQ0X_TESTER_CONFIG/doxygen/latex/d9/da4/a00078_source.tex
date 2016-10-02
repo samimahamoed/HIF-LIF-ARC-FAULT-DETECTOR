@@ -1,0 +1,125 @@
+\hypertarget{a00078_source}{\section{slider.\+h}
+\label{a00078_source}\index{slider.\+h@{slider.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/****************************************************************************}
+00002 \textcolor{comment}{**}
+00003 \textcolor{comment}{** Copyright (C) 2012 Denis Shienkov <denis.shienkov@gmail.com>}
+00004 \textcolor{comment}{** Copyright (C) 2012 Laszlo Papp <lpapp@kde.org>}
+00005 \textcolor{comment}{** Contact: http://www.qt-project.org/legal}
+00006 \textcolor{comment}{**}
+00007 \textcolor{comment}{** This file is part of the QtSerialPort module of the Qt Toolkit.}
+00008 \textcolor{comment}{**}
+00009 \textcolor{comment}{** $QT\_BEGIN\_LICENSE:LGPL$}
+00010 \textcolor{comment}{** Commercial License Usage}
+00011 \textcolor{comment}{** Licensees holding valid commercial Qt licenses may use this file in}
+00012 \textcolor{comment}{** accordance with the commercial license agreement provided with the}
+00013 \textcolor{comment}{** Software or, alternatively, in accordance with the terms contained in}
+00014 \textcolor{comment}{** a written agreement between you and Digia.  For licensing terms and}
+00015 \textcolor{comment}{** conditions see http://qt.digia.com/licensing.  For further information}
+00016 \textcolor{comment}{** use the contact form at http://qt.digia.com/contact-us.}
+00017 \textcolor{comment}{**}
+00018 \textcolor{comment}{** GNU Lesser General Public License Usage}
+00019 \textcolor{comment}{** Alternatively, this file may be used under the terms of the GNU Lesser}
+00020 \textcolor{comment}{** General Public License version 2.1 as published by the Free Software}
+00021 \textcolor{comment}{** Foundation and appearing in the file LICENSE.LGPL included in the}
+00022 \textcolor{comment}{** packaging of this file.  Please review the following information to}
+00023 \textcolor{comment}{** ensure the GNU Lesser General Public License version 2.1 requirements}
+00024 \textcolor{comment}{** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.}
+00025 \textcolor{comment}{**}
+00026 \textcolor{comment}{** In addition, as a special exception, Digia gives you certain additional}
+00027 \textcolor{comment}{** rights.  These rights are described in the Digia Qt LGPL Exception}
+00028 \textcolor{comment}{** version 1.1, included in the file LGPL\_EXCEPTION.txt in this package.}
+00029 \textcolor{comment}{**}
+00030 \textcolor{comment}{** GNU General Public License Usage}
+00031 \textcolor{comment}{** Alternatively, this file may be used under the terms of the GNU}
+00032 \textcolor{comment}{** General Public License version 3.0 as published by the Free Software}
+00033 \textcolor{comment}{** Foundation and appearing in the file LICENSE.GPL included in the}
+00034 \textcolor{comment}{** packaging of this file.  Please review the following information to}
+00035 \textcolor{comment}{** ensure the GNU General Public License version 3.0 requirements will be}
+00036 \textcolor{comment}{** met: http://www.gnu.org/copyleft/gpl.html.}
+00037 \textcolor{comment}{**}
+00038 \textcolor{comment}{**}
+00039 \textcolor{comment}{** $QT\_END\_LICENSE$}
+00040 \textcolor{comment}{**}
+00041 \textcolor{comment}{****************************************************************************/}
+00042 
+00043 \textcolor{preprocessor}{#ifndef SLIDER\_H}
+00044 \textcolor{preprocessor}{#define SLIDER\_H}
+00045 
+00046 \textcolor{preprocessor}{#include <QSlider>}
+00047 \textcolor{preprocessor}{#include "\hyperlink{a00004}{typedef.h}"}
+00048 \textcolor{preprocessor}{#include "\hyperlink{a00094}{emu\_data\_editor.h}"}
+00049 
+\hypertarget{a00078_source_l00050}{}\hyperlink{a00078_a0a9d6eabafd981a8b48b343249428077}{00050} \textcolor{preprocessor}{#define BG\_STYLE\_NORMAL           "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #8f8f8f,
+       stop:1 #8f8f8f);"}
+\hypertarget{a00078_source_l00051}{}\hyperlink{a00078_a0d978e946366d0eb299bb966cf8a52e9}{00051} \textcolor{preprocessor}{#define BG\_STYLE\_\_SELECTION\_MODE  "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #3333FF,
+       stop:1 #3333FF);"}
+\hypertarget{a00078_source_l00052}{}\hyperlink{a00078_a3b78c22b908aee9d7cda0ff6240570fd}{00052} \textcolor{preprocessor}{#define BG\_STYLE\_\_HAS\_FOCUS       "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #75FF47,
+       stop:1 #75FF47);"}
+\hypertarget{a00078_source_l00053}{}\hyperlink{a00077}{00053} \textcolor{keyword}{class }\hyperlink{a00077}{Slider} : \textcolor{keyword}{public} \hyperlink{a00063}{QSlider}
+00054 \{
+00055     Q\_OBJECT
+00056 
+00057 signals:
+00058    \textcolor{keywordtype}{void} \hyperlink{a00077_a886f07f2c612121bec703581f9398a10}{action\_set\_value}(\textcolor{keywordtype}{double} val,\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} type);
+00059    \textcolor{keywordtype}{void} \hyperlink{a00077_a49696761b5c638a3b2d58b16af9773e0}{update\_curve\_signal}();
+00060    \textcolor{keywordtype}{void} \hyperlink{a00077_a66bf875d43a16cf37527ab75c439fd8e}{selection}(\textcolor{keywordtype}{bool} clear);
+00061 
+00062 \textcolor{keyword}{public}:
+00063     \textcolor{keyword}{explicit} \hyperlink{a00077_a4f5bd678ed7e386b568121eaeb0ce912}{Slider}(\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} \textcolor{keywordtype}{id}, QWidget *parent = 0);
+00064 
+00065 
+00066 
+00067 
+\hypertarget{a00078_source_l00068}{}\hyperlink{a00078}{00068}     \textcolor{keyword}{union}
+00069     \{
+00070         \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} all;
+\hypertarget{a00078_source_l00071}{}\hyperlink{a00078}{00071}         \textcolor{keyword}{struct}
+00072         \{
+00073 
+00074 
+00075             \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} point\_selected:1;
+00076             \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} point\_selection\_mode:1;
+00077             \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} point\_deselection\_mode:1;
+00078             \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} point\_focuse\_en:1;
+00079 
+00080         \}bits;
+00081 
+00082 
+00083     \}\hyperlink{a00077_ade6449558d429b66e5ed1381bc9b9060}{flags};
+00084 
+00085 
+00086 
+00087 
+00088 
+00089 \textcolor{keyword}{public} slots:
+00090        \textcolor{keywordtype}{void}  \hyperlink{a00077_adeebaace74ff3add2acd9147e96fc0a6}{edit\_point\_selection}   (\textcolor{keywordtype}{bool} status);
+00091        \textcolor{keywordtype}{void}  \hyperlink{a00077_a105dff1f3ae7cfdcfabacd013428a501}{edit\_point\_deselection} (\textcolor{keywordtype}{bool} status);
+00092        \textcolor{keywordtype}{void}  \hyperlink{a00077_a521ac5143857dd652a0bafa77389fa81}{adjust\_value}           (\hyperlink{a00004_a3985266aecb120f269789241c170850c}{Int16} val);
+00093        \textcolor{keywordtype}{void}  \hyperlink{a00077_ae3010d3de02715db2f443560d7d2a27b}{set\_value}              (\textcolor{keywordtype}{double} val, \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} type);
+00094        \textcolor{keywordtype}{void}  \hyperlink{a00077_a4f62a01554ee8d975abe0cb136937695}{update\_value}           ();
+00095        \textcolor{keywordtype}{void}  \hyperlink{a00077_a567902754e43310fe921b74c9d1862dd}{set\_status}             (\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} select);
+00096 
+00097 \textcolor{keyword}{protected}:
+00098     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00077_ab803f71d290c06c574e6d46be42e779e}{keyPressEvent}(QKeyEvent *e);
+00099     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00077_a99f35b6c6aa1ffa696ac44e558bb3dab}{mousePressEvent}(QMouseEvent *e);
+00100     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00077_a408a766481a987b9f165de7bd54a1a38}{mouseDoubleClickEvent}(QMouseEvent *e);
+00101     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \hyperlink{a00077_ac5ddce14c487d6bc720035cf338e8021}{contextMenuEvent}(QContextMenuEvent *e);
+00102     \textcolor{keywordtype}{void} \hyperlink{a00077_ad7ad2fd0571f0f8486732f783802eb0e}{enterEvent}(QEvent *e);
+00103     \textcolor{keywordtype}{void} \hyperlink{a00077_a40078aca597449b51938078628c695ae}{leaveEvent}(QEvent *e);
+00104     \textcolor{keywordtype}{bool} \hyperlink{a00077_aec3191237e5d11f90059f9758173b544}{eventFilter}(\hyperlink{a00059}{QObject} *\textcolor{keywordtype}{object}, QEvent *event);
+00105 
+00106 \textcolor{keyword}{private} slots:
+00107     \textcolor{keywordtype}{void} moved(\textcolor{keywordtype}{int} \hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value});
+00108 \textcolor{keyword}{private}:
+00109     \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} id;
+00110     QString current\_style;
+00111 
+00112     \hyperlink{a00008}{emu\_data\_editor} * parent;
+00113 
+00114 \};
+00115 
+00116 \textcolor{preprocessor}{#endif // CONSOLE\_H}
+\end{DoxyCode}

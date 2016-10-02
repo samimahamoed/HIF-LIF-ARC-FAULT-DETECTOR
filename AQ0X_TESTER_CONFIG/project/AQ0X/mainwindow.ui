@@ -1,0 +1,2723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>419</width>
+    <height>665</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>DR_DOWNLOADER</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="logo.qrc">
+    <normaloff>:/logo/logo</normaloff>:/logo/logo</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QDockWidget" name="dockWidget_sen_cmd">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>0</y>
+      <width>740</width>
+      <height>671</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>740</width>
+      <height>344</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>800</width>
+      <height>800</height>
+     </size>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="features">
+     <set>QDockWidget::AllDockWidgetFeatures</set>
+    </property>
+    <property name="allowedAreas">
+     <set>Qt::BottomDockWidgetArea|Qt::RightDockWidgetArea|Qt::TopDockWidgetArea</set>
+    </property>
+    <property name="windowTitle">
+     <string>Commands</string>
+    </property>
+    <widget class="QWidget" name="dockWidgetContents_6">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0" rowspan="2">
+       <widget class="QTreeWidget" name="cmd_list">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>false</bool>
+        </property>
+        <property name="columnCount">
+         <number>1</number>
+        </property>
+        <attribute name="headerCascadingSectionResizes">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="headerHighlightSections">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="headerShowSortIndicator" stdset="0">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string>COMMAND OPTIONS  </string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icon/icons/options.jpg</normaloff>:/icon/icons/options.jpg</iconset>
+         </property>
+        </column>
+        <item>
+         <property name="text">
+          <string>CONFIG</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icon/setting</normaloff>:/icon/setting</iconset>
+         </property>
+         <item>
+          <property name="text">
+           <string>DEVICE ADDRESS</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/Address</normaloff>:/icon/Address</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INSTALLATION DITAILS</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/sys_info</normaloff>:/icon/sys_info</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SIGNAL THRESHOLDS</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/signal.jpg</normaloff>:/icon/icons/signal.jpg</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>EVENT ANALYSIS OPTIONS</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/calculation.jpg</normaloff>:/icon/icons/calculation.jpg</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>RUN TIME OPTIONS</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/system_options.jpg</normaloff>:/icon/icons/system_options.jpg</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FACTORY DEFAULT</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/default.jpg</normaloff>:/icon/icons/default.jpg</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LOAD HIF REFERENCE DATA</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/upload.jpg</normaloff>:/icon/icons/upload.jpg</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>COMMIT</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/confirm.jpg</normaloff>:/icon/icons/confirm.jpg</iconset>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>EMULATION SETTING</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icon/icons/upload.jpg</normaloff>:/icon/icons/upload.jpg</iconset>
+         </property>
+         <item>
+          <property name="text">
+           <string>LOAD IR DATA</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LOAD UV DATA</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LOAD MAGNETIC FIELD X DATA</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>LOAD MAGNETIC FIELD Y DATA</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>EMU MODE SET</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>EMU MODE RESET</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>CLEAR EMU DATA</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>GET DATA</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icon/Download</normaloff>:/icon/Download</iconset>
+         </property>
+         <item>
+          <property name="text">
+           <string>DEVICE DATA</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>IR DISTURBANCE RECORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UV DISTURBANCE RECORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>MFIELD X  DISTURBANCE RECORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>MFIELD Y  DISTURBANCE RECORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HIF_DIAGNOSIS_RECORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>IR CURRENT RECORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UV CURRENT RECORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>MFIELD X  CURRENT RECORD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>MFIELD Y  CURRENT RECORD</string>
+          </property>
+         </item>
+        </item>
+        <item>
+         <property name="text">
+          <string>MISCELLANEOUS</string>
+         </property>
+         <property name="icon">
+          <iconset resource="icons.qrc">
+           <normaloff>:/icon/icons/conditional.jpg</normaloff>:/icon/icons/conditional.jpg</iconset>
+         </property>
+         <item>
+          <property name="text">
+           <string>DEVICE RESET</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/reset.jpg</normaloff>:/icon/icons/reset.jpg</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>CLEAR EEPROM</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/clear_data.jpg</normaloff>:/icon/icons/clear_data.jpg</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SUPERVISION STATUS</string>
+          </property>
+          <property name="icon">
+           <iconset resource="icons.qrc">
+            <normaloff>:/icon/icons/sv_status.png</normaloff>:/icon/icons/sv_status.png</iconset>
+          </property>
+         </item>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="1" rowspan="2">
+       <widget class="QStackedWidget" name="stacked_widget_views">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="currentIndex">
+         <number>5</number>
+        </property>
+        <widget class="QWidget" name="page"/>
+        <widget class="QWidget" name="page_2">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QGroupBox" name="gBox_cmd">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>389</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="title">
+             <string/>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <widget class="QGroupBox" name="groupBox_3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>361</width>
+                 <height>100</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>91</height>
+                </size>
+               </property>
+               <property name="title">
+                <string>Target Sensor</string>
+               </property>
+               <widget class="QWidget" name="layoutWidget">
+                <property name="geometry">
+                 <rect>
+                  <x>10</x>
+                  <y>30</y>
+                  <width>331</width>
+                  <height>51</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_2">
+                   <item>
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>Channel</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_2">
+                     <property name="text">
+                      <string>Address</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout">
+                   <item>
+                    <widget class="QComboBox" name="combo_Ch">
+                     <property name="editable">
+                      <bool>false</bool>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>1</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>2</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>3</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>4</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="combo_Sen">
+                     <property name="editable">
+                      <bool>true</bool>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>-</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Multiple Address</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>1</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>2</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>3</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_5">
+               <item>
+                <widget class="QScrollArea" name="sArea_progress_view">
+                 <property name="verticalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAlwaysOn</enum>
+                 </property>
+                 <property name="horizontalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAlwaysOff</enum>
+                 </property>
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>340</width>
+                    <height>31</height>
+                   </rect>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_3">
+                   <item row="0" column="0">
+                    <layout class="QVBoxLayout" name="sAreaVLayout">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                    </layout>
+                   </item>
+                   <item row="1" column="0">
+                    <spacer name="verticalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_progress_view">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::MinimumExpanding</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_23">
+                 <item>
+                  <widget class="QPushButton" name="btn_cancel">
+                   <property name="styleSheet">
+                    <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+                   </property>
+                   <property name="text">
+                    <string>&lt;&lt; Cancel</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_execute_cmd">
+                   <property name="styleSheet">
+                    <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 4px;
+     border-top-right-radius: 10px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+ 
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+                   </property>
+                   <property name="text">
+                    <string>Execute Command</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_3">
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>170</y>
+            <width>376</width>
+            <height>111</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>361</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>LIGHT SIGNAL THRESHOLDS </string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QCheckBox" name="cb_config_ir_max">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+ </string>
+               </property>
+               <property name="text">
+                <string>IR MAX </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_ir_max">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum">
+                <number>3000</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QCheckBox" name="cb_config_uv_max">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>UV MAX</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_uv_max">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum">
+                <number>60000</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+          <zorder></zorder>
+          <zorder></zorder>
+         </widget>
+         <widget class="QLabel" name="label_5">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>30</y>
+            <width>381</width>
+            <height>131</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The values set the target sensor light signal threshold levels.  &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Hence the action affects the device behavior make sure proper values are set and clear the corresponding checkbox to leave previous value unaltered, use GET DEVICE DATA command to obtain the current setting of target device. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>590</y>
+            <width>381</width>
+            <height>36</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_22">
+           <item>
+            <widget class="QPushButton" name="btn_back_thresholds">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>&lt;&lt; Cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_save_thresholds">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 4px;
+     border-top-right-radius: 10px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>Next &gt;&gt;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_4">
+         <widget class="QLabel" name="label_6">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>381</width>
+            <height>131</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;The values provide the target sensor information’s about the installation environment which is used to calculate threshold values. &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Hence the action affects the device behavior make sure proper values are set and clear the corresponding checkbox to leave previous value unaltered, use GET DEVICE DATA command to obtain the current setting of target device. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_6">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>360</y>
+            <width>376</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>361</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>SENSOR INSTALLATION GEOMETRIC DETAILS </string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_7">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QCheckBox" name="cb_config_min_distance">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+</string>
+               </property>
+               <property name="text">
+                <string>MIN CONDUCTOR DISTANCE (mm)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_min_distance">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="minimum">
+                <number>50</number>
+               </property>
+               <property name="maximum">
+                <number>2000</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_7">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>160</y>
+            <width>376</width>
+            <height>151</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>361</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>POWER LINE CURRENT</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QCheckBox" name="cb_config_rated_current">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+</string>
+               </property>
+               <property name="text">
+                <string>RATED CURRENT (A)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_rated_current">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum">
+                <number>3000</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <item>
+              <widget class="QCheckBox" name="cb_config_sh_ckt_current">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>MAX SHORT CIRCUIT CURRENT (A)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_sh_ckt_current">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum">
+                <number>60000</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_16">
+             <item>
+              <widget class="QCheckBox" name="cb_config_freq">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>FREQUENCY (Hz)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_freq">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+          <zorder></zorder>
+          <zorder></zorder>
+          <zorder></zorder>
+         </widget>
+         <widget class="QWidget" name="layoutWidget_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>580</y>
+            <width>381</width>
+            <height>36</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_25">
+           <item>
+            <widget class="QPushButton" name="btn_cancel_sys_info">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>&lt;&lt; Cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_save_sys_info">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 4px;
+     border-top-right-radius: 10px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>Next &gt;&gt;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_5">
+         <widget class="QLabel" name="label_7">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>381</width>
+            <height>131</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;Hence the action affects the device behavior make sure proper values are set and clear the corresponding checkbox to leave previous value unaltered, use GET DEVICE DATA command to obtain the current setting of target device. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_8">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>380</y>
+            <width>371</width>
+            <height>152</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>ACTIVE MODULES</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <item>
+              <widget class="QCheckBox" name="cb_config_active_modules_ir">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>IR                </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="cb_config_active_modules_uv">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>UV            </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="cb_config_active_modules_mf">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>MAGNETIC FIELD</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_9">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>120</y>
+            <width>376</width>
+            <height>151</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>361</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>EVENT PROBABLITY ANALISIS</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_10">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_12">
+             <item>
+              <widget class="QCheckBox" name="cb_config_observation_length">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>OBSERVATION LENGTH</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_observation_length">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum">
+                <number>200</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_13">
+             <item>
+              <widget class="QCheckBox" name="cb_config_probablity_max">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>PROBABLITY MAX</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_probablity_max">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_14">
+             <item>
+              <widget class="QCheckBox" name="cb_config_probablity_min">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>PROBABLITY MIN</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="dSB_probablity_min">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+          <zorder></zorder>
+          <zorder></zorder>
+          <zorder></zorder>
+         </widget>
+         <widget class="QWidget" name="layoutWidget_4">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>580</y>
+            <width>381</width>
+            <height>36</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_26">
+           <item>
+            <widget class="QPushButton" name="btn_back_analisis">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 4px;
+     border-top-right-radius: 10px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>&lt;&lt; Cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_save_analisis">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 4px;
+     border-top-right-radius: 10px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>Next &gt;&gt;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_12">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>280</y>
+            <width>371</width>
+            <height>74</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>ALARM CONDITION </string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_9">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QCheckBox" name="cb_config_criteria">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>ALARM CRITERIA</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="combo_alarm_condition">
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+               <item>
+                <property name="text">
+                 <string>DEFAULT</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_6">
+         <widget class="QLabel" name="label_8">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>381</width>
+            <height>131</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_11">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>376</width>
+            <height>191</height>
+           </rect>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>361</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>OPTIONS</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_12">
+           <item row="1" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_18">
+             <item>
+              <widget class="QCheckBox" name="cb_config_sv_mfield">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+</string>
+               </property>
+               <property name="text">
+                <string>ENABLE MAGNETIC FIELD ELEMENT SUPERVISION</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_17">
+             <item>
+              <widget class="QCheckBox" name="cb_config_threshold_adjust">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>ENABLE SELF THRESHOLD ADJUST </string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="3" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_19">
+             <item>
+              <widget class="QCheckBox" name="cb_config_sv_uv">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+</string>
+               </property>
+               <property name="text">
+                <string>ENABLE UV ELEMENT SUPERVISION</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0">
+            <widget class="QCheckBox" name="cb_config_sv_ir">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"> QCheckBox{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+</string>
+             </property>
+             <property name="text">
+              <string>ENABLE IR ELEMENT SUPERVISION</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+          <zorder></zorder>
+          <zorder></zorder>
+          <zorder></zorder>
+          <zorder>cb_config_sv_ir</zorder>
+         </widget>
+         <widget class="QWidget" name="layoutWidget_5">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>580</y>
+            <width>381</width>
+            <height>36</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_27">
+           <item>
+            <widget class="QPushButton" name="btn_cancel_options">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>&lt;&lt; Cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_save_options">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 4px;
+     border-top-right-radius: 10px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>Next &gt;&gt;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_7">
+         <widget class="QPushButton" name="btn_set_emu_data">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>30</y>
+            <width>371</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Add Data</string>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>580</y>
+            <width>381</width>
+            <height>36</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_24">
+           <item>
+            <widget class="QPushButton" name="btn_back_emu_data">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 4px;
+     border-top-right-radius: 10px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>&lt;&lt; Cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_nxt_emu_data">
+             <property name="styleSheet">
+              <string notr="true"> QPushButton{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 4px;
+     border-top-right-radius: 10px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+  QPushButton:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+  QPushButton:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QPushButton:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+             </property>
+             <property name="text">
+              <string>Next &gt;&gt;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="gBox_range">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>100</y>
+      <width>324</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>40</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>100</height>
+     </size>
+    </property>
+    <property name="title">
+     <string>Select Range</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <property name="leftMargin">
+      <number>7</number>
+     </property>
+     <property name="topMargin">
+      <number>7</number>
+     </property>
+     <property name="rightMargin">
+      <number>7</number>
+     </property>
+     <property name="bottomMargin">
+      <number>7</number>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Start</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBox_start">
+           <property name="maximum">
+            <number>254</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>End</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBox_end">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+           <property name="value">
+            <number>255</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QDockWidget" name="dockWidget">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>700</y>
+      <width>356</width>
+      <height>42</height>
+     </rect>
+    </property>
+    <property name="allowedAreas">
+     <set>Qt::RightDockWidgetArea</set>
+    </property>
+    <widget class="QWidget" name="dockWidgetContents">
+     <widget class="Console" name="terminal" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>71</width>
+        <height>351</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>419</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuConnection">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionConnect"/>
+    <addaction name="actionDisconnect"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionConfigure"/>
+    <addaction name="actionClear"/>
+    <addaction name="actionCommands"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuConnection"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="cursor">
+    <cursorShape>CrossCursor</cursorShape>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionConnect"/>
+   <addaction name="actionDisconnect"/>
+   <addaction name="separator"/>
+   <addaction name="actionConfigure"/>
+   <addaction name="actionClear"/>
+   <addaction name="separator"/>
+   <addaction name="actionQuit"/>
+  </widget>
+  <widget class="QDockWidget" name="dock_central">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>91</width>
+     <height>374</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>524287</width>
+     <height>524287</height>
+    </size>
+   </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>135</red>
+         <green>135</green>
+         <blue>135</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>135</red>
+         <green>135</green>
+         <blue>135</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>135</red>
+         <green>135</green>
+         <blue>135</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>135</red>
+         <green>135</green>
+         <blue>135</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="features">
+    <set>QDockWidget::NoDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string/>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_27">
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QWidget" name="widget_20" native="true">
+       <property name="styleSheet">
+        <string notr="true"> QWidget{
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     border-bottom-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+}
+
+
+ QTabWidget::pane { /* The tab widget frame */
+  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+   border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px;
+ border-top-right-radius: 10px;
+ }
+
+ QTabWidget::tab-bar {
+     left: 0px; /* move to the right by 5px */
+ }
+
+ QTabBar::tab {
+
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #D3D3D3, stop: 0.4 #7E7E7E,
+                                 stop: 0.5 #7E7E7E, stop: 1.0 #7E7E7E);
+     
+/*     border: 1px solid #C4C4C3;
+ border-top: 1px solid #C2C7CB;*/
+   /*  border-bottom-color: #C2C7CB;*/
+     border-top-left-radius: 10px;
+     border-top-right-radius: 4px;
+     min-width: 8ex;
+     padding: 8px;
+
+ }
+
+ QWidget:hover {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #7E7E7E, stop: 0.4 #DDDDDD,
+                                 stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+ }
+
+ QWidget:selected {
+     border-color: #9B9B9B;
+   /*  border-bottom-color: #C2C7CB;*/ /* same as pane color */
+ }
+
+ QWidget:!selected {
+     margin-top: 2px; /* make non-selected tabs look smaller */
+ }</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_153">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="centralLogo">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="logo.qrc">:/logo/logo</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionConnect">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icon/connect</normaloff>:/icon/connect</iconset>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </action>
+  <action name="actionDisconnect">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icon/disconnect</normaloff>:/icon/disconnect</iconset>
+   </property>
+   <property name="text">
+    <string>Disconnect</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icon/exit</normaloff>:/icon/exit</iconset>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionConfigure">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icon/setting</normaloff>:/icon/setting</iconset>
+   </property>
+   <property name="text">
+    <string notr="true">Serial Configure</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icon/clear</normaloff>:/icon/clear</iconset>
+   </property>
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="logo.qrc">
+     <normaloff>:/logo/icons/open_file-icon.gif</normaloff>:/logo/icons/open_file-icon.gif</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionCommands">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Single sensor commands </string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Console</class>
+   <extends>QWidget</extends>
+   <header>console.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="icons.qrc"/>
+  <include location="logo.qrc"/>
+ </resources>
+ <connections/>
+</ui>

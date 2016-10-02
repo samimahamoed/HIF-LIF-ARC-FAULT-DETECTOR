@@ -1,0 +1,7 @@
+<map id="ui_mainwindow.h" name="ui_mainwindow.h">
+<area shape="rect" id="node2" href="$df/d13/a00085.html" title=".... " alt="" coords="5,80,124,107"/>
+<area shape="rect" id="node3" href="$dd/d42/a00109.html" title="mainwindow.cpp" alt="" coords="149,80,266,107"/>
+<area shape="rect" id="node4" href="$de/d76/a00134.html" title="srv_commands.cpp" alt="" coords="291,80,425,107"/>
+<area shape="rect" id="node5" href="$d0/d5e/a00136.html" title="srv_protocol.cpp" alt="" coords="449,80,565,107"/>
+<area shape="rect" id="node6" href="$d2/df5/a00137.html" title="srv_serial.cpp" alt="" coords="590,80,691,107"/>
+</map>

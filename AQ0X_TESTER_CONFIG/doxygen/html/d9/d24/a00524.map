@@ -1,0 +1,5 @@
+<map id="QFourierFixedCalculator&lt; T &gt;" name="QFourierFixedCalculator&lt; T &gt;">
+<area shape="rect" id="node2" href="$d1/d84/a00052.html" title="{QFourierCalculator\n||+ QFourierCalculator()\l+ ~QFourierCalculator()\l+ setData()\l+ setSize()\l+ size()\l+ forward()\l+ inverse()\l+ rescale()\l}" alt="" coords="5,321,164,501"/>
+<area shape="rect" id="node5" href="$da/d45/a00011.html" title="{ffft::FFTRealFixLen\&lt; T \&gt;\n||+ FFTRealFixLen()\l+ get_length()\l+ do_fft()\l+ do_ifft()\l+ rescale()\l}" alt="" coords="189,343,351,479"/>
+<area shape="rect" id="node6" href="$da/d45/a00011.html" title="{ffft::FFTRealFixLen\l\&lt; LL2 \&gt;\n||+ FFTRealFixLen()\l+ get_length()\l+ do_fft()\l+ do_ifft()\l+ rescale()\l+ do_fft()\l+ do_fft()\l+ do_fft()\l+ do_ifft()\l+ do_ifft()\l+ do_ifft()\l}" alt="" coords="205,5,335,244"/>
+</map>

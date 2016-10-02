@@ -1,0 +1,13 @@
+<map id="QCPLegend::handleLegendSelection" name="QCPLegend::handleLegendSelection">
+<area shape="rect" id="node2" href="$d6/d97/a00045.html#a454272d7094437beb3278a2294006da5" title="Returns the item with index i. " alt="" coords="327,5,452,32"/>
+<area shape="rect" id="node3" href="$d6/d97/a00045.html#a198228e9cdc78d3a3c306fa6763d0404" title="Returns the number of items currently in the legend. " alt="" coords="310,56,469,83"/>
+<area shape="rect" id="node4" href="$d3/d52/a00023.html#a0a0205f33f37edae50826c24cb8f1983" title="QCPAbstractLegendItem\l::selectable" alt="" coords="306,107,473,149"/>
+<area shape="rect" id="node5" href="$d6/d97/a00045.html#a459f39581d1eba9ee80557837601e21c" title="QCPLegend::selectable" alt="" coords="310,173,469,200"/>
+<area shape="rect" id="node6" href="$d3/d52/a00023.html#ac776e68e3367704452131c6aa9908bb9" title="QCPAbstractLegendItem\l::selected" alt="" coords="552,217,719,258"/>
+<area shape="rect" id="node7" href="$d6/d97/a00045.html#a10948e896935ad14f374e6f712afaae9" title="QCPLegend::selected" alt="" coords="561,468,710,495"/>
+<area shape="rect" id="node8" href="$d6/d97/a00045.html#a8bbb0b003cc93f07dff1d69416b606f0" title="When the point pos in pixels hits a legend item, the item is returned. " alt="" coords="297,341,482,368"/>
+<area shape="rect" id="node9" href="$d6/d97/a00045.html#a6388446e0906b21ebf3a92310570e73e" title="Returns whether the point pos in pixels hits the legend rect. " alt="" coords="288,392,491,419"/>
+<area shape="rect" id="node10" href="$d3/d52/a00023.html#a6eed93b0ab99cb3eabb043fb08179c2b" title="Sets whether this specific legend item is selected. " alt="" coords="306,275,473,317"/>
+<area shape="rect" id="node12" href="$d6/d97/a00045.html#a752c48b30f8ba870b55e79659385f107" title="Sets the selected state of the respective legend parts described by SelectablePart. " alt="" coords="305,443,474,469"/>
+<area shape="rect" id="node11" href="$d6/d97/a00045.html#ac214f7503cf46225f08f91003f554bdd" title="QCPLegend::updateSelection\lState" alt="" coords="539,282,732,323"/>
+</map>

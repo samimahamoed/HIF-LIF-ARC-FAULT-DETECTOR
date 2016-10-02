@@ -1,0 +1,7 @@
+<map id="emu_data_editor::eventFilter" name="emu_data_editor::eventFilter">
+<area shape="rect" id="node2" href="$d4/dee/a00008.html#a15cbcf5f0a17281468800f47898f60c1" title="emu_data_editor::update\l_curve" alt="" coords="239,57,404,98"/>
+<area shape="rect" id="node3" href="$d1/dea/a00054.html#a02bee79c9e9f978ed1fb012eda58ed5d" title="QFourierTransformer\l::forwardTransform" alt="" coords="452,57,592,98"/>
+<area shape="rect" id="node4" href="$d0/d89/a00071.html#aa4a4f988e1f4b65e4181a0c8c3245a00" title="QWindowFunction::apply" alt="" coords="640,5,807,32"/>
+<area shape="rect" id="node5" href="$d1/d84/a00052.html#a2d48438c3ee2549f8bf0e1e8fc1c3f1d" title="QFourierCalculator\l::setData" alt="" coords="658,57,789,98"/>
+<area shape="rect" id="node6" href="$d1/d84/a00052.html#a77ef4fb3e16e1727a9d96ef5956c1885" title="QFourierCalculator\l::forward" alt="" coords="658,122,789,163"/>
+</map>

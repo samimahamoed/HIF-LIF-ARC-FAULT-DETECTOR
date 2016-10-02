@@ -1,0 +1,8 @@
+<map id="QCPAbstractPlottable::keyAxis" name="QCPAbstractPlottable::keyAxis">
+<area shape="rect" id="node2" href="$d0/d33/a00027.html#ac22e00a6a41509538c21b04f0a57318c" title="Moves this bars plottable above bars. " alt="" coords="215,5,365,32"/>
+<area shape="rect" id="node3" href="$d0/d33/a00027.html#a69fc371346980f19177c3d1ecdad78ee" title="Moves this bars plottable below bars. " alt="" coords="215,56,365,83"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#ac1d1bc6ae4e13616fb02cef6d9e2188e" title="Returns the plottable at the pixel position pos. " alt="" coords="248,107,332,133"/>
+<area shape="rect" id="node7" href="$d5/db6/a00042.html#af5886f4ded8dd68cb4f3388f390790c0" title="Sets the QCPGraph this tracer sticks to. " alt="" coords="204,157,376,184"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a881c8652ebb912345de27687817845cf" title="handlePlottableSelection" alt="" coords="424,81,589,108"/>
+<area shape="rect" id="node6" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="637,107,777,133"/>
+</map>

@@ -1,0 +1,666 @@
+.TH "Slider" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Slider \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <slider\&.h>\fP
+.PP
+Inherits \fBQSlider\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBedit_point_selection\fP (bool status)"
+.br
+.ti -1c
+.RI "void \fBedit_point_deselection\fP (bool status)"
+.br
+.ti -1c
+.RI "void \fBadjust_value\fP (\fBInt16\fP val)"
+.br
+.ti -1c
+.RI "void \fBset_value\fP (double val, \fBUint8\fP type)"
+.br
+.ti -1c
+.RI "void \fBupdate_value\fP ()"
+.br
+.ti -1c
+.RI "void \fBset_status\fP (\fBUint8\fP select)"
+.br
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBaction_set_value\fP (double val, \fBUint8\fP type)"
+.br
+.ti -1c
+.RI "void \fBupdate_curve_signal\fP ()"
+.br
+.ti -1c
+.RI "void \fBselection\fP (bool clear)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSlider\fP (\fBUint16\fP id, QWidget *parent=0)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "\fBUint8\fP \fBall\fP"
+.br
+.ti -1c
+.RI "   struct {"
+.br
+.ti -1c
+.RI "\fBUint8\fP \fBpoint_selected\fP:1"
+.br
+.ti -1c
+.RI "\fBUint8\fP \fBpoint_selection_mode\fP:1"
+.br
+.ti -1c
+.RI "\fBUint8\fP \fBpoint_deselection_mode\fP:1"
+.br
+.ti -1c
+.RI "\fBUint8\fP \fBpoint_focuse_en\fP:1"
+.br
+.ti -1c
+.RI "   } \fBbits\fP"
+.br
+.ti -1c
+.RI "} \fBflags\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBkeyPressEvent\fP (QKeyEvent *e)"
+.br
+.ti -1c
+.RI "virtual void \fBmousePressEvent\fP (QMouseEvent *e)"
+.br
+.ti -1c
+.RI "virtual void \fBmouseDoubleClickEvent\fP (QMouseEvent *e)"
+.br
+.ti -1c
+.RI "virtual void \fBcontextMenuEvent\fP (QContextMenuEvent *e)"
+.br
+.ti -1c
+.RI "void \fBenterEvent\fP (QEvent *e)"
+.br
+.ti -1c
+.RI "void \fBleaveEvent\fP (QEvent *e)"
+.br
+.ti -1c
+.RI "bool \fBeventFilter\fP (QObject *object, QEvent *event)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 53 of file slider\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Slider::Slider (\fBUint16\fPid, QWidget *parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 14 of file slider\&.cpp\&.
+.PP
+References action_set_value(), adjust_value(), edit_point_deselection(), edit_point_selection(), flags, selection(), set_status(), set_value(), and update_value()\&.
+.PP
+.nf
+15     : QSlider(parent)
+16 {
+17 
+18     this->id = id;
+19     this->parent = (emu_data_editor *)parent;
+20 
+21 
+22     setMaximumWidth(40/*item width*/);
+23     setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::Expanding);
+24 
+25     current_style = "QSlider { width: 5px; border: none; }"
+26             "QSlider::groove:veritcal {"
+27             "border: none;"
+28             "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1 #000000);"
+29 
+30             "margin: 0 0 0 0;}"
+31             "QSlider::handle:veritcal {"
+32             "background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);"
+33             "border: none;"
+34             "width: 5px;"
+35             "height: 5px;"
+36             "margin: 2px 2px 2px 2px;"
+37             "border-radius: 2px;}";
+38 
+39      setStyleSheet(current_style);
+40 
+41     // this->setSliderDown(true);
+42 
+43     flags\&.all = 0;
+44 
+45     connect(parent,SIGNAL(edit_point_selection(bool)),this,SLOT(edit_point_selection(bool)));
+46     connect(parent,SIGNAL(edit_point_deselection(bool)),this,SLOT(edit_point_deselection(bool)));
+47     connect(parent,SIGNAL(adjust_value(Int16)),this,SLOT(adjust_value(Int16)));
+48     connect(parent,SIGNAL(action_set_value(double,Uint8)),this,SLOT(set_value(double,Uint8)));
+49     connect(this,SIGNAL(action_set_value(double,Uint8)),parent,SLOT(action_set_value_triggered(double,Uint8)));
+50     connect(this,SIGNAL(selection(bool)),parent,SLOT(selection(bool)));
+51     connect(parent,SIGNAL(set_status(Uint8)),this,SLOT(set_status(Uint8)));
+52     connect(this,SIGNAL(sliderMoved(int)),this,SLOT(moved(int)));
+53     connect(parent,SIGNAL(update_value()),this,SLOT(update_value()));
+54     installEventFilter(this);
+55 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void Slider::action_set_value (doubleval, \fBUint8\fPtype)\fC [signal]\fP"
+
+.PP
+Definition at line 184 of file moc_slider\&.cpp\&.
+.PP
+Referenced by contextMenuEvent(), and Slider()\&.
+.PP
+.nf
+185 {
+186     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+187     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+188 }
+.fi
+.SS "void Slider::adjust_value (\fBInt16\fPval)\fC [slot]\fP"
+
+.PP
+Definition at line 69 of file slider\&.cpp\&.
+.PP
+References flags, SET_TYPE_ADJUST, and set_value()\&.
+.PP
+Referenced by Slider()\&.
+.PP
+.nf
+70 {
+71     if(flags\&.bits\&.point_selected == 1){
+72 
+73 
+74     Int16 new_value = this->value()+val;
+75     if((new_value >=0)&&(new_value <=this->maximum())){
+76         set_value(new_value,SET_TYPE_ADJUST);
+77 
+78     }
+79 
+80     }
+81 
+82 
+83 
+84 
+85 }
+.fi
+.SS "void Slider::contextMenuEvent (QContextMenuEvent *e)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 309 of file slider\&.cpp\&.
+.PP
+References action_set_value(), selection(), SET_TYPE_AC_AMPLITUDE, SET_TYPE_DC_VALUE, SET_TYPE_DEFAULT, emu_data_editor::signal_type, and WAVEFORM_PLUS_MINUS_1_65\&.
+.PP
+.nf
+310 {
+311     QMenu menu;
+312 
+313     QMenu   *waveform = menu\&.addMenu("Waveform");
+314              //waveform->setIcon(QIcon(":icons\signal"));
+315 
+316     QMenu   *dc = waveform->addMenu("DC (Constant value)");
+317     QDoubleSpinBox *value_dc = new QDoubleSpinBox();
+318 
+319     if(this->parent->signal_type == WAVEFORM_PLUS_MINUS_1_65){
+320     value_dc->setMaximum(50);
+321     value_dc->setMinimum(-50);
+322     }else{
+323     value_dc->setMaximum(100);
+324     value_dc->setMinimum(0);
+325     }
+326     QWidgetAction *action_dc = new QWidgetAction(this);
+327     action_dc->setDefaultWidget(value_dc);
+328     dc->addAction(action_dc);
+329     QAction *set_dc = dc->addAction("Set Value");
+330 
+331     QMenu   *ac = waveform->addMenu("AC (Sinusoid)");
+332     QDoubleSpinBox *value_ac = new QDoubleSpinBox();
+333 
+334 
+335     if(this->parent->signal_type == WAVEFORM_PLUS_MINUS_1_65){
+336     value_ac->setMaximum(50);
+337     value_ac->setMinimum(-50);
+338     }else{
+339     value_ac->setMaximum(100);
+340     value_ac->setMinimum(0);
+341     }
+342     QWidgetAction *action_ac = new QWidgetAction(this);
+343     action_ac->setDefaultWidget(value_ac);
+344     ac->addAction(action_ac);
+345     QAction *set_ac = ac->addAction("Set Value");
+346 
+347 
+348     QAction *select_all = menu\&.addAction("Select all");
+349     QAction *clear_all = menu\&.addAction("Clear selection");
+350     QAction *reset = menu\&.addAction("Reset curve");
+351 
+352     QAction *selectedAction = menu\&.exec(e->globalPos());
+353 
+354     if(selectedAction == set_dc)
+355     {
+356 
+357         emit action_set_value(value_dc->value(),SET_TYPE_DC_VALUE);
+358 
+359     }if(selectedAction == set_ac)
+360     {
+361          emit action_set_value(value_ac->value(),SET_TYPE_AC_AMPLITUDE);
+362     }else
+363     if(selectedAction == select_all)
+364     {
+365          emit selection(false);
+366     }else if(selectedAction == clear_all)
+367     {
+368          emit selection(true);
+369     }
+370     else if(selectedAction == reset)
+371     {
+372          emit action_set_value(0,SET_TYPE_DEFAULT);
+373     }
+374 
+375 
+376 }
+.fi
+.SS "void Slider::edit_point_deselection (boolstatus)\fC [slot]\fP"
+
+.PP
+Definition at line 63 of file slider\&.cpp\&.
+.PP
+References flags\&.
+.PP
+Referenced by Slider()\&.
+.PP
+.nf
+64 {
+65     flags\&.bits\&.point_deselection_mode = status;
+66 
+67 }
+.fi
+.SS "void Slider::edit_point_selection (boolstatus)\fC [slot]\fP"
+
+.PP
+Definition at line 57 of file slider\&.cpp\&.
+.PP
+References flags\&.
+.PP
+Referenced by Slider()\&.
+.PP
+.nf
+58 {
+59     flags\&.bits\&.point_selection_mode = status;
+60 
+61 }
+.fi
+.SS "void Slider::enterEvent (QEvent *e)\fC [protected]\fP"
+
+.PP
+Definition at line 286 of file slider\&.cpp\&.
+.PP
+.nf
+287 {
+288 
+289     QSlider::enterEvent(e);
+290 }
+.fi
+.SS "bool Slider::eventFilter (QObject *object, QEvent *event)\fC [protected]\fP"
+
+.PP
+Definition at line 251 of file slider\&.cpp\&.
+.PP
+References flags\&.
+.PP
+.nf
+252 {
+253     if (event->type() == QEvent::FocusOut)
+254     {
+255         if (object == this)
+256         {
+257                flags\&.bits\&.point_focuse_en = 0;
+258                setStyleSheet(current_style);
+259         }
+260     }
+261     if (event->type() == QEvent::FocusIn)
+262     {
+263         if (object == this)
+264         {
+265             flags\&.bits\&.point_focuse_en = 1;
+266 
+267             setStyleSheet("QSlider { width: 5px; border: none; }"
+268                          "QSlider::groove:veritcal {"
+269                          "border: none;"
+270                          "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1 #000000);"
+271 
+272                          "margin: 0 0 0 0;}"
+273                          "QSlider::handle:veritcal {"
+274                          "background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #75FF47, stop:1 #75FF47);"
+275                          "border: none;"
+276                          "width: 5px;"
+277                          "height: 5px;"
+278                          "margin: 2px 2px 2px 2px;"
+279                          "border-radius: 2px;}");
+280         }
+281     }
+282     return false;
+283 }
+.fi
+.SS "void Slider::keyPressEvent (QKeyEvent *e)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 219 of file slider\&.cpp\&.
+.PP
+References flags, SET_TYPE_ADJUST, set_value(), emu_data_editor::signal_type, emu_data_editor::update_curve(), and WAVEFORM_PLUS_MINUS_1_65\&.
+.PP
+.nf
+220 {
+221 
+222 
+223     if(flags\&.bits\&.point_focuse_en==1){
+224 
+225     if(e->key() == Qt::Key_Up){
+226         Int16 new_value;
+227         if(this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+228         new_value= (this->value()/2)+10;
+229         else
+230         new_value= (this->value())+10;
+231         if((new_value <=this->maximum())){
+232             set_value(new_value,SET_TYPE_ADJUST);
+233             this->parent->update_curve();
+234         }
+235     }else if(e->key() == Qt::Key_Down){
+236         Int16 new_value;
+237         if(this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+238         new_value= (this->value()/2)-10;
+239         else
+240         new_value= (this->value())-10;
+241         if((new_value >=0)){
+242             set_value(new_value,SET_TYPE_ADJUST);
+243             this->parent->update_curve();
+244         }
+245     }
+246     }
+247 
+248     QSlider::keyPressEvent(e);
+249 }
+.fi
+.SS "void Slider::leaveEvent (QEvent *e)\fC [protected]\fP"
+
+.PP
+Definition at line 292 of file slider\&.cpp\&.
+.PP
+References set_status()\&.
+.PP
+.nf
+293 {
+294     set_status(0);
+295     QSlider::leaveEvent(e);
+296 }
+.fi
+.SS "void Slider::mouseDoubleClickEvent (QMouseEvent *e)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 304 of file slider\&.cpp\&.
+.PP
+.nf
+305 {
+306     Q_UNUSED(e)
+307 }
+.fi
+.SS "void Slider::mousePressEvent (QMouseEvent *e)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 299 of file slider\&.cpp\&.
+.PP
+.nf
+300 {
+301    QSlider::mousePressEvent(e);
+302 }
+.fi
+.SS "void Slider::selection (boolclear)\fC [signal]\fP"
+
+.PP
+Definition at line 197 of file moc_slider\&.cpp\&.
+.PP
+Referenced by contextMenuEvent(), and Slider()\&.
+.PP
+.nf
+198 {
+199     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+200     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+201 }
+.fi
+.SS "void Slider::set_status (\fBUint8\fPselect)\fC [slot]\fP"
+
+.PP
+Definition at line 379 of file slider\&.cpp\&.
+.PP
+References flags\&.
+.PP
+Referenced by leaveEvent(), and Slider()\&.
+.PP
+.nf
+379                                    {
+380 
+381     if (flags\&.bits\&.point_selection_mode==1 || select == 1)
+382     {
+383        flags\&.bits\&.point_selected=1;
+384      current_style = "QSlider { width: 5px; border: none; }"
+385                   "QSlider::groove:veritcal {"
+386                   "border: none;"
+387                   "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1 #000000);"
+388 
+389                   "margin: 0 0 0 0;}"
+390                   "QSlider::handle:veritcal {"
+391                   "background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #FF0000, stop:1 #FF0000);"
+392                   "border: none;"
+393                   "width: 5px;"
+394                   "height: 5px;"
+395                   "margin: 2px 2px 2px 2px;"
+396                   "border-radius: 2px;}";
+397      setStyleSheet(current_style);
+398     }else if (flags\&.bits\&.point_deselection_mode==1 || select==2)
+399     {
+400        flags\&.bits\&.point_selected=0;
+401 
+402        current_style = "QSlider { width: 5px; border: none; }"
+403                     "QSlider::groove:veritcal {"
+404                     "border: none;"
+405                     "background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1 #000000);"
+406 
+407                     "margin: 0 0 0 0;}"
+408                     "QSlider::handle:veritcal {"
+409                     "background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);"
+410                     "border: none;"
+411                     "width: 5px;"
+412                     "height: 5px;"
+413                     "margin: 2px 2px 2px 2px;"
+414                     "border-radius: 2px;}";
+415 
+416        setStyleSheet(current_style);
+417     }
+418 
+419 
+420 
+421 }
+.fi
+.SS "void Slider::set_value (doubleval, \fBUint8\fPtype)\fC [slot]\fP"
+
+.PP
+Definition at line 102 of file slider\&.cpp\&.
+.PP
+References ADC_VAL_MAPPING_FACTOR, emu_data_editor::emu_data_yvalue, FAST_TIMER_SAMPLING_RATE, flags, SCAN_FREQ, SET_TYPE_AC_AMPLITUDE, SET_TYPE_ADJUST, SET_TYPE_DC_VALUE, SET_TYPE_DEFAULT, emu_data_editor::signal_amplitude, emu_data_editor::signal_freq, emu_data_editor::signal_phase, emu_data_editor::signal_type, and WAVEFORM_PLUS_MINUS_1_65\&.
+.PP
+Referenced by adjust_value(), keyPressEvent(), Slider(), and update_value()\&.
+.PP
+.nf
+103 {
+104 
+105 
+106     switch (type) {
+107     case SET_TYPE_DC_VALUE:
+108      {
+109         if(this->flags\&.bits\&.point_selected == 1){
+110             if(this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+111             this->setValue(2*(val)/ADC_VAL_MAPPING_FACTOR);
+112             else
+113             this->setValue((val)/ADC_VAL_MAPPING_FACTOR);
+114 
+115         this->parent->emu_data_yvalue[this->id]= val;
+116 
+117         Uint16 interval = (Uint16)(SCAN_FREQ/(2*this->parent->signal_freq));
+118 
+119         if((this->id + interval) < this->parent->emu_data_yvalue\&.length())
+120         this->parent->emu_data_yvalue[this->id + interval]=
+121         (this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+122         ?(-1*val):val;
+123         }
+124 
+125 
+126         break;
+127     }
+128     case SET_TYPE_AC_AMPLITUDE:
+129       {
+130 
+131         if(this->flags\&.bits\&.point_selected == 1){
+132         double freq    = this->parent->signal_freq;
+133         double phase   = this->parent->signal_phase;
+134         double new_val = val*sin(2*M_PI*freq*this->id*FAST_TIMER_SAMPLING_RATE - phase);
+135 
+136 
+137         Uint16 interval = (Uint16)(SCAN_FREQ/(2*this->parent->signal_freq));
+138 
+139         this->parent->emu_data_yvalue[this->id]= new_val;
+140 
+141        if((this->id + interval) < this->parent->emu_data_yvalue\&.length())
+142         this->parent->emu_data_yvalue[this->id + interval]=
+143         (this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+144         ?(-1*new_val):new_val;
+145 
+146 
+147         if(this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+148         this->setValue((2*new_val)/ADC_VAL_MAPPING_FACTOR);
+149         else
+150         this->setValue((new_val)/ADC_VAL_MAPPING_FACTOR);
+151         }
+152 
+153     break;
+154      }
+155     case SET_TYPE_DEFAULT:
+156     {
+157         double amp     = this->parent->signal_amplitude;
+158         double freq    = this->parent->signal_freq;
+159         double phase   = this->parent->signal_phase;
+160         double new_val = amp*sin(2*M_PI*freq*this->id*FAST_TIMER_SAMPLING_RATE - phase);
+161 
+162 
+163         Uint16 interval = (Uint16)(SCAN_FREQ/(2*this->parent->signal_freq));
+164 
+165         this->parent->emu_data_yvalue[this->id]= new_val;
+166 
+167         if((this->id + interval) < this->parent->emu_data_yvalue\&.length())
+168         this->parent->emu_data_yvalue[this->id + interval]=
+169         (this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+170         ?(-1*new_val):new_val;
+171 
+172 
+173 
+174         if(this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+175         this->setValue((2*new_val)/ADC_VAL_MAPPING_FACTOR);
+176         else
+177         this->setValue((new_val)/ADC_VAL_MAPPING_FACTOR);
+178 
+179 
+180     break;
+181     }
+182 
+183     case SET_TYPE_ADJUST:
+184     {
+185         this->setValue(val);
+186 
+187         double new_val;
+188 
+189 
+190 
+191         if(this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+192         new_val = (val/2)*ADC_VAL_MAPPING_FACTOR;
+193         else
+194         new_val = val*ADC_VAL_MAPPING_FACTOR;
+195 
+196 
+197         Uint16 interval = (Uint16)(SCAN_FREQ/(2*this->parent->signal_freq));
+198 
+199         this->parent->emu_data_yvalue[this->id]= new_val;
+200 
+201         if((this->id + interval) < this->parent->emu_data_yvalue\&.length())
+202         this->parent->emu_data_yvalue[this->id + interval]=
+203         (this->parent->signal_type ==WAVEFORM_PLUS_MINUS_1_65)
+204         ?(-1*new_val):new_val;
+205 
+206         //emit update_curve_signal();
+207 
+208     break;
+209     }
+210     default:
+211         break;
+212     }
+213 
+214 
+215 
+216 
+217 }
+.fi
+.SS "void Slider::update_curve_signal ()\fC [signal]\fP"
+
+.PP
+Definition at line 191 of file moc_slider\&.cpp\&.
+.PP
+.nf
+192 {
+193     QMetaObject::activate(this, &staticMetaObject, 1, 0);
+194 }
+.fi
+.SS "void Slider::update_value ()\fC [slot]\fP"
+
+.PP
+Definition at line 88 of file slider\&.cpp\&.
+.PP
+References SET_TYPE_ADJUST, and set_value()\&.
+.PP
+Referenced by Slider()\&.
+.PP
+.nf
+88                          {
+89 
+90     set_value(this->value(),SET_TYPE_ADJUST);
+91 
+92 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "union { \&.\&.\&. }  Slider::flags"
+
+.PP
+Referenced by adjust_value(), edit_point_deselection(), edit_point_selection(), eventFilter(), keyPressEvent(), set_status(), set_value(), and Slider()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

@@ -1,0 +1,2310 @@
+\hypertarget{a00038_source}{\section{algorithm.\+c}
+\label{a00038_source}\index{algorithm.\+c@{algorithm.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00016 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\(\backslash\)allheaders.h"} 
+00017 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\_prv\(\backslash\)aq0X\(\backslash\)algorithm\_prv.h"}
+00018 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\_prv\(\backslash\)aq0X\(\backslash\)srv\_hwio\_prv.h"}
+00019 
+00020 
+00021 
+00022 
+00023 \textcolor{preprocessor}{#include "dsp.h"}
+00024 \textcolor{preprocessor}{#include <string.h>}
+00025 
+00026 
+\hypertarget{a00038_source_l00027}{}\hyperlink{a00038_ac8ba8f308052e254ac745ae76f44d766}{00027} \textcolor{preprocessor}{#define NETIVE\_ARITHMETIC                  1}
+00028 
+00029 
+00030 \textcolor{keyword}{static} \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} algorithm\_liner\_correlation(\hyperlink{a00022_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t} * vector
+      ,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE);
+00031 \textcolor{keyword}{static} \textcolor{keywordtype}{void}    algorithm\_data\_mark\_false\_postives(\textcolor{keywordtype}{void});
+00032 
+\hypertarget{a00038_source_l00033}{}\hyperlink{a00038_a183caa40cd01e79ee309cc9c4a225197}{00033} \hyperlink{a00016_d1/d84/a00097}{algorithm\_data\_t} \hyperlink{a00038_a183caa40cd01e79ee309cc9c4a225197}{algorithm\_data};
+\hypertarget{a00038_source_l00034}{}\hyperlink{a00038_aff3e3d622fcd96787628167d3c1856f9}{00034} \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\_task\_id}        \hyperlink{a00038_aff3e3d622fcd96787628167d3c1856f9}{algorithm\_id};
+00035 
+\hypertarget{a00038_source_l00036}{}\hyperlink{a00038_a2e89c46668b39a17753c238950c9e1ec}{00036} \hyperlink{a00021_d6/da3/a00589}{logv\_t}           \hyperlink{a00038_a2e89c46668b39a17753c238950c9e1ec}{logv};
+00037 
+00038 
+00039 
+00040 
+00046 \textcolor{preprocessor}{#if(NETIVE\_ARITHMETIC)}
+\hypertarget{a00038_source_l00047}{}\hyperlink{a00038_ac02222eba93356b04a6327ffcf82b5cf}{00047} \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00038_ac02222eba93356b04a6327ffcf82b5cf}{algorithm\_get\_mean}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * vector,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE)
+00048 \{
+00049     
+00050     
+00051     \textcolor{keyword}{register} \textcolor{keywordtype}{int} result \textcolor{keyword}{asm}(\textcolor{stringliteral}{"A"});
+00052     result = \_\_builtin\_clr();
+00053     \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} cc;
+00054 
+00055     \textcolor{keywordflow}{for}(cc = 0;cc<SIZE;cc++)
+00056         result = \_\_builtin\_add(result,*(vector+cc),0);
+00057  
+00058     cc = \_\_builtin\_sac(result,0);
+00059 
+00060 
+00061     
+00062     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} mean\_val = (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})cc/(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})SIZE ;
+00063     
+00064 
+00065     \textcolor{keywordflow}{return}  (mean\_val);
+00066 
+00067 \}
+00068 \textcolor{preprocessor}{#else}
+00069 
+00070 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00038_ac02222eba93356b04a6327ffcf82b5cf}{algorithm\_get\_mean}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * vector,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE)
+00071 \{
+00072     \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} cc;
+00073     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} result=0;
+00074 
+00075 
+00076     \textcolor{keywordflow}{for}(cc = 0;cc<SIZE;cc++)
+00077         result += *(vector+cc);
+00078 
+00079     \textcolor{keywordflow}{return}  result/SIZE;
+00080 
+00081 \}
+00082 
+00083 
+00084 \textcolor{preprocessor}{#endif}
+00085 
+00086 
+00093 \textcolor{keywordtype}{int} meanVal \hyperlink{a00038_afc24892209555236c0000b91cfc8ab15}{\_\_attribute\_\_}((space(ymemory),far()));
+00094 
+00095 \textcolor{preprocessor}{#if(DATA\_TYPE==FRACTIONAL)}
+\hypertarget{a00038_source_l00096}{}\hyperlink{a00038_a97eb6437dda088f144d791e49cd3dc2a}{00096} \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}     \hyperlink{a00038_a97eb6437dda088f144d791e49cd3dc2a}{algorithm\_get\_std\_deviation}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * vector,
+      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} mean\_val,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE)
+00097 \{
+00098     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc;
+00099 
+00100     fractional *vect                = (fractional *)vector;
+00101 
+00102     fractional  uval                = (fractional)(mean\_val);
+00103 
+00104     \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16}  tmp                      = 0;
+00105 
+00106     \hyperlink{a00072_a184d0ff2424cf4b81c68ce9538481a04}{Int32}  variance                 = 0;
+00107   
+00108     \textcolor{keywordflow}{for}(cc = 0;cc < SIZE ; cc++)\{
+00109           tmp       = ((*(vect+cc)) - uval);
+00110           variance += \_\_builtin\_mulss(tmp,tmp);
+00111     \}
+00112 
+00113     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} result =  sqrt(((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})variance)/((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})SIZE));
+00114   
+00115     \textcolor{keywordflow}{return} result;
+00116 \}
+00117 \textcolor{preprocessor}{#elif(NETIVE\_ARITHMETIC)}
+00118 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00038_a97eb6437dda088f144d791e49cd3dc2a}{algorithm\_get\_std\_deviation}(\hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} * vector,
+      \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16}* mean\_val,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE)
+00119 \{
+00120     \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} cc;
+00121     \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} distance;
+00122     \textcolor{keyword}{register} \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} result     \textcolor{keyword}{asm}(\textcolor{stringliteral}{"A"});
+00123     \textcolor{keyword}{register} \textcolor{keywordtype}{int} result\_acc   \textcolor{keyword}{asm}(\textcolor{stringliteral}{"B"});
+00124 
+00125 
+00126      \textcolor{keywordflow}{for}(cc = 0;cc<200;cc++)\{
+00127 
+00128         result      = \_\_builtin\_ed(distance,
+00129                                 &vector,2,
+00130                                 &mean\_val,0, &distance);
+00131 
+00132         result\_acc  = \_\_builtin\_addab(result\_acc,result);
+00133       \}
+00134 
+00135 
+00136 
+00137         result\_acc  = \_\_builtin\_addab(result\_acc,result);
+00138 
+00139         result\_acc = \_\_builtin\_sftac(result\_acc,1);
+00140     
+00141         cc = \_\_builtin\_sac(result\_acc,0);
+00142    
+00143         \textcolor{keywordflow}{return} sqrt((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})cc);
+00144 \}
+00145 \textcolor{preprocessor}{#else}
+00146 
+00147 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00038_a97eb6437dda088f144d791e49cd3dc2a}{algorithm\_get\_std\_deviation}(
+      \hyperlink{a00022_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t} * vector,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE)
+00148 \{
+00149     \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} cc;
+00150     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} result=0;
+00151 
+00152 
+00153     \textcolor{keywordflow}{for}(cc = 0;cc<SIZE;cc++)
+00154         result += pow((*(vector->buffer+cc)-vector->mean\_value),2);
+00155 
+00156     result /= SIZE;
+00157     \textcolor{keywordflow}{return} sqrt(result);
+00158 
+00159 \}
+00160 
+00161 \textcolor{preprocessor}{#endif}
+00162 
+00169 \textcolor{preprocessor}{#if(DATA\_TYPE==FRACTIONAL)}
+00170 \textcolor{keyword}{static} \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} algorithm\_liner\_correlation(\hyperlink{a00022_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t} * vector
+      ,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE)
+00171 \{
+00172     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc;
+00173 
+00174     fractional *vect1               = (fractional *)vector->buffer;
+00175 
+00176     fractional  mean\_val1           = (fractional)vector->mean\_value;
+00177 
+00178     fractional *vect2               = (fractional *)\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      ref\_signal.buffer;
+00179 
+00180     fractional  mean\_val2           = (fractional)\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal
+      .mean\_value;
+00181 
+00182     fractional std\_div1             = (fractional)\hyperlink{a00038_a97eb6437dda088f144d791e49cd3dc2a}{algorithm\_get\_std\_deviation}(
+      vector->buffer,vector->mean\_value,SIZE);
+00183 
+00184     fractional std\_div2             = (fractional)\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal
+      .std\_deviation;
+00185 
+00186     \hyperlink{a00072_a184d0ff2424cf4b81c68ce9538481a04}{Int32}  covariance                = 0;
+00187 
+00188 
+00189 
+00190     \textcolor{keywordflow}{for}(cc = 0;cc<SIZE;cc++)\{
+00191         covariance +=\textcolor{comment}{/*((*(vect1 + cc) - mean\_val1)*(*(vect2 + cc) - mean\_val2));*/}
+00192                      \_\_builtin\_mulss(((*(vect1 + cc)) - mean\_val1),((*(vect2 + cc)) - mean\_val2));
+00193     \}
+00194 
+00195 
+00196     \textcolor{keywordflow}{if}((std\_div1 == 0)|| (std\_div2 == 0))
+00197 
+00198     \textcolor{comment}{/*if a random variable say vect1 has standard deviation ?vect1=0, then}
+00199 \textcolor{comment}{    cov(vect1,vect2)=E[(vect1??vect1)(vect2??vect2)]=0;}
+00200 \textcolor{comment}{    gives the indeterminate form 0/0. in this case, it is conventional to}
+00201 \textcolor{comment}{    define the correlation as zero.}
+00202 \textcolor{comment}{     */}
+00203     \textcolor{keywordflow}{return} 0;
+00204     \textcolor{keywordflow}{else}
+00205     \textcolor{keywordflow}{return} ((100*((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})covariance))/(SIZE*\_\_builtin\_mulss(std\_div1,std\_div2)));
+00206 
+00207 \}
+00208 \textcolor{preprocessor}{#else}
+00209 \textcolor{keyword}{static} \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} algorithm\_liner\_correlation(\hyperlink{a00022_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t} * vector
+      ,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE)
+00210 \{
+00211 
+00212     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} vector\_std\_deviation    = \hyperlink{a00038_a97eb6437dda088f144d791e49cd3dc2a}{algorithm\_get\_std\_deviation}(vector,
+      SIZE);
+00213 
+00214     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} covariance              = 0;
+00215     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc;
+00216 
+00217     \textcolor{keywordflow}{for}(cc = 0;cc<SIZE;cc++)
+00218         covariance +=(*(vector->buffer+cc)-vector->mean\_value)*
+00219                      (*(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.buffer+cc) - 
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value);
+00220 
+00221     \textcolor{keywordflow}{if}((vector\_std\_deviation*\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.std\_deviation)== 0)
+00222 
+00223     \textcolor{comment}{/*if a random variable say vect1 has standard deviation ?vect1=0, then}
+00224 \textcolor{comment}{    cov(vect1,vect2)=E[(vect1??vect1)(vect2??vect2)]=0;}
+00225 \textcolor{comment}{    gives the indeterminate form 0/0. in this case, it is conventional to}
+00226 \textcolor{comment}{    define the correlation as zero.}
+00227 \textcolor{comment}{     */}
+00228     \textcolor{keywordflow}{return} 0;
+00229     \textcolor{keywordflow}{else}
+00230     \textcolor{keywordflow}{return} 100.0*(covariance/(SIZE*(vector\_std\_deviation*\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      ref\_signal.std\_deviation)));
+00231 \}
+00232 
+00233 \textcolor{preprocessor}{#endif}
+00234 
+00235 
+00236 
+\hypertarget{a00038_source_l00242}{}\hyperlink{a00038_a2925c58a9c3f5d3c957eaca9a95a6c3a}{00242} \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} \hyperlink{a00038_a2925c58a9c3f5d3c957eaca9a95a6c3a}{algorithm\_signal\_proportionality}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * vector1,
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} * vector2,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} SIZE)
+00243 \{
+00244 
+00245     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} vector[\hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH}];
+00246     \textcolor{keywordtype}{long} \textcolor{keywordtype}{double} sum=0;
+00247     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cc = 0;
+00248   
+00249     \textcolor{keywordflow}{for}(cc = 0;cc < SIZE;cc++)\{
+00250         vector[cc] = (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})*(vector1 + cc)/(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})*(vector2 + cc);
+00251         sum += vector[cc];
+00252     \}
+00253 
+00254     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} mean =  sum/SIZE;
+00255     sum = 0;
+00256     \textcolor{keywordflow}{for}(cc = 0;cc<SIZE;cc++)
+00257         sum += pow((vector[cc]-mean),2);
+00258 
+00259     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} deviation =  sum/SIZE;
+00260 
+00261     \textcolor{keywordflow}{if}(deviation < 0.1 \textcolor{comment}{/*less than 10% deviation*/})
+00262         \textcolor{keywordflow}{return} \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00263     \textcolor{keywordflow}{else}
+00264         \textcolor{keywordflow}{return} \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00265 
+00266 \}
+00267 
+00268 
+00280 \textcolor{keyword}{static} \textcolor{keywordtype}{void} algorithm\_configure(\textcolor{keywordtype}{void})
+00281 \{
+00282 
+00290     \textcolor{comment}{//Configure mfield\_x\_sensor module}
+00291 
+00292     \textcolor{comment}{//the following expression is drived form the use of biot-savart law}
+00293     \textcolor{comment}{//please see the project documentation for more detail}
+00294     
+00295 
+00296      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} mfield\_amp\_max      = (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})(((2)*(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.rated\_current*
+      \hyperlink{a00019_a0dbceb8ab2804359733a52568f2fd349}{MFIELD\_SEN\_GAIN})/
+00297                                    ((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.system\_info.min\_distance*\hyperlink{a00058_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR}));
+00298                                   
+00299      \hyperlink{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{D\_P}(fprintf(stdout,\textcolor{stringliteral}{"Config : mfield amp max :%d\(\backslash\)n"},mfield\_amp\_max);)
+00300      
+00301      
+00302      
+00303      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} mfield\_amp\_sh\_ckt   = (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})(((2)*(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.sh\_current*
+      \hyperlink{a00019_a0dbceb8ab2804359733a52568f2fd349}{MFIELD\_SEN\_GAIN})/
+00304                                    ((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.system\_info.min\_distance*\hyperlink{a00058_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR}));
+00305                                    
+00306      \hyperlink{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{D\_P}(fprintf(stdout,\textcolor{stringliteral}{"Config : mfield amp fault current :%u\(\backslash\)n"},mfield\_amp\_sh\_ckt);)
+00307 
+00308      \textcolor{comment}{//dfdt max = amp\_max * angular\_frequency}
+00309      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} mfield\_dfdt\_max     = ((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})mfield\_amp\_max*2*PI*(
+      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq);
+00310 
+00311              mfield\_dfdt\_max    *=\hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE};
+00312 
+00313      \hyperlink{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{D\_P}(fprintf(stdout,\textcolor{stringliteral}{"Config : mfield dfdt max :%f\(\backslash\)n"},(\textcolor{keywordtype}{double})mfield\_dfdt\_max);)
+00314 
+00315 
+00316      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} mfield\_dfdt\_impulse  = (mfield\_amp\_sh\_ckt + mfield\_amp\_sh\_ckt*0.2)*2*PI*(
+      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq;
+00317      \hyperlink{a00040_aaa56ed691cef86e8de0c4e90e47f2e5d}{D\_P}(fprintf(stdout,\textcolor{stringliteral}{"Config : mfield dfdt impulse :%f\(\backslash\)n"},(\textcolor{keywordtype}{double})mfield\_dfdt\_impulse);)
+00318 
+00319              mfield\_dfdt\_impulse  *=\hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE};
+00320  
+00321 
+00322      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} treshold\_min                  =
+00323             \hyperlink{a00021_a0eae7c540b766617bb00f79cd63415a2}{CONFIG\_\_DEFAULT\_MIN\_DFDT}
+00324             /
+00325             (\hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE}*PI*
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq);
+00326 
+00327             treshold\_min                 += (treshold\_min*0.02);
+00328 
+00329 
+00330 
+00332     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      amp\_treshold.set\_value    = mfield\_amp\_max;
+00333     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      amp\_treshold.min          = 0;
+00334     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      amp\_treshold.max          
+00335             = \hyperlink{a00019_a2310c2bd339d54b86e9fae262def2008}{MFIELD\_ADC\_QUIESCENT\_LEVEL} - 
+      \hyperlink{a00019_a2310c2bd339d54b86e9fae262def2008}{MFIELD\_ADC\_QUIESCENT\_LEVEL}/4;
+00336     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      dfdt\_treshold\_max         = mfield\_dfdt\_max;
+00337     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      dfdt\_treshold\_impulse     = mfield\_dfdt\_impulse;
+00338     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.sys\_freq   
+                     = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq;
+00339     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      dfdt\_treshold\_min         = \hyperlink{a00021_a0eae7c540b766617bb00f79cd63415a2}{CONFIG\_\_DEFAULT\_MIN\_DFDT};
+00340 
+00341     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      min\_number\_of\_observation
+00342                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.
+      min\_number\_of\_observation;
+00343     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      probablity\_treshold\_max
+00344                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_max;
+00345     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      probablity\_treshold\_min
+00346                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_min;
+00347     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      threshold\_adjust\_manual
+00348                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      threshold\_adjust\_manual;
+00349     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      element\_status\_sv\_en
+00350                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      mfield\_element\_sv\_en;
+00351     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.disturbance\_record = &
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_x;
+00352   
+00353     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}.configured.
+      hif\_diagonesis\_records = NULL;
+00354 
+00355     \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.
+      \hyperlink{a00019_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify});
+00356 
+00357 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00358     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.amp\_treshold.set\_value    = mfield\_amp\_max;
+00360     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.amp\_treshold.min          = 0;
+00361     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.amp\_treshold.max          
+00362                              = \hyperlink{a00019_a2310c2bd339d54b86e9fae262def2008}{MFIELD\_ADC\_QUIESCENT\_LEVEL} - 
+      \hyperlink{a00019_a2310c2bd339d54b86e9fae262def2008}{MFIELD\_ADC\_QUIESCENT\_LEVEL}/4;
+00363     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.dfdt\_treshold\_max         = mfield\_dfdt\_max
+      ;
+00364     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.dfdt\_treshold\_impulse     = 
+      mfield\_dfdt\_impulse;
+00365     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.dfdt\_treshold\_min         = 
+      \hyperlink{a00021_a0eae7c540b766617bb00f79cd63415a2}{CONFIG\_\_DEFAULT\_MIN\_DFDT};
+00366     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.sys\_freq                  = 
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq;
+00367     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.min\_number\_of\_observation
+00368                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.
+      min\_number\_of\_observation;
+00369     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.probablity\_treshold\_max
+00370                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_max;
+00371     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.probablity\_treshold\_min
+00372                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_min;
+00373     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.threshold\_adjust\_manual
+00374                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      threshold\_adjust\_manual;
+00375     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.element\_status\_sv\_en
+00376                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      mfield\_element\_sv\_en;
+00377     algorithm\_data.mfield\_sensor\_y\_configure.message.disturbance\_record = &
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_y;
+00378 
+00379     algorithm\_data.mfield\_sensor\_y\_configure.message.configured.hif\_diagonesis\_records = NULL;
+00380     \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.mfield\_sensor\_y\_configure.notify);
+00381 
+00382 \textcolor{preprocessor}{#endif}
+00383 
+00384 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+00385 
+00386      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} light\_amp\_max      = ((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.thresholds.lux\_level\_max *\hyperlink{a00018_a67d542941eaade236c5f5a224efc7653}{LIGHT\_SEN\_GAIN})/
+00387                                    (\hyperlink{a00058_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR});
+00388 
+00389 
+00390      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} light\_dfdt\_max     = light\_amp\_max*2*PI*(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq;
+00391 
+00392 
+00393      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} light\_dfdt\_impulse = (10*light\_amp\_max)*2*PI*(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq;
+00394 
+00395 
+00396 
+00398     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.amp\_treshold\_max 
+               = light\_amp\_max;
+00399     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.dfdt\_treshold\_max
+               = light\_dfdt\_max;
+00400     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.
+      dfdt\_treshold\_impulse     = light\_dfdt\_impulse;
+00401     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.dfdt\_treshold\_min
+               = 0;
+00402     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.
+      min\_number\_of\_observation
+00403                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.
+      min\_number\_of\_observation;
+00404     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.
+      probablity\_treshold\_max
+00405                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_max;
+00406     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.
+      probablity\_treshold\_min
+00407                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_min;
+00408     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.
+      threshold\_adjust\_manual
+00409                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      threshold\_adjust\_manual;
+00410 
+00411 
+00412     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.disturbance\_record = &
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.light;
+00413     \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.
+      \hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify});
+00414 
+00415 
+00416 \textcolor{preprocessor}{#endif}
+00417 
+00418    \textcolor{comment}{/*}
+00419 \textcolor{comment}{     Float32 ir\_amp\_max      = ((Float32)data\_non\_volatile.device\_data.installation.thresholds.ir\_level\_max
+      *IR\_SEN\_GAIN)/}
+00420 \textcolor{comment}{                               (ADC\_VAL\_MAPPING\_FACTOR);}
+00421 \textcolor{comment}{   */}                            
+00422                                
+00423      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} ir\_amp\_max      = (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.thresholds.ir\_level\_max;
+00424 
+00425      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} ir\_dfdt\_max     = ir\_amp\_max*2*PI*(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq*
+      \hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE};
+00426 
+00427 
+00428      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} ir\_dfdt\_impulse = 10*ir\_dfdt\_max;
+00429     
+00430 
+00431 
+00432 
+00433 
+00435     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.amp\_treshold.set\_value 
+         = ir\_amp\_max;
+00436     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.amp\_treshold.min       
+         = treshold\_min;
+00437     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.amp\_treshold.max       
+         
+00438                                          = \hyperlink{a00058_a00978ca9e8220475258dcbbbb7d29129}{ADC\_RESOLUTION} - 
+      \hyperlink{a00058_a00978ca9e8220475258dcbbbb7d29129}{ADC\_RESOLUTION}/4;
+00439 
+00440     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.dfdt\_treshold\_max      
+         = ir\_dfdt\_max;
+00441     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.dfdt\_treshold\_impulse  
+         = ir\_dfdt\_impulse;
+00442     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.dfdt\_treshold\_min      
+         = \hyperlink{a00021_a0eae7c540b766617bb00f79cd63415a2}{CONFIG\_\_DEFAULT\_MIN\_DFDT};
+00443     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.sys\_freq               
+         = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq;
+00444     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.
+      min\_number\_of\_observation
+00445                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.
+      min\_number\_of\_observation;
+00446     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.probablity\_treshold\_max
+00447                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_max;
+00448     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.probablity\_treshold\_min
+00449                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_min;
+00450     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.threshold\_adjust\_manual
+00451                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      threshold\_adjust\_manual;
+00452     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.element\_status\_sv\_en
+00453                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      ir\_element\_sv\_en;
+00454 
+00455     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.disturbance\_record = &
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir;
+00456 
+00457     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.hif\_diagonesis\_records 
+      = &\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.hif\_diagonesis\_records;
+00458     \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.
+      \hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify});
+00459 
+00460 
+00461 
+00462     \textcolor{comment}{/*}
+00463 \textcolor{comment}{     Float32 uv\_amp\_max      = ((Float32)data\_non\_volatile.device\_data.installation.thresholds.uv\_level\_max
+       *UV\_SEN\_GAIN)/}
+00464 \textcolor{comment}{                                   (ADC\_VAL\_MAPPING\_FACTOR);}
+00465 \textcolor{comment}{    */}
+00466      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} uv\_amp\_max      = (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.thresholds.uv\_level\_max;
+00467  
+00468      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} uv\_dfdt\_max     = uv\_amp\_max*2*PI*(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq*
+      \hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE};
+00469 
+00470 
+00471      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} uv\_dfdt\_impulse = (10*uv\_dfdt\_max);
+00472 
+00473 
+00474 
+00476     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.amp\_treshold.set\_value 
+         = uv\_amp\_max;
+00477     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.amp\_treshold.min       
+         = treshold\_min;
+00478     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.amp\_treshold.max       
+         
+00479                                           = \hyperlink{a00058_a00978ca9e8220475258dcbbbb7d29129}{ADC\_RESOLUTION}- 
+      \hyperlink{a00058_a00978ca9e8220475258dcbbbb7d29129}{ADC\_RESOLUTION}/4;
+00480     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.dfdt\_treshold\_max      
+         = uv\_dfdt\_max;
+00481     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.dfdt\_treshold\_impulse  
+         = uv\_dfdt\_impulse;
+00482     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.dfdt\_treshold\_min      
+         = \hyperlink{a00021_a0eae7c540b766617bb00f79cd63415a2}{CONFIG\_\_DEFAULT\_MIN\_DFDT};
+00483     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.sys\_freq               
+         = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info.freq;
+00484     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.
+      min\_number\_of\_observation
+00485                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.
+      min\_number\_of\_observation;
+00486     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.probablity\_treshold\_max
+00487                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_max;
+00488     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.probablity\_treshold\_min
+00489                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.probablity\_min;
+00490     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.threshold\_adjust\_manual
+00491                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      threshold\_adjust\_manual;
+00492     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.element\_status\_sv\_en
+00493                    = \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.bits.
+      uv\_element\_sv\_en;
+00494      algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.disturbance\_record = &
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.uv;
+00495         algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured.
+      hif\_diagonesis\_records = NULL;
+00496     \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.
+      \hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify});
+00497 
+00498 
+00499 
+00500 
+00501     algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.samples\_per\_period       = (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})(
+      \hyperlink{a00021_a8127170b687c1f67a968886c128e76e4}{SCAN\_FREQ}/(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.system\_info
+      .freq));
+00502     logv.\hyperlink{a00021_a11ea0eda9ab27873198e7a5c4be4337d}{wr} = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00503 
+00504 
+00505     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.valid != 0x00CC)\{
+00506         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc;
+00507         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} zero\_point\_start = (algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.samples\_per\_period/4);
+00508         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} zero\_point\_end   = zero\_point\_start + 25;
+00509 
+00510         memset(&\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal,0,\textcolor{keyword}{sizeof}(
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal));
+00511 
+00512         \textcolor{keywordflow}{for}(cc = 0; cc < \hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH};cc++)\{
+00513 
+00514         \textcolor{keywordflow}{if}(!((cc > zero\_point\_end)&&(cc < zero\_point\_end)))
+00515         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.buffer[cc]  = abs(cos(2*PI*
+      \hyperlink{a00021_a985a153b3edd3d7d638137ae0b9e5e67}{CONFIG\_DEFAULT\_FREQ}*\hyperlink{a00021_a3a4dcb8af26a561d90607a41a3745806}{FAST\_TIMER\_SAMPLING\_RATE}*cc)*
+      \hyperlink{a00058_a00978ca9e8220475258dcbbbb7d29129}{ADC\_RESOLUTION});
+00516 
+00517         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value +=
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.buffer[cc];
+00518 
+00519         \}
+00520 
+00521 
+00522           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value /=
+      \hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH};
+00523 
+00524           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.std\_deviation = 
+      \hyperlink{a00038_a97eb6437dda088f144d791e49cd3dc2a}{algorithm\_get\_std\_deviation}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      ref\_signal.buffer
+00525                                                                                                ,
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value
+00526                                                                                                ,
+      MAX\_EVENT\_OBSERVATION\_LENGTH);
+00527 
+00528           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.valid = 0x0000;
+00529 
+00530     \}
+00531     \textcolor{comment}{//analog sampling start}
+00532     \hyperlink{a00038_ab898d2d804c49cb0978d26f6af64e0e4}{algorithm\_sv\_scan\_timer\_init}();
+00533     
+00534 
+00535 
+00536 \}
+00537 
+00538 
+00539 
+\hypertarget{a00038_source_l00543}{}\hyperlink{a00038_ab898d2d804c49cb0978d26f6af64e0e4}{00543} \textcolor{keywordtype}{void}   \hyperlink{a00038_ab898d2d804c49cb0978d26f6af64e0e4}{algorithm\_sv\_scan\_timer\_init}(\textcolor{keywordtype}{void})
+00544 \{
+00545 
+00546     \textcolor{comment}{// Setup fast timer for analog level polling }
+00547 
+00548     T1CONbits.TON    = 0;                    \textcolor{comment}{// Disable Timer}
+00549     T1CON            = 0;                    \textcolor{comment}{// Clear the register}
+00550     T1CONbits.TCS    = 0;                    \textcolor{comment}{// Internal clock Fosc/4}
+00551     T1CONbits.TGATE  = 0;                    \textcolor{comment}{// Disable Gated Timer mode}
+00552     T1CONbits.TCKPS  = 0;                    \textcolor{comment}{// 1:1 prescaling}
+00553 
+00554     TMR1             = 0x00;                 \textcolor{comment}{// Clear timer register}
+00555 
+00556     PR1 = (\hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{FOSC\_CPU}/2)/\hyperlink{a00021_a8127170b687c1f67a968886c128e76e4}{SCAN\_FREQ};
+00557 
+00558     IPC0bits.T1IP    = 0x06;                 \textcolor{comment}{// Set Timer1 Interrupt Priority Level}
+00559     IFS0bits.T1IF    = 0;                    \textcolor{comment}{// Clear the Timer1 Interrupt Flag}
+00560     IEC0bits.T1IE    = 1;                    \textcolor{comment}{// Enable Timer1 Interrupt Service Routine}
+00561 
+00562 
+00563     T1CONbits.TON    = 1;                    \textcolor{comment}{//Start Timer 1}
+00564 
+00565 \}
+00566 
+00567 
+00568 
+00569 
+00570 
+00578 \textcolor{keyword}{static} \textcolor{keywordtype}{void} algorithm\_init(\textcolor{keywordtype}{void})
+00579 \{
+00580 
+00581     \textcolor{comment}{/* Prepare events to be used during runtime */}
+00582     
+00583     \textcolor{comment}{// Supervision timer}
+00584     algorithm\_data.\hyperlink{a00016_af13eb2dcaed3eca6506489f8ad8fa768}{supervision\_timer}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}                 = 
+      \hyperlink{a00038_aff3e3d622fcd96787628167d3c1856f9}{algorithm\_id};
+00585     algorithm\_data.\hyperlink{a00016_af13eb2dcaed3eca6506489f8ad8fa768}{supervision\_timer}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}                 = 
+      \hyperlink{a00016_aededd1ab0a512a03f6cb0d3459b254e1}{X\_NTF\_SUPERVISION\_TIMER};
+00586 
+00587    \textcolor{comment}{// Wake event}
+00588     algorithm\_data.\hyperlink{a00016_ad6a897cbacf5ae6902272ee198d5cd23}{wake\_event}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}                        = 
+      \hyperlink{a00038_aff3e3d622fcd96787628167d3c1856f9}{algorithm\_id};
+00589     algorithm\_data.\hyperlink{a00016_ad6a897cbacf5ae6902272ee198d5cd23}{wake\_event}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}                        = 
+      \hyperlink{a00016_ae6be514b1d949dc71420a3e549772995}{X\_MSG\_WAKE\_EVENT};
+00590 
+00591 
+00592     \textcolor{comment}{// Cfg event}
+00593     algorithm\_data.\hyperlink{a00016_a461881ff0583945fd26ee6d5faf8ce1b}{config\_event}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}                      = 
+      \hyperlink{a00038_aff3e3d622fcd96787628167d3c1856f9}{algorithm\_id};
+00594     algorithm\_data.\hyperlink{a00016_a461881ff0583945fd26ee6d5faf8ce1b}{config\_event}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}                      = 
+      \hyperlink{a00016_a410c7d83b819fa283303a53830c87a96}{X\_MSG\_CONFIGURE\_EVENT};
+00595 
+00596    
+00597 
+00598     \textcolor{comment}{//mfield x sensor module configuration message}
+00599     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.
+      \hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}  = \hyperlink{a00019_a19a33e680bf19d1aed76750132ed8b64}{mfield\_x\_sen\_id};
+00600     algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.\hyperlink{a00019_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.
+      \hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}  = \hyperlink{a00019_aa16cf9dd51c7cbef48581b7862153ced}{X\_NTF\_MFIELD\_X\_SENSOR\_CONFIG};
+00601     memset(&algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.
+      \hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message},0,\textcolor{keyword}{sizeof}(algorithm\_data.\hyperlink{a00016_a1bfdf4869db9c4f125b763d2e27c6c08}{mfield\_sensor\_x\_configure}.
+      \hyperlink{a00019_ae926905663cb8ca01f1bc2d670e428f5}{message}));
+00602 
+00603 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00604     \textcolor{comment}{//mfield y sensor module configuration message}
+00605     algorithm\_data.mfield\_sensor\_y\_configure.notify.task\_id  = \hyperlink{a00019_a99c4ad3cf8b9ce2b67351d6edf48f937}{mfield\_y\_sen\_id};
+00606     algorithm\_data.mfield\_sensor\_y\_configure.notify.message  = X\_NTF\_MFIELD\_Y\_SENSOR\_CONFIG;
+00607     memset(&algorithm\_data.mfield\_sensor\_y\_configure.message,0,\textcolor{keyword}{sizeof}(algorithm\_data.
+      mfield\_sensor\_y\_configure.message));
+00608 \textcolor{preprocessor}{#endif}
+00609 
+00610 
+00611 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+00612     \textcolor{comment}{//light sensor module configuration message}
+00613     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.
+      \hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}     = \hyperlink{a00018_a757e7771170ace1d9f8519bd318ec64a}{light\_sen\_id};
+00614     algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.
+      \hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}     = \hyperlink{a00018_ac8c3accc8173c965137b300542e451e6}{X\_NTF\_LIGHT\_SENSOR\_CONFIG};
+00615     memset(&algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message},0,\textcolor{keyword}{sizeof}(
+      algorithm\_data.\hyperlink{a00016_a8fc7528336e37724802eb52753c7b7a6}{light\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}));
+00616 \textcolor{preprocessor}{#endif}
+00617 
+00618     \textcolor{comment}{//ir sensor module configuration message}
+00619     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}        = 
+      \hyperlink{a00017_a624782f67b3870f0dde83528770ef5fc}{ir\_sen\_id};
+00620     algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}        = 
+      \hyperlink{a00017_abb12b7d6a5f3479f552b928bb008d7cd}{X\_NTF\_IR\_SENSOR\_CONFIG};
+00621     memset(&algorithm\_data.\hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message},0,\textcolor{keyword}{sizeof}(algorithm\_data.
+      \hyperlink{a00016_ac6483a3473f539f671660ae458d889d3}{ir\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}));
+00622 
+00623      \textcolor{comment}{//uv sensor module configuration message}
+00624     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}        = 
+      \hyperlink{a00020_afd789f3f9ea182d28d4f16db0d8d5652}{uv\_sen\_id};
+00625     algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}        = 
+      \hyperlink{a00020_a08b676499fdf9649e575ed49e9197e13}{X\_NTF\_UV\_SENSOR\_CONFIG};
+00626     memset(&algorithm\_data.\hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message},0,\textcolor{keyword}{sizeof}(algorithm\_data.
+      \hyperlink{a00016_af1ff980a38b896c99e86279a3c67f00d}{uv\_sensor\_configure}.\hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}));
+00627 
+00628     \textcolor{comment}{//alarm reset request}
+00629     algorithm\_data.\hyperlink{a00016_a5ef7ebf1a1e20f770d46232ab2be8312}{clear\_alarm\_ir}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}                    = 
+      \hyperlink{a00017_a624782f67b3870f0dde83528770ef5fc}{ir\_sen\_id};
+00630     algorithm\_data.\hyperlink{a00016_a5ef7ebf1a1e20f770d46232ab2be8312}{clear\_alarm\_ir}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}                    = 
+      \hyperlink{a00021_a55be0f14bd98010fdd4ff546f8cffefd}{X\_NTF\_CLR\_ALARM\_IR\_SEN};
+00631 
+00632     algorithm\_data.\hyperlink{a00016_a5d8e57dd19de326e75625a8704cfceee}{clear\_alarm\_uv}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}                    = 
+      \hyperlink{a00020_afd789f3f9ea182d28d4f16db0d8d5652}{uv\_sen\_id};
+00633     algorithm\_data.\hyperlink{a00016_a5d8e57dd19de326e75625a8704cfceee}{clear\_alarm\_uv}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}                    = 
+      \hyperlink{a00021_a1127762abb3a1aeb79d23421b2f00493}{X\_NTF\_CLR\_ALARM\_UV\_SEN};
+00634 
+00635 
+00636     algorithm\_data.\hyperlink{a00016_a57101a48bdde96a0db1ec63892095f7c}{clear\_alarm\_mfield\_x}.\hyperlink{a00036_a21b41e494a28583d4da10f1afb1c5328}{task\_id}              = 
+      \hyperlink{a00017_a624782f67b3870f0dde83528770ef5fc}{ir\_sen\_id};
+00637     algorithm\_data.\hyperlink{a00016_a57101a48bdde96a0db1ec63892095f7c}{clear\_alarm\_mfield\_x}.\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message}              = 
+      \hyperlink{a00021_a55be0f14bd98010fdd4ff546f8cffefd}{X\_NTF\_CLR\_ALARM\_IR\_SEN};
+00638 
+00639 
+00640     
+00641     \textcolor{comment}{/* Initialize device */}
+00642     \textcolor{comment}{// Restore pre-poweron state from non-volatile storage    }
+00643     \textcolor{keywordflow}{if}(\hyperlink{a00029_a8ad2f815848f1668763c01ff9d45a01b}{nov\_init}() !=0)
+00644     \{
+00646         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record.system\_error\_flags.bits.storage = 1;
+00647         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.is\_valid = 
+      \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00648         \hyperlink{a00029_ada4ee53cb163a9ed3e2b4a5c7192690a}{nov\_set\_default}(0);
+00649     \}
+00650       
+00651 
+00652     \textcolor{comment}{// Request main task to configure the system}
+00653     \hyperlink{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\_send\_event}(&algorithm\_data.\hyperlink{a00016_a461881ff0583945fd26ee6d5faf8ce1b}{config\_event});
+00654 
+00655 \}
+00656 
+00657 
+00658 
+00659 
+\hypertarget{a00038_source_l00670}{}\hyperlink{a00038_a42ed16c7ef20e0c0031fe7ba7ae377b3}{00670} \textcolor{keywordtype}{void} \hyperlink{a00038_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\_wake}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} event)
+00671 \{
+00672 
+00673     \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} result = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00674 
+00675     \textcolor{keywordflow}{if}((event == \hyperlink{a00021_a0cec8cae6d70499e62b4251e5843497d}{EVENT\_SV\_ALARM})&&(logv.\hyperlink{a00021_a32ebd32977bc9831cd68530b2b7ec664}{trip\_active} == 
+      \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}))\{
+00676 
+00677         \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.ir\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})\{
+00678         \textcolor{keywordflow}{switch}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.criterion.all)
+00679         \{
+00680 
+00681                  \textcolor{keywordflow}{case}  \hyperlink{a00016_a78bbb321092eab3b988cf0c89bf0a572}{TYPE\_IR\_MF}:
+00682                 \{
+00683                       \textcolor{keywordflow}{if}(
+00684                           
+00685                            (algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_x\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})                         
+00686                             &&
+00687                            (algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state > 
+      \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0})
+00688                            )
+00689                                 result = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00690                        \textcolor{keywordflow}{else}
+00691 
+00692 
+00693                        \textcolor{keywordflow}{if}(\hyperlink{a00017_a86870a0e00601a92277e689447739ce9}{ir\_sen\_hif\_check}() > 2)
+00694                         result = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00695 
+00696                 \}\textcolor{keywordflow}{break};
+00697 
+00698                  \textcolor{keywordflow}{case}  \hyperlink{a00016_a88096870f430e03f71e1f390c67f09ce}{TYPE\_IR\_MF\_UV}:
+00699                 \{
+00700                    \textcolor{keywordflow}{if}(
+00701                         (algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_x\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00702                         &&
+00703                         (algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00704                         )
+00705                             result = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00706                        \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT}))
+00707                        \{
+00708 
+00709                                        \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.processing == 1)\{
+00710 
+00711                                            \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.ready  == 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})\{
+00712                                                 \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.result == 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})
+00713                                                 \{
+00714                                                         algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.
+      processing = 0;
+00715                                                         \hyperlink{a00017_a1c9872e93491d95a24ab0bc723d39a74}{ir\_record\_reset}(
+      \hyperlink{a00017_aaa1c1ffe30eff38b979b1af9d4e4ef19}{HIF});
+00716                                                         \textcolor{keywordflow}{if}((algorithm\_data.
+      \hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT}))
+00717                                                         result = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00718 
+00719                                                 \}
+00720                                               \textcolor{keywordflow}{else}
+00721                                                 \{
+00722                                                     algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.processing 
+      = 0;
+00723 
+00724                                                     \hyperlink{a00017_a1c9872e93491d95a24ab0bc723d39a74}{ir\_record\_reset}(
+      \hyperlink{a00017_aaa1c1ffe30eff38b979b1af9d4e4ef19}{HIF});
+00725 
+00726                                                     algorithm\_data\_mark\_false\_postives();
+00727 
+00728 
+00729                                                 \}
+00730                                           \}
+00731 
+00732                                      \}
+00733                                      \textcolor{keywordflow}{else}
+00734                                      \{
+00735 
+00736                                                \textcolor{keywordflow}{if}((\hyperlink{a00017_a86870a0e00601a92277e689447739ce9}{ir\_sen\_hif\_check}() > 0))
+00737                                                \{
+00738 
+00739                                                    algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.all = 0;
+00740                                                    algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.processing =
+       1;
+00741                                                        \textcolor{comment}{//linear correlation function requires about 200us
+       to return,}
+00742                                                        \textcolor{comment}{//therefore,low priority function will be used to
+       execute this procedure}
+00743                                                         
+      \hyperlink{a00038_a85471d58eae93d5d7e7e2b52e2b915d3}{algorithm\_message\_arrived\_ntf\_isr}(
+      \hyperlink{a00021_a51725fc3a4c26625f15db1274791d961}{IRQ\_SOURCE\_HIF\_EVENT});
+00744 
+00745 
+00746                                                         \textcolor{comment}{//TODO:clear all timers}
+00747                                                \}
+00748 
+00749                                     \}
+00750                       \}\textcolor{keywordflow}{else}
+00751                           algorithm\_data\_mark\_false\_postives();
+00752 
+00753 
+00754                 \}\textcolor{keywordflow}{break};
+00755 
+00756 
+00757                  \textcolor{keywordflow}{default}:
+00758                 \{
+00759 
+00760                       \textcolor{keywordflow}{if}(
+00761                         (algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_x\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00762                         &&
+00763                         (algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00764                         )
+00765                             result = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00766                        \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT}))
+00767                        \{
+00768 
+00769                            algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif\_checklist.all = 
+      \hyperlink{a00017_a86870a0e00601a92277e689447739ce9}{ir\_sen\_hif\_check}();
+00770 
+00771                            \textcolor{keywordflow}{if}((algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif\_checklist.all > 0))
+00772                            \{
+00773 
+00774                                \hyperlink{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{IRQ\_CTX\_T}   irq\_ctx;
+00775                                \hyperlink{a00033_a357168bbe78739811cdb7b5576714ca6}{IRQ\_DISABLE}(irq\_ctx);
+00776                                  \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} correlation\_result = algorithm\_liner\_correlation(&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.hif\_diagonesis\_records,MAX\_EVENT\_OBSERVATION\_LENGTH);
+00777                                \hyperlink{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{IRQ\_ENABLE}(irq\_ctx);
+00778                                
+00779                                \textcolor{comment}{//linear correlation function requires about 236us to return,with 60MIP}
+00780                                \textcolor{comment}{//therefore,we update global tick by 2 sample time}
+00781                                logv.\hyperlink{a00021_a81f0ce68c2c483fb8df726cc1988d8e8}{tick} +=2;
+00782 
+00783                                  \textcolor{keywordflow}{if}(correlation\_result >= 80)\{
+00785                                      result = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00786                                  \}
+00787                                  \textcolor{keywordflow}{else}
+00788                                  \textcolor{keywordflow}{if}
+00789                                  (
+00790                                  (correlation\_result > 50)
+00791                                  &&
+00792                                  algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif\_checklist.bits.itoi
+00793                                  &&
+00794                                  algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif\_checklist.bits.ptop
+00795                                  )
+00796                                 \{
+00797                                   result = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00798                                 \}
+00799                                  \textcolor{keywordflow}{else}
+00800                                 algorithm\_data\_mark\_false\_postives();
+00801 
+00802                                \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.hif\_diagonesis\_records
+      .head = 0;
+00803                                \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.hif\_diagonesis\_records
+      .mean\_value = 0;
+00804 
+00805                            \}
+00806 
+00807                                     
+00808                       \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_x\_sen.fields.state ==
+       \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0})\{
+00809                             algorithm\_data\_mark\_false\_postives();
+00810                       \} 
+00811                        
+00812 
+00813                 \}\textcolor{keywordflow}{break};
+00814 
+00815         \}
+00816 
+00817 
+00818         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.mfield\_x\_sen.fields.state == 
+      \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0})\{
+00819             \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})
+00820             algorithm\_data\_mark\_false\_postives();
+00821         \}
+00822         
+00823         
+00824         
+00825 
+00826 
+00827         \textcolor{keywordflow}{if}(result == \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})\{
+00828             \hyperlink{a00058_a0af9eae455fbdf4e77def5bfffa109cb}{hwio\_execute\_gpio\_task}(\hyperlink{a00058_abcbef2f48463bed54ae1c045303dbab8}{HWIO\_ALARM\_ON});
+00829             logv.\hyperlink{a00021_a32ebd32977bc9831cd68530b2b7ec664}{trip\_active}   = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00830              logv.\hyperlink{a00021_a11ed024c2cc5c53c79b2c0a8b35e3c06}{disturbance\_record}.bits.\hyperlink{a00021_a11ea0eda9ab27873198e7a5c4be4337d}{wr} = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00837             memset(&algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm,0,\textcolor{keyword}{sizeof}(algorithm\_data.
+      \hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm));
+00838             logv.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.set  = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00839             logv.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.cnt  = \hyperlink{a00021_afb154043998a164232751d1c030e8650}{DR\_RECHECK\_TIME};
+00840             logv.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.type = \hyperlink{a00021_a6e67f9a00e51668436c0395616f43e88}{DR\_RECHECK};
+00841 
+00842         \}
+00843         
+00844     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event == \hyperlink{a00021_a602c125746b241f3a37e9fd5f43412b0}{EVENT\_CLEARED})\{
+00845 
+00846           \hyperlink{a00058_a0af9eae455fbdf4e77def5bfffa109cb}{hwio\_execute\_gpio\_task}(\hyperlink{a00058_a17401c2732dee3a19b55a210870b6d8d}{HWIO\_ALARM\_OFF});
+00847           logv.\hyperlink{a00021_a32ebd32977bc9831cd68530b2b7ec664}{trip\_active}   = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00848           
+00849     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event == \hyperlink{a00021_a6e67f9a00e51668436c0395616f43e88}{DR\_RECHECK})\{
+00850                     
+00851             \textcolor{keywordflow}{if}(
+00852               (algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.ir\_sen.fields.post\_act\_data\_ready == 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})
+00853              )\{
+00854 
+00859            \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.new\_dr = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+00860            logv.\hyperlink{a00021_a11ed024c2cc5c53c79b2c0a8b35e3c06}{disturbance\_record}.bits.\hyperlink{a00021_a11ea0eda9ab27873198e7a5c4be4337d}{wr} = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00861        \hyperlink{a00038_a85471d58eae93d5d7e7e2b52e2b915d3}{algorithm\_message\_arrived\_ntf\_isr}(
+      \hyperlink{a00021_acfd80444497090bce928df199247a0ec}{IRQ\_DR\_READY});
+00862 
+00864            \textcolor{keywordflow}{if}(\hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.all != 0)
+00865                \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.all = 0;
+00866 
+00867 
+00868        \}
+00869        \textcolor{keywordflow}{else}
+00870           \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00871 
+00872             logv.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.set  = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+00873             logv.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.cnt  = 0;
+00874             logv.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}.type = 0;
+00875 
+00876        
+00877 
+00878     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event == 0\textcolor{comment}{/*internal event*/})\{
+00879 
+00880 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+00881     \textcolor{keywordflow}{if}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record.system\_error\_flags.bits.power\_supply == 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE})
+00882        \hyperlink{a00029_a90aef186f45a15d94bf0247122194991}{nov\_store}();
+00883 
+00885 \textcolor{preprocessor}{#endif}
+00886       
+00887     \}
+00888 
+00889 \}
+00890 
+00891 
+00898  \textcolor{keyword}{static} \textcolor{keywordtype}{void} algorithm\_data\_mark\_false\_postives(\textcolor{keywordtype}{void})\{
+00899 
+00900    
+00901         \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.ir\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})\{
+00902             \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.armed == 0)\{
+00903               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.delay = algorithm\_data.
+      \hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.samples\_per\_period;
+00904               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.armed = 1;
+00905               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.cnt = 0;
+00906             \}\textcolor{keywordflow}{else}
+00907             \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.delay == 0)\{
+00908               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.cnt++;
+00909               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.delay = algorithm\_data.
+      \hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.samples\_per\_period;
+00910 
+00911               \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.cnt > 2\textcolor{comment}{/*3 cycles*/})\{
+00913                \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_a5ef7ebf1a1e20f770d46232ab2be8312}{clear\_alarm\_ir});
+00914                algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.cnt = 0;
+00915                \}
+00916             \}
+00917         \}
+00918 
+00919         \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{modules\_state\_sv}.uv\_sen.fields.state == 
+      \hyperlink{a00021_a1eb14cc432874ddacd1934791dbe12a3}{HOT})\{
+00920             \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.armed == 0)\{
+00921               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.delay  = algorithm\_data.
+      \hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.samples\_per\_period;
+00922                algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.armed = 1;
+00923                algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.cnt   = 0;
+00924             \}\textcolor{keywordflow}{else}
+00925             \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.delay == 0)\{
+00926               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.cnt++;
+00927               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.delay = algorithm\_data.
+      \hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.samples\_per\_period;
+00928 
+00929               \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.cnt > 2\textcolor{comment}{/*3 cycles*/})\{
+00931               \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_a5d8e57dd19de326e75625a8704cfceee}{clear\_alarm\_uv});
+00932               algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.cnt=0;
+00933               \}
+00934 
+00935             \}
+00936         \}
+00937 
+00938        
+00939 \}
+00940 
+00941 
+00942 
+00943        
+00944 
+\hypertarget{a00038_source_l00950}{}\hyperlink{a00038_a126f3d78a95341a19a3e862e57357952}{00950} \textcolor{keywordtype}{void} \hyperlink{a00038_a126f3d78a95341a19a3e862e57357952}{msg\_to\_mem}(\textcolor{keywordtype}{void}* dest,\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}* msg,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} size,\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} base)\{
+00951 
+00952  
+00953         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc   = 0;
+00954         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} var  = 0;
+00955         \textcolor{keywordflow}{if}(base == 8)\{
+00956         \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}* dst8 = (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)dest;
+00957         \textcolor{keywordflow}{for} (var = 0; var < size; ++var) \{         
+00958             *(dst8+var)= \hyperlink{a00031_aa76f5237babd71f1484bb2dbc6aa0f8d}{serial\_make8}(msg,cc);
+00959             cc +=2;
+00960         \}
+00961         \}
+00962         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(base == 16)\{
+00963         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}* dst8 = (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}*)dest;    
+00964             
+00965         \textcolor{keywordflow}{for} (var = 0; var < size; ++var) \{         
+00966             *(dst8+var)= \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(msg,cc);
+00967             cc +=4;
+00968         \}
+00969         \}
+00970 
+00971 \}
+00972 
+00973 
+00974 
+00983 \textcolor{keyword}{static} \textcolor{keywordtype}{void} algorithm\_cmd\_handler(\textcolor{keywordtype}{void})
+00984 \{
+00985     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cmd;
+00986     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} * arg\_buff;
+00987     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  arg\_cnt;
+00988 
+00989 
+00990     \textcolor{keywordflow}{if}(\hyperlink{a00031_a366b2707f4c7d76f0efc1b5cdde8e37e}{serial\_get\_command}(&cmd,&arg\_buff,&arg\_cnt) == 0)
+00991     \{
+00992 
+00993         \textcolor{keywordflow}{if}(arg\_cnt < 4\textcolor{comment}{/*message structure minimum length*/})
+00994             \textcolor{comment}{//  commands use at least 6 characters}
+00995             \textcolor{keywordflow}{return};
+00996 
+00997         memset(algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg},0,\textcolor{keyword}{sizeof}(algorithm\_data.
+      \hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}));
+00998 
+00999         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location   = NULL;
+01000         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset     = 0;
+01001         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length     = 0;
+01002 
+01003 
+01004         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd}                   = cmd;
+01005         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[0]                = (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})
+      \hyperlink{a00031_aa76f5237babd71f1484bb2dbc6aa0f8d}{serial\_make8}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} *)arg\_buff,0);
+01006         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1]                = (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})
+      \hyperlink{a00031_aa76f5237babd71f1484bb2dbc6aa0f8d}{serial\_make8}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} *)arg\_buff,2);
+01007 
+01008 
+01009 \textcolor{preprocessor}{#if (DEVICE == AQ0X\_V0)}
+01010         \textcolor{keywordflow}{if}((cmd == \hyperlink{a00021_a7c6a5f4023cb02d02f2ded23147be425}{CMD\_DEVICE\_ADDRESS}))\{
+01011            \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.device\_address = (
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1];
+01012            algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01013            algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01014            
+01015            \hyperlink{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}{serial\_send\_response}(algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg});
+01016            \hyperlink{a00031_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+01017            
+01018            \textcolor{keywordflow}{return};
+01019         \}
+01020 \textcolor{preprocessor}{#endif}
+01021 
+01022 
+01023 
+01024 
+01025         \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1\textcolor{comment}{/*address*/}] != 
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.device\_address)\{
+01026             \hyperlink{a00031_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+01027            \textcolor{keywordflow}{return};
+01028         \}
+01029         \textcolor{keywordflow}{switch}(cmd)
+01030         \{
+01031 
+01032           \{    
+01033                  \textcolor{keywordflow}{case}  \hyperlink{a00021_af91ff280feea1f52e3bdd7f0f556d153}{CMD\_INSTALLATION\_DITAILS}:
+01034                 \{
+01035 
+01036                          \textcolor{keywordflow}{if}(arg\_cnt == 28 \textcolor{comment}{/*expected argument length*/})
+01037                          \{
+01038                             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} directive\_msg =  \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01039                             \textcolor{keywordflow}{if}(directive\_msg&0x0001)\{\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.system\_info.rated\_current= \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,12);\}
+01040                             
+01041                             \textcolor{keywordflow}{if}(directive\_msg&0x0002)\{\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.system\_info.sh\_current= \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,16);\}
+01042                             
+01043                                            
+01044                             \textcolor{keywordflow}{if}(directive\_msg&0x0004)\{\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.system\_info.freq= \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,20);\}
+01045                             
+01046                          
+01047                             \textcolor{keywordflow}{if}(directive\_msg&0x0008)\{\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.system\_info.min\_distance= \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,24);\}  
+01048                             
+01049                             algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01050                         
+01051                             
+01052                           \}\textcolor{keywordflow}{else}\{
+01053                             algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01054 
+01055                           \}
+01056                             algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01057 
+01058                 \}\textcolor{keywordflow}{break};
+01059         \}          
+01060                             
+01061 
+01062                 \textcolor{keywordflow}{case}  \hyperlink{a00021_ac361dc1b32c1036394be0fd7de1182ca}{CMD\_SIGNAL\_THRESHOLDS}:
+01063                 \{
+01064                         \textcolor{keywordflow}{if}(arg\_cnt == 20)
+01065                          \{
+01066                             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} directive\_msg =  \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01067                             
+01068                             \textcolor{keywordflow}{if}(directive\_msg&0x0001)\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.thresholds.ir\_level\_max = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,12);
+01069                             
+01070                             \textcolor{keywordflow}{if}(directive\_msg&0x0002)\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.thresholds.uv\_level\_max = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,16);
+01071                             
+01072                             algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01073                           
+01074                           \}\textcolor{keywordflow}{else}
+01075                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01076 
+01077                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01078                 \}\textcolor{keywordflow}{break};
+01079 
+01080 
+01081 
+01082 
+01083                 \textcolor{keywordflow}{case}  \hyperlink{a00021_a3a15793e3ab7817f2429edf04de693a0}{CMD\_EVENT\_ANALYSIS}:
+01084                 \{
+01085                           \textcolor{keywordflow}{if}(arg\_cnt == 32)
+01086                           \{
+01087                              \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} directive\_msg =  \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01088                           
+01089                              \textcolor{keywordflow}{if}(directive\_msg&0x0001)\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.thresholds.min\_number\_of\_observation = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,12);
+01090                           
+01091                              \textcolor{keywordflow}{if}(directive\_msg&0x0002)\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.thresholds.probablity\_max            = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,16);
+01092                           
+01093                              \textcolor{keywordflow}{if}(directive\_msg&0x0004)\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      installation.thresholds.probablity\_min            = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,20);
+01094                           
+01095                              \textcolor{keywordflow}{if}(directive\_msg&0x0008)\{
+01096 
+01097                                  \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.trip\_criteria.
+      active\_modules.all  = (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8})\hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,24);
+01098                                  \textcolor{comment}{//TODO: set active\_modules, and criterial }
+01099                                \textcolor{comment}{// data\_non\_volatile.device\_data.installation.trip\_criteria.all             
+           = (Uint8)serial\_make16(arg\_buff,28);}
+01100                              
+01101                              \}
+01102 
+01103                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01104                           
+01105                           \}\textcolor{keywordflow}{else}
+01106                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01107 
+01108                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01109 
+01110                 \}\textcolor{keywordflow}{break};
+01111 
+01112 
+01113           
+01114 
+01115             
+01116                  \textcolor{keywordflow}{case}  \hyperlink{a00021_a1d8673a7ca545f3e382fc538f543ab72}{CMD\_RUN\_TIME\_OPTIONS}:
+01117                 \{
+01118                          \textcolor{keywordflow}{if}(arg\_cnt == 16)
+01119                          \{
+01120                              \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.options.all = 
+      \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,12);
+01121                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01122                          \}\textcolor{keywordflow}{else}
+01123                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01124 
+01125                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01126                             
+01127 
+01128                 \}\textcolor{keywordflow}{break};
+01129 
+01130 
+01131 
+01132 
+01133 
+01134                  \textcolor{keywordflow}{case} \hyperlink{a00021_a7df85bf97a6a032220d7a71c78be5206}{CMD\_COMMIT}:
+01135                 \{
+01136                          \textcolor{keywordflow}{if}(arg\_cnt == 4)
+01137                          \{
+01138                              \hyperlink{a00029_a90aef186f45a15d94bf0247122194991}{nov\_store}();
+01139                            
+01140                         \textcolor{comment}{// Request main task to configure the system}
+01141                              \hyperlink{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\_send\_event}(&algorithm\_data.
+      \hyperlink{a00016_a461881ff0583945fd26ee6d5faf8ce1b}{config\_event});
+01142                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01143                          \}\textcolor{keywordflow}{else}
+01144                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01145 
+01146                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01147 
+01148                 \}\textcolor{keywordflow}{break};
+01149 
+01150 
+01151 
+01152 
+01153                 \textcolor{keywordflow}{case} \hyperlink{a00021_a8ad7dae51114833acbb665d703d8ffeb}{CMD\_FACTORY\_DEFAULT}:
+01154                 \{
+01155                          \textcolor{keywordflow}{if}(arg\_cnt == 4)
+01156                          \{
+01157                             \hyperlink{a00029_ada4ee53cb163a9ed3e2b4a5c7192690a}{nov\_set\_default}(\hyperlink{a00029_aa3471d8e4814035dc24211c0890899bb}{NOV\_OVERWRITE\_ALL});
+01158                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01159                          \}\textcolor{keywordflow}{else}
+01160                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01161 
+01162                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01163                 \}\textcolor{keywordflow}{break};
+01164 
+01165 
+01166 
+01167                  \textcolor{keywordflow}{case}  \hyperlink{a00021_a8c7ce698ee79d20e30eb0ac08f0d9abc}{CMD\_LOAD\_IR\_DATA}:
+01168                 \{
+01170                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01171 
+01172                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01173 
+01174                     \textcolor{keywordflow}{if}(offset == 0)
+01175                         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir.post\_act\_data.emu\_data\_en 
+      = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+01176                     
+01177 
+01178                      \textcolor{keywordflow}{if}(((offset+length) <= \hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}*\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})) && (length%\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})==0))
+01179                       \{
+01180 
+01181                        \hyperlink{a00038_a126f3d78a95341a19a3e862e57357952}{msg\_to\_mem}((\hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.
+      \hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[\hyperlink{a00058_a1fae4d2e8dd35f504ec4170044da7e73}{ANA\_INDEX\_IR}] + offset/\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})),arg\_buff+12,length/\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}),16);
+01182 
+01183                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01184 
+01185                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3] = offset+length;
+01186 
+01187                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 4;
+01188                          
+01189                    
+01190 
+01191                      \}\textcolor{keywordflow}{else}\{
+01192 
+01193                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01194 
+01195                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01196                      \}
+01197 
+01198                 \}\textcolor{keywordflow}{break};
+01199 
+01200 
+01201                 \textcolor{keywordflow}{case}  \hyperlink{a00021_afc4f83cb04e57ee185a039b10e19e297}{CMD\_LOAD\_HIF\_REFERENCE\_DATA}:
+01202                 \{
+01204                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01205 
+01206                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01207 
+01208                     \textcolor{keywordflow}{if}(offset == 0)
+01209                         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir.post\_act\_data.emu\_data\_en 
+      = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+01210 
+01211 
+01212                      \textcolor{keywordflow}{if}(((offset+length) <= MAX\_EVENT\_OBSERVATION\_LENGTH*\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})) && (length%\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})==0))
+01213                       \{
+01214 
+01215                          \hyperlink{a00038_a126f3d78a95341a19a3e862e57357952}{msg\_to\_mem}((\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.
+      buffer + offset/\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})),arg\_buff+12,length/\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}),16);
+01216 
+01217                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01218 
+01219                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3] = offset+length;
+01220 
+01221                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 4;
+01222 
+01223 
+01224                          \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3] == MAX\_EVENT\_OBSERVATION\_LENGTH*\textcolor{keyword}{
+      sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}))\{
+01225                              \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc;
+01226                              \textcolor{keywordflow}{for}(cc = 0;cc < \hyperlink{a00022_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH};cc++)
+01227                                 \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value +=
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.buffer[cc];
+01228 
+01229                              \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value    /=
+      MAX\_EVENT\_OBSERVATION\_LENGTH;
+01230 
+01231                              \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.std\_deviation = 
+      \hyperlink{a00038_a97eb6437dda088f144d791e49cd3dc2a}{algorithm\_get\_std\_deviation}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.
+      ref\_signal.buffer
+01232                                                                                       ,
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.ref\_signal.mean\_value
+01233                                                                                       ,
+      MAX\_EVENT\_OBSERVATION\_LENGTH);
+01234 
+01235                          \}
+01236 
+01237 
+01238 
+01239                      \}\textcolor{keywordflow}{else}\{
+01240 
+01241                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01242 
+01243                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01244                      \}
+01245 
+01246                 \}\textcolor{keywordflow}{break};
+01247                 
+01248 
+01249 
+01250                   \textcolor{keywordflow}{case}  \hyperlink{a00021_a8904f57ef5850374dbcdbe67eb8a5543}{CMD\_LOAD\_UV\_DATA}:
+01251                 \{
+01253                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01254                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01255 
+01256                     \textcolor{keywordflow}{if}(offset == 0)
+01257 
+01258                         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.uv.post\_act\_data.emu\_data\_en 
+      = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+01259 
+01260 
+01261                     
+01262                      \textcolor{keywordflow}{if}(((offset+length) <= \hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}*\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})) && (length%\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})==0))
+01263                       \{
+01264 
+01265                        \hyperlink{a00038_a126f3d78a95341a19a3e862e57357952}{msg\_to\_mem}((\hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.
+      \hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[\hyperlink{a00058_af523b82e94e382153f1313307c5bd879}{ANA\_INDEX\_UV}] + offset/\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})),arg\_buff+12,length/\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}),16);
+01266 
+01267                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01268                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3] = offset+length;
+01269                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 4;
+01270                       \}\textcolor{keywordflow}{else}\{
+01271                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01272                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01273                       \}
+01274 
+01275                 \}\textcolor{keywordflow}{break};
+01276 
+01277 
+01278 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+01279                  \textcolor{keywordflow}{case}  CMD\_EMU\_LIGHT\_DATA:
+01280                 \{
+01282                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01283                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01284 
+01285                     \textcolor{keywordflow}{if}(offset == 0)
+01286                         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.light.post\_act\_data.
+      emu\_data\_en = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+01287 
+01288 
+01289             
+01290                      \textcolor{keywordflow}{if}(((offset+length) <= \hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}*\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})) && (length%\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})==0))
+01291                       \{
+01292 
+01293                        \hyperlink{a00038_a126f3d78a95341a19a3e862e57357952}{msg\_to\_mem}((\hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.
+      \hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[ANA\_INDEX\_LIGHT] + offset/\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})),arg\_buff+12,length/\textcolor{keyword}{sizeof}
+      (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}),16);
+01294 
+01295                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01296                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3] = offset+length;
+01297                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 4;
+01298                      \}\textcolor{keywordflow}{else}\{
+01299                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01300                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01301                      \}
+01302                 \}\textcolor{keywordflow}{break};
+01303 
+01304 \textcolor{preprocessor}{#endif}
+01305 
+01306                  \textcolor{keywordflow}{case}  \hyperlink{a00021_a9e5d9d302e44daccbe233d321696b12c}{CMD\_LOAD\_MAGNETIC\_FIELD\_X\_DATA}:
+01307                 \{
+01308 
+01309                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01310                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01311 
+01312                     \textcolor{keywordflow}{if}(offset == 0)
+01313                         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_x.post\_act\_data.
+      emu\_data\_en = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+01314 
+01315 
+01316                
+01317                      \textcolor{keywordflow}{if}(((offset+length) <= \hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}*\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})) && (length%\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})==0))
+01318                       \{
+01319 
+01320                        \hyperlink{a00038_a126f3d78a95341a19a3e862e57357952}{msg\_to\_mem}((\hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.
+      \hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[\hyperlink{a00058_aa797210faae0317a1b0ddace04d1257e}{ANA\_INDEX\_MFIELD\_X}] + offset/\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})),arg\_buff+12,length/\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}),16);
+01321 
+01322                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01323                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3] = offset+length;
+01324                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 4;
+01325                      \}\textcolor{keywordflow}{else}\{
+01326                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01327                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01328                      \}
+01329                 \}\textcolor{keywordflow}{break};
+01330 
+01331 
+01332 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+01333                  \textcolor{keywordflow}{case}  \hyperlink{a00021_ace011e2ba41b184650e8bd0ddbfa00d2}{CMD\_LOAD\_MAGNETIC\_FIELD\_Y\_DATA}:
+01334                 \{
+01335 
+01336                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01337                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01338 
+01339                     \textcolor{keywordflow}{if}(offset == 0)
+01340                         \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_y.post\_act\_data.
+      emu\_data\_en = \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+01341 
+01342 
+01343   
+01344                      \textcolor{keywordflow}{if}(((offset+length) <= \hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}*\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})) && (length%\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})==0))
+01345                       \{
+01346 
+01347 
+01348                        \hyperlink{a00038_a126f3d78a95341a19a3e862e57357952}{msg\_to\_mem}((\hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.
+      \hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[\hyperlink{a00058_aa2f14d4d069c5888b1d230be59751a09}{ANA\_INDEX\_MFIELD\_Y}] + offset/\textcolor{keyword}{sizeof}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16})),arg\_buff+12,length/\textcolor{keyword}{sizeof}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}),16);
+01349 
+01350                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]  = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01351                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]  = offset+length;
+01352                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 4;
+01353                      \}\textcolor{keywordflow}{else}\{
+01354                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01355                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01356                      \}
+01357                 \}\textcolor{keywordflow}{break};
+01358 
+01359 \textcolor{preprocessor}{#endif}
+01360                  \textcolor{keywordflow}{case}  \hyperlink{a00021_ac80fdfdbada05f61256bef39c2064330}{CMD\_EMU\_MODE\_SET}:
+01361                 \{
+01362                         \textcolor{keywordflow}{if}(arg\_cnt == 4)\{
+01363                             
+01364                         
+01365                         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]    = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01366                         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}   = 3;
+01367 
+01368                          \hyperlink{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}{serial\_send\_response}(algorithm\_data.
+      \hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg});
+01369                          \hyperlink{a00031_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+01370                          
+01371                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.ir       = (
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir.post\_act\_data.emu\_data\_en)?1:0;
+01372                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.uv       = (
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.uv.post\_act\_data.emu\_data\_en)?1:0;
+01373                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.mfield\_x = (
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_x.post\_act\_data.emu\_data\_en)?1:0;
+01374 \textcolor{preprocessor}{                        #ifdef MFIELD\_Y}
+01375                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.mfield\_y = (
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_y.post\_act\_data.emu\_data\_en)?1:0;
+01376 \textcolor{preprocessor}{                        #endif}
+01377                         \textcolor{keywordtype}{int} cc;
+01378                           \textcolor{keywordflow}{for}(cc = 0; cc < \hyperlink{a00034_ab6ea71f43c4869429695d697be882efe}{ANALOG\_HW\_CHANNELS};cc++)
+01379                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.head\_ptr[cc] = 0;
+01380                         
+01381                           logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all        = 0;
+01382                           
+01383                         \textcolor{keywordflow}{return};
+01384 
+01385                         \}\textcolor{keywordflow}{else}
+01386                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01387 
+01388                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01389 
+01390                 \}\textcolor{keywordflow}{break};
+01391 
+01392                  \textcolor{keywordflow}{case}  \hyperlink{a00021_a48532ee6ce8c4c41bc6a972f66998ca6}{CMD\_EMU\_MODE\_RESET}:
+01393                 \{
+01394 
+01395                         \textcolor{keywordflow}{if}(arg\_cnt == 4)\{
+01396                         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01397                         algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01398 
+01399                         \hyperlink{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}{serial\_send\_response}(algorithm\_data.
+      \hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg});
+01400                         \hyperlink{a00031_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+01401 
+01402 
+01403                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.ir       = 0;
+01404                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.uv       = 0;
+01405                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.mfield\_x = 0;
+01406                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.mfield\_y = 0;
+01407 
+01408                         \textcolor{keywordtype}{int} cc;
+01409                           \textcolor{keywordflow}{for}(cc = 0; cc < \hyperlink{a00034_ab6ea71f43c4869429695d697be882efe}{ANALOG\_HW\_CHANNELS};cc++)
+01410                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.head\_ptr[cc] = 0;
+01411 
+01412                         \textcolor{keywordflow}{return};
+01413                            
+01414                         \}\textcolor{keywordflow}{else}
+01415                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01416 
+01417                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01418                 \}\textcolor{keywordflow}{break};
+01419 
+01420 
+01421                 \textcolor{keywordflow}{case}  \hyperlink{a00021_aa5f71f685588bc4e978cd6d595a5ea81}{CMD\_CLEAR\_EMU\_DATA}:
+01422                 \{
+01423 
+01424                           \textcolor{keywordflow}{if}(arg\_cnt == 4)\{
+01425                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.ir       = 0
+      ;
+01426                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.uv       = 0
+      ;
+01427                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.mfield\_x = 0
+      ;
+01428                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.mfield\_y = 0
+      ;
+01429                           \textcolor{keywordtype}{int} cc;
+01430                           \textcolor{keywordflow}{for}(cc = 0; cc < \hyperlink{a00034_ab6ea71f43c4869429695d697be882efe}{ANALOG\_HW\_CHANNELS};cc++)
+01431                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.head\_ptr[cc] = 0;
+01432 
+01433                           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_x.post\_act\_data.
+      emu\_data\_en = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+01434                           #ifdef MFIELD\_Y
+01435                           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_y.post\_act\_data.
+      emu\_data\_en = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+01436                           #endif
+01437                           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir.post\_act\_data.
+      emu\_data\_en       = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+01438                           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.uv.post\_act\_data.
+      emu\_data\_en       = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+01439                              
+01440                           algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01441                          \}\textcolor{keywordflow}{else}
+01442                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01443 
+01444                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01445 
+01446                 \}\textcolor{keywordflow}{break};
+01447 
+01448 
+01449 
+01450 
+01451                  \textcolor{keywordflow}{case}  \hyperlink{a00021_a4412fcb90fb9171d432a624428881e70}{CMD\_DEVICE\_DATA}:
+01452                 \{
+01453                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01454                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01455                    
+01456                    \textcolor{keywordflow}{if}(length &&((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data)))
+      \{
+01457                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01458                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01459 
+01460                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data;
+01461                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01462                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01463                      \}\textcolor{keywordflow}{else}\{
+01464                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01465                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01466                      \}
+01467 
+01468                 \}\textcolor{keywordflow}{break};
+01469 
+01470 
+01471                  \textcolor{keywordflow}{case}  \hyperlink{a00021_a4dcce4fd3ff29eb6782f3228901f99cf}{CMD\_IR\_CURRENT\_RECORD}:
+01472                 \{
+01473                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01474                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01475 
+01476                     \textcolor{keywordflow}{if}(offset == 0)\{
+01477                          \textcolor{comment}{/*}
+01478 \textcolor{comment}{                         set data transmission flange so that the current data will not be}
+01479 \textcolor{comment}{                         overwritten for the duration of this and subsequent transfer}
+01480 \textcolor{comment}{                       */}
+01481                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all       = 0;
+01482                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.ir   = 1;
+01483                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(offset+length >= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.
+      ir.pre\_act\_data))\{
+01484                         \textcolor{comment}{/*}
+01485 \textcolor{comment}{                         set last data transmission flag so that serial module clears}
+01486 \textcolor{comment}{                         overwrite protection flag upon completion of transmission}
+01487 \textcolor{comment}{                       */}
+01488                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.ir\_l = 1;
+01489                     \}
+01490 
+01491 
+01492 
+01493 
+01494 
+01495                    \textcolor{keywordflow}{if}(length && ((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.ir.pre\_act\_data)))\{
+01496                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01497                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01498 
+01499                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir.pre\_act\_data;
+01500                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01501                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01502                      \}\textcolor{keywordflow}{else}\{
+01503                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01504                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01505                      \}
+01506 
+01507                 \}\textcolor{keywordflow}{break};
+01508 
+01509 
+01510                  \textcolor{keywordflow}{case}  \hyperlink{a00021_ab0e0364ddc2d95d1e5b51a3e3ff50918}{CMD\_UV\_CURRENT\_RECORD}:
+01511                 \{
+01512                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01513                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01514 
+01515 
+01516                     \textcolor{keywordflow}{if}(offset == 0)\{
+01517                         \textcolor{comment}{/*}
+01518 \textcolor{comment}{                         set data transmission flange so that the current data will not be}
+01519 \textcolor{comment}{                         overwritten for the duration of this and subsequent transfer}
+01520 \textcolor{comment}{                       */}
+01521                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all       = 0;
+01522                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.uv   = 1;
+01523                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((offset+length) >= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.uv.pre\_act\_data))\{
+01524                         \textcolor{comment}{/*}
+01525 \textcolor{comment}{                         set last data transmission flag so that serial module clears}
+01526 \textcolor{comment}{                         overwrite protection flag upon completion of transmission}
+01527 \textcolor{comment}{                       */}
+01528                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.uv\_l = 1;
+01529                     \}
+01530 
+01531                    \textcolor{keywordflow}{if}(length && ((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.uv.pre\_act\_data)))\{
+01532                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01533                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01534 
+01535                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.uv.pre\_act\_data;
+01536                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01537                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01538                      \}\textcolor{keywordflow}{else}\{
+01539                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01540                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01541                      \}
+01542                 \}\textcolor{keywordflow}{break};
+01543 
+01544 
+01545 
+01546 
+01547                  \textcolor{keywordflow}{case}  \hyperlink{a00021_ab796345ffdbc6a240b67b56583bb77c6}{CMD\_MFIELD\_X\_CURRENT\_RECORD}:
+01548                 \{
+01549                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01550                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01551 
+01552 
+01553                     \textcolor{keywordflow}{if}(offset == 0)\{
+01554                         \textcolor{comment}{/*}
+01555 \textcolor{comment}{                         set data transmission flange so that the current data will not be}
+01556 \textcolor{comment}{                         overwritten for the duration of this and subsequent transfer}
+01557 \textcolor{comment}{                       */}
+01558                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all             = 0;
+01559                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.mfield\_x   = 1;
+01560                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((offset+length) >= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.mfield\_x.pre\_act\_data))\{
+01561                         \textcolor{comment}{/*}
+01562 \textcolor{comment}{                         set last data transmission flag so that serial module clears}
+01563 \textcolor{comment}{                         overwrite protection flag upon completion of transmission}
+01564 \textcolor{comment}{                       */}
+01565                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.mfield\_x\_l = 1;
+01566                     \}
+01567 
+01568 
+01569             
+01570 
+01571                    \textcolor{keywordflow}{if}(length &&((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.mfield\_x.pre\_act\_data)))\{
+01572                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01573                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01574 
+01575                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_x.pre\_act\_data;
+01576                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01577                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01578                      \}\textcolor{keywordflow}{else}\{
+01579                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01580                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01581                      \}
+01582 
+01583                 \}\textcolor{keywordflow}{break};
+01584 
+01585 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+01586                   \textcolor{keywordflow}{case}  \hyperlink{a00021_a8ddac7f7a2a90f2d8535af02e338b1bf}{CMD\_MFIELD\_Y\_CURRENT\_RECORD}:
+01587                 \{
+01588                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01589                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01590 
+01591 
+01592 
+01593                     \textcolor{keywordflow}{if}(offset == 0)\{
+01594                         \textcolor{comment}{/*}
+01595 \textcolor{comment}{                         set data transmission flange so that the current data will not be}
+01596 \textcolor{comment}{                         overwritten for the duration of this and subsequent transfer}
+01597 \textcolor{comment}{                       */}
+01598                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all             = 0;
+01599                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.mfield\_y   = 1;
+01600                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((offset+length) >= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.mfield\_y.pre\_act\_data))\{
+01601                         \textcolor{comment}{/*}
+01602 \textcolor{comment}{                         set last data transmission flag so that serial module clears}
+01603 \textcolor{comment}{                         overwrite protection flag upon completion of transmission}
+01604 \textcolor{comment}{                       */}
+01605                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.mfield\_y\_l = 1;
+01606                     \}
+01607 
+01608 
+01609                    \textcolor{keywordflow}{if}(length &&((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.mfield\_y.pre\_act\_data)))\{
+01610                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01611                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01612 
+01613                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_y.pre\_act\_data;
+01614                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01615                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01616                      \}\textcolor{keywordflow}{else}\{
+01617                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01618                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01619                      \}
+01620 
+01621                 \}\textcolor{keywordflow}{break};
+01622 
+01623 \textcolor{preprocessor}{#endif}
+01624                  \textcolor{keywordflow}{case}  \hyperlink{a00021_a185ed5442d69c7c8abba13323a8e8187}{CMD\_HIF\_DIAGNOSIS\_RECORD}:
+01625                 \{
+01626                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01627                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01628 
+01629 
+01630 
+01631 
+01632                      \textcolor{keywordflow}{if}(length && ((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.hif\_diagonesis\_records)))\{
+01633                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01634                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01635 
+01636                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.hif\_diagonesis\_records;
+01637                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01638                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01639                      \}\textcolor{keywordflow}{else}\{
+01640                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01641                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01642                      \}
+01643 
+01644                 \}\textcolor{keywordflow}{break};
+01645 
+01646 
+01647 
+01648                  \textcolor{keywordflow}{case}  \hyperlink{a00021_ad37cd290161f0a245d189c3f4e014d4e}{CMD\_IR\_DISTURBANCE\_RECORD}:
+01649                 \{
+01650                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01651                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01652 
+01653                      \textcolor{keywordflow}{if}(offset == 0)\{
+01654                          \textcolor{comment}{/*}
+01655 \textcolor{comment}{                         set data transmission flange so that the current data will not be}
+01656 \textcolor{comment}{                         overwritten for the duration of this and subsequent transfer}
+01657 \textcolor{comment}{                       */}
+01658                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all       = 0;
+01659                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.ir   = 1;
+01660                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(offset+length >= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.
+      ir))\{
+01661                         \textcolor{comment}{/*}
+01662 \textcolor{comment}{                         set last data transmission flag so that serial module clears}
+01663 \textcolor{comment}{                         overwrite protection flag upon completion of transmission}
+01664 \textcolor{comment}{                       */}
+01665                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.ir\_l = 1;
+01666                     \}
+01667 
+01668                    \textcolor{keywordflow}{if}(length &&((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.ir)))\{
+01669                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01670                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01671 
+01672                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir;
+01673                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01674                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01675                      \}\textcolor{keywordflow}{else}\{
+01676                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01677                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01678                      \}
+01679 
+01680                 \}\textcolor{keywordflow}{break};
+01681 
+01682                  \textcolor{keywordflow}{case}  \hyperlink{a00021_ae45bb46748497c6a117beb1e93072d83}{CMD\_UV\_DISTURBANCE\_RECORD}:
+01683                 \{
+01684                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01685                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01686 
+01687 
+01688                    \textcolor{keywordflow}{if}(offset == 0)\{
+01689                          \textcolor{comment}{/*}
+01690 \textcolor{comment}{                         set data transmission flange so that the current data will not be}
+01691 \textcolor{comment}{                         overwritten for the duration of this and subsequent transfer}
+01692 \textcolor{comment}{                       */}
+01693                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all       = 0;
+01694                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.uv   = 1;
+01695                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(offset+length >= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.
+      uv))\{
+01696                         \textcolor{comment}{/*}
+01697 \textcolor{comment}{                         set last data transmission flag so that serial module clears}
+01698 \textcolor{comment}{                         overwrite protection flag upon completion of transmission}
+01699 \textcolor{comment}{                       */}
+01700                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.uv\_l = 1;
+01701                     \}
+01702 
+01703 
+01704                    \textcolor{keywordflow}{if}(length && ((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.uv)))\{
+01705                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01706                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01707 
+01708                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.uv;
+01709                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01710                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01711                      \}\textcolor{keywordflow}{else}\{
+01712                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01713                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01714                      \}
+01715 
+01716                 \}\textcolor{keywordflow}{break};
+01717 
+01718 
+01719 
+01720                 \textcolor{keywordflow}{case}  \hyperlink{a00021_ab84aea346a3f75b58f8bda67b8ae9be0}{CMD\_MFIELD\_X\_DISTURBANCE\_RECORD}:
+01721                 \{
+01722                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01723                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01724 
+01725 
+01726                     \textcolor{keywordflow}{if}(offset == 0)\{
+01727                          \textcolor{comment}{/*}
+01728 \textcolor{comment}{                         set data transmission flange so that the current data will not be}
+01729 \textcolor{comment}{                         overwritten for the duration of this and subsequent transfer}
+01730 \textcolor{comment}{                       */}
+01731                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all       = 0;
+01732                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.mfield\_x   = 1;
+01733                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(offset+length >= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.
+      mfield\_x))\{
+01734                         \textcolor{comment}{/*}
+01735 \textcolor{comment}{                         set last data transmission flag so that serial module clears}
+01736 \textcolor{comment}{                         overwrite protection flag upon completion of transmission}
+01737 \textcolor{comment}{                       */}
+01738                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.mfield\_x\_l = 1;
+01739                     \}
+01740 
+01741 
+01742                    \textcolor{keywordflow}{if}(length &&((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.mfield\_x)))\{
+01743                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01744                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01745 
+01746                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_x;
+01747                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01748                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01749                      \}\textcolor{keywordflow}{else}\{
+01750                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01751                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01752                      \}
+01753 
+01754                 \}\textcolor{keywordflow}{break};
+01755 
+01756 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+01757                 \textcolor{keywordflow}{case}  \hyperlink{a00021_af77e9c0ad32b3cc50d61992d4b64a831}{CMD\_MFIELD\_Y\_DISTURBANCE\_RECORD}:
+01758                 \{
+01759                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,4);
+01760                     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length = \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}(arg\_buff,8);
+01761 
+01762                     \textcolor{keywordflow}{if}(offset == 0)\{
+01763                          \textcolor{comment}{/*}
+01764 \textcolor{comment}{                         set data transmission flange so that the current data will not be}
+01765 \textcolor{comment}{                         overwritten for the duration of this and subsequent transfer}
+01766 \textcolor{comment}{                       */}
+01767                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all       = 0;
+01768                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.mfield\_y   = 1;
+01769                     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(offset+length >= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.
+      mfield\_y))\{
+01770                         \textcolor{comment}{/*}
+01771 \textcolor{comment}{                         set last data transmission flag so that serial module clears}
+01772 \textcolor{comment}{                         overwrite protection flag upon completion of transmission}
+01773 \textcolor{comment}{                       */}
+01774                         logv.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.bits.mfield\_y\_l = 1;
+01775                     \}
+01776 
+01777 
+01778 
+01779                    \textcolor{keywordflow}{if}(length &&((offset+length) <= \textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.
+      disturbance\_record.mfield\_y)))\{
+01780                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]                 = 
+      \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01781                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]                 = offset+length;
+01782 
+01783                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location    = (\textcolor{keywordtype}{void} *)&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_y;
+01784                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset      = offset;
+01785                        algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length      = length;
+01786                      \}\textcolor{keywordflow}{else}\{
+01787                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01788                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01789                      \}
+01790 
+01791                 \}\textcolor{keywordflow}{break};
+01792 
+01793 \textcolor{preprocessor}{#endif}
+01794                  \textcolor{keywordflow}{case}   \hyperlink{a00021_ac4c8a78ea50054745a0ac0792baa7657}{CMD\_DEVICE\_RESET}:
+01795                 \{
+01796 
+01797                           \textcolor{keywordflow}{if}(arg\_cnt == 4)
+01798                      \{
+01799                            algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01800                            algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01801                            \hyperlink{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}{serial\_send\_response}(algorithm\_data.
+      \hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg});
+01802                            \hyperlink{a00031_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+01803                            
+01804                            \_\_asm\_\_ (\textcolor{stringliteral}{"reset"});
+01805 
+01806                          \}\textcolor{keywordflow}{else}
+01807                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01808 
+01809                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01810                 \}\textcolor{keywordflow}{break};
+01811 
+01812                
+01813 
+01814                  \textcolor{keywordflow}{case}  \hyperlink{a00021_a9084e0a84e73318b6fad9841fb4d4f98}{CMD\_CLEAR\_EEPROM}:
+01815                 \{
+01817                       \textcolor{keywordflow}{if}(arg\_cnt == 4)
+01818                      \{
+01819                      memset(&\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record,0,\textcolor{keyword}{sizeof}(
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record));
+01820                              memset(&\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record,0,\textcolor{keyword}{sizeof}(
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record));
+01821                         
+01822                              \hyperlink{a00029_a90aef186f45a15d94bf0247122194991}{nov\_store}();
+01823 
+01824                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.ir       = 0
+      ;
+01825                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.uv       = 0
+      ;
+01826                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.mfield\_x = 0
+      ;
+01827                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.bits.mfield\_y = 0
+      ;
+01828 
+01829                           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_x.post\_act\_data.
+      emu\_data\_en = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+01830 \textcolor{preprocessor}{                          #ifdef MFIELD\_Y}
+01831                           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_y.post\_act\_data.
+      emu\_data\_en = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+01832 \textcolor{preprocessor}{                          #endif}
+01833                           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir.post\_act\_data.
+      emu\_data\_en       = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+01834                           \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.uv.post\_act\_data.
+      emu\_data\_en       = \hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE};
+01835 
+01836                           
+01837 
+01838                           memset(&logv.\hyperlink{a00021_a11ed024c2cc5c53c79b2c0a8b35e3c06}{disturbance\_record},0,\textcolor{keyword}{sizeof}(logv.
+      \hyperlink{a00021_a11ed024c2cc5c53c79b2c0a8b35e3c06}{disturbance\_record}));
+01839                           memset(&logv.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay},0,\textcolor{keyword}{sizeof}(logv.\hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{sv\_delay}));
+01840 
+01841                           \textcolor{keywordtype}{int} cc;
+01842                           \textcolor{keywordflow}{for}(cc = 0; cc < \hyperlink{a00034_ab6ea71f43c4869429695d697be882efe}{ANALOG\_HW\_CHANNELS};cc++)
+01843                           \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.head\_ptr[cc] = 0;
+01844                           
+01845                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = \hyperlink{a00021_a6f6489887e08bff4887d0bc5dcf214d8}{ACK};
+01846                          \}\textcolor{keywordflow}{else}
+01847                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2] = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01848 
+01849                              algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt} = 3;
+01850 
+01851 
+01852 
+01853 
+01854 
+01855 
+01856                 \}\textcolor{keywordflow}{break};
+01857 
+01858 
+01859                  \textcolor{keywordflow}{case}  \hyperlink{a00021_ad6af9210ac0903986f3ac3e55c6816a3}{CMD\_SUPERVISION\_STATUS}:
+01860                 \{
+01861                     \textcolor{comment}{//TODO: respond error flags ..}
+01862 
+01863                 \}\textcolor{keywordflow}{break};
+01864                 
+01865 
+01866 
+01867                 \textcolor{keywordflow}{default}:
+01868             \{
+01869                      algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]               = 
+      \hyperlink{a00021_a1764a522e9c1a59a59be8757c69fa494}{CMD\_ERROR};
+01870                          algorithm\_data.\hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg}.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt}              = 3;
+01871                 \}\textcolor{keywordflow}{break};
+01872 
+01873         \}
+01874         
+01875 
+01876 
+01877 
+01878 
+01879                \hyperlink{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}{serial\_send\_response}(algorithm\_data.
+      \hyperlink{a00016_afcf5f557aea688aad985eec15269c1da}{serial\_msg});
+01880                \hyperlink{a00031_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+01881 
+01882 
+01883      \}
+01884  
+01885 \}
+01886 
+01887 
+01888 
+01889 
+01890 
+01891 
+01892 
+\hypertarget{a00038_source_l01905}{}\hyperlink{a00038_a1d182ae18a9176c2a1e28cc654dc0e43}{01905} \textcolor{keywordtype}{void} \hyperlink{a00038_a1d182ae18a9176c2a1e28cc654dc0e43}{algorithm\_taskx}(\hyperlink{a00036_de/d37/a00849}{x\_event} *event)
+01906 \{
+01907     \textcolor{keywordflow}{switch}(event->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message})
+01908     \{
+01909 
+01910 
+01911         \textcolor{keywordflow}{case} \hyperlink{a00036_a104f1137aafb33160da80932fe63c40d}{X\_MSG\_IRQ\_SYNC}:
+01912         \{
+01913              \hyperlink{a00067_a710d148845397582739d170341f3d3d9}{srv\_wdg\_kick}();
+01914             \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.fields.external != 0)\{
+01915                     \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.all == \hyperlink{a00021_a286de80383de54438b3e38d9f149dfd0}{IRQ\_SOURCE\_SERIAL})
+01916                     algorithm\_cmd\_handler();
+01917 
+01918                   algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.fields.external = 0;
+01919             \}
+01920 
+01921 
+01922 
+01923             \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.fields.internal != 0)\{
+01924                     \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.all == \hyperlink{a00021_a51725fc3a4c26625f15db1274791d961}{IRQ\_SOURCE\_HIF\_EVENT})\{
+01925                         \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} result = algorithm\_liner\_correlation(&
+      \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.hif\_diagonesis\_records,MAX\_EVENT\_OBSERVATION\_LENGTH);
+01926                        \textcolor{comment}{//
+      if(algorithm\_liner\_correlation(&data\_non\_volatile.disturbance\_record.hif\_diagonesis\_records,MAX\_EVENT\_OBSERVATION\_LENGTH) > 80)\{}
+01927                          \textcolor{keywordflow}{if}(result >= 80)\{
+01929                             algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.result = 1;
+01930                             algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.ready  = 1;
+01931                          \}\textcolor{keywordflow}{else}\{
+01932                             algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.result = 0;
+01933                             algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.hif.flags.ready  = 1;
+01934                             memset(&\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.
+      hif\_diagonesis\_records,0,\textcolor{keyword}{sizeof}(\hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.hif\_diagonesis\_records));
+01935                          \}
+01936                     \}
+01937                     \textcolor{keywordflow}{else}
+01938                     \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.all == \hyperlink{a00021_acfd80444497090bce928df199247a0ec}{IRQ\_DR\_READY})
+01939                     \{
+01940                         
+01941                         \hyperlink{a00029_a90aef186f45a15d94bf0247122194991}{nov\_store}();
+01942                         logv.\hyperlink{a00021_a11ed024c2cc5c53c79b2c0a8b35e3c06}{disturbance\_record}.bits.ready = 1;
+01943                     \}
+01944 
+01945                     algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.fields.internal = 0;
+01946          \}
+01947         \}\textcolor{keywordflow}{break};
+01948 
+01949 
+01950 
+01951         \textcolor{keywordflow}{case} \hyperlink{a00016_ae6be514b1d949dc71420a3e549772995}{X\_MSG\_WAKE\_EVENT}:
+01952         \{
+01953               \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.ir.cnt++ > 
+      \hyperlink{a00017_a946f0acff4fd16a65859479e9e0b9513}{FP\_TOLERANCE})
+01954               \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_a5ef7ebf1a1e20f770d46232ab2be8312}{clear\_alarm\_ir});
+01955 
+01956               \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.uv.cnt++ > 
+      \hyperlink{a00017_a946f0acff4fd16a65859479e9e0b9513}{FP\_TOLERANCE})
+01957               \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_a5d8e57dd19de326e75625a8704cfceee}{clear\_alarm\_uv});
+01958 
+01959               \textcolor{keywordflow}{if}(algorithm\_data.\hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{diagnosis}.false\_alarm.mfield\_x.cnt++ > 
+      \hyperlink{a00017_a946f0acff4fd16a65859479e9e0b9513}{FP\_TOLERANCE})
+01960               \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&algorithm\_data.\hyperlink{a00016_a57101a48bdde96a0db1ec63892095f7c}{clear\_alarm\_mfield\_x});
+01961 
+01962 
+01963 
+01964 
+01965         \}\textcolor{keywordflow}{break};
+01966 
+01967 
+01968         \textcolor{keywordflow}{case} \hyperlink{a00016_a410c7d83b819fa283303a53830c87a96}{X\_MSG\_CONFIGURE\_EVENT}:
+01969         \{
+01970             algorithm\_configure();
+01971             \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.is\_valid = 
+      \hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE};
+01972 
+01973 \textcolor{preprocessor}{#if(0)}
+01974           \hyperlink{a00036_ab69e9af4cfa717e870d587906283635c}{x\_delete\_timer}(&algorithm\_data.\hyperlink{a00016_af13eb2dcaed3eca6506489f8ad8fa768}{supervision\_timer});
+01975           \hyperlink{a00036_a9e3befaa21e83f196f74201deed85346}{x\_schedule\_timer}(&algorithm\_data.\hyperlink{a00016_af13eb2dcaed3eca6506489f8ad8fa768}{supervision\_timer},
+      \hyperlink{a00036_a1732cd929c486b3a225824bb2b3dba36}{X\_MS2TICK}(\hyperlink{a00023_a8a535456285f4602701c814d7b69cc68}{SV\_TIMER\_PERIOD}));
+01976 \textcolor{preprocessor}{#endif}
+01977         \}\textcolor{keywordflow}{break};
+01978     
+01979         \textcolor{keywordflow}{default}:
+01980         \{
+01981             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+01982         \}\textcolor{keywordflow}{break};
+01983     
+01984     \};
+01985 
+01986 \}
+01987 
+01988 
+01989 
+\hypertarget{a00038_source_l02006}{}\hyperlink{a00038_a93269cdec3e21934aa9395440a2de605}{02006} \textcolor{keywordtype}{void} \hyperlink{a00038_a93269cdec3e21934aa9395440a2de605}{algorithm\_notifyx}(\hyperlink{a00036_df/d4c/a00851}{x\_notify} *notify)
+02007 \{
+02008 
+02009     \textcolor{keywordflow}{switch}(notify->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message})
+02010     \{
+02011         \textcolor{comment}{// System standrd messages }
+02012 
+02013         \textcolor{keywordflow}{case} \hyperlink{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}{X\_NTF\_INIT}:
+02014         \{
+02015             \textcolor{comment}{// Module intialization    }
+02016             algorithm\_init();            
+02017         \}\textcolor{keywordflow}{break};
+02018 
+02019 
+02020         \textcolor{keywordflow}{case} \hyperlink{a00016_aededd1ab0a512a03f6cb0d3459b254e1}{X\_NTF\_SUPERVISION\_TIMER}:
+02021         \{
+02022            \hyperlink{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\_send\_event}(&algorithm\_data.\hyperlink{a00016_ad6a897cbacf5ae6902272ee198d5cd23}{wake\_event});
+02023         \}\textcolor{keywordflow}{break};
+02024 
+02025         \textcolor{keywordflow}{case}  \hyperlink{a00021_a5c8025c00c22190bf4b4c4fe87123f55}{X\_NTF\_ALG\_ANALOG\_SUPPLY\_ALERT}:            
+02026         \{
+02027             \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record.system\_error\_flags.bits.power\_supply =
+       1;
+02028             \hyperlink{a00038_a42ed16c7ef20e0c0031fe7ba7ae377b3}{algorithm\_wake}(0);
+02029         \}\textcolor{keywordflow}{break};
+02030 
+02031 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+02032          \textcolor{keywordflow}{case}  \hyperlink{a00021_a472c0187f61238cdef62bf3d965df8e2}{X\_NTF\_LIGHT\_SENSOR\_SV\_ALART}:
+02033         \{
+02034             \textcolor{comment}{// supervission report indicating persistent error or when change is made on configured data}
+02035             \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} *alarm = (
+      \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} *)notify;
+02036             \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record.error\_flags.light = alarm->
+      \hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.error\_flags;
+02037              \hyperlink{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\_send\_event}(&algorithm\_data.\hyperlink{a00016_ad6a897cbacf5ae6902272ee198d5cd23}{wake\_event});
+02038         \}\textcolor{keywordflow}{break};
+02039 
+02040 \textcolor{preprocessor}{#endif}
+02041          \textcolor{keywordflow}{case}  \hyperlink{a00021_a0eb06525326cff5fc0fb38f141d6be8e}{X\_NTF\_IR\_SENSOR\_SV\_ALART}:
+02042         \{
+02043             \textcolor{comment}{// supervission report indicating persistent error or when change is made on configured data}
+02044             \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} *alarm = (
+      \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} *)notify;
+02045             \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record.error\_flags.ir = alarm->
+      \hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.error\_flags;
+02046 
+02047             \textcolor{keywordflow}{if}(alarm->\hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.config.amp\_treshold.adjusted == 1)
+02048                 \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.ir\_level\_max
+02049                  = alarm->\hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.config.amp\_treshold.set\_value;
+02050 
+02051         \}\textcolor{keywordflow}{break};
+02052 
+02053          \textcolor{keywordflow}{case}  \hyperlink{a00021_a146527c519502db561ac17015bf9df5b}{X\_NTF\_UV\_SENSOR\_SV\_ALART}:
+02054         \{
+02055             \textcolor{comment}{// supervission report indicating persistent error or when change is made on configured data}
+02056             \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} * alarm = (
+      \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} *)notify;
+02057             \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record.error\_flags.uv = alarm->
+      \hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.error\_flags;
+02058 
+02059              \textcolor{keywordflow}{if}(alarm->\hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.config.amp\_treshold.adjusted == 1)
+02060                 \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.installation.thresholds.uv\_level\_max
+02061                  =alarm->\hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.config.amp\_treshold.set\_value;
+02062 
+02063         \}\textcolor{keywordflow}{break};
+02064 
+02065         \textcolor{keywordflow}{case}  \hyperlink{a00021_a9d9558fb2155bafac3683d00b2a18b3f}{X\_NTF\_MFIELD\_X\_SENSOR\_SV\_ALART}:
+02066         \{
+02067             \textcolor{comment}{// supervission report indicating persistent error}
+02068             \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} * alarm = (
+      \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} *)notify;
+02069             \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record.error\_flags.mfield\_x = alarm->
+      \hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.error\_flags;
+02070       
+02071         \}\textcolor{keywordflow}{break};
+02072 
+02073 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+02074         \textcolor{keywordflow}{case}  \hyperlink{a00021_ad30200601c6761f2c9be1fd62df00421}{X\_NTF\_MFIELD\_Y\_SENSOR\_SV\_ALART}:
+02075         \{        
+02076             \textcolor{comment}{// supervission report indicating persistent error}
+02077             \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} * alarm = (
+      \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t} *)notify;
+02078             \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.device\_data.sv\_record.error\_flags.mfield\_y = alarm->
+      \hyperlink{a00021_a13393a2d1589483b3bae4d2e79f43980}{message}.error\_flags;
+02079             
+02080         \}\textcolor{keywordflow}{break};
+02081 \textcolor{preprocessor}{#endif}
+02082 
+02083         \textcolor{keywordflow}{default}:
+02084         \{
+02085 
+02086             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+02087         \}
+02088         
+02089     \}
+02090 \}
+02091 
+02092 
+02093 
+02094 
+02095 
+02096 
+02097 
+02098 
+\hypertarget{a00038_source_l02104}{}\hyperlink{a00038_a85471d58eae93d5d7e7e2b52e2b915d3}{02104} \textcolor{keywordtype}{void} \hyperlink{a00038_a85471d58eae93d5d7e7e2b52e2b915d3}{algorithm\_message\_arrived\_ntf\_isr}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \textcolor{keywordtype}{id})
+02105 \{
+02106     \textcolor{keywordflow}{if}(\textcolor{keywordtype}{id}==0)
+02107         \textcolor{keywordflow}{return};
+02108     \textcolor{keywordflow}{if}((0x00FF&\textcolor{keywordtype}{id})!=0)
+02109     algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.fields.external = (0x00FF&id);
+02110     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(((0xFF00&\textcolor{keywordtype}{id})>>8)!=0)
+02111     algorithm\_data.\hyperlink{a00016_a1aafd556b3c9ed3e5295b17dbd80cab8}{irq\_src}.fields.internal = ((0xFF00&\textcolor{keywordtype}{id})>>8);
+02112     \hyperlink{a00036_a9953756bc7c83e5f2c36830396136e75}{x\_task\_send\_irq\_sync}(\hyperlink{a00038_aff3e3d622fcd96787628167d3c1856f9}{algorithm\_id});
+02113 \}
+02114 
+02115 
+02116 
+\end{DoxyCode}

@@ -1,0 +1,10 @@
+<map id="QCPItemAnchor" name="QCPItemAnchor">
+<area shape="rect" id="node2" href="$d7/de0/a00022.html" title="The abstract base class for all items in a plot. " alt="" coords="1873,1445,2076,1787"/>
+<area shape="rect" id="node3" href="$d5/df9/a00044.html" title="Base class for all objects that can be placed on layers. " alt="" coords="2485,432,2688,715"/>
+<area shape="rect" id="node11" href="$d3/dfe/a00025.html" title="Manages a single axis inside a QCustomPlot. " alt="" coords="1417,924,1620,1368"/>
+<area shape="rect" id="node4" href="$d3/d8b/a00059.html" title="{QObject\n||}" alt="" coords="2437,197,2507,274"/>
+<area shape="rect" id="node5" href="$d6/d42/a00043.html" title="A layer that may contain objects, to control the rendering order. " alt="" coords="2531,145,2642,325"/>
+<area shape="rect" id="node7" href="$d5/d79/a00030.html#d8/d00/a00186" title="The central class of the library, the QWidget which displays the plot and interacts with the user..." alt="" coords="2643,5,2743,83"/>
+<area shape="rect" id="node14" href="$d2/dee/a00049.html" title="Represents the range an axis is encompassing. " alt="" coords="1425,469,1591,678"/>
+<area shape="rect" id="node21" href="$d5/d79/a00030.html#de/df3/a00185" title="Responsible for drawing the grid of a QCPAxis. " alt="" coords="2387,535,2461,612"/>
+</map>

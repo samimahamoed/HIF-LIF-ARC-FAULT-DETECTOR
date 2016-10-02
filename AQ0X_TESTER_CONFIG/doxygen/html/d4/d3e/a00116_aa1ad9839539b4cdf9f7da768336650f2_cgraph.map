@@ -1,0 +1,10 @@
+<map id="handleItemSelection" name="handleItemSelection">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a793e4b04e0ede11a733021907368fa83" title="Returns the item at the pixel position pos. " alt="" coords="263,107,323,133"/>
+<area shape="rect" id="node8" href="$d7/de0/a00022.html#a225865808640d8d9a7dd19f09a2e93f2" title="QCPAbstractItem::selected" alt="" coords="460,208,641,235"/>
+<area shape="rect" id="node9" href="$d7/de0/a00022.html#a203de94ad586cc44d16c9565f49d3378" title="Sets whether this item is selected or not. " alt="" coords="192,208,393,235"/>
+<area shape="rect" id="node3" href="$d7/de0/a00022.html#a9189e752025533e1595eaade0009a3bc" title="QCPAbstractItem::selectable" alt="" coords="455,5,646,32"/>
+<area shape="rect" id="node4" href="$d7/de0/a00022.html#a5b0ea171823033bcb8aee81f4a034871" title="QCPAbstractItem::clipToAxisRect" alt="" coords="441,56,660,83"/>
+<area shape="rect" id="node5" href="$d7/de0/a00022.html#a538e25ff8856534582f5b2b400a46405" title="QCPAbstractItem::clipRect" alt="" coords="461,107,640,133"/>
+<area shape="rect" id="node7" href="$d7/de0/a00022.html#a2e19e88f67f4ba9c13b7e33bd447c075" title="This function is used to decide whether a click hits an item or not. " alt="" coords="455,157,647,184"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#a7fe5b84f4891838b63ed5181f5811dc5" title="QCPAxis::axisRect" alt="" coords="708,107,843,133"/>
+</map>

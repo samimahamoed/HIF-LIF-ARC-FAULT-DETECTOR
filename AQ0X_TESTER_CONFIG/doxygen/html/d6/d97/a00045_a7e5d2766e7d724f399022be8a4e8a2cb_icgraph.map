@@ -1,0 +1,5 @@
+<map id="QCPLegend::brush" name="QCPLegend::brush">
+<area shape="rect" id="node2" href="$d6/d97/a00045.html#a497bbcd38baa3598c08e2b3f48103f23" title="Sets the brush of the legend background. " alt="" coords="211,5,363,32"/>
+<area shape="rect" id="node4" href="$d6/d97/a00045.html#a875227f3219c9799464631dec5e8f1bd" title="When the legend box is selected, this brush is used to draw the legend background instead of the norm..." alt="" coords="185,56,388,83"/>
+<area shape="rect" id="node3" href="$d6/d97/a00045.html#a5dc42d73df80e7294414aee1170c4d2b" title="Constructs a new QCPLegend instance with parentPlot as the containing plot and default values..." alt="" coords="436,31,607,57"/>
+</map>

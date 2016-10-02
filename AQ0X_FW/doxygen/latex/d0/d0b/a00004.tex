@@ -1,0 +1,5 @@
+The module is responsible for the device analog and digital input output operations.
+
+Here, two interface helper functions are provided for analog level reading and digital input output operations. Thus, other modules with the privilege to ac-\/cess hardware functionality uses these functions to for such purpose (see \hyperlink{a00056_a1327cee26589588e02e03453f3cc7871}{hwio\+\_\+get\+\_\+analog()} and \hyperlink{a00056_a0af9eae455fbdf4e77def5bfffa109cb}{hwio\+\_\+execute\+\_\+gpio\+\_\+task()}).
+
+The module also supports hardware reading redirection to allow testing firmware functionality. Thus, user can replace real hardware reading with values supplied by serial commands so as to validate the software operation. In the case of analog signal emulation the module can accept up to 400 byte (200 samples) data per input and sequentially supply the values in circular manner instead of real hardware reading, that is under the condition in which if the sensory module monitoring the signal is running in emulation mode (see \hyperlink{a00056_a1327cee26589588e02e03453f3cc7871}{hwio\+\_\+get\+\_\+analog()}). 

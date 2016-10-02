@@ -1,0 +1,512 @@
+.TH "QCPItemLine" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPItemLine \- 
+.PP
+A line from one point to another\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemLine\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fICreates a line item and sets default values\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPItemLine\fP ()"
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBselectedPen\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPLineEnding\fP \fBhead\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPLineEnding\fP \fBtail\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the line\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen that will be used to draw the line when selected\&. \fP"
+.ti -1c
+.RI "void \fBsetHead\fP (const \fBQCPLineEnding\fP &\fBhead\fP)"
+.br
+.RI "\fISets the line ending style of the head\&. \fP"
+.ti -1c
+.RI "void \fBsetTail\fP (const \fBQCPLineEnding\fP &\fBtail\fP)"
+.br
+.RI "\fISets the line ending style of the tail\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits an item or not\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBstart\fP"
+.br
+.ti -1c
+.RI "\fBQCPItemPosition\fP *const \fBend\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "QLineF \fBgetRectClippedLine\fP (const QVector2D &\fBstart\fP, const QVector2D &\fBend\fP, const QRect &rect) const "
+.br
+.ti -1c
+.RI "QPen \fBmainPen\fP () const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSelectedPen\fP"
+.br
+.ti -1c
+.RI "\fBQCPLineEnding\fP \fBmHead\fP"
+.br
+.ti -1c
+.RI "\fBQCPLineEnding\fP \fBmTail\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A line from one point to another\&. 
+
+Line example\&. Blue dotted circles are anchors, solid blue discs are positions\&. It has two positions, \fIstart\fP and \fIend\fP, which define the end points of the line\&.
+.PP
+With \fBsetHead\fP and \fBsetTail\fP you may set different line ending styles, e\&.g\&. to create an arrow\&. 
+.PP
+Definition at line 934 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPItemLine::QCPItemLine (\fBQCustomPlot\fP *parentPlot)"
+
+.PP
+Creates a line item and sets default values\&. The constructed item can be added to the plot with QCustomPlot::addItem\&. 
+.PP
+Definition at line 11980 of file qcustomplot\&.cpp\&.
+.PP
+References end, QCPItemPosition::setCoords(), setPen(), setSelectedPen(), and start\&.
+.PP
+.nf
+11980                                                 :
+11981   QCPAbstractItem(parentPlot),
+11982   start(createPosition("start")),
+11983   end(createPosition("end"))
+11984 {
+11985   start->setCoords(0, 0);
+11986   end->setCoords(1, 1);
+11987   
+11988   setPen(QPen(Qt::black));
+11989   setSelectedPen(QPen(Qt::blue,2));
+11990 }
+.fi
+.SS "QCPItemLine::~QCPItemLine ()\fC [virtual]\fP"
+
+.PP
+Definition at line 11992 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+11993 {
+11994 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QCPItemLine::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this item with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible items\&.
+.PP
+The cliprect of the provided painter is set to the rect returned by \fBclipRect\fP before this function is called\&. For items this depends on the clipping settings defined by \fBsetClipToAxisRect\fP, \fBsetClipKeyAxis\fP and \fBsetClipValueAxis\fP\&. 
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12052 of file qcustomplot\&.cpp\&.
+.PP
+References QCPLineEnding::boundingDistance(), QCPAbstractItem::clipRect(), QCPLineEnding::draw(), QCPPainter::drawLine(), end, QCPLineEnding::esNone, getRectClippedLine(), mainPen(), mHead, mTail, QCPItemPosition::pixelPoint(), QCPPainter::setPen(), start, and QCPLineEnding::style()\&.
+.PP
+.nf
+12053 {
+12054   QVector2D startVec(start->pixelPoint());
+12055   QVector2D endVec(end->pixelPoint());
+12056   if (startVec\&.toPoint() == endVec\&.toPoint())
+12057     return;
+12058   // get visible segment of straight line inside clipRect:
+12059   double clipPad = qMax(mHead\&.boundingDistance(), mTail\&.boundingDistance());
+12060   clipPad = qMax(clipPad, mainPen()\&.widthF());
+12061   QLineF line = getRectClippedLine(startVec, endVec, clipRect()\&.adjusted(-clipPad, -clipPad, clipPad, clipPad));
+12062   // paint visible segment, if existent:
+12063   if (!line\&.isNull())
+12064   {
+12065     painter->setPen(mainPen());
+12066     painter->drawLine(line);
+12067     painter->setBrush(Qt::SolidPattern);
+12068     if (mTail\&.style() != QCPLineEnding::esNone)
+12069       mTail\&.draw(painter, startVec, startVec-endVec);
+12070     if (mHead\&.style() != QCPLineEnding::esNone)
+12071       mHead\&.draw(painter, endVec, endVec-startVec);
+12072   }
+12073 }
+.fi
+.SS "QLineF QCPItemLine::getRectClippedLine (const QVector2D &start, const QVector2D &end, const QRect &rect) const\fC [protected]\fP"
+Returns the section of the line defined by \fIstart\fP and \fIend\fP, that is visible in the specified \fIrect\fP\&.
+.PP
+This is a helper function for \fBdraw\fP\&. 
+.PP
+Definition at line 12082 of file qcustomplot\&.cpp\&.
+.PP
+References start\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+12083 {
+12084   bool containsStart = rect\&.contains(start\&.x(), start\&.y());
+12085   bool containsEnd = rect\&.contains(end\&.x(), end\&.y());
+12086   if (containsStart && containsEnd)
+12087     return QLineF(start\&.toPointF(), end\&.toPointF());
+12088   
+12089   QVector2D base = start;
+12090   QVector2D vec = end-start;
+12091   double bx, by;
+12092   double gamma, mu;
+12093   QLineF result;
+12094   QList<QVector2D> pointVectors;
+12095 
+12096   if (!qFuzzyIsNull(vec\&.y())) // line is not horizontal
+12097   {
+12098     // check top of rect:
+12099     bx = rect\&.left();
+12100     by = rect\&.top();
+12101     mu = (by-base\&.y())/vec\&.y();
+12102     if (mu >= 0 && mu <= 1)
+12103     {
+12104       gamma = base\&.x()-bx + mu*vec\&.x();
+12105       if (gamma >= 0 && gamma <= rect\&.width())
+12106         pointVectors\&.append(QVector2D(bx+gamma, by));
+12107     }
+12108     // check bottom of rect:
+12109     bx = rect\&.left();
+12110     by = rect\&.bottom();
+12111     mu = (by-base\&.y())/vec\&.y();
+12112     if (mu >= 0 && mu <= 1)
+12113     {
+12114       gamma = base\&.x()-bx + mu*vec\&.x();
+12115       if (gamma >= 0 && gamma <= rect\&.width())
+12116         pointVectors\&.append(QVector2D(bx+gamma, by));
+12117     }
+12118   }
+12119   if (!qFuzzyIsNull(vec\&.x())) // line is not vertical
+12120   {
+12121     // check left of rect:
+12122     bx = rect\&.left();
+12123     by = rect\&.top();
+12124     mu = (bx-base\&.x())/vec\&.x();
+12125     if (mu >= 0 && mu <= 1)
+12126     {
+12127       gamma = base\&.y()-by + mu*vec\&.y();
+12128       if (gamma >= 0 && gamma <= rect\&.height())
+12129         pointVectors\&.append(QVector2D(bx, by+gamma));
+12130     }
+12131     // check right of rect:
+12132     bx = rect\&.right();
+12133     by = rect\&.top();
+12134     mu = (bx-base\&.x())/vec\&.x();
+12135     if (mu >= 0 && mu <= 1)
+12136     {
+12137       gamma = base\&.y()-by + mu*vec\&.y();
+12138       if (gamma >= 0 && gamma <= rect\&.height())
+12139         pointVectors\&.append(QVector2D(bx, by+gamma));
+12140     }
+12141   }
+12142   
+12143   if (containsStart)
+12144     pointVectors\&.append(start);
+12145   if (containsEnd)
+12146     pointVectors\&.append(end);
+12147   
+12148   // evaluate points:
+12149   if (pointVectors\&.size() == 2)
+12150   {
+12151     result\&.setPoints(pointVectors\&.at(0)\&.toPointF(), pointVectors\&.at(1)\&.toPointF());
+12152   } else if (pointVectors\&.size() > 2)
+12153   {
+12154     // line probably goes through corner of rect, and we got two points there\&. single out the point pair with greatest distance:
+12155     double distSqrMax = 0;
+12156     QVector2D pv1, pv2;
+12157     for (int i=0; i<pointVectors\&.size()-1; ++i)
+12158     {
+12159       for (int k=i+1; k<pointVectors\&.size(); ++k)
+12160       {
+12161         double distSqr = (pointVectors\&.at(i)-pointVectors\&.at(k))\&.lengthSquared();
+12162         if (distSqr > distSqrMax)
+12163         {
+12164           pv1 = pointVectors\&.at(i);
+12165           pv2 = pointVectors\&.at(k);
+12166           distSqrMax = distSqr;
+12167         }
+12168       }
+12169     }
+12170     result\&.setPoints(pv1\&.toPointF(), pv2\&.toPointF());
+12171   }
+12172   return result;
+12173 }
+.fi
+.SS "\fBQCPLineEnding\fP QCPItemLine::head () const\fC [inline]\fP"
+
+.PP
+Definition at line 944 of file qcustomplot\&.h\&.
+.PP
+Referenced by setHead()\&.
+.PP
+.nf
+944 { return mHead; }
+.fi
+.SS "QPen QCPItemLine::mainPen () const\fC [protected]\fP"
+Returns the pen that should be used for drawing lines\&. Returns mPen when the item is not selected and mSelectedPen when it is\&. 
+.PP
+Definition at line 12180 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, QCPAbstractItem::mSelected, and mSelectedPen\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+12181 {
+12182   return mSelected ? mSelectedPen : mPen;
+12183 }
+.fi
+.SS "QPen QCPItemLine::pen () const\fC [inline]\fP"
+
+.PP
+Definition at line 942 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by setPen(), and setSelectedPen()\&.
+.PP
+.nf
+942 { return mPen; }
+.fi
+.SS "QPen QCPItemLine::selectedPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 943 of file qcustomplot\&.h\&.
+.PP
+.nf
+943 { return mSelectedPen; }
+.fi
+.SS "double QCPItemLine::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits an item or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the item\&. If the item is either invisible or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the item is represented not by single lines but by an area like \fBQCPItemRect\fP or \fBQCPItemText\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractItem\fP\&.
+.PP
+Definition at line 12043 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::distSqrToLine(), end, QCPLayerable::mVisible, QCPItemPosition::pixelPoint(), and start\&.
+.PP
+.nf
+12044 {
+12045   if (!mVisible)
+12046     return -1;
+12047   
+12048   return qSqrt(distSqrToLine(start->pixelPoint(), end->pixelPoint(), pos));
+12049 }
+.fi
+.SS "void QCPItemLine::setHead (const \fBQCPLineEnding\fP &head)"
+
+.PP
+Sets the line ending style of the head\&. The head corresponds to the \fIend\fP position\&.
+.PP
+Note that due to the overloaded \fBQCPLineEnding\fP constructor, you may directly specify a \fBQCPLineEnding::EndingStyle\fP here, e\&.g\&.
+.PP
+.nf
+setHead(QCPLineEnding::esSpikeArrow) 
+
+.fi
+.PP
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTail\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12024 of file qcustomplot\&.cpp\&.
+.PP
+References head(), and mHead\&.
+.PP
+.nf
+12025 {
+12026   mHead = head;
+12027 }
+.fi
+.SS "void QCPItemLine::setPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the line\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelectedPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12001 of file qcustomplot\&.cpp\&.
+.PP
+References mPen, and pen()\&.
+.PP
+Referenced by QCPItemLine()\&.
+.PP
+.nf
+12002 {
+12003   mPen = pen;
+12004 }
+.fi
+.SS "void QCPItemLine::setSelectedPen (const QPen &pen)"
+
+.PP
+Sets the pen that will be used to draw the line when selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPen\fP, \fBsetSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12011 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedPen, and pen()\&.
+.PP
+Referenced by QCPItemLine()\&.
+.PP
+.nf
+12012 {
+12013   mSelectedPen = pen;
+12014 }
+.fi
+.SS "void QCPItemLine::setTail (const \fBQCPLineEnding\fP &tail)"
+
+.PP
+Sets the line ending style of the tail\&. The tail corresponds to the \fIstart\fP position\&.
+.PP
+Note that due to the overloaded \fBQCPLineEnding\fP constructor, you may directly specify a \fBQCPLineEnding::EndingStyle\fP here, e\&.g\&.
+.PP
+.nf
+setTail(QCPLineEnding::esSpikeArrow) 
+
+.fi
+.PP
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetHead\fP 
+.RE
+.PP
+
+.PP
+Definition at line 12037 of file qcustomplot\&.cpp\&.
+.PP
+References mTail, and tail()\&.
+.PP
+.nf
+12038 {
+12039   mTail = tail;
+12040 }
+.fi
+.SS "\fBQCPLineEnding\fP QCPItemLine::tail () const\fC [inline]\fP"
+
+.PP
+Definition at line 945 of file qcustomplot\&.h\&.
+.PP
+Referenced by setTail()\&.
+.PP
+.nf
+945 { return mTail; }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPItemPosition\fP* const QCPItemLine::end"
+
+.PP
+Definition at line 957 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), QCPItemLine(), and selectTest()\&.
+.SS "\fBQCPLineEnding\fP QCPItemLine::mHead\fC [protected]\fP"
+
+.PP
+Definition at line 961 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and setHead()\&.
+.SS "QPen QCPItemLine::mPen\fC [protected]\fP"
+
+.PP
+Definition at line 960 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setPen()\&.
+.SS "QPen QCPItemLine::mSelectedPen\fC [protected]\fP"
+
+.PP
+Definition at line 960 of file qcustomplot\&.h\&.
+.PP
+Referenced by mainPen(), and setSelectedPen()\&.
+.SS "\fBQCPLineEnding\fP QCPItemLine::mTail\fC [protected]\fP"
+
+.PP
+Definition at line 961 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and setTail()\&.
+.SS "\fBQCPItemPosition\fP* const QCPItemLine::start"
+
+.PP
+Definition at line 956 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), getRectClippedLine(), QCPItemLine(), and selectTest()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

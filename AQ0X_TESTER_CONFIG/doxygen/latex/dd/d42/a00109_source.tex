@@ -1,0 +1,831 @@
+\hypertarget{a00109_source}{\section{mainwindow.\+cpp}
+\label{a00109_source}\index{mainwindow.\+cpp@{mainwindow.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{a00110}{mainwindow.h}"}
+00002 \textcolor{preprocessor}{#include "\hyperlink{a00139}{ui\_mainwindow.h}"}
+00003 
+00004 \textcolor{preprocessor}{#include "\hyperlink{a00132}{settingsdialog.h}"}
+00005 \textcolor{preprocessor}{#include "\hyperlink{a00130}{recordpreview.h}"}
+00006 \textcolor{preprocessor}{#include "\hyperlink{a00094}{emu\_data\_editor.h}"}
+00007 
+00008 
+00009 \textcolor{preprocessor}{#include <QMessageBox>}
+00010 \textcolor{preprocessor}{#include <QFileDialog>}
+00011 
+00012 
+00013 
+00014 
+00015 \textcolor{preprocessor}{#include <QDebug>}
+00016 \textcolor{preprocessor}{#include <QProgressBar>}
+00017 \textcolor{preprocessor}{#include <QDesktopWidget>}
+00018 \textcolor{preprocessor}{#include <QDateTime>}
+00019 \textcolor{preprocessor}{#include <QTimer>}
+00020 
+00021 \textcolor{preprocessor}{#include <stdarg.h>}
+00022 
+00023 
+\hypertarget{a00109_source_l00024}{}\hyperlink{a00017_a8b244be8b7b7db1b08de2a2acb9409db}{00024} \hyperlink{a00017_a8b244be8b7b7db1b08de2a2acb9409db}{MainWindow::MainWindow}(QWidget *parent) :
+00025     \hyperlink{a00058}{QMainWindow}(parent),
+00026     ui(new \hyperlink{a00145}{Ui}::\hyperlink{a00017}{MainWindow})
+00027 \{
+00028 
+00029 
+00030     ui->\hyperlink{a00080_acf4a0872c4c77d8f43a2ec66ed849b58}{setupUi}(\textcolor{keyword}{this});
+00031 
+00032 
+00033     this->move(QApplication::desktop()->rect().x() + 10,this->y()+2);
+00034 
+00035 
+00036         console = \textcolor{keyword}{new} \hyperlink{a00005}{Console};
+00037         console->setEnabled(\textcolor{keyword}{false});
+00038 
+00039 
+00040         serial = \textcolor{keyword}{new} QSerialPort(\textcolor{keyword}{this});
+00041         settings = \textcolor{keyword}{new} \hyperlink{a00075}{SettingsDialog};
+00042 
+00043           ui->\hyperlink{a00080_aa0785566311fc48271690fb68b1d4c5f}{actionConnect}->setEnabled(\textcolor{keyword}{true});
+00044           ui->\hyperlink{a00080_a8a16b3aef75b279eaaa887152d2f746b}{actionDisconnect}->setEnabled(\textcolor{keyword}{false});
+00045           ui->\hyperlink{a00080_a188c243f36a2dbc10e4e2a0ad94273b1}{actionQuit}->setEnabled(\textcolor{keyword}{true});
+00046           ui->\hyperlink{a00080_a3860abde3cfd3f6170e28fddde73f11e}{actionConfigure}->setEnabled(\textcolor{keyword}{true});
+00047 
+00048 
+00049           initActionsConnections();
+00050 
+00051             connect(serial, SIGNAL(error(QSerialPort::SerialPortError)), \textcolor{keyword}{this},
+00052             SLOT(handleError(QSerialPort::SerialPortError)));
+00053 
+00054             connect(serial, SIGNAL(readyRead()), \textcolor{keyword}{this}, SLOT(incoming\_data\_listener()));
+00055 
+00056 
+00057 
+00058 
+00059 
+00060 
+00061            ui->\hyperlink{a00080_ac8a083c4b66fb317a9b538409ce412e2}{dockWidget}->setVisible(\textcolor{keyword}{false});
+00062 
+00063            ui->\hyperlink{a00080_a30075506c2116c3ed4ff25e07ae75f81}{centralWidget}->setVisible(\textcolor{keyword}{false});
+00064 
+00065            ui->\hyperlink{a00080_ac8539dcd87955047877cb256aff60453}{actionClear}->setVisible(\textcolor{keyword}{false});
+00066 
+00067           this->addDockWidget(Qt::RightDockWidgetArea,ui->\hyperlink{a00080_a19105d0d919fa33b5f29f7677bbab054}{dock\_central});
+00068 
+00069 
+00070           last\_cmd.\hyperlink{a00004_abb76d8edb39876deb60975c8fd784b3f}{listener\_slot} = NULL;
+00071           \textcolor{comment}{//serial rc buffer start frash}
+00072           last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed}=\textcolor{keyword}{true};
+00073           rc\_buffer.clear();
+00074 
+00075           cmd\_line\_separator=\textcolor{stringliteral}{"\(\backslash\)n>> "};
+00076 
+00077 
+00078 
+00079           \hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default} = \hyperlink{a00110_a63ec0cea9c1f0ca8a7893c2c53d2fd81}{DEFAULT\_DIR};
+00080 
+00081           QDir dir;
+00082 
+00083           \textcolor{keywordflow}{if}(!dir.exists(dir.toNativeSeparators(\hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default})))
+00084               dir.mkdir(dir.toNativeSeparators(\hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default}));
+00085 
+00086           map\_keys();
+00087 
+00088           installEventFilter(\textcolor{keyword}{this});
+00089 
+00090 
+00091 
+00092 \}
+00093 
+\hypertarget{a00109_source_l00094}{}\hyperlink{a00017_ae98d00a93bc118200eeef9f9bba1dba7}{00094} \hyperlink{a00017_ae98d00a93bc118200eeef9f9bba1dba7}{MainWindow::~MainWindow}()
+00095 \{
+00096     \textcolor{keyword}{delete} ui;
+00097 \}
+00098 
+00099 
+\hypertarget{a00109_source_l00100}{}\hyperlink{a00017_a91df90bb5045775882c062cefdf903e9}{00100} \textcolor{keywordtype}{bool} \hyperlink{a00017_a91df90bb5045775882c062cefdf903e9}{MainWindow::eventFilter}(\hyperlink{a00059}{QObject} *\textcolor{keywordtype}{object}, QEvent *event)
+00101 \{
+00102 
+00103 
+00104     \textcolor{keywordflow}{if} (event->type() == QEvent::FocusOut)
+00105     \{
+00106         \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object} == \textcolor{keyword}{this})
+00107         \{
+00108 
+00109         \}
+00110     \}
+00111 
+00112 
+00113     \textcolor{keywordflow}{if} (event->type() == QEvent::FocusIn)
+00114     \{
+00115         \textcolor{keywordflow}{if} (\textcolor{keywordtype}{object} == ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd})
+00116         \{
+00117 
+00118         \}
+00119 
+00120     \}
+00121     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00122 \}
+00123 
+00124 
+00125 \textcolor{keywordtype}{void} MainWindow::about()
+00126 \{
+00127     QMessageBox::about(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"About"}),
+00128                        tr(\textcolor{stringliteral}{"COMMING UP"}));
+00129 \}
+00130 
+00131 
+00132 \textcolor{keywordtype}{void} MainWindow::initActionsConnections()
+00133 \{
+00134     connect(ui->\hyperlink{a00080_aa0785566311fc48271690fb68b1d4c5f}{actionConnect}, SIGNAL(triggered()), \textcolor{keyword}{this}, SLOT(openSerialPort()));
+00135     connect(ui->\hyperlink{a00080_a8a16b3aef75b279eaaa887152d2f746b}{actionDisconnect}, SIGNAL(triggered()), \textcolor{keyword}{this}, SLOT(closeSerialPort()));
+00136     connect(ui->\hyperlink{a00080_a188c243f36a2dbc10e4e2a0ad94273b1}{actionQuit}, SIGNAL(triggered()), \textcolor{keyword}{this}, SLOT(close()));
+00137     connect(ui->\hyperlink{a00080_a3860abde3cfd3f6170e28fddde73f11e}{actionConfigure}, SIGNAL(triggered()), settings, SLOT(show()));
+00138     connect(ui->\hyperlink{a00080_ac8539dcd87955047877cb256aff60453}{actionClear}, SIGNAL(triggered()), console, SLOT(clear()));
+00139     connect(ui->\hyperlink{a00080_abdf2b43167c2cd0d3405f90b8c30e934}{actionAbout}, SIGNAL(triggered()), \textcolor{keyword}{this}, SLOT(about()));
+00140 
+00141 \}
+00142 
+00143 
+00144 
+\hypertarget{a00109_source_l00145}{}\hyperlink{a00017_a6134b74dbfffbaf333e169bd09597b53}{00145} \textcolor{keywordtype}{void} \hyperlink{a00017_a6134b74dbfffbaf333e169bd09597b53}{MainWindow::msg}(\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} type, QString msg)
+00146 \{
+00147     QString \hyperlink{a00116_aec7f0fb0be1d3a0a946f0ded3a860d20}{title};
+00148 
+00149     QMessageBox msgBox;
+00150     msgBox.setWindowIcon(QMainWindow::windowIcon());
+00151     msgBox.setWindowTitle(QMainWindow::windowTitle());
+00152 
+00153     \textcolor{keywordflow}{switch} (type) \{
+00154     \textcolor{keywordflow}{case} \hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR}:
+00155         msgBox.setText(tr(\textcolor{stringliteral}{"Error"}));
+00156         msgBox.setIcon(QMessageBox::Critical);
+00157         \textcolor{keywordflow}{break};
+00158     \textcolor{keywordflow}{case} \hyperlink{a00090_a1ddcc97224a95cec04b38b0ac866fa19}{MSG\_INFO}:
+00159         msgBox.setText(tr(\textcolor{stringliteral}{"Information"}));
+00160         msgBox.setIcon(QMessageBox::Information);
+00161     \textcolor{keywordflow}{default}:
+00162 
+00163         \textcolor{keywordflow}{break};
+00164     \}
+00165 
+00166 
+00167 
+00168  msgBox.setInformativeText(msg);
+00169 
+00170  msgBox.exec();
+00171 
+00172 \}
+00173 
+\hypertarget{a00109_source_l00174}{}\hyperlink{a00017_a8821556476f5a88c107f21d7db14e49c}{00174} QString \hyperlink{a00017_a8821556476f5a88c107f21d7db14e49c}{MainWindow::uint8\_to\_str}(\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} val)
+00175 \{
+00176     \textcolor{keyword}{const} \textcolor{keywordtype}{char} cnv[] = \textcolor{stringliteral}{"0123456789ABCDEF"};
+00177 
+00178     \textcolor{keywordflow}{return} QString(cnv[(val>>4)&0x0F]) + QString(cnv[(val>>0)&0x0F]);
+00179 \}
+00180 
+00181 \textcolor{keywordtype}{void} MainWindow::on\_actionClear\_triggered()
+00182 \{
+00183     ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->clear();
+00184     rc\_buffer.clear();
+00185 \}
+00186 
+00187 \textcolor{keywordtype}{void} MainWindow::on\_actionOpen\_triggered()
+00188 \{
+00189     QDir   default\_dir;
+00190     QString SelectedFilesName;
+00191 
+00192 
+00193     \textcolor{keywordflow}{if}(default\_dir.exists(default\_dir.toNativeSeparators(\hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default})))
+00194         default\_dir.mkdir(default\_dir.toNativeSeparators(\hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default}));
+00195 
+00196 
+00197 
+00198 
+00199     SelectedFilesName = QFileDialog::getOpenFileName(
+00200         \textcolor{keyword}{this},
+00201         tr(\textcolor{stringliteral}{"Open File"}),
+00202         \textcolor{stringliteral}{""},
+00203         tr(\textcolor{stringliteral}{"Comma Separated Values (*.csv)"}));
+00204 
+00205 
+00206     loadFile(SelectedFilesName);
+00207 
+00208 \}
+00209 
+00210 \textcolor{keywordtype}{void} MainWindow::loadFile(QString file\_name)\{
+00211 
+00212     QString  type = NULL;
+00213     QVector<double> measurement\_values;
+00214     QVector<double> history\_amp;
+00215     QVector<double> history\_dfdt;
+00216     QVector<double> time;
+00217 
+00218     \textcolor{keywordtype}{int}    length = 0;
+00219     \textcolor{keywordtype}{int}    result = 0;
+00220 
+00221 
+00222     \textcolor{keywordflow}{if} (file\_name.isEmpty()) \textcolor{keywordflow}{return};
+00223 
+00224         QFile file(file\_name);
+00225 
+00226         \textcolor{keywordflow}{if} (!file.open(QIODevice::ReadOnly)) \{
+00227             QMessageBox::information(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Unable to open file"}), file.errorString());
+00228             \textcolor{keywordflow}{return};
+00229         \}
+00230 
+00231 
+00232 
+00233         QTextStream stream(&file);
+00234         QStringList values;
+00235         QString line = stream.readLine();
+00236 
+00237         values = line.split(\textcolor{charliteral}{','});
+00238         \textcolor{keywordflow}{if}(values.length() == 2)
+00239         type = values.at(1);
+00240 
+00241 
+00242         line = stream.readLine();
+00243         values.clear();
+00244         values = line.split(\textcolor{charliteral}{','});
+00245         \textcolor{keywordflow}{if}(values.length()==2)
+00246         length = values.at(1).toInt();
+00247 
+00248 
+00249             line = stream.readLine();
+00250 
+00251             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii=0;ii< length;ii++)\{
+00252                 line = stream.readLine();
+00253                 values = line.split(\textcolor{charliteral}{','});
+00254 
+00255                 \textcolor{keywordflow}{if}(values.length() < 2) result = -1;
+00256                 \textcolor{keywordflow}{else}\{
+00257 
+00258 
+00259                 time.append(values[0].toDouble());
+00260 
+00261                 \textcolor{keywordflow}{if}(time[ii]!=ii)result = -1;
+00262 
+00263                 measurement\_values.append(values[1].toDouble());
+00264 
+00265                 \textcolor{keywordflow}{if}(values.length() == 3)\{
+00266                  history\_amp.append(values[2].toDouble());
+00267                  history\_dfdt.append(values[3].toDouble());
+00268                 \}
+00269                 \}
+00270 
+00271             \}
+00272 
+00273 
+00274             \textcolor{keywordflow}{if}(result == -1)\{
+00275 
+00276                  QMessageBox::StandardButton reply;
+00277                  reply = QMessageBox::question(\textcolor{keyword}{this}, \textcolor{stringliteral}{"#Error"},
+00278                                                \textcolor{stringliteral}{"The file is corrupted, do you want to open anyway"},
+00279                                                QMessageBox::Yes|QMessageBox::No);
+00280                  \textcolor{keywordflow}{if} (reply == QMessageBox::Yes)
+00281                   result = 0;
+00282 
+00283             \}
+00284 
+00285 
+00286        stream.flush();
+00287        file.close();
+00288 
+00289 
+00290 
+00291 
+00292         \textcolor{keywordflow}{if}(result == 0)\{
+00293 
+00294         \hyperlink{a00073}{recordPreview}* prv = \textcolor{keyword}{new} \hyperlink{a00073}{recordPreview}(type,\textcolor{comment}{/*offset*/}&measurement\_values
+      ,&history\_amp,&history\_dfdt,\textcolor{keyword}{this});
+00295 
+00296         prv->show();
+00297         prv->raise();
+00298         prv->activateWindow();
+00299 
+00300         \textcolor{keywordflow}{if}(this->x() < (QApplication::desktop()->rect().width()/2))
+00301         prv->move((this->x()+this->width()+ 50),50);
+00302         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(this->x() > (QApplication::desktop()->rect().width()/2))
+00303         prv->move((this->x()-this->width()- prv->width()- 10),50);
+00304        \}
+00305 
+00306 \}
+00307 
+\hypertarget{a00109_source_l00308}{}\hyperlink{a00017_a61e2ba77e381cae572eec854b6510b81}{00308} \textcolor{keywordtype}{void} \hyperlink{a00017_a61e2ba77e381cae572eec854b6510b81}{MainWindow::ListFiles}()\{
+00309 
+00310     QStringList nameFilter(\textcolor{stringliteral}{"*.csv"});
+00311 
+00312     QDir directory;
+00313     directory.setPath(directory.toNativeSeparators(\hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default}));
+00314 
+00315     \textcolor{keywordflow}{if}(!directory.exists())\{
+00316         \textcolor{keywordflow}{if}(!directory.mkdir(directory.toNativeSeparators(\hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default})))\{
+00317             \hyperlink{a00017_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Couldn't open the Directory "} + directory.absolutePath() + \textcolor{stringliteral}{"for
+       reading"});
+00318         \textcolor{keywordflow}{return};
+00319         \}
+00320     \}
+00321 
+00322     QStringList eventFiles = directory.entryList(nameFilter);
+00323     model->setStringList(eventFiles);
+00324 \}
+00325 
+00326 
+00327 
+00328 \textcolor{keywordtype}{void} MainWindow::on\_actionCommands\_triggered(\textcolor{keywordtype}{bool} checked)
+00329 \{
+00330     \textcolor{keywordflow}{if}(!last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed})\{
+00331         \hyperlink{a00017_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00090_a1ddcc97224a95cec04b38b0ac866fa19}{MSG\_INFO},\textcolor{stringliteral}{"Please wait, while previous command is processing"});
+00332         ui->\hyperlink{a00080_a3dccdc21d3df68b86550093b5e3c0356}{actionCommands}->setChecked(!checked);
+00333         \textcolor{keywordflow}{return};
+00334     \}
+00335 
+00336     \textcolor{keywordflow}{if}(checked)\{
+00337 
+00338         ui->\hyperlink{a00080_ae4fe44aa026dd0e84e0f10cdcabca504}{sArea\_progress\_view}->setVisible(\textcolor{keyword}{false});
+00339 
+00340 
+00341 
+00342         ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->setWindowFlags(Qt::Window);
+00343         ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->show();
+00344         ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->raise();
+00345         ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->activateWindow();
+00346 
+00347         \textcolor{keywordflow}{if}(this->x() > (ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->width() + 50))
+00348         ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->move(QApplication::desktop()->rect().x()+10,this->y());
+00349         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(((QApplication::desktop()->rect().width())- this->x())> (ui->
+      \hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->width() + 50))
+00350         ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->move((this->x() + this->width() + 50),ui->
+      \hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->y());
+00351 
+00352 
+00353         QModelIndex index = ui->\hyperlink{a00080_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->model()->index(0,0,QModelIndex());
+00354         ui->\hyperlink{a00080_aa66ece71395b435e915d384fb63bac1d}{cmd\_list}->setCurrentIndex(index);
+00355         ui->\hyperlink{a00080_a263fb43f2eff37a44ff7359ba41e2eeb}{combo\_Ch}->setCurrentIndex(0);
+00356         ui->\hyperlink{a00080_ad95005b5fcac8126171019298147b285}{combo\_Sen}->setCurrentIndex(0);
+00357         ui->\hyperlink{a00080_a59e39bd3d716004e840a5be5dda18b96}{stacked\_widget\_views}->setCurrentIndex(0);
+00358 
+00359 
+00360 
+00361         \textcolor{keywordflow}{if}(ui->\hyperlink{a00080_aa0785566311fc48271690fb68b1d4c5f}{actionConnect}->isEnabled()\textcolor{comment}{/*not connected*/})
+00362           ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->setEnabled(\textcolor{keyword}{false});
+00363         \textcolor{keywordflow}{else}
+00364 
+00365             ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->setEnabled(\textcolor{keyword}{true});
+00366 
+00367 
+00368 
+00369     \}\textcolor{keywordflow}{else}\{
+00370         ui->\hyperlink{a00080_a9eb86a5ee396766f0f4a65f2d2bd7688}{dockWidget\_sen\_cmd}->close();
+00371     \}
+00372 
+00373 \}
+00374 
+00375 
+00376 \textcolor{keywordtype}{void} MainWindow::on\_dockWidget\_sen\_cmd\_visibilityChanged(\textcolor{keywordtype}{bool} visible)
+00377 \{
+00378     \textcolor{keywordflow}{if}(!visible)
+00379         ui->\hyperlink{a00080_a3dccdc21d3df68b86550093b5e3c0356}{actionCommands}->setChecked(\textcolor{keyword}{false});
+00380     \textcolor{keywordflow}{else}
+00381        ui->\hyperlink{a00080_a3dccdc21d3df68b86550093b5e3c0356}{actionCommands}->setChecked(\textcolor{keyword}{true});
+00382 \}
+00383 
+00384 
+00385 
+00386 
+00387 \textcolor{keywordtype}{void} MainWindow::record\_preview(\hyperlink{a00004_d3/dd5/a00215}{serial\_msg\_t} current\_cmd)\{
+00388     
+00389     
+00390 
+00391     QString type = \textcolor{stringliteral}{"CH-"}
+00392                    + QString::number(current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0])
+00393                    + \textcolor{stringliteral}{" SEN-"}+QString::number(current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00394                    + \textcolor{stringliteral}{":"}+ QString::fromLatin1(current\_cmd.\hyperlink{a00004_a217dc0db956d3bb46d8573960cb7359a}{cmd\_type})
+00395                    + \textcolor{stringliteral}{":"}+QDateTime::currentDateTime().toString(\textcolor{stringliteral}{"dd.MM.yyyy"});
+00396     \textcolor{keywordflow}{if}(current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd} == \hyperlink{a00086_a4412fcb90fb9171d432a624428881e70}{CMD\_DEVICE\_DATA})\{
+00397        \hyperlink{a00006_a95029dff9c90f6a6907353ba86eb3f33}{device\_data\_t}* device\_data = (\hyperlink{a00006_a95029dff9c90f6a6907353ba86eb3f33}{device\_data\_t} *)current\_cmd.
+      \hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.storage\_location;
+00398 
+00399 
+00400        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"Device configuration data \(\backslash\)n"}));
+00401        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"----------------------------------- \(\backslash\)n"}));
+00402        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tDevice ID :"})+QString::number(device\_data
+      ->installation.device\_address)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00403        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"Installation details
+       -------------------------- \(\backslash\)n"}));
+00404        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tRated current :"})+QString::number(
+      device\_data->installation.system\_info.rated\_current)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00405        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tRated short circuit current:"})+
+      QString::number(device\_data->installation.system\_info.sh\_current)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00406        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tSignal Frequency:"})+QString::number(
+      device\_data->installation.system\_info.freq)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00407        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tMinimum conductor distance :"})+
+      QString::number(device\_data->installation.system\_info.min\_distance)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00408        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"Threshold levels    
+       ----------------------------------- \(\backslash\)n"}));
+00409        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tIR signal level threshold :"})+
+      QString::number(device\_data->installation.thresholds.ir\_level\_max)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00410        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tUV signal level threshold :"})+
+      QString::number(device\_data->installation.thresholds.uv\_level\_max)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00411        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"Event analysis      
+       ----------------------------------- \(\backslash\)n"}));
+00412        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tAlarm/Trip condition :"})+QString::number(
+      device\_data->installation.trip\_criteria.criterion.all)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00413        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t  IR Module:"})+
+00414                                             ((device\_data->installation.trip\_criteria.active\_modules.bits.
+      ir?QString(\textcolor{stringliteral}{"Enabled"}):QString(\textcolor{stringliteral}{"Disabled"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"})));
+00415        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t  UV Module:"})+
+00416                                             ((device\_data->installation.trip\_criteria.active\_modules.bits.
+      uv?QString(\textcolor{stringliteral}{"Enabled"}):QString(\textcolor{stringliteral}{"Disabled"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"})));
+00417        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t  Magnetic field x axis Module:"})+
+00418                                             ((device\_data->installation.trip\_criteria.active\_modules.bits.
+      mfield\_x?QString(\textcolor{stringliteral}{"Enabled"}):QString(\textcolor{stringliteral}{"Disabled"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"})));
+00419 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00420        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t  Magnetic field y axis Module:"})+
+00421                                             ((device\_data->installation.trip\_criteria.active\_modules.bits.
+      mfield\_y?QString(\textcolor{stringliteral}{"Enabled"}):QString(\textcolor{stringliteral}{"Disabled"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"})));
+00422 \textcolor{preprocessor}{#endif}
+00423        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00424        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tMinimum minimum observation length :"})+
+      QString::number(device\_data->installation.thresholds.min\_number\_of\_observation)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00425        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tProbability maximum value :"})+
+      QString::number(device\_data->installation.thresholds.probablity\_max)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00426        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tProbability minimum value:"})+
+      QString::number(device\_data->installation.thresholds.probablity\_min)+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00427 
+00428 
+00429        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"Run time options 
+       ----------------------------------- \(\backslash\)n"}));
+00430 
+00431        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tIR element supervision :"})+
+00432                                             (device\_data->installation.options.bits.ir\_element\_sv\_en?
+      QString(\textcolor{stringliteral}{"Enabled"}):QString(\textcolor{stringliteral}{"Disabled"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00433        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tUV element supervision :"})+
+00434                                             (device\_data->installation.options.bits.uv\_element\_sv\_en?
+      QString(\textcolor{stringliteral}{"Enabled"}):QString(\textcolor{stringliteral}{"Disabled"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00435        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tMagnetic field element supervision :"})+
+00436                                             (device\_data->installation.options.bits.mfield\_element\_sv\_en?
+      QString(\textcolor{stringliteral}{"Enabled"}):QString(\textcolor{stringliteral}{"Disabled"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00437        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tThreshold manual adjustment mode:"})+
+00438                                             (device\_data->installation.options.bits.threshold\_adjust\_manual
+      ?QString(\textcolor{stringliteral}{"Enabled"}):QString(\textcolor{stringliteral}{"Disabled"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00439 
+00440 
+00441        \textcolor{keywordflow}{if}(!device\_data->installation.is\_valid)
+00442        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)nwarning:: Configuration data is not marked
+       as valid user data\(\backslash\)n"}));
+00443 
+00444 
+00445        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"Device supervision record \(\backslash\)n"}));
+00446        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"System Error flags 
+       ----------------------------------- \(\backslash\)n"}));
+00447 
+00448        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tIR sensor element :"})+
+00449                                             ((!device\_data->sv\_record.system\_error\_flags.bits.
+      ir\_sensor\_element)?QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00450        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tUV sensor element :"})+
+00451                                             ((!device\_data->sv\_record.system\_error\_flags.bits.
+      uv\_sensor\_element)?QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00452        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tMagnetic field x axis sensor element :"})+
+00453                                             ((!device\_data->sv\_record.system\_error\_flags.bits.
+      mfield\_x\_sensor\_element)?QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00454 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00455        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tMagnetic field y axis sensor element :"})+
+00456                                             ((!device\_data->sv\_record.system\_error\_flags.bits.
+      mfield\_y\_sensor\_element)?QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00457 \textcolor{preprocessor}{#endif}
+00458        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tPower\_supply :"})+
+00459                                             ((!device\_data->sv\_record.system\_error\_flags.bits.power\_supply)
+      ?QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00460        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tStorage :"})+
+00461                                             ((!device\_data->sv\_record.system\_error\_flags.bits.storage)?
+      QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00462 
+00463 
+00464 
+00465        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"False Positives flags 
+       ----------------------------------- \(\backslash\)n"}));
+00466 
+00467        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tIR Module :"})+
+00468                                             ((!device\_data->sv\_record.error\_flags.ir.bits.FALSE\_POSITIVE)?
+      QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00469        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t"})+
+00470                                             ((!device\_data->sv\_record.error\_flags.ir.bits.
+      FALSE\_POSITIVE\_AMP\_TH)?QString(\textcolor{stringliteral}{"amplitude threshold "}):QString(\textcolor{stringliteral}{""}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00471        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t"})+
+00472                                             ((!device\_data->sv\_record.error\_flags.ir.bits.
+      FALSE\_POSITIVE\_DFDT\_TH)?QString(\textcolor{stringliteral}{"dfdt threshold "}):QString(\textcolor{stringliteral}{""}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00473 
+00474        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tUV Module :"})+
+00475                                             ((!device\_data->sv\_record.error\_flags.uv.bits.FALSE\_POSITIVE)?
+      QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00476        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t"})+
+00477                                             ((!device\_data->sv\_record.error\_flags.uv.bits.
+      FALSE\_POSITIVE\_AMP\_TH)?QString(\textcolor{stringliteral}{"amplitude threshold "}):QString(\textcolor{stringliteral}{""}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00478        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t"})+
+00479                                             ((!device\_data->sv\_record.error\_flags.uv.bits.
+      FALSE\_POSITIVE\_DFDT\_TH)?QString(\textcolor{stringliteral}{"dfdt threshold"}):QString(\textcolor{stringliteral}{""}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00480 
+00481        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tMagnetic field x Module :"})+
+00482                                             (!device\_data->sv\_record.error\_flags.mfield\_x.bits.
+      FALSE\_POSITIVE?QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00483        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t"})+
+00484                                             (!device\_data->sv\_record.error\_flags.mfield\_x.bits.
+      FALSE\_POSITIVE\_AMP\_TH?QString(\textcolor{stringliteral}{"amplitude threshold "}):QString(\textcolor{stringliteral}{""}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00485        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t"})+
+00486                                             (!device\_data->sv\_record.error\_flags.mfield\_x.bits.
+      FALSE\_POSITIVE\_DFDT\_TH?QString(\textcolor{stringliteral}{"dfdt threshold"}):QString(\textcolor{stringliteral}{""}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00487 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00488        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)tMagnetic field y Module :"})+
+00489                                             (!device\_data->sv\_record.error\_flags.mfield\_y.bits.
+      FALSE\_POSITIVE?QString(\textcolor{stringliteral}{"TRUE"}):QString(\textcolor{stringliteral}{"FALSE"}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00490        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t"})+
+00491                                             (!device\_data->sv\_record.error\_flags.mfield\_y.bits.
+      FALSE\_POSITIVE\_AMP\_TH?QString(\textcolor{stringliteral}{"amplitude threshold "}):QString(\textcolor{stringliteral}{""}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00492        ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText( QString(\textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)t"})+
+00493                                             (!device\_data->sv\_record.error\_flags.mfield\_y.bits.
+      FALSE\_POSITIVE\_DFDT\_TH?QString(\textcolor{stringliteral}{"dfdt threshold "}):QString(\textcolor{stringliteral}{""}))+QString(\textcolor{stringliteral}{"\(\backslash\)n"}));
+00494 \textcolor{preprocessor}{#endif}
+00495 
+00496 
+00497     \}
+00498     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(current\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied == \textcolor{keyword}{sizeof}(
+      \hyperlink{a00019}{module\_disturbance\_record\_t}))
+00499     \{
+00500         
+00501         \hyperlink{a00019}{module\_disturbance\_record\_t}* rc\_data = 
+00502                 (\hyperlink{a00019}{module\_disturbance\_record\_t}*)current\_cmd.
+      \hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.storage\_location;
+00503 
+00504 
+00505 
+00506         ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"\(\backslash\)nEvent timestamp "}));
+00507 
+00508         ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"\(\backslash\)n      Detected   : "})
+00509                            + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.timestamp.event\_detected));
+00510         ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"\(\backslash\)n      Module Trip  : "})
+00511                            + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.timestamp.module\_active));
+00512         ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"\(\backslash\)n      Global Trip: "})
+00513                            + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.timestamp.global\_active));
+00514 
+00515         ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"\(\backslash\)nEvent History : "})
+00516                            + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.state\_transition.history.all));
+00517          \textcolor{comment}{//TODO: interpret history}
+00518 
+00519         ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(QString(\textcolor{stringliteral}{"\(\backslash\)nCalculated probability: "})
+00520                            + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.event\_probability));
+00521   
+00522 
+00523         ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(
+00524                       QString(\textcolor{stringliteral}{"\(\backslash\)nthresholds                       "})
+00525                     + QString(\textcolor{stringliteral}{"\(\backslash\)n:Amplitude above maximum: "})
+00526                     + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.exceeded\_threshold.bits.amp\_max)
+00527                     + QString(\textcolor{stringliteral}{"\(\backslash\)n:dfdt above maximum: "})
+00528                     + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.exceeded\_threshold.bits.dfdt\_max)
+00529                     + QString(\textcolor{stringliteral}{"\(\backslash\)n:dfdt below minimum: "})
+00530                     + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.exceeded\_threshold.bits.dfdt\_min)
+00531                     + QString(\textcolor{stringliteral}{"\(\backslash\)n:dfdt impulse: "})
+00532                     + QString::number(rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data}.exceeded\_threshold.bits.dfdt\_impulse));
+00533 
+00534 
+00535 
+00536         \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} post\_act\_data\_length =
+00537                 (rc\_data->\hyperlink{a00019_a905fb7ebfe7134f1b9f55c92227b5d0c}{post\_act\_data}.emu\_data\_en == 0)
+00538                 ?\hyperlink{a00006_ab1ad440de86fff80e517ad748de2ee39}{POST\_ACT\_RECORD\_BUFF\_SIZE}:(
+      \hyperlink{a00006_ab1ad440de86fff80e517ad748de2ee39}{POST\_ACT\_RECORD\_BUFF\_SIZE}-\hyperlink{a00006_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH} );
+00539 
+00540 
+00541 
+00542         QVector<Uint16> data( \hyperlink{a00006_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE} + post\_act\_data\_length);
+00543 
+00544 
+00545 
+00546         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00006_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE}; ++var) \{
+00547             
+00548             data[var]= rc\_data->\hyperlink{a00019_ac8e7141463960fd1e27eb25547d02555}{pre\_act\_data}.\hyperlink{a00006_a5f6608d29ecab36269ae25b2e7afb1f3}{buffer}[rc\_data->
+      \hyperlink{a00019_ac8e7141463960fd1e27eb25547d02555}{pre\_act\_data}.\hyperlink{a00006_a3c4762f0dfae85a9efc17a36c6cb84a6}{tail}];
+00549             rc\_data->\hyperlink{a00019_ac8e7141463960fd1e27eb25547d02555}{pre\_act\_data}.\hyperlink{a00006_a3c4762f0dfae85a9efc17a36c6cb84a6}{tail} = (rc\_data->\hyperlink{a00019_ac8e7141463960fd1e27eb25547d02555}{pre\_act\_data}.
+      \hyperlink{a00006_a3c4762f0dfae85a9efc17a36c6cb84a6}{tail} +1)%PRE\_ACT\_RECORD\_BUFF\_SIZE;
+00550 
+00551         \}
+00552 
+00553 
+00554 
+00555         \textcolor{keywordflow}{if}(rc\_data->\hyperlink{a00019_a905fb7ebfe7134f1b9f55c92227b5d0c}{post\_act\_data}.emu\_data\_en == 1)
+00556             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < post\_act\_data\_length; ++var)\{
+00557                 data[var + \hyperlink{a00006_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE}]= rc\_data->
+      \hyperlink{a00019_a905fb7ebfe7134f1b9f55c92227b5d0c}{post\_act\_data}.buffer.data.l[var];
+00558 
+00559             \}
+00560         \textcolor{keywordflow}{else}
+00561             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < post\_act\_data\_length; ++var)\{
+00562                 data[var + \hyperlink{a00006_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE}]=
+00563                 rc\_data->\hyperlink{a00019_a905fb7ebfe7134f1b9f55c92227b5d0c}{post\_act\_data}.buffer.all[var];
+00564 
+00565             \}
+00566 
+00567 
+00568         \hyperlink{a00006_d6/d7d/a00161}{event\_data\_t} event\_data;
+00569         memmove(&event\_data,&rc\_data->\hyperlink{a00019_a5a700ec4c240f4e86c5fb61aef8d983e}{event\_data},\textcolor{keyword}{sizeof}(event\_data));
+00570 
+00571         \textcolor{keywordflow}{if}(current\_cmd.\hyperlink{a00004_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address} ==\textcolor{keyword}{false})\{
+00572         \hyperlink{a00073}{recordPreview}* prv = \textcolor{keyword}{new} \hyperlink{a00073}{recordPreview}(type,data,event\_data,\textcolor{keyword}{this});
+00573         prv->show();
+00574         prv->raise();
+00575         prv->activateWindow();
+00576 
+00577         \textcolor{keywordflow}{if}(this->x() < (QApplication::desktop()->rect().width()/2))
+00578         prv->move((this->x()+this->width()+ 50),50);
+00579         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(this->x() > (QApplication::desktop()->rect().width()/2))
+00580         prv->move((this->x()-this->width()- prv->width()- 10),50);
+00581 
+00582         \}\textcolor{keywordflow}{else}\{
+00583 
+00584             QVector<double> measurement\_values;
+00585             QVector<double> history\_amp;
+00586             QVector<double> history\_dfdt;
+00587 
+00588 
+00589 
+00590             history\_amp.clear();
+00591             history\_dfdt.clear();
+00592 
+00593             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data.length(); ++var)
+00594 
+00595                 measurement\_values[var]=((\textcolor{keywordtype}{double})data[var])*
+      \hyperlink{a00086_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR}-type.contains(\textcolor{stringliteral}{"MFIELD"})?1.65:0;
+00596 
+00597 \textcolor{comment}{/*}
+00598 \textcolor{comment}{            for (int var = 0; var < MAX\_EVENT\_OBSERVATION\_LENGTH; ++var) \{}
+00599 \textcolor{comment}{                history\_amp[var + PRE\_ACT\_RECORD\_BUFF\_SIZE ]}
+00600 \textcolor{comment}{                        =((double)event\_data.signal\_level[var])*ADC\_VAL\_MAPPING\_FACTOR -
+       type.contains("MFIELD")?1.65:0;}
+00601 \textcolor{comment}{}
+00602 \textcolor{comment}{                history\_dfdt[var + PRE\_ACT\_RECORD\_BUFF\_SIZE]}
+00603 \textcolor{comment}{                        =((double)event\_data.change\_per\_time[var]);}
+00604 \textcolor{comment}{            \}}
+00605 \textcolor{comment}{*/}
+00606 
+00607            multi\_cmds[vPos].data\_file\_name =  \hyperlink{a00017_a0114355b9f626345cf77d6f714f51468}{save\_to\_file}(
+      \hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default},type,event\_data.\hyperlink{a00006_a90588fed720ad404c18bcbb8fa84878e}{offset},&measurement\_values,&history\_amp,&history\_dfdt);
+00608 
+00609         \}
+00610 
+00611    
+00612 
+00613 
+00614     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(current\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied == \textcolor{keyword}{sizeof}(
+      \hyperlink{a00006_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t}))\{
+00615         \hyperlink{a00006_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t}* rc\_data = (
+      \hyperlink{a00006_a4726b814166e222a6f13e21453f76d8d}{hif\_diagonesis\_records\_t}*)current\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.storage\_location;
+00616 
+00617         QVector<Uint16> data(\hyperlink{a00006_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH});
+00618 
+00619 
+00620         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00006_aa060aeb1ecb530b3c6f6d91060999b70}{MAX\_EVENT\_OBSERVATION\_LENGTH}; ++var) \{
+00621             data[var]= rc\_data->buffer[var];
+00622         \}
+00623 
+00624 
+00625 
+00626 
+00627 
+00628         \textcolor{keywordflow}{if}(current\_cmd.\hyperlink{a00004_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address} ==\textcolor{keyword}{false})\{
+00629         \hyperlink{a00073}{recordPreview}* prv = \textcolor{keyword}{new} \hyperlink{a00073}{recordPreview}(type,data,\textcolor{keyword}{this});
+00630         prv->show();
+00631         prv->raise();
+00632         prv->activateWindow();
+00633 
+00634         \textcolor{keywordflow}{if}(this->x() < (QApplication::desktop()->rect().width()/2))
+00635         prv->move((this->x()+this->width()+ 50),50);
+00636         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(this->x() > (QApplication::desktop()->rect().width()/2))
+00637         prv->move((this->x()-this->width()- prv->width()- 10),50);
+00638 
+00639         \}\textcolor{keywordflow}{else}\{
+00640 
+00641             QVector<double> measurement\_values(data.length());
+00642 
+00643 
+00644             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data.length(); ++var) \{
+00645                 measurement\_values[var]=((double)data[var])*
+      \hyperlink{a00086_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR} - type.contains(\textcolor{stringliteral}{"MFIELD"})?1.65:0;
+00646             \}
+00647 
+00648 
+00649 
+00650             multi\_cmds[vPos].data\_file\_name=\hyperlink{a00017_a0114355b9f626345cf77d6f714f51468}{save\_to\_file}(\hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default},type,0,&
+      measurement\_values);
+00651 
+00652         \}
+00653 
+00654 
+00655     \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(current\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied == \textcolor{keyword}{sizeof}(
+      \hyperlink{a00006_dc/d52/a00183}{pre\_act\_record\_buffer\_t}))\{
+00656         \hyperlink{a00006_dc/d52/a00183}{pre\_act\_record\_buffer\_t}* rc\_data = (
+      \hyperlink{a00006_dc/d52/a00183}{pre\_act\_record\_buffer\_t}*)current\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.storage\_location;
+00657 
+00658         QVector<Uint16> data(PRE\_ACT\_RECORD\_BUFF\_SIZE);
+00659 
+00660 
+00661 
+00662         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00006_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE}; ++var) \{
+00663 
+00664             data[var]= rc\_data->\hyperlink{a00006_a5f6608d29ecab36269ae25b2e7afb1f3}{buffer}[rc\_data->\hyperlink{a00006_a3c4762f0dfae85a9efc17a36c6cb84a6}{tail}];
+00665             rc\_data->\hyperlink{a00006_a3c4762f0dfae85a9efc17a36c6cb84a6}{tail} = (rc\_data->\hyperlink{a00006_a3c4762f0dfae85a9efc17a36c6cb84a6}{tail} +1)%PRE\_ACT\_RECORD\_BUFF\_SIZE;
+00666 
+00667 
+00668         \}
+00669 
+00670 
+00671 
+00672         \textcolor{keywordflow}{if}(current\_cmd.\hyperlink{a00004_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address} ==\textcolor{keyword}{false})\{
+00673         \hyperlink{a00073}{recordPreview}* prv = \textcolor{keyword}{new} \hyperlink{a00073}{recordPreview}(type,data,\textcolor{keyword}{this});
+00674         prv->show();
+00675         prv->raise();
+00676         prv->activateWindow();
+00677 
+00678         \textcolor{keywordflow}{if}(this->x() < (QApplication::desktop()->rect().width()/2))
+00679         prv->move((this->x()+this->width()+ 50),50);
+00680         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(this->x() > (QApplication::desktop()->rect().width()/2))
+00681         prv->move((this->x()-this->width()- prv->width()- 10),50);
+00682 
+00683         \}\textcolor{keywordflow}{else}\{
+00684 
+00685             QVector<double> measurement\_values(data.length());
+00686 
+00687 
+00688             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data.length(); ++var) \{
+00689                 measurement\_values[var]=(((double)data[var])*
+      \hyperlink{a00086_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR} - (type.contains(\textcolor{stringliteral}{"MFIELD"})?1.65:0));
+00690             \}
+00691 
+00692 
+00693 
+00694             multi\_cmds[vPos].data\_file\_name = \hyperlink{a00017_a0114355b9f626345cf77d6f714f51468}{save\_to\_file}(\textcolor{stringliteral}{"..\(\backslash\)\(\backslash\)DATA\(\backslash\)\(\backslash\)"},type,0,&
+      measurement\_values);
+00695 
+00696         \}
+00697 
+00698 
+00699     \}
+00700 
+00701 
+00702     free(current\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.storage\_location);
+00703 \}
+00704 
+00705 
+\hypertarget{a00109_source_l00706}{}\hyperlink{a00017_a0114355b9f626345cf77d6f714f51468}{00706} QString \hyperlink{a00017_a0114355b9f626345cf77d6f714f51468}{MainWindow::save\_to\_file}(QString dir,QString type,
+      \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} offset,QVector<double> *data1,QVector<double> *data2,QVector<double> *data3)
+00707 
+00708 \{
+00709 
+00710 
+00711     \textcolor{keywordtype}{bool} disturbance\_record = (data1->length() == \hyperlink{a00006_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE})?\textcolor{keyword}{false}:\textcolor{keyword}{
+      true};
+00712 
+00713     QString file\_name = type;
+00714 
+00715     file\_name.replace(\textcolor{charliteral}{':'},\textcolor{stringliteral}{"-"}).replace(\textcolor{charliteral}{' '},\textcolor{stringliteral}{"\_"}).replace(\textcolor{charliteral}{','},\textcolor{stringliteral}{""}).replace(\textcolor{charliteral}{'.'},\textcolor{stringliteral}{"\_"});
+00716 
+00717     file\_name = dir + file\_name + \textcolor{stringliteral}{".csv"};
+00718 
+00719     \textcolor{keywordflow}{if} (file\_name.isEmpty()) \textcolor{keywordflow}{return} NULL;
+00720     \textcolor{keywordflow}{else} \{
+00721         QFile file(file\_name);
+00722         \textcolor{keywordflow}{if} (!file.open(QIODevice::WriteOnly)) \{
+00723             QMessageBox::information(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Unable to open file"}), file.errorString());
+00724             \textcolor{keywordflow}{return} NULL;
+00725         \}
+00726 
+00727         QTextStream stream(&file);
+00728 
+00729         stream << \textcolor{stringliteral}{"Title,"}+type+\textcolor{stringliteral}{"\(\backslash\)n"};
+00730         stream << \textcolor{stringliteral}{"Record length,"}+QString::number(data1->length())+\textcolor{stringliteral}{"\(\backslash\)n"};
+00731         \textcolor{keywordflow}{if}(disturbance\_record)\{
+00732         stream << \textcolor{stringliteral}{"Event offset,"}+QString::number(offset)+\textcolor{stringliteral}{"\(\backslash\)n"};
+00733         stream << \textcolor{stringliteral}{"TIME, MEASURED DATA,EVENT\_AMP,EVENT\_DFDT\(\backslash\)n"};
+00734         \}\textcolor{keywordflow}{else}
+00735         stream << \textcolor{stringliteral}{"TIME, DATA\(\backslash\)n"};
+00736 
+00737         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii=0;ii< data1->length();ii++)
+00738            stream << QString::number(ii) +\textcolor{stringliteral}{","}+QString::number(data1->value(ii))
+00739                      +
+00740                      ((disturbance\_record)?(
+00741                      \textcolor{stringliteral}{","}+ QString::number(data2->value(ii))
+00742                      + \textcolor{stringliteral}{","}+ QString::number(data3->value(ii))
+00743                      ):\textcolor{stringliteral}{""})
+00744                      +\textcolor{stringliteral}{"\(\backslash\)n"};
+00745 
+00746 
+00747 
+00748         file.flush();
+00749 
+00750      \}
+00751 
+00752     \textcolor{keywordflow}{return} file\_name;
+00753 
+00754 \}
+00755 
+00756 
+00757 
+\end{DoxyCode}

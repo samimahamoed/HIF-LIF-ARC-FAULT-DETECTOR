@@ -1,0 +1,5 @@
+<map id="QCPItemCurve::pen" name="QCPItemCurve::pen">
+<area shape="rect" id="node2" href="$db/df3/a00034.html#a034be908440aec785c34b92843461221" title="Sets the pen that will be used to draw the line. " alt="" coords="215,5,371,32"/>
+<area shape="rect" id="node4" href="$db/df3/a00034.html#a375b917669f868c5a106bf2f1ab7c26d" title="Sets the pen that will be used to draw the line when selected. " alt="" coords="189,56,396,83"/>
+<area shape="rect" id="node3" href="$db/df3/a00034.html#ac9b7508bb5c8827e1a7a6199f8c82bec" title="Creates a curve item and sets default values. " alt="" coords="444,31,644,57"/>
+</map>

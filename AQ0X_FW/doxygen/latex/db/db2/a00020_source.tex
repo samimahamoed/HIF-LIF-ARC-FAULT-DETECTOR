@@ -1,0 +1,71 @@
+\hypertarget{a00020_source}{\section{uv\+\_\+sensor.\+h}
+\label{a00020_source}\index{uv\+\_\+sensor.\+h@{uv\+\_\+sensor.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef UV\_SEN\_H}
+00002 \textcolor{preprocessor}{#define UV\_SEN\_H}
+00003 
+00011 \textcolor{preprocessor}{#define X\_NTF\_UV\_SENSOR\_CONFIG                                  (X\_NTF\_FREE + 16)}
+00013 
+00014 
+00015 \textcolor{comment}{//TODO:find out the gain HW task}
+\hypertarget{a00020_source_l00016}{}\hyperlink{a00020_a6ec94a6db817afee9f5fe1f0753d18bd}{00016} \textcolor{preprocessor}{#define UV\_SEN\_GAIN                                             1}
+00017 
+\hypertarget{a00020_source_l00018}{}\hyperlink{a00020_a6fe600e966b9b8a62c0121805f6cbc0d}{00018} \textcolor{preprocessor}{#define UV\_SEN\_NOISE\_DENSITY\_LEVEL                              0.05}
+00019 
+00020 
+00021 
+00022 
+\hypertarget{a00020_source_l00023}{}\hyperlink{a00020}{00023} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00024 \{
+\hypertarget{a00020_source_l00025}{}\hyperlink{a00020_a891d4fcb12960785cecc1e688681b748}{00025}     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}     \hyperlink{a00020_a891d4fcb12960785cecc1e688681b748}{adc\_val};
+\hypertarget{a00020_source_l00026}{}\hyperlink{a00020_a053a8ae0e59f7414929cd8ac3feeec7b}{00026}     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}    \hyperlink{a00020_a053a8ae0e59f7414929cd8ac3feeec7b}{ana\_val};
+00027 
+00028 \}\hyperlink{a00020_dd/d6d/a00111}{analog\_sample\_uv\_t};
+00029 
+\hypertarget{a00020_source_l00031}{}\hyperlink{a00020}{00031} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\_x\_notify\_uv\_sen\_configure
+00032 \{
+\hypertarget{a00020_source_l00033}{}\hyperlink{a00020_a8e6a04c2283f9fd7b8dcbc62faba5847}{00033}     \hyperlink{a00036_df/d4c/a00851}{x\_notify}           \hyperlink{a00020_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify};
+00034 
+\hypertarget{a00020_source_l00035}{}\hyperlink{a00020}{00035}     \textcolor{keyword}{struct}
+00036     \{
+00037        \hyperlink{a00021_d6/d9c/a00352}{configured\_t}  configured;
+00038 
+00039        \hyperlink{a00028}{module\_disturbance\_record\_t}   *disturbance\_record;
+00040     \}message;
+00041 
+00042 
+00043 \}\hyperlink{a00020_dd/db2/a00866}{x\_notify\_uv\_sen\_configure};
+00044 
+00045 
+00046 
+00047 
+\hypertarget{a00020_source_l00049}{}\hyperlink{a00020}{00049} \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\_x\_notify\_uv\_sen\_sv\_report
+00050 \{
+\hypertarget{a00020_source_l00051}{}\hyperlink{a00020_a8e6a04c2283f9fd7b8dcbc62faba5847}{00051}     \hyperlink{a00036_df/d4c/a00851}{x\_notify}            \hyperlink{a00020_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify};
+00052 
+\hypertarget{a00020_source_l00053}{}\hyperlink{a00020}{00053}     \textcolor{keyword}{struct}
+00054     \{
+00055       \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}      error\_status\_flags;
+00056       \hyperlink{a00021_d6/d9c/a00352}{configured\_t}           config;
+00057     \}message;
+00058 
+00059 \}\hyperlink{a00020_da/d5b/a00868}{x\_notify\_uv\_sen\_sv\_report};
+00060 
+00061 \hyperlink{a00021_d6/d66/a00441}{event\_report\_t} \hyperlink{a00020_a354d25047e79397dbe5525178f19cae0}{uv\_sen\_get\_status}(\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} adc\_value,
+      \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} save\_event);
+00062 
+00063 
+00065 \textcolor{keyword}{extern} \hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\_task\_id} \hyperlink{a00020_afd789f3f9ea182d28d4f16db0d8d5652}{uv\_sen\_id};
+00066 
+00067 
+00068 \textcolor{keywordtype}{void} \hyperlink{a00020_ab4e931568892f0b46a2571d3c480f5c8}{uv\_sen\_taskx}(\hyperlink{a00036_de/d37/a00849}{x\_event} *event);
+00069 \textcolor{keywordtype}{void} \hyperlink{a00020_ae2617634df4d3055161f7fb1f148f6da}{uv\_sen\_notifyx}(\hyperlink{a00036_df/d4c/a00851}{x\_notify} *notify);
+00070 
+00071 \textcolor{preprocessor}{#endif //UV\_SEN\_H}
+00072 
+00073 
+00074 
+00075 
+\end{DoxyCode}

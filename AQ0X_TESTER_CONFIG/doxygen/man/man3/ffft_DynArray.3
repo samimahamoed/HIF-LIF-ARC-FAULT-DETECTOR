@@ -1,0 +1,161 @@
+.TH "ffft::DynArray< T >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::DynArray< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <DynArray\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef T \fBDataType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDynArray\fP ()"
+.br
+.ti -1c
+.RI "\fBDynArray\fP (long \fBsize\fP)"
+.br
+.ti -1c
+.RI "\fB~DynArray\fP ()"
+.br
+.ti -1c
+.RI "long \fBsize\fP () const "
+.br
+.ti -1c
+.RI "void \fBresize\fP (long \fBsize\fP)"
+.br
+.ti -1c
+.RI "const \fBDataType\fP & \fBoperator[]\fP (long pos) const "
+.br
+.ti -1c
+.RI "\fBDataType\fP & \fBoperator[]\fP (long pos)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T>class ffft::DynArray< T >"
+
+.PP
+Definition at line 38 of file DynArray\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<class T> typedef T \fBffft::DynArray\fP< T >::\fBDataType\fP"
+
+.PP
+Definition at line 45 of file DynArray\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class T > \fBffft::DynArray\fP< T >::\fBDynArray\fP ()"
+
+.PP
+Definition at line 44 of file DynArray\&.hpp\&.
+.PP
+.nf
+45 :    _data_ptr (0)
+46 ,   _len (0)
+47 {
+48     // Nothing
+49 }
+.fi
+.SS "template<class T > \fBffft::DynArray\fP< T >::\fBDynArray\fP (longsize)\fC [explicit]\fP"
+
+.PP
+Definition at line 54 of file DynArray\&.hpp\&.
+.PP
+.nf
+55 :   _data_ptr (0)
+56 ,   _len (0)
+57 {
+58     assert (size >= 0);
+59     if (size > 0)
+60     {
+61         _data_ptr = new DataType [size];
+62         _len = size;
+63     }
+64 }
+.fi
+.SS "template<class T > \fBffft::DynArray\fP< T >::~\fBDynArray\fP ()"
+
+.PP
+Definition at line 69 of file DynArray\&.hpp\&.
+.PP
+.nf
+70 {
+71     delete [] _data_ptr;
+72     _data_ptr = 0;
+73     _len = 0;
+74 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T > const \fBDynArray\fP< T >::\fBDataType\fP & \fBffft::DynArray\fP< T >::operator[] (longpos) const\fC [inline]\fP"
+
+.PP
+Definition at line 105 of file DynArray\&.hpp\&.
+.PP
+.nf
+106 {
+107     assert (pos >= 0);
+108     assert (pos < _len);
+109 
+110     return (_data_ptr [pos]);
+111 }
+.fi
+.SS "template<class T > \fBDynArray\fP< T >::\fBDataType\fP & \fBffft::DynArray\fP< T >::operator[] (longpos)\fC [inline]\fP"
+
+.PP
+Definition at line 116 of file DynArray\&.hpp\&.
+.PP
+.nf
+117 {
+118     assert (pos >= 0);
+119     assert (pos < _len);
+120 
+121     return (_data_ptr [pos]);
+122 }
+.fi
+.SS "template<class T > void \fBffft::DynArray\fP< T >::resize (longsize)\fC [inline]\fP"
+
+.PP
+Definition at line 87 of file DynArray\&.hpp\&.
+.PP
+.nf
+88 {
+89     assert (size >= 0);
+90     if (size > 0)
+91     {
+92         DataType *      old_data_ptr = _data_ptr;
+93         DataType *      tmp_data_ptr = new DataType [size];
+94 
+95         _data_ptr = tmp_data_ptr;
+96         _len = size;
+97 
+98         delete [] old_data_ptr;
+99     }
+100 }
+.fi
+.SS "template<class T > long \fBffft::DynArray\fP< T >::size () const\fC [inline]\fP"
+
+.PP
+Definition at line 79 of file DynArray\&.hpp\&.
+.PP
+.nf
+80 {
+81     return (_len);
+82 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

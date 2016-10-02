@@ -1,0 +1,107 @@
+\hypertarget{a00084_source}{\section{Array.\+hpp}
+\label{a00084_source}\index{Array.\+hpp@{Array.\+hpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*****************************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{        Array.hpp}
+00004 \textcolor{comment}{        By Laurent de Soras}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{--- Legal stuff ---}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{This program is free software. It comes without any warranty, to}
+00009 \textcolor{comment}{the extent permitted by applicable law. You can redistribute it}
+00010 \textcolor{comment}{and/or modify it under the terms of the Do What The Fuck You Want}
+00011 \textcolor{comment}{To Public License, Version 2, as published by Sam Hocevar. See}
+00012 \textcolor{comment}{http://sam.zoy.org/wtfpl/COPYING for more details.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{*Tab=3***********************************************************************/}
+00015 
+00016 
+00017 
+00018 \textcolor{preprocessor}{#if defined (ffft\_Array\_CURRENT\_CODEHEADER)}
+00019 \textcolor{preprocessor}{    #error Recursive inclusion of Array code header.}
+00020 \textcolor{preprocessor}{#endif}
+\hypertarget{a00084_source_l00021}{}\hyperlink{a00084_a478c0a3d4e07d03940b1ced717db82e9}{00021} \textcolor{preprocessor}{#define ffft\_Array\_CURRENT\_CODEHEADER}
+00022 
+00023 \textcolor{preprocessor}{#if ! defined (ffft\_Array\_CODEHEADER\_INCLUDED)}
+\hypertarget{a00084_source_l00024}{}\hyperlink{a00084_a9c7eea905ae130cc9a5ee2a20ded5c21}{00024} \textcolor{preprocessor}{#define ffft\_Array\_CODEHEADER\_INCLUDED}
+00025 
+00026 
+00027 
+00028 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) INCLUDE FILES \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00029 
+00030 \textcolor{preprocessor}{#include    <cassert>}
+00031 
+00032 
+00033 
+00034 \textcolor{keyword}{namespace }\hyperlink{a00142}{ffft}
+00035 \{
+00036 
+00037 
+00038 
+00039 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PUBLIC \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00040 
+00041 
+00042 
+00043 \textcolor{keyword}{template} <\textcolor{keyword}{class} T, \textcolor{keywordtype}{long} LEN>
+\hypertarget{a00084_source_l00044}{}\hyperlink{a00003_a5bab4a19a26a0e2e3b455b6c023cf663}{00044} \hyperlink{a00003}{Array <T, LEN>::Array} ()
+00045 \{
+00046     \textcolor{comment}{// Nothing}
+00047 \}
+00048 
+00049 
+00050 
+00051 \textcolor{keyword}{template} <\textcolor{keyword}{class} T, \textcolor{keywordtype}{long} LEN>
+\hypertarget{a00084_source_l00052}{}\hyperlink{a00003_a8d2a3d1353646dfab3d578f148694e2b}{00052} \textcolor{keyword}{const} \textcolor{keyword}{typename} \hyperlink{a00003_a9c4e0bf048154331d63e74ddfdd3760b}{Array <T, LEN>::DataType} &   
+      \hyperlink{a00003}{Array <T, LEN>::operator} [] (\textcolor{keywordtype}{long} pos) \textcolor{keyword}{const}
+00053 \{
+00054     assert (pos >= 0);
+00055     assert (pos < LEN);
+00056 
+00057     \textcolor{keywordflow}{return} (\_data\_arr [pos]);
+00058 \}
+00059 
+00060 
+00061 
+00062 \textcolor{keyword}{template} <\textcolor{keyword}{class} T, \textcolor{keywordtype}{long} LEN>
+\hypertarget{a00084_source_l00063}{}\hyperlink{a00003_a61a01b3ce19d98183860c42d55a0cc2c}{00063} \textcolor{keyword}{typename} \hyperlink{a00003_a9c4e0bf048154331d63e74ddfdd3760b}{Array <T, LEN>::DataType} & 
+      \hyperlink{a00003}{Array <T, LEN>::operator} [] (\textcolor{keywordtype}{long} pos)
+00064 \{
+00065     assert (pos >= 0);
+00066     assert (pos < LEN);
+00067 
+00068     \textcolor{keywordflow}{return} (\_data\_arr [pos]);
+00069 \}
+00070 
+00071 
+00072 
+00073 \textcolor{keyword}{template} <\textcolor{keyword}{class} T, \textcolor{keywordtype}{long} LEN>
+\hypertarget{a00084_source_l00074}{}\hyperlink{a00003_ab8bcd460790868c4d3aa7e9706d8a0b2}{00074} \textcolor{keywordtype}{long}    \hyperlink{a00003}{Array <T, LEN>::size} ()
+00075 \{
+00076     \textcolor{keywordflow}{return} (LEN);
+00077 \}
+00078 
+00079 
+00080 
+00081 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PROTECTED \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00082 
+00083 
+00084 
+00085 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PRIVATE \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00086 
+00087 
+00088 
+00089 \}   \textcolor{comment}{// namespace ffft}
+00090 
+00091 
+00092 
+00093 \textcolor{preprocessor}{#endif  // ffft\_Array\_CODEHEADER\_INCLUDED}
+00094 
+00095 \textcolor{preprocessor}{#undef ffft\_Array\_CURRENT\_CODEHEADER}
+00096 
+00097 
+00098 
+00099 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) EOF \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+\end{DoxyCode}

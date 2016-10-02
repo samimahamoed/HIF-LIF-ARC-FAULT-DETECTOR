@@ -1,0 +1,1008 @@
+\hypertarget{a00031}{\section{srv\+\_\+serial.\+h File Reference}
+\label{a00031}\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+}
+
+
+Header for serial port driver.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{d0/d54/a01691}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00031_d3/d4f/a00761}{serial\+\_\+msg\+\_\+t}
+\item 
+struct \hyperlink{a00031_df/d5f/a00762}{serial\+\_\+msg\+\_\+t.\+attachment}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00031_a734bbab06e1a9fd2e5522db0221ff6e3}{B\+A\+U\+D\+R\+A\+T\+E}~9600
+\begin{DoxyCompactList}\small\item\em Serial port baudrate U\+A\+R\+T1. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00031_a973c680573b37fc359fc68d0707da355}{M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}~240
+\item 
+\#define \hyperlink{a00031_aa49ab378520c95fea987f93a7f3c9abf}{R\+E\+C\+E\+I\+V\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}~\hyperlink{a00031_a973c680573b37fc359fc68d0707da355}{M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}
+\begin{DoxyCompactList}\small\item\em Receive buffer length. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}~\hyperlink{a00031_a973c680573b37fc359fc68d0707da355}{M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}
+\begin{DoxyCompactList}\small\item\em Transmit buffer length. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00031_a428b04d2e2f2da2ea031a6c731660a71}{H\+E\+X2\+V\+A\+L}(cc)~(((cc $>$= '0' ) \&\& (cc $<$= '9' )) ? (cc -\/ '0') \+: (cc -\/ 'A' + 10) )
+\begin{DoxyCompactList}\small\item\em Charcter to hex value conversion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00031_ad2b461e9e9044364a28a61cfadcacdd8}{serial\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Init function for srv\+\_\+serial service. \end{DoxyCompactList}\item 
+void \hyperlink{a00031_af15ca641f181de14f789d97b00c367ef}{serial\+\_\+enable\+\_\+blocking} (int enable)
+\begin{DoxyCompactList}\small\item\em Init function for srv\+\_\+serial service. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00031_a366b2707f4c7d76f0efc1b5cdde8e37e}{serial\+\_\+get\+\_\+command} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} $\ast$cmd, \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} $\ast$$\ast$arg\+Str\+Ptr, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} $\ast$arg\+Length)
+\begin{DoxyCompactList}\small\item\em Function for retriving serial message. \end{DoxyCompactList}\item 
+void \hyperlink{a00031_a7fc7421ed15d6e4516e9878e7455d715}{serial\+\_\+get\+\_\+command\+\_\+ack} (void)
+\begin{DoxyCompactList}\small\item\em Function which marks serial buffer as processed, so new command can be taken. \end{DoxyCompactList}\item 
+void \hyperlink{a00031_aaac89aaa2fbc24d91501b0695195b235}{serial\+\_\+send\+\_\+command} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cmd, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} arg)
+\item 
+void \hyperlink{a00031_ac9bd1d3814679f03e2a9bfa63a221946}{serial\+\_\+send\+\_\+data} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cmd, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} arg, void $\ast$data, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} offset, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length, \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} add\+\_\+crc)
+\item 
+void \hyperlink{a00031_a17f65cf9dbacdfb97cb2536ed0097ccb}{serial\+\_\+send} (void $\ast$msg, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} length)
+\begin{DoxyCompactList}\small\item\em Function sending buffers over serial port. \end{DoxyCompactList}\item 
+void \hyperlink{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}{serial\+\_\+send\+\_\+response} (\hyperlink{a00031_d3/d4f/a00761}{serial\+\_\+msg\+\_\+t} msg)
+\begin{DoxyCompactList}\small\item\em Function sending command responses on serial line. \end{DoxyCompactList}\item 
+\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00031_aa76f5237babd71f1484bb2dbc6aa0f8d}{serial\+\_\+make8} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} $\ast$buf, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} idx)
+\begin{DoxyCompactList}\small\item\em Function converting characters to 8 bit value. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00031_abc17de32f14103a5be219df0d4ad9176}{serial\+\_\+make16} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} $\ast$buf, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} idx)
+\begin{DoxyCompactList}\small\item\em Function converting characters to 16 bit value. \end{DoxyCompactList}\item 
+void \hyperlink{a00031_af419298e8d3acbb31667796fec870f76}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((\+\_\+\+\_\+interrupt\+\_\+\+\_\+, auto\+\_\+psv)) \+\_\+\+U1\+R\+X\+Interrupt(void)
+\begin{DoxyCompactList}\small\item\em Serial port transmit interrupt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header for serial port driver. 
+
+
+
+Definition in file \hyperlink{a00031_source}{srv\+\_\+serial.\+h}.
+
+
+
+\subsection{Data Structure Documentation}
+\index{serial\+\_\+msg\+\_\+t@{serial\+\_\+msg\+\_\+t}}\label{d3/d4f/a00761}
+\hypertarget{a00031_d3/d4f/a00761}{}
+\subsubsection{struct serial\+\_\+msg\+\_\+t}
+
+
+Definition at line \hyperlink{a00031_source_l00027}{27} of file \hyperlink{a00031_source}{srv\+\_\+serial.\+h}.
+
+
+
+Collaboration diagram for serial\+\_\+msg\+\_\+t\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/dc4/a01692}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}
+&
+arg\mbox{[}10\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00031_a7b79f40e2eeec288091afd340bf8f591}{\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}}\label{a00031_a7b79f40e2eeec288091afd340bf8f591}
+&
+arg\+\_\+cnt&
+\\
+\hline
+
+\hypertarget{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{struct \hyperlink{a00031_df/d5f/a00762}{serial\+\_\+msg\+\_\+t}}\label{a00031_a040f6d5d58d18d8aeaf447eda7f50172}
+&
+attachment&
+\\
+\hline
+
+\hypertarget{a00031_a13c351e37c82b2434e5ce4421012ffd6}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00031_a13c351e37c82b2434e5ce4421012ffd6}
+&
+cmd&
+\\
+\hline
+
+\hypertarget{a00031_ac93426bd9983c1934abcbeddbb64e306}{\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool}}\label{a00031_ac93426bd9983c1934abcbeddbb64e306}
+&
+manula\+\_\+mode\+\_\+crc\+\_\+en&
+\\
+\hline
+
+\end{DoxyFields}
+\index{serial\+\_\+msg\+\_\+t.\+attachment@{serial\+\_\+msg\+\_\+t.\+attachment}}\label{df/d5f/a00762}
+\hypertarget{a00031_df/d5f/a00762}{}
+\subsubsection{struct serial\+\_\+msg\+\_\+t.\+attachment}
+
+
+Definition at line \hyperlink{a00031_source_l00033}{33} of file \hyperlink{a00031_source}{srv\+\_\+serial.\+h}.
+
+
+
+Collaboration diagram for serial\+\_\+msg\+\_\+t.\+attachment\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{dd/db4/a01693}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00031_a2fa47f7c65fec19cc163b195725e3844}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00031_a2fa47f7c65fec19cc163b195725e3844}
+&
+length&
+\\
+\hline
+
+\hypertarget{a00031_ad5189de027922f81005951e6efe0efd5}{void $\ast$}\label{a00031_ad5189de027922f81005951e6efe0efd5}
+&
+location&
+\\
+\hline
+
+\hypertarget{a00031_a7a86c157ee9713c34fbd7a1ee40f0c5a}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00031_a7a86c157ee9713c34fbd7a1ee40f0c5a}
+&
+offset&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00031_a734bbab06e1a9fd2e5522db0221ff6e3}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!B\+A\+U\+D\+R\+A\+T\+E@{B\+A\+U\+D\+R\+A\+T\+E}}
+\index{B\+A\+U\+D\+R\+A\+T\+E@{B\+A\+U\+D\+R\+A\+T\+E}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{B\+A\+U\+D\+R\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+U\+D\+R\+A\+T\+E~9600}}\label{a00031_a734bbab06e1a9fd2e5522db0221ff6e3}
+
+
+Serial port baudrate U\+A\+R\+T1. 
+
+
+
+Definition at line \hyperlink{a00031_source_l00016}{16} of file \hyperlink{a00031_source}{srv\+\_\+serial.\+h}.
+
+\hypertarget{a00031_a428b04d2e2f2da2ea031a6c731660a71}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!H\+E\+X2\+V\+A\+L@{H\+E\+X2\+V\+A\+L}}
+\index{H\+E\+X2\+V\+A\+L@{H\+E\+X2\+V\+A\+L}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{H\+E\+X2\+V\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+E\+X2\+V\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{cc}
+\end{DoxyParamCaption}
+)~(((cc $>$= '0' ) \&\& (cc $<$= '9' )) ? (cc -\/ '0') \+: (cc -\/ 'A' + 10) )}}\label{a00031_a428b04d2e2f2da2ea031a6c731660a71}
+
+
+Charcter to hex value conversion. 
+
+
+
+Definition at line \hyperlink{a00031_source_l00050}{50} of file \hyperlink{a00031_source}{srv\+\_\+serial.\+h}.
+
+\hypertarget{a00031_a973c680573b37fc359fc68d0707da355}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H@{M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}}
+\index{M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H@{M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H~240}}\label{a00031_a973c680573b37fc359fc68d0707da355}
+
+
+Definition at line \hyperlink{a00031_source_l00018}{18} of file \hyperlink{a00031_source}{srv\+\_\+serial.\+h}.
+
+\hypertarget{a00031_aa49ab378520c95fea987f93a7f3c9abf}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!R\+E\+C\+E\+I\+V\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E@{R\+E\+C\+E\+I\+V\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}}
+\index{R\+E\+C\+E\+I\+V\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E@{R\+E\+C\+E\+I\+V\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{R\+E\+C\+E\+I\+V\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+C\+E\+I\+V\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E~{\bf M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}}}\label{a00031_aa49ab378520c95fea987f93a7f3c9abf}
+
+
+Receive buffer length. 
+
+
+
+Definition at line \hyperlink{a00031_source_l00021}{21} of file \hyperlink{a00031_source}{srv\+\_\+serial.\+h}.
+
+\hypertarget{a00031_aef714b16a48390956c10e8aa18d156b8}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E@{T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}}
+\index{T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E@{T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E~{\bf M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}}}\label{a00031_aef714b16a48390956c10e8aa18d156b8}
+
+
+Transmit buffer length. 
+
+
+
+Definition at line \hyperlink{a00031_source_l00024}{24} of file \hyperlink{a00031_source}{srv\+\_\+serial.\+h}.
+
+
+
+Referenced by \hyperlink{a00030_source_l00758}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, and \hyperlink{a00030_source_l00577}{serial\+\_\+send()}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00031_af419298e8d3acbb31667796fec870f76}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{\+\_\+\+\_\+attribute\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+\+\_\+attribute\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{(\+\_\+\+\_\+interrupt\+\_\+\+\_\+, auto\+\_\+psv)}]{}
+\end{DoxyParamCaption}
+)}}\label{a00031_af419298e8d3acbb31667796fec870f76}
+
+
+Serial port transmit interrupt. 
+
+Serial port transmit interrupt.
+
+Processe also delay blocks from concerned modules
+
+Serial port transmit interrupt. req R\+E\+Q-\/8a\+: \char`\"{}\+Read the sensor inputs \char`\"{} Sensors and inputs are read and filtered.
+
+Definition at line \hyperlink{a00030_source_l00758}{758} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00038_source_l00033}{algorithm\+\_\+data}, \hyperlink{a00038_source_l02104}{algorithm\+\_\+message\+\_\+arrived\+\_\+ntf\+\_\+isr()}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00058_source_l00026}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+I\+R}, \hyperlink{a00058_source_l00027}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+X}, \hyperlink{a00058_source_l00028}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+Y}, \hyperlink{a00058_source_l00025}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+U\+V}, \hyperlink{a00060_source_l00016}{data\+\_\+non\+\_\+volatile}, \hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{logv\+\_\+t\+::data\+\_\+tx\+\_\+on\+\_\+progress}, \hyperlink{a00016_a16f85d57ec98b4ad05f5a2e10536b3c6}{algorithm\+\_\+data\+\_\+t\+::diagnosis}, \hyperlink{a00058_source_l00051}{D\+I\+G\+\_\+\+T\+E\+S\+T\+\_\+\+L\+E\+D\+\_\+\+L\+A\+T}, \hyperlink{a00021_source_l00073}{E\+V\+E\+N\+T\+\_\+\+C\+L\+E\+A\+R\+E\+D}, \hyperlink{a00021_source_l00069}{E\+V\+E\+N\+T\+\_\+\+S\+V\+\_\+\+A\+L\+A\+R\+M}, \hyperlink{a00040_source_l00086}{F\+A\+L\+S\+E}, \hyperlink{a00021_source_l00153}{H\+O\+T}, \hyperlink{a00056_source_l00223}{hwio\+\_\+get\+\_\+analog()}, \hyperlink{a00045_source_l00302}{ir\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00030_source_l00054}{serial\+\_\+data\+\_\+t\+::irq\+\_\+cnt}, \hyperlink{a00033_source_l00017}{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T}, \hyperlink{a00033_source_l00020}{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E}, \hyperlink{a00033_source_l00025}{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E}, \hyperlink{a00021_source_l00058}{I\+R\+Q\+\_\+\+S\+O\+U\+R\+C\+E\+\_\+\+S\+E\+R\+I\+A\+L}, \hyperlink{a00037_source_l00098}{x\+\_\+system\+\_\+volatile\+\_\+t\+::irq\+\_\+tick}, \hyperlink{a00038_source_l00036}{logv}, \hyperlink{a00050_source_l00276}{mfield\+\_\+x\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00019_ac7134882964fedc18be6c75547987a2c}{mfield\+\_\+y\+\_\+sen\+\_\+get\+\_\+status()}, \hyperlink{a00016_a293140e240bbd54f7601adbc9194148c}{algorithm\+\_\+data\+\_\+t\+::modules\+\_\+state\+\_\+sv}, \hyperlink{a00030_source_l00035}{serial\+\_\+data\+\_\+t\+::msg\+\_\+ready}, \hyperlink{a00013_source_l00122}{N\+O\+V\+\_\+\+H\+O\+L\+D\+\_\+\+C\+T\+R\+L\+\_\+\+L\+A\+T}, \hyperlink{a00060_source_l00019}{nov\+\_\+wr\+\_\+inprogress}, \hyperlink{a00030_source_l00031}{serial\+\_\+data\+\_\+t\+::rc\+\_\+buffer}, \hyperlink{a00030_source_l00033}{serial\+\_\+data\+\_\+t\+::rc\+\_\+data\+\_\+length}, \hyperlink{a00015_source_l08162}{S\+E\+T\+\_\+\+C\+P\+U\+\_\+\+I\+P\+L}, \hyperlink{a00066_source_l00096}{srv\+\_\+wdg\+\_\+init\+\_\+fn()}, \hyperlink{a00067_source_l00028}{srv\+\_\+wdg\+\_\+kick}, \hyperlink{a00021_a854b8f967c206a5f3e4aeaf91a782b3e}{logv\+\_\+t\+::sv\+\_\+delay}, \hyperlink{a00021_source_l00247}{logv\+\_\+t\+::tick}, \hyperlink{a00031_source_l00024}{T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}, \hyperlink{a00021_source_l00248}{logv\+\_\+t\+::trip\+\_\+active}, \hyperlink{a00040_source_l00084}{T\+R\+U\+E}, \hyperlink{a00030_source_l00044}{serial\+\_\+data\+\_\+t\+::tx\+\_\+buff\+\_\+head}, \hyperlink{a00030_source_l00046}{serial\+\_\+data\+\_\+t\+::tx\+\_\+buff\+\_\+tail}, \hyperlink{a00030_source_l00042}{serial\+\_\+data\+\_\+t\+::tx\+\_\+buffer}, \hyperlink{a00030_source_l00049}{serial\+\_\+data\+\_\+t\+::tx\+\_\+cnt}, \hyperlink{a00073_source_l00302}{uv\+\_\+sen\+\_\+get\+\_\+status()}, and \hyperlink{a00066_source_l00055}{watchdog\+\_\+timeout}.
+
+
+\begin{DoxyCode}
+00760 \{
+00761    \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} dummy;
+00762     \textcolor{keywordflow}{while} ((\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} != \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head}) && (U1STAbits.UTXBF==0))
+00763     \{
+00764         U1TXREG = \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a327864d2719b5145f0eded883fe321c5}{tx\_buffer}[\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail}];
+00765         \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} = (\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} +1)%\hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{TRANSMIT\_BUFFER\_SIZE};
+00766         \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ab6b71c720d341035fb26d723364eb879}{tx\_cnt}++;
+00767         \textcolor{keywordflow}{while}(U1STAbits.TRMT == 0);
+00768         \textcolor{keywordflow}{while}(U1STAbits.URXDA !=0)dummy = U1RXREG;
+00769 
+00770         \textcolor{keywordflow}{if}(\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} == \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head})\{
+00771 
+00772           \textcolor{keywordflow}{if}((\hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all&0xF0) != 0)
+00773               \textcolor{comment}{/*the last packet of data transfer response just completed */}
+00774               \hyperlink{a00021_a2e89c46668b39a17753c238950c9e1ec}{logv}.\hyperlink{a00021_a6cdefde69642ef511e3252c38be68516}{data\_tx\_on\_progress}.all = 0;
+00775 
+00776           \textcolor{keywordflow}{while}(U1STAbits.URXDA !=0)dummy = U1RXREG;
+00777           \textcolor{keywordflow}{if}(U1STAbits.OERR)U1STAbits.OERR = 0;
+00778           serial\_enable\_transmitter(\hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE});
+00779           IEC0bits.U1RXIE = 1;
+00780 
+00781 
+00782 
+00783         \}
+00784     \}
+00785     IFS0bits.U1TXIF = 0;
+00786 
+00787     \hyperlink{a00015_a34d4c80d85281a545f3c7f1530803d65}{SET\_CPU\_IPL}(5);
+00788 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d61/a00031_af419298e8d3acbb31667796fec870f76_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00031_af15ca641f181de14f789d97b00c367ef}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+enable\+\_\+blocking@{serial\+\_\+enable\+\_\+blocking}}
+\index{serial\+\_\+enable\+\_\+blocking@{serial\+\_\+enable\+\_\+blocking}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+enable\+\_\+blocking}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+enable\+\_\+blocking (
+\begin{DoxyParamCaption}
+\item[{int}]{enable}
+\end{DoxyParamCaption}
+)}}\label{a00031_af15ca641f181de14f789d97b00c367ef}
+
+
+Init function for srv\+\_\+serial service. 
+
+
+
+Definition at line \hyperlink{a00030_source_l00219}{219} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00030_source_l00039}{serial\+\_\+data\+\_\+t\+::blocking\+\_\+mode}.
+
+
+
+Referenced by \hyperlink{a00030_source_l00159}{serial\+\_\+init()}.
+
+
+\begin{DoxyCode}
+00220 \{
+00221         \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a758ac775caab1899af08024d4635f7e3}{blocking\_mode} = enable;
+00222 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d61/a00031_af15ca641f181de14f789d97b00c367ef_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00031_a366b2707f4c7d76f0efc1b5cdde8e37e}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+get\+\_\+command@{serial\+\_\+get\+\_\+command}}
+\index{serial\+\_\+get\+\_\+command@{serial\+\_\+get\+\_\+command}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+get\+\_\+command}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} serial\+\_\+get\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16} $\ast$}]{cmd, }
+\item[{{\bf Uint8} $\ast$$\ast$}]{arg\+Str\+Ptr, }
+\item[{{\bf Uint16} $\ast$}]{arg\+Length}
+\end{DoxyParamCaption}
+)}}\label{a00031_a366b2707f4c7d76f0efc1b5cdde8e37e}
+
+
+Function for retriving serial message. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cmd} & response command \\
+\hline
+\mbox{\tt in,out}  & {\em arg\+Str\+Ptr} & pointer to be updated with argument buffer \\
+\hline
+\mbox{\tt in,out}  & {\em arg\+Length} & pointer for argument buffer length \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00030_source_l00263}{263} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00060_source_l00084}{crc16()}, \hyperlink{a00030_source_l00035}{serial\+\_\+data\+\_\+t\+::msg\+\_\+ready}, \hyperlink{a00030_source_l00031}{serial\+\_\+data\+\_\+t\+::rc\+\_\+buffer}, \hyperlink{a00030_source_l00033}{serial\+\_\+data\+\_\+t\+::rc\+\_\+data\+\_\+length}, \hyperlink{a00030_source_l00343}{serial\+\_\+get\+\_\+command\+\_\+ack()}, and \hyperlink{a00030_source_l00381}{serial\+\_\+make16()}.
+
+
+\begin{DoxyCode}
+00264 \{
+00265     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} result = 1;
+00266     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} crc,calc\_crc = 0;
+00267    
+00268 
+00269     
+00270 
+00271     \textcolor{keywordflow}{if}(\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{msg\_ready} != 0)
+00272     \{
+00273 
+00274         \textcolor{comment}{// Minimal message - 16 characters}
+00275         \textcolor{comment}{// [0000:000000:00]}
+00276         \textcolor{comment}{// 01234567890123}
+00277         \textcolor{comment}{// 00000000001111}
+00278         \textcolor{comment}{// Longer messages look like}
+00279         \textcolor{comment}{// [0000:000000000000000  ... 00000000000:00]}
+00280 
+00281 
+00282         \textcolor{keywordflow}{if}(\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} >= 14 )
+00283         \{
+00284 
+00285             *cmd = \hyperlink{a00030_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer},1);
+00286 
+00287             \textcolor{keywordflow}{if}( (\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}-5]==\textcolor{charliteral}{'C'}) && (\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[
+      \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}-4]==\textcolor{charliteral}{'C'}))
+00288             \{
+00289                 \textcolor{comment}{// Manual mode, "CCCC" charaters instead of checksum}
+00290                 result = 0;
+00291             \}
+00292             \textcolor{keywordflow}{else}
+00293             \{
+00294 
+00295                 
+00296                 crc  = \hyperlink{a00030_abc17de32f14103a5be219df0d4ad9176}{serial\_make16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer},\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}-5);
+00297                 
+00298            
+00299                 calc\_crc = \hyperlink{a00021_a6553827687db2137ee550ad6e1d2f316}{crc16}((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer},\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length}-6);
+00300               \textcolor{comment}{/*}
+00301 \textcolor{comment}{                for(ii = 0; ii < 11;ii++)}
+00302 \textcolor{comment}{                \{}
+00303 \textcolor{comment}{                    calc\_crc = calc\_crc ^serial\_data.rc\_buffer[ii];}
+00304 \textcolor{comment}{                \}}
+00305 \textcolor{comment}{              */}
+00306                 \textcolor{keywordflow}{if}(crc == calc\_crc)
+00307                 \{
+00308                     result = 0;
+00309                 \}
+00310             \}
+00311 
+00312             *argStrPtr =  ((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)&\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer}[6]);
+00313             *argLength = \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} - 12;
+00314 
+00315        \}
+00316 
+00317        \textcolor{keywordflow}{if}(result != 0)
+00318        \{
+00319             \textcolor{comment}{// Faulty message, internmal ack}
+00320             \hyperlink{a00030_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+00321        \}
+00322 
+00323     \}
+00324 
+00325 
+00326 
+00327 
+00328     IEC0bits.U1RXIE = 1;
+00329 
+00330 
+00331     \textcolor{keywordflow}{return} result;
+00332 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d61/a00031_a366b2707f4c7d76f0efc1b5cdde8e37e_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00031_a7fc7421ed15d6e4516e9878e7455d715}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+get\+\_\+command\+\_\+ack@{serial\+\_\+get\+\_\+command\+\_\+ack}}
+\index{serial\+\_\+get\+\_\+command\+\_\+ack@{serial\+\_\+get\+\_\+command\+\_\+ack}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+get\+\_\+command\+\_\+ack}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+get\+\_\+command\+\_\+ack (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00031_a7fc7421ed15d6e4516e9878e7455d715}
+
+
+Function which marks serial buffer as processed, so new command can be taken. 
+
+
+
+Definition at line \hyperlink{a00030_source_l00343}{343} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00030_source_l00035}{serial\+\_\+data\+\_\+t\+::msg\+\_\+ready}, and \hyperlink{a00030_source_l00033}{serial\+\_\+data\+\_\+t\+::rc\+\_\+data\+\_\+length}.
+
+
+
+Referenced by \hyperlink{a00030_source_l00263}{serial\+\_\+get\+\_\+command()}, and \hyperlink{a00030_source_l00159}{serial\+\_\+init()}.
+
+
+\begin{DoxyCode}
+00344 \{
+00345     IEC0bits.U1RXIE = 0;
+00346     \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} = 0;
+00347     \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ac0789a6c9ab7ccd13d6f04ae31496854}{msg\_ready} = 0;
+00348     IEC0bits.U1RXIE = 1;
+00349 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d61/a00031_a7fc7421ed15d6e4516e9878e7455d715_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00031_ad2b461e9e9044364a28a61cfadcacdd8}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+init@{serial\+\_\+init}}
+\index{serial\+\_\+init@{serial\+\_\+init}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00031_ad2b461e9e9044364a28a61cfadcacdd8}
+
+
+Init function for srv\+\_\+serial service. 
+
+
+
+Definition at line \hyperlink{a00030_source_l00159}{159} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00030_source_l00013}{B\+R\+G\+V\+A\+L}, \hyperlink{a00040_source_l00086}{F\+A\+L\+S\+E}, \hyperlink{a00030_source_l00033}{serial\+\_\+data\+\_\+t\+::rc\+\_\+data\+\_\+length}, \hyperlink{a00030_source_l00219}{serial\+\_\+enable\+\_\+blocking()}, \hyperlink{a00030_source_l00343}{serial\+\_\+get\+\_\+command\+\_\+ack()}, \hyperlink{a00040_source_l00084}{T\+R\+U\+E}, \hyperlink{a00030_source_l00044}{serial\+\_\+data\+\_\+t\+::tx\+\_\+buff\+\_\+head}, and \hyperlink{a00030_source_l00046}{serial\+\_\+data\+\_\+t\+::tx\+\_\+buff\+\_\+tail}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00160 \{
+00161 
+00162     \textcolor{comment}{//gpio configuration and peripheral mapping procedure}
+00163          \_\_builtin\_write\_OSCCONL(OSCCON & 0xbf);
+00164              TRISBbits.TRISB10 = 1;
+00165              ODCBbits.ODCB11   = 0;
+00166              TRISBbits.TRISB11 = 0;
+00167       
+00168         
+00169              RPOR4bits.RP43R   = 1; \textcolor{comment}{//TX1}
+00170              RPINR18bits.U1RXR = 0x2A;
+00171          \_\_builtin\_write\_OSCCONL(OSCCON | 0x40);
+00172 
+00173 
+00174     U1MODE = 0x0000;            \textcolor{comment}{//Clear UART1 registers}
+00175     U1STA  = 0x0000;
+00176 
+00177     U1MODEbits.UARTEN = 1;      \textcolor{comment}{//Enable UART1 module}
+00178     U1MODEbits.PDSEL  = 0;      \textcolor{comment}{// 8 bits, no parity}
+00179     U1MODEbits.STSEL  = 0;      \textcolor{comment}{// 1 stop bit}
+00180 
+00181     U1BRG = \hyperlink{a00030_aca346e181d2ffc089e22e75736a6ff63}{BRGVAL};             \textcolor{comment}{//Load UART1 Baud Rate Generator}
+00182 
+00183     IFS0bits.U1RXIF   = 0;      \textcolor{comment}{//Clear UART1 Receiver Interrupt Flag}
+00184     IFS0bits.U1TXIF   = 0;      \textcolor{comment}{//Clear UART1 Transmitter Interrupt Flag}
+00185     IEC0bits.U1RXIE   = 1;      \textcolor{comment}{//Enable UART1 Receiver Interrupt}
+00186     IEC0bits.U1TXIE   = 1;      \textcolor{comment}{//Enable UART1 Transmitter Interrupt}
+00187 
+00188     U1STAbits.UTXISEL0 = 0;     \textcolor{comment}{// Interrupt after one TX character is transmitted}
+00189     U1STAbits.UTXISEL1 = 0;
+00190     U1STAbits.UTXINV   = 0;     \textcolor{comment}{// U1TX Idle state high}
+00191 
+00192     U1STAbits.URXISEL  = 1;     \textcolor{comment}{//Setup UART1  receiver to interrupt after character received}
+00193     IPC2bits.U1RXIP    = 0x07;
+00194     
+00195 
+00196     U1MODEbits.UARTEN  = 1;     \textcolor{comment}{// Enable UART}
+00197 
+00198     serial\_enable\_transmitter(\hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE});
+00199     
+00200 
+00201     \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ab136d4fef2c523afd55b6ca74c46d7cc}{rc\_data\_length} = 0;
+00202     \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head} = \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} = 0;
+00203 
+00204     \hyperlink{a00030_af15ca641f181de14f789d97b00c367ef}{serial\_enable\_blocking}(\hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE});
+00205     \hyperlink{a00030_a7fc7421ed15d6e4516e9878e7455d715}{serial\_get\_command\_ack}();
+00206 
+00207 
+00208 
+00209 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{df/d61/a00031_ad2b461e9e9044364a28a61cfadcacdd8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{df/d61/a00031_ad2b461e9e9044364a28a61cfadcacdd8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00031_abc17de32f14103a5be219df0d4ad9176}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+make16@{serial\+\_\+make16}}
+\index{serial\+\_\+make16@{serial\+\_\+make16}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+make16}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} serial\+\_\+make16 (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8} $\ast$}]{buf, }
+\item[{{\bf Uint16}}]{idx}
+\end{DoxyParamCaption}
+)}}\label{a00031_abc17de32f14103a5be219df0d4ad9176}
+
+
+Function converting characters to 16 bit value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buf} & buffer with characters \\
+\hline
+\mbox{\tt in}  & {\em idx} & index to first character of 16 bit hex number string ( four charaters used) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00030_source_l00381}{381} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00030_source_l00016}{H\+E\+X2\+V\+A\+L}.
+
+
+
+Referenced by \hyperlink{a00038_source_l00950}{msg\+\_\+to\+\_\+mem()}, and \hyperlink{a00030_source_l00263}{serial\+\_\+get\+\_\+command()}.
+
+
+\begin{DoxyCode}
+00382 \{
+00383     \textcolor{keywordflow}{return} ((\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+0])<<12)|(\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+1])<<8)|(
+      \hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+2])<<4)|(\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+3])<<0));
+00384 
+00385 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{df/d61/a00031_abc17de32f14103a5be219df0d4ad9176_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00031_aa76f5237babd71f1484bb2dbc6aa0f8d}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+make8@{serial\+\_\+make8}}
+\index{serial\+\_\+make8@{serial\+\_\+make8}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+make8}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} serial\+\_\+make8 (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8} $\ast$}]{buf, }
+\item[{{\bf Uint16}}]{idx}
+\end{DoxyParamCaption}
+)}}\label{a00031_aa76f5237babd71f1484bb2dbc6aa0f8d}
+
+
+Function converting characters to 8 bit value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buf} & buffer with characters \\
+\hline
+\mbox{\tt in}  & {\em idx} & index to first character of 8 bit hex number string ( two characters used ) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00030_source_l00367}{367} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00030_source_l00016}{H\+E\+X2\+V\+A\+L}.
+
+
+
+Referenced by \hyperlink{a00038_source_l00950}{msg\+\_\+to\+\_\+mem()}.
+
+
+\begin{DoxyCode}
+00368 \{
+00369     \textcolor{keywordflow}{return} ((\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+0])<<4)|(\hyperlink{a00030_a428b04d2e2f2da2ea031a6c731660a71}{HEX2VAL}(buf[idx+1]))<<0);
+00370 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{df/d61/a00031_aa76f5237babd71f1484bb2dbc6aa0f8d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00031_a17f65cf9dbacdfb97cb2536ed0097ccb}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+send@{serial\+\_\+send}}
+\index{serial\+\_\+send@{serial\+\_\+send}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+send}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+send (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{msg, }
+\item[{{\bf Uint16}}]{length}
+\end{DoxyParamCaption}
+)}}\label{a00031_a17f65cf9dbacdfb97cb2536ed0097ccb}
+
+
+Function sending buffers over serial port. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em buffer} & character buffer to be sent \\
+\hline
+\mbox{\tt in}  & {\em length} & buffer length \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00030_source_l00577}{577} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00030_source_l00039}{serial\+\_\+data\+\_\+t\+::blocking\+\_\+mode}, \hyperlink{a00033_a3b0017f6ec0e04a6435bba00fe325294}{Delay5us()}, \hyperlink{a00040_source_l00086}{F\+A\+L\+S\+E}, \hyperlink{a00031_source_l00024}{T\+R\+A\+N\+S\+M\+I\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}, \hyperlink{a00040_source_l00084}{T\+R\+U\+E}, \hyperlink{a00030_source_l00044}{serial\+\_\+data\+\_\+t\+::tx\+\_\+buff\+\_\+head}, \hyperlink{a00030_source_l00046}{serial\+\_\+data\+\_\+t\+::tx\+\_\+buff\+\_\+tail}, and \hyperlink{a00030_source_l00042}{serial\+\_\+data\+\_\+t\+::tx\+\_\+buffer}.
+
+
+
+Referenced by \hyperlink{a00030_source_l00412}{serial\+\_\+send\+\_\+response()}.
+
+
+\begin{DoxyCode}
+00578 \{
+00579   
+00580     \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} TrNewHead;
+00581     \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}  dummy;
+00582 
+00583     \hyperlink{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}{CChar} * buffer = (\hyperlink{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}{CChar} *)msg;
+00584 
+00585 
+00586     IEC0bits.U1TXIE    = 0;
+00587 
+00588     serial\_enable\_transmitter(\hyperlink{a00040_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE});
+00589 
+00590     \hyperlink{a00033_a3b0017f6ec0e04a6435bba00fe325294}{Delay5us}(100);
+00591     
+00592     \textcolor{keywordflow}{while}((U1STAbits.URXDA != 0))dummy = U1RXREG;
+00593     
+00594 
+00595 
+00596     \textcolor{keywordflow}{if}(length > 0)
+00597     \{
+00598         \textcolor{keywordflow}{if}(\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail} == \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head})
+00599         \{
+00600             \textcolor{comment}{// Launch transmission ( if not already in progress )}
+00601             \textcolor{keywordflow}{while}(U1STAbits.UTXBF!=0)\textcolor{keywordflow}{continue}; \textcolor{comment}{// wait unitl FIFO is available}
+00602             U1TXREG = *buffer;
+00603             buffer++;
+00604             length--;
+00605         \}
+00606     \}
+00607 
+00608     \textcolor{keywordflow}{while} (length > 0)
+00609     \{
+00610         TrNewHead = (\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head} + 1)%
+      \hyperlink{a00031_aef714b16a48390956c10e8aa18d156b8}{TRANSMIT\_BUFFER\_SIZE};
+00611 
+00612         \textcolor{keywordflow}{if}(TrNewHead != \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a6287e1447d7902b8bbc2f6359065dcbd}{tx\_buff\_tail})
+00613         \{
+00614             \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a327864d2719b5145f0eded883fe321c5}{tx\_buffer}[\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.
+      \hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head}] = *buffer;
+00615             buffer++;
+00616             length--;
+00617             \hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a3e2eda0a020422511de91b2bc7386083}{tx\_buff\_head} = TrNewHead;
+00618         \}
+00619         \textcolor{keywordflow}{else}
+00620         \{
+00621             \textcolor{keywordflow}{if}(\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_a758ac775caab1899af08024d4635f7e3}{blocking\_mode} == 0)
+00622             \{
+00623                 \textcolor{comment}{// Cut the message - does not fit into buffer :-(}
+00624                 length = 0;
+00625             \}
+00626             \textcolor{keywordflow}{else}
+00627             \{
+00628                 IEC0bits.U1TXIE   = 1;
+00629                 serial\_wait\_sent();
+00630                 IEC0bits.U1TXIE   = 0;
+00631 
+00632                 serial\_enable\_transmitter(\hyperlink{a00040_aa93f0eb578d23995850d61f7d61c55c1}{FALSE});
+00633 
+00634                 \textcolor{keywordflow}{while}((U1STAbits.URXDA != 0))dummy = U1RXREG;
+00635                 IEC0bits.U1RXIE   = 1;
+00636                 length = 0;
+00637             \}
+00638         \}
+00639 
+00640     \}
+00641 
+00642     IEC0bits.U1TXIE   = 1;
+00643 
+00644 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{df/d61/a00031_a17f65cf9dbacdfb97cb2536ed0097ccb_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{df/d61/a00031_a17f65cf9dbacdfb97cb2536ed0097ccb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00031_aaac89aaa2fbc24d91501b0695195b235}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+send\+\_\+command@{serial\+\_\+send\+\_\+command}}
+\index{serial\+\_\+send\+\_\+command@{serial\+\_\+send\+\_\+command}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+send\+\_\+command}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+send\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{cmd, }
+\item[{{\bf Uint16}}]{arg}
+\end{DoxyParamCaption}
+)}}\label{a00031_aaac89aaa2fbc24d91501b0695195b235}
+\hypertarget{a00031_ac9bd1d3814679f03e2a9bfa63a221946}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+send\+\_\+data@{serial\+\_\+send\+\_\+data}}
+\index{serial\+\_\+send\+\_\+data@{serial\+\_\+send\+\_\+data}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+send\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+send\+\_\+data (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{cmd, }
+\item[{{\bf Uint16}}]{arg, }
+\item[{void $\ast$}]{data, }
+\item[{{\bf Uint16}}]{offset, }
+\item[{{\bf Uint16}}]{length, }
+\item[{{\bf Bool}}]{add\+\_\+crc}
+\end{DoxyParamCaption}
+)}}\label{a00031_ac9bd1d3814679f03e2a9bfa63a221946}
+\hypertarget{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}{\index{srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}!serial\+\_\+send\+\_\+response@{serial\+\_\+send\+\_\+response}}
+\index{serial\+\_\+send\+\_\+response@{serial\+\_\+send\+\_\+response}!srv\+\_\+serial.\+h@{srv\+\_\+serial.\+h}}
+\subsubsection[{serial\+\_\+send\+\_\+response}]{\setlength{\rightskip}{0pt plus 5cm}void serial\+\_\+send\+\_\+response (
+\begin{DoxyParamCaption}
+\item[{{\bf serial\+\_\+msg\+\_\+t}}]{msg}
+\end{DoxyParamCaption}
+)}}\label{a00031_a96a3f016ca5b0736424c2695fe9fbdf8}
+
+
+Function sending command responses on serial line. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cmd} & response command \\
+\hline
+\mbox{\tt in}  & {\em arg} & response argument\\
+\hline
+\end{DoxyParams}
+Function sending command responses on serial line.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cmd} & response command \\
+\hline
+\mbox{\tt in}  & {\em arg} & response argument \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00030_source_l00412}{412} of file \hyperlink{a00030_source}{srv\+\_\+serial.\+c}.
+
+
+
+References \hyperlink{a00031_source_l00030}{serial\+\_\+msg\+\_\+t\+::arg}, \hyperlink{a00031_source_l00031}{serial\+\_\+msg\+\_\+t\+::arg\+\_\+cnt}, \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{serial\+\_\+msg\+\_\+t\+::attachment}, \hyperlink{a00031_source_l00029}{serial\+\_\+msg\+\_\+t\+::cmd}, \hyperlink{a00060_source_l00084}{crc16()}, \hyperlink{a00030_source_l00031}{serial\+\_\+data\+\_\+t\+::rc\+\_\+buffer}, and \hyperlink{a00030_source_l00577}{serial\+\_\+send()}.
+
+
+\begin{DoxyCode}
+00413 \{
+00414   
+00415     \textcolor{comment}{// \{CMD:CHSN00000000....:crc\}}
+00416     \textcolor{comment}{// 0123456789012345}
+00417     \textcolor{comment}{// 0000000000111111}
+00418 
+00419 
+00420 
+00421    \textcolor{comment}{//during this time i.e. while processing command, all incoming messages are ignored}
+00422    \textcolor{comment}{//hence, the receive buffer will be used temporarily while preparing response msg}
+00423 
+00424    \textcolor{keywordtype}{char}   *message = (\textcolor{keywordtype}{char} *)(\hyperlink{a00030_a77d3b77ccd59a0065642bf1ac7887b9d}{serial\_data}.\hyperlink{a00030_ac734cb8be27f86bd99edc539434883a4}{rc\_buffer});
+00425 
+00426    \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}  length = 0;
+00427 
+00428 
+00429   \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} type =  (((msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd}&0x00F0)>>4)== 0xE)?0xE:
+00430                  ((((msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd}&0x0F00)>>8)==6)?6:3);
+00431 
+00432  \textcolor{keywordflow}{if}(msg.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length > 0)type = 0xE; \textcolor{keywordflow}{else} type = msg.\hyperlink{a00031_a7b79f40e2eeec288091afd340bf8f591}{arg\_cnt};
+00433 
+00434  \textcolor{keywordflow}{switch}(type)
+00435    \{
+00436        \textcolor{keywordflow}{case} 3\textcolor{comment}{/*3 arg msg*/}:
+00437        \{
+00438 
+00439        sprintf(message,\textcolor{stringliteral}{"\{%04X:%02X%02X%04X:"},msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd},msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[0],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1],msg.
+      \hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2]);
+00440 
+00441        sprintf(message+15,\textcolor{stringliteral}{"%04X\}"},\hyperlink{a00021_a6553827687db2137ee550ad6e1d2f316}{crc16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)message,14));
+00442 
+00443        length = 20;
+00444        \}\textcolor{keywordflow}{break};
+00445 
+00446 
+00447        \textcolor{keywordflow}{case} 4\textcolor{comment}{/*4 arg msg*/}:
+00448        \{    sprintf(message,\textcolor{stringliteral}{"\{%04X:%02X%02X%04X%04X:"},msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd},msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[0],msg.
+      \hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]);
+00449 
+00450        sprintf(message+19,\textcolor{stringliteral}{"%04X\}"},\hyperlink{a00021_a6553827687db2137ee550ad6e1d2f316}{crc16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)message,18));
+00451 
+00452        length = 24;
+00453 
+00454        \}\textcolor{keywordflow}{break};
+00455 
+00456 
+00457        \textcolor{keywordflow}{case} 0xE \textcolor{comment}{/*data transfer*/}:
+00458        \{
+00459 
+00460        \textcolor{keyword}{const} \textcolor{keywordtype}{char} cnv[] = \textcolor{stringliteral}{"0123456789ABCDEF"};
+00461 
+00462        memset(message,0,\textcolor{keyword}{sizeof}(message));
+00463 
+00464        sprintf(message,\textcolor{stringliteral}{"\{%04X:%02X%02X%04X%04X"},msg.\hyperlink{a00031_a13c351e37c82b2434e5ce4421012ffd6}{cmd},
+00465                                             msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[0],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[1],
+00466                                             msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[2],msg.\hyperlink{a00031_af7d6f762438c80072bd9dc0e4dd4ae1e}{arg}[3]);
+00467 
+00468        \textcolor{comment}{//if(msg.attachment.offset == 0)}
+00469        \textcolor{comment}{//  memcpy((void *)((void *)&pre\_data + msg.attachment.offset),(void *)(msg.attachment.location +
+       msg.attachment.offset),sizeof(pre\_act\_record\_buffer\_t));}
+00470 
+00471        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} var;
+00472        \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} cc = 0;
+00473 \textcolor{comment}{/*}
+00474 \textcolor{comment}{       for (var = 18; cc < msg.attachment.length; ) \{}
+00475 \textcolor{comment}{}
+00476 \textcolor{comment}{                   message[var]   =}
+00477 \textcolor{comment}{                    cnv[(*((((Uint8 *)&pre\_data + msg.attachment.offset))+(cc))>>4)&0x0F];}
+00478 \textcolor{comment}{}
+00479 \textcolor{comment}{                   message[var+1]   =}
+00480 \textcolor{comment}{                    cnv[(*((((Uint8 *)&pre\_data + msg.attachment.offset))+(cc++))>>0)&0x0F];}
+00481 \textcolor{comment}{}
+00482 \textcolor{comment}{                   var+=2;}
+00483 \textcolor{comment}{       \}}
+00484 \textcolor{comment}{*/}
+00485    
+00486        \textcolor{keywordflow}{for} (var = 18; cc < msg.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.length; ) \{
+00487 
+00488                    message[var]   =
+00489                     cnv[(*((((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} *)msg.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location + msg.
+      \hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset))+(cc))>>4)&0x0F];
+00490 
+00491                    message[var+1]   =
+00492                     cnv[(*((((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} *)msg.\hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.location + msg.
+      \hyperlink{a00031_a040f6d5d58d18d8aeaf447eda7f50172}{attachment}.offset))+(cc++))>>0)&0x0F];
+00493 
+00494                    var+=2;
+00495        \}
+00496 
+00497   
+00498      
+00499 
+00500        message[var++]=\textcolor{charliteral}{':'};
+00501 
+00502        sprintf(message+var,\textcolor{stringliteral}{"%04X\}"},\hyperlink{a00021_a6553827687db2137ee550ad6e1d2f316}{crc16}((\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8}*)message,var-1));
+00503 
+00504        length = var+5;
+00505        
+00506        \}\textcolor{keywordflow}{break};
+00507 
+00508 
+00509         \textcolor{keywordflow}{default}:
+00510         \{
+00511 
+00512             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00513         \}
+00514 
+00515  \}
+00516 
+00517 
+00518 
+00519     \hyperlink{a00030_a17f65cf9dbacdfb97cb2536ed0097ccb}{serial\_send}(message,length);
+00520 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d61/a00031_a96a3f016ca5b0736424c2695fe9fbdf8_cgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,244 @@
+.TH "QCPLayer" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPLayer \- 
+.PP
+A layer that may contain objects, to control the rendering order\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPLayer\fP (\fBQCustomPlot\fP *\fBparentPlot\fP, const QString &layerName)"
+.br
+.RI "\fICreates a new \fBQCPLayer\fP instance\&. \fP"
+.ti -1c
+.RI "\fB~QCPLayer\fP ()"
+.br
+.ti -1c
+.RI "\fBQCustomPlot\fP * \fBparentPlot\fP () const "
+.br
+.ti -1c
+.RI "QString \fBname\fP () const "
+.br
+.ti -1c
+.RI "int \fBindex\fP () const "
+.br
+.RI "\fIReturns the index this layer has in the \fBQCustomPlot\fP\&. \fP"
+.ti -1c
+.RI "QList< \fBQCPLayerable\fP * > \fBchildren\fP () const "
+.br
+.RI "\fIReturns a list of all layerables on this layer\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBaddChild\fP (\fBQCPLayerable\fP *layerable, bool prepend)"
+.br
+.ti -1c
+.RI "void \fBremoveChild\fP (\fBQCPLayerable\fP *layerable)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCustomPlot\fP * \fBmParentPlot\fP"
+.br
+.ti -1c
+.RI "QString \fBmName\fP"
+.br
+.ti -1c
+.RI "QList< \fBQCPLayerable\fP * > \fBmChildren\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A layer that may contain objects, to control the rendering order\&. 
+
+The Layering system of \fBQCustomPlot\fP is the mechanism to control the rendering order of the elements inside the plot, e\&.g\&. that the grid is drawn behind plottables etc\&.
+.PP
+It is based on the two classes \fBQCPLayer\fP and \fBQCPLayerable\fP\&. A \fBQCustomPlot\fP contains an ordered list of one or more instances of \fBQCPLayer\fP (see QCustomPlot::addLayer, QCustomPlot::layer, QCustomPlot::moveLayer, etc\&.)\&. The layers are drawn in the order they are in the list\&.
+.PP
+A \fBQCPLayer\fP itself contains an ordered list of \fBQCPLayerable\fP instances\&. \fBQCPLayerable\fP is an abstract base class from which almost all visible objects derive, like axes, grids, graphs, items, etc\&.
+.PP
+By default, \fBQCustomPlot\fP has three layers: 'grid', 'main' and 'axes' (in that order)\&. Initially the \fBQCPGrid\fP instances are on the 'grid' layer, so the grid will be drawn beneath the objects on the other two layers\&. The top layer is 'axes' and contains all four axes, so they will be drawn on top\&. Between these two layers, there is the 'main' layer\&. It is initially empty and set as the current layer (see QCustomPlot::setCurrentLayer)\&. This means, all new plottables, items etc\&. are created on this layer by default, and are thus drawn above the grid but below the axes\&.
+.PP
+Controlling the ordering of objects is easy: Create a new layer in the position you want it to be, e\&.g\&. above 'main', with QCustomPlot::addLayer\&. Then set the current layer with QCustomPlot::setCurrentLayer to that new layer and finally create the objects normally\&. They will be placed on the new layer automatically, due to the current layer setting\&. Alternatively you could have also ignored the current layer setting and just moved the objects with \fBQCPLayerable::setLayer\fP to the desired layer after creating them\&.
+.PP
+It is also possible to move whole layers\&. For example, If you want the grid to be shown in front of all plottables/items on the 'main' layer, just move it above 'main' with QCustomPlot::moveLayer\&. This way the ordering might now be 'main', 'grid', 'axes', so while the grid will still be beneath the axes, it will now be drawn above plottables/items on 'main', as intended\&.
+.PP
+The rendering order within one layer is simply by order of creation\&. The item created last (or added last to the layer), is drawn on top of all other objects on that layer\&.
+.PP
+When a layer is deleted, the objects on it are not deleted with it, but fall on the layer below the deleted layer, see QCustomPlot::removeLayer\&. 
+.PP
+Definition at line 294 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPLayer::QCPLayer (\fBQCustomPlot\fP *parentPlot, const QString &layerName)"
+
+.PP
+Creates a new \fBQCPLayer\fP instance\&. Normally you shouldn't directly create layers like this, use QCustomPlot::addLayer instead\&.
+.PP
+\fBWarning:\fP
+.RS 4
+It is not checked that \fIlayerName\fP is actually an unique layer name in \fIparentPlot\fP\&. This check is only performed by QCustomPlot::addLayer\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13866 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+13866                                                                     :
+13867   mParentPlot(parentPlot),
+13868   mName(layerName)
+13869 {
+13870   // Note: no need to make sure layerName doesn't already, because layer
+13871   // management is done with QCustomPlot functions\&.
+13872 }
+.fi
+.SS "QCPLayer::~QCPLayer ()"
+
+.PP
+Definition at line 13874 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+13875 {
+13876 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QCPLayer::addChild (\fBQCPLayerable\fP *layerable, boolprepend)\fC [protected]\fP"
+Adds the \fIlayerable\fP to the list of this layer\&. If \fIprepend\fP is set to true, the layerable will be prepended to the list, i\&.e\&. be drawn beneath the other layerables already in the list\&.
+.PP
+This function does not change the \fImLayer\fP member of \fIlayerable\fP to this layer\&. (Use \fBQCPLayerable::setLayer\fP to change the layer of an object, not this function\&.)
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveChild\fP 
+.RE
+.PP
+
+.PP
+Definition at line 13899 of file qcustomplot\&.cpp\&.
+.PP
+References mChildren\&.
+.PP
+Referenced by QCPLayerable::moveToLayer()\&.
+.PP
+.nf
+13900 {
+13901   if (!mChildren\&.contains(layerable))
+13902   {
+13903     if (prepend)
+13904       mChildren\&.prepend(layerable);
+13905     else
+13906       mChildren\&.append(layerable);
+13907   } else
+13908     qDebug() << Q_FUNC_INFO << "layerable is already child of this layer" << reinterpret_cast<quintptr>(layerable);
+13909 }
+.fi
+.SS "QList< \fBQCPLayerable\fP * > QCPLayer::children () const\fC [inline]\fP"
+
+.PP
+Returns a list of all layerables on this layer\&. The order corresponds to the rendering order, i\&.e\&. layerables with higher indices are drawn above layerables with lower indices\&. 
+.PP
+Definition at line 304 of file qcustomplot\&.h\&.
+.PP
+Referenced by removeLayer()\&.
+.PP
+.nf
+304 { return mChildren; }
+.fi
+.SS "int QCPLayer::index () const"
+
+.PP
+Returns the index this layer has in the \fBQCustomPlot\fP\&. The index is the integer number by which this layer can be accessed via QCustomPlot::layer\&.
+.PP
+Layers with greater indices will be drawn above layers with smaller indices\&. 
+.PP
+Definition at line 13884 of file qcustomplot\&.cpp\&.
+.PP
+References mParentPlot\&.
+.PP
+Referenced by removeLayer()\&.
+.PP
+.nf
+13885 {
+13886   return mParentPlot->mLayers\&.indexOf(const_cast<QCPLayer*>(this));
+13887 }
+.fi
+.SS "QString QCPLayer::name () const\fC [inline]\fP"
+
+.PP
+Definition at line 302 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPLayerable::moveToLayer()\&.
+.PP
+.nf
+302 { return mName; }
+.fi
+.SS "\fBQCustomPlot\fP* QCPLayer::parentPlot () const\fC [inline]\fP"
+
+.PP
+Definition at line 301 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPLayerable::moveToLayer()\&.
+.PP
+.nf
+301 { return mParentPlot; }
+.fi
+.SS "void QCPLayer::removeChild (\fBQCPLayerable\fP *layerable)\fC [protected]\fP"
+Removes the \fIlayerable\fP from the list of this layer\&.
+.PP
+This function does not change the \fImLayer\fP member of \fIlayerable\fP\&. (Use \fBQCPLayerable::setLayer\fP to change the layer of an object, not this function\&.)
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddChild\fP 
+.RE
+.PP
+
+.PP
+Definition at line 13920 of file qcustomplot\&.cpp\&.
+.PP
+References mChildren\&.
+.PP
+Referenced by QCPLayerable::moveToLayer(), and QCPLayerable::~QCPLayerable()\&.
+.PP
+.nf
+13921 {
+13922   if (!mChildren\&.removeOne(layerable))
+13923     qDebug() << Q_FUNC_INFO << "layerable is not child of this layer" << reinterpret_cast<quintptr>(layerable);
+13924 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "QList<\fBQCPLayerable\fP*> QCPLayer::mChildren\fC [protected]\fP"
+
+.PP
+Definition at line 309 of file qcustomplot\&.h\&.
+.PP
+Referenced by addChild(), and removeChild()\&.
+.SS "QString QCPLayer::mName\fC [protected]\fP"
+
+.PP
+Definition at line 308 of file qcustomplot\&.h\&.
+.SS "\fBQCustomPlot\fP* QCPLayer::mParentPlot\fC [protected]\fP"
+
+.PP
+Definition at line 307 of file qcustomplot\&.h\&.
+.PP
+Referenced by index()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

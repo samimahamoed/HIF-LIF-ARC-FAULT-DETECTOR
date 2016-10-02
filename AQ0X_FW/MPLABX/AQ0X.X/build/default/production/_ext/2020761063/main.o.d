@@ -1,0 +1,21 @@
+build/default/production/_ext/2020761063/main.o:  \
+../../modules/main.c  \
+../../modules/../includes/allheaders.h  \
+../../modules/../includes//p33EP128MC202.h  \
+../../modules/../includes//System.h  \
+../../modules/../includes//srv_watchdog.h  \
+../../modules/../includes//sys_eventx.h  \
+../../modules/../includes//main.h  \
+../../modules/../includes//System.h  \
+../../modules/../includes//nov_data.h  \
+../../modules/../includes//allheaders.h  \
+../../modules/../includes//srv_serial.h  \
+../../modules/../includes//srv_nov.h  \
+../../modules/../includes//srv_spi.h  \
+../../modules/../includes//p33EP128MC202.h  \
+../../modules/../includes//srv_hwio.h  \
+../../modules/../includes//aq0X/algorithm.h  \
+../../modules/../includes//aq0X/uv_sensor.h  \
+../../modules/../includes//aq0X/light_sensor.h  \
+../../modules/../includes//aq0X/mfield_sensor.h  \
+../../modules/../includes//aq0X/ir_sensor.h 

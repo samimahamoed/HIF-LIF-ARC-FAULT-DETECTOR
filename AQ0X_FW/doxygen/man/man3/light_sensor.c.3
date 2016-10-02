@@ -1,0 +1,614 @@
+.TH "light_sensor.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+light_sensor.c \- 
+.PP
+Module responsible for light sensor element supervision\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+\fC#include '\&.\&.\\\&.\&.\\includes_prv\\aq0X\\light_sensor_prv\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlight_sen_taskx\fP (\fBx_event\fP *event)"
+.br
+.RI "\fIlight sensor module task function\&. \fP"
+.ti -1c
+.RI "void \fBlight_sen_notifyx\fP (\fBx_notify\fP *notify)"
+.br
+.RI "\fIlight module notification function\&. \fP"
+.ti -1c
+.RI "\fBFloat32\fP \fBlight_sen_first_order_derivative\fP (\fBUint16\fP final_val, \fBUint16\fP init_val, \fBFloat32\fP period)"
+.br
+.RI "\fIClaculate first order derivative\&. \fP"
+.ti -1c
+.RI "\fBFloat32\fP \fBlight_sen_calc_probablity\fP (void)"
+.br
+.RI "\fIClaculate the probablity that the event is true\&. \fP"
+.ti -1c
+.RI "\fBevent_report_t\fP \fBlight_sen_get_status\fP (\fBUint16\fP adc_value, \fBBool\fP save_event)"
+.br
+.RI "\fISupervise the status of the light sensor\&. \fP"
+.ti -1c
+.RI "void \fBlight_sen_sensor_element_sv_task\fP (void)"
+.br
+.RI "\fISupervises light sensors element by measuring sensor respond for different illumination level\&. \fP"
+.ti -1c
+.RI "void \fBlight_sen_false_positive_adjustment_task\fP (void)"
+.br
+.RI "\fIchecks the number of false positives within supervision (100ms | 5 cycle) time window \fP"
+.ti -1c
+.RI "void \fBlight_sen_mark_false_postives\fP (void)"
+.br
+.RI "\fIchecks the number of false positives within supervision (100ms | 5 cycle) time window \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBlight_sen_data_t\fP \fBlight_sen_data\fP"
+.br
+.RI "\fIInternal light_sen module data\&. \fP"
+.ti -1c
+.RI "\fBx_task_id\fP \fBlight_sen_id\fP"
+.br
+.RI "\fIir_sen module handle \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Module responsible for light sensor element supervision\&. 
+
+
+.PP
+Definition in file \fBlight_sensor\&.c\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBFloat32\fP light_sen_calc_probablity (void)"
+
+.PP
+Claculate the probablity that the event is true\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+
+.PP
+Definition at line 184 of file light_sensor\&.c\&.
+.PP
+References light_sen_data_t::disturbance_record, module_disturbance_record_t::event_positive_cnt, and module_disturbance_record_t::observation_cnt\&.
+.PP
+Referenced by light_sen_get_status()\&.
+.PP
+.nf
+184                                        {
+185 
+186     return (Float32)light_sen_data\&.disturbance_record->event_positive_cnt
+187             /
+188            (Float32)light_sen_data\&.disturbance_record->observation_cnt;
+189 
+190 }
+.fi
+.SS "void light_sen_false_positive_adjustment_task (void)"
+
+.PP
+checks the number of false positives within supervision (100ms | 5 cycle) time window TODO: if level also is lower than the min gap from the current signal level adjust down to the level 
+.PP
+Definition at line 441 of file light_sensor\&.c\&.
+.PP
+References sv_error_flags_ut::bits, light_sen_data_t::configured, configured_t::dfdt_treshold_max, light_sen_data_t::diagonesis_records, diagonesis_records_light_t::false_alarm, FALSE_POSITIVE_TOLERANCE_LIMIT, light_sen_data_t::sv_errors_flags, and configured_t::threshold_adjust_manual\&.
+.PP
+Referenced by light_sen_taskx()\&.
+.PP
+.nf
+441                                                    {
+442 
+443 
+444     if(
+445      (light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.cnt < FALSE_POSITIVE_TOLERANCE_LIMIT)
+446           &&
+447      (light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.cnt < FALSE_POSITIVE_TOLERANCE_LIMIT)
+448      ){
+449       light_sen_data\&.sv_errors_flags\&.bits\&.FALSE_POSITIVE_AMP_TH  = 0;
+450       light_sen_data\&.sv_errors_flags\&.bits\&.FALSE_POSITIVE_DFDT_TH = 0;
+451       memset(&light_sen_data\&.diagonesis_records\&.false_alarm,0,sizeof(light_sen_data\&.diagonesis_records\&.false_alarm));
+452       return;
+453 
+454     }
+455 
+456       if(light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.cnt > FALSE_POSITIVE_TOLERANCE_LIMIT){
+457           light_sen_data\&.sv_errors_flags\&.bits\&.FALSE_POSITIVE_DFDT_TH = 1;
+458 
+459          if(!light_sen_data\&.configured\&.threshold_adjust_manual)
+460           //TODO: varifiy this will correct the problem
+461           light_sen_data\&.configured\&.dfdt_treshold_max +=
+462           light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.recorded_avg +
+463           light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.recorded_avg*0\&.01;
+464 
+465       }
+466 
+467 
+468       if(light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.cnt > FALSE_POSITIVE_TOLERANCE_LIMIT){
+469           light_sen_data\&.sv_errors_flags\&.bits\&.FALSE_POSITIVE_AMP_TH = 1;
+470           light_sen_data\&.configured\&.amp_treshold_max +=
+471           light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.recorded_avg +
+472           light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.recorded_avg*0\&.001;
+473 
+474            memset(&light_sen_data\&.diagonesis_records\&.false_alarm,0,sizeof(light_sen_data\&.diagonesis_records\&.false_alarm));
+475       }
+476 
+477 
+479 
+480 
+481 
+482 }
+.fi
+.SS "\fBFloat32\fP light_sen_first_order_derivative (\fBUint16\fPfinal_val, \fBUint16\fPinit_val, \fBFloat32\fPperiod)"
+
+.PP
+Claculate first order derivative\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+
+.PP
+Definition at line 172 of file light_sensor\&.c\&.
+.PP
+Referenced by light_sen_get_status()\&.
+.PP
+.nf
+172                                                                                          {
+173     return (Float32)(final_val-init_val)/period;
+174 }
+.fi
+.SS "\fBevent_report_t\fP light_sen_get_status (\fBUint16\fPadc_value, \fBBool\fPsave_event)"
+
+.PP
+Supervise the status of the light sensor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIad_value\fP 
+.RE
+.PP
+For every sample, pre activation data is saved in a circular buffer at the provided storage location
+.PP
+because both events are expected after fast rise in signal, we mark as positive event 
+.PP
+Definition at line 204 of file light_sensor\&.c\&.
+.PP
+References ASSERT, pre_act_record_buffer_t::buffer, state_data_light_t::change_per_time, light_sen_data_t::configured, module_status_t::current, data_non_volatile, configured_t::dfdt_treshold_max, light_sen_data_t::disturbance_record, pre_act_record_buffer_t::elapsed, EMU_MODE_DATA_LENGTH, module_disturbance_record_t::event_data, module_disturbance_record_t::event_positive_cnt, FALSE, FAST_TIMER_SAMPLING_RATE, event_report_t::fields, pre_act_record_buffer_t::head, HOT, light_sen_calc_probablity(), light_sen_first_order_derivative(), light_sen_mark_false_postives(), logv, configured_t::min_number_of_observation, light_sen_data_t::module_status, module_disturbance_record_t::observation_cnt, module_disturbance_record_t::post_act_data, POST_ACT_RECORD_BUFF_SIZE, module_disturbance_record_t::pre_act_data, PRE_ACT_RECORD_BUFF_SIZE, module_status_t::previous, configured_t::probablity_treshold_max, configured_t::probablity_treshold_min, RANGE_MAX_16BIT, state_data_light_t::signal_level, state_data_light_t::state, STATE_0, STATE_1, STATE_2, pre_act_record_buffer_t::tail, logv_t::tick, logv_t::trip_active, and TRUE\&.
+.PP
+.nf
+205 {
+206 
+207     event_report_t status;
+208     status\&.fields\&.active_signal= FALSE;
+209 
+210     light_sen_data\&.module_status\&.previous = light_sen_data\&.module_status\&.current;
+211 
+212     light_sen_data\&.module_status\&.current\&.signal_level = adc_value;
+213 
+214     light_sen_data\&.module_status\&.current\&.change_per_time = light_sen_first_order_derivative(
+215                                             light_sen_data\&.module_status\&.current\&.signal_level,
+216                                             light_sen_data\&.module_status\&.previous\&.signal_level,
+217                                             FAST_TIMER_SAMPLING_RATE
+218                                             );
+219 
+220 
+221     if(light_sen_data\&.module_status\&.current\&.change_per_time > 0)
+222         status\&.fields\&.active_signal = TRUE;
+223 
+224  
+225     if(logv\&.trip_active == TRUE){
+226     if(light_sen_data\&.disturbance_record->post_act_data\&.head <
+227         ((data_non_volatile\&.disturbance_record\&.light\&.emu_data_en==FALSE)?POST_ACT_RECORD_BUFF_SIZE:(POST_ACT_RECORD_BUFF_SIZE-EMU_MODE_DATA_LENGTH)))
+228       light_sen_data\&.disturbance_record->post_act_data\&.buffer\&.all[light_sen_data\&.disturbance_record->post_act_data\&.head++] = adc_value;
+229     }else{
+231     light_sen_data\&.disturbance_record->pre_act_data\&.buffer[light_sen_data\&.disturbance_record->pre_act_data\&.head] = adc_value;
+232     light_sen_data\&.disturbance_record->pre_act_data\&.head
+233             = (light_sen_data\&.disturbance_record->pre_act_data\&.head + 1)%PRE_ACT_RECORD_BUFF_SIZE;
+234 
+235     if(light_sen_data\&.disturbance_record->pre_act_data\&.elapsed == TRUE)
+236     light_sen_data\&.disturbance_record->pre_act_data\&.tail
+237             = (light_sen_data\&.disturbance_record->pre_act_data\&.head + 1)%PRE_ACT_RECORD_BUFF_SIZE;
+238     else
+239     if(light_sen_data\&.disturbance_record->pre_act_data\&.head == PRE_ACT_RECORD_BUFF_SIZE - 1)
+240     light_sen_data\&.disturbance_record->pre_act_data\&.elapsed = TRUE;
+241     }
+242 
+243     light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.all = 0;
+244     if(light_sen_data\&.module_status\&.current\&.change_per_time > light_sen_data\&.configured\&.dfdt_treshold_max)
+245         light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.bits\&.dfdt_max = 1;
+246     if(light_sen_data\&.module_status\&.current\&.signal_level > light_sen_data\&.configured\&.amp_treshold_max)
+247         light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.bits\&.amp_max = 1;
+248 
+249 
+250 
+251 
+252 
+253 
+254  
+255     switch(light_sen_data\&.module_status\&.current\&.state)
+256     {
+257         case STATE_0:
+258         {
+259             if(light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.all !=0){
+260               light_sen_data\&.disturbance_record->event_data\&.event_history    = 0;
+261 
+262             light_sen_data\&.disturbance_record->observation_cnt    = 1;
+263             light_sen_data\&.disturbance_record->event_positive_cnt = 1;
+264 
+265             light_sen_data\&.disturbance_record->event_data\&.buffer\&.signal_level[0] = light_sen_data\&.module_status\&.current\&.signal_level;
+266             light_sen_data\&.disturbance_record->event_data\&.buffer\&.change_per_time[0] = light_sen_data\&.module_status\&.current\&.change_per_time;
+267             light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr++;
+268 
+269             light_sen_data\&.disturbance_record->event_data\&.timestamp = logv\&.tick;
+270             light_sen_data\&.disturbance_record->event_data\&.event_probability = light_sen_calc_probablity();
+271 
+272             if(light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.bits\&.amp_max){
+273                 light_sen_data\&.module_status\&.current\&.state = STATE_2;
+274             }else{
+275               light_sen_data\&.module_status\&.current\&.state = STATE_1;
+276               light_sen_data\&.disturbance_record->event_data\&.event_history++;
+277             }
+278             }
+279 
+280 
+281         }break;
+282 
+283          case STATE_1:
+284         {
+285 
+286              light_sen_data\&.disturbance_record->observation_cnt++;
+287 
+288             if(light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr < EVENT_OBSERVATION_RECORD_LENGTH){
+289             light_sen_data\&.disturbance_record->event_data\&.buffer\&.signal_level[light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr]
+290                     = light_sen_data\&.module_status\&.current\&.signal_level;
+291             light_sen_data\&.disturbance_record->event_data\&.buffer\&.change_per_time[light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr]
+292                     = light_sen_data\&.module_status\&.current\&.change_per_time;
+293             light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr++;
+294             }
+295 
+296             if(light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.all!=0)
+298                  light_sen_data\&.disturbance_record->event_positive_cnt++;
+299 
+300             light_sen_data\&.disturbance_record->event_data\&.event_probability = light_sen_calc_probablity();
+301 
+302             if(light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.bits\&.amp_max){
+303                 light_sen_data\&.module_status\&.current\&.state = STATE_2;
+304             }else
+305                  light_sen_data\&.disturbance_record->event_data\&.event_history++;
+306 
+307        
+308             if(light_sen_data\&.disturbance_record->observation_cnt
+309                 >=
+310                 light_sen_data\&.configured\&.min_number_of_observation
+311                ){
+312                
+313                    if(light_sen_data\&.disturbance_record->event_data\&.event_probability
+314                     >
+315                     light_sen_data\&.configured\&.probablity_treshold_max
+316                     ){
+317                          light_sen_data\&.module_status\&.current\&.state = HOT;
+318                          light_sen_data\&.disturbance_record->post_act_data\&.head=0;
+319                      }else{
+320                          light_sen_data\&.module_status\&.current\&.state = STATE_0;
+321                          light_sen_mark_false_postives();
+322                     }
+323              }
+324              
+325         }break;
+326 
+327           case STATE_2:
+328         {
+329             light_sen_data\&.disturbance_record->observation_cnt++;
+330             if(light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.bits\&.amp_max)
+331                 light_sen_data\&.disturbance_record->event_positive_cnt++;
+332 
+333 
+334             if(light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr < EVENT_OBSERVATION_RECORD_LENGTH){
+335             light_sen_data\&.disturbance_record->event_data\&.buffer\&.signal_level[light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr]
+336                     = light_sen_data\&.module_status\&.current\&.signal_level;
+337             light_sen_data\&.disturbance_record->event_data\&.buffer\&.change_per_time[light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr]
+338                     = light_sen_data\&.module_status\&.current\&.change_per_time;
+339             light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr++;
+340             }
+341 
+342               if(light_sen_data\&.disturbance_record->observation_cnt
+343                 >=
+344                 light_sen_data\&.configured\&.min_number_of_observation
+345                ){
+346 
+347                    if(light_sen_data\&.disturbance_record->event_data\&.event_probability
+348                     >
+349                     light_sen_data\&.configured\&.probablity_treshold_max
+350                     ){
+351                          light_sen_data\&.module_status\&.current\&.state = HOT;
+352                          light_sen_data\&.disturbance_record->post_act_data\&.head=0;
+353                      }else{
+354                          light_sen_data\&.module_status\&.current\&.state = STATE_0;
+355                          light_sen_mark_false_postives();
+356                     }
+357              }
+358 
+359 
+360          }break;
+361 
+362 
+363 
+364          case HOT:
+365         {
+366 
+367              light_sen_data\&.disturbance_record->observation_cnt++;
+368 
+369             if(light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr < EVENT_OBSERVATION_RECORD_LENGTH){
+370             light_sen_data\&.disturbance_record->event_data\&.buffer\&.signal_level[light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr]
+371                     = light_sen_data\&.module_status\&.current\&.signal_level;
+372             light_sen_data\&.disturbance_record->event_data\&.buffer\&.change_per_time[light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr]
+373                     = light_sen_data\&.module_status\&.current\&.change_per_time;
+374             light_sen_data\&.disturbance_record->event_data\&.buffer\&.head_ptr++;
+375             }
+376 
+377             if(light_sen_data\&.disturbance_record->event_data\&.exceeded_threshold\&.all != 0)
+378                 light_sen_data\&.disturbance_record->event_positive_cnt++;
+379             
+380 
+381              light_sen_data\&.disturbance_record->event_data\&.event_probability = light_sen_calc_probablity();
+382 
+383 
+384 
+385              if(light_sen_data\&.disturbance_record->event_data\&.event_probability < light_sen_data\&.configured\&.probablity_treshold_min){
+386                  light_sen_data\&.module_status\&.current\&.state = STATE_0;
+387                  light_sen_mark_false_postives();
+388 
+389              }
+390 
+391              if(light_sen_data\&.disturbance_record->observation_cnt > RANGE_MAX_16BIT - 1
+392                 ||
+393                 light_sen_data\&.disturbance_record->event_positive_cnt > RANGE_MAX_16BIT - 1
+394                 ){
+395              //Prevents overflow
+396               light_sen_data\&.disturbance_record->observation_cnt    /=10;
+397               light_sen_data\&.disturbance_record->event_positive_cnt /=10;
+398              }
+399 
+400         }break;
+401 
+402 
+403 
+404 
+405         default:
+406         {
+407             ASSERT(0);
+408         }
+409     }
+410 
+411   status\&.fields\&.state = light_sen_data\&.module_status\&.current\&.state;
+412 
+413   return status;
+414 
+415 }
+.fi
+.SS "void light_sen_mark_false_postives (void)"
+
+.PP
+checks the number of false positives within supervision (100ms | 5 cycle) time window 
+.PP
+Definition at line 491 of file light_sensor\&.c\&.
+.PP
+References light_sen_data_t::configured, configured_t::dfdt_treshold_max, light_sen_data_t::diagonesis_records, light_sen_data_t::disturbance_record, module_disturbance_record_t::event_data, EXCEDED_AMP_TH, diagonesis_records_light_t::false_alarm, RANGE_MAX_32BIT, and RANGE_MAX_8BIT\&.
+.PP
+Referenced by light_sen_get_status(), and light_sen_notifyx()\&.
+.PP
+.nf
+491                                         {
+492         if(light_sen_data\&.disturbance_record->event_data\&.event_history == EXCEDED_AMP_TH){
+493                if(
+494                 (light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.cnt < RANGE_MAX_8BIT)
+495                 &
+496                 (light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.accumulated_value < RANGE_MAX_32BIT)
+497                )
+498                {
+499                      light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.cnt++;
+500                      light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.accumulated_value
+501                      +=(light_sen_data\&.disturbance_record->event_data\&.buffer\&.signal_level[0]-light_sen_data\&.configured\&.amp_treshold_max);
+502                      light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.recorded_avg
+503                      = light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.accumulated_value/
+504                              (Float32)light_sen_data\&.diagonesis_records\&.false_alarm\&.amp_max_exceded\&.cnt;
+505               }
+506 
+507              }else{
+508              if(
+509                 (light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.cnt < RANGE_MAX_8BIT)
+510                 &
+511                 (light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.accumulated_value < RANGE_MAX_32BIT)
+512                )
+513              {
+514 
+515                  light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.cnt++;
+516                  light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.accumulated_value
+517                  +=(light_sen_data\&.disturbance_record->event_data\&.buffer\&.change_per_time[0]-light_sen_data\&.configured\&.dfdt_treshold_max);
+518                  light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.recorded_avg
+519                  = light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.accumulated_value/
+520                     (Float32)light_sen_data\&.diagonesis_records\&.false_alarm\&.dfdt_max_exceded\&.cnt;
+521 
+522              }
+523 
+524              }
+525 
+526 }
+.fi
+.SS "void light_sen_notifyx (\fBx_notify\fP *notify)"
+
+.PP
+light module notification function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP - system distributed notification 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file light_sensor\&.c\&.
+.PP
+References ASSERT, light_sen_data_t::configured, module_status_t::current, light_sen_data_t::disturbance_record, configured_t::element_status_sv_en, sv_error_flags_ut::flags_all, light_sen_mark_false_postives(), x_notify_light_sen_configure::message, x_notify::message, light_sen_data_t::module_status, state_data_light_t::state, STATE_0, light_sen_data_t::sv_errors_flags, light_sen_data_t::sv_task_event, light_sen_data_t::sv_timer_ntf, SV_TIMER_PERIOD, x_delete_timer(), X_MS2TICK, X_NTF_INIT, X_NTF_LIGHT_SENSOR_CONFIG, X_NTF_LIGHT_SENSOR_SV_TIMER, x_schedule_timer(), and x_send_event()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+107 {
+108 
+109     
+110     switch(notify->message)
+111     {    
+112         case X_NTF_INIT:
+113         {
+114             light_sen_init();
+115         }break;
+116 
+117 
+118         case X_NTF_LIGHT_SENSOR_CONFIG:
+119         {
+120 
+121             // configuration details from algorithm module
+122             x_notify_light_sen_configure * notify_configure = (x_notify_light_sen_configure *)notify;
+123 
+124            
+125             light_sen_data\&.configured = notify_configure->message\&.configured;
+126             light_sen_data\&.disturbance_record = notify_configure->message\&.disturbance_record;
+127 
+128             // Clear supervison state ( so errors will be reported if module have internal error )
+129              light_sen_data\&.sv_errors_flags\&.flags_all = 0;
+130 
+131           x_delete_timer(&light_sen_data\&.sv_timer_ntf);
+132 
+133           if(light_sen_data\&.configured\&.element_status_sv_en)
+134           x_schedule_timer(&light_sen_data\&.sv_timer_ntf,X_MS2TICK(SV_TIMER_PERIOD));
+135 
+136         }break;
+137 
+138 
+139          case X_NTF_CLR_ALARM:
+140         {
+141 
+142            // Algorithm module alarm reset request
+143              light_sen_data\&.module_status\&.current\&.state = STATE_0;
+144              light_sen_mark_false_postives();
+145 
+146 
+147         }break;
+148 
+149         
+150         case X_NTF_LIGHT_SENSOR_SV_TIMER:
+151         {
+152            x_send_event(&light_sen_data\&.sv_task_event);
+153         }break;
+154         
+155        
+156         default:
+157         {
+158             ASSERT(0);
+159         }
+160     }
+161 
+162 }
+.fi
+.SS "void light_sen_sensor_element_sv_task (void)"
+
+.PP
+Supervises light sensors element by measuring sensor respond for different illumination level\&. 
+.PP
+Definition at line 426 of file light_sensor\&.c\&.
+.PP
+Referenced by light_sen_taskx()\&.
+.PP
+.nf
+427 {
+428 
+429 
+430 
+431 
+432 }
+.fi
+.SS "void light_sen_taskx (\fBx_event\fP *event)"
+
+.PP
+light sensor module task function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP - system distributed event 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file light_sensor\&.c\&.
+.PP
+References ASSERT, sv_error_flags_ut::flags_all, light_sen_false_positive_adjustment_task(), light_sen_sensor_element_sv_task(), x_notify_light_sen_sv_report::message, x_event::message, x_notify_light_sen_sv_report::notify, light_sen_data_t::sv_errors_flags, light_sen_data_t::sv_status_ntf, X_MSG_LIGHT_SENSOR_SV, and x_send_notify()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+66 {
+67     switch(event->message)
+68     {
+69 
+70     
+71         case X_MSG_LIGHT_SENSOR_SV:
+72         {
+73 
+74             light_sen_sensor_element_sv_task();
+75 
+76             light_sen_false_positive_adjustment_task();
+77 
+78             if(light_sen_data\&.sv_errors_flags\&.flags_all!=0){
+79              light_sen_data\&.sv_status_ntf\&.message\&.error_status_flags\&.flags_all = light_sen_data\&.sv_errors_flags\&.flags_all;
+80              // Send notification to Algorithm module about detected error
+81              x_send_notify(&light_sen_data\&.sv_status_ntf\&.notify);
+82              light_sen_data\&.sv_errors_flags\&.flags_all =0;
+83             }
+84             
+85         }break;
+86       
+87 
+88         
+89         default:
+90         {
+91             ASSERT(0);
+92         }        
+93     }
+94 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBlight_sen_data_t\fP light_sen_data"
+
+.PP
+Internal light_sen module data\&. 
+.PP
+Definition at line 14 of file light_sensor\&.c\&.
+.SS "\fBx_task_id\fP light_sen_id"
+
+.PP
+ir_sen module handle 
+.PP
+Definition at line 15 of file light_sensor\&.c\&.
+.PP
+Referenced by main()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

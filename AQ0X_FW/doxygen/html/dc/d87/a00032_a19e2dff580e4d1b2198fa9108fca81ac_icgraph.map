@@ -1,0 +1,14 @@
+<map id="spi_put_data" name="spi_put_data">
+<area shape="rect" id="node2" href="$d9/d73/a00060.html#adf5af9eb34f1cd301648dfa3c71fe392" title="reads single from the specified eeprom address. " alt="" coords="371,5,477,32"/>
+<area shape="rect" id="node3" href="$d9/d73/a00060.html#a3f47e1f5179297e173ae8508c7185632" title="writes a single byte to the specified eeprom address. " alt="" coords="371,85,477,112"/>
+<area shape="rect" id="node4" href="$d9/d73/a00060.html#af9ccbc198ed63feb4fd6c18dd934590d" title="reads status register from EEPROM. " alt="" coords="167,195,277,221"/>
+<area shape="rect" id="node5" href="$d9/d73/a00060.html#aeb021b0e002db120ad733c24f3e179bc" title="Function transfer data from RAM to EEPROM over spi port. " alt="" coords="372,144,476,171"/>
+<area shape="rect" id="node7" href="$d9/d73/a00060.html#a495e93d64734be469f6725de24dd44e1" title="write EEPROM status register. " alt="" coords="365,195,483,221"/>
+<area shape="rect" id="node8" href="$d9/d73/a00060.html#a3ff681f3af83ec441535611dac6ada16" title="Standard library memcpy() replacement function to copy data from serial EEPROM to the specified RAM m..." alt="" coords="173,296,271,323"/>
+<area shape="rect" id="node13" href="$d9/d73/a00060.html#a7b698f4b0088c4e28951c2204b7b821e" title="set or reset write enable latch, the proceedure is drived from the information provided in microchip ..." alt="" coords="149,78,295,119"/>
+<area shape="rect" id="node6" href="$d9/d73/a00060.html#a9aa94b184db1bd55b6a4a61a34c14c8d" title="Stores in EEPROM serial number. " alt="" coords="553,144,691,171"/>
+<area shape="rect" id="node9" href="$d9/d73/a00060.html#a1a59d5ac1c5e9a022c19d8c333bf3b60" title="Reads from EEPROM device serial number. " alt="" coords="343,245,505,272"/>
+<area shape="rect" id="node10" href="$d9/d73/a00060.html#a86b863ea185628aff5a00b4defbbb6e1" title="Reads from EEPROM device serial number. " alt="" coords="347,296,501,323"/>
+<area shape="rect" id="node12" href="$d9/d73/a00060.html#a8ad2f815848f1668763c01ff9d45a01b" title="Reads NOV storage from EEPROM. " alt="" coords="391,347,457,373"/>
+<area shape="rect" id="node11" href="$d4/dca/a00048.html#a840291bc02cba5474a4cb46a9b9566fe" title="System startup function. " alt="" coords="597,296,647,323"/>
+</map>

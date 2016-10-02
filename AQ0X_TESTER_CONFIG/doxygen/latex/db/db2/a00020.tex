@@ -1,0 +1,367 @@
+\hypertarget{a00020}{\section{record\+Preview Class Reference}
+\label{a00020}\index{record\+Preview@{record\+Preview}}
+}
+
+
+{\ttfamily \#include $<$recordpreview.\+h$>$}
+
+
+
+Inheritance diagram for record\+Preview\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{da/d50/a00301}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for record\+Preview\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{d0/d61/a00302}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00020_a03ad4ae83a5594f6dc337c7b71873edd}{record\+Preview} (Q\+String type, Q\+Vector$<$ \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} $>$ data, Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{a00020_a3415d6b4da7b24b0bf8674a20f4c65cf}{record\+Preview} (Q\+String type, Q\+Vector$<$ \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} $>$ data, \hyperlink{a00003_d0/d89/a00071}{event\+\_\+data\+\_\+t} event\+\_\+data, Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{a00020_a3f26cea2101bdab013aa02f1c73e41b9}{record\+Preview} (Q\+String type, Q\+Vector$<$ double $>$ $\ast$data1, Q\+Vector$<$ double $>$ $\ast$data2=N\+U\+L\+L, Q\+Vector$<$ double $>$ $\ast$data3=N\+U\+L\+L, Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{a00020_ab04c69b9693e7a59a08a5faa6742b71f}{$\sim$record\+Preview} ()
+\item 
+double \hyperlink{a00020_ad38222699419e6ac871ce2a23c6d292e}{max} (Q\+Vector$<$ double $>$ val)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line \hyperlink{a00043_source_l00015}{15} of file \hyperlink{a00043_source}{recordpreview.\+h}.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{a00020_a03ad4ae83a5594f6dc337c7b71873edd}{\index{record\+Preview@{record\+Preview}!record\+Preview@{record\+Preview}}
+\index{record\+Preview@{record\+Preview}!record\+Preview@{record\+Preview}}
+\subsubsection[{record\+Preview}]{\setlength{\rightskip}{0pt plus 5cm}record\+Preview\+::record\+Preview (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{type, }
+\item[{Q\+Vector$<$ {\bf Uint16} $>$}]{data, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{a00020_a03ad4ae83a5594f6dc337c7b71873edd}
+
+
+Definition at line \hyperlink{a00042_source_l00011}{11} of file \hyperlink{a00042_source}{recordpreview.\+cpp}.
+
+
+
+References \hyperlink{a00053_source_l00034}{Ui\+\_\+record\+Preview\+::action\+Win\+Data\+Plot}, \hyperlink{a00053_source_l00039}{Ui\+\_\+record\+Preview\+::action\+Win\+Event\+Plot}, \hyperlink{a00031_source_l00075}{A\+D\+C\+\_\+\+V\+A\+L\+\_\+\+M\+A\+P\+P\+I\+N\+G\+\_\+\+F\+A\+C\+T\+O\+R}, \hyperlink{a00053_source_l00040}{Ui\+\_\+record\+Preview\+::centralwidget}, \hyperlink{a00053_source_l00057}{Ui\+\_\+record\+Preview\+::curve\+\_\+data}, \hyperlink{a00053_source_l00053}{Ui\+\_\+record\+Preview\+::dock\+Widget\+Plot}, \hyperlink{a00053_source_l00041}{Ui\+\_\+record\+Preview\+::dock\+Widget\+Plot\+\_\+event\+\_\+history}, \hyperlink{a00053_source_l00060}{Ui\+\_\+record\+Preview\+::setup\+Ui()}, \hyperlink{a00034_source_l00039}{W\+A\+V\+E\+F\+O\+R\+M\+\_\+0\+\_\+\+T\+O\+\_\+3\+\_\+3}, and \hyperlink{a00034_source_l00040}{W\+A\+V\+E\+F\+O\+R\+M\+\_\+\+P\+L\+U\+S\+\_\+\+M\+I\+N\+U\+S\+\_\+1\+\_\+65}.
+
+
+\begin{DoxyCode}
+00011                                                                                 :
+00012     \hyperlink{a00010}{QMainWindow}(parent),
+00013     ui(\textcolor{keyword}{new} \hyperlink{a00021}{Ui::recordPreview})
+00014 \{
+00015     ui->\hyperlink{a00028_afa41dc070a896a5eae476f3c0206825c}{setupUi}(\textcolor{keyword}{this});
+00016     this->setWindowTitle(type);
+00017 
+00018     dir\_default = ((\hyperlink{a00006}{MainWindow} *)parent)->dir\_default;
+00019 
+00020     ui->\hyperlink{a00028_ac9ab4609922159e8e4cc45905f76928e}{centralwidget}->setVisible(\textcolor{keyword}{false});
+00021     ui->\hyperlink{a00028_a07b76f17803ec09e0367b72938bbd097}{dockWidgetPlot}->setWidget(ui->\hyperlink{a00028_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data});
+00022 
+00023     ui->\hyperlink{a00028_aa09067a9c96c9cd78f75261a9fcb89f0}{actionWinDataPlot}->setChecked(\textcolor{keyword}{true});
+00024 
+00025     ui->\hyperlink{a00028_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(\textcolor{keyword}{false});
+00026     ui->\hyperlink{a00028_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setEnabled(\textcolor{keyword}{false});
+00027 
+00028     ui->\hyperlink{a00028_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setVisible(\textcolor{keyword}{false});
+00029 
+00030     this->rc\_data = data;
+00031 
+00032 
+00033     measured\_values.resize(data.length());
+00034     time.resize(data.length());
+00035     history\_dfdt.resize(data.length());
+00036 
+00037     
+00038     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data.length(); ++var) \{
+00039         time[var]=var;
+00040         measured\_values[var]=(rc\_data[var]*\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR}) - (type.contains(\textcolor{stringliteral}{"
+      MFIELD"})?1.65:0);
+00041 
+00042         \textcolor{keywordflow}{if}(var > 0)
+00043             history\_dfdt[var] = abs(measured\_values[var])- abs(measured\_values[var-1]);
+00044     \}
+00045 
+00046     plot\_curve(time,measured\_values,
+00047               (type.contains(\textcolor{stringliteral}{"MFIELD"})?\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65}:
+      \hyperlink{a00034_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3}));
+00048 
+00049 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db2/a00020_a03ad4ae83a5594f6dc337c7b71873edd_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00020_a3415d6b4da7b24b0bf8674a20f4c65cf}{\index{record\+Preview@{record\+Preview}!record\+Preview@{record\+Preview}}
+\index{record\+Preview@{record\+Preview}!record\+Preview@{record\+Preview}}
+\subsubsection[{record\+Preview}]{\setlength{\rightskip}{0pt plus 5cm}record\+Preview\+::record\+Preview (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{type, }
+\item[{Q\+Vector$<$ {\bf Uint16} $>$}]{data, }
+\item[{{\bf event\+\_\+data\+\_\+t}}]{event\+\_\+data, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{a00020_a3415d6b4da7b24b0bf8674a20f4c65cf}
+
+
+Definition at line \hyperlink{a00042_source_l00052}{52} of file \hyperlink{a00042_source}{recordpreview.\+cpp}.
+
+
+
+References \hyperlink{a00053_source_l00034}{Ui\+\_\+record\+Preview\+::action\+Win\+Data\+Plot}, \hyperlink{a00053_source_l00039}{Ui\+\_\+record\+Preview\+::action\+Win\+Event\+Plot}, \hyperlink{a00031_source_l00075}{A\+D\+C\+\_\+\+V\+A\+L\+\_\+\+M\+A\+P\+P\+I\+N\+G\+\_\+\+F\+A\+C\+T\+O\+R}, \hyperlink{a00053_source_l00040}{Ui\+\_\+record\+Preview\+::centralwidget}, \hyperlink{a00053_source_l00057}{Ui\+\_\+record\+Preview\+::curve\+\_\+data}, \hyperlink{a00053_source_l00045}{Ui\+\_\+record\+Preview\+::curve\+\_\+dfdt}, \hyperlink{a00053_source_l00053}{Ui\+\_\+record\+Preview\+::dock\+Widget\+Plot}, \hyperlink{a00053_source_l00041}{Ui\+\_\+record\+Preview\+::dock\+Widget\+Plot\+\_\+event\+\_\+history}, \hyperlink{a00053_source_l00060}{Ui\+\_\+record\+Preview\+::setup\+Ui()}, \hyperlink{a00034_source_l00039}{W\+A\+V\+E\+F\+O\+R\+M\+\_\+0\+\_\+\+T\+O\+\_\+3\+\_\+3}, and \hyperlink{a00034_source_l00040}{W\+A\+V\+E\+F\+O\+R\+M\+\_\+\+P\+L\+U\+S\+\_\+\+M\+I\+N\+U\+S\+\_\+1\+\_\+65}.
+
+
+\begin{DoxyCode}
+00052                                                                                                         :
+00053     \hyperlink{a00010}{QMainWindow}(parent),
+00054     ui(\textcolor{keyword}{new} \hyperlink{a00021}{Ui::recordPreview})
+00055 \{
+00056     ui->\hyperlink{a00028_afa41dc070a896a5eae476f3c0206825c}{setupUi}(\textcolor{keyword}{this});
+00057     this->setWindowTitle(type);
+00058 
+00059     ui->\hyperlink{a00028_ac9ab4609922159e8e4cc45905f76928e}{centralwidget}->setVisible(\textcolor{keyword}{false});
+00060     ui->\hyperlink{a00028_a07b76f17803ec09e0367b72938bbd097}{dockWidgetPlot}->setWidget(ui->\hyperlink{a00028_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data});
+00061     ui->\hyperlink{a00028_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setWidget(ui->
+      \hyperlink{a00028_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt});
+00062 
+00063     ui->\hyperlink{a00028_aa09067a9c96c9cd78f75261a9fcb89f0}{actionWinDataPlot}->setChecked(\textcolor{keyword}{true});
+00064     ui->\hyperlink{a00028_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(\textcolor{keyword}{true});
+00065 
+00066     this->rc\_data       = data;
+00067     this->event\_history  = event\_data;
+00068 
+00069     measured\_values.resize(data.length());
+00070     history\_amp.resize(data.length());
+00071     history\_dfdt.resize(data.length());
+00072     time.resize(data.length());
+00073 
+00074 
+00075 
+00076     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data.length(); ++var) \{
+00077         time[var]=var;
+00078         measured\_values[var]=(rc\_data[var]*\hyperlink{a00031_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR})-(type.contains(\textcolor{stringliteral}{"
+      MFIELD"})?1.65:0);
+00079     \}
+00080 
+00081 
+00082 
+00083     \textcolor{comment}{//TODO: history amp shows when the module is activated}
+00084     \textcolor{comment}{/*}
+00085 \textcolor{comment}{    for (int var = 0; var < MAX\_EVENT\_OBSERVATION\_LENGTH; ++var) \{}
+00086 \textcolor{comment}{        history\_amp[var + PRE\_ACT\_RECORD\_BUFF\_SIZE + event\_history.offset]}
+00087 \textcolor{comment}{                =(event\_history.ignal\_level[var]*ADC\_VAL\_MAPPING\_FACTOR) -
+       (type.contains("MFIELD")?1.65:0);}
+00088 \textcolor{comment}{}
+00089 \textcolor{comment}{    \}}
+00090 \textcolor{comment}{}
+00091 \textcolor{comment}{    */}
+00092     plot\_curve(time,measured\_values,
+00093               (type.contains(\textcolor{stringliteral}{"MFIELD"})?\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65}:
+      \hyperlink{a00034_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3}),
+00094               history\_amp
+00095               );
+00096 
+00097 
+00098 
+00099 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db2/a00020_a3415d6b4da7b24b0bf8674a20f4c65cf_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00020_a3f26cea2101bdab013aa02f1c73e41b9}{\index{record\+Preview@{record\+Preview}!record\+Preview@{record\+Preview}}
+\index{record\+Preview@{record\+Preview}!record\+Preview@{record\+Preview}}
+\subsubsection[{record\+Preview}]{\setlength{\rightskip}{0pt plus 5cm}record\+Preview\+::record\+Preview (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{type, }
+\item[{Q\+Vector$<$ double $>$ $\ast$}]{data1, }
+\item[{Q\+Vector$<$ double $>$ $\ast$}]{data2 = {\ttfamily NULL}, }
+\item[{Q\+Vector$<$ double $>$ $\ast$}]{data3 = {\ttfamily NULL}, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{a00020_a3f26cea2101bdab013aa02f1c73e41b9}
+
+
+Definition at line \hyperlink{a00042_source_l00102}{102} of file \hyperlink{a00042_source}{recordpreview.\+cpp}.
+
+
+
+References \hyperlink{a00053_source_l00034}{Ui\+\_\+record\+Preview\+::action\+Win\+Data\+Plot}, \hyperlink{a00053_source_l00039}{Ui\+\_\+record\+Preview\+::action\+Win\+Event\+Plot}, \hyperlink{a00053_source_l00040}{Ui\+\_\+record\+Preview\+::centralwidget}, \hyperlink{a00053_source_l00057}{Ui\+\_\+record\+Preview\+::curve\+\_\+data}, \hyperlink{a00053_source_l00045}{Ui\+\_\+record\+Preview\+::curve\+\_\+dfdt}, \hyperlink{a00053_source_l00053}{Ui\+\_\+record\+Preview\+::dock\+Widget\+Plot}, \hyperlink{a00053_source_l00041}{Ui\+\_\+record\+Preview\+::dock\+Widget\+Plot\+\_\+event\+\_\+history}, \hyperlink{a00042_source_l00168}{max()}, \hyperlink{a00053_source_l00060}{Ui\+\_\+record\+Preview\+::setup\+Ui()}, \hyperlink{a00034_source_l00039}{W\+A\+V\+E\+F\+O\+R\+M\+\_\+0\+\_\+\+T\+O\+\_\+3\+\_\+3}, and \hyperlink{a00034_source_l00040}{W\+A\+V\+E\+F\+O\+R\+M\+\_\+\+P\+L\+U\+S\+\_\+\+M\+I\+N\+U\+S\+\_\+1\+\_\+65}.
+
+
+\begin{DoxyCode}
+00102                                                                                                            
+                             :
+00103     \hyperlink{a00010}{QMainWindow}(parent),
+00104     ui(\textcolor{keyword}{new} \hyperlink{a00021}{Ui::recordPreview})
+00105 \{
+00106     ui->\hyperlink{a00028_afa41dc070a896a5eae476f3c0206825c}{setupUi}(\textcolor{keyword}{this});
+00107     this->setWindowTitle(type);
+00108 
+00109     ui->\hyperlink{a00028_ac9ab4609922159e8e4cc45905f76928e}{centralwidget}->setVisible(\textcolor{keyword}{false});
+00110     ui->\hyperlink{a00028_a07b76f17803ec09e0367b72938bbd097}{dockWidgetPlot}->setWidget(ui->\hyperlink{a00028_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data});
+00111     ui->\hyperlink{a00028_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setWidget(ui->
+      \hyperlink{a00028_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt});
+00112 
+00113 
+00114     ui->\hyperlink{a00028_aa09067a9c96c9cd78f75261a9fcb89f0}{actionWinDataPlot}->setChecked(\textcolor{keyword}{true});
+00115 
+00116     measured\_values.resize(data1->length());
+00117 
+00118     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data1->length(); ++var)
+00119       measured\_values[var] = data1->at(var);
+00120 
+00121    \textcolor{comment}{// memmove(&measured\_values,data1,sizeof(measured\_values));}
+00122 
+00123     time.resize(data1->length());
+00124     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data1->length(); ++var)
+00125         time[var]=var;
+00126 
+00127     \textcolor{keywordflow}{if}((data2->length() > 0) && (data3->length()>0))\{
+00128         ui->\hyperlink{a00028_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(\textcolor{keyword}{true});
+00129 
+00130         history\_amp.resize(data2->length());
+00131         memmove(&history\_amp,data2,\textcolor{keyword}{sizeof}(history\_amp));
+00132         history\_dfdt.resize(data3->length());
+00133         memmove(&history\_dfdt,data3,\textcolor{keyword}{sizeof}(history\_dfdt));
+00134 
+00135 
+00136 
+00137 
+00138         plot\_curve(time,measured\_values,
+00139                   (type.contains(\textcolor{stringliteral}{"MFIELD"})?\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65}:
+      \hyperlink{a00034_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3}),
+00140                   history\_amp
+00141                   );
+00142 
+00143 
+00144 
+00145         plot\_event(time,history\_dfdt,\hyperlink{a00020_ad38222699419e6ac871ce2a23c6d292e}{max}(history\_dfdt));
+00146 
+00147     \}\textcolor{keywordflow}{else}\{
+00148         ui->\hyperlink{a00028_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(\textcolor{keyword}{false});
+00149         ui->\hyperlink{a00028_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setEnabled(\textcolor{keyword}{false});
+00150 
+00151         ui->\hyperlink{a00028_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setVisible(\textcolor{keyword}{false});
+00152 
+00153         plot\_curve(time,measured\_values,
+00154                   type.contains(\textcolor{stringliteral}{"MFIELD"})?\hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65}:
+      \hyperlink{a00034_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3});
+00155 
+00156 
+00157     \}
+00158 
+00159 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db2/a00020_a3f26cea2101bdab013aa02f1c73e41b9_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00020_ab04c69b9693e7a59a08a5faa6742b71f}{\index{record\+Preview@{record\+Preview}!````~record\+Preview@{$\sim$record\+Preview}}
+\index{````~record\+Preview@{$\sim$record\+Preview}!record\+Preview@{record\+Preview}}
+\subsubsection[{$\sim$record\+Preview}]{\setlength{\rightskip}{0pt plus 5cm}record\+Preview\+::$\sim$record\+Preview (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00020_ab04c69b9693e7a59a08a5faa6742b71f}
+
+
+Definition at line \hyperlink{a00042_source_l00162}{162} of file \hyperlink{a00042_source}{recordpreview.\+cpp}.
+
+
+\begin{DoxyCode}
+00163 \{
+00164     \textcolor{keyword}{delete} ui;
+00165 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00020_ad38222699419e6ac871ce2a23c6d292e}{\index{record\+Preview@{record\+Preview}!max@{max}}
+\index{max@{max}!record\+Preview@{record\+Preview}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}double record\+Preview\+::max (
+\begin{DoxyParamCaption}
+\item[{Q\+Vector$<$ double $>$}]{val}
+\end{DoxyParamCaption}
+)}}\label{a00020_ad38222699419e6ac871ce2a23c6d292e}
+
+
+Definition at line \hyperlink{a00042_source_l00168}{168} of file \hyperlink{a00042_source}{recordpreview.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00042_source_l00102}{record\+Preview()}.
+
+
+\begin{DoxyCode}
+00168                                             \{
+00169     \textcolor{keywordtype}{double} result = 0;
+00170     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < val.length(); ++var)
+00171         result = (result > val[var])?result:val[var];
+00172 
+00173     \textcolor{keywordflow}{return} result;
+00174 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/db2/a00020_ad38222699419e6ac871ce2a23c6d292e_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00043}{recordpreview.\+h}\item 
+\hyperlink{a00042}{recordpreview.\+cpp}\end{DoxyCompactItemize}

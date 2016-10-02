@@ -1,0 +1,72 @@
+.TH "qrc_icons.cpp" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+qrc_icons.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <QtCore/qglobal\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "QT_BEGIN_NAMESPACE 
+.br
+Q_CORE_EXPORT bool \fBqRegisterResourceData\fP (int, const unsigned char *, const unsigned char *, const unsigned char *)"
+.br
+.ti -1c
+.RI "Q_CORE_EXPORT bool \fBqUnregisterResourceData\fP (int, const unsigned char *, const unsigned char *, const unsigned char *)"
+.br
+.ti -1c
+.RI "QT_END_NAMESPACE int 
+.br
+QT_MANGLE_NAMESPACE() \fBqInitResources_icons\fP ()"
+.br
+.ti -1c
+.RI "\fBQ_CONSTRUCTOR_FUNCTION\fP (QT_MANGLE_NAMESPACE(\fBqInitResources_icons\fP)) int QT_MANGLE_NAMESPACE(qCleanupResources_icons)()"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "Q_CONSTRUCTOR_FUNCTION (QT_MANGLE_NAMESPACE(\fBqInitResources_icons\fP))"
+
+.PP
+Definition at line 54580 of file qrc_icons\&.cpp\&.
+.PP
+References qUnregisterResourceData()\&.
+.PP
+.nf
+54583 {
+54584     QT_PREPEND_NAMESPACE(qUnregisterResourceData)
+54585        (0x01, qt_resource_struct, qt_resource_name, qt_resource_data);
+54586     return 1;
+54587 }
+.fi
+.SS "QT_END_NAMESPACE int QT_MANGLE_NAMESPACE() qInitResources_icons ()"
+
+.PP
+Definition at line 54573 of file qrc_icons\&.cpp\&.
+.PP
+References qRegisterResourceData()\&.
+.PP
+.nf
+54574 {
+54575     QT_PREPEND_NAMESPACE(qRegisterResourceData)
+54576         (0x01, qt_resource_struct, qt_resource_name, qt_resource_data);
+54577     return 1;
+54578 }
+.fi
+.SS "QT_BEGIN_NAMESPACE Q_CORE_EXPORT bool qRegisterResourceData (int, const unsigned char *, const unsigned char *, const unsigned char *)"
+
+.PP
+Referenced by qInitResources_icons()\&.
+.SS "Q_CORE_EXPORT bool qUnregisterResourceData (int, const unsigned char *, const unsigned char *, const unsigned char *)"
+
+.PP
+Referenced by Q_CONSTRUCTOR_FUNCTION()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

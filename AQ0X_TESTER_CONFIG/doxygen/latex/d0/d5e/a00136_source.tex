@@ -1,0 +1,922 @@
+\hypertarget{a00136_source}{\section{srv\+\_\+protocol.\+cpp}
+\label{a00136_source}\index{srv\+\_\+protocol.\+cpp@{srv\+\_\+protocol.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 
+00008 \textcolor{preprocessor}{#include "\hyperlink{a00110}{mainwindow.h}"}
+00009 \textcolor{preprocessor}{#include "\hyperlink{a00090}{define.h}"}
+00010 \textcolor{preprocessor}{#include "\hyperlink{a00139}{ui\_mainwindow.h}"}
+00011 
+00012 
+00013 \textcolor{preprocessor}{#include <QDebug>}
+00014 \textcolor{preprocessor}{#include <QThread>}
+00015 \textcolor{preprocessor}{#include <QMessageBox>}
+00016 
+00017 
+00018 
+00029 \hyperlink{a00004_aafb609548b1aa0152c46f9205b79d0f0}{Int8} MainWindow::protocol\_send\_cmd(\hyperlink{a00004_d3/dd5/a00215}{serial\_msg\_t} current\_cmd, 
+      \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} *resp, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} wait\_resp)
+00030 \{
+00031 
+00032 
+00033 
+00034 
+00035    \hyperlink{a00004_a3985266aecb120f269789241c170850c}{Int16}   result = -1;
+00036    \textcolor{keywordtype}{char}    message[400];
+00037 
+00038 
+00039    \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16}  ii;
+00040    \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16}  kk;
+00041    QByteArray resp\_message;
+00042    QString frame;
+00043    \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16}  frameIdx;
+00044    \textcolor{keywordtype}{bool} frameOk = \textcolor{keyword}{false};
+00045 
+00046 
+00047 
+00048    frame.clear();
+00049    resp\_message.clear();
+00050 
+00051 
+00052    last\_cmd = current\_cmd;
+00053 
+00054 
+00055    \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} cmd = (((current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x00F0)>>4)== 0xE)?0xE:
+00056                 (((current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x0F00)>>8)==1)?1:
+00057                 (((current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x0F00)>>8)==6)?6:            
+00058                 current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd};
+00059 
+00060 
+00061  \textcolor{keywordflow}{switch}(cmd)
+00062    \{
+00063        \textcolor{keywordflow}{case} 1\textcolor{comment}{/*zero argument messages*/}:
+00064        \{
+00065 
+00066        sprintf(message,\textcolor{stringliteral}{"[%04X:%02X%02X:"},current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd},current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0],current\_cmd.
+      \hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1]);
+00067 
+00068        sprintf(message+11,\textcolor{stringliteral}{"%04X]"},\hyperlink{a00017_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}((\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}*)message,10));
+00069 
+00070 
+00071 
+00072        \}\textcolor{keywordflow}{break};
+00073        
+00074        
+00075        \textcolor{keywordflow}{case} 0xE\textcolor{comment}{/*data download request message*/}:
+00076        \{
+00077     
+00078        sprintf(message,\textcolor{stringliteral}{"[%04X:%02X%02X%04X%04X:"},current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd},current\_cmd.
+      \hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1],
+00079                                                  current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2],current\_cmd.
+      \hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]);
+00080     
+00081        sprintf(message+19,\textcolor{stringliteral}{"%04X]"},\hyperlink{a00017_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}((\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}*)message,18));
+00082 
+00083     
+00084        \}\textcolor{keywordflow}{break};
+00085 
+00086 
+00087        \textcolor{keywordflow}{case} 6 \textcolor{comment}{/*data transfer*/}:
+00088        \{
+00089 
+00090        \textcolor{keyword}{const} \textcolor{keywordtype}{char} cnv[] = \textcolor{stringliteral}{"0123456789ABCDEF"};
+00091 
+00092        memset(message,0,\textcolor{keyword}{sizeof}(message));
+00093 
+00094        sprintf(message,\textcolor{stringliteral}{"[%04X:%02X%02X%04X%04X"},current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd},
+00095                                             current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0],current\_cmd.
+      \hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1],
+00096                                             current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2],current\_cmd.
+      \hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]);
+00097 
+00098        \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} var;
+00099        \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} cc = 0;
+00100        \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} offset = current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2];
+00101 
+00102        \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} * data = (\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} *)(current\_cmd.\hyperlink{a00004_a0b844fe783d7e252159a9641b949e83c}{attachment});
+00103 
+00104        \textcolor{keywordflow}{for} (var = 18; (var-18) < current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]*2;) \{
+00105 
+00106           \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} val = (((\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16})(*(data + offset + cc++)))>>0)|
+00107                   (((\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16})(*(data + offset + cc++)))<<8);
+00108           sprintf(message+var,\textcolor{stringliteral}{"%04X"},val);
+00109 
+00110           var+=4;
+00111 
+00112 
+00113 
+00114 
+00115        \}
+00116 
+00117        message[var++]=\textcolor{charliteral}{':'};
+00118 
+00119        sprintf(message+var,\textcolor{stringliteral}{"%04X]"},\hyperlink{a00017_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}((\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}*)message,var-1));
+00120 
+00121 
+00122 
+00123 
+00124        \}\textcolor{keywordflow}{break};
+00125 
+00126 
+00127 
+00128        \textcolor{keywordflow}{case} \hyperlink{a00086_af91ff280feea1f52e3bdd7f0f556d153}{CMD\_INSTALLATION\_DITAILS}:
+00129        \{
+00130        sprintf(message,\textcolor{stringliteral}{"[%04X:%02X%02X%04X%04X%04X%04X%04X%04X:CCCC]"},current\_cmd.
+      \hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd},
+00131                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1],
+00132                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3],
+00133                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[5],
+00134                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[6],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[7]
+00135 
+00136                                     );
+00137 
+00138        sprintf(message+35,\textcolor{stringliteral}{"%04X]"},\hyperlink{a00017_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}((\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}*)message,34));
+00139 
+00140        \}\textcolor{keywordflow}{break};
+00141 
+00142 
+00143 
+00144        \textcolor{keywordflow}{case} \hyperlink{a00086_ac361dc1b32c1036394be0fd7de1182ca}{CMD\_SIGNAL\_THRESHOLDS}:
+00145        \{
+00146        sprintf(message,\textcolor{stringliteral}{"[%04X:%02X%02X%04X%04X%04X%04X:CCCC]"},current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd},
+00147                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1],
+00148                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3],
+00149                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[5]
+00150                                     );
+00151 
+00152 
+00153        sprintf(message+27,\textcolor{stringliteral}{"%04X]"},\hyperlink{a00017_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}((\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}*)message,26));
+00154 
+00155        \}\textcolor{keywordflow}{break};
+00156 
+00157 
+00158 
+00159        \textcolor{keywordflow}{case} \hyperlink{a00086_a3a15793e3ab7817f2429edf04de693a0}{CMD\_EVENT\_ANALYSIS}:
+00160        \{
+00161        sprintf(message,\textcolor{stringliteral}{"[%04X:%02X%02X%04X%04X%04X%04X%04X%04X%04X:CCCC]"},current\_cmd.
+      \hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd},
+00162                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1],
+00163                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3],
+00164                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[5],
+00165                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[6],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[7]
+00166 
+00167                                     );
+00168 
+00169        sprintf(message+39,\textcolor{stringliteral}{"%04X]"},\hyperlink{a00017_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}((\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}*)message,38));
+00170 
+00171        \}\textcolor{keywordflow}{break};
+00172 
+00173 
+00174 
+00175    \textcolor{keywordflow}{case} \hyperlink{a00086_a1d8673a7ca545f3e382fc538f543ab72}{CMD\_RUN\_TIME\_OPTIONS}:
+00176        \{
+00177        sprintf(message,\textcolor{stringliteral}{"[%04X:%02X%02X%04X%04X%04X:CCCC]"},current\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd},
+00178                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[0],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1],
+00179                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2],current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3],
+00180                                     current\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[4]
+00181 
+00182                                     );
+00183 
+00184        sprintf(message+23,\textcolor{stringliteral}{"%04X]"},\hyperlink{a00017_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}((\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}*)message,22));
+00185 
+00186        \}\textcolor{keywordflow}{break};
+00187 
+00188 
+00189        \textcolor{keywordflow}{default}:
+00190        \{
+00191 
+00192            \textcolor{keywordflow}{return} -1;
+00193        \}
+00194    \}
+00195 
+00196 
+00197 
+00198    \textcolor{keywordflow}{for}( ii = 0; ii < \hyperlink{a00090_ae024113875b4670b57f70611ff982543}{MAX\_RE\_TX\_ATTEMPT};ii++)
+00199    \{
+00200       serial->clear();
+00201       \textcolor{keywordflow}{if}(comm\_Write(message))\{
+00202 
+00203           ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(cmd\_line\_separator + QString(message) + \textcolor{stringliteral}{"\(\backslash\)n"});
+00204 
+00205           \textcolor{keywordflow}{if}(wait\_resp==0)
+00206               \textcolor{keywordflow}{return} 0;
+00207 
+00208           result = 0;
+00209           disconnect(serial, SIGNAL(readyRead()), \textcolor{keyword}{this}, SLOT(incoming\_data\_listener()));
+00210               rc\_buffer.clear();
+00211               \textcolor{keywordflow}{if}(serial->waitForReadyRead(wait\_resp) == \textcolor{keyword}{true})
+00212               \{
+00213 
+00214 
+00215                      \textcolor{keywordtype}{bool} dataReady = \textcolor{keyword}{false};
+00216                      resp\_message.clear();
+00217                      resp\_message.append(serial->readAll());
+00218 
+00219                      \textcolor{keywordflow}{if}(rc\_buffer.contains(\textcolor{stringliteral}{"\}\(\backslash\)r\(\backslash\)n"}))
+00220                          dataReady = \textcolor{keyword}{true};
+00221 
+00222 
+00223                    \textcolor{keywordflow}{while} (!dataReady) \{
+00224 
+00225                        QThread::msleep(wait\_resp);
+00226                        \textcolor{comment}{/*}
+00227 \textcolor{comment}{                       if(serial->bytesAvailable()>0)\{}
+00228 \textcolor{comment}{                        resp\_message.append(serial->readAll());}
+00229 \textcolor{comment}{                       \}*/}
+00230 
+00231                        \textcolor{keywordflow}{if}(rc\_buffer.contains(\textcolor{stringliteral}{"\}\(\backslash\)r\(\backslash\)n"}))
+00232                            dataReady = \textcolor{keyword}{true};
+00233 
+00234                    \}
+00235                     resp\_message = rc\_buffer;
+00236 
+00237 
+00238                    frameOk = \textcolor{keyword}{false};
+00239 
+00240                    \textcolor{keywordflow}{if}(resp\_message.length() > 0)
+00241                    \{
+00242                         \textcolor{keywordflow}{for}( kk = 0; kk < resp\_message.length();kk++)
+00243                         \{
+00244                             qint8 cc = resp\_message[kk];
+00245 
+00246 
+00247                             \textcolor{keywordflow}{if}(cc == \textcolor{charliteral}{'\{'})
+00248                                 frame = cc;
+00249                             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( cc == \textcolor{charliteral}{'\}'})
+00250                             \{
+00251                                         frame.append(cc);
+00252                                         frameOk = \textcolor{keyword}{true};
+00253                                         \textcolor{keywordflow}{break};
+00254                             \}
+00255                             \textcolor{keywordflow}{else}
+00256                             \{
+00257                                          \textcolor{keywordflow}{if}(( ((cc >= \textcolor{charliteral}{'0'})&&(cc <= \textcolor{charliteral}{'9'})) || ((cc >= \textcolor{charliteral}{'A'})&&(cc <= \textcolor{charliteral}{'F'})) || (
+       cc == \textcolor{charliteral}{':'}) ))
+00258                                          \{
+00259                                              frame.append(cc);
+00260                                          \}
+00261                                          \textcolor{keywordflow}{else}
+00262                                          \{
+00263                                              frameIdx = 0;
+00264                                          \}
+00265 
+00266                              \}
+00267 
+00268                        \}
+00269                   \}
+00270              \}
+00271 
+00272 
+00273    \}
+00274 
+00275       connect(serial, SIGNAL(readyRead()), \textcolor{keyword}{this}, SLOT(incoming\_data\_listener()));
+00276       \textcolor{keywordflow}{return} result;
+00277 \}
+00278 
+00279    \textcolor{keywordflow}{return} -1;
+00280 \}
+00281 
+00282 \textcolor{keywordtype}{void} MainWindow::Success(...)
+00283 \{
+00284 
+00285 \}
+00286 
+00287 \textcolor{keywordtype}{void} MainWindow::Failure(...)
+00288 \{
+00289 
+00290 \}
+00291 
+00292 
+\hypertarget{a00136_source_l00293}{}\hyperlink{a00017_a8a8cd34488e8ee213350afb5b2261677}{00293} \textcolor{keywordtype}{void} \hyperlink{a00017_a8a8cd34488e8ee213350afb5b2261677}{MainWindow::srv\_cmds\_general\_msg\_handler}(QString data)\{
+00294 
+00295 uint  channel   = 0;
+00296 uint  sensor\_id = 0;
+00297 uint  arg       = 0;
+00298 
+00299     \textcolor{keywordflow}{if}(data.contains(\textcolor{stringliteral}{"#Error"}))
+00300     \{
+00301 
+00302          QString result =  QString(\textcolor{stringliteral}{"\(\backslash\)n#Error: data verification error \(\backslash\)n "});
+00303          ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result+\textcolor{stringliteral}{"\(\backslash\)n"}+data);
+00304 
+00305 
+00306              \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00004_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00307 
+00308                  QString Question =
+00309                          QString(\textcolor{stringliteral}{"The response from the selected sensor (SEN address = "})
+00310                          +QString::number(last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00311                          +QString(\textcolor{stringliteral}{") contains error .\(\backslash\)n"})
+00312                          +QString(\textcolor{stringliteral}{"Do you want to run the command again ?"});
+00313 
+00314                  QMessageBox msgBox;
+00315                  msgBox.setWindowIcon(QMainWindow::windowIcon());
+00316                  msgBox.setWindowTitle(QMainWindow::windowTitle());
+00317                  msgBox.setText(Question);
+00318                  msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00319 
+00320 
+00321                  \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)\{
+00322                  last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00323                  multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00324                  multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setStyleSheet(
+      \hyperlink{a00090_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00325                  \textcolor{keywordflow}{if}((last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length() - 1)))
+00326                      last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00327                  \textcolor{keywordflow}{else}\{
+00328 
+00329                      \textcolor{keywordflow}{return};
+00330                   \}
+00331                  \}
+00332 
+00333 
+00334                  last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00335 
+00336 
+00337                  multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00338 
+00339                  srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00340 
+00341              \}\textcolor{keywordflow}{else}\{
+00342                  last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00343              \}
+00344 
+00345              \textcolor{keywordflow}{return};
+00346      \}
+00347 
+00348 
+00349 
+00350     \textcolor{keywordflow}{if}(sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X"},&channel,&sensor\_id,&arg) == 3)\{
+00351 
+00352        \textcolor{keywordflow}{if}(arg == \hyperlink{a00090_a6f6489887e08bff4887d0bc5dcf214d8}{ACK})\{
+00353 
+00354                     last\_cmd.processed = \textcolor{keyword}{true};
+00355                     QString result =  QString(\textcolor{stringliteral}{"Command execution verified\(\backslash\)n"});
+00356                     ui->terminal->textCursor().insertText(result);
+00357 
+00358                     \textcolor{keywordflow}{if}(last\_cmd.multi\_address)\{
+00359                          multi\_cmds[last\_cmd.vPos].gui.pBar->setValue(100);
+00360                          multi\_cmds[last\_cmd.vPos].varified = \textcolor{keyword}{true};
+00361                      \textcolor{keywordflow}{if}(last\_cmd.vPos < (multi\_cmds.length()-1))\{
+00362                         last\_cmd.vPos++;
+00363                         last\_cmd.arg[1] = multi\_cmds[last\_cmd.vPos].address;
+00364                         srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00365                     \}\textcolor{keywordflow}{else}
+00366                         ui->btn\_execute\_cmd->setEnabled(\textcolor{keyword}{true});
+00367 
+00368                     \}
+00369 
+00370 
+00371 
+00372 
+00373        \}
+00374        \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(arg == \hyperlink{a00090_a89228259ebf351e938853637ef163a1b}{ARG\_PROCESSING\_CMD\_WAIT\_MSG})
+00375        \{
+00376 
+00377                 QString result =  QString(\textcolor{stringliteral}{"Processing command, Please Wait ...\(\backslash\)n "});
+00378                 ui->terminal->textCursor().insertText(result);
+00379 
+00380        \}
+00381        \textcolor{keywordflow}{if}(arg == \hyperlink{a00090_a5f745a08fe4d5a8336a8fd62c30e0642}{ARG\_SEN\_COMM\_ERROR\_NO\_RESPONSE})
+00382        \{
+00383 
+00384             QString result =  QString(\textcolor{stringliteral}{"#Communication Error, Sensor not responding\(\backslash\)n "});
+00385             ui->terminal->textCursor().insertText(result);
+00386 
+00387 
+00388                 \textcolor{keywordflow}{if}(last\_cmd.multi\_address)\{
+00389 
+00390                     QString Question =
+00391                             QString(\textcolor{stringliteral}{"Communication error, the selected sensor (SEN address = "})
+00392                             +QString::number(multi\_cmds[last\_cmd.vPos].address)
+00393                             +QString(\textcolor{stringliteral}{") is not responding.\(\backslash\)n"})
+00394                             +QString(\textcolor{stringliteral}{"Do you want to try again ?"});
+00395 
+00396                     QMessageBox msgBox;
+00397                     msgBox.setWindowIcon(QMainWindow::windowIcon());
+00398                     msgBox.setWindowTitle(QMainWindow::windowTitle());
+00399                     msgBox.setText(Question);
+00400                     msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00401 
+00402 
+00403                     \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)\{
+00404                     last\_cmd.processed = \textcolor{keyword}{true};
+00405                     multi\_cmds[last\_cmd.vPos].varified = \textcolor{keyword}{true};
+00406                     multi\_cmds[last\_cmd.vPos].gui.pBar->setStyleSheet(
+      \hyperlink{a00090_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00407                     \textcolor{keywordflow}{if}((last\_cmd.vPos < (multi\_cmds.length() - 1)))
+00408                         last\_cmd.vPos++;
+00409                     \textcolor{keywordflow}{else}\{
+00410 
+00411                         \textcolor{keywordflow}{return};
+00412                      \}
+00413                     \}
+00414 
+00415 
+00416                     last\_cmd.arg[1] = multi\_cmds[last\_cmd.vPos].address;
+00417 
+00418 
+00419                     multi\_cmds[last\_cmd.vPos].gui.pBar->setValue(20);
+00420 
+00421                     srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00422 
+00423                 \}\textcolor{keywordflow}{else}\{
+00424                     last\_cmd.processed = \textcolor{keyword}{true};
+00425                 \}
+00426         \}
+00427 
+00428 
+00429 
+00430 
+00431      \}
+00432 
+00433 
+00434 \}
+00435 
+00436 
+\hypertarget{a00136_source_l00437}{}\hyperlink{a00017_ae19ec21c1009c81700a8ad2e1f81be07}{00437} \textcolor{keywordtype}{void} \hyperlink{a00017_ae19ec21c1009c81700a8ad2e1f81be07}{MainWindow::srv\_cmds\_data\_transfer\_msg\_handler}(QString 
+      data)\{
+00438 
+00439     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  channel               = 0;
+00440     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  sensor\_id             = 0;
+00441     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  arg                   = 0;
+00442     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}  copied\_data\_length    = 0;
+00443 
+00444         \textcolor{keywordflow}{if}(data.contains(\textcolor{stringliteral}{"#Error"}))
+00445         \{
+00446              \textcolor{keywordtype}{bool} repeat = \textcolor{keyword}{true};
+00447              QString result =  QString(\textcolor{stringliteral}{"\(\backslash\)n#Error: data verification error \(\backslash\)n "});
+00448              ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result+\textcolor{stringliteral}{"\(\backslash\)n"}+data);
+00449 
+00450              QString Question =
+00451                      QString(\textcolor{stringliteral}{"The response from the selected sensor (SEN address = "})
+00452                      +QString::number(last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00453                      +QString(\textcolor{stringliteral}{") contains error .\(\backslash\)n"})
+00454                      +QString(\textcolor{stringliteral}{"Do you want to run the command again ?"});
+00455 
+00456              QMessageBox msgBox;
+00457              msgBox.setWindowIcon(QMainWindow::windowIcon());
+00458              msgBox.setWindowTitle(QMainWindow::windowTitle());
+00459              msgBox.setText(Question);
+00460              msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00461 
+00462 
+00463              \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)
+00464                       repeat = \textcolor{keyword}{false};
+00465 
+00466                  \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00004_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00467 
+00468                      \textcolor{keywordflow}{if}(!repeat)\{
+00469                      last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00470                      multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00471                      multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setStyleSheet(
+      \hyperlink{a00090_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00472                      last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]=0;\textcolor{comment}{//reset offset to zero for new data transmission}
+00473                      last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]= ((\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      \hyperlink{a00004_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length}))<0)?
+00474                                           \hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      \hyperlink{a00004_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length};
+00475                      \textcolor{keywordflow}{if}((last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length() - 1)))
+00476                          last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00477                      \textcolor{keywordflow}{else}\{
+00478 
+00479                          \textcolor{keywordflow}{return};
+00480                       \}
+00481                      \}
+00482 
+00483 
+00484                      last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00485 
+00486                      multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00487 
+00488                      srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00489 
+00490                  \}\textcolor{keywordflow}{else}\{
+00491 
+00492                      \textcolor{keywordflow}{if}(repeat)\{
+00493                         \textcolor{comment}{//simply repeat the previous command}
+00494                         srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00495                         \textcolor{keywordflow}{return};
+00496                      \}
+00497 
+00498 
+00499                      last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00500 
+00502                  \}
+00503 
+00504 
+00505             \textcolor{keywordflow}{return};
+00506          \}
+00507 
+00508         \textcolor{keywordflow}{if}(data.length() == 8 && sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X"},&channel,&sensor\_id,&arg) == 3)
+00509         \{
+00510 
+00511             srv\_cmds\_general\_msg\_handler(data);
+00512             \textcolor{keywordflow}{return};
+00513         \}
+00514 
+00515 
+00516         \textcolor{keywordflow}{if}(sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X%04X"},&channel,&sensor\_id,&arg,&copied\_data\_length) == 4)
+00517         \{
+00518 
+00519            \textcolor{keywordflow}{if}(arg == \hyperlink{a00090_a6f6489887e08bff4887d0bc5dcf214d8}{ACK})\{
+00520 
+00521                \textcolor{keywordflow}{if}(copied\_data\_length == last\_cmd.attachment\_length)\{
+00522                    last\_cmd.processed = \textcolor{keyword}{true};
+00523                    QString result =  QString(\textcolor{stringliteral}{"Command execution verified\(\backslash\)n"});
+00524                    ui->terminal->textCursor().insertText(result);
+00525 
+00526                    \textcolor{keywordflow}{if}(last\_cmd.multi\_address)\{
+00527                         multi\_cmds[last\_cmd.vPos].gui.pBar->setValue(100);
+00528                         multi\_cmds[last\_cmd.vPos].varified = \textcolor{keyword}{true};
+00529                     \textcolor{keywordflow}{if}(last\_cmd.vPos < (multi\_cmds.length()-1))\{
+00530                        last\_cmd.vPos++;
+00531                        last\_cmd.arg[1] = multi\_cmds[last\_cmd.vPos].address;
+00532                        last\_cmd.arg[2] = 0;\textcolor{comment}{//data transfer starts fresh}
+00533                        last\_cmd.arg[3]= ((\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      attachment\_length))<0)?
+00534                                           \hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      attachment\_length;
+00535                        srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00536                    \}\textcolor{keywordflow}{else}
+00537                        ui->btn\_execute\_cmd->setEnabled(\textcolor{keyword}{true});
+00538 
+00539                    \}
+00540 
+00541 
+00542                \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(copied\_data\_length < last\_cmd.attachment\_length)\{
+00543                    \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} remaining\_data\_length = last\_cmd.attachment\_length - copied\_data\_length;
+00544 
+00545                    QString result =  QString(\textcolor{stringliteral}{"data transfer verification\(\backslash\)n"});
+00546                    ui->terminal->textCursor().insertText(result);
+00547 
+00548                    result =  QString(\textcolor{stringliteral}{"Copied data length :"}+QString::number(copied\_data\_length)+\textcolor{stringliteral}{" byte\(\backslash\)n"});
+00549                    ui->terminal->textCursor().insertText(result);
+00550 
+00551                    result =  QString(\textcolor{stringliteral}{"Remaining data length "}+QString::number(remaining\_data\_length)+\textcolor{stringliteral}{" byte
+      \(\backslash\)n"});
+00552                    ui->terminal->textCursor().insertText(result);
+00553 
+00554 
+00555 
+00556 
+00557                    \textcolor{comment}{//TODO: check copid data length is valid  (very important)}
+00558 
+00559                    last\_cmd.arg[2] = copied\_data\_length;  \textcolor{comment}{//sets current offset}
+00560 
+00561                    last\_cmd.arg[3] = ((\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-remaining\_data\_length)<0)
+      ?
+00562                                           \hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:remaining\_data\_length;
+00563 
+00564                    srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00565                \}\textcolor{keywordflow}{else}\{
+00566 
+00567 
+00568                    qWarning() <<\textcolor{stringliteral}{"Unexpected result, considered as data transfer error"}
+00569                               <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_transfer\_msg\_handler"};
+00570                \}
+00571 
+00572            \}\textcolor{keywordflow}{else}\{
+00573 
+00574                qWarning() <<\textcolor{stringliteral}{"Unexpected argument received, considered as data transfer error"}
+00575                           <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_transfer\_msg\_handler"};
+00576 
+00577            \}
+00578 
+00579 
+00580 
+00581          \}
+00582 
+00583 
+00584 
+00585 \}
+00586 
+00587 
+\hypertarget{a00136_source_l00588}{}\hyperlink{a00017_ac84167866950dd1eb9a29a5293546c1a}{00588} \textcolor{keywordtype}{void} \hyperlink{a00017_ac84167866950dd1eb9a29a5293546c1a}{MainWindow::srv\_cmds\_data\_download\_msg\_handler}(QString 
+      data)\{
+00589 
+00590     
+00591     uint  channel              = 0;
+00592     uint  sensor\_id            = 0;
+00593     uint  arg                  = 0;
+00594     uint  copied\_data\_length   = 0;
+00595     \textcolor{keywordtype}{char} attachment[2*\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}];
+00596 
+00597     memset(attachment,0,\textcolor{keyword}{sizeof}(attachment));
+00598 
+00599         \textcolor{keywordflow}{if}(data.contains(\textcolor{stringliteral}{"#Error"}))
+00600         \{
+00601              \textcolor{keywordtype}{bool} repeat = \textcolor{keyword}{true};
+00602              QString result =  QString(\textcolor{stringliteral}{"\(\backslash\)n#Error: data verification error \(\backslash\)n "});
+00603              ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(result+\textcolor{stringliteral}{"\(\backslash\)n"}+data);
+00604 
+00605              QString Question =
+00606                      QString(\textcolor{stringliteral}{"The response from the selected sensor (SEN address = "})
+00607                      +QString::number(last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00608                      +QString(\textcolor{stringliteral}{") contains error .\(\backslash\)n"})
+00609                      +QString(\textcolor{stringliteral}{"Do you want to run the command again ?"});
+00610 
+00611              QMessageBox msgBox;
+00612              msgBox.setWindowIcon(QMainWindow::windowIcon());
+00613              msgBox.setWindowTitle(QMainWindow::windowTitle());
+00614              msgBox.setText(Question);
+00615              msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00616 
+00617 
+00618              \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)
+00619                       repeat = \textcolor{keyword}{false};
+00620 
+00621                  \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00004_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00622 
+00623                      \textcolor{keywordflow}{if}(!repeat)\{
+00624                      last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00625                      multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00626                      multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setStyleSheet(
+      \hyperlink{a00090_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00627                      
+00628                      last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]=0;\textcolor{comment}{//reset offset to zero for new data transmission}
+00629                        
+00630                      last\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied       = 0;
+00631                      
+00632                      last\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset                  = 0;
+00633                      
+00634                      last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]              
+00635                              = ((\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      \hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected))<0)?
+00636                                  \hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      \hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected;
+00637                      
+00638                      \textcolor{keywordflow}{if}((last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length() - 1)))
+00639                          last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00640                      \textcolor{keywordflow}{else}\{
+00642                          \textcolor{keywordflow}{return};
+00643                       \}
+00644                      \}
+00645 
+00646 
+00647                      last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00648 
+00649                      multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00650 
+00651                      srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00652 
+00653                  \}\textcolor{keywordflow}{else}\{
+00654 
+00655                      \textcolor{keywordflow}{if}(repeat)\{
+00656                         \textcolor{comment}{//simply repeat the previous command}
+00657                         srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00658                         \textcolor{keywordflow}{return};
+00659                      \}
+00660 
+00661 
+00662                      last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00663 
+00665                  \}
+00666 
+00667 
+00668             \textcolor{keywordflow}{return};
+00669          \}
+00670 
+00671         \textcolor{keywordflow}{if}((data.length() == 8) && sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X"},&channel,&sensor\_id,&arg) == 3)
+00672         \{
+00673 
+00674             srv\_cmds\_general\_msg\_handler(data);
+00675             \textcolor{keywordflow}{return};
+00676         \}
+00677        
+00678         
+00679 
+00680         \textcolor{keywordflow}{if}(sscanf(data.toLatin1(),\textcolor{stringliteral}{"%02X%02X%04X%04X%s"},&channel,&sensor\_id,&arg,&copied\_data\_length,
+      attachment) == 5)
+00681         \{
+00682 
+00683             \textcolor{comment}{//TODO:}
+00684            \textcolor{comment}{/*}
+00685 \textcolor{comment}{           if(copied\_data\_length != sizeof(attachment))\{}
+00686 \textcolor{comment}{}
+00687 \textcolor{comment}{               retransmission("#Error: Received data  validation ");}
+00688 \textcolor{comment}{               return;}
+00689 \textcolor{comment}{           \}*/}
+00690 
+00691 
+00692            \textcolor{keywordflow}{if}(arg == \hyperlink{a00090_a6f6489887e08bff4887d0bc5dcf214d8}{ACK})\{
+00693 
+00694                \textcolor{keywordflow}{if}(copied\_data\_length-last\_cmd.data\_download.offset == last\_cmd.arg[3]\textcolor{comment}{/*requested data
+       length*/})
+00695                \{
+00696                \textcolor{keywordflow}{if}(msg\_to\_mem(
+00697                       attachment,
+00698                       (((\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} *)last\_cmd.data\_download.storage\_location)+last\_cmd.data\_download.
+      offset),
+00699                       last\_cmd.arg[3]
+00700                           ))\{
+00701                    last\_cmd.data\_download.total\_size.copied = copied\_data\_length;
+00702 
+00703                   \}\textcolor{keywordflow}{else}
+00704                   \textcolor{keywordflow}{if}(last\_cmd.data\_download.total\_size.copied+last\_cmd.arg[3] != copied\_data\_length)\{
+00705                     Failure();
+00706                   \}\textcolor{keywordflow}{else}\{
+00707                    
+00708                    qCritical() <<\textcolor{stringliteral}{"Unable to copy received data to memory "}
+00709                                <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_download\_msg\_handler"};
+00710                 
+00711                    exit(1);
+00712                    
+00713                   \}
+00714                \}\textcolor{keywordflow}{else}\{
+00715                    
+00716                   retransmission(\textcolor{stringliteral}{"#Error: Received data  validation "});
+00717                   \textcolor{keywordflow}{return};
+00718                \}
+00719                
+00720                \textcolor{keywordflow}{if}(copied\_data\_length == last\_cmd.data\_download.total\_size.expected)\{
+00721                    last\_cmd.processed = \textcolor{keyword}{true};
+00722                    QString result =  QString(\textcolor{stringliteral}{"Command execution verified\(\backslash\)n"});
+00723                    ui->terminal->textCursor().insertText(result);
+00724 
+00725                    
+00726                    record\_preview(last\_cmd);
+00727                    
+00728                    \textcolor{keywordflow}{if}(last\_cmd.multi\_address)\{
+00729                         multi\_cmds[last\_cmd.vPos].gui.pBar->setValue(100);
+00730                         multi\_cmds[last\_cmd.vPos].varified = \textcolor{keyword}{true};
+00731                     \textcolor{keywordflow}{if}(last\_cmd.vPos < (multi\_cmds.length()-1))\{
+00732                        last\_cmd.vPos++;
+00733                        last\_cmd.arg[1] = multi\_cmds[last\_cmd.vPos].address;
+00734                        last\_cmd.arg[2] = 0;\textcolor{comment}{//data transfer starts fresh}
+00735                        
+00736                        last\_cmd.data\_download.total\_size.copied     = 0;
+00737                        
+00738                        last\_cmd.data\_download.offset                = 0;
+00739                        
+00740                        last\_cmd.arg[3]              
+00741                                = ((\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.data\_download.
+      total\_size.expected))<0)?
+00742                                    \hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.data\_download.
+      total\_size.expected;
+00743 
+00744                        srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00745                    \}\textcolor{keywordflow}{else}
+00746                        ui->btn\_execute\_cmd->setEnabled(\textcolor{keyword}{true});
+00747 
+00748                    \}
+00749 
+00750                \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(copied\_data\_length < last\_cmd.data\_download.total\_size.expected)\{
+00751                    \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} remaining\_data\_length 
+00752                            = last\_cmd.data\_download.total\_size.expected 
+00753                            - last\_cmd.data\_download.total\_size.copied;
+00754 
+00755                    last\_cmd.data\_download.offset = last\_cmd.data\_download.total\_size.copied;
+00756                    last\_cmd.arg[2] = last\_cmd.data\_download.offset;  \textcolor{comment}{//sets current offset}
+00757 
+00758                    last\_cmd.arg[3] = ((\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-remaining\_data\_length)<0)
+      ?
+00759                                           \hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:remaining\_data\_length;
+00760 
+00761                    srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00762                \}\textcolor{keywordflow}{else}\{
+00763 
+00764                    
+00765                    qWarning() <<\textcolor{stringliteral}{"Unexpected result, considered as data transfer error"}
+00766                               <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_transfer\_msg\_handler"};
+00767                    
+00768                    
+00769                    retransmission(\textcolor{stringliteral}{"#Error: Received data  validation"});
+00770                    \textcolor{keywordflow}{return};
+00771                \}
+00772 
+00773            \}\textcolor{keywordflow}{else}\{
+00774 
+00775                qWarning() <<\textcolor{stringliteral}{"Unexpected argument received, considered as data transfer error"}
+00776                           <<\textcolor{stringliteral}{"in MainWindow::srv\_cmds\_data\_transfer\_msg\_handler"};
+00777                
+00778                
+00779                retransmission(\textcolor{stringliteral}{"#Error: Received data  validation"});
+00780                \textcolor{keywordflow}{return};
+00781 
+00782            \}
+00783 
+00784 
+00785 
+00786          \}
+00787 
+00788 
+00789     
+00790 
+00791 \}
+00792 
+00802 \textcolor{keywordtype}{void} MainWindow::retransmission(QString error)\{
+00803 
+00804     \textcolor{keywordtype}{bool} repeat = \textcolor{keyword}{true};
+00805     
+00806     \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} cmd = (((last\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x00F0)>>4)==0xE)?0xE:
+00807                  (((last\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x0F00)>>8)==1)?1:
+00808                  (((last\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd}&0x0F00)>>8)==6)?6:
+00809                  last\_cmd.\hyperlink{a00004_af20664dc9ca2b752c73d524edee0e07a}{cmd};
+00810     
+00811     ui->\hyperlink{a00080_aae71c46ea4546df5994735dee573b2dd}{terminal}->textCursor().insertText(error);
+00812 
+00813     QString Question =
+00814             QString(\textcolor{stringliteral}{"The response from the selected sensor (SEN address = "})
+00815             +QString::number(last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1])
+00816             +QString(\textcolor{stringliteral}{") contain critical error .\(\backslash\)n"})
+00817             +QString(\textcolor{stringliteral}{"one possible cause is communication error, Do you want to run the command again ?"});
+00818 
+00819     QMessageBox msgBox;
+00820     msgBox.setWindowIcon(QMainWindow::windowIcon());
+00821     msgBox.setWindowTitle(QMainWindow::windowTitle());
+00822     msgBox.setText(Question);
+00823     msgBox.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+00824 
+00825 
+00826     \textcolor{keywordflow}{if}(msgBox.exec() == QMessageBox::No)
+00827              repeat = \textcolor{keyword}{false};
+00828 
+00829         \textcolor{keywordflow}{if}(last\_cmd.\hyperlink{a00004_a8e69b971c61ced27a7567efd2bf0db59}{multi\_address})\{
+00830 
+00831             \textcolor{keywordflow}{if}(!repeat)\{
+00832             last\_cmd.\hyperlink{a00004_a3e88f779da9798a5da7dda227e2ca388}{processed} = \textcolor{keyword}{true};
+00833             multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].varified = \textcolor{keyword}{true};
+00834             multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setStyleSheet(\hyperlink{a00090_aa9f43b2774395af6510910f8feed7cb4}{PBAR\_FAILURE});
+00835             
+00836             
+00837             \textcolor{keywordflow}{if}(cmd == 6 || cmd == 0xE)\{
+00838             last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[2]=0;\textcolor{comment}{//reset offset to zero for new data transmission}
+00839               
+00840             \textcolor{keywordflow}{if}(cmd == 6)\{
+00841             last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3] = ((\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      \hyperlink{a00004_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length}))<0)?
+00842                               \hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      \hyperlink{a00004_ae5afad7c81dab7d9ab6587251aafdbf4}{attachment\_length};
+00843 
+00844                 
+00845             \}\textcolor{keywordflow}{else}\{
+00846             last\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.copied     = 0;
+00847             
+00848             last\_cmd.\hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.offset   = 0;
+00849             
+00850             last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[3]              
+00851                     = ((\hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}-(last\_cmd.
+      \hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected))<0)?
+00852                         \hyperlink{a00086_aa8abe3a822c64813f7aaba3ca7e3db9c}{MAX\_ATTACHMENT\_LENGTH}:last\_cmd.
+      \hyperlink{a00004_a5cfeaed4d4f8e51070a324c0ba893ebe}{data\_download}.total\_size.expected;
+00853             \}
+00854             \}
+00855             \textcolor{keywordflow}{if}((last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos} < (multi\_cmds.length() - 1)))
+00856                 last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}++;
+00857             \textcolor{keywordflow}{else}\{
+00859                 \textcolor{keywordflow}{return};
+00860              \}
+00861             \}
+00862 
+00863 
+00864             last\_cmd.\hyperlink{a00004_a56e6c2d7315d0ae60a51e8b140c9cfe4}{arg}[1] = multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].address;
+00865 
+00866             multi\_cmds[last\_cmd.\hyperlink{a00004_a2b48b371fd84be2a8ad581b1ad708b88}{vPos}].gui.pBar->setValue(20);
+00867 
+00868             srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00869 
+00870         \}\textcolor{keywordflow}{else}\{
+00871 
+00872             \textcolor{keywordflow}{if}(repeat)\{
+00873                \textcolor{comment}{//simply repeats the previous command}
+00874                srv\_cmds\_execute(last\_cmd\textcolor{comment}{/*now current cmd*/});
+00875                \textcolor{keywordflow}{return};
+00876             \}
+00877 
+00878 
+00879             last\_cmd.processed = \textcolor{keyword}{true};
+00880 
+00882         \}
+00883 
+00884     
+00885 
+00886 \}
+00887 
+00888 
+00889 \textcolor{keywordtype}{bool} MainWindow::msg\_to\_mem(\textcolor{keywordtype}{char} * msg,\textcolor{keywordtype}{void}* dest,\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} size)\{
+00890 
+00891     \textcolor{keywordtype}{bool} result = \textcolor{keyword}{true};
+00892     \textcolor{keywordflow}{try} \{
+00893 
+00894         \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}* dst8= (\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}*)dest;
+00895         \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} cc   = 0;
+00896 
+00897         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < size; ++var) \{
+00898             *(dst8+var)= \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(msg,cc);
+00899             cc +=2;
+00900         \}
+00901 
+00902 
+00903     \} \textcolor{keywordflow}{catch} (...) \{
+00904         result = \textcolor{keyword}{false};
+00905     \}
+00906 
+00907 
+00908     \textcolor{keywordflow}{return} result;
+00909 
+00910 \}
+00911 
+00912 
+00913 
+\end{DoxyCode}

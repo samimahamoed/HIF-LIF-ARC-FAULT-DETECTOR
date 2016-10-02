@@ -1,0 +1,21 @@
+This is simple event based O\+S.
+
+Rather scheduler then real operating system.
+
+
+\begin{DoxyItemize}
+\item Each module has to provide\+:
+\begin{DoxyEnumerate}
+\item Task event function
+\item Task notification function
+\item Variable for module handle.
+\end{DoxyEnumerate}
+
+Task event function will receive synchronous calls with events distributed by O\+S. Task notification function will receive asynchronous calls from other modules ( routed through notification distribution function). Notification functions are not allowed to call other notification functions, they are allowed to schedule events only ( if the operation cannot be executed immediately).
+\item There is no preemption, everything is voulntary. There is only one common stack. There is no need for synchronisation in event tasks ( as only one is run at once). Only notification function have to be designed with care as they are called while other module is running.
+\item The system provides timer scheduling -\/ on expiration notification will be sent. Such timer can be rearmed to get periodical operation.
+\item Interrupt functions can schedule special notification to be sent to notification function. Such function must determine itself cause of the interrupt ( nothing extra is passed)
+\item The system sends initial notification to each module
+\item Typical init -\/ see \hyperlink{a00048}{main.\+c} file
+\item typical module -\/ see \hyperlink{a00038}{algorithm.\+c} file 
+\end{DoxyItemize}

@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/logo">
+        <file alias="logo">a.ico</file>
+        <file>icons/light.jpg</file>
+        <file>icons/PDF-icon.png</file>
+        <file>icons/preasure.jpg</file>
+        <file>icons/image_icon.png</file>
+        <file>icons/open_file-icon.gif</file>
+        <file>icons/csv_file_icon.png</file>
+    </qresource>
+</RCC>

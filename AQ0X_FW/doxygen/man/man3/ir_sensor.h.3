@@ -1,0 +1,815 @@
+.TH "ir_sensor.h" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ir_sensor.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBanalog_sample_ir_t\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_ir_sen_configure\fP"
+.br
+.RI "\fINotification containing module operation configuration details ( from Algorithm module) \fP"
+.ti -1c
+.RI "struct \fBx_notify_ir_sen_sv_report\fP"
+.br
+.RI "\fINotification structure from ir_sen module to Algorithm module about supervision result\&. \fP"
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\fP"
+.br
+.ti -1c
+.RI "struct \fBstate_data_light_t\fP"
+.br
+.ti -1c
+.RI "struct \fBmodule_status_t\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_ir_sen_configure\&.message\fP"
+.br
+.ti -1c
+.RI "struct \fBx_notify_ir_sen_sv_report\&.message\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\&.amp\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\&.amp_exceded\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\&.th_gap\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\&.time\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\&.time\&.change_counter\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\&.time\&.change_counter\&.projected_slop\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\&.time\&.ptop_counter\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.signal_history\&.time\&.itoi_counter\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.false_alarm\fP"
+.br
+.RI "\fICounts and stores false positive details, the module uses the information to adjust the threshold values in order to reduce false positive occurrence (i\&.e\&. \fP"
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.false_alarm\&.dfdt_exceded\fP"
+.br
+.ti -1c
+.RI "struct \fBdiagonesis_records_light_t\&.false_alarm\&.amp_exceded\fP"
+.br
+.ti -1c
+.RI "struct \fBmodule_status_t\&.projected\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBX_NTF_IR_SENSOR_CONFIG\fP   (\fBX_NTF_FREE\fP + 11)"
+.br
+.RI "\fINotification from Algorithm module to load data from nov\&. \fP"
+.ti -1c
+.RI "#define \fBIR_SEN_GAIN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBIR_SEN_NOISE_DENSITY_LEVEL\fP   0\&.05"
+.br
+.ti -1c
+.RI "#define \fBDC\fP   0"
+.br
+.ti -1c
+.RI "#define \fBHIF\fP   1"
+.br
+.ti -1c
+.RI "#define \fBFP_TOLERANCE\fP   10"
+.br
+.ti -1c
+.RI "#define \fBMAX_STOT_GAP\fP   100"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBevent_report_t\fP \fBir_sen_get_status\fP (\fBUint16\fP adc_value, \fBBool\fP save_event)"
+.br
+.RI "\fISupervise the status of the ir sensor\&. \fP"
+.ti -1c
+.RI "void \fBir_sen_taskx\fP (\fBx_event\fP *event)"
+.br
+.RI "\fIir sensor module task function\&. \fP"
+.ti -1c
+.RI "void \fBir_sen_notifyx\fP (\fBx_notify\fP *notify)"
+.br
+.RI "\fIir module notification function\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBir_sen_hif_check\fP (void)"
+.br
+.ti -1c
+.RI "void \fBir_record_reset\fP (\fBUint8\fP type)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBUint32\fP \fBir_event_trigger_timestamp\fP"
+.br
+.ti -1c
+.RI "\fBx_task_id\fP \fBir_sen_id\fP"
+.br
+.RI "\fIir_sen module handle \fP"
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct analog_sample_ir_t"
+.PP 
+Definition at line 29 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIadc_val\fP 
+.br
+.PP
+\fBFloat32\fP \fIana_val\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_ir_sen_configure"
+.PP 
+Notification containing module operation configuration details ( from Algorithm module) 
+.PP
+Definition at line 37 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_ir_sen_configure\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_ir_sen_sv_report"
+.PP 
+Notification structure from ir_sen module to Algorithm module about supervision result\&. 
+.PP
+Definition at line 54 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBx_notify_ir_sen_sv_report\fP \fImessage\fP 
+.br
+.PP
+\fBx_notify\fP \fInotify\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t"
+.PP 
+Definition at line 66 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+struct \fBdiagonesis_records_light_t\fP \fIfalse_alarm\fP Counts and stores false positive details, the module uses the information to adjust the threshold values in order to reduce false positive occurrence (i\&.e\&. if the module is running in automatic adjust mode) 
+.br
+.PP
+struct \fBdiagonesis_records_light_t\fP \fIsignal_history\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct state_data_light_t"
+.PP 
+Definition at line 145 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBInt16\fP \fIchange_per_time\fP 
+.br
+.PP
+\fBUint16\fP \fIsignal_level\fP 
+.br
+.PP
+\fBInt8\fP \fIslop_polarity\fP 
+.br
+.PP
+\fBUint8\fP \fIstate\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct module_status_t"
+.PP 
+Definition at line 154 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBstate_data_light_t\fP \fIcurrent\fP 
+.br
+.PP
+\fBstate_data_light_t\fP \fIprevious\fP 
+.br
+.PP
+struct \fBmodule_status_t\fP \fIprojected\fP 
+.br
+.PP
+\fBUint16\fP \fItime\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_ir_sen_configure\&.message"
+.PP 
+Definition at line 41 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfigured\fP 
+.br
+.PP
+\fBmodule_disturbance_record_t\fP * \fIdisturbance_record\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct x_notify_ir_sen_sv_report\&.message"
+.PP 
+Definition at line 58 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBconfigured_t\fP \fIconfig\fP 
+.br
+.PP
+\fBsv_error_flags_ut\fP \fIerror_status_flags\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history"
+.PP 
+Definition at line 68 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBsignal_history\fP \fIamp\fP 
+.br
+.PP
+\fBsignal_history\fP \fIamp_exceded\fP 
+.br
+.PP
+\fBsignal_history\fP \fIth_gap\fP 
+.br
+.PP
+\fBsignal_history\fP \fItime\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history\&.amp"
+.PP 
+Definition at line 70 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIaccumulated\fP 
+.br
+.PP
+\fBFloat32\fP \fIavg\fP 
+.br
+.PP
+\fBUint16\fP \fImax\fP 
+.br
+.PP
+\fBUint16\fP \fImin\fP 
+.br
+.PP
+\fBUint16\fP \fItotal_observation\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history\&.amp_exceded"
+.PP 
+Definition at line 82 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIaccumulated\fP 
+.br
+.PP
+\fBFloat32\fP \fIavg\fP 
+.br
+.PP
+\fBUint16\fP \fItotal_observation\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history\&.th_gap"
+.PP 
+Definition at line 88 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIavg\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history\&.time"
+.PP 
+Definition at line 94 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBtime\fP \fIchange_counter\fP 
+.br
+.PP
+\fBtime\fP \fIitoi_counter\fP 
+.br
+.PP
+\fBtime\fP \fIptop_counter\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history\&.time\&.change_counter"
+.PP 
+Definition at line 95 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIfalling\fP 
+.br
+.PP
+\fBchange_counter\fP \fIprojected_slop\fP 
+.br
+.PP
+\fBUint16\fP \fIrising\fP 
+.br
+.PP
+\fBUint16\fP \fItotal_observation\fP 
+.br
+.PP
+\fBUint16\fP \fIzero\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history\&.time\&.change_counter\&.projected_slop"
+.PP 
+Definition at line 96 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBInt8\fP \fIcurrent\fP 
+.br
+.PP
+\fBInt8\fP \fIprevious\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history\&.time\&.ptop_counter"
+.PP 
+Definition at line 108 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBBool\fP \fIarmed\fP 
+.br
+.PP
+\fBUint16\fP \fIpositive_event\fP 
+.br
+.PP
+\fBUint16\fP \fItotal_observation\fP 
+.br
+.PP
+\fBUint16\fP \fIvalue\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.signal_history\&.time\&.itoi_counter"
+.PP 
+Definition at line 115 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBBool\fP \fIarmed\fP 
+.br
+.PP
+\fBUint16\fP \fIpositive_event\fP 
+.br
+.PP
+\fBUint16\fP \fItotal_observation\fP 
+.br
+.PP
+\fBUint16\fP \fIvalue\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.false_alarm"
+.PP 
+Counts and stores false positive details, the module uses the information to adjust the threshold values in order to reduce false positive occurrence (i\&.e\&. 
+
+if the module is running in automatic adjust mode) 
+.PP
+Definition at line 131 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBfalse_alarm\fP \fIamp_exceded\fP 
+.br
+.PP
+\fBfalse_alarm\fP \fIdfdt_exceded\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.false_alarm\&.dfdt_exceded"
+.PP 
+Definition at line 132 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIavg\fP 
+.br
+.PP
+\fBUint16\fP \fIcnt\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct diagonesis_records_light_t\&.false_alarm\&.amp_exceded"
+.PP 
+Definition at line 137 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBUint16\fP \fIavg\fP 
+.br
+.PP
+\fBUint16\fP \fIcnt\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct module_status_t\&.projected"
+.PP 
+Definition at line 159 of file ir_sensor\&.h\&.
+.PP
+\fBData Fields:\fP
+.RS 4
+\fBFloat32\fP \fIamplitude\fP 
+.br
+.PP
+\fBFloat32\fP \fIangular_freq\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period_1_2\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period_1_4\fP 
+.br
+.PP
+\fBUint16\fP \fIsamples_per_period_1_8\fP 
+.br
+.PP
+\fBBool\fP \fIwaveform\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define DC   0"
+
+.PP
+Definition at line 21 of file ir_sensor\&.h\&.
+.SS "#define FP_TOLERANCE   10"
+
+.PP
+Definition at line 25 of file ir_sensor\&.h\&.
+.PP
+Referenced by algorithm_taskx()\&.
+.SS "#define HIF   1"
+
+.PP
+Definition at line 22 of file ir_sensor\&.h\&.
+.PP
+Referenced by algorithm_wake(), and ir_record_reset()\&.
+.SS "#define IR_SEN_GAIN   1"
+
+.PP
+Definition at line 16 of file ir_sensor\&.h\&.
+.SS "#define IR_SEN_NOISE_DENSITY_LEVEL   0\&.05"
+
+.PP
+Definition at line 18 of file ir_sensor\&.h\&.
+.PP
+Referenced by ir_sen_get_status()\&.
+.SS "#define MAX_STOT_GAP   100"
+
+.PP
+Definition at line 26 of file ir_sensor\&.h\&.
+.SS "#define X_NTF_IR_SENSOR_CONFIG   (\fBX_NTF_FREE\fP + 11)"
+
+.PP
+Notification from Algorithm module to load data from nov\&. 
+.PP
+Definition at line 13 of file ir_sensor\&.h\&.
+.PP
+Referenced by ir_sen_notifyx()\&.
+.SH "Function Documentation"
+.PP 
+.SS "void ir_record_reset (\fBUint8\fPtype)"
+
+.PP
+Definition at line 1152 of file ir_sensor\&.c\&.
+.PP
+References ir_sen_data_t::configured, ir_sen_data_t::diagonesis_records, HIF, configured_t::hif_diagonesis_records, and diagonesis_records_light_t::signal_history\&.
+.PP
+Referenced by algorithm_wake()\&.
+.PP
+.nf
+1152                                 {
+1153 
+1154     if(type == HIF){
+1155             ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.positive_event      = 0;
+1156             ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.total_observation   = 0;
+1157             ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.positive_event      = 0;
+1158             ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.total_observation   = 0;
+1159 
+1160             ir_sen_data\&.configured\&.hif_diagonesis_records->head = 0;
+1161        }
+1162 }
+.fi
+.SS "\fBevent_report_t\fP ir_sen_get_status (\fBUint16\fPadc_value, \fBBool\fPsave_event)"
+
+.PP
+Supervise the status of the ir sensor\&. REQ-1b: "A valid trip is issued, for few handres of microseconds, i\&.e\&. after trip data will be saved at provided location\&.
+.PP
+Definition at line 302 of file ir_sensor\&.c\&.
+.PP
+References __1ST_ORDER_DERIVATIVE, __COMPARE_ZERO, __PROBABLITY, event_report_t::all, configured_t::amp_treshold, ASSERT, pre_act_record_buffer_t::buffer, state_data_light_t::change_per_time, ir_sen_data_t::configured, module_status_t::current, data_non_volatile, logv_t::data_tx_on_progress, configured_t::dfdt_treshold_impulse, configured_t::dfdt_treshold_max, configured_t::dfdt_treshold_min, ir_sen_data_t::disturbance_record, logv_t::disturbance_record, pre_act_record_buffer_t::elapsed, EMU_MODE_DATA_LENGTH, module_disturbance_record_t::event_data, module_disturbance_record_t::event_positive_cnt, FALSE, event_report_t::fields, pre_act_record_buffer_t::head, HOT, IR_SEN_NOISE_DENSITY_LEVEL, logv, configured_t::min_number_of_observation, ir_sen_data_t::module_status, module_disturbance_record_t::observation_cnt, module_disturbance_record_t::post_act_data, POST_ACT_RECORD_BUFF_SIZE, module_disturbance_record_t::pre_act_data, PRE_ACT_RECORD_BUFF_SIZE, module_status_t::previous, configured_t::probablity_treshold_max, configured_t::probablity_treshold_min, module_status_t::projected, state_data_light_t::signal_level, state_data_light_t::slop_polarity, state_data_light_t::state, STATE_0, STATE_1, STATE_2, STATE_3, pre_act_record_buffer_t::tail, logv_t::tick, TRUE, and logv_t::wr\&.
+.PP
+Referenced by __attribute__()\&.
+.SS "\fBUint8\fP ir_sen_hif_check (void)"
+
+.PP
+Definition at line 1100 of file ir_sensor\&.c\&.
+.PP
+References __COMPARE_U, hif_checklist_t::all, hif_checklist_t::bits, ir_sen_data_t::configured, ir_sen_data_t::diagonesis_records, configured_t::hif_diagonesis_records, PRE_ACT_RECORD_BUFF_SIZE, and diagonesis_records_light_t::signal_history\&.
+.PP
+Referenced by algorithm_wake()\&.
+.PP
+.nf
+1100                             {
+1101 
+1102     hif_checklist_t result;
+1103     result\&.all = 0;
+1104 
+1105     if(ir_sen_data\&.configured\&.hif_diagonesis_records->head < PRE_ACT_RECORD_BUFF_SIZE)
+1106         return result\&.all;
+1107 
+1108     ir_sen_data\&.configured\&.hif_diagonesis_records->mean_value /=PRE_ACT_RECORD_BUFF_SIZE;
+1109 
+1110     if(ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.total_observation > 0)
+1111     if(__COMPARE_U(
+1112             (
+1113             ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.total_observation
+1114             -
+1115             ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.positive_event
+1116             )
+1117             ,2
+1118             )==0
+1119            )
+1120         result\&.bits\&.itoi = 1;
+1121 
+1122     if(ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.total_observation > 0)
+1123     if(__COMPARE_U(
+1124           (
+1125            ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.total_observation
+1126           -
+1127            ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.positive_event
+1128           )
+1129          ,0
+1130           )==0
+1131        )
+1132         result\&.bits\&.ptop = 1;
+1133 
+1134     ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.positive_event      = 0;
+1135     ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.itoi_counter\&.total_observation   = 0;
+1136     ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.positive_event      = 0;
+1137     ir_sen_data\&.diagonesis_records\&.signal_history\&.time\&.ptop_counter\&.total_observation   = 0;
+1138 
+1139     return result\&.all;
+1140 
+1141 
+1142 
+1143 }
+.fi
+.SS "void ir_sen_notifyx (\fBx_notify\fP *notify)"
+
+.PP
+ir module notification function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInotify\fP - system distributed notification 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file ir_sensor\&.c\&.
+.PP
+References ASSERT, ir_sen_data_t::configured, ir_sen_data_t::disturbance_record, configured_t::element_status_sv_en, sv_error_flags_ut::flags_all, x_notify_ir_sen_configure::message, x_notify::message, ir_sen_data_t::module_status, module_status_t::projected, SCAN_FREQ, ir_sen_data_t::sv_errors_flags, ir_sen_data_t::sv_task_event, ir_sen_data_t::sv_timer_ntf, SV_TIMER_PERIOD, configured_t::sys_freq, x_delete_timer(), X_MS2TICK, X_NTF_CLR_ALARM_IR_SEN, X_NTF_INIT, X_NTF_IR_SENSOR_CONFIG, X_NTF_IR_SENSOR_SV_TIMER, x_schedule_timer(), and x_send_event()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+142 {
+143 
+144 
+145     switch(notify->message)
+146     {
+147         case X_NTF_INIT:
+148         {
+149             ir_sen_init();
+150         }break;
+151 
+152 
+153         case X_NTF_IR_SENSOR_CONFIG:
+154         {
+155 
+156             // configuration details from algorithm module
+157             x_notify_ir_sen_configure * notify_configure = (x_notify_ir_sen_configure *)notify;
+158 
+159 
+160             ir_sen_data\&.configured = notify_configure->message\&.configured;
+161             ir_sen_data\&.disturbance_record = notify_configure->message\&.disturbance_record;
+162 
+163            ir_sen_data\&.module_status\&.projected\&.angular_freq             = 2*PI*ir_sen_data\&.configured\&.sys_freq;
+164            ir_sen_data\&.module_status\&.projected\&.samples_per_period       = (Uint16)(SCAN_FREQ/(Float32)(ir_sen_data\&.configured\&.sys_freq));
+165            ir_sen_data\&.module_status\&.projected\&.samples_per_period_1_2  = ir_sen_data\&.module_status\&.projected\&.samples_per_period/2;
+166            ir_sen_data\&.module_status\&.projected\&.samples_per_period_1_4  = ir_sen_data\&.module_status\&.projected\&.samples_per_period/4;
+167            ir_sen_data\&.module_status\&.projected\&.samples_per_period_1_8  = ir_sen_data\&.module_status\&.projected\&.samples_per_period/8;
+168             // Clear supervison state ( so errors will be reported if module have internal error )
+169           ir_sen_data\&.sv_errors_flags\&.flags_all = 0;
+170 
+171           x_delete_timer(&ir_sen_data\&.sv_timer_ntf);
+172 
+173           if(ir_sen_data\&.configured\&.element_status_sv_en)
+174           x_schedule_timer(&ir_sen_data\&.sv_timer_ntf,X_MS2TICK(SV_TIMER_PERIOD));
+175 
+176         }break;
+177 
+178 
+179          case X_NTF_CLR_ALARM_IR_SEN:
+180         {
+181 
+182            // Algorithm module alarm reset request
+183             // ir_sen_data\&.module_status\&.current\&.state = STATE_0;
+184              ir_sen_mark_false_postives();
+185              ir_sen_mark_false_postives();
+186              ir_sen_mark_false_postives();
+187 
+188         }break;
+189 
+190 
+191         case X_NTF_IR_SENSOR_SV_TIMER:
+192         {
+193            x_send_event(&ir_sen_data\&.sv_task_event);
+194         }break;
+195 
+196 
+197         default:
+198         {
+199             ASSERT(0);
+200         }
+201     }
+202 
+203 }
+.fi
+.SS "void ir_sen_taskx (\fBx_event\fP *event)"
+
+.PP
+ir sensor module task function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP - system distributed event 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file ir_sensor\&.c\&.
+.PP
+References configured_t::amp_treshold, ASSERT, ir_sen_data_t::configured, ir_sen_data_t::diagonesis_records, sv_error_flags_ut::flags_all, x_event::message, x_notify_module_sv_status_report_t::message, x_notify_module_sv_status_report_t::notify, diagonesis_records_light_t::signal_history, srv_wdg_kick, ir_sen_data_t::sv_errors_flags, ir_sen_data_t::sv_status_ntf, X_MSG_IR_SENSOR_SV, and x_send_notify()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+70 {
+71     switch(event->message)
+72     {
+73 
+74 
+75         case X_MSG_IR_SENSOR_SV:
+76         {
+77 
+78             srv_wdg_kick();
+79             ir_sen_sensor_element_sv_task();
+80 
+81             if(ir_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation >0)
+82                 ir_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.avg =
+83                         (ir_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.accumulated/
+84                         ir_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation);
+85 
+86             if(ir_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation >0){
+87                 ir_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.avg =
+88                         (ir_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.accumulated/
+89                         ir_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation);
+90                  
+91                 ir_sen_data\&.diagonesis_records\&.signal_history\&.th_gap\&.avg
+92                     = (ir_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.avg - ir_sen_data\&.configured\&.amp_treshold\&.set_value);
+93             }
+94             else
+95             ir_sen_data\&.diagonesis_records\&.signal_history\&.th_gap\&.avg
+96                     = (ir_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.avg - ir_sen_data\&.configured\&.amp_treshold\&.set_value);
+97 
+98 
+99               ir_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.accumulated                 = 0;
+100               ir_sen_data\&.diagonesis_records\&.signal_history\&.amp\&.total_observation           = 0;
+101               ir_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.accumulated         = 0;
+102               ir_sen_data\&.diagonesis_records\&.signal_history\&.amp_exceded\&.total_observation   = 0;
+103 
+104 
+105            
+106              ir_sen_threshold_adjustment_task();
+107 
+108             if((ir_sen_data\&.sv_errors_flags\&.flags_all!=0)  || (ir_sen_data\&.configured\&.amp_treshold\&.adjusted == 1)){
+109              ir_sen_data\&.sv_status_ntf\&.message\&.error_flags = ir_sen_data\&.sv_errors_flags;
+110              ir_sen_data\&.sv_status_ntf\&.message\&.config = ir_sen_data\&.configured;
+111 
+112              // Send notification to Algorithm module about detected error or about change in threshold values
+113              x_send_notify(&ir_sen_data\&.sv_status_ntf\&.notify);
+114              ir_sen_data\&.sv_errors_flags\&.flags_all =0;
+115              ir_sen_data\&.configured\&.amp_treshold\&.adjusted = 0;
+116             }
+117 
+118 
+119 
+120         }break;
+121 
+122 
+123 
+124         default:
+125         {
+126             ASSERT(0);
+127         }
+128     }
+129 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBUint32\fP ir_event_trigger_timestamp"
+
+.PP
+Definition at line 26 of file ir_sensor\&.c\&.
+.SS "\fBx_task_id\fP ir_sen_id"
+
+.PP
+ir_sen module handle 
+.PP
+Definition at line 23 of file ir_sensor\&.c\&.
+.PP
+Referenced by main()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

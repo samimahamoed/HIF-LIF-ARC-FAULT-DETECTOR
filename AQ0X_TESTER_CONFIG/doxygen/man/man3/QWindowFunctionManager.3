@@ -1,0 +1,69 @@
+.TH "QWindowFunctionManager< T >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QWindowFunctionManager< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwindowfunction\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBQWindowFunction\fP< T > * \fBcreateFunction\fP (QString functionName)"
+.br
+.ti -1c
+.RI "static QStringList \fBfunctions\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>class QWindowFunctionManager< T >"
+
+.PP
+Definition at line 84 of file qwindowfunction\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > \fBQWindowFunction\fP< T > * \fBQWindowFunctionManager\fP< T >::createFunction (QStringfunctionName)\fC [static]\fP"
+
+.PP
+Definition at line 90 of file qwindowfunction\&.cpp\&.
+.PP
+Referenced by QFourierTransformer::setWindowFunction()\&.
+.PP
+.nf
+91 {
+92     functionName = functionName\&.trimmed()\&.toLower()\&.replace("function", "");
+93     if(functionName == "hamming")
+94     {
+95         return new QHammingFunction<T>;
+96     }
+97     else if(functionName == "hann")
+98     {
+99         return new QHannFunction<T>;
+100     }
+101     return NULL;
+102 }
+.fi
+.SS "template<typename T > QStringList \fBQWindowFunctionManager\fP< T >::functions ()\fC [static]\fP"
+
+.PP
+Definition at line 105 of file qwindowfunction\&.cpp\&.
+.PP
+Referenced by QFourierTransformer::QFourierTransformer()\&.
+.PP
+.nf
+106 {
+107     QStringList result;
+108     result << "Rectangular" << "Hamming" << "Hann";
+109     return result;
+110 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

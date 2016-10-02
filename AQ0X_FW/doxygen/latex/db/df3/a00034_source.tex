@@ -1,0 +1,73 @@
+\hypertarget{a00034_source}{\section{srv\+\_\+hwio\+\_\+prv.\+h}
+\label{a00034_source}\index{srv\+\_\+hwio\+\_\+prv.\+h@{srv\+\_\+hwio\+\_\+prv.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00008 \textcolor{preprocessor}{#ifndef SRV\_HWIO\_PRV\_H}
+00009 \textcolor{preprocessor}{#define SRV\_HWIO\_PRV\_H}
+00010 
+\hypertarget{a00034_source_l00011}{}\hyperlink{a00034_ab6ea71f43c4869429695d697be882efe}{00011} \textcolor{preprocessor}{#define ANALOG\_HW\_CHANNELS             6}
+00012 
+00013 
+\hypertarget{a00034_source_l00014}{}\hyperlink{a00034_acf69d047dc26f4c529899f0e43ff4df9}{00014} \textcolor{preprocessor}{#define ANA\_SEL\_UV\_ANSEL                    ANSELAbits.ANSA0    //AN0}
+\hypertarget{a00034_source_l00015}{}\hyperlink{a00034_af692a6826edc2455e2437b7c9860270b}{00015} \textcolor{preprocessor}{#define ANA\_SEL\_IR\_ANSEL            ANSELAbits.ANSA1    //AN1}
+\hypertarget{a00034_source_l00016}{}\hyperlink{a00034_a5c4bafbc140f9232d3410e8461240327}{00016} \textcolor{preprocessor}{#define ANA\_SEL\_MFIELD\_X\_ANSEL              ANSELBbits.ANSB0    //AN2}
+\hypertarget{a00034_source_l00017}{}\hyperlink{a00034_a121ba9dc3a320a0abecef5ba9c8b0946}{00017} \textcolor{preprocessor}{#define ANA\_SEL\_MFIELD\_Y\_ANSEL              ANSELBbits.ANSB1    //AN3}
+\hypertarget{a00034_source_l00018}{}\hyperlink{a00034_afe1ebe309c61fddca0d0e3e2d16d965e}{00018} \textcolor{preprocessor}{#define ANA\_SEL\_SUPPLY\_SV\_A\_ANSEL           ANSELBbits.ANSB2    //AN4}
+\hypertarget{a00034_source_l00019}{}\hyperlink{a00034_abc756eb047363bce2c87f28467784805}{00019} \textcolor{preprocessor}{#define ANA\_SEL\_SUPPLY\_SV\_B\_ANSEL           ANSELBbits.ANSB3    //AN5}
+00020 
+00021 
+\hypertarget{a00034_source_l00022}{}\hyperlink{a00034_a634c84dd187d911747ee8954af47ef14}{00022} \textcolor{preprocessor}{#define ANA\_SEL\_UV\_TRIS                     TRISAbits.TRISA0    //AN0}
+\hypertarget{a00034_source_l00023}{}\hyperlink{a00034_a8733fa32cccaaec0f4571e64047a1f02}{00023} \textcolor{preprocessor}{#define ANA\_SEL\_IR\_TRIS                 TRISAbits.TRISA1    //AN1}
+\hypertarget{a00034_source_l00024}{}\hyperlink{a00034_ae2976ad54757795baf5cd70756d2032e}{00024} \textcolor{preprocessor}{#define ANA\_SEL\_MFIELD\_X\_TRIS               TRISBbits.TRISB0    //AN2}
+\hypertarget{a00034_source_l00025}{}\hyperlink{a00034_ac6b2c51a5f915fd4589cd2b15156d444}{00025} \textcolor{preprocessor}{#define ANA\_SEL\_MFIELD\_Y\_TRIS               TRISBbits.TRISB1    //AN3}
+\hypertarget{a00034_source_l00026}{}\hyperlink{a00034_a202b949551441c2047a818fb1fcb4520}{00026} \textcolor{preprocessor}{#define ANA\_SEL\_SUPPLY\_SV\_A\_TRIS            TRISBbits.TRISB2    //AN4}
+\hypertarget{a00034_source_l00027}{}\hyperlink{a00034_afe07f742315c811d8986bb790d3027f4}{00027} \textcolor{preprocessor}{#define ANA\_SEL\_SUPPLY\_SV\_B\_TRIS            TRISBbits.TRISB3    //AN5}
+00028 
+00029 
+00030 
+\hypertarget{a00034_source_l00031}{}\hyperlink{a00034_af8b26b4b9327a36f53d2d9acdec6d6c1}{00031} \textcolor{preprocessor}{#define DIG\_TEST\_LED\_TRIS                   TRISBbits.TRISB15}
+\hypertarget{a00034_source_l00032}{}\hyperlink{a00034_a65c85b1d486b314430cd3a5b77ab84c3}{00032} \textcolor{preprocessor}{#define DIG\_ALARM\_OUTPUT\_TRIS               TRISBbits.TRISB14}
+\hypertarget{a00034_source_l00033}{}\hyperlink{a00034_a5459e774c229eaef3db4a6dc3b3d13c2}{00033} \textcolor{preprocessor}{#define DIG\_SUPERVISION\_OUTPUT\_TRIS         TRISBbits.TRISB4}
+\hypertarget{a00034_source_l00034}{}\hyperlink{a00034_ab1c495ea3dba84156038b314588146b5}{00034} \textcolor{preprocessor}{#define DIG\_HMC10XX\_PULSE\_OUTPUT\_TRIS       TRISAbits.TRISA4}
+00035 
+00036 
+00037 
+00038 
+00040 
+\hypertarget{a00034_source_l00042}{}\hyperlink{a00034}{00042} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00043 \{
+\hypertarget{a00034_source_l00044}{}\hyperlink{a00034}{00044}           \textcolor{keyword}{struct}
+00045         \{
+\hypertarget{a00034_source_l00046}{}\hyperlink{a00034}{00046}             \textcolor{keyword}{union}\{
+00047                 \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} all;
+\hypertarget{a00034_source_l00048}{}\hyperlink{a00034}{00048}                  \textcolor{keyword}{struct}
+00049                 \{
+00050                      \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} mfield\_y:1;
+00051                  \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} uv:1;
+00052                  \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} ir:1;
+00053                      \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} mfield\_x:1;
+00054                      
+00055 \textcolor{preprocessor}{                     #if(DEVICE == AQ0X\_V1)}
+00056                      \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} light:1;
+00057 \textcolor{preprocessor}{                     #endif}
+00058                      
+00059                 \}bits;
+00060             \}enabled;
+00061 
+00062             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}*    data[\hyperlink{a00034_ab6ea71f43c4869429695d697be882efe}{ANALOG\_HW\_CHANNELS}];
+00063             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}     head\_ptr[\hyperlink{a00034_ab6ea71f43c4869429695d697be882efe}{ANALOG\_HW\_CHANNELS}];
+00064             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}     size;
+00065 
+00066         \}emulation\_mode;
+00067 \}\hyperlink{a00034_dc/d0c/a00783}{srv\_hwio\_data\_t};
+00068 
+00069 
+00070 
+00071 \textcolor{keyword}{extern}  \hyperlink{a00034_dc/d0c/a00783}{srv\_hwio\_data\_t}                         \hyperlink{a00034_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data};
+00072 
+00073 \textcolor{preprocessor}{#endif}
+00074 
+00075 
+\end{DoxyCode}

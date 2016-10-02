@@ -1,0 +1,51 @@
+<map id="QCPRange::size" name="QCPRange::size">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#a985ae693b842fb0422b4390fe36d299a" title="Transforms value (in coordinates of the axis) to pixel coordinates of the QCustomPlot widget..." alt="" coords="189,1169,347,1196"/>
+<area shape="rect" id="node16" href="$df/d61/a00031.html#a659218cc62c2a7786213d9dd429c1c8d" title="QCPGraph::draw" alt="" coords="961,1423,1081,1449"/>
+<area shape="rect" id="node17" href="$d4/d3e/a00116.html#a3aff10e993f6625e255c19e4f97a09d8" title="drawGridLines" alt="" coords="473,315,577,341"/>
+<area shape="rect" id="node43" href="$d3/dfe/a00025.html#a626eef437c874148df1a5ac78506d463" title="QCPAxis::generateAutoTicks" alt="" coords="172,1549,364,1576"/>
+<area shape="rect" id="node44" href="$d3/dfe/a00025.html#a57d9e961bae7d62f5b4e1f143e660c78" title="QCPAxis::setupTickVectors" alt="" coords="433,1549,618,1576"/>
+<area shape="rect" id="node45" href="$d3/dfe/a00025.html#ae9289ef7043b9d966af88eaa95b037d1" title="Transforms value (in pixel coordinates of the QCustomPlot widget) to axis coordinates. " alt="" coords="189,1688,347,1715"/>
+<area shape="rect" id="node50" href="$d3/dfe/a00025.html#af4bbd446dcaee5a83ac30ce9bcd6e125" title="Sets the range of this axis to have a certain scale ratio to otherAxis. " alt="" coords="185,1739,351,1765"/>
+<area shape="rect" id="node3" href="$dc/de2/a00024.html#ade710a776104b14c1c835168ce1bfc5c" title="QCPAbstractPlottable\l::coordsToPixels" alt="" coords="450,977,601,1018"/>
+<area shape="rect" id="node13" href="$d3/dfe/a00025.html#a258b1e783eda5cd14ec5552c696a424e" title="QCPAxis::draw" alt="" coords="470,1245,581,1272"/>
+<area shape="rect" id="node14" href="$df/d61/a00031.html#a4df6807066ce877705e999773e7ffbc4" title="QCPGraph::drawError" alt="" coords="451,1397,599,1424"/>
+<area shape="rect" id="node15" href="$df/d61/a00031.html#af1872a60bed7acb3f3b17bfae3f4764c" title="QCPGraph::drawScatterPlot" alt="" coords="694,1423,879,1449"/>
+<area shape="rect" id="node18" href="$d4/d3e/a00116.html#afa5d9d12de419e881f381f2ab7cb414d" title="drawSubGridLines" alt="" coords="462,1347,589,1373"/>
+<area shape="rect" id="node19" href="$df/d61/a00031.html#a0ff6e856387cc079b28592ead2a81f6c" title="QCPGraph::getImpulsePlotData" alt="" coords="422,1093,629,1120"/>
+<area shape="rect" id="node21" href="$df/d61/a00031.html#ac76804eb33446181f3e4f708b7639a75" title="QCPGraph::getLinePlotData" alt="" coords="433,1043,618,1069"/>
+<area shape="rect" id="node22" href="$df/d61/a00031.html#ac79dc75dd98db9948d9656447b463af5" title="QCPGraph::getStepCenterPlotData" alt="" coords="412,1195,639,1221"/>
+<area shape="rect" id="node23" href="$df/d61/a00031.html#a6b7c14e04deed69b70d552dbe70c4d28" title="QCPGraph::getStepLeftPlotData" alt="" coords="421,1144,630,1171"/>
+<area shape="rect" id="node24" href="$df/d61/a00031.html#ab2ad46716889c73ab977cf9280de0788" title="QCPGraph::getStepRightPlotData" alt="" coords="416,1296,635,1323"/>
+<area shape="rect" id="node25" href="$df/d61/a00031.html#a41f982e8ceaefe6a53eb7432f26d64b6" title="QCPGraph::lowerFillBasePoint" alt="" coords="425,416,625,443"/>
+<area shape="rect" id="node27" href="$d8/d41/a00038.html#ae490f9c76ee2ba33752c495d3b6e8fb5" title="Returns the final absolute pixel position of the QCPItemPosition on the QCustomPlot surface..." alt="" coords="432,467,619,493"/>
+<area shape="rect" id="node41" href="$d5/de0/a00050.html#acf75fbec885886546ae11ca194ad2aec" title="This function is used to decide whether a click hits a plottable or not. " alt="" coords="717,1651,856,1693"/>
+<area shape="rect" id="node42" href="$df/d61/a00031.html#a363d066c179e0f46cc93c12bafb0bfba" title="QCPGraph::upperFillBasePoint" alt="" coords="424,365,627,392"/>
+<area shape="rect" id="node4" href="$d5/de0/a00050.html#a16fef8bc19e5a09d82033edcfe919495" title="QCPStatisticalBox::\ldrawMedian" alt="" coords="717,1126,856,1167"/>
+<area shape="rect" id="node5" href="$d5/de0/a00050.html#a60ebb332a497f51ace837767db5105b9" title="QCPStatisticalBox::\ldrawOutliers" alt="" coords="717,1191,856,1233"/>
+<area shape="rect" id="node6" href="$d5/de0/a00050.html#a9ad0abdb154fefb04e9872f0db8e2ec7" title="QCPStatisticalBox::\ldrawQuartileBox" alt="" coords="717,1257,856,1298"/>
+<area shape="rect" id="node7" href="$d5/de0/a00050.html#a6f8d093ec7e404529388d02da4c72b34" title="QCPStatisticalBox::\ldrawWhiskers" alt="" coords="717,841,856,882"/>
+<area shape="rect" id="node8" href="$d0/d33/a00027.html#a1d118a76662cfd691a78c6f573e3f78c" title="QCPBars::getBarPolygon" alt="" coords="701,907,872,933"/>
+<area shape="rect" id="node9" href="$dc/d3c/a00028.html#afa895f8ba9ae34fea6ecea295fd7b1e5" title="QCPCurve::getCurveData" alt="" coords="937,957,1104,984"/>
+<area shape="rect" id="node10" href="$dc/d3c/a00028.html#acd7a68c6f268ce1ab845eaf69fc2c6a6" title="QCPCurve::pointDistance" alt="" coords="1155,873,1324,900"/>
+<area shape="rect" id="node11" href="$dc/d3c/a00028.html#aec2099a1569775209f73bbb0d3da7c16" title="QCPCurve::outsideCoordsTo\lPixels" alt="" coords="693,1009,880,1050"/>
+<area shape="rect" id="node12" href="$df/d61/a00031.html#af93762a12a481a7edb4b3dd9e330dff1" title="QCPGraph::pointDistance" alt="" coords="935,1199,1107,1225"/>
+<area shape="rect" id="node20" href="$df/d61/a00031.html#af66183533a29520be3e74489ad1449cc" title="QCPGraph::getPlotData" alt="" coords="706,1323,867,1349"/>
+<area shape="rect" id="node26" href="$df/d61/a00031.html#a5fa7884620d7c54b81dfbd255d97b636" title="QCPGraph::addFillBasePoints" alt="" coords="687,5,886,32"/>
+<area shape="rect" id="node28" href="$d4/d8c/a00035.html#ad3c607304dba081e2f778b6a81b903bb" title="QCPItemEllipse::anchorPixel\lPoint" alt="" coords="691,361,882,402"/>
+<area shape="rect" id="node29" href="$d3/de7/a00039.html#ae0973f8281fb52361b0c99ee899be07e" title="QCPItemRect::anchorPixel\lPoint" alt="" coords="697,426,876,467"/>
+<area shape="rect" id="node30" href="$dd/d32/a00041.html#ad248f988534a9d07bc7c220a2457142a" title="QCPItemText::anchorPixel\lPoint" alt="" coords="699,491,875,533"/>
+<area shape="rect" id="node31" href="$d0/dc0/a00033.html#ac76827e3acba5faee81f149af4047a39" title="QCPItemBracket::anchorPixel\lPoint" alt="" coords="689,557,885,598"/>
+<area shape="rect" id="node32" href="$db/d3a/a00040.html#a2daa1e1253216c26565d56a2d5530170" title="QCPItemStraightLine\l::draw" alt="" coords="715,622,859,663"/>
+<area shape="rect" id="node33" href="$de/d8c/a00036.html#a1fc045dd33919f8006df0692aeb0e84a" title="QCPItemLine::draw" alt="" coords="719,688,854,715"/>
+<area shape="rect" id="node34" href="$d4/d8c/a00035.html#afe97ec827adb05f000fe007783faae3c" title="QCPItemEllipse::draw" alt="" coords="712,739,861,765"/>
+<area shape="rect" id="node35" href="$d3/de7/a00039.html#a18cd583638b876cdd50f1a155ec182aa" title="QCPItemRect::draw" alt="" coords="718,56,855,83"/>
+<area shape="rect" id="node36" href="$dd/d32/a00041.html#a8793adb271ab79b4cf391dc55e9987f1" title="QCPItemText::draw" alt="" coords="719,107,854,133"/>
+<area shape="rect" id="node37" href="$db/df3/a00034.html#a56cb5b72cd02db2eda598274a39839a9" title="QCPItemCurve::draw" alt="" coords="715,157,858,184"/>
+<area shape="rect" id="node38" href="$d0/dc0/a00033.html#a8343cf0559c64886add7aa7f4b22f1a6" title="QCPItemBracket::draw" alt="" coords="709,208,864,235"/>
+<area shape="rect" id="node39" href="$d5/db6/a00042.html#aaaf49b48382c730ec9be0e74c2538315" title="QCPItemTracer::draw" alt="" coords="713,259,860,285"/>
+<area shape="rect" id="node40" href="$d1/dc6/a00037.html#a245ef0c626cab7096a810442f2f6a2d9" title="QCPItemPixmap::getFinalRect" alt="" coords="687,309,887,336"/>
+<area shape="rect" id="node46" href="$d4/d3e/a00116.html#ac64727a4f442770f6e5e6be2d0530843" title="mouseMoveEvent" alt="" coords="464,1717,587,1744"/>
+<area shape="rect" id="node47" href="$dc/de2/a00024.html#a10408828446e9e0681c46d65120f382e" title="QCPAbstractPlottable\l::pixelsToCoords" alt="" coords="450,1651,601,1693"/>
+<area shape="rect" id="node48" href="$d8/d41/a00038.html#ab404e56d9ac2ac2df0382c57933a71ef" title="Sets the apparent pixel position. " alt="" coords="437,1769,614,1810"/>
+<area shape="rect" id="node49" href="$d4/d3e/a00116.html#a7b8bd7e8d3a1d23a8595e9c6a6b76ef1" title="wheelEvent" alt="" coords="482,1835,569,1861"/>
+</map>

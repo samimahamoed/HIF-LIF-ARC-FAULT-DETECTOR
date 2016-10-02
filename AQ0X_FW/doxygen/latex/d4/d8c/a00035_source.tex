@@ -1,0 +1,72 @@
+\hypertarget{a00035_source}{\section{uv\+\_\+sensor\+\_\+prv.\+h}
+\label{a00035_source}\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#ifndef UV\_SEN\_PRV\_H}
+00002 \textcolor{preprocessor}{#define UV\_SEN\_PRV\_H}
+00003 
+00010 \textcolor{preprocessor}{#include "..\(\backslash\)..\(\backslash\)includes\(\backslash\)allheaders.h"}
+00011 
+\hypertarget{a00035_source_l00013}{}\hyperlink{a00035_a88ce8cfec1a4d1cf613a890254880e24}{00013} \textcolor{preprocessor}{#define X\_MSG\_UV\_SENSOR\_SV                             (X\_MSG\_FREE + 5)}
+00014 
+\hypertarget{a00035_source_l00016}{}\hyperlink{a00035_a2ab2f7f60fff32ecaf2859625e76a868}{00016} \textcolor{preprocessor}{#define X\_NTF\_UV\_SENSOR\_SV\_TIMER                                   (X\_NTF\_FREE + 17)}
+00017 
+00018 
+\hypertarget{a00035_source_l00020}{}\hyperlink{a00035_a8a535456285f4602701c814d7b69cc68}{00020} \textcolor{preprocessor}{#define SV\_TIMER\_PERIOD                             1000  //1 sec}
+\hypertarget{a00035_source_l00021}{}\hyperlink{a00035_a44e4917fdf9d2a3574a3dd34537d97a7}{00021} \textcolor{preprocessor}{#define SV\_TIMER\_LED\_ON\_PERIOD                              10    //10 ms}
+00022 
+00023 
+\hypertarget{a00035_source_l00024}{}\hyperlink{a00035_aa88a423475bb5b13601785eed80fb1b9}{00024} \textcolor{preprocessor}{#define FALSE\_POSITIVE\_TOLERANCE\_LIMIT                              (2E8) - 1}
+\hypertarget{a00035_source_l00025}{}\hyperlink{a00035_a4131fea6179b36b90522dd6a9ecc0a73}{00025} \textcolor{preprocessor}{#define MAX\_SIGNAL\_TO\_THRESHOLD\_GAP                                 100}
+00026 
+00027 
+00028 
+00029 
+00030 
+\hypertarget{a00035_source_l00031}{}\hyperlink{a00035}{00031} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00032 \{
+00033 
+\hypertarget{a00035_source_l00034}{}\hyperlink{a00035_afdc0e2c51e8e301d264700f4f9c10740}{00034}      \hyperlink{a00021_d7/d1b/a00864}{x\_notify\_module\_sv\_status\_report\_t}          
+      \hyperlink{a00035_afdc0e2c51e8e301d264700f4f9c10740}{sv\_status\_ntf};
+00035 
+\hypertarget{a00035_source_l00037}{}\hyperlink{a00035_a43c345f39ea3aefbb60ef1ef57fe5d83}{00037}       \hyperlink{a00036_de/d37/a00849}{x\_event}                         \hyperlink{a00035_a43c345f39ea3aefbb60ef1ef57fe5d83}{sv\_task\_event};
+00038 
+\hypertarget{a00035_source_l00040}{}\hyperlink{a00035_ada91b200053f2d93e3639dc4ee3415b4}{00040}       \hyperlink{a00036_df/d4c/a00851}{x\_notify}                                   \hyperlink{a00035_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf};
+00041 
+00042 
+\hypertarget{a00035_source_l00044}{}\hyperlink{a00035_a94b2d1f6ea4ab334c74d24984dd27843}{00044}       \hyperlink{a00021_d6/d9c/a00352}{configured\_t}                               \hyperlink{a00035_a94b2d1f6ea4ab334c74d24984dd27843}{configured};
+00045 
+\hypertarget{a00035_source_l00049}{}\hyperlink{a00035_ac9b38e2c1d3f1013a88d33506c754152}{00049}       \hyperlink{a00028}{module\_disturbance\_record\_t}                *
+      \hyperlink{a00035_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record};
+00050 
+00051 
+\hypertarget{a00035_source_l00053}{}\hyperlink{a00035_a5a53c391562b059eb744ac679f3765ca}{00053}       \hyperlink{a00017_de/d94/a00603}{module\_status\_t}                            \hyperlink{a00035_a5a53c391562b059eb744ac679f3765ca}{module\_status};
+00054 
+\hypertarget{a00035_source_l00056}{}\hyperlink{a00035_a7ae905b560513ad201e58c2f63375030}{00056}       \hyperlink{a00017_dd/dcb/a00375}{diagonesis\_records\_light\_t}                 
+      \hyperlink{a00035_a7ae905b560513ad201e58c2f63375030}{diagonesis\_records};
+00057 
+\hypertarget{a00035_source_l00059}{}\hyperlink{a00035_aaeec6b0609dba31393f337abf1cce3d3}{00059}       \hyperlink{a00022_d2/d5a/a00792}{sv\_error\_flags\_ut}                       \hyperlink{a00035_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags};
+00060 
+00061 \}\hyperlink{a00035_d9/d30/a00848}{uv\_sen\_data\_t};
+00062 
+00063 
+00064 
+00065 
+00066 \textcolor{keyword}{extern} \hyperlink{a00035_d9/d30/a00848}{uv\_sen\_data\_t} \hyperlink{a00035_adb4cffe9b88704fe686a94fe9996fa52}{uv\_sen\_data};
+00067 
+00068 
+00069 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                 \hyperlink{a00035_ae4600a772ff6ca64c4e169e726623058}{uv\_sen\_first\_order\_derivative}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} final\_val,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} init\_val);
+00070 \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}                 \hyperlink{a00035_a252304c3c6703a4e94f39c17d0be256b}{uv\_sen\_calc\_probablity}(
+      \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} event,\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} obs);
+00071 \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8}            \hyperlink{a00035_a1bf033abd3b69751cc1da740ec06f459}{uv\_compare}(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} num, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} given\_num, 
+      \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} tolerance);
+00072 
+00073 
+00074 \textcolor{preprocessor}{#endif //UV\_SEN\_PRV\_H}
+00075 
+00076 
+00077 
+00078 
+\end{DoxyCode}

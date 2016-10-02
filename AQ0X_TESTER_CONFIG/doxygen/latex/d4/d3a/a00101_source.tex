@@ -1,0 +1,219 @@
+\hypertarget{a00101_source}{\section{F\+F\+T\+Real\+Pass\+Direct.\+hpp}
+\label{a00101_source}\index{F\+F\+T\+Real\+Pass\+Direct.\+hpp@{F\+F\+T\+Real\+Pass\+Direct.\+hpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*****************************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{        FFTRealPassDirect.hpp}
+00004 \textcolor{comment}{        By Laurent de Soras}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{--- Legal stuff ---}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{This program is free software. It comes without any warranty, to}
+00009 \textcolor{comment}{the extent permitted by applicable law. You can redistribute it}
+00010 \textcolor{comment}{and/or modify it under the terms of the Do What The Fuck You Want}
+00011 \textcolor{comment}{To Public License, Version 2, as published by Sam Hocevar. See}
+00012 \textcolor{comment}{http://sam.zoy.org/wtfpl/COPYING for more details.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{*Tab=3***********************************************************************/}
+00015 
+00016 
+00017 
+00018 \textcolor{preprocessor}{#if defined (ffft\_FFTRealPassDirect\_CURRENT\_CODEHEADER)}
+00019 \textcolor{preprocessor}{    #error Recursive inclusion of FFTRealPassDirect code header.}
+00020 \textcolor{preprocessor}{#endif}
+\hypertarget{a00101_source_l00021}{}\hyperlink{a00101_a882a25e184584d9844f646417865d478}{00021} \textcolor{preprocessor}{#define ffft\_FFTRealPassDirect\_CURRENT\_CODEHEADER}
+00022 
+00023 \textcolor{preprocessor}{#if ! defined (ffft\_FFTRealPassDirect\_CODEHEADER\_INCLUDED)}
+\hypertarget{a00101_source_l00024}{}\hyperlink{a00101_a52ec25590b9f985b99eb92f6ac7567b2}{00024} \textcolor{preprocessor}{#define ffft\_FFTRealPassDirect\_CODEHEADER\_INCLUDED}
+00025 
+00026 
+00027 
+00028 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) INCLUDE FILES \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00029 
+00030 \textcolor{preprocessor}{#include    "\hyperlink{a00106}{FFTRealUseTrigo.h}"}
+00031 
+00032 
+00033 
+00034 \textcolor{keyword}{namespace }\hyperlink{a00142}{ffft}
+00035 \{
+00036 
+00037 
+00038 
+00039 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PUBLIC \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00040 
+00041 
+00042 
+00043 \textcolor{keyword}{template} <>
+\hypertarget{a00101_source_l00044}{}\hyperlink{a00013_a1aacd50efcaa443cacab727eb4c1fbe8}{00044} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{a00013}{FFTRealPassDirect <1>::process} (\textcolor{keywordtype}{long} len, 
+      \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} dest\_ptr [], \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} src\_ptr [], \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} x\_ptr [], \textcolor{keyword}{const} 
+      \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} cos\_ptr [], \textcolor{keywordtype}{long} cos\_len, \textcolor{keyword}{const} \textcolor{keywordtype}{long} br\_ptr [], \hyperlink{a00020}{OscType} osc\_list [])
+00045 \{
+00046     \textcolor{comment}{// First and second pass at once}
+00047     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      qlen = len >> 2;
+00048 
+00049     \textcolor{keywordtype}{long}                coef\_index = 0;
+00050     \textcolor{keywordflow}{do}
+00051     \{
+00052         \textcolor{comment}{// To do: unroll the loop (2x).}
+00053         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      ri\_0 = br\_ptr [coef\_index >> 2];
+00054         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      ri\_1 = ri\_0 + 2 * qlen; \textcolor{comment}{// bit\_rev\_lut\_ptr [coef\_index + 1];}
+00055         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      ri\_2 = ri\_0 + 1 * qlen; \textcolor{comment}{// bit\_rev\_lut\_ptr [coef\_index + 2];}
+00056         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      ri\_3 = ri\_0 + 3 * qlen; \textcolor{comment}{// bit\_rev\_lut\_ptr [coef\_index + 3];}
+00057 
+00058         \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}    * \textcolor{keyword}{const} df2 = dest\_ptr + coef\_index;
+00059         df2 [1] = x\_ptr [ri\_0] - x\_ptr [ri\_1];
+00060         df2 [3] = x\_ptr [ri\_2] - x\_ptr [ri\_3];
+00061 
+00062         \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}  sf\_0 = x\_ptr [ri\_0] + x\_ptr [ri\_1];
+00063         \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}  sf\_2 = x\_ptr [ri\_2] + x\_ptr [ri\_3];
+00064 
+00065         df2 [0] = sf\_0 + sf\_2;
+00066         df2 [2] = sf\_0 - sf\_2;
+00067 
+00068         coef\_index += 4;
+00069     \}
+00070     \textcolor{keywordflow}{while} (coef\_index < len);
+00071 \}
+00072 
+00073 \textcolor{keyword}{template} <>
+\hypertarget{a00101_source_l00074}{}\hyperlink{a00013_af01edbd371e5ed87a67f0d63513ce1d7}{00074} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{a00013}{FFTRealPassDirect <2>::process} (\textcolor{keywordtype}{long} len, 
+      \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} dest\_ptr [], \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} src\_ptr [], \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} x\_ptr [], \textcolor{keyword}{const} 
+      \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} cos\_ptr [], \textcolor{keywordtype}{long} cos\_len, \textcolor{keyword}{const} \textcolor{keywordtype}{long} br\_ptr [], \hyperlink{a00020}{OscType} osc\_list [])
+00075 \{
+00076     \textcolor{comment}{// Executes "previous" passes first. Inverts source and destination buffers}
+00077     \hyperlink{a00013}{FFTRealPassDirect <1>::process} (
+00078         len,
+00079         src\_ptr,
+00080         dest\_ptr,
+00081         x\_ptr,
+00082         cos\_ptr,
+00083         cos\_len,
+00084         br\_ptr,
+00085         osc\_list
+00086     );
+00087 
+00088     \textcolor{comment}{// Third pass}
+00089     \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}  sqrt2\_2 = \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} (\hyperlink{a00142_a489004390ad7d791bf53a724c0f07abb}{SQRT2} * 0.5);
+00090 
+00091     \textcolor{keywordtype}{long}                coef\_index = 0;
+00092     \textcolor{keywordflow}{do}
+00093     \{
+00094         dest\_ptr [coef\_index    ] = src\_ptr [coef\_index] + src\_ptr [coef\_index + 4];
+00095         dest\_ptr [coef\_index + 4] = src\_ptr [coef\_index] - src\_ptr [coef\_index + 4];
+00096         dest\_ptr [coef\_index + 2] = src\_ptr [coef\_index + 2];
+00097         dest\_ptr [coef\_index + 6] = src\_ptr [coef\_index + 6];
+00098 
+00099         \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}            v;
+00100 
+00101         v = (src\_ptr [coef\_index + 5] - src\_ptr [coef\_index + 7]) * sqrt2\_2;
+00102         dest\_ptr [coef\_index + 1] = src\_ptr [coef\_index + 1] + v;
+00103         dest\_ptr [coef\_index + 3] = src\_ptr [coef\_index + 1] - v;
+00104 
+00105         v = (src\_ptr [coef\_index + 5] + src\_ptr [coef\_index + 7]) * sqrt2\_2;
+00106         dest\_ptr [coef\_index + 5] = v + src\_ptr [coef\_index + 3];
+00107         dest\_ptr [coef\_index + 7] = v - src\_ptr [coef\_index + 3];
+00108 
+00109         coef\_index += 8;
+00110     \}
+00111     \textcolor{keywordflow}{while} (coef\_index < len);
+00112 \}
+00113 
+00114 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} PASS>
+\hypertarget{a00101_source_l00115}{}\hyperlink{a00013_a19e18210d065059938591fd5dfc31241}{00115} \textcolor{keywordtype}{void}    \hyperlink{a00013}{FFTRealPassDirect <PASS>::process} (\textcolor{keywordtype}{long} len, 
+      \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} dest\_ptr [], \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} src\_ptr [], \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} x\_ptr [], \textcolor{keyword}{const} 
+      \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType} cos\_ptr [], \textcolor{keywordtype}{long} cos\_len, \textcolor{keyword}{const} \textcolor{keywordtype}{long} br\_ptr [], \hyperlink{a00020}{OscType} osc\_list [])
+00116 \{
+00117     \textcolor{comment}{// Executes "previous" passes first. Inverts source and destination buffers}
+00118     \hyperlink{a00013}{FFTRealPassDirect} <PASS - 1>::process (
+00119         len,
+00120         src\_ptr,
+00121         dest\_ptr,
+00122         x\_ptr,
+00123         cos\_ptr,
+00124         cos\_len,
+00125         br\_ptr,
+00126         osc\_list
+00127     );
+00128 
+00129     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      dist = 1L << (PASS - 1);
+00130     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      c1\_r = 0;
+00131     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      c1\_i = dist;
+00132     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      c2\_r = dist * 2;
+00133     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      c2\_i = dist * 3;
+00134     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      cend = dist * 4;
+00135     \textcolor{keyword}{const} \textcolor{keywordtype}{long}      table\_step = cos\_len >> (PASS - 1);
+00136 
+00137    \textcolor{keyword}{enum} \{   TRIGO\_OSC       = PASS - \hyperlink{a00012_a7a7b234f07dec3342f211f70fc354249acc7080c97a1906e1284b5c5b467bf068}{FFTRealFixLenParam::TRIGO\_BD\_LIMIT}   
+      \};
+00138     \textcolor{keyword}{enum} \{  TRIGO\_DIRECT    = (TRIGO\_OSC >= 0) ? 1 : 0  \};
+00139 
+00140     \textcolor{keywordtype}{long}                coef\_index = 0;
+00141     \textcolor{keywordflow}{do}
+00142     \{
+00143         \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}  * \textcolor{keyword}{const} sf = src\_ptr + coef\_index;
+00144         \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}            * \textcolor{keyword}{const} df = dest\_ptr + coef\_index;
+00145 
+00146         \textcolor{comment}{// Extreme coefficients are always real}
+00147         df [c1\_r] = sf [c1\_r] + sf [c2\_r];
+00148         df [c2\_r] = sf [c1\_r] - sf [c2\_r];
+00149         df [c1\_i] = sf [c1\_i];
+00150         df [c2\_i] = sf [c2\_i];
+00151 
+00152         \hyperlink{a00016}{FFTRealUseTrigo <TRIGO\_DIRECT>::prepare} (osc\_list [TRIGO\_OSC
+      ]);
+00153 
+00154         \textcolor{comment}{// Others are conjugate complex numbers}
+00155         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} i = 1; i < dist; ++ i)
+00156         \{
+00157             \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}            c;
+00158             \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}            s;
+00159             \hyperlink{a00016}{FFTRealUseTrigo <TRIGO\_DIRECT>::iterate} (
+00160                 osc\_list [TRIGO\_OSC],
+00161                 c,
+00162                 s,
+00163                 cos\_ptr,
+00164                 i * table\_step,
+00165                 (dist - i) * table\_step
+00166             );
+00167 
+00168             \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}  sf\_r\_i = sf [c1\_r + i];
+00169             \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}  sf\_i\_i = sf [c1\_i + i];
+00170 
+00171             \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}  v1 = sf [c2\_r + i] * c - sf [c2\_i + i] * s;
+00172             df [c1\_r + i] = sf\_r\_i + v1;
+00173             df [c2\_r - i] = sf\_r\_i - v1;
+00174 
+00175             \textcolor{keyword}{const} \hyperlink{a00013_a831663a8e0b1414e80f82cd3d18b5b6b}{DataType}  v2 = sf [c2\_r + i] * s + sf [c2\_i + i] * c;
+00176             df [c2\_r + i] = v2 + sf\_i\_i;
+00177             df [cend - i] = v2 - sf\_i\_i;
+00178         \}
+00179 
+00180         coef\_index += cend;
+00181     \}
+00182     \textcolor{keywordflow}{while} (coef\_index < len);
+00183 \}
+00184 
+00185 
+00186 
+00187 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PROTECTED \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00188 
+00189 
+00190 
+00191 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PRIVATE \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00192 
+00193 
+00194 
+00195 \}   \textcolor{comment}{// namespace ffft}
+00196 
+00197 
+00198 
+00199 \textcolor{preprocessor}{#endif  // ffft\_FFTRealPassDirect\_CODEHEADER\_INCLUDED}
+00200 
+00201 \textcolor{preprocessor}{#undef ffft\_FFTRealPassDirect\_CURRENT\_CODEHEADER}
+00202 
+00203 
+00204 
+00205 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) EOF \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+\end{DoxyCode}

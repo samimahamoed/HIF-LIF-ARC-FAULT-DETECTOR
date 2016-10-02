@@ -1,0 +1,5 @@
+<map id="light_sen_get_status" name="light_sen_get_status">
+<area shape="rect" id="node2" href="$d6/d42/a00043.html#acfaee257a4ad46d9d0ffb57f97d8f35f" title="Claculate the probablity that the event is true. " alt="" coords="196,5,364,32"/>
+<area shape="rect" id="node3" href="$d6/d42/a00043.html#a4c8812458e0a70eaa4be14a7ca5dc9b7" title="Claculate first order derivative. " alt="" coords="211,57,349,98"/>
+<area shape="rect" id="node4" href="$d6/d42/a00043.html#acef1622ec5c40fe90bf6184813716e34" title="checks the number of false positives within supervision (100ms | 5 cycle) time window ..." alt="" coords="208,122,352,163"/>
+</map>

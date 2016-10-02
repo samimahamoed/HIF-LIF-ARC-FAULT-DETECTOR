@@ -1,0 +1,14 @@
+digraph "light_sen_get_status"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="light_sen_get_status",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="light_sen_calc_probablity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d32/a00041.html#acfaee257a4ad46d9d0ffb57f97d8f35f",tooltip="Claculate the probablity that the event is true. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="light_sen_first_order\l_derivative",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d32/a00041.html#a4c8812458e0a70eaa4be14a7ca5dc9b7",tooltip="Claculate first order derivative. "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="light_sen_mark_false\l_postives",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/d32/a00041.html#acef1622ec5c40fe90bf6184813716e34",tooltip="checks the number of false positives within supervision (100ms | 5 cycle) time window ..."];
+}

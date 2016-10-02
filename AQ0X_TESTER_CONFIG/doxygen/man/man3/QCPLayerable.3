@@ -1,0 +1,369 @@
+.TH "QCPLayerable" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPLayerable \- 
+.PP
+Base class for all objects that can be placed on layers\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQObject\fP\&.
+.PP
+Inherited by \fBQCPAbstractItem\fP, \fBQCPAbstractPlottable\fP, \fBQCPAxis\fP, and \fBQCPLegend\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPLayerable\fP (\fBQCustomPlot\fP *\fBparentPlot\fP)"
+.br
+.RI "\fICreates a new \fBQCPLayerable\fP instance\&. \fP"
+.ti -1c
+.RI "\fB~QCPLayerable\fP ()"
+.br
+.ti -1c
+.RI "bool \fBvisible\fP () const "
+.br
+.ti -1c
+.RI "\fBQCustomPlot\fP * \fBparentPlot\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPLayer\fP * \fBlayer\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiased\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetVisible\fP (bool on)"
+.br
+.RI "\fISets the visibility of this layerable object\&. \fP"
+.ti -1c
+.RI "bool \fBsetLayer\fP (\fBQCPLayer\fP *\fBlayer\fP)"
+.br
+.RI "\fISets the \fIlayer\fP of this layerable object\&. \fP"
+.ti -1c
+.RI "bool \fBsetLayer\fP (const QString &layerName)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Sets the layer of this layerable object by name\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiased\fP (bool enabled)"
+.br
+.RI "\fISets whether this object will be drawn antialiased or not\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBmoveToLayer\fP (\fBQCPLayer\fP *\fBlayer\fP, bool prepend)"
+.br
+.ti -1c
+.RI "void \fBapplyAntialiasingHint\fP (\fBQCPPainter\fP *painter, bool localAntialiased, \fBQCP::AntialiasedElement\fP overrideElement) const "
+.br
+.ti -1c
+.RI "virtual void \fBapplyDefaultAntialiasingHint\fP (\fBQCPPainter\fP *painter) const =0"
+.br
+.ti -1c
+.RI "virtual QRect \fBclipRect\fP () const "
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)=0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBmVisible\fP"
+.br
+.ti -1c
+.RI "\fBQCustomPlot\fP * \fBmParentPlot\fP"
+.br
+.ti -1c
+.RI "\fBQCPLayer\fP * \fBmLayer\fP"
+.br
+.ti -1c
+.RI "bool \fBmAntialiased\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all objects that can be placed on layers\&. 
+
+This is the abstract base class most visible objects derive from, e\&.g\&. plottables, axes, grid etc\&.
+.PP
+Every layerable is on a layer (\fBQCPLayer\fP) which allows controlling the rendering order by stacking the layers accordingly\&.
+.PP
+For details about the layering mechanism, see the \fBQCPLayer\fP documentation\&. 
+.PP
+Definition at line 320 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPLayerable::QCPLayerable (\fBQCustomPlot\fP *parentPlot)"
+
+.PP
+Creates a new \fBQCPLayerable\fP instance\&. Since \fBQCPLayerable\fP is an abstract base class, it can't be instantiated directly\&. Use one of the derived classes\&. 
+.PP
+Definition at line 13992 of file qcustomplot\&.cpp\&.
+.PP
+References mParentPlot, and setLayer()\&.
+.PP
+.nf
+13992                                                   :
+13993   QObject(0), // rather not bind to parentPlot, incase we want to allow moving of objects between customplots some day
+13994   mVisible(true),
+13995   mParentPlot(parentPlot),
+13996   mLayer(0),
+13997   mAntialiased(true)
+13998 {
+13999   if (mParentPlot)
+14000     setLayer(mParentPlot->currentLayer());
+14001 }
+.fi
+.SS "QCPLayerable::~QCPLayerable ()"
+
+.PP
+Definition at line 14003 of file qcustomplot\&.cpp\&.
+.PP
+References mLayer, and QCPLayer::removeChild()\&.
+.PP
+.nf
+14004 {
+14005   if (mLayer)
+14006   {
+14007     mLayer->removeChild(this);
+14008     mLayer = 0;
+14009   }
+14010 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QCPLayerable::antialiased () const\fC [inline]\fP"
+
+.PP
+Definition at line 331 of file qcustomplot\&.h\&.
+.PP
+.nf
+331 { return mAntialiased; }
+.fi
+.SS "void QCPLayerable::applyAntialiasingHint (\fBQCPPainter\fP *painter, boollocalAntialiased, \fBQCP::AntialiasedElement\fPoverrideElement) const\fC [protected]\fP"
+Sets the QPainter::Antialiasing render hint on the provided \fIpainter\fP, depending on the \fIlocalAntialiased\fP value as well as the overrides \fBQCustomPlot::setAntialiasedElements\fP and \fBQCustomPlot::setNotAntialiasedElements\fP\&. Which override enum this function takes into account is controlled via \fIoverrideElement\fP\&. 
+.PP
+Definition at line 14101 of file qcustomplot\&.cpp\&.
+.PP
+References mParentPlot, and QCPPainter::setAntialiasing()\&.
+.PP
+Referenced by QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractItem::applyDefaultAntialiasingHint(), QCPLegend::applyDefaultAntialiasingHint(), QCPAxis::applyDefaultAntialiasingHint(), QCPAbstractPlottable::applyErrorBarsAntialiasingHint(), QCPAbstractPlottable::applyFillAntialiasingHint(), and QCPAbstractPlottable::applyScattersAntialiasingHint()\&.
+.PP
+.nf
+14102 {
+14103   if (mParentPlot && mParentPlot->notAntialiasedElements()\&.testFlag(overrideElement))
+14104     painter->setAntialiasing(false);
+14105   else if (mParentPlot && mParentPlot->antialiasedElements()\&.testFlag(overrideElement))
+14106     painter->setAntialiasing(true);
+14107   else
+14108     painter->setAntialiasing(localAntialiased);
+14109 }
+.fi
+.SS "void QCPLayerable::applyDefaultAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [pure virtual]\fP"
+This function applies the default antialiasing setting to the specified \fIpainter\fP, using the function \fBapplyAntialiasingHint\fP\&. This is the antialiasing state the painter is in, when \fBdraw\fP is called on the layerable\&. If the layerable has multiple entities whose antialiasing setting may be specified individually, this function should set the antialiasing state of the most prominent entity\&. In this case however, the \fBdraw\fP function usually calls the specialized versions of this function before drawing each entity, effectively overriding the setting of the default antialiasing hint\&.
+.PP
+\fBFirst example:\fP \fBQCPGraph\fP has multiple entities that have an antialiasing setting: The graph line, fills, scatters and error bars\&. Those can be configured via \fBQCPGraph::setAntialiased\fP, \fBQCPGraph::setAntialiasedFill\fP, \fBQCPGraph::setAntialiasedScatters\fP etc\&. Consequently, there isn't only the \fBQCPGraph::applyDefaultAntialiasingHint\fP function (which corresponds to the graph line's antialiasing), but specialized ones like \fBQCPGraph::applyFillAntialiasingHint\fP and \fBQCPGraph::applyScattersAntialiasingHint\fP\&. So before drawing one of those entities, \fBQCPGraph::draw\fP calls the respective specialized applyAntialiasingHint function\&.
+.PP
+\fBSecond example:\fP \fBQCPItemLine\fP consists only of a line so there is only one antialiasing setting which can be controlled with \fBQCPItemLine::setAntialiased\fP\&. (This function is inherited by all layerables\&. The specialized functions, as seen on \fBQCPGraph\fP, must be added explicitly to the respective layerable subclass\&.) Consequently it only has the normal \fBQCPItemLine::applyDefaultAntialiasingHint\fP\&. The \fBQCPItemLine::draw\fP function doesn't need to care about setting any antialiasing states, because the default antialiasing hint is already set on the painter when the \fBdraw\fP function is called, and that's the state it wants to draw the line with\&. 
+.PP
+Implemented in \fBQCPAxis\fP, \fBQCPLegend\fP, \fBQCPAbstractItem\fP, and \fBQCPAbstractPlottable\fP\&.
+.SS "QRect QCPLayerable::clipRect () const\fC [protected]\fP, \fC [virtual]\fP"
+Returns the clipping rectangle of this layerable object\&. By default, this is the viewport of the parent \fBQCustomPlot\fP\&. Specific subclasses may reimplement this function to provide different clipping rects\&.
+.PP
+The returned clipping rect is set on the painter before the draw function of the respective object is called\&. 
+.PP
+Reimplemented in \fBQCPAbstractItem\fP, and \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 14119 of file qcustomplot\&.cpp\&.
+.PP
+References mParentPlot\&.
+.PP
+.nf
+14120 {
+14121   if (mParentPlot)
+14122     return mParentPlot->viewport();
+14123   else
+14124     return QRect();
+14125 }
+.fi
+.SS "void QCPLayerable::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [pure virtual]\fP"
+This function draws the layerable to the specified \fIpainter\fP\&.
+.PP
+Before this function is called, the painter's antialiasing state is set via \fBapplyDefaultAntialiasingHint\fP, see the documentation there\&. Further, its clipping rectangle was set to \fBclipRect\fP\&. 
+.PP
+Implemented in \fBQCPAxis\fP, \fBQCPLegend\fP, \fBQCPItemTracer\fP, \fBQCPItemBracket\fP, \fBQCPItemCurve\fP, \fBQCPItemText\fP, \fBQCPItemPixmap\fP, \fBQCPItemRect\fP, \fBQCPItemEllipse\fP, \fBQCPItemLine\fP, \fBQCPItemStraightLine\fP, \fBQCPAbstractItem\fP, \fBQCPStatisticalBox\fP, \fBQCPBars\fP, \fBQCPCurve\fP, \fBQCPGraph\fP, and \fBQCPAbstractPlottable\fP\&.
+.SS "\fBQCPLayer\fP* QCPLayerable::layer () const\fC [inline]\fP"
+
+.PP
+Definition at line 330 of file qcustomplot\&.h\&.
+.PP
+Referenced by addPlottable(), and moveToLayer()\&.
+.PP
+.nf
+330 { return mLayer; }
+.fi
+.SS "bool QCPLayerable::moveToLayer (\fBQCPLayer\fP *layer, boolprepend)\fC [protected]\fP"
+Moves this layerable object to \fIlayer\fP\&. If \fIprepend\fP is true, this object will be prepended to the new layer's list, i\&.e\&. it will be drawn below the objects already on the layer\&. If it is false, the object will be appended\&.
+.PP
+Returns true on success, i\&.e\&. if \fIlayer\fP is a valid layer\&. 
+.PP
+Definition at line 14073 of file qcustomplot\&.cpp\&.
+.PP
+References QCPLayer::addChild(), layer(), mLayer, mParentPlot, QCPLayer::name(), QCPLayer::parentPlot(), and QCPLayer::removeChild()\&.
+.PP
+Referenced by setLayer()\&.
+.PP
+.nf
+14074 {
+14075   if (!mParentPlot)
+14076   {
+14077     qDebug() << Q_FUNC_INFO << "no parent QCustomPlot set";
+14078     return false;
+14079   }
+14080   if (layer && layer->parentPlot() != mParentPlot)
+14081   {
+14082     qDebug() << Q_FUNC_INFO << "layer" << layer->name() << "is not in same QCustomPlot as this layerable";
+14083     return false;
+14084   }
+14085   
+14086   if (mLayer)
+14087     mLayer->removeChild(this);
+14088   mLayer = layer;
+14089   if (mLayer)
+14090     mLayer->addChild(this, prepend);
+14091   return true;
+14092 }
+.fi
+.SS "\fBQCustomPlot\fP* QCPLayerable::parentPlot () const\fC [inline]\fP"
+
+.PP
+Definition at line 329 of file qcustomplot\&.h\&.
+.PP
+Referenced by addGraph(), addPlottable(), QCPAbstractPlottable::QCPAbstractPlottable(), and QCPItemTracer::setGraph()\&.
+.PP
+.nf
+329 { return mParentPlot; }
+.fi
+.SS "void QCPLayerable::setAntialiased (boolenabled)"
+
+.PP
+Sets whether this object will be drawn antialiased or not\&. Note that antialiasing settings may be overridden by QCustomPlot::setAntialiasedElements and QCustomPlot::setNotAntialiasedElements\&. 
+.PP
+Definition at line 14060 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiased\&.
+.PP
+Referenced by QCPAxis::QCPAxis(), and QCPLegend::QCPLegend()\&.
+.PP
+.nf
+14061 {
+14062   mAntialiased = enabled;
+14063 }
+.fi
+.SS "bool QCPLayerable::setLayer (\fBQCPLayer\fP *layer)"
+
+.PP
+Sets the \fIlayer\fP of this layerable object\&. The object will be placed on top of the other objects already on \fIlayer\fP\&.
+.PP
+Returns true on success, i\&.e\&. if \fIlayer\fP is a valid layer\&. 
+.PP
+Definition at line 14027 of file qcustomplot\&.cpp\&.
+.PP
+References moveToLayer()\&.
+.PP
+Referenced by addPlottable(), QCPLayerable(), and setLayer()\&.
+.PP
+.nf
+14028 {
+14029   return moveToLayer(layer, false);
+14030 }
+.fi
+.SS "bool QCPLayerable::setLayer (const QString &layerName)"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Sets the layer of this layerable object by name\&. Returns true on success, i\&.e\&. if \fIlayerName\fP is a valid layer name\&. 
+.PP
+Definition at line 14037 of file qcustomplot\&.cpp\&.
+.PP
+References mParentPlot, and setLayer()\&.
+.PP
+.nf
+14038 {
+14039   if (!mParentPlot)
+14040   {
+14041     qDebug() << Q_FUNC_INFO << "no parent QCustomPlot set";
+14042     return false;
+14043   }
+14044   if (QCPLayer *layer = mParentPlot->layer(layerName))
+14045   {
+14046     return setLayer(layer);
+14047   } else
+14048   {
+14049     qDebug() << Q_FUNC_INFO << "there is no layer with name" << layerName;
+14050     return false;
+14051   }
+14052 }
+.fi
+.SS "void QCPLayerable::setVisible (boolon)"
+
+.PP
+Sets the visibility of this layerable object\&. If an object is not visible, it will not be drawn on the \fBQCustomPlot\fP surface, and user interaction with it (e\&.g\&. click/selection) is not possible\&. 
+.PP
+Definition at line 14016 of file qcustomplot\&.cpp\&.
+.PP
+References mVisible\&.
+.PP
+Referenced by QCPItemEllipse::draw(), and setupFullAxesBox()\&.
+.PP
+.nf
+14017 {
+14018   mVisible = on;
+14019 }
+.fi
+.SS "bool QCPLayerable::visible () const\fC [inline]\fP"
+
+.PP
+Definition at line 328 of file qcustomplot\&.h\&.
+.PP
+.nf
+328 { return mVisible; }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "bool QCPLayerable::mAntialiased\fC [protected]\fP"
+
+.PP
+Definition at line 343 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractItem::applyDefaultAntialiasingHint(), QCPLegend::applyDefaultAntialiasingHint(), QCPAxis::applyDefaultAntialiasingHint(), and setAntialiased()\&.
+.SS "\fBQCPLayer\fP* QCPLayerable::mLayer\fC [protected]\fP"
+
+.PP
+Definition at line 342 of file qcustomplot\&.h\&.
+.PP
+Referenced by moveToLayer(), and ~QCPLayerable()\&.
+.SS "\fBQCustomPlot\fP* QCPLayerable::mParentPlot\fC [protected]\fP"
+
+.PP
+Definition at line 341 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPAbstractPlottable::addToLegend(), applyAntialiasingHint(), QCPAbstractLegendItem::applyAntialiasingHint(), QCPLegend::calculateAutoPosition(), clipRect(), QCPAbstractItem::clipRect(), QCPAbstractItem::createAnchor(), QCPAbstractItem::createPosition(), QCPCurve::draw(), QCPAxis::draw(), QCPGraph::drawLinePlot(), QCPAxis::drawTickLabel(), moveToLayer(), QCPLayerable(), QCPAbstractItem::rectSelectTest(), QCPAbstractPlottable::removeFromLegend(), QCPBars::selectTest(), QCPStatisticalBox::selectTest(), QCPItemEllipse::selectTest(), QCPItemTracer::selectTest(), QCPGraph::setChannelFillGraph(), QCPItemTracer::setGraph(), setLayer(), QCPAxis::setupTickVectors(), QCPItemTracer::updatePosition(), and QCPGraph::~QCPGraph()\&.
+.SS "bool QCPLayerable::mVisible\fC [protected]\fP"
+
+.PP
+Definition at line 340 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPAxis::calculateMargin(), QCPGraph::selectTest(), QCPCurve::selectTest(), QCPItemStraightLine::selectTest(), QCPItemLine::selectTest(), QCPItemRect::selectTest(), QCPItemPixmap::selectTest(), QCPItemText::selectTest(), QCPItemCurve::selectTest(), QCPItemBracket::selectTest(), QCPItemTracer::selectTest(), QCPAxis::selectTest(), and setVisible()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

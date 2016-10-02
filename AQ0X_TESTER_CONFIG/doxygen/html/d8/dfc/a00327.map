@@ -1,0 +1,5 @@
+<map id="Ui::MainWindow" name="Ui::MainWindow">
+<area shape="rect" id="node2" href="$d0/d33/a00027.html" title="{Ui_MainWindow\n|+ centralWidget\l+ page\l+ horizontalLayout_2\l+ horizontalLayout\l+ scrollAreaWidgetContents\l+ horizontalLayout_4\l+ horizontalLayout_5\l+ btn_back_thresholds\l+ horizontalLayout_8\l+ horizontalLayout_9\land 24 more...\l|+ setupUi()\l+ retranslateUi()\l}" alt="" coords="1315,593,1501,832"/>
+<area shape="rect" id="node10" href="$d7/d46/a00002.html" title="{Console\n||+ Console()\l+ putData()\l+ setLocalEchoEnabled()\l+ uint8_to_str()\l# keyPressEvent()\l# mousePressEvent()\l# mouseDoubleClickEvent()\l# contextMenuEvent()\l}" alt="" coords="929,145,1111,325"/>
+<area shape="rect" id="node11" href="$da/d45/a00011.html" title="{QPlainTextEdit\n||}" alt="" coords="908,5,1017,83"/>
+</map>

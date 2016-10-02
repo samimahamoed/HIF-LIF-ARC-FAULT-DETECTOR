@@ -1,0 +1,1003 @@
+.TH "MainWindow" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MainWindow \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mainwindow\&.h>\fP
+.PP
+Inherits \fBQMainWindow\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBdata_open\fP (bool checked)"
+.br
+.ti -1c
+.RI "void \fBsrv_cmds_data_download_msg_handler\fP (QString data)"
+.br
+.ti -1c
+.RI "void \fBsrv_cmds_data_transfer_msg_handler\fP (QString data)"
+.br
+.ti -1c
+.RI "void \fBsrv_cmds_general_msg_handler\fP (QString data)"
+.br
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBresponse_ready\fP (QString)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMainWindow\fP (QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fB~MainWindow\fP ()"
+.br
+.ti -1c
+.RI "void \fBmsg\fP (\fBUint16\fP type, QString msg)"
+.br
+.ti -1c
+.RI "QString \fBuint8_to_str\fP (\fBUint8\fP val)"
+.br
+.ti -1c
+.RI "void \fBListFiles\fP ()"
+.br
+.ti -1c
+.RI "qint8 \fBmake8\fP (QString buf, \fBUint16\fP idx)"
+.br
+.ti -1c
+.RI "qint16 \fBmake16\fP (QString buf, \fBUint16\fP idx)"
+.br
+.ti -1c
+.RI "\fBUint16\fP \fBcrc16\fP (\fBUint8\fP *puchMsg, \fBUint16\fP usDataLen)"
+.br
+.ti -1c
+.RI "void \fBset_emu_data\fP (\fBemu_data_editor\fP *editor, \fBUint16\fP *data, \fBUint16\fP size)"
+.br
+.ti -1c
+.RI "QString \fBsave_to_file\fP (QString dir, QString type, \fBUint16\fP offset, QVector< double > *data1, QVector< double > *data2=NULL, QVector< double > *data3=NULL)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "QString \fBeventRecoredList\fP"
+.br
+.ti -1c
+.RI "QString \fBdir_default\fP"
+.br
+.in -1c
+.SS "Protected Slots"
+
+.in +1c
+.ti -1c
+.RI "bool \fBeventFilter\fP (QObject *object, QEvent *event)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 34 of file mainwindow\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MainWindow::MainWindow (QWidget *parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 24 of file mainwindow\&.cpp\&.
+.PP
+References Ui_MainWindow::actionClear, Ui_MainWindow::actionConfigure, Ui_MainWindow::actionConnect, Ui_MainWindow::actionDisconnect, Ui_MainWindow::actionQuit, Ui_MainWindow::centralWidget, DEFAULT_DIR, dir_default, Ui_MainWindow::dock_central, Ui_MainWindow::dockWidget, serial_msg_t::listener_slot, serial_msg_t::processed, and Ui_MainWindow::setupUi()\&.
+.PP
+.nf
+24                                       :
+25     QMainWindow(parent),
+26     ui(new Ui::MainWindow)
+27 {
+28 
+29 
+30     ui->setupUi(this);
+31 
+32 
+33     this->move(QApplication::desktop()->rect()\&.x() + 10,this->y()+2);
+34 
+35 
+36         console = new Console;
+37         console->setEnabled(false);
+38 
+39 
+40         serial = new QSerialPort(this);
+41         settings = new SettingsDialog;
+42 
+43           ui->actionConnect->setEnabled(true);
+44           ui->actionDisconnect->setEnabled(false);
+45           ui->actionQuit->setEnabled(true);
+46           ui->actionConfigure->setEnabled(true);
+47 
+48 
+49           initActionsConnections();
+50 
+51             connect(serial, SIGNAL(error(QSerialPort::SerialPortError)), this,
+52             SLOT(handleError(QSerialPort::SerialPortError)));
+53 
+54             connect(serial, SIGNAL(readyRead()), this, SLOT(incoming_data_listener()));
+55 
+56 
+57 
+58 
+59 
+60 
+61            ui->dockWidget->setVisible(false);
+62 
+63            ui->centralWidget->setVisible(false);
+64 
+65            ui->actionClear->setVisible(false);
+66 
+67           this->addDockWidget(Qt::RightDockWidgetArea,ui->dock_central);
+68 
+69 
+70           last_cmd\&.listener_slot = NULL;
+71           //serial rc buffer start frash
+72           last_cmd\&.processed=true;
+73           rc_buffer\&.clear();
+74 
+75           cmd_line_separator="\n>> ";
+76 
+77 
+78 
+79           dir_default = DEFAULT_DIR;
+80 
+81           QDir dir;
+82 
+83           if(!dir\&.exists(dir\&.toNativeSeparators(dir_default)))
+84               dir\&.mkdir(dir\&.toNativeSeparators(dir_default));
+85 
+86           map_keys();
+87 
+88           installEventFilter(this);
+89 
+90 
+91 
+92 }
+.fi
+.SS "MainWindow::~MainWindow ()"
+
+.PP
+Definition at line 94 of file mainwindow\&.cpp\&.
+.PP
+.nf
+95 {
+96     delete ui;
+97 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBUint16\fP MainWindow::crc16 (\fBUint8\fP *puchMsg, \fBUint16\fPusDataLen)"
+
+.PP
+Definition at line 298 of file srv_serial\&.cpp\&.
+.PP
+.nf
+299 {
+300     Uint8 crc_hi = 0xFF ;        /* high byte of CRC initialized */
+301     Uint8 crc_lo = 0xFF ;        /* low byte of CRC initialized */
+302     Uint16 table_index ;            /* index into CRC lookup table */
+303 
+304     while (usDataLen--)
+305     {
+306         table_index = crc_hi ^ *puchMsg++ ;            /* calculate the CRC */
+307         crc_hi = crc_lo ^ table_crc_hi[table_index] ;
+308         crc_lo = table_crc_lo[table_index] ;
+309     }
+310     return (crc_hi << 8 | crc_lo) ;
+311 }
+.fi
+.SS "void MainWindow::data_open (boolchecked)\fC [slot]\fP"
+
+.PP
+Definition at line 450 of file srv_commands\&.cpp\&.
+.PP
+.nf
+450                                       {
+451 
+452     for (int var = 0; var < multi_cmds\&.length(); ++var)
+453         if(multi_cmds[var]\&.gui\&.btn->isChecked())
+454             loadFile(multi_cmds[var]\&.data_file_name);
+455 
+456 
+457     for (int var = 0; var < multi_cmds\&.length(); ++var)
+458         multi_cmds[var]\&.gui\&.btn->setChecked(false);
+459 
+460 
+461 
+462 }
+.fi
+.SS "bool MainWindow::eventFilter (QObject *object, QEvent *event)\fC [protected]\fP, \fC [slot]\fP"
+
+.PP
+Definition at line 100 of file mainwindow\&.cpp\&.
+.PP
+References Ui_MainWindow::dockWidget_sen_cmd\&.
+.PP
+.nf
+101 {
+102 
+103 
+104     if (event->type() == QEvent::FocusOut)
+105     {
+106         if (object == this)
+107         {
+108 
+109         }
+110     }
+111 
+112 
+113     if (event->type() == QEvent::FocusIn)
+114     {
+115         if (object == ui->dockWidget_sen_cmd)
+116         {
+117 
+118         }
+119 
+120     }
+121     return false;
+122 }
+.fi
+.SS "void MainWindow::ListFiles ()"
+
+.PP
+Definition at line 308 of file mainwindow\&.cpp\&.
+.PP
+References dir_default, msg(), and MSG_ERROR\&.
+.PP
+.nf
+308                           {
+309 
+310     QStringList nameFilter("*\&.csv");
+311 
+312     QDir directory;
+313     directory\&.setPath(directory\&.toNativeSeparators(dir_default));
+314 
+315     if(!directory\&.exists()){
+316         if(!directory\&.mkdir(directory\&.toNativeSeparators(dir_default))){
+317             msg(MSG_ERROR,"Couldn't open the Directory " + directory\&.absolutePath() + "for reading");
+318         return;
+319         }
+320     }
+321 
+322     QStringList eventFiles = directory\&.entryList(nameFilter);
+323     model->setStringList(eventFiles);
+324 }
+.fi
+.SS "\fBInt16\fP MainWindow::make16 (QStringbuf, \fBUint16\fPidx)"
+
+.PP
+Definition at line 13 of file srv_miscellaneous\&.cpp\&.
+.PP
+References HEX2VAL\&.
+.PP
+.nf
+14 {
+15     qint16 result = ((HEX2VAL((qint16)buf[idx+0]\&.toLatin1())<<12)|
+16             (HEX2VAL((qint16)buf[idx+1]\&.toLatin1())<<8)|
+17             (HEX2VAL((qint16)buf[idx+2]\&.toLatin1())<<4)|
+18             (HEX2VAL((qint16)buf[idx+3]\&.toLatin1())<<0));
+19 
+20     return result;
+21 }
+.fi
+.SS "\fBInt8\fP MainWindow::make8 (QStringbuf, \fBUint16\fPidx)"
+
+.PP
+Definition at line 5 of file srv_miscellaneous\&.cpp\&.
+.PP
+References HEX2VAL\&.
+.PP
+.nf
+6 {
+7     qint8 result;
+8     result = ((HEX2VAL((qint8)buf[idx+0]\&.toLatin1())<<4)|(HEX2VAL((qint8)buf[idx+1]\&.toLatin1()))<<0);
+9     return result;
+10 }
+.fi
+.SS "void MainWindow::msg (\fBUint16\fPtype, QStringmsg)"
+
+.PP
+Definition at line 145 of file mainwindow\&.cpp\&.
+.PP
+References MSG_ERROR, and MSG_INFO\&.
+.PP
+Referenced by ListFiles(), and set_emu_data()\&.
+.PP
+.nf
+146 {
+147     QString title;
+148 
+149     QMessageBox msgBox;
+150     msgBox\&.setWindowIcon(QMainWindow::windowIcon());
+151     msgBox\&.setWindowTitle(QMainWindow::windowTitle());
+152 
+153     switch (type) {
+154     case MSG_ERROR:
+155         msgBox\&.setText(tr("Error"));
+156         msgBox\&.setIcon(QMessageBox::Critical);
+157         break;
+158     case MSG_INFO:
+159         msgBox\&.setText(tr("Information"));
+160         msgBox\&.setIcon(QMessageBox::Information);
+161     default:
+162 
+163         break;
+164     }
+165 
+166 
+167 
+168  msgBox\&.setInformativeText(msg);
+169 
+170  msgBox\&.exec();
+171 
+172 }
+.fi
+.SS "void MainWindow::response_ready (QString_t1)\fC [signal]\fP"
+
+.PP
+Definition at line 289 of file moc_mainwindow\&.cpp\&.
+.PP
+.nf
+290 {
+291     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+292     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+293 }
+.fi
+.SS "QString MainWindow::save_to_file (QStringdir, QStringtype, \fBUint16\fPoffset, QVector< double > *data1, QVector< double > *data2 = \fCNULL\fP, QVector< double > *data3 = \fCNULL\fP)"
+
+.PP
+Definition at line 706 of file mainwindow\&.cpp\&.
+.PP
+References PRE_ACT_RECORD_BUFF_SIZE\&.
+.PP
+.nf
+708 {
+709 
+710 
+711     bool disturbance_record = (data1->length() == PRE_ACT_RECORD_BUFF_SIZE)?false:true;
+712 
+713     QString file_name = type;
+714 
+715     file_name\&.replace(':',"-")\&.replace(' ',"_")\&.replace(',',"")\&.replace('\&.',"_");
+716 
+717     file_name = dir + file_name + "\&.csv";
+718 
+719     if (file_name\&.isEmpty()) return NULL;
+720     else {
+721         QFile file(file_name);
+722         if (!file\&.open(QIODevice::WriteOnly)) {
+723             QMessageBox::information(this, tr("Unable to open file"), file\&.errorString());
+724             return NULL;
+725         }
+726 
+727         QTextStream stream(&file);
+728 
+729         stream << "Title,"+type+"\n";
+730         stream << "Record length,"+QString::number(data1->length())+"\n";
+731         if(disturbance_record){
+732         stream << "Event offset,"+QString::number(offset)+"\n";
+733         stream << "TIME, MEASURED DATA,EVENT_AMP,EVENT_DFDT\n";
+734         }else
+735         stream << "TIME, DATA\n";
+736 
+737         for(int ii=0;ii< data1->length();ii++)
+738            stream << QString::number(ii) +","+QString::number(data1->value(ii))
+739                      +
+740                      ((disturbance_record)?(
+741                      ","+ QString::number(data2->value(ii))
+742                      + ","+ QString::number(data3->value(ii))
+743                      ):"")
+744                      +"\n";
+745 
+746 
+747 
+748         file\&.flush();
+749 
+750      }
+751 
+752     return file_name;
+753 
+754 }
+.fi
+.SS "void MainWindow::set_emu_data (\fBemu_data_editor\fP *editor, \fBUint16\fP *data, \fBUint16\fPsize)"
+
+.PP
+Definition at line 606 of file srv_commands\&.cpp\&.
+.PP
+References ACTIVE, Ui_MainWindow::btn_set_emu_data, Ui_MainWindow::dockWidget_sen_cmd, msg(), and MSG_INFO\&.
+.PP
+.nf
+608 {
+609     if(editor != this->emu_data_buffer\&.current_editor){
+610       msg(MSG_INFO,
+611           QString("The selected editor is not valid\&.")+
+612           QString("\nYou must save the data to a file" )+
+613           QString(" to open it again with a new editor"));
+614 
+615         return;//this is zambi editor
+616     }
+617 
+618 
+619 
+620     memmove(this->emu_data_buffer\&.data,data,size);
+621 
+622 
+623     this->emu_data_buffer\&.processed = false;
+624     this->emu_data_buffer\&.valid = false;
+625     this->emu_data_buffer\&.current_editor = editor;
+626     ui->btn_set_emu_data->setStyleSheet(ACTIVE);
+627     ui->btn_set_emu_data->setText("Edit Data");
+628 
+629     this->show();
+630     this->raise();
+631     this->activateWindow();
+632 
+633     ui->dockWidget_sen_cmd->setWindowFlags(Qt::Window);
+634     ui->dockWidget_sen_cmd->show();
+635     ui->dockWidget_sen_cmd->raise();
+636     ui->dockWidget_sen_cmd->activateWindow();
+637 
+638 }
+.fi
+.SS "void MainWindow::srv_cmds_data_download_msg_handler (QStringdata)\fC [slot]\fP"
+TODO: clean up procedure
+.PP
+TODO: clean up procedure 
+.PP
+Definition at line 588 of file srv_protocol\&.cpp\&.
+.PP
+References serial_msg_t::arg, serial_msg_t::data_download, MAX_ATTACHMENT_LENGTH, serial_msg_t::multi_address, PBAR_FAILURE, serial_msg_t::processed, Ui_MainWindow::terminal, and serial_msg_t::vPos\&.
+.PP
+.nf
+588                                                                {
+589 
+590     
+591     uint  channel              = 0;
+592     uint  sensor_id            = 0;
+593     uint  arg                  = 0;
+594     uint  copied_data_length   = 0;
+595     char attachment[2*MAX_ATTACHMENT_LENGTH];
+596 
+597     memset(attachment,0,sizeof(attachment));
+598 
+599         if(data\&.contains("#Error"))
+600         {
+601              bool repeat = true;
+602              QString result =  QString("\n#Error: data verification error \n ");
+603              ui->terminal->textCursor()\&.insertText(result+"\n"+data);
+604 
+605              QString Question =
+606                      QString("The response from the selected sensor (SEN address = ")
+607                      +QString::number(last_cmd\&.arg[1])
+608                      +QString(") contains error \&.\n")
+609                      +QString("Do you want to run the command again ?");
+610 
+611              QMessageBox msgBox;
+612              msgBox\&.setWindowIcon(QMainWindow::windowIcon());
+613              msgBox\&.setWindowTitle(QMainWindow::windowTitle());
+614              msgBox\&.setText(Question);
+615              msgBox\&.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+616 
+617 
+618              if(msgBox\&.exec() == QMessageBox::No)
+619                       repeat = false;
+620 
+621                  if(last_cmd\&.multi_address){
+622 
+623                      if(!repeat){
+624                      last_cmd\&.processed = true;
+625                      multi_cmds[last_cmd\&.vPos]\&.varified = true;
+626                      multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setStyleSheet(PBAR_FAILURE);
+627                      
+628                      last_cmd\&.arg[2]=0;//reset offset to zero for new data transmission
+629                        
+630                      last_cmd\&.data_download\&.total_size\&.copied       = 0;
+631                      
+632                      last_cmd\&.data_download\&.offset                  = 0;
+633                      
+634                      last_cmd\&.arg[3]              
+635                              = ((MAX_ATTACHMENT_LENGTH-(last_cmd\&.data_download\&.total_size\&.expected))<0)?
+636                                  MAX_ATTACHMENT_LENGTH:last_cmd\&.data_download\&.total_size\&.expected;
+637                      
+638                      if((last_cmd\&.vPos < (multi_cmds\&.length() - 1)))
+639                          last_cmd\&.vPos++;
+640                      else{
+642                          return;
+643                       }
+644                      }
+645 
+646 
+647                      last_cmd\&.arg[1] = multi_cmds[last_cmd\&.vPos]\&.address;
+648 
+649                      multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setValue(20);
+650 
+651                      srv_cmds_execute(last_cmd/*now current cmd*/);
+652 
+653                  }else{
+654 
+655                      if(repeat){
+656                         //simply repeat the previous command
+657                         srv_cmds_execute(last_cmd/*now current cmd*/);
+658                         return;
+659                      }
+660 
+661 
+662                      last_cmd\&.processed = true;
+663 
+665                  }
+666 
+667 
+668             return;
+669          }
+670 
+671         if((data\&.length() == 8) && sscanf(data\&.toLatin1(),"%02X%02X%04X",&channel,&sensor_id,&arg) == 3)
+672         {
+673 
+674             srv_cmds_general_msg_handler(data);
+675             return;
+676         }
+677        
+678         
+679 
+680         if(sscanf(data\&.toLatin1(),"%02X%02X%04X%04X%s",&channel,&sensor_id,&arg,&copied_data_length,attachment) == 5)
+681         {
+682 
+683             //TODO:
+684            /*
+685            if(copied_data_length != sizeof(attachment)){
+686 
+687                retransmission("#Error: Received data  validation ");
+688                return;
+689            }*/
+690 
+691 
+692            if(arg == ACK){
+693 
+694                if(copied_data_length-last_cmd\&.data_download\&.offset == last_cmd\&.arg[3]/*requested data length*/)
+695                {
+696                if(msg_to_mem(
+697                       attachment,
+698                       (((Uint8 *)last_cmd\&.data_download\&.storage_location)+last_cmd\&.data_download\&.offset),
+699                       last_cmd\&.arg[3]
+700                           )){
+701                    last_cmd\&.data_download\&.total_size\&.copied = copied_data_length;
+702 
+703                   }else
+704                   if(last_cmd\&.data_download\&.total_size\&.copied+last_cmd\&.arg[3] != copied_data_length){
+705                     Failure();
+706                   }else{
+707                    
+708                    qCritical() <<"Unable to copy received data to memory "
+709                                <<"in MainWindow::srv_cmds_data_download_msg_handler";
+710                 
+711                    exit(1);
+712                    
+713                   }
+714                }else{
+715                    
+716                   retransmission("#Error: Received data  validation ");
+717                   return;
+718                }
+719                
+720                if(copied_data_length == last_cmd\&.data_download\&.total_size\&.expected){
+721                    last_cmd\&.processed = true;
+722                    QString result =  QString("Command execution verified\n");
+723                    ui->terminal->textCursor()\&.insertText(result);
+724 
+725                    
+726                    record_preview(last_cmd);
+727                    
+728                    if(last_cmd\&.multi_address){
+729                         multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setValue(100);
+730                         multi_cmds[last_cmd\&.vPos]\&.varified = true;
+731                     if(last_cmd\&.vPos < (multi_cmds\&.length()-1)){
+732                        last_cmd\&.vPos++;
+733                        last_cmd\&.arg[1] = multi_cmds[last_cmd\&.vPos]\&.address;
+734                        last_cmd\&.arg[2] = 0;//data transfer starts fresh
+735                        
+736                        last_cmd\&.data_download\&.total_size\&.copied     = 0;
+737                        
+738                        last_cmd\&.data_download\&.offset                = 0;
+739                        
+740                        last_cmd\&.arg[3]              
+741                                = ((MAX_ATTACHMENT_LENGTH-(last_cmd\&.data_download\&.total_size\&.expected))<0)?
+742                                    MAX_ATTACHMENT_LENGTH:last_cmd\&.data_download\&.total_size\&.expected;
+743 
+744                        srv_cmds_execute(last_cmd/*now current cmd*/);
+745                    }else
+746                        ui->btn_execute_cmd->setEnabled(true);
+747 
+748                    }
+749 
+750                }else if(copied_data_length < last_cmd\&.data_download\&.total_size\&.expected){
+751                    Uint16 remaining_data_length 
+752                            = last_cmd\&.data_download\&.total_size\&.expected 
+753                            - last_cmd\&.data_download\&.total_size\&.copied;
+754 
+755                    last_cmd\&.data_download\&.offset = last_cmd\&.data_download\&.total_size\&.copied;
+756                    last_cmd\&.arg[2] = last_cmd\&.data_download\&.offset;  //sets current offset
+757 
+758                    last_cmd\&.arg[3] = ((MAX_ATTACHMENT_LENGTH-remaining_data_length)<0)?
+759                                           MAX_ATTACHMENT_LENGTH:remaining_data_length;
+760 
+761                    srv_cmds_execute(last_cmd/*now current cmd*/);
+762                }else{
+763 
+764                    
+765                    qWarning() <<"Unexpected result, considered as data transfer error"
+766                               <<"in MainWindow::srv_cmds_data_transfer_msg_handler";
+767                    
+768                    
+769                    retransmission("#Error: Received data  validation");
+770                    return;
+771                }
+772 
+773            }else{
+774 
+775                qWarning() <<"Unexpected argument received, considered as data transfer error"
+776                           <<"in MainWindow::srv_cmds_data_transfer_msg_handler";
+777                
+778                
+779                retransmission("#Error: Received data  validation");
+780                return;
+781 
+782            }
+783 
+784 
+785 
+786          }
+787 
+788 
+789     
+790 
+791 }
+.fi
+.SS "void MainWindow::srv_cmds_data_transfer_msg_handler (QStringdata)\fC [slot]\fP"
+TODO: clean up procedure 
+.PP
+Definition at line 437 of file srv_protocol\&.cpp\&.
+.PP
+References serial_msg_t::arg, serial_msg_t::attachment_length, MAX_ATTACHMENT_LENGTH, serial_msg_t::multi_address, PBAR_FAILURE, serial_msg_t::processed, Ui_MainWindow::terminal, and serial_msg_t::vPos\&.
+.PP
+.nf
+437                                                                {
+438 
+439     unsigned int  channel               = 0;
+440     unsigned int  sensor_id             = 0;
+441     unsigned int  arg                   = 0;
+442     unsigned int  copied_data_length    = 0;
+443 
+444         if(data\&.contains("#Error"))
+445         {
+446              bool repeat = true;
+447              QString result =  QString("\n#Error: data verification error \n ");
+448              ui->terminal->textCursor()\&.insertText(result+"\n"+data);
+449 
+450              QString Question =
+451                      QString("The response from the selected sensor (SEN address = ")
+452                      +QString::number(last_cmd\&.arg[1])
+453                      +QString(") contains error \&.\n")
+454                      +QString("Do you want to run the command again ?");
+455 
+456              QMessageBox msgBox;
+457              msgBox\&.setWindowIcon(QMainWindow::windowIcon());
+458              msgBox\&.setWindowTitle(QMainWindow::windowTitle());
+459              msgBox\&.setText(Question);
+460              msgBox\&.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+461 
+462 
+463              if(msgBox\&.exec() == QMessageBox::No)
+464                       repeat = false;
+465 
+466                  if(last_cmd\&.multi_address){
+467 
+468                      if(!repeat){
+469                      last_cmd\&.processed = true;
+470                      multi_cmds[last_cmd\&.vPos]\&.varified = true;
+471                      multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setStyleSheet(PBAR_FAILURE);
+472                      last_cmd\&.arg[2]=0;//reset offset to zero for new data transmission
+473                      last_cmd\&.arg[3]= ((MAX_ATTACHMENT_LENGTH-(last_cmd\&.attachment_length))<0)?
+474                                           MAX_ATTACHMENT_LENGTH:last_cmd\&.attachment_length;
+475                      if((last_cmd\&.vPos < (multi_cmds\&.length() - 1)))
+476                          last_cmd\&.vPos++;
+477                      else{
+478 
+479                          return;
+480                       }
+481                      }
+482 
+483 
+484                      last_cmd\&.arg[1] = multi_cmds[last_cmd\&.vPos]\&.address;
+485 
+486                      multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setValue(20);
+487 
+488                      srv_cmds_execute(last_cmd/*now current cmd*/);
+489 
+490                  }else{
+491 
+492                      if(repeat){
+493                         //simply repeat the previous command
+494                         srv_cmds_execute(last_cmd/*now current cmd*/);
+495                         return;
+496                      }
+497 
+498 
+499                      last_cmd\&.processed = true;
+500 
+502                  }
+503 
+504 
+505             return;
+506          }
+507 
+508         if(data\&.length() == 8 && sscanf(data\&.toLatin1(),"%02X%02X%04X",&channel,&sensor_id,&arg) == 3)
+509         {
+510 
+511             srv_cmds_general_msg_handler(data);
+512             return;
+513         }
+514 
+515 
+516         if(sscanf(data\&.toLatin1(),"%02X%02X%04X%04X",&channel,&sensor_id,&arg,&copied_data_length) == 4)
+517         {
+518 
+519            if(arg == ACK){
+520 
+521                if(copied_data_length == last_cmd\&.attachment_length){
+522                    last_cmd\&.processed = true;
+523                    QString result =  QString("Command execution verified\n");
+524                    ui->terminal->textCursor()\&.insertText(result);
+525 
+526                    if(last_cmd\&.multi_address){
+527                         multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setValue(100);
+528                         multi_cmds[last_cmd\&.vPos]\&.varified = true;
+529                     if(last_cmd\&.vPos < (multi_cmds\&.length()-1)){
+530                        last_cmd\&.vPos++;
+531                        last_cmd\&.arg[1] = multi_cmds[last_cmd\&.vPos]\&.address;
+532                        last_cmd\&.arg[2] = 0;//data transfer starts fresh
+533                        last_cmd\&.arg[3]= ((MAX_ATTACHMENT_LENGTH-(last_cmd\&.attachment_length))<0)?
+534                                           MAX_ATTACHMENT_LENGTH:last_cmd\&.attachment_length;
+535                        srv_cmds_execute(last_cmd/*now current cmd*/);
+536                    }else
+537                        ui->btn_execute_cmd->setEnabled(true);
+538 
+539                    }
+540 
+541 
+542                }else if(copied_data_length < last_cmd\&.attachment_length){
+543                    Uint16 remaining_data_length = last_cmd\&.attachment_length - copied_data_length;
+544 
+545                    QString result =  QString("data transfer verification\n");
+546                    ui->terminal->textCursor()\&.insertText(result);
+547 
+548                    result =  QString("Copied data length :"+QString::number(copied_data_length)+" byte\n");
+549                    ui->terminal->textCursor()\&.insertText(result);
+550 
+551                    result =  QString("Remaining data length "+QString::number(remaining_data_length)+" byte\n");
+552                    ui->terminal->textCursor()\&.insertText(result);
+553 
+554 
+555 
+556 
+557                    //TODO: check copid data length is valid  (very important)
+558 
+559                    last_cmd\&.arg[2] = copied_data_length;  //sets current offset
+560 
+561                    last_cmd\&.arg[3] = ((MAX_ATTACHMENT_LENGTH-remaining_data_length)<0)?
+562                                           MAX_ATTACHMENT_LENGTH:remaining_data_length;
+563 
+564                    srv_cmds_execute(last_cmd/*now current cmd*/);
+565                }else{
+566 
+567 
+568                    qWarning() <<"Unexpected result, considered as data transfer error"
+569                               <<"in MainWindow::srv_cmds_data_transfer_msg_handler";
+570                }
+571 
+572            }else{
+573 
+574                qWarning() <<"Unexpected argument received, considered as data transfer error"
+575                           <<"in MainWindow::srv_cmds_data_transfer_msg_handler";
+576 
+577            }
+578 
+579 
+580 
+581          }
+582 
+583 
+584 
+585 }
+.fi
+.SS "void MainWindow::srv_cmds_general_msg_handler (QStringdata)\fC [slot]\fP"
+
+.PP
+Definition at line 293 of file srv_protocol\&.cpp\&.
+.PP
+References serial_msg_t::arg, serial_msg_t::multi_address, PBAR_FAILURE, serial_msg_t::processed, Ui_MainWindow::terminal, and serial_msg_t::vPos\&.
+.PP
+.nf
+293                                                          {
+294 
+295 uint  channel   = 0;
+296 uint  sensor_id = 0;
+297 uint  arg       = 0;
+298 
+299     if(data\&.contains("#Error"))
+300     {
+301 
+302          QString result =  QString("\n#Error: data verification error \n ");
+303          ui->terminal->textCursor()\&.insertText(result+"\n"+data);
+304 
+305 
+306              if(last_cmd\&.multi_address){
+307 
+308                  QString Question =
+309                          QString("The response from the selected sensor (SEN address = ")
+310                          +QString::number(last_cmd\&.arg[1])
+311                          +QString(") contains error \&.\n")
+312                          +QString("Do you want to run the command again ?");
+313 
+314                  QMessageBox msgBox;
+315                  msgBox\&.setWindowIcon(QMainWindow::windowIcon());
+316                  msgBox\&.setWindowTitle(QMainWindow::windowTitle());
+317                  msgBox\&.setText(Question);
+318                  msgBox\&.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+319 
+320 
+321                  if(msgBox\&.exec() == QMessageBox::No){
+322                  last_cmd\&.processed = true;
+323                  multi_cmds[last_cmd\&.vPos]\&.varified = true;
+324                  multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setStyleSheet(PBAR_FAILURE);
+325                  if((last_cmd\&.vPos < (multi_cmds\&.length() - 1)))
+326                      last_cmd\&.vPos++;
+327                  else{
+328 
+329                      return;
+330                   }
+331                  }
+332 
+333 
+334                  last_cmd\&.arg[1] = multi_cmds[last_cmd\&.vPos]\&.address;
+335 
+336 
+337                  multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setValue(20);
+338 
+339                  srv_cmds_execute(last_cmd/*now current cmd*/);
+340 
+341              }else{
+342                  last_cmd\&.processed = true;
+343              }
+344 
+345              return;
+346      }
+347 
+348 
+349 
+350     if(sscanf(data\&.toLatin1(),"%02X%02X%04X",&channel,&sensor_id,&arg) == 3){
+351 
+352        if(arg == ACK){
+353 
+354                     last_cmd\&.processed = true;
+355                     QString result =  QString("Command execution verified\n");
+356                     ui->terminal->textCursor()\&.insertText(result);
+357 
+358                     if(last_cmd\&.multi_address){
+359                          multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setValue(100);
+360                          multi_cmds[last_cmd\&.vPos]\&.varified = true;
+361                      if(last_cmd\&.vPos < (multi_cmds\&.length()-1)){
+362                         last_cmd\&.vPos++;
+363                         last_cmd\&.arg[1] = multi_cmds[last_cmd\&.vPos]\&.address;
+364                         srv_cmds_execute(last_cmd/*now current cmd*/);
+365                     }else
+366                         ui->btn_execute_cmd->setEnabled(true);
+367 
+368                     }
+369 
+370 
+371 
+372 
+373        }
+374        else if(arg == ARG_PROCESSING_CMD_WAIT_MSG)
+375        {
+376 
+377                 QString result =  QString("Processing command, Please Wait \&.\&.\&.\n ");
+378                 ui->terminal->textCursor()\&.insertText(result);
+379 
+380        }
+381        if(arg == ARG_SEN_COMM_ERROR_NO_RESPONSE)
+382        {
+383 
+384             QString result =  QString("#Communication Error, Sensor not responding\n ");
+385             ui->terminal->textCursor()\&.insertText(result);
+386 
+387 
+388                 if(last_cmd\&.multi_address){
+389 
+390                     QString Question =
+391                             QString("Communication error, the selected sensor (SEN address = ")
+392                             +QString::number(multi_cmds[last_cmd\&.vPos]\&.address)
+393                             +QString(") is not responding\&.\n")
+394                             +QString("Do you want to try again ?");
+395 
+396                     QMessageBox msgBox;
+397                     msgBox\&.setWindowIcon(QMainWindow::windowIcon());
+398                     msgBox\&.setWindowTitle(QMainWindow::windowTitle());
+399                     msgBox\&.setText(Question);
+400                     msgBox\&.setStandardButtons(QMessageBox::Yes|QMessageBox::No);
+401 
+402 
+403                     if(msgBox\&.exec() == QMessageBox::No){
+404                     last_cmd\&.processed = true;
+405                     multi_cmds[last_cmd\&.vPos]\&.varified = true;
+406                     multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setStyleSheet(PBAR_FAILURE);
+407                     if((last_cmd\&.vPos < (multi_cmds\&.length() - 1)))
+408                         last_cmd\&.vPos++;
+409                     else{
+410 
+411                         return;
+412                      }
+413                     }
+414 
+415 
+416                     last_cmd\&.arg[1] = multi_cmds[last_cmd\&.vPos]\&.address;
+417 
+418 
+419                     multi_cmds[last_cmd\&.vPos]\&.gui\&.pBar->setValue(20);
+420 
+421                     srv_cmds_execute(last_cmd/*now current cmd*/);
+422 
+423                 }else{
+424                     last_cmd\&.processed = true;
+425                 }
+426         }
+427 
+428 
+429 
+430 
+431      }
+432 
+433 
+434 }
+.fi
+.SS "QString MainWindow::uint8_to_str (\fBUint8\fPval)"
+
+.PP
+Definition at line 174 of file mainwindow\&.cpp\&.
+.PP
+.nf
+175 {
+176     const char cnv[] = "0123456789ABCDEF";
+177 
+178     return QString(cnv[(val>>4)&0x0F]) + QString(cnv[(val>>0)&0x0F]);
+179 }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "QString MainWindow::dir_default"
+
+.PP
+Definition at line 63 of file mainwindow\&.h\&.
+.PP
+Referenced by ListFiles(), and MainWindow()\&.
+.SS "QString MainWindow::eventRecoredList"
+
+.PP
+Definition at line 61 of file mainwindow\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

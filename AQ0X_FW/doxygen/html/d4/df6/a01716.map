@@ -1,0 +1,12 @@
+<map id="uv_sen_data_t" name="uv_sen_data_t">
+<area shape="rect" id="node2" href="$dd/da2/a00019.html#db/d10/a00350" title="{configured_t\n||}" alt="" coords="272,435,364,513"/>
+<area shape="rect" id="node13" href="$dd/da2/a00019.html#dc/d41/a00862" title="Notification structure. " alt="" coords="1343,428,1477,520"/>
+<area shape="rect" id="node16" href="$dd/d1b/a00015.html#d6/db2/a00601" title="{module_status_t\n||}" alt="" coords="1505,435,1624,513"/>
+<area shape="rect" id="node20" href="$db/db2/a00020.html#d3/daf/a00790" title="sensor supervission replay status report structure " alt="" coords="1028,435,1147,513"/>
+<area shape="rect" id="node21" href="$dd/d1b/a00015.html#dc/de3/a00373" title="{diagonesis_records\l_light_t\n||}" alt="" coords="1184,428,1319,520"/>
+<area shape="rect" id="node7" href="$d6/d5b/a00026.html" title="{module_disturbance\l_record_t\n|+ event_data\l|+ __attribute__()\l}" alt="" coords="799,428,938,520"/>
+<area shape="rect" id="node8" href="$db/db2/a00020.html#d8/ddc/a00655" title="{pre_act_record_buffer_t\n||}" alt="" coords="746,195,903,272"/>
+<area shape="rect" id="node10" href="$db/df3/a00034.html#d4/d60/a00847" title="OS event. " alt="" coords="1885,195,1951,272"/>
+<area shape="rect" id="node14" href="$db/df3/a00034.html#de/d37/a00849" title="{x_notify\n||}" alt="" coords="1678,195,1745,272"/>
+<area shape="rect" id="node17" href="$dd/d1b/a00015.html#d3/d00/a00785" title="{state_data_light_t\n||}" alt="" coords="1395,195,1521,272"/>
+</map>

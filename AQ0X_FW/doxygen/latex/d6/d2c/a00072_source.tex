@@ -1,0 +1,60 @@
+\hypertarget{a00072_source}{\section{System.\+h}
+\label{a00072_source}\index{System.\+h@{System.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00010 \textcolor{preprocessor}{#ifndef SYSTEM\_H}
+00011 \textcolor{preprocessor}{#define SYSTEM\_H}
+00012 
+00013 
+00014 \textcolor{comment}{//Defines for System Clock Timing -}
+00015 \textcolor{comment}{// Configure Oscillator to operate the device at 60MIPS}
+00016 \textcolor{comment}{// Fosc  = Fin*M/(N1*N2)=Fin*(PLLDIV+2)/((PLLPRE+2)*2(PLLPOST+1)), Fcy=Fosc/2}
+00017 \textcolor{comment}{// Fvco  = Fin*M/N1 = Fin*(PLLDIV+2)/(PLLPRE+2)}
+00018 \textcolor{comment}{// Fosc  = 7.37M*65/(2*3) = 80Mhz for 7.37MHz FRC input clock}
+00019 
+\hypertarget{a00072_source_l00020}{}\hyperlink{a00072_a512a7743d94a6335ddd824498dc56df7}{00020} \textcolor{preprocessor}{#define PLL\_PRESCALER\_N1      2}
+00021 
+\hypertarget{a00072_source_l00022}{}\hyperlink{a00072_a39c4650028eea85070da15dc0a967d8a}{00022} \textcolor{preprocessor}{#define PLL\_POSTSCALER\_N2     3}
+00023 
+\hypertarget{a00072_source_l00024}{}\hyperlink{a00072_a616f73024087cf3c328cde290113065a}{00024} \textcolor{preprocessor}{#define PLL\_FEEDBACK\_M        65}
+00025 
+00026 
+\hypertarget{a00072_source_l00028}{}\hyperlink{a00072_a719092b960b832b468fd401ed27b9003}{00028} \textcolor{preprocessor}{#define XTFREQ\_CPU           (7370000)}
+00029 
+00030 
+\hypertarget{a00072_source_l00032}{}\hyperlink{a00072_a0d6b8c656533d3c815daa9d575998950}{00032} \textcolor{preprocessor}{#define PLLMODE\_CPU          (16)}
+00033 \textcolor{comment}{//#define FOSC\_CPU             (XTFREQ\_CPU*PLL\_FEEDBACK\_M/(PLL\_PRESCALER\_N1*PLL\_POSTSCALER\_N2))}
+\hypertarget{a00072_source_l00035}{}\hyperlink{a00072_a64b7f2fd4683ad3dcd74ccab1eba40d7}{00035} \textcolor{preprocessor}{#define FOSC\_CPU             120000000}
+\hypertarget{a00072_source_l00036}{}\hyperlink{a00072_a573f918b7668f8f2b59ac8adeae633a4}{00036} \textcolor{preprocessor}{#define FCY\_CPU              (FOSC\_CPU/2)}
+00037 \textcolor{comment}{//#define \_XTAL\_FREQ           (7370000 * 16 /4)}
+00038 
+00039 
+\hypertarget{a00072_source_l00040}{}\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{00040} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}        \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8};
+\hypertarget{a00072_source_l00041}{}\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{00041} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}         \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16};
+\hypertarget{a00072_source_l00042}{}\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{00042} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long}        \hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32};
+\hypertarget{a00072_source_l00043}{}\hyperlink{a00072_a69e971e1bcd1d1beb4e09a8b17a95636}{00043} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long}   \hyperlink{a00072_a69e971e1bcd1d1beb4e09a8b17a95636}{Uint64};
+00044 
+\hypertarget{a00072_source_l00045}{}\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{00045} \textcolor{keyword}{typedef} \textcolor{keywordtype}{float}                \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32};
+\hypertarget{a00072_source_l00046}{}\hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{00046} \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed} \textcolor{keywordtype}{char}          \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8};
+\hypertarget{a00072_source_l00047}{}\hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{00047} \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed} \textcolor{keywordtype}{int}           \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16};
+\hypertarget{a00072_source_l00048}{}\hyperlink{a00072_a184d0ff2424cf4b81c68ce9538481a04}{00048} \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed} \textcolor{keywordtype}{long}          \hyperlink{a00072_a184d0ff2424cf4b81c68ce9538481a04}{Int32};
+\hypertarget{a00072_source_l00049}{}\hyperlink{a00072_a56afe571a9be7582d493be2b31aed0ea}{00049} \textcolor{keyword}{typedef} \textcolor{keywordtype}{signed} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long}     \hyperlink{a00072_a56afe571a9be7582d493be2b31aed0ea}{Int64};
+\hypertarget{a00072_source_l00050}{}\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{00050} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}        \hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool};
+\hypertarget{a00072_source_l00051}{}\hyperlink{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}{00051} \textcolor{keyword}{typedef} \textcolor{keyword}{const} \textcolor{keywordtype}{char}           \hyperlink{a00072_ab151ad5c5a3b673cb8815c87ed7f706c}{CChar};
+00052 
+00053 
+00054 
+00055 
+00056 \textcolor{preprocessor}{#ifdef \_\_DEBUG}
+00057 \textcolor{preprocessor}{#define ASSERT(c\_)    if(!(c\_))while(1)\{\};}
+00058 \textcolor{preprocessor}{#else}
+\hypertarget{a00072_source_l00059}{}\hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{00059} \textcolor{preprocessor}{#define ASSERT(c\_)}
+00060 
+00061 \textcolor{preprocessor}{#endif}
+00062 
+00063 
+00064 
+00065 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

@@ -1,0 +1,498 @@
+\hypertarget{a00056}{\section{srv\+\_\+hwio.\+c File Reference}
+\label{a00056}\index{srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}}
+}
+{\ttfamily \#include \char`\"{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}..\textbackslash{}includes\+\_\+prv\textbackslash{}aq0\+X\textbackslash{}srv\+\_\+hwio\+\_\+prv.\+h\char`\"{}}\\*
+Include dependency graph for srv\+\_\+hwio.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{d6/d26/a01678}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00056_a335d9e8391450a8e88dd4852700d81b7}{hwio\+\_\+configure\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Low level gpio/analog configuration. \end{DoxyCompactList}\item 
+void \hyperlink{a00056_a33a6b6b17536decccd19c7132479c20b}{hwio\+\_\+configure\+\_\+analog\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Low level analog. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} \hyperlink{a00056_a1327cee26589588e02e03453f3cc7871}{hwio\+\_\+get\+\_\+analog} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} ana\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em Retrives A/\+D hardware buffer value. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8} \hyperlink{a00056_a0af9eae455fbdf4e77def5bfffa109cb}{hwio\+\_\+execute\+\_\+gpio\+\_\+task} (\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} cmd)
+\begin{DoxyCompactList}\small\item\em gpio port control helper function \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00034_dc/d0c/a00783}{srv\+\_\+hwio\+\_\+data\+\_\+t} \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\+\_\+hwio\+\_\+data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{a00056_a33a6b6b17536decccd19c7132479c20b}{\index{srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}!hwio\+\_\+configure\+\_\+analog\+\_\+init@{hwio\+\_\+configure\+\_\+analog\+\_\+init}}
+\index{hwio\+\_\+configure\+\_\+analog\+\_\+init@{hwio\+\_\+configure\+\_\+analog\+\_\+init}!srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}}
+\subsubsection[{hwio\+\_\+configure\+\_\+analog\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void hwio\+\_\+configure\+\_\+analog\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00056_a33a6b6b17536decccd19c7132479c20b}
+
+
+Low level analog. 
+
+
+
+Definition at line \hyperlink{a00056_source_l00099}{99} of file \hyperlink{a00056_source}{srv\+\_\+hwio.\+c}.
+
+
+
+References \hyperlink{a00034_source_l00015}{A\+N\+A\+\_\+\+S\+E\+L\+\_\+\+I\+R\+\_\+\+A\+N\+S\+E\+L}, \hyperlink{a00034_source_l00016}{A\+N\+A\+\_\+\+S\+E\+L\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+X\+\_\+\+A\+N\+S\+E\+L}, \hyperlink{a00034_source_l00017}{A\+N\+A\+\_\+\+S\+E\+L\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+Y\+\_\+\+A\+N\+S\+E\+L}, \hyperlink{a00034_source_l00018}{A\+N\+A\+\_\+\+S\+E\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+S\+V\+\_\+\+A\+\_\+\+A\+N\+S\+E\+L}, \hyperlink{a00034_source_l00019}{A\+N\+A\+\_\+\+S\+E\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+S\+V\+\_\+\+B\+\_\+\+A\+N\+S\+E\+L}, \hyperlink{a00034_source_l00014}{A\+N\+A\+\_\+\+S\+E\+L\+\_\+\+U\+V\+\_\+\+A\+N\+S\+E\+L}, and \hyperlink{a00033_a3b0017f6ec0e04a6435bba00fe325294}{Delay5us()}.
+
+
+
+Referenced by \hyperlink{a00056_source_l00041}{hwio\+\_\+configure\+\_\+init()}.
+
+
+\begin{DoxyCode}
+00100 \{
+00101 
+00102 
+00103          \textcolor{comment}{/* Set port configuration */}
+00104         ANSELA = ANSELB = 0x0000;        \textcolor{comment}{//}
+00105         \hyperlink{a00034_a5c4bafbc140f9232d3410e8461240327}{ANA\_SEL\_MFIELD\_X\_ANSEL}      = 1; 
+00106         \hyperlink{a00034_a121ba9dc3a320a0abecef5ba9c8b0946}{ANA\_SEL\_MFIELD\_Y\_ANSEL}      = 1; 
+00107         \hyperlink{a00034_af692a6826edc2455e2437b7c9860270b}{ANA\_SEL\_IR\_ANSEL}            = 1; 
+00108         \hyperlink{a00034_acf69d047dc26f4c529899f0e43ff4df9}{ANA\_SEL\_UV\_ANSEL}            = 1;
+00109         \hyperlink{a00034_afe1ebe309c61fddca0d0e3e2d16d965e}{ANA\_SEL\_SUPPLY\_SV\_A\_ANSEL}   = 1;
+00110         
+00111         
+00112 \textcolor{preprocessor}{        #if(DEVICE == AQ0X\_V1)}
+00113         \hyperlink{a00034_abc756eb047363bce2c87f28467784805}{ANA\_SEL\_SUPPLY\_SV\_B\_ANSEL}   = 1;
+00114 \textcolor{preprocessor}{        #endif}
+00115 
+00116 
+00117         \textcolor{comment}{/* Initialize and enable ADC module */}
+00118         AD1CON1bits.ADON  = 0;     \textcolor{comment}{//ADC is off}
+00119 
+00120 
+00121         AD1CON1bits.ADDMABM = 0;   \textcolor{comment}{//DMA not used}
+00122         AD1CON1bits.AD12B   = 0;   \textcolor{comment}{//10-bit mode}
+00123         AD1CON1bits.FORM    = 0;   \textcolor{comment}{//Data Output Format integer}
+00124 
+00125 
+00126 
+00127         AD1CON1bits.SSRCG   = 0;   \textcolor{comment}{//Sample Clock Source Group bit}
+00128         AD1CON1bits.SSRC    = 7;   \textcolor{comment}{//Internal counter ends sampling and starts conversion (auto-convert)}
+00129         \textcolor{comment}{//AD1CON1bits.SSRC    = 0; //Clearing the Sample bit (SAMP) ends sampling and starts conversion
+       (Manual mode)}
+00130         AD1CON1bits.SIMSAM  = 1;   \textcolor{comment}{//Samples CH0, CH1, CH2, CH3 simultaneously (when CHPS<1:0> = 1x)}
+00131         AD1CON1bits.ASAM    = 1;   \textcolor{comment}{//ADC Sample Auto-Start bit, 0 =>Sampling begins when SAMP bit is set}
+00132         AD1CON1bits.SAMP    = 0;   \textcolor{comment}{//ADC Sample and Hold amplifiers are holding}
+00133 
+00134 
+00135 
+00136 
+00137         AD1CON2bits.VCFG    = 0;    \textcolor{comment}{//Vref Vdd = 3.3 & Vss = 0}
+00138         AD1CON2bits.CSCNA   = 0;    \textcolor{comment}{//Do not scan inputs}
+00139 
+00140         AD1CON2bits.CHPS    = 3;    \textcolor{comment}{//Channel Selection, Multi-Channel (CH0-CH3)}
+00141 
+00142         AD1CON2bits.SMPI    = 0;    \textcolor{comment}{// every sample/conversion}
+00143         AD1CON2bits.BUFM    = 0;
+00144         AD1CON2bits.ALTS    = 0;    \textcolor{comment}{//Always uses channel input selects for Sample A}
+00145 
+00146 
+00147 
+00148         AD1CON3bits.ADRC      = 0;    \textcolor{comment}{//Clock Derived from System Clock}
+00149         AD1CON3bits.SAMC      = 0;    \textcolor{comment}{//Auto Sample Time bits, 0TAD}
+00150         AD1CON3bits.ADCS      = 5;    \textcolor{comment}{// ADC Conversion Clock TAD=Tcy*(ADCS+1)= (1/60M)*6 = 100ns}
+00151         \textcolor{comment}{//112 for 90us Ts             // ADC Conversion Time for 10-bit Tc=12*Tad = 1.2us}
+00152 
+00153 
+00154                                         \textcolor{comment}{/*}
+00155 \textcolor{comment}{                                        TSMP = SAMC<4:0> * TAD}
+00156 \textcolor{comment}{                                        TCONV = 12 * TAD}
+00157 \textcolor{comment}{                                        *}
+00158 \textcolor{comment}{                                        *}
+00159 \textcolor{comment}{                                        TSIM = TSMP + (M · TCONV)}
+00160 \textcolor{comment}{                                        Where:}
+00161 \textcolor{comment}{                                        TSIM = Total time to sample and convert multiple channels with
+       simultaneous sampling.}
+00162 \textcolor{comment}{                                        TSMP = Sampling Time = SAMC<4:0>*TAD = 0}
+00163 \textcolor{comment}{                                        TCONV = Conversion Time = 12*TAD = (1/60M)*6 = 100ns }
+00164 \textcolor{comment}{                                        M = Number of channels selected by the CHPS<1:0> bits = 4}
+00165 \textcolor{comment}{}
+00166 \textcolor{comment}{                                        =>Total time to sample and convert multiple channels with
+       simultaneous sampling.}
+00167 \textcolor{comment}{                                        TSIM = TSMP + (M · TCONV) = 4*Tc = 48*TAD =  4.8us}
+00168 \textcolor{comment}{}
+00169 \textcolor{comment}{                                        */}
+00170 
+00171 
+00172         AD1CON4  = 0;                  \textcolor{comment}{//DMA disabled}
+00173 
+00174 
+00175         AD1CSSH               = 0;
+00176         AD1CSSL               = 0;    \textcolor{comment}{//input scan select register}
+00177 
+00178         AD1CHS0bits.CH0SA     = 3;    \textcolor{comment}{// MUXA +ve input selection (AIN3) for CH0}
+00179         AD1CHS0bits.CH0NA     = 0;    \textcolor{comment}{// MUXA -ve input selection (Vref-) for CH0}
+00180 
+00181         AD1CHS123bits.CH123SA = 0;   \textcolor{comment}{/* Select AN0 for CH1 +ve input}
+00182 \textcolor{comment}{                                        Select AN1 for CH2 +ve input}
+00183 \textcolor{comment}{                                        Select AN2 for CH3 +ve input*/}
+00184         AD1CHS123bits.CH123NA = 0;   \textcolor{comment}{// Select Vref- for CH1/CH2/CH3 -ve inputs}
+00185 
+00186 
+00187           \textcolor{comment}{/* Assign MUXB inputs */}
+00188         AD1CHS0bits.CH0SB       = 0;      \textcolor{comment}{// Select AN0 for CH0 +ve input}
+00189         AD1CHS0bits.CH0NB       = 0;      \textcolor{comment}{// Select VREF- for CH0 -ve input}
+00190         AD1CHS123bits.CH123SB   = 0;      \textcolor{comment}{// Select AN3 for CH1 +ve input}
+00191                                           \textcolor{comment}{// Select AN4 for CH2 +ve input}
+00192                                           \textcolor{comment}{// Select AN5 for CH3 +ve input}
+00193         AD1CHS123bits.CH123NB   = 0;        \textcolor{comment}{// Select VREF- for CH1/CH2/CH3 -ve inputs}
+00194 
+00195         IFS0bits.AD1IF = 0;       \textcolor{comment}{// Clear the A/D interrupt flag bit}
+00196         IEC0bits.AD1IE = 0;           \textcolor{comment}{// Do Not Enable A/D interrupt}
+00197         AD1CON1bits.ADON = 1;         \textcolor{comment}{// Turn on the A/D converter}
+00198 
+00199         AD1CON1bits.SAMP = 1;
+00200 
+00201         \hyperlink{a00033_a3b0017f6ec0e04a6435bba00fe325294}{Delay5us}(4);
+00202 
+00203 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{d9/d2e/a00056_a33a6b6b17536decccd19c7132479c20b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d2e/a00056_a33a6b6b17536decccd19c7132479c20b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00056_a335d9e8391450a8e88dd4852700d81b7}{\index{srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}!hwio\+\_\+configure\+\_\+init@{hwio\+\_\+configure\+\_\+init}}
+\index{hwio\+\_\+configure\+\_\+init@{hwio\+\_\+configure\+\_\+init}!srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}}
+\subsubsection[{hwio\+\_\+configure\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void hwio\+\_\+configure\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{a00056_a335d9e8391450a8e88dd4852700d81b7}
+
+
+Low level gpio/analog configuration. 
+
+
+
+Definition at line \hyperlink{a00056_source_l00041}{41} of file \hyperlink{a00056_source}{srv\+\_\+hwio.\+c}.
+
+
+
+References \hyperlink{a00058_source_l00026}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+I\+R}, \hyperlink{a00058_source_l00027}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+X}, \hyperlink{a00058_source_l00028}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+Y}, \hyperlink{a00058_source_l00025}{A\+N\+A\+\_\+\+I\+N\+D\+E\+X\+\_\+\+U\+V}, \hyperlink{a00060_source_l00016}{data\+\_\+non\+\_\+volatile}, \hyperlink{a00033_a3b0017f6ec0e04a6435bba00fe325294}{Delay5us()}, \hyperlink{a00058_source_l00052}{D\+I\+G\+\_\+\+A\+L\+A\+R\+M\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+L\+A\+T}, \hyperlink{a00034_source_l00032}{D\+I\+G\+\_\+\+A\+L\+A\+R\+M\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+T\+R\+I\+S}, \hyperlink{a00034_source_l00034}{D\+I\+G\+\_\+\+H\+M\+C10\+X\+X\+\_\+\+P\+U\+L\+S\+E\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+T\+R\+I\+S}, \hyperlink{a00058_source_l00054}{D\+I\+G\+\_\+\+H\+M\+C10\+X\+X\+\_\+\+S\+R\+\_\+\+P\+U\+L\+S\+E\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+L\+A\+T}, \hyperlink{a00058_source_l00053}{D\+I\+G\+\_\+\+S\+U\+P\+E\+R\+V\+I\+S\+I\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+L\+A\+T}, \hyperlink{a00034_source_l00033}{D\+I\+G\+\_\+\+S\+U\+P\+E\+R\+V\+I\+S\+I\+O\+N\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+T\+R\+I\+S}, \hyperlink{a00058_source_l00051}{D\+I\+G\+\_\+\+T\+E\+S\+T\+\_\+\+L\+E\+D\+\_\+\+L\+A\+T}, \hyperlink{a00034_source_l00031}{D\+I\+G\+\_\+\+T\+E\+S\+T\+\_\+\+L\+E\+D\+\_\+\+T\+R\+I\+S}, \hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{srv\+\_\+hwio\+\_\+data\+\_\+t\+::emulation\+\_\+mode}, and \hyperlink{a00056_source_l00099}{hwio\+\_\+configure\+\_\+analog\+\_\+init()}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00042 \{
+00043     memset((\textcolor{keywordtype}{void}*)&\hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data},0,\textcolor{keyword}{sizeof}(\hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}));
+00044 
+00045     \textcolor{comment}{//hwio\_configure\_analog\_init();}
+00046 
+00047     \textcolor{comment}{// Configuring port outputs and startup value}
+00048     \textcolor{comment}{// All other port signals are inputs by default}
+00049 
+00050 
+00051     \textcolor{comment}{//self supervision lead}
+00052       \hyperlink{a00034_af8b26b4b9327a36f53d2d9acdec6d6c1}{DIG\_TEST\_LED\_TRIS}                 = 0;
+00053       \hyperlink{a00058_a4c044f78fb8b7ee19bfdb5d2b204b50e}{DIG\_TEST\_LED\_LAT}                  = 0;
+00054 
+00055     \textcolor{comment}{// Alarm output}
+00056       \hyperlink{a00034_a65c85b1d486b314430cd3a5b77ab84c3}{DIG\_ALARM\_OUTPUT\_TRIS}             = 0;
+00057       \hyperlink{a00058_adfa16e4e30e94462911794696252b2e2}{DIG\_ALARM\_OUTPUT\_LAT}              = 0;
+00058 
+00059     \textcolor{comment}{//relay supervision signal output}
+00060       \hyperlink{a00034_a5459e774c229eaef3db4a6dc3b3d13c2}{DIG\_SUPERVISION\_OUTPUT\_TRIS}       = 0;
+00061       \hyperlink{a00058_af90b9b01c8dc72faf22ed4f02d849cc8}{DIG\_SUPERVISION\_OUTPUT\_LAT}        = 0;
+00062 
+00063 
+00064    \textcolor{comment}{//HMC10XX set/reset strap operation pulse control}
+00065       \hyperlink{a00034_ab1c495ea3dba84156038b314588146b5}{DIG\_HMC10XX\_PULSE\_OUTPUT\_TRIS}     = 0;
+00066       \hyperlink{a00058_a257acf5e9bb0074bec6115ff3df89251}{DIG\_HMC10XX\_SR\_PULSE\_OUTPUT\_LAT}   = 1;
+00067 
+00068   
+00069 
+00070 
+00071     \textcolor{comment}{//other used ports are configured by responsible module}
+00072 
+00073      \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[\hyperlink{a00058_a1fae4d2e8dd35f504ec4170044da7e73}{ANA\_INDEX\_IR}] =
+00074              \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.ir.post\_act\_data.buffer.data.h;
+00075      \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[\hyperlink{a00058_af523b82e94e382153f1313307c5bd879}{ANA\_INDEX\_UV}] =
+00076              \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.uv.post\_act\_data.buffer.data.h;
+00077      \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[
+      \hyperlink{a00058_aa797210faae0317a1b0ddace04d1257e}{ANA\_INDEX\_MFIELD\_X}] =
+00078              \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_x.post\_act\_data.buffer.data.h;
+00079 \textcolor{preprocessor}{#ifdef MFIELD\_Y}
+00080      \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[
+      \hyperlink{a00058_aa2f14d4d069c5888b1d230be59751a09}{ANA\_INDEX\_MFIELD\_Y}] =
+00081              \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.mfield\_y.post\_act\_data.buffer.data.h;
+00082 \textcolor{preprocessor}{#endif}
+00083 \textcolor{preprocessor}{#if(DEVICE == AQ0X\_V1)}
+00084      \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[ANA\_INDEX\_LIGHT] = 
+00085              \hyperlink{a00060_a76ac5f917f5308dcd83de0d7c94559fb}{data\_non\_volatile}.disturbance\_record.light.post\_act\_data.buffer.data.h;
+00086 \textcolor{preprocessor}{#endif}
+00087 
+00088        \textcolor{comment}{// Init A/D}
+00089     \hyperlink{a00056_a33a6b6b17536decccd19c7132479c20b}{hwio\_configure\_analog\_init}();
+00090     \hyperlink{a00033_a3b0017f6ec0e04a6435bba00fe325294}{Delay5us}(4);
+00091 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d2e/a00056_a335d9e8391450a8e88dd4852700d81b7_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{d9/d2e/a00056_a335d9e8391450a8e88dd4852700d81b7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00056_a0af9eae455fbdf4e77def5bfffa109cb}{\index{srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}!hwio\+\_\+execute\+\_\+gpio\+\_\+task@{hwio\+\_\+execute\+\_\+gpio\+\_\+task}}
+\index{hwio\+\_\+execute\+\_\+gpio\+\_\+task@{hwio\+\_\+execute\+\_\+gpio\+\_\+task}!srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}}
+\subsubsection[{hwio\+\_\+execute\+\_\+gpio\+\_\+task}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int8} hwio\+\_\+execute\+\_\+gpio\+\_\+task (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{cmd}
+\end{DoxyParamCaption}
+)}}\label{a00056_a0af9eae455fbdf4e77def5bfffa109cb}
+
+
+gpio port control helper function 
+
+
+
+Definition at line \hyperlink{a00056_source_l00272}{272} of file \hyperlink{a00056_source}{srv\+\_\+hwio.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00058_source_l00052}{D\+I\+G\+\_\+\+A\+L\+A\+R\+M\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+L\+A\+T}, \hyperlink{a00058_source_l00058}{D\+I\+G\+\_\+\+A\+L\+A\+R\+M\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+P\+O\+R\+T}, \hyperlink{a00058_source_l00054}{D\+I\+G\+\_\+\+H\+M\+C10\+X\+X\+\_\+\+S\+R\+\_\+\+P\+U\+L\+S\+E\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+L\+A\+T}, \hyperlink{a00058_source_l00060}{D\+I\+G\+\_\+\+H\+M\+C10\+X\+X\+\_\+\+S\+R\+\_\+\+P\+U\+L\+S\+E\+\_\+\+O\+U\+T\+P\+U\+T\+\_\+\+P\+O\+R\+T}, \hyperlink{a00058_source_l00051}{D\+I\+G\+\_\+\+T\+E\+S\+T\+\_\+\+L\+E\+D\+\_\+\+L\+A\+T}, \hyperlink{a00058_source_l00057}{D\+I\+G\+\_\+\+T\+E\+S\+T\+\_\+\+L\+E\+D\+\_\+\+P\+O\+R\+T}, \hyperlink{a00058_source_l00043}{H\+W\+I\+O\+\_\+\+A\+L\+A\+R\+M\+\_\+\+O\+F\+F}, \hyperlink{a00058_source_l00042}{H\+W\+I\+O\+\_\+\+A\+L\+A\+R\+M\+\_\+\+O\+N}, \hyperlink{a00058_source_l00047}{H\+W\+I\+O\+\_\+\+A\+L\+A\+R\+M\+\_\+\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+U\+S}, \hyperlink{a00058_source_l00048}{H\+W\+I\+O\+\_\+\+H\+M\+C10\+X\+X\+\_\+\+P\+U\+L\+S\+E\+\_\+\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+U\+S}, \hyperlink{a00058_source_l00045}{H\+W\+I\+O\+\_\+\+H\+M\+C10\+X\+X\+\_\+\+P\+U\+L\+S\+E\+\_\+\+R\+S\+E\+T}, \hyperlink{a00058_source_l00044}{H\+W\+I\+O\+\_\+\+H\+M\+C10\+X\+X\+\_\+\+P\+U\+L\+S\+E\+\_\+\+S\+E\+T}, \hyperlink{a00058_source_l00041}{H\+W\+I\+O\+\_\+\+S\+V\+\_\+\+L\+E\+D\+\_\+\+O\+F\+F}, \hyperlink{a00058_source_l00040}{H\+W\+I\+O\+\_\+\+S\+V\+\_\+\+L\+E\+D\+\_\+\+O\+N}, and \hyperlink{a00058_source_l00046}{H\+W\+I\+O\+\_\+\+S\+V\+\_\+\+L\+E\+D\+\_\+\+P\+O\+R\+T\+\_\+\+S\+T\+A\+T\+U\+S}.
+
+
+
+Referenced by \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, and \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00272                                         \{
+00273 
+00274     \hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8} result = -1;
+00275         \textcolor{keywordflow}{switch}(cmd)
+00276         \{
+00277                  \textcolor{keywordflow}{case}  \hyperlink{a00058_aae186cdf37c0783bf64b0aed3f1e6eda}{HWIO\_SV\_LED\_ON}:
+00278                 \{
+00279                     \hyperlink{a00058_a4c044f78fb8b7ee19bfdb5d2b204b50e}{DIG\_TEST\_LED\_LAT} = 1;
+00280                     result = 0;
+00281                 \}\textcolor{keywordflow}{break};
+00282 
+00283                  \textcolor{keywordflow}{case}  \hyperlink{a00058_a8fe69ad7e533d2e88cec53c22a56f8fb}{HWIO\_SV\_LED\_OFF}:
+00284                 \{
+00285                     \hyperlink{a00058_a4c044f78fb8b7ee19bfdb5d2b204b50e}{DIG\_TEST\_LED\_LAT} = 0;
+00286                     result = 0;
+00287                 \}\textcolor{keywordflow}{break};
+00288 
+00289                  \textcolor{keywordflow}{case}  \hyperlink{a00058_ab1278d6ffe9c661f55b9f146f82b0be6}{HWIO\_SV\_LED\_PORT\_STATUS}:
+00290                 \{
+00291                     result = \hyperlink{a00058_a4c186ff7c22309dad906674fb20c72a2}{DIG\_TEST\_LED\_PORT};
+00292                 \}\textcolor{keywordflow}{break};
+00293 
+00294                  \textcolor{keywordflow}{case}  \hyperlink{a00058_abcbef2f48463bed54ae1c045303dbab8}{HWIO\_ALARM\_ON}:
+00295                 \{
+00296                     \hyperlink{a00058_adfa16e4e30e94462911794696252b2e2}{DIG\_ALARM\_OUTPUT\_LAT} = 1;
+00297                     result = 0;
+00298                 \}\textcolor{keywordflow}{break};
+00299 
+00300                  \textcolor{keywordflow}{case}  \hyperlink{a00058_a17401c2732dee3a19b55a210870b6d8d}{HWIO\_ALARM\_OFF}:
+00301                 \{
+00302                     \hyperlink{a00058_adfa16e4e30e94462911794696252b2e2}{DIG\_ALARM\_OUTPUT\_LAT} = 0;
+00303                     result = 0;
+00304                 \}\textcolor{keywordflow}{break};
+00305 
+00306                  \textcolor{keywordflow}{case}  \hyperlink{a00058_a584ae44c8dda691dd116f96dd76ccf84}{HWIO\_ALARM\_PORT\_STATUS}:
+00307                 \{
+00308                     result = \hyperlink{a00058_a740480cf500e2856ac89753c9fbf0b5b}{DIG\_ALARM\_OUTPUT\_PORT};
+00309 
+00310                 \}\textcolor{keywordflow}{break};
+00311 
+00312                  \textcolor{keywordflow}{case}  \hyperlink{a00058_a6e93f09b80c1e730d60fbce52cc29818}{HWIO\_HMC10XX\_PULSE\_SET}:
+00313                 \{
+00314                     \hyperlink{a00058_a257acf5e9bb0074bec6115ff3df89251}{DIG\_HMC10XX\_SR\_PULSE\_OUTPUT\_LAT} = 1;
+00315                
+00316                     result = 0;
+00317                 \}\textcolor{keywordflow}{break};
+00318 
+00319                  \textcolor{keywordflow}{case}  \hyperlink{a00058_ac5506797b126d9ef0f4495c899fb6ef6}{HWIO\_HMC10XX\_PULSE\_RSET}:
+00320                 \{
+00321                     \hyperlink{a00058_a257acf5e9bb0074bec6115ff3df89251}{DIG\_HMC10XX\_SR\_PULSE\_OUTPUT\_LAT} = 0;
+00322                     result = 0;
+00323                 \}\textcolor{keywordflow}{break};
+00324 
+00325 
+00326                  \textcolor{keywordflow}{case}  \hyperlink{a00058_ad1bba8a70503545d912de4334f47100c}{HWIO\_HMC10XX\_PULSE\_PORT\_STATUS}:
+00327                 \{
+00328                     result = \hyperlink{a00058_a4215a1b2a84b3308c07e27cebe0a1ea5}{DIG\_HMC10XX\_SR\_PULSE\_OUTPUT\_PORT};
+00329                     result = 0;
+00330                 \}\textcolor{keywordflow}{break};
+00331                 
+00332                 \textcolor{keywordflow}{default}:
+00333                 \{
+00334                    \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00335 
+00336                 \}\textcolor{keywordflow}{break};
+00337 
+00338         \}
+00339 
+00340         \textcolor{keywordflow}{return} result;
+00341 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d2e/a00056_a0af9eae455fbdf4e77def5bfffa109cb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00056_a1327cee26589588e02e03453f3cc7871}{\index{srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}!hwio\+\_\+get\+\_\+analog@{hwio\+\_\+get\+\_\+analog}}
+\index{hwio\+\_\+get\+\_\+analog@{hwio\+\_\+get\+\_\+analog}!srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}}
+\subsubsection[{hwio\+\_\+get\+\_\+analog}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint16} hwio\+\_\+get\+\_\+analog (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{ana\+\_\+idx}
+\end{DoxyParamCaption}
+)}}\label{a00056_a1327cee26589588e02e03453f3cc7871}
+
+
+Retrives A/\+D hardware buffer value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em An\+Idx} & A/\+D buffer index\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em A/\+D} & buffer value\\
+\hline
+\end{DoxyRetVals}
+Note\+: If emulation enabled, returns emulated value instead of real hw value 
+
+Definition at line \hyperlink{a00056_source_l00223}{223} of file \hyperlink{a00056_source}{srv\+\_\+hwio.\+c}.
+
+
+
+References \hyperlink{a00034_source_l00011}{A\+N\+A\+L\+O\+G\+\_\+\+H\+W\+\_\+\+C\+H\+A\+N\+N\+E\+L\+S}, \hyperlink{a00022_source_l00015}{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}, and \hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{srv\+\_\+hwio\+\_\+data\+\_\+t\+::emulation\+\_\+mode}.
+
+
+
+Referenced by \hyperlink{a00041_source_l00025}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, and \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00224 \{
+00225     \textcolor{keywordflow}{if}(ana\_idx >=\hyperlink{a00034_ab6ea71f43c4869429695d697be882efe}{ANALOG\_HW\_CHANNELS})
+00226     \{
+00227         \textcolor{keywordflow}{return} 0;
+00228     \}
+00229 
+00230 
+00231     \textcolor{keywordflow}{if}((\hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.enabled.all & (1<<ana\_idx)) == 0)
+00232     \{
+00233         \textcolor{keywordflow}{switch}(ana\_idx)
+00234         \{
+00235             \textcolor{keywordflow}{case}  0: \textcolor{keywordflow}{return} ADC1BUF0;
+00236             \textcolor{keywordflow}{case}  1: \textcolor{keywordflow}{return} ADC1BUF1;
+00237             \textcolor{keywordflow}{case}  2: \textcolor{keywordflow}{return} ADC1BUF2;
+00238             \textcolor{keywordflow}{case}  3: \textcolor{keywordflow}{return} ADC1BUF3;
+00239             \textcolor{keywordflow}{case}  4: \textcolor{keywordflow}{return} ADC1BUF4;
+00240             \textcolor{keywordflow}{case}  5: \textcolor{keywordflow}{return} ADC1BUF5;
+00241 
+00242             \textcolor{keywordflow}{default}: \textcolor{keywordflow}{return} (0);
+00243         \}
+00244     \}
+00245     \textcolor{keywordflow}{else}
+00246     \{
+00247 
+00248        
+00249         \textcolor{keywordflow}{if}(\hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[ana\_idx] != 0)
+00250         \{
+00251             \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} head\_ptr = \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.head\_ptr[
+      ana\_idx];
+00252             \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.head\_ptr[ana\_idx] = (
+      \hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.head\_ptr[ana\_idx] + 1)%
+      \hyperlink{a00022_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH};
+00253             
+00254             
+00255             \textcolor{keywordflow}{return} *(\hyperlink{a00056_a0fd91014631926f362c7c2b2f5d143b0}{srv\_hwio\_data}.\hyperlink{a00034_a742dceaef1f19ec73ed5acc066127476}{emulation\_mode}.data[ana\_idx] + head\_ptr);
+00256         \}
+00257        
+00258     \}
+00259 
+00260     \textcolor{keywordflow}{return} 0;
+00261 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{d9/d2e/a00056_a1327cee26589588e02e03453f3cc7871_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00056_a0fd91014631926f362c7c2b2f5d143b0}{\index{srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}!srv\+\_\+hwio\+\_\+data@{srv\+\_\+hwio\+\_\+data}}
+\index{srv\+\_\+hwio\+\_\+data@{srv\+\_\+hwio\+\_\+data}!srv\+\_\+hwio.\+c@{srv\+\_\+hwio.\+c}}
+\subsubsection[{srv\+\_\+hwio\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf srv\+\_\+hwio\+\_\+data\+\_\+t} srv\+\_\+hwio\+\_\+data}}\label{a00056_a0fd91014631926f362c7c2b2f5d143b0}
+
+
+Definition at line \hyperlink{a00056_source_l00013}{13} of file \hyperlink{a00056_source}{srv\+\_\+hwio.\+c}.
+
+
+
+Referenced by \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}.
+

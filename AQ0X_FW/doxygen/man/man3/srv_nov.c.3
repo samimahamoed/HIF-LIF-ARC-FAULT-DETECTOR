@@ -1,0 +1,766 @@
+.TH "srv_nov.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srv_nov.c \- 
+.PP
+Low level NOV support\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+\fC#include '\&.\&.\\includes_prv\\aq0X\\algorithm_prv\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUint16\fP \fBcrc16\fP (unsigned char *puchMsg, \fBUint16\fP usDataLen)"
+.br
+.RI "\fIStandard CRC16 routine\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBnov_init\fP (void)"
+.br
+.RI "\fIReads NOV storage from EEPROM\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBnov_destroy\fP (\fBUint8\fP copy)"
+.br
+.RI "\fIFunction for NOV testing, destroys NOV CRC\&. \fP"
+.ti -1c
+.RI "void \fBnov_store\fP (void)"
+.br
+.RI "\fIWrites NOV storage to EEPROM\&. \fP"
+.ti -1c
+.RI "void \fBnov_store_device_id\fP (\fBUint32\fP id, \fBUint8\fP type)"
+.br
+.RI "\fIStores in EEPROM serial number\&. \fP"
+.ti -1c
+.RI "\fBUint32\fP \fBnov_get_serial_number\fP (void)"
+.br
+.RI "\fIReads from EEPROM device serial number\&. \fP"
+.ti -1c
+.RI "\fBInt8\fP \fBnov_get_device_address\fP (void)"
+.br
+.RI "\fIReads from EEPROM device serial number\&. \fP"
+.ti -1c
+.RI "void \fBnov_set_write_enable_latch\fP (\fBUint8\fP cmd)"
+.br
+.RI "\fIset or reset write enable latch, the proceedure is drived from the information provided in microchip 25XX640A series serial eeprom dataseet\&. \fP"
+.ti -1c
+.RI "\fBNOV_STATREG\fP \fBnov_get_status\fP ()"
+.br
+.RI "\fIreads status register from EEPROM\&. \fP"
+.ti -1c
+.RI "void \fBnov_write_status\fP (\fBUint8\fP value)"
+.br
+.RI "\fIwrite EEPROM status register\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBnov_byte_write\fP (\fBUint8\fP data, \fBUint16\fP address)"
+.br
+.RI "\fIwrites a single byte to the specified eeprom address\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBnov_byte_read\fP (\fBUint16\fP address)"
+.br
+.RI "\fIreads single from the specified eeprom address\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBnov_page_cpy\fP (\fBUint16\fP page_address, void *src, \fBUint16\fP length)"
+.br
+.RI "\fIFunction transfer data from RAM to EEPROM over spi port\&. \fP"
+.ti -1c
+.RI "\fBUint8\fP \fBnov_memcpy\fP (\fBUint16\fP starting_address, void *dest, \fBUint16\fP length)"
+.br
+.RI "\fIStandard library memcpy() replacement function to copy data from serial EEPROM to the specified RAM memory address via spi interface\&. \fP"
+.ti -1c
+.RI "void \fBnov_set_default\fP (\fBUint8\fP overwrite)"
+.br
+.RI "\fIUpdates internal structures with default factory settings\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBdata_non_volatile_t\fP \fBdata_non_volatile\fP"
+.br
+.RI "\fIEEPROM data storage copy 1\&. \fP"
+.ti -1c
+.RI "\fBUint32\fP \fBserial_number\fP"
+.br
+.ti -1c
+.RI "\fBUint8\fP \fBnov_wr_inprogress\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Low level NOV support\&. 
+
+
+.PP
+Definition in file \fBsrv_nov\&.c\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBUint16\fP crc16 (unsigned char *puchMsg, \fBUint16\fPusDataLen)"
+
+.PP
+Standard CRC16 routine\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpuchMsg\fP character stream 
+.br
+\fIusDataLen\fP stream length
+.RE
+.PP
+\fBReturn values:\fP
+.RS 4
+\fICRC16\fP value of given stream 
+.RE
+.PP
+
+.PP
+Definition at line 84 of file srv_nov\&.c\&.
+.PP
+Referenced by nov_init(), serial_get_command(), and serial_send_response()\&.
+.PP
+.nf
+85 {
+86     Uint8 crc_hi = 0xFF ;        /* high byte of CRC initialized */
+87     Uint8 crc_lo = 0xFF ;        /* low byte of CRC initialized */
+88     int table_index ;            /* index into CRC lookup table */
+89     
+90     while (usDataLen--)
+91     {
+92         table_index = crc_hi ^ *puchMsg++ ;            /* calculate the CRC */
+93         crc_hi = crc_lo ^ table_crc_hi[table_index] ;
+94         crc_lo = table_crc_lo[table_index] ;
+95     }
+96     return (crc_hi << 8 | crc_lo) ;
+97 }
+.fi
+.SS "\fBUint8\fP nov_byte_read (\fBUint16\fPaddress)"
+
+.PP
+reads single from the specified eeprom address\&. 
+.PP
+Definition at line 633 of file srv_nov\&.c\&.
+.PP
+References NOV_CMD_READ, NOV_CMD_WREN, nov_set_write_enable_latch(), spi_put_data(), and SPI_SS_CTRL_LAT\&.
+.PP
+.nf
+634 {
+635     Uint8 cc;
+636     nov_set_write_enable_latch(NOV_CMD_WREN);
+637     SPI_SS_CTRL_LAT = 0;
+638     cc = spi_put_data(NOV_CMD_READ);
+639     cc = spi_put_data((address>>8)&0x00ff);
+640     cc = spi_put_data(address&0x00ff);
+641     cc = spi_put_data(0);
+642     SPI_SS_CTRL_LAT = 1;
+643 
+644     return cc;
+645 }
+.fi
+.SS "\fBUint8\fP nov_byte_write (\fBUint8\fPdata, \fBUint16\fPaddress)"
+
+.PP
+writes a single byte to the specified eeprom address\&. 
+.PP
+Definition at line 608 of file srv_nov\&.c\&.
+.PP
+References NOV_CMD_WRDI, NOV_CMD_WREN, NOV_CMD_WRITE, nov_get_status(), nov_set_write_enable_latch(), spi_put_data(), and SPI_SS_CTRL_LAT\&.
+.PP
+.nf
+609 {
+610     Uint8 cc;
+611     nov_set_write_enable_latch(NOV_CMD_WREN);
+612     SPI_SS_CTRL_LAT = 0;
+613     cc = spi_put_data(NOV_CMD_WRITE);
+614     cc = spi_put_data((address>>8)&0x00ff);
+615     cc = spi_put_data(address&0x00ff);
+616     cc = spi_put_data(data);
+617     SPI_SS_CTRL_LAT = 1;
+618 
+619     // wait for completion of previous write operation
+620     while(nov_get_status()\&.bits\&.WIP);
+621 
+622     nov_set_write_enable_latch(NOV_CMD_WRDI);
+623 
+624     return 0;
+625 }
+.fi
+.SS "\fBUint8\fP nov_destroy (\fBUint8\fPcopy)"
+
+.PP
+Function for NOV testing, destroys NOV CRC\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcopy\fP NOV copy index ( 0 or 1)
+.RE
+.PP
+\fBReturn values:\fP
+.RS 4
+\fI0\fP if the operation was succesfull 
+.RE
+.PP
+
+.PP
+Definition at line 247 of file srv_nov\&.c\&.
+.PP
+.nf
+248 {
+249 
+250     if(copy == 0)
+251     {
+252          nov_store_copy(0,0xDEAD);
+253     }
+254     else{
+255          nov_store_copy(1,0xDEAD);
+256 
+257     }
+258        
+259     return 0;
+260 }
+.fi
+.SS "\fBInt8\fP nov_get_device_address (void)"
+
+.PP
+Reads from EEPROM device serial number\&. 
+.PP
+Definition at line 508 of file srv_nov\&.c\&.
+.PP
+References NOV_DEVICE_ID_MEM_ADDRESS, and nov_memcpy()\&.
+.PP
+.nf
+509 {
+510 
+511     Uint8  tmp[4];
+512 
+513     nov_memcpy(NOV_DEVICE_ID_MEM_ADDRESS,&tmp,sizeof(tmp));
+514 
+515 
+516     if(tmp[0] == tmp[1])
+517     {
+518         if(tmp[0] != 0xFF || tmp[0] != 0)
+519         {
+520             return  tmp[0];
+521         }
+522     }
+523 
+524     if(tmp[2] == tmp[3])
+525     {
+526         if(tmp[2] != 0xFF || tmp[2] != 0)
+527         {
+528             return  tmp[2];
+529         }
+530     }
+531 
+532     return -1;
+533 
+534 }
+.fi
+.SS "\fBUint32\fP nov_get_serial_number (void)"
+
+.PP
+Reads from EEPROM device serial number\&. 
+.PP
+Definition at line 464 of file srv_nov\&.c\&.
+.PP
+References nov_memcpy(), and NOV_SERIAL_NUMBER_MEM_ADDRESS\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+465 {
+466 
+467 
+468     union
+469     {
+470         Uint32 tmp32[4];
+471         Uint8  tmp8[4*sizeof(Uint32)];
+472     }tmp;
+473 
+474 
+475 
+476     nov_memcpy(NOV_SERIAL_NUMBER_MEM_ADDRESS,&tmp,sizeof(tmp));
+477 
+478 
+479     if(tmp\&.tmp32[0] == tmp\&.tmp32[1])
+480     {
+481         if(tmp\&.tmp32[0] != 0xFFFFFFFF || tmp\&.tmp32[0] != 0)
+482         {
+483             return  tmp\&.tmp32[0];
+484         }
+485     }
+486 
+487     if(tmp\&.tmp32[2] == tmp\&.tmp32[3])
+488     {
+489         if(tmp\&.tmp32[2] != 0xFFFFFFFF || tmp\&.tmp32[2] != 0)
+490         {
+491             return  tmp\&.tmp32[2];
+492         }
+493     }
+494 
+495     // backup plan
+496     return 0;
+497         
+498 }
+.fi
+.SS "\fBNOV_STATREG\fP nov_get_status ()"
+
+.PP
+reads status register from EEPROM\&. 
+.PP
+Definition at line 567 of file srv_nov\&.c\&.
+.PP
+References NOV_CMD_RDSR, spi_put_data(), and SPI_SS_CTRL_LAT\&.
+.PP
+Referenced by nov_byte_write(), nov_page_cpy(), and nov_write_status()\&.
+.PP
+.nf
+568 {
+569     Uint8 cc;
+570 
+571     SPI_SS_CTRL_LAT = 0;
+572     cc = spi_put_data(NOV_CMD_RDSR);
+573     cc = spi_put_data(0);
+574     SPI_SS_CTRL_LAT = 1;
+575 
+576     return (NOV_STATREG)cc;
+577 
+578 }
+.fi
+.SS "\fBUint8\fP nov_init (void)"
+
+.PP
+Reads NOV storage from EEPROM\&. 
+.PP
+\fBReturn values:\fP
+.RS 4
+\fI0\fP if succesfull NOV retrival was performed
+.RE
+.PP
+Note: emulation mode data may be mode preserved across resets on production verssion\&. REQ-nov_2a: 'CRC checksum protection' CRC16 used\&.
+.PP
+first NOV copy is invalid
+.PP
+second NOV copy is invalid 
+.PP
+Definition at line 159 of file srv_nov\&.c\&.
+.PP
+References crc16(), data_non_volatile, data_non_volatile_t, device_data_t, NOV_FIRST_DATA_SET_ADDRESS, nov_memcpy(), and NOV_SECOND_DATA_SET_ADDRESS\&.
+.PP
+.nf
+160 {
+161     Uint8                result = 1;
+162     Uint16               crc;
+163     device_data_t        tmp_data;
+164     Uint16               state = 0;
+165 
+173     memset(&data_non_volatile,0,sizeof(data_non_volatile));
+174 
+175     // Try first copy
+176     nov_memcpy(NOV_FIRST_DATA_SET_ADDRESS,&data_non_volatile,sizeof(data_non_volatile));
+177 
+178     crc = crc16((unsigned char*)&data_non_volatile,offsetof(data_non_volatile_t,device_data\&.configured_data_crc));
+179 
+180 
+181 
+182     if(crc == data_non_volatile\&.device_data\&.configured_data_crc)
+183     {
+184 
+185      
+186 
+187         // Copy valid
+188         result = 0;
+189         state |= 0x01;
+190     }
+191     else
+192     {
+194         state |= 0x02;
+195     }
+196 
+197 
+198    //   Try backup copy
+199       nov_memcpy(NOV_SECOND_DATA_SET_ADDRESS,&tmp_data,sizeof(tmp_data));
+200       crc = crc16((unsigned char*)&tmp_data,offsetof(device_data_t,configured_data_crc));
+201 
+202     if(crc == tmp_data\&.configured_data_crc)
+203     {
+204         state |= 0x04;
+205         if(result != 0)
+206         {
+207             state |= 0x08;
+208             // Only second copy valid - restore first copy configuration data
+209              memcpy(&data_non_volatile\&.device_data,&tmp_data,sizeof(data_non_volatile\&.device_data));
+210              nov_store_copy(0,0);
+211              result = 0;
+212         }
+213     }
+214     else
+215     {
+217         state |= 0x10;
+218         if(result == 0)
+219         {
+220             state |= 0x20;
+221             // First was valid, second corrupted\&. Restore second\&.
+222              nov_store_copy(1,0);
+223         }
+224     }
+225 
+226     return result;
+227 }
+.fi
+.SS "\fBUint8\fP nov_memcpy (\fBUint16\fPstarting_address, void *dest, \fBUint16\fPlength)"
+
+.PP
+Standard library memcpy() replacement function to copy data from serial EEPROM to the specified RAM memory address via spi interface\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstarting\fP address of eeprom memory , i\&.e\&. to read from 
+.br
+\fIpointer\fP to the destination object which is in RAM 
+.br
+\fIlength\fP of the data to copy 
+.RE
+.PP
+
+.PP
+Definition at line 723 of file srv_nov\&.c\&.
+.PP
+References NOV_CHIP_SIZE, NOV_CMD_READ, spi_put_data(), and SPI_SS_CTRL_LAT\&.
+.PP
+Referenced by nov_get_device_address(), nov_get_serial_number(), and nov_init()\&.
+.PP
+.nf
+724 {
+725     if((NOV_CHIP_SIZE-starting_address) < length)
+726         return 1;
+727 
+728     Uint8* dst8 = (Uint8*)dest;
+729     Uint8  cc;
+730     // Launch transmission
+731     SPI_SS_CTRL_LAT = 0;
+732     cc = spi_put_data(NOV_CMD_READ);
+733     cc = spi_put_data((starting_address>>8)&0x00ff);
+734     cc = spi_put_data(starting_address&0x00ff);
+735 
+736     while (length > 0)
+737     {
+738            *(dst8++) = spi_put_data(0);
+739            length--;
+740     }
+741 
+742     SPI_SS_CTRL_LAT =1;
+743 
+744     IFS0bits\&.SPI1IF = 0;   //no need but it's good to clear it
+745     return 0;
+746 }
+.fi
+.SS "\fBUint8\fP nov_page_cpy (\fBUint16\fPpage_address, void *src, \fBUint16\fPlength)"
+
+.PP
+Function transfer data from RAM to EEPROM over spi port\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpointer\fP to RAM memory address, i\&.e\&. to read from 
+.br
+\fIlength\fP of the data (should be less than page size) 
+.br
+\fIeeprom\fP page address
+.RE
+.PP
+data can only be written until the end of the eeprom page\&. the page is either 64 bytes max (refer to datasheet)\&. 
+.PP
+Definition at line 663 of file srv_nov\&.c\&.
+.PP
+References ASSERT, NOV_CMD_WRDI, NOV_CMD_WREN, NOV_CMD_WRITE, nov_get_status(), NOV_PAGE_SIZE, nov_set_write_enable_latch(), nov_wr_inprogress, spi_put_data(), and SPI_SS_CTRL_LAT\&.
+.PP
+Referenced by nov_store_device_id()\&.
+.PP
+.nf
+664 {
+665     volatile Uint16 ii =1 ;
+666     
+667 
+668     while(page_address > ii*NOV_PAGE_SIZE)ii++;
+669 
+670     
+671     if((ii*NOV_PAGE_SIZE - page_address -1) < length)ASSERT(0);  /*page write operations attempts to cross page boundary\&.*/
+672           
+673     if(length > ii*NOV_PAGE_SIZE)return 1;
+674 
+675     Uint8* src8 = (Uint8*)src;
+676 
+677     nov_wr_inprogress = 1;
+678 
+679     // Launch transmission
+680     Uint8 cc;
+681     nov_set_write_enable_latch(NOV_CMD_WREN);
+682     SPI_SS_CTRL_LAT = 0;
+683     cc = spi_put_data(NOV_CMD_WRITE);
+684     cc = spi_put_data((page_address>>8)&0x00ff);
+685     cc = spi_put_data(page_address&0x00ff);
+686     while (length > 0)
+687     {
+688            cc = spi_put_data(*(src8++));  
+689            length--;
+690     }
+691    
+692     SPI_SS_CTRL_LAT = 1;
+693 
+694 
+695 
+696 
+697 
+698     // wait for completion of previous write operation
+699     while(nov_get_status()\&.bits\&.WIP);
+700     
+701 
+702 
+703     nov_set_write_enable_latch(NOV_CMD_WRDI);
+704 
+705     nov_wr_inprogress = 0;
+706     IFS0bits\&.SPI1IF = 0;   //no need but good to clear
+707     return 0;
+708 }
+.fi
+.SS "void nov_set_default (\fBUint8\fPoverwrite)"
+
+.PP
+Updates internal structures with default factory settings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIset_default_calibration\fP If set to non-zero value, then also analog calibration is overwritten
+.RE
+.PP
+Note: 
+.PP
+Definition at line 760 of file srv_nov\&.c\&.
+.PP
+References ADC_RESOLUTION, algorithm_data, algorithm_get_std_deviation(), CONFIG_DEFAULT_FREQ, CONFIG_DEFAULT_IR_LEVEL_MAX, CONFIG_DEFAULT_LUX_LEVEL_MAX, CONFIG_DEFAULT_MIN_INSTALLATION_DISTANCE, CONFIG_DEFAULT_NO_OF_OBSERVATION, CONFIG_DEFAULT_PROBABLITY_MAX, CONFIG_DEFAULT_PROBABLITY_MIN, CONFIG_DEFAULT_RATED_CURRENT, CONFIG_DEFAULT_SHORT_CKT_CURRENT, CONFIG_DEFAULT_UV_LEVEL_MAX, data_non_volatile, DEFAULT_TRIP_CRITERION, algorithm_data_t::diagnosis, FALSE, FAST_TIMER_SAMPLING_RATE, MAX_EVENT_OBSERVATION_LENGTH, NOV_OVERWRITE_ALL, and TRUE\&.
+.PP
+.nf
+761 {
+762 
+763         data_non_volatile\&.device_data\&.installation\&.system_info\&.freq                     = CONFIG_DEFAULT_FREQ;
+764         data_non_volatile\&.device_data\&.installation\&.system_info\&.rated_current            = CONFIG_DEFAULT_RATED_CURRENT;
+765         data_non_volatile\&.device_data\&.installation\&.system_info\&.sh_current               = CONFIG_DEFAULT_SHORT_CKT_CURRENT;
+766         data_non_volatile\&.device_data\&.installation\&.system_info\&.min_distance             = CONFIG_DEFAULT_MIN_INSTALLATION_DISTANCE;
+767 
+768         data_non_volatile\&.device_data\&.installation\&.options\&.bits\&.ir_element_sv_en        = TRUE;
+769         data_non_volatile\&.device_data\&.installation\&.options\&.bits\&.uv_element_sv_en        = TRUE;
+770         data_non_volatile\&.device_data\&.installation\&.options\&.bits\&.mfield_element_sv_en    = TRUE;
+771 
+772         data_non_volatile\&.device_data\&.installation\&.options\&.bits\&.threshold_adjust_manual = TRUE;
+773 
+774 
+775         data_non_volatile\&.device_data\&.installation\&.thresholds\&.ir_level_max              = CONFIG_DEFAULT_IR_LEVEL_MAX;
+776         data_non_volatile\&.device_data\&.installation\&.thresholds\&.uv_level_max              = CONFIG_DEFAULT_UV_LEVEL_MAX;
+777         
+778         data_non_volatile\&.device_data\&.installation\&.thresholds\&.lux_level_max             = CONFIG_DEFAULT_LUX_LEVEL_MAX;
+779         data_non_volatile\&.device_data\&.installation\&.thresholds\&.probablity_max            = CONFIG_DEFAULT_PROBABLITY_MAX;
+780         data_non_volatile\&.device_data\&.installation\&.thresholds\&.probablity_min            = CONFIG_DEFAULT_PROBABLITY_MIN;
+781         data_non_volatile\&.device_data\&.installation\&.thresholds\&.min_number_of_observation = CONFIG_DEFAULT_NO_OF_OBSERVATION;
+782 
+783 
+784 
+785         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.criterion\&.all          = DEFAULT_TRIP_CRITERION;
+786 
+787 
+788         
+789 #if(DEVICE == AQ0X_V0)
+790         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.ir           = TRUE;
+791         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.uv           = TRUE;
+792         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.mfield_x     = TRUE;
+793         #ifdef MFIELD_Y
+794         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.mfield_y     = TRUE;
+795         #endif
+796 
+797 #else
+798         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.ir           = TRUE;
+799         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.uv           = TRUE;
+800         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.light        = FALSE;
+801         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.mfield_x     = TRUE;
+802         data_non_volatile\&.device_data\&.installation\&.trip_criteria\&.active_modules\&.bits\&.mfield_y     = TRUE;
+803 #endif
+804 
+805 
+806 
+807     {
+808         Uint16 cc;
+809         Uint16 zero_point_start = (algorithm_data\&.diagnosis\&.samples_per_period/4);
+810         Uint16 zero_point_end   = zero_point_start + 25;
+811 
+812         memset(&data_non_volatile\&.device_data\&.ref_signal,0,sizeof(data_non_volatile\&.device_data\&.ref_signal));
+813 
+814         for(cc = 0; cc < MAX_EVENT_OBSERVATION_LENGTH;cc++){
+815 
+816         if(!((cc > zero_point_end)&&(cc < zero_point_end)))
+817         data_non_volatile\&.device_data\&.ref_signal\&.buffer[cc]  = abs(cos(2*PI*CONFIG_DEFAULT_FREQ*FAST_TIMER_SAMPLING_RATE*cc)*ADC_RESOLUTION);
+818 
+819         data_non_volatile\&.device_data\&.ref_signal\&.mean_value +=data_non_volatile\&.device_data\&.ref_signal\&.buffer[cc];
+820 
+821         }
+822 
+823 
+824           data_non_volatile\&.device_data\&.ref_signal\&.mean_value /=MAX_EVENT_OBSERVATION_LENGTH;
+825 
+826           data_non_volatile\&.device_data\&.ref_signal\&.std_deviation = algorithm_get_std_deviation(data_non_volatile\&.device_data\&.ref_signal\&.buffer
+827                                                                                                ,data_non_volatile\&.device_data\&.ref_signal\&.mean_value
+828                                                                                                ,MAX_EVENT_OBSERVATION_LENGTH);
+829 
+830           data_non_volatile\&.device_data\&.ref_signal\&.valid = 0x0000;
+831 
+832     }
+833         if(overwrite == NOV_OVERWRITE_ALL)
+834         {
+835             //TODO: Calibration data
+836 
+837 
+838 
+839         }
+840 }
+.fi
+.SS "void nov_set_write_enable_latch (\fBUint8\fPcmd)"
+
+.PP
+set or reset write enable latch, the proceedure is drived from the information provided in microchip 25XX640A series serial eeprom dataseet\&. the function must be called prior to any attempt to write data to the 25XX640A with write enable command\&. and it's a recommended practice to reset this latch after the wright operation completed\&. 
+.PP
+Definition at line 553 of file srv_nov\&.c\&.
+.PP
+References spi_put_data(), and SPI_SS_CTRL_LAT\&.
+.PP
+Referenced by nov_byte_read(), nov_byte_write(), nov_page_cpy(), and nov_write_status()\&.
+.PP
+.nf
+554 {
+555     Uint8 cc;
+556     SPI_SS_CTRL_LAT = 0;
+557     cc = spi_put_data(cmd);
+558     SPI_SS_CTRL_LAT = 1;
+559 
+560 }
+.fi
+.SS "void nov_store (void)"
+
+.PP
+Writes NOV storage to EEPROM\&. Note: Updates both copies - one after another 
+.PP
+Definition at line 397 of file srv_nov\&.c\&.
+.PP
+Referenced by algorithm_taskx(), and algorithm_wake()\&.
+.PP
+.nf
+398 {
+399 
+400      nov_store_copy(1,0);
+401      nov_store_copy(0,0);
+402 }
+.fi
+.SS "void nov_store_device_id (\fBUint32\fPid, \fBUint8\fPtype)"
+
+.PP
+Stores in EEPROM serial number\&. 
+.PP
+Definition at line 411 of file srv_nov\&.c\&.
+.PP
+References DEVICE_ADDRESS, NOV_DEVICE_ID_MEM_ADDRESS, nov_page_cpy(), NOV_SERIAL_NUMBER_MEM_ADDRESS, and SERIAL_NUMBER\&.
+.PP
+.nf
+412 {
+413     Uint16       nov_address = NOV_DEVICE_ID_MEM_ADDRESS;
+414     void*        data = NULL;
+415     Uint8        size = 0;
+416 
+417 
+418     if(type == SERIAL_NUMBER){
+419     nov_address = NOV_SERIAL_NUMBER_MEM_ADDRESS;
+420 
+421     union
+422     {
+423         Uint32 tmp32[4];
+424         Uint8  tmp8[4*sizeof(Uint32)];
+425     }tmp;
+426 
+427 
+428     tmp\&.tmp32[0] = id;
+429     tmp\&.tmp32[1] = id;
+430     tmp\&.tmp32[2] = id;
+431     tmp\&.tmp32[3] = id;
+432     
+433     data = &tmp;
+434     size = sizeof(tmp);
+435 
+436     }else if(type == DEVICE_ADDRESS){
+437        Uint8  tmp[4];
+438 
+439 
+440         tmp[0] = id;
+441         tmp[1] = id;
+442         tmp[2] = id;
+443         tmp[3] = id;
+444 
+445         data = &tmp;
+446         size = sizeof(tmp);
+447 
+448     }
+449  
+450     nov_page_cpy(nov_address,data,size);
+451 
+452     
+453 }
+.fi
+.SS "void nov_write_status (\fBUint8\fPvalue)"
+
+.PP
+write EEPROM status register\&. 
+.PP
+Definition at line 586 of file srv_nov\&.c\&.
+.PP
+References NOV_CMD_WRDI, NOV_CMD_WREN, NOV_CMD_WRSR, nov_get_status(), nov_set_write_enable_latch(), spi_put_data(), and SPI_SS_CTRL_LAT\&.
+.PP
+.nf
+587 {
+588     Uint8 cc;
+589     nov_set_write_enable_latch(NOV_CMD_WREN);
+590     SPI_SS_CTRL_LAT = 0;
+591     cc = spi_put_data(NOV_CMD_WRSR);
+592     cc = spi_put_data(value);
+593     SPI_SS_CTRL_LAT = 1;
+594 
+595     // wait for completion of previous write operation
+596     while(nov_get_status()\&.bits\&.WIP);
+597 
+598     nov_set_write_enable_latch(NOV_CMD_WRDI);
+599 
+600 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBdata_non_volatile_t\fP data_non_volatile"
+
+.PP
+EEPROM data storage copy 1\&. 
+.PP
+Definition at line 16 of file srv_nov\&.c\&.
+.PP
+Referenced by __attribute__(), algorithm_notifyx(), algorithm_taskx(), algorithm_wake(), hwio_configure_init(), ir_sen_get_status(), light_sen_get_status(), main(), mfield_x_sen_get_status(), nov_init(), nov_set_default(), and uv_sen_get_status()\&.
+.SS "\fBUint8\fP nov_wr_inprogress"
+
+.PP
+Definition at line 19 of file srv_nov\&.c\&.
+.PP
+Referenced by __attribute__(), nov_page_cpy(), and spi_init()\&.
+.SS "\fBUint32\fP serial_number"
+
+.PP
+Definition at line 18 of file srv_nov\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

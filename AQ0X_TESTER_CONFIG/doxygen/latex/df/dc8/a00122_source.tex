@@ -1,0 +1,110 @@
+\hypertarget{a00122_source}{\section{qfouriertransformer.\+h}
+\label{a00122_source}\index{qfouriertransformer.\+h@{qfouriertransformer.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***********************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{qfouriertransformer.h - Header file for QFourierTransformer}
+00004 \textcolor{comment}{}
+00005 \textcolor{comment}{Facade class for calculating FFTs from a set of samples.}
+00006 \textcolor{comment}{}
+00007 \textcolor{comment}{************************************************************************}
+00008 \textcolor{comment}{}
+00009 \textcolor{comment}{This file is part of QRealFourier.}
+00010 \textcolor{comment}{}
+00011 \textcolor{comment}{QRealFourier is free software: you can redistribute it and/or modify it}
+00012 \textcolor{comment}{under the terms of the Lesser GNU General Public License as published}
+00013 \textcolor{comment}{by the Free Software Foundation, either version 3 of the License, or}
+00014 \textcolor{comment}{(at your option) any later version.}
+00015 \textcolor{comment}{}
+00016 \textcolor{comment}{Foobar is distributed in the hope that it will be useful, but WITHOUT}
+00017 \textcolor{comment}{ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or}
+00018 \textcolor{comment}{FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser GNU General Public}
+00019 \textcolor{comment}{License for more details.}
+00020 \textcolor{comment}{}
+00021 \textcolor{comment}{You should have received a copy of the Lesser GNU General Public License}
+00022 \textcolor{comment}{along with Foobar.  If not, see <http://www.gnu.org/licenses/>.}
+00023 \textcolor{comment}{}
+00024 \textcolor{comment}{************************************************************************}
+00025 \textcolor{comment}{}
+00026 \textcolor{comment}{Copyright © 2012 - 2013 Christoph Stallmann, University of Pretoria}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{Developer: Christoph Stallmann}
+00029 \textcolor{comment}{University of Pretoria}
+00030 \textcolor{comment}{Department of Computer Science}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{http://www.visore.org}
+00033 \textcolor{comment}{http://sourceforge.net/projects/qrealfourier}
+00034 \textcolor{comment}{http://github.com/visore/QRealFourier}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{qrealfourier@visore.org}
+00037 \textcolor{comment}{qrealfourier@gmail.com}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{***********************************************************************/}
+00040 
+00041 \textcolor{preprocessor}{#ifndef QFOURIERTRANSFORMER\_H}
+00042 \textcolor{preprocessor}{#define QFOURIERTRANSFORMER\_H}
+00043 
+00044 \textcolor{preprocessor}{#include "\hyperlink{a00118}{qfouriercalculator.h}"}
+00045 \textcolor{preprocessor}{#include "\hyperlink{a00128}{qwindowfunction.h}"}
+00046 \textcolor{preprocessor}{#include "\hyperlink{a00114}{qcomplexnumber.h}"}
+00047 \textcolor{preprocessor}{#include <QMap>}
+00048 
+\hypertarget{a00122_source_l00049}{}\hyperlink{a00122_a3f6b3838bd0d647c7fe12093694e5c5e}{00049} \textcolor{keyword}{typedef} QVector<QComplexFloat> \hyperlink{a00122_a3f6b3838bd0d647c7fe12093694e5c5e}{QComplexVector};
+00050 
+\hypertarget{a00122_source_l00051}{}\hyperlink{a00054}{00051} \textcolor{keyword}{class }\hyperlink{a00054}{QFourierTransformer}
+00052 \{
+00053 
+00054     \textcolor{keyword}{public}:
+00055 
+\hypertarget{a00122_source_l00056}{}\hyperlink{a00054_a54933cee8b4d5f692b2a085b3b671f12}{00056}         \textcolor{keyword}{enum} \hyperlink{a00054_a54933cee8b4d5f692b2a085b3b671f12}{Direction}
+00057         \{
+\hypertarget{a00122_source_l00058}{}\hyperlink{a00054_a54933cee8b4d5f692b2a085b3b671f12ad0c3ac33a7682d25b54133a6442966d1}{00058}             \hyperlink{a00054_a54933cee8b4d5f692b2a085b3b671f12ad0c3ac33a7682d25b54133a6442966d1}{Forward} = 0,
+\hypertarget{a00122_source_l00059}{}\hyperlink{a00054_a54933cee8b4d5f692b2a085b3b671f12a6e5ebdf06ce1820dfc5f23c9080f9c80}{00059}             \hyperlink{a00054_a54933cee8b4d5f692b2a085b3b671f12a6e5ebdf06ce1820dfc5f23c9080f9c80}{Inverse} = 1
+00060         \};
+00061 
+\hypertarget{a00122_source_l00062}{}\hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3}{00062}         \textcolor{keyword}{enum} \hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3}{Initialization}
+00063         \{
+\hypertarget{a00122_source_l00064}{}\hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3a3a916ec9c101f1aec97505fd9cd8e2df}{00064}             \hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3a3a916ec9c101f1aec97505fd9cd8e2df}{VariableSize} = 0,
+\hypertarget{a00122_source_l00065}{}\hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3ae3372a4b83acd17582e488aee5f24628}{00065}             \hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3ae3372a4b83acd17582e488aee5f24628}{FixedSize} = 1,
+\hypertarget{a00122_source_l00066}{}\hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3afd5de59c99b31f3aa65223d87a2aaaea}{00066}             \hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3afd5de59c99b31f3aa65223d87a2aaaea}{InvalidSize} = 2
+00067         \};
+00068 
+00069     \textcolor{keyword}{public}:
+00070 
+00071         \hyperlink{a00054_a87498c4b95128ec0052d31a87e97a9b9}{QFourierTransformer}(\textcolor{keywordtype}{int} size = 0, QString functionName = \textcolor{stringliteral}{""});
+00072         \hyperlink{a00054_a04c4f72887461f5951332b9cac7bef13}{~QFourierTransformer}();
+00073 
+00074         \hyperlink{a00054_aeb481656565bc92ec7b2f3e9d5d883c3}{Initialization} \hyperlink{a00054_aab762683a5ed505ed7be906c4340cb07}{setSize}(\textcolor{keywordtype}{int} size);
+00075         \textcolor{keywordtype}{bool} \hyperlink{a00054_a8c8f0a2101aba7f6da70050c7ebdc36c}{setWindowFunction}(QString functionName);
+00076         QStringList \hyperlink{a00054_a61125fbf2b312c745d71fe8bdd3f2d26}{windowFunctions}();
+00077 
+00078         \textcolor{keywordtype}{void} \hyperlink{a00054_ac86e9f35cd5313def6ef3c2bede56919}{transform}(\textcolor{keywordtype}{float} input[], \textcolor{keywordtype}{float} output[], \hyperlink{a00054_a54933cee8b4d5f692b2a085b3b671f12}{Direction} direction = 
+      \hyperlink{a00054_a54933cee8b4d5f692b2a085b3b671f12ad0c3ac33a7682d25b54133a6442966d1}{QFourierTransformer::Forward});
+00079         \textcolor{keywordtype}{void} \hyperlink{a00054_a02bee79c9e9f978ed1fb012eda58ed5d}{forwardTransform}(\textcolor{keywordtype}{float} *input, \textcolor{keywordtype}{float} *output);
+00080         \textcolor{keywordtype}{void} \hyperlink{a00054_a5af8ceccf2bbe0a37be994db7181a4ca}{inverseTransform}(\textcolor{keywordtype}{float} input[], \textcolor{keywordtype}{float} output[]);
+00081         \textcolor{keywordtype}{void} \hyperlink{a00054_ad5e366c27b75fff9b1997673f4cb4510}{rescale}(\textcolor{keywordtype}{float} input[]);
+00082 
+00083         \textcolor{keywordtype}{void} \hyperlink{a00054_a23874623179dfd2b9684856f0b2f9f25}{conjugate}(\textcolor{keywordtype}{float} input[]);
+00084         \hyperlink{a00122_a3f6b3838bd0d647c7fe12093694e5c5e}{QComplexVector} \hyperlink{a00054_af3c641ac46b1fdd78a0b390daae9859c}{toComplex}(\textcolor{keywordtype}{float} input[]);
+00085 
+00086     \textcolor{keyword}{protected}:
+00087 
+00088         \textcolor{keywordtype}{void} \hyperlink{a00054_a050f813673ba678aefeeafba415c82aa}{initialize}();
+00089         \textcolor{keywordtype}{int} \hyperlink{a00054_ae8918e95cfd4b0b65bae0947903918ac}{sizeToKey}(\textcolor{keywordtype}{int} size);
+00090         \textcolor{keywordtype}{bool} \hyperlink{a00054_ac6ce59f26c2e51bc91f16ba42cf059a4}{isValidSize}(\textcolor{keywordtype}{int} \hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value});
+00091 
+00092     \textcolor{keyword}{private}:
+00093 
+00094         \textcolor{keywordtype}{int} mSize;
+00095         QMap<int, QFourierCalculator*> mFixedCalculators;
+00096         \hyperlink{a00052}{QFourierCalculator}* mVariableCalculator;
+00097         \hyperlink{a00052}{QFourierCalculator} *mCalculator;
+00098         QStringList mWindowFunctions;
+00099         \hyperlink{a00071}{QWindowFunction<float>} *mWindowFunction;
+00100 
+00101 \};
+00102 
+00103 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

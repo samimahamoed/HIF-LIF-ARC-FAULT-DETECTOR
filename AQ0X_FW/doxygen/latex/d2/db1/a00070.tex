@@ -1,0 +1,85 @@
+\hypertarget{a00070}{\section{sys\+\_\+traps.\+c File Reference}
+\label{a00070}\index{sys\+\_\+traps.\+c@{sys\+\_\+traps.\+c}}
+}
+
+
+System hooks to catch fatal errors.  
+
+
+{\ttfamily \#include \char`\"{}p33\+Exxxx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+Include dependency graph for sys\+\_\+traps.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{de/d5c/a01708}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00070_a226557d5e42f7e29ddaff30606138459}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((interrupt, no\+\_\+auto\+\_\+psv))
+\item 
+void \hyperlink{a00070_afe092795b3220f38b62c7e90763e2f30}{\+\_\+\+\_\+attribute\+\_\+\+\_\+} ((interrupt, shadow, no\+\_\+auto\+\_\+psv))
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+System hooks to catch fatal errors. 
+
+Provided by Microchip. 
+
+Definition in file \hyperlink{a00070_source}{sys\+\_\+traps.\+c}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00070_a226557d5e42f7e29ddaff30606138459}{\index{sys\+\_\+traps.\+c@{sys\+\_\+traps.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!sys\+\_\+traps.\+c@{sys\+\_\+traps.\+c}}
+\subsubsection[{\+\_\+\+\_\+attribute\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+\+\_\+attribute\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{(interrupt, no\+\_\+auto\+\_\+psv)}]{}
+\end{DoxyParamCaption}
+)}}\label{a00070_a226557d5e42f7e29ddaff30606138459}
+
+
+Definition at line \hyperlink{a00070_source_l00012}{12} of file \hyperlink{a00070_source}{sys\+\_\+traps.\+c}.
+
+
+\begin{DoxyCode}
+00030 \{ INTCON1bits.OSCFAIL = 0; \textcolor{comment}{//Clear the trap flag}
+00031 \textcolor{keywordflow}{while} (1)\{
+00032     
+00033 \};
+00034 \}
+\end{DoxyCode}
+\hypertarget{a00070_afe092795b3220f38b62c7e90763e2f30}{\index{sys\+\_\+traps.\+c@{sys\+\_\+traps.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!sys\+\_\+traps.\+c@{sys\+\_\+traps.\+c}}
+\subsubsection[{\+\_\+\+\_\+attribute\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}void \+\_\+\+\_\+attribute\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{(interrupt, shadow, no\+\_\+auto\+\_\+psv)}]{}
+\end{DoxyParamCaption}
+)}}\label{a00070_afe092795b3220f38b62c7e90763e2f30}
+
+
+Definition at line \hyperlink{a00070_source_l00099}{99} of file \hyperlink{a00070_source}{sys\+\_\+traps.\+c}.
+
+
+\begin{DoxyCode}
+00100 \{
+00101 \textcolor{comment}{// Sources of QEI interrupts:}
+00102 \textcolor{comment}{// Position counter overflow or underflow event}
+00103 \textcolor{comment}{// Velocity counter overflow or underflow event}
+00104 \textcolor{comment}{// Position counter initialization process complete}
+00105 \textcolor{comment}{// Position counter greater than or equal compare interrupt }
+00106 \textcolor{comment}{// Position counter less than or equal compare interrupt}
+00107 \textcolor{comment}{// Index event interrupt}
+00108 \textcolor{comment}{// Home event interrupt}
+00109 \textcolor{comment}{//The QEI Status register (QEIxSTAT) contains the individual interrupt enable bits and the}
+00110 \textcolor{comment}{//corresponding interrupt status bits for each interrupt source. A status bit indicates that an}
+00111 \textcolor{comment}{//interrupt request has occurred. The module reduces all of the QEI interrupts to a single interrupt}
+00112 \textcolor{comment}{//signal to the interrupt controller module}
+00113 
+00114 IFS3bits.QEI1IF = 0; \textcolor{comment}{//Clear Flag}
+00115 \}
+\end{DoxyCode}

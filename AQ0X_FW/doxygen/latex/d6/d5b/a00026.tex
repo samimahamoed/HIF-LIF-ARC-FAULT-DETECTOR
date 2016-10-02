@@ -1,0 +1,171 @@
+\hypertarget{a00026}{\section{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h File Reference}
+\label{a00026}\index{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00026_dc/d25/a00596}{mfield\+\_\+y\+\_\+sen\+\_\+data\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00026_a510020575747f82c587c5485b8619f78}{X\+\_\+\+M\+S\+G\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}~(\hyperlink{a00036_a082eb6e82ded25b00f04da4f611c961e}{X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E})
+\begin{DoxyCompactList}\small\item\em Internal event message, initiates periodic supervision. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00026_ad9eede821e7c65d58f1806af4bd6bf29}{X\+\_\+\+N\+T\+F\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}~(\hyperlink{a00036_ab2eeea4643823a0c7c7731ddb83e3edc}{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E} + 2)
+\begin{DoxyCompactList}\small\item\em Internal supervison timer. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00026_a8a535456285f4602701c814d7b69cc68}{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}~1000
+\begin{DoxyCompactList}\small\item\em Timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00026_aaaebfe91a02da9110d1681916a986f34}{mfield\+\_\+y\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative} (\hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} final\+\_\+val, \hyperlink{a00072_a659ce9e5eb6571f9984ffc7caad2660a}{Int16} init\+\_\+val)
+\item 
+\hyperlink{a00072_a253b248072cfc8bd812c69acd0046eed}{Bool} \hyperlink{a00026_a4f1d319ccfbf75e0f13a371d55829578}{mfield\+\_\+y\+\_\+sen\+\_\+calc\+\_\+probablity} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} event, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} obs, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} threshold)
+\item 
+\hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8} \hyperlink{a00026_a2af9ebe0b13140fee30448427c0df3e5}{mfield\+\_\+y\+\_\+compare} (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} num, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} given\+\_\+num, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} tolerance)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00026_dc/d25/a00596}{mfield\+\_\+y\+\_\+sen\+\_\+data\+\_\+t} \hyperlink{a00026_ac02a1b2761e78fcdcfba8aed32b55c97}{mfield\+\_\+y\+\_\+sen\+\_\+data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Data Structure Documentation}
+\index{mfield\+\_\+y\+\_\+sen\+\_\+data\+\_\+t@{mfield\+\_\+y\+\_\+sen\+\_\+data\+\_\+t}}\label{dc/d25/a00596}
+\hypertarget{a00026_dc/d25/a00596}{}
+\subsubsection{struct mfield\+\_\+y\+\_\+sen\+\_\+data\+\_\+t}
+
+
+Definition at line \hyperlink{a00026_source_l00029}{29} of file \hyperlink{a00026_source}{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+Collaboration diagram for mfield\+\_\+y\+\_\+sen\+\_\+data\+\_\+t\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/dd4/a00968}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00026_a94b2d1f6ea4ab334c74d24984dd27843}{\hyperlink{a00021_d6/d9c/a00352}{configured\+\_\+t}}\label{a00026_a94b2d1f6ea4ab334c74d24984dd27843}
+&
+configured&
+stores user configuration details \\
+\hline
+
+\hypertarget{a00026_a2bd79ce84bbd6b7f50d38954f7ae475e}{\hyperlink{a00019_d9/dc1/a00388}{diagonesis\+\_\+records\+\_\+mfield\+\_\+t}}\label{a00026_a2bd79ce84bbd6b7f50d38954f7ae475e}
+&
+diagonesis\+\_\+records&
+holds diagonesis data on the module operation \\
+\hline
+
+\hypertarget{a00026_ac9b38e2c1d3f1013a88d33506c754152}{\hyperlink{a00028}{module\+\_\+disturbance\+\_\+record\+\_\+t} $\ast$}\label{a00026_ac9b38e2c1d3f1013a88d33506c754152}
+&
+disturbance\+\_\+record&
+disturbance record storage , details starting form the first event detection to the duration of observation record length \\
+\hline
+
+\hypertarget{a00026_adfab5a5d8b45a93dfb13edb24e2b80e3}{\hyperlink{a00019_d6/db2/a00601}{module\+\_\+status\+\_\+mfield\+\_\+t}}\label{a00026_adfab5a5d8b45a93dfb13edb24e2b80e3}
+&
+module\+\_\+status&
+holds details about the module current state \\
+\hline
+
+\hypertarget{a00026_aaeec6b0609dba31393f337abf1cce3d3}{\hyperlink{a00022_d2/d5a/a00792}{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00026_aaeec6b0609dba31393f337abf1cce3d3}
+&
+sv\+\_\+errors\+\_\+flags&
+supervission error flags \\
+\hline
+
+\hypertarget{a00026_a752b00333ec308e07c6bd41aa9a01e73}{\hyperlink{a00019_dc/d41/a00862}{x\+\_\+notify\+\_\+mfield\+\_\+sen\+\_\+sv\+\_\+report}}\label{a00026_a752b00333ec308e07c6bd41aa9a01e73}
+&
+sv\+\_\+status\+\_\+ntf&
+\\
+\hline
+
+\hypertarget{a00026_a43c345f39ea3aefbb60ef1ef57fe5d83}{\hyperlink{a00036_de/d37/a00849}{x\+\_\+event}}\label{a00026_a43c345f39ea3aefbb60ef1ef57fe5d83}
+&
+sv\+\_\+task\+\_\+event&
+Internal event for processing mfield module suppervission task. \\
+\hline
+
+\hypertarget{a00026_ada91b200053f2d93e3639dc4ee3415b4}{\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify}}\label{a00026_ada91b200053f2d93e3639dc4ee3415b4}
+&
+sv\+\_\+timer\+\_\+ntf&
+Timer notification to initiate mfield module suppervission task. \\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00026_a8a535456285f4602701c814d7b69cc68}{\index{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}!S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D@{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}}
+\index{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D@{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}!mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D~1000}}\label{a00026_a8a535456285f4602701c814d7b69cc68}
+
+
+Timeout. 
+
+
+
+Definition at line \hyperlink{a00026_source_l00021}{21} of file \hyperlink{a00026_source}{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}.
+
+\hypertarget{a00026_a510020575747f82c587c5485b8619f78}{\index{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}!X\+\_\+\+M\+S\+G\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V@{X\+\_\+\+M\+S\+G\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}}
+\index{X\+\_\+\+M\+S\+G\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V@{X\+\_\+\+M\+S\+G\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}!mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{X\+\_\+\+M\+S\+G\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+M\+S\+G\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V~({\bf X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E})}}\label{a00026_a510020575747f82c587c5485b8619f78}
+
+
+Internal event message, initiates periodic supervision. 
+
+
+
+Definition at line \hyperlink{a00026_source_l00014}{14} of file \hyperlink{a00026_source}{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}.
+
+\hypertarget{a00026_ad9eede821e7c65d58f1806af4bd6bf29}{\index{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}!X\+\_\+\+N\+T\+F\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R@{X\+\_\+\+N\+T\+F\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}}
+\index{X\+\_\+\+N\+T\+F\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R@{X\+\_\+\+N\+T\+F\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}!mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{X\+\_\+\+N\+T\+F\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+N\+T\+F\+\_\+\+M\+F\+I\+E\+L\+D\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R~({\bf X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E} + 2)}}\label{a00026_ad9eede821e7c65d58f1806af4bd6bf29}
+
+
+Internal supervison timer. 
+
+
+
+Definition at line \hyperlink{a00026_source_l00017}{17} of file \hyperlink{a00026_source}{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00026_a2af9ebe0b13140fee30448427c0df3e5}{\index{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}!mfield\+\_\+y\+\_\+compare@{mfield\+\_\+y\+\_\+compare}}
+\index{mfield\+\_\+y\+\_\+compare@{mfield\+\_\+y\+\_\+compare}!mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{mfield\+\_\+y\+\_\+compare}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int8} mfield\+\_\+y\+\_\+compare (
+\begin{DoxyParamCaption}
+\item[{{\bf Float32}}]{num, }
+\item[{{\bf Float32}}]{given\+\_\+num, }
+\item[{{\bf Float32}}]{tolerance}
+\end{DoxyParamCaption}
+)}}\label{a00026_a2af9ebe0b13140fee30448427c0df3e5}
+\hypertarget{a00026_a4f1d319ccfbf75e0f13a371d55829578}{\index{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}!mfield\+\_\+y\+\_\+sen\+\_\+calc\+\_\+probablity@{mfield\+\_\+y\+\_\+sen\+\_\+calc\+\_\+probablity}}
+\index{mfield\+\_\+y\+\_\+sen\+\_\+calc\+\_\+probablity@{mfield\+\_\+y\+\_\+sen\+\_\+calc\+\_\+probablity}!mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{mfield\+\_\+y\+\_\+sen\+\_\+calc\+\_\+probablity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bool} mfield\+\_\+y\+\_\+sen\+\_\+calc\+\_\+probablity (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{event, }
+\item[{{\bf Uint16}}]{obs, }
+\item[{{\bf Uint16}}]{threshold}
+\end{DoxyParamCaption}
+)}}\label{a00026_a4f1d319ccfbf75e0f13a371d55829578}
+\hypertarget{a00026_aaaebfe91a02da9110d1681916a986f34}{\index{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}!mfield\+\_\+y\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative@{mfield\+\_\+y\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}}
+\index{mfield\+\_\+y\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative@{mfield\+\_\+y\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}!mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{mfield\+\_\+y\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Float32} mfield\+\_\+y\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative (
+\begin{DoxyParamCaption}
+\item[{{\bf Int16}}]{final\+\_\+val, }
+\item[{{\bf Int16}}]{init\+\_\+val}
+\end{DoxyParamCaption}
+)}}\label{a00026_aaaebfe91a02da9110d1681916a986f34}
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00026_ac02a1b2761e78fcdcfba8aed32b55c97}{\index{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}!mfield\+\_\+y\+\_\+sen\+\_\+data@{mfield\+\_\+y\+\_\+sen\+\_\+data}}
+\index{mfield\+\_\+y\+\_\+sen\+\_\+data@{mfield\+\_\+y\+\_\+sen\+\_\+data}!mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h@{mfield\+\_\+y\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{mfield\+\_\+y\+\_\+sen\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mfield\+\_\+y\+\_\+sen\+\_\+data\+\_\+t} mfield\+\_\+y\+\_\+sen\+\_\+data}}\label{a00026_ac02a1b2761e78fcdcfba8aed32b55c97}

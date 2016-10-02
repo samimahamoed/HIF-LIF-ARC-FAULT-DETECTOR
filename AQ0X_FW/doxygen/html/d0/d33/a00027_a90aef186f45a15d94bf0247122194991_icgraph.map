@@ -1,0 +1,7 @@
+<map id="nov_store" name="nov_store">
+<area shape="rect" id="node2" href="$de/d8c/a00036.html#a1d182ae18a9176c2a1e28cc654dc0e43" title="Algorithm task function. " alt="" coords="131,5,245,32"/>
+<area shape="rect" id="node4" href="$de/d8c/a00036.html#a42ed16c7ef20e0c0031fe7ba7ae377b3" title="Main processing loop for algorithm module. " alt="" coords="132,56,244,83"/>
+<area shape="rect" id="node3" href="$d3/dea/a00046.html#a840291bc02cba5474a4cb46a9b9566fe" title="System startup function. " alt="" coords="461,56,512,83"/>
+<area shape="rect" id="node5" href="$d3/de7/a00039.html#a2068c3c2584547dbc1c8b9bca2d55b18" title="Fast timer interrupt to scan sensor element analog values. " alt="" coords="305,56,402,83"/>
+<area shape="rect" id="node6" href="$de/d8c/a00036.html#a93269cdec3e21934aa9395440a2de605" title="Algorithm module notification function. " alt="" coords="293,107,413,133"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="nov_set_write_enable_latch" name="nov_set_write_enable_latch">
+<area shape="rect" id="node2" href="$d9/d73/a00060.html#adf5af9eb34f1cd301648dfa3c71fe392" title="reads single from the specified eeprom address. " alt="" coords="205,5,311,32"/>
+<area shape="rect" id="node3" href="$d9/d73/a00060.html#a3f47e1f5179297e173ae8508c7185632" title="writes a single byte to the specified eeprom address. " alt="" coords="205,56,311,83"/>
+<area shape="rect" id="node4" href="$d9/d73/a00060.html#aeb021b0e002db120ad733c24f3e179bc" title="Function transfer data from RAM to EEPROM over spi port. " alt="" coords="206,107,310,133"/>
+<area shape="rect" id="node6" href="$d9/d73/a00060.html#a495e93d64734be469f6725de24dd44e1" title="write EEPROM status register. " alt="" coords="199,157,317,184"/>
+<area shape="rect" id="node5" href="$d9/d73/a00060.html#a9aa94b184db1bd55b6a4a61a34c14c8d" title="Stores in EEPROM serial number. " alt="" coords="365,107,503,133"/>
+</map>

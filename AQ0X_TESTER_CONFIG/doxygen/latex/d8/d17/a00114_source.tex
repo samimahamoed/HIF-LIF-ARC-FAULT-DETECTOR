@@ -1,0 +1,91 @@
+\hypertarget{a00114_source}{\section{qcomplexnumber.\+h}
+\label{a00114_source}\index{qcomplexnumber.\+h@{qcomplexnumber.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***********************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{qcomplexnumber.h - Header file for QComplexNumber}
+00004 \textcolor{comment}{}
+00005 \textcolor{comment}{Template class for handling complex numbers with a real and imaginary}
+00006 \textcolor{comment}{part. }
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{************************************************************************}
+00009 \textcolor{comment}{}
+00010 \textcolor{comment}{This file is part of QRealFourier.}
+00011 \textcolor{comment}{}
+00012 \textcolor{comment}{QRealFourier is free software: you can redistribute it and/or modify it}
+00013 \textcolor{comment}{under the terms of the Lesser GNU General Public License as published}
+00014 \textcolor{comment}{by the Free Software Foundation, either version 3 of the License, or}
+00015 \textcolor{comment}{(at your option) any later version.}
+00016 \textcolor{comment}{}
+00017 \textcolor{comment}{Foobar is distributed in the hope that it will be useful, but WITHOUT}
+00018 \textcolor{comment}{ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or}
+00019 \textcolor{comment}{FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser GNU General Public}
+00020 \textcolor{comment}{License for more details.}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{You should have received a copy of the Lesser GNU General Public License}
+00023 \textcolor{comment}{along with Foobar.  If not, see <http://www.gnu.org/licenses/>.}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{************************************************************************}
+00026 \textcolor{comment}{}
+00027 \textcolor{comment}{Copyright © 2012 - 2013 Christoph Stallmann, University of Pretoria}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{Developer: Christoph Stallmann}
+00030 \textcolor{comment}{University of Pretoria}
+00031 \textcolor{comment}{Department of Computer Science}
+00032 \textcolor{comment}{}
+00033 \textcolor{comment}{http://www.visore.org}
+00034 \textcolor{comment}{http://sourceforge.net/projects/qrealfourier}
+00035 \textcolor{comment}{http://github.com/visore/QRealFourier}
+00036 \textcolor{comment}{}
+00037 \textcolor{comment}{qrealfourier@visore.org}
+00038 \textcolor{comment}{qrealfourier@gmail.com}
+00039 \textcolor{comment}{}
+00040 \textcolor{comment}{***********************************************************************/}
+00041 
+00042 \textcolor{preprocessor}{#ifndef QCOMPLEXNUMBER\_H}
+00043 \textcolor{preprocessor}{#define QCOMPLEXNUMBER\_H}
+00044 
+00045 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00114_source_l00046}{}\hyperlink{a00021}{00046} \textcolor{keyword}{class }\hyperlink{a00021}{QComplexNumber}
+00047 \{
+00048 
+00049     \textcolor{keyword}{public}:
+00050 
+00051         \hyperlink{a00021_ab6cfaeb5d656fc31d881859071a5573d}{QComplexNumber}();
+00052         \hyperlink{a00021_ab6cfaeb5d656fc31d881859071a5573d}{QComplexNumber}(T \hyperlink{a00021_a01ca02979072629fdf76770971bff461}{real}, T \hyperlink{a00021_a9fa649f50f64f9e8d26da107c6f779bb}{imaginary});
+00053 
+00054         \textcolor{keywordtype}{void} \hyperlink{a00021_a14cf134bd211f979baf2f559ae7114f9}{setReal}(T real);
+00055         \textcolor{keywordtype}{void} \hyperlink{a00021_a806177c406d4fbab30385105c70c4655}{setImaginary}(T imaginary);
+00056         \textcolor{keywordtype}{void} \hyperlink{a00021_ab038e64285fc23aeae05e987ec9ed9d8}{set}(T real, T imaginary);
+00057         \textcolor{keywordtype}{void} \hyperlink{a00021_ab038e64285fc23aeae05e987ec9ed9d8}{set}(\hyperlink{a00021}{QComplexNumber} complex);
+00058 
+00059         T \hyperlink{a00021_a01ca02979072629fdf76770971bff461}{real}();
+00060         T \hyperlink{a00021_a9fa649f50f64f9e8d26da107c6f779bb}{imaginary}();
+00061 
+00062         \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a30e8645f1dc443e17849ed65eed5c28f}{operator+=}(\textcolor{keyword}{const} 
+      \hyperlink{a00021}{QComplexNumber<T>} &number);
+00063         \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a883e0d4ed073f528ac147bb7d792fa99}{operator-=}(\textcolor{keyword}{const} 
+      \hyperlink{a00021}{QComplexNumber<T>} &number);
+00064         \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a070852367a712f7b9dd2dff0ee5c3439}{operator/=}(\textcolor{keyword}{const} 
+      \hyperlink{a00021}{QComplexNumber<T>} &number);
+00065         \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a13c0aad5e700fe92eb9acf5fae669975}{operator*=}(\textcolor{keyword}{const} 
+      \hyperlink{a00021}{QComplexNumber<T>} &number);
+00066 
+00067         \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a070852367a712f7b9dd2dff0ee5c3439}{operator/=}(\textcolor{keyword}{const} T &\hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value});
+00068         \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a13c0aad5e700fe92eb9acf5fae669975}{operator*=}(\textcolor{keyword}{const} T &value);
+00069 
+00070     \textcolor{keyword}{private}:
+00071 
+00072         T mReal;
+00073         T mImaginary;
+00074 
+00075 \};
+00076 
+\hypertarget{a00114_source_l00077}{}\hyperlink{a00114_ad957a9578f5201ba6cd85e0369965a0e}{00077} \textcolor{keyword}{typedef} \hyperlink{a00021}{QComplexNumber<float>} \hyperlink{a00114_ad957a9578f5201ba6cd85e0369965a0e}{QComplexFloat};
+\hypertarget{a00114_source_l00078}{}\hyperlink{a00114_a0b0c28ad9b49b8db131d1b7a83d88b90}{00078} \textcolor{keyword}{typedef} \hyperlink{a00021}{QComplexNumber<double>} \hyperlink{a00114_a0b0c28ad9b49b8db131d1b7a83d88b90}{QComplexDouble};
+\hypertarget{a00114_source_l00079}{}\hyperlink{a00114_ae575bcbda7093edc173011db3fce5000}{00079} \textcolor{keyword}{typedef} \hyperlink{a00021}{QComplexNumber<int>} \hyperlink{a00114_ae575bcbda7093edc173011db3fce5000}{QComplexInteger};
+00080 
+00081 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

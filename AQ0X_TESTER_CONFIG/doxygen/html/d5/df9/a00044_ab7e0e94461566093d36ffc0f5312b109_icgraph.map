@@ -1,0 +1,6 @@
+<map id="QCPLayerable::parentPlot" name="QCPLayerable::parentPlot">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a6fb2873d35a8a8089842d81a70a54167" title="Creates a new graph inside the plot. " alt="" coords="447,5,525,32"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#ab7ad9174f701f9c6f64e378df77927a6" title="Adds the specified plottable to the plot and, if setAutoAddPlottableToLegend is enabled, to the legend. " alt="" coords="265,31,360,57"/>
+<area shape="rect" id="node4" href="$dc/de2/a00024.html#af78a036e40db6f53a31abadc5323715a" title="Constructs an abstract plottable which uses keyAxis as its key axis (&quot;x&quot;) and valueAxis as its value ..." alt="" coords="233,82,392,123"/>
+<area shape="rect" id="node5" href="$d5/db6/a00042.html#af5886f4ded8dd68cb4f3388f390790c0" title="Sets the QCPGraph this tracer sticks to. " alt="" coords="227,148,399,175"/>
+</map>

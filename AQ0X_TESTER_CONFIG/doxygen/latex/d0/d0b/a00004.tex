@@ -1,0 +1,914 @@
+\hypertarget{a00004}{\section{emu\+\_\+data\+\_\+editor Class Reference}
+\label{a00004}\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+}
+
+
+{\ttfamily \#include $<$emu\+\_\+data\+\_\+editor.\+h$>$}
+
+
+
+Inheritance diagram for emu\+\_\+data\+\_\+editor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{d3/d58/a00285}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for emu\+\_\+data\+\_\+editor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d7b/a00286}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00004_a15cbcf5f0a17281468800f47898f60c1}{update\+\_\+curve} ()
+\item 
+void \hyperlink{a00004_a86f994dedec393af88b5d1a37b1e30b5}{selection} (bool clear)
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00004_a9aa2af0c329358fd96f7fb6b7f02bfe1}{edit\+\_\+point\+\_\+selection} (bool status)
+\item 
+void \hyperlink{a00004_a2b9629d20c2b97c01bf8486c89fd0148}{edit\+\_\+point\+\_\+deselection} (bool status)
+\item 
+void \hyperlink{a00004_a74d292de22b341313df1852cb1033704}{adjust\+\_\+value} (\hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16} val)
+\item 
+void \hyperlink{a00004_a9d26460f253a29dd961b20be0afb5358}{set\+\_\+value} (\hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16} val, \hyperlink{a00001_aae7407b021d43f7193a81a58cfb3e297}{Uint16} waveform)
+\item 
+void \hyperlink{a00004_a7c1fa0d7d1623b11d4badceb1854010e}{action\+\_\+set\+\_\+value} (double val, \hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} type)
+\item 
+void \hyperlink{a00004_a7dfbddd62d6782b0f0ce809cbf2338ba}{update\+\_\+curve\+\_\+signal} ()
+\item 
+void \hyperlink{a00004_ad5f20fdbb4731185020ff4e90cd1ead2}{update\+\_\+value} ()
+\item 
+void \hyperlink{a00004_a9476424a86a6ed4f84c64d0ac77143cc}{set\+\_\+status} (\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} select)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00004_ace57d3f7e3dd136290777006218abca9}{emu\+\_\+data\+\_\+editor} (Q\+String type, Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{a00004_ab897c9d3081a980c0ad94f09d5dbce99}{$\sim$emu\+\_\+data\+\_\+editor} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+String \hyperlink{a00004_a2abdde44f37258778dcc571e8cc7ed1a}{win\+\_\+title}
+\item 
+\hyperlink{a00001_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} \hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\+\_\+type}
+\item 
+double \hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\+\_\+freq}
+\item 
+double \hyperlink{a00004_af08de88fdfe283086e3cca97a2965678}{signal\+\_\+phase}
+\item 
+double \hyperlink{a00004_a73dabe63bd74afe2776e8136211dc36e}{signal\+\_\+amplitude}
+\item 
+Q\+Vector$<$ \hyperlink{a00001_dc/ddf/a00067}{emu\+\_\+data\+\_\+edit\+\_\+point\+\_\+t} $>$ \hyperlink{a00004_ab093b86d07b4eb96c36878089a7d97df}{edit\+\_\+point\+\_\+sets}
+\item 
+Q\+Fourier\+Transformer \hyperlink{a00004_a0d6e12337ef942452edea37827e58cd4}{transformer}
+\item 
+Q\+Vector$<$ double $>$ \hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\+\_\+data\+\_\+yvalue}
+\item 
+Q\+Vector$<$ double $>$ \hyperlink{a00004_a66d07ec51f26cd9b84994548faa336d6}{emu\+\_\+data\+\_\+xvalue}
+\item 
+float \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\+\_\+result} \mbox{[}\hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{F\+F\+T\+\_\+\+S\+I\+Z\+E}\mbox{]}
+\item 
+float \hyperlink{a00004_a8782fc20094d65d56c04869b9692902e}{fft\+\_\+inputs} \mbox{[}\hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{F\+F\+T\+\_\+\+S\+I\+Z\+E}\mbox{]}
+\item 
+Q\+Vector$<$ double $>$ \hyperlink{a00004_a62129d59e218ab857cd50cb202205129}{emu\+\_\+data\+\_\+freq\+\_\+value}
+\item 
+Q\+Vector$<$ double $>$ \hyperlink{a00004_ac3c515466f79ab8e60a58e8d15a3b991}{emu\+\_\+data\+\_\+spectrum\+\_\+magnitude}
+\item 
+float \hyperlink{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\+\_\+magnitude\+\_\+max}
+\item 
+float \hyperlink{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\+\_\+magnitude\+\_\+min}
+\item 
+Q\+String \hyperlink{a00004_aa55b7d8008e31fcc971692b493e7cf34}{dir\+\_\+default}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{a00004_a48f610d23d17b2679113ea351d0968e4}{event\+Filter} (Q\+Object $\ast$obj, Q\+Event $\ast$ev)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line \hyperlink{a00036_source_l00019}{19} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{a00004_ace57d3f7e3dd136290777006218abca9}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{emu\+\_\+data\+\_\+editor}]{\setlength{\rightskip}{0pt plus 5cm}emu\+\_\+data\+\_\+editor\+::emu\+\_\+data\+\_\+editor (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{type, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{a00004_ace57d3f7e3dd136290777006218abca9}
+defalt values 
+
+Definition at line \hyperlink{a00035_source_l00012}{12} of file \hyperlink{a00035_source}{emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+
+References \hyperlink{a00051_source_l00040}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::action\+Win\+Editor}, \hyperlink{a00051_source_l00039}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::action\+Win\+Plot}, \hyperlink{a00051_source_l00043}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::centralwidget}, \hyperlink{a00031_source_l00004}{C\+O\+N\+F\+I\+G\+\_\+\+D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+R\+E\+Q}, \hyperlink{a00036_source_l00055}{dir\+\_\+default}, \hyperlink{a00051_source_l00049}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::dock\+Widget\+Curve\+\_\+plot}, \hyperlink{a00051_source_l00067}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::dock\+Widget\+Curve\+\_\+plot\+\_\+fft}, \hyperlink{a00036_source_l00051}{emu\+\_\+data\+\_\+freq\+\_\+value}, \hyperlink{a00036_source_l00052}{emu\+\_\+data\+\_\+spectrum\+\_\+magnitude}, \hyperlink{a00036_source_l00046}{emu\+\_\+data\+\_\+xvalue}, \hyperlink{a00036_source_l00045}{emu\+\_\+data\+\_\+yvalue}, \hyperlink{a00003_source_l00031}{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}, \hyperlink{a00036_source_l00050}{fft\+\_\+inputs}, \hyperlink{a00036_source_l00049}{fft\+\_\+result}, \hyperlink{a00036_source_l00012}{F\+F\+T\+\_\+\+S\+I\+Z\+E}, \hyperlink{a00051_source_l00053}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::plot\+\_\+curve}, \hyperlink{a00051_source_l00071}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::plot\+\_\+curve\+\_\+fft}, \hyperlink{a00051_source_l00073}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::setup\+Ui()}, \hyperlink{a00036_source_l00042}{signal\+\_\+amplitude}, \hyperlink{a00036_source_l00040}{signal\+\_\+freq}, \hyperlink{a00036_source_l00041}{signal\+\_\+phase}, \hyperlink{a00036_source_l00039}{signal\+\_\+type}, \hyperlink{a00036_source_l00053}{spectrum\+\_\+magnitude\+\_\+max}, \hyperlink{a00036_source_l00054}{spectrum\+\_\+magnitude\+\_\+min}, \hyperlink{a00036_source_l00044}{transformer}, \hyperlink{a00034_source_l00039}{W\+A\+V\+E\+F\+O\+R\+M\+\_\+0\+\_\+\+T\+O\+\_\+3\+\_\+3}, \hyperlink{a00034_source_l00040}{W\+A\+V\+E\+F\+O\+R\+M\+\_\+\+P\+L\+U\+S\+\_\+\+M\+I\+N\+U\+S\+\_\+1\+\_\+65}, and \hyperlink{a00036_source_l00038}{win\+\_\+title}.
+
+
+\begin{DoxyCode}
+00012                                                                :
+00013     \hyperlink{a00010}{QMainWindow}(parent),
+00014     ui(\textcolor{keyword}{new} \hyperlink{a00005}{Ui::emu\_data\_editor} )
+00015 \{
+00016 
+00017     ui->\hyperlink{a00026_a33af8ac054888d9cc0833b699028b690}{setupUi}(\textcolor{keyword}{this});
+00018     this->setWindowTitle(type);
+00019 
+00020     \hyperlink{a00004_aa55b7d8008e31fcc971692b493e7cf34}{dir\_default} = ((\hyperlink{a00006}{MainWindow} *)parent)->dir\_default;
+00021 
+00022     \hyperlink{a00004_a2abdde44f37258778dcc571e8cc7ed1a}{win\_title} = type;
+00023     \textcolor{keywordflow}{if}(type.contains(\textcolor{stringliteral}{"MAGNETIC FIELD"}))\{
+00024         \hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} = \hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65};
+00025         \hyperlink{a00004_a73dabe63bd74afe2776e8136211dc36e}{signal\_amplitude} = 1.65;
+00026     \}\textcolor{keywordflow}{else}\{
+00027         \hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} = \hyperlink{a00034_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3};
+00028         \hyperlink{a00004_a73dabe63bd74afe2776e8136211dc36e}{signal\_amplitude} = 3.3;
+00029     \}
+00030 
+00031     \hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\_freq}      = \hyperlink{a00031_a985a153b3edd3d7d638137ae0b9e5e67}{CONFIG\_DEFAULT\_FREQ};
+00032     \hyperlink{a00004_af08de88fdfe283086e3cca97a2965678}{signal\_phase}     = 0;
+00033 
+00034 
+00035     ui->\hyperlink{a00026_afff870ab422d2b873976067827089af1}{centralwidget}->setVisible(\textcolor{keyword}{false});
+00036     ui->\hyperlink{a00026_a0edc87fb115fede171c0da1f99000874}{dockWidgetCurve\_plot}->setWidget(ui->\hyperlink{a00026_a1d46308dee8db7e3c99af65f13055479}{plot\_curve});
+00037     ui->\hyperlink{a00026_a7474d72172d9e269e8f3cb22bbe2fc86}{dockWidgetCurve\_plot\_fft}->setWidget(ui->
+      \hyperlink{a00026_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft});
+00038 
+00039     this->addDockWidget(Qt::TopDockWidgetArea,ui->\hyperlink{a00026_a7474d72172d9e269e8f3cb22bbe2fc86}{dockWidgetCurve\_plot\_fft});
+00040 
+00041 
+00042     ui->\hyperlink{a00026_aa5d56420958ab4fd1239e29714d75e18}{actionWinEditor}->setChecked(\textcolor{keyword}{true});
+00043     ui->\hyperlink{a00026_a0aeb289d8df9db6f4329e9000e44d511}{actionWinPlot}->setChecked(\textcolor{keyword}{true});
+00044 
+00045 
+00046 
+00047     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}; ++var) \{
+00048         \hyperlink{a00004_a66d07ec51f26cd9b84994548faa336d6}{emu\_data\_xvalue}.append(var);
+00049         \hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}.append(0);
+00050     \}
+00051 
+00052     plot\_curve(\hyperlink{a00004_a66d07ec51f26cd9b84994548faa336d6}{emu\_data\_xvalue},\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue});
+00053 
+00054     memset(\hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result},0,\hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE});
+00055     memset(\hyperlink{a00004_a8782fc20094d65d56c04869b9692902e}{fft\_inputs},0,\hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE});
+00056 
+00057 
+00058     \hyperlink{a00004_a0d6e12337ef942452edea37827e58cd4}{transformer}.setSize(\hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE});
+00059     \textcolor{keywordflow}{if}(!\hyperlink{a00004_a0d6e12337ef942452edea37827e58cd4}{transformer}.setWindowFunction(\textcolor{stringliteral}{"Rectangular"}))
+00060         qCritical()<<\textcolor{stringliteral}{"unable to set window funtion : emu\_data\_editor"};
+00061 
+00062     \hyperlink{a00004_a0d6e12337ef942452edea37827e58cd4}{transformer}.forwardTransform(\hyperlink{a00004_a8782fc20094d65d56c04869b9692902e}{fft\_inputs},\hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result});
+00063 
+00064 
+00065     \hyperlink{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} = 0;
+00066     \hyperlink{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} = 0;
+00067 
+00068 
+00069 
+00070     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00071 
+00072         \hyperlink{a00004_a62129d59e218ab857cd50cb202205129}{emu\_data\_freq\_value}.append(
+00073                     (var)*\hyperlink{a00004_a67039999d520fc483fab521fae5ddde4}{signal\_freq}*
+00074                     ((\hyperlink{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{signal\_type} == \hyperlink{a00034_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})?1:2));
+00075 
+00076         qDebug()<<\textcolor{stringliteral}{"f("}<<var<<\textcolor{stringliteral}{") = "}<< \hyperlink{a00004_a62129d59e218ab857cd50cb202205129}{emu\_data\_freq\_value}[var]<<\textcolor{stringliteral}{";"};
+00077         \hyperlink{a00004_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude}.append((\textcolor{keywordtype}{double})
+      \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var]);
+00078 
+00079         \textcolor{keywordflow}{if}(\hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var] > \hyperlink{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max})
+00080             \hyperlink{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} = \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var];
+00081         \textcolor{keywordflow}{if}(\hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var] < \hyperlink{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min})
+00082             \hyperlink{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} = \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var];
+00083 
+00084     \}
+00085 
+00086 
+00087 
+00088 
+00089 
+00090 
+00091 
+00092     plot\_curve\_fft(emu\_data\_freq\_value,\hyperlink{a00004_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude});
+00093     installEventFilter(\textcolor{keyword}{this});
+00094     gui\_init(EMU\_MODE\_DATA\_LENGTH/2);
+00095 
+00096 
+00097 
+00098 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d0b/a00004_ace57d3f7e3dd136290777006218abca9_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00004_ab897c9d3081a980c0ad94f09d5dbce99}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!````~emu\+\_\+data\+\_\+editor@{$\sim$emu\+\_\+data\+\_\+editor}}
+\index{````~emu\+\_\+data\+\_\+editor@{$\sim$emu\+\_\+data\+\_\+editor}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{$\sim$emu\+\_\+data\+\_\+editor}]{\setlength{\rightskip}{0pt plus 5cm}emu\+\_\+data\+\_\+editor\+::$\sim$emu\+\_\+data\+\_\+editor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{a00004_ab897c9d3081a980c0ad94f09d5dbce99}
+
+
+Definition at line \hyperlink{a00035_source_l00101}{101} of file \hyperlink{a00035_source}{emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+\begin{DoxyCode}
+00102 \{
+00103     \textcolor{keyword}{delete} ui;
+00104 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{a00004_a7c1fa0d7d1623b11d4badceb1854010e}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!action\+\_\+set\+\_\+value@{action\+\_\+set\+\_\+value}}
+\index{action\+\_\+set\+\_\+value@{action\+\_\+set\+\_\+value}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{action\+\_\+set\+\_\+value}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::action\+\_\+set\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{double}]{val, }
+\item[{{\bf Uint8}}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00004_a7c1fa0d7d1623b11d4badceb1854010e}
+
+
+Definition at line \hyperlink{a00014_source_l00277}{277} of file \hyperlink{a00014_source}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+\begin{DoxyCode}
+00278 \{
+00279     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)) \};
+00280     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 4, \_a);
+00281 \}
+\end{DoxyCode}
+\hypertarget{a00004_a74d292de22b341313df1852cb1033704}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!adjust\+\_\+value@{adjust\+\_\+value}}
+\index{adjust\+\_\+value@{adjust\+\_\+value}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{adjust\+\_\+value}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::adjust\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf Int16}}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00004_a74d292de22b341313df1852cb1033704}
+
+
+Definition at line \hyperlink{a00014_source_l00263}{263} of file \hyperlink{a00014_source}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00107}{event\+Filter()}.
+
+
+\begin{DoxyCode}
+00264 \{
+00265     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+00266     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 2, \_a);
+00267 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d0b/a00004_a74d292de22b341313df1852cb1033704_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00004_a2b9629d20c2b97c01bf8486c89fd0148}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!edit\+\_\+point\+\_\+deselection@{edit\+\_\+point\+\_\+deselection}}
+\index{edit\+\_\+point\+\_\+deselection@{edit\+\_\+point\+\_\+deselection}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{edit\+\_\+point\+\_\+deselection}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::edit\+\_\+point\+\_\+deselection (
+\begin{DoxyParamCaption}
+\item[{bool}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00004_a2b9629d20c2b97c01bf8486c89fd0148}
+
+
+Definition at line \hyperlink{a00014_source_l00256}{256} of file \hyperlink{a00014_source}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00107}{event\+Filter()}.
+
+
+\begin{DoxyCode}
+00257 \{
+00258     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+00259     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 1, \_a);
+00260 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d0b/a00004_a2b9629d20c2b97c01bf8486c89fd0148_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00004_a9aa2af0c329358fd96f7fb6b7f02bfe1}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!edit\+\_\+point\+\_\+selection@{edit\+\_\+point\+\_\+selection}}
+\index{edit\+\_\+point\+\_\+selection@{edit\+\_\+point\+\_\+selection}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{edit\+\_\+point\+\_\+selection}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::edit\+\_\+point\+\_\+selection (
+\begin{DoxyParamCaption}
+\item[{bool}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00004_a9aa2af0c329358fd96f7fb6b7f02bfe1}
+
+
+Definition at line \hyperlink{a00014_source_l00249}{249} of file \hyperlink{a00014_source}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00107}{event\+Filter()}.
+
+
+\begin{DoxyCode}
+00250 \{
+00251     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+00252     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 0, \_a);
+00253 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d0b/a00004_a9aa2af0c329358fd96f7fb6b7f02bfe1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00004_a48f610d23d17b2679113ea351d0968e4}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!event\+Filter@{event\+Filter}}
+\index{event\+Filter@{event\+Filter}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{event\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}bool emu\+\_\+data\+\_\+editor\+::event\+Filter (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{obj, }
+\item[{Q\+Event $\ast$}]{ev}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{a00004_a48f610d23d17b2679113ea351d0968e4}
+
+
+Definition at line \hyperlink{a00035_source_l00107}{107} of file \hyperlink{a00035_source}{emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+
+References \hyperlink{a00014_source_l00263}{adjust\+\_\+value()}, \hyperlink{a00014_source_l00256}{edit\+\_\+point\+\_\+deselection()}, \hyperlink{a00014_source_l00249}{edit\+\_\+point\+\_\+selection()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+
+\begin{DoxyCode}
+00108 \{
+00109 
+00110 
+00111     \textcolor{keywordflow}{if}(obj!=\textcolor{keyword}{this})
+00112         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00113 
+00114         \textcolor{keywordflow}{if} (event->type() == QEvent::KeyPress) \{
+00115             QKeyEvent *keyEvent = \textcolor{keyword}{static\_cast<}QKeyEvent*\textcolor{keyword}{>}(event);
+00116             \textcolor{keywordflow}{switch} (keyEvent->key()) \{
+00117             \textcolor{keywordflow}{case} Qt::Key\_Shift:
+00118                     emit \hyperlink{a00004_a9aa2af0c329358fd96f7fb6b7f02bfe1}{edit\_point\_selection}(\textcolor{keyword}{true});
+00119                   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00120                  \textcolor{keywordflow}{break};
+00121 
+00122 
+00123             \textcolor{keywordflow}{case} Qt::Key\_Plus:
+00124 
+00125                     emit \hyperlink{a00004_a74d292de22b341313df1852cb1033704}{adjust\_value}(10);
+00126                     \hyperlink{a00004_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00127                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00128                  \textcolor{keywordflow}{break};
+00129 
+00130             \textcolor{keywordflow}{case} Qt::Key\_Minus:
+00131 
+00132                     emit \hyperlink{a00004_a74d292de22b341313df1852cb1033704}{adjust\_value}(-10);
+00133                     \hyperlink{a00004_a15cbcf5f0a17281468800f47898f60c1}{update\_curve}();
+00134                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00135                 \textcolor{keywordflow}{break};
+00136             \textcolor{keywordflow}{case} Qt::Key\_Left:
+00137 
+00138 
+00139                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00140                 \textcolor{keywordflow}{break};
+00141 
+00142             \textcolor{keywordflow}{case} Qt::Key\_Clear:
+00143                     emit \hyperlink{a00004_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keyword}{true});
+00144                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00145                      \textcolor{keywordflow}{break};
+00146 
+00147 
+00148             \textcolor{keywordflow}{case} Qt::Key\_Control:
+00149                     emit \hyperlink{a00004_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keyword}{true});
+00150                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00151                  \textcolor{keywordflow}{break};
+00152 
+00153 
+00154             \textcolor{keywordflow}{case} Qt::Key\_Right:
+00155 
+00156 
+00157             \textcolor{keywordflow}{case} Qt::Key\_Enter:
+00158 
+00159                  \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00160                 \textcolor{keywordflow}{break};
+00161             \textcolor{keywordflow}{case} Qt::Key\_Return:
+00162 
+00163 
+00164                  \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00165                 \textcolor{keywordflow}{break};
+00166 
+00167             \textcolor{keywordflow}{default}:
+00168 
+00169 
+00170                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00171 
+00172                \textcolor{keywordflow}{break};
+00173 
+00174             \}
+00175 
+00176         \} \textcolor{keywordflow}{else}  \textcolor{keywordflow}{if} (event->type() == QEvent::KeyRelease) \{
+00177             QKeyEvent *keyEvent = \textcolor{keyword}{static\_cast<}QKeyEvent*\textcolor{keyword}{>}(event);
+00178 
+00179 
+00180             \textcolor{keywordflow}{switch} (keyEvent->key()) \{
+00181 
+00182             \textcolor{keywordflow}{case} Qt::Key\_Shift:
+00183                    emit \hyperlink{a00004_a9aa2af0c329358fd96f7fb6b7f02bfe1}{edit\_point\_selection}(\textcolor{keyword}{false});
+00184                   \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00185                  \textcolor{keywordflow}{break};
+00186 
+00187             \textcolor{keywordflow}{case} Qt::Key\_Clear:
+00188                     emit \hyperlink{a00004_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keyword}{false});
+00189                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00190                      \textcolor{keywordflow}{break};
+00191 
+00192 
+00193             \textcolor{keywordflow}{case} Qt::Key\_Control:
+00194                     emit \hyperlink{a00004_a2b9629d20c2b97c01bf8486c89fd0148}{edit\_point\_deselection}(\textcolor{keyword}{false});
+00195                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00196                      \textcolor{keywordflow}{break};
+00197 
+00198             \textcolor{keywordflow}{case} Qt::Key\_Delete:
+00199 
+00200                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00201                      \textcolor{keywordflow}{break};
+00202             \textcolor{keywordflow}{case} Qt::Key\_Left:
+00203 
+00204             \textcolor{keywordflow}{case} Qt::Key\_Right:
+00205             \textcolor{keywordflow}{case} Qt::Key\_Up:
+00206             \textcolor{keywordflow}{case} Qt::Key\_Down:
+00207                 \textcolor{comment}{// skip processing}
+00208                 \textcolor{keywordflow}{break};
+00209             \textcolor{keywordflow}{case} Qt::Key\_Enter:
+00210 
+00211                  \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00212                 \textcolor{keywordflow}{break};
+00213             \textcolor{keywordflow}{case} Qt::Key\_Return:
+00214 
+00215 
+00216                  \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00217                 \textcolor{keywordflow}{break};
+00218 
+00219             \textcolor{keywordflow}{default}:
+00220 
+00221 
+00222                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00223 
+00224                \textcolor{keywordflow}{break};
+00225 
+00226             \}
+00227 
+00228         \} \textcolor{keywordflow}{else} \{
+00229             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00230         \}
+00231 
+00232         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00233 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d0b/a00004_a48f610d23d17b2679113ea351d0968e4_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00004_a86f994dedec393af88b5d1a37b1e30b5}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!selection@{selection}}
+\index{selection@{selection}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{selection}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::selection (
+\begin{DoxyParamCaption}
+\item[{bool}]{clear}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{a00004_a86f994dedec393af88b5d1a37b1e30b5}
+
+
+Definition at line \hyperlink{a00035_source_l00340}{340} of file \hyperlink{a00035_source}{emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+
+References \hyperlink{a00014_source_l00296}{set\+\_\+status()}.
+
+
+\begin{DoxyCode}
+00341 \{
+00342 
+00343     emit \hyperlink{a00004_a9476424a86a6ed4f84c64d0ac77143cc}{set\_status}(clear?2\textcolor{comment}{/*deselect action*/}:1\textcolor{comment}{/*select action*/});
+00344 
+00345 \}
+\end{DoxyCode}
+\hypertarget{a00004_a9476424a86a6ed4f84c64d0ac77143cc}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!set\+\_\+status@{set\+\_\+status}}
+\index{set\+\_\+status@{set\+\_\+status}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{set\+\_\+status}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::set\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint8}}]{select}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00004_a9476424a86a6ed4f84c64d0ac77143cc}
+
+
+Definition at line \hyperlink{a00014_source_l00296}{296} of file \hyperlink{a00014_source}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00340}{selection()}.
+
+
+\begin{DoxyCode}
+00297 \{
+00298     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)) \};
+00299     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 7, \_a);
+00300 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d0b/a00004_a9476424a86a6ed4f84c64d0ac77143cc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00004_a9d26460f253a29dd961b20be0afb5358}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!set\+\_\+value@{set\+\_\+value}}
+\index{set\+\_\+value@{set\+\_\+value}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{set\+\_\+value}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::set\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf Int16}}]{val, }
+\item[{{\bf Uint16}}]{waveform}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00004_a9d26460f253a29dd961b20be0afb5358}
+
+
+Definition at line \hyperlink{a00014_source_l00270}{270} of file \hyperlink{a00014_source}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+\begin{DoxyCode}
+00271 \{
+00272     \textcolor{keywordtype}{void} *\_a[] = \{ 0, \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t1)), \textcolor{keyword}{const\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(\textcolor{keyword}{
+      reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(&\_t2)) \};
+00273     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 3, \_a);
+00274 \}
+\end{DoxyCode}
+\hypertarget{a00004_a15cbcf5f0a17281468800f47898f60c1}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!update\+\_\+curve@{update\+\_\+curve}}
+\index{update\+\_\+curve@{update\+\_\+curve}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{update\+\_\+curve}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::update\+\_\+curve (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}}\label{a00004_a15cbcf5f0a17281468800f47898f60c1}
+
+
+Definition at line \hyperlink{a00035_source_l00284}{284} of file \hyperlink{a00035_source}{emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+
+References \hyperlink{a00036_source_l00051}{emu\+\_\+data\+\_\+freq\+\_\+value}, \hyperlink{a00036_source_l00052}{emu\+\_\+data\+\_\+spectrum\+\_\+magnitude}, \hyperlink{a00036_source_l00046}{emu\+\_\+data\+\_\+xvalue}, \hyperlink{a00036_source_l00045}{emu\+\_\+data\+\_\+yvalue}, \hyperlink{a00003_source_l00031}{E\+M\+U\+\_\+\+M\+O\+D\+E\+\_\+\+D\+A\+T\+A\+\_\+\+L\+E\+N\+G\+T\+H}, \hyperlink{a00036_source_l00050}{fft\+\_\+inputs}, \hyperlink{a00036_source_l00049}{fft\+\_\+result}, \hyperlink{a00036_source_l00012}{F\+F\+T\+\_\+\+S\+I\+Z\+E}, \hyperlink{a00051_source_l00053}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::plot\+\_\+curve}, \hyperlink{a00051_source_l00071}{Ui\+\_\+emu\+\_\+data\+\_\+editor\+::plot\+\_\+curve\+\_\+fft}, \hyperlink{a00036_source_l00053}{spectrum\+\_\+magnitude\+\_\+max}, \hyperlink{a00036_source_l00054}{spectrum\+\_\+magnitude\+\_\+min}, and \hyperlink{a00036_source_l00044}{transformer}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00107}{event\+Filter()}, and \hyperlink{a00046_source_l00219}{Slider\+::key\+Press\+Event()}.
+
+
+\begin{DoxyCode}
+00284                                    \{
+00285 
+00286      ui->\hyperlink{a00026_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->graph(0)->setData(\hyperlink{a00004_a66d07ec51f26cd9b84994548faa336d6}{emu\_data\_xvalue}, 
+      \hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue});
+00287 
+00288      \hyperlink{a00001_a3985266aecb120f269789241c170850c}{Int16} head = 0;
+00289 
+00290      \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00291          \hyperlink{a00004_a8782fc20094d65d56c04869b9692902e}{fft\_inputs}[var] = (float)\hyperlink{a00004_ad922d05d1e988d84f404c115fe909f72}{emu\_data\_yvalue}[head];
+00292          head = (head + 1)%\hyperlink{a00003_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH};
+00293      \}
+00294 
+00295      \hyperlink{a00004_a0d6e12337ef942452edea37827e58cd4}{transformer}.forwardTransform(\hyperlink{a00004_a8782fc20094d65d56c04869b9692902e}{fft\_inputs}, \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result});
+00296 
+00297      \hyperlink{a00004_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude}.clear();
+00298 
+00299 
+00300      \hyperlink{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} = 0;
+00301      \hyperlink{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} = 0;
+00302 
+00303      \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00304 
+00305          \hyperlink{a00004_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude}.append((\textcolor{keywordtype}{float})
+      \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var]);
+00306 
+00307 
+00308          \textcolor{keywordflow}{if}(\hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var] > \hyperlink{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max})
+00309              \hyperlink{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} = \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var];
+00310          \textcolor{keywordflow}{if}(\hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var] < \hyperlink{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min})
+00311              \hyperlink{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} = \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var];
+00312      \}
+00313 
+00314 \textcolor{preprocessor}{#if(0)}
+00315 
+00316      \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00317           qDebug()<<\textcolor{stringliteral}{"A("}<<var+1<<\textcolor{stringliteral}{") = "}<< \hyperlink{a00004_a63b6150bfbba86ba943877a2f547ddd8}{fft\_result}[var]<<\textcolor{stringliteral}{";"};
+00318      \}
+00319 
+00320      \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < \hyperlink{a00036_a636ddc19af00bc87969a07c88331f105}{FFT\_SIZE}; ++var) \{
+00321           qDebug()<<\textcolor{stringliteral}{"B("}<<var+1<<\textcolor{stringliteral}{") = "}<< \hyperlink{a00004_a8782fc20094d65d56c04869b9692902e}{fft\_inputs}[var];
+00322      \}
+00323 \textcolor{preprocessor}{#endif}
+00324 
+00325 
+00326 
+00327      ui->\hyperlink{a00026_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->graph(0)->setData(\hyperlink{a00004_a62129d59e218ab857cd50cb202205129}{emu\_data\_freq\_value},
+      \hyperlink{a00004_ac3c515466f79ab8e60a58e8d15a3b991}{emu\_data\_spectrum\_magnitude});
+00328      ui->\hyperlink{a00026_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->yAxis->setRange(\hyperlink{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{spectrum\_magnitude\_min} - 2,
+00329                                          \hyperlink{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{spectrum\_magnitude\_max} + 2);
+00330 
+00331 
+00332 
+00333      ui->\hyperlink{a00026_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00334      ui->\hyperlink{a00026_a1d46308dee8db7e3c99af65f13055479}{plot\_curve}->replot();
+00335      ui->\hyperlink{a00026_a2bdf46ca3b702151408e6f6bd96b3228}{plot\_curve\_fft}->replot();
+00336 
+00337 
+00338 \}
+\end{DoxyCode}
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d0b/a00004_a15cbcf5f0a17281468800f47898f60c1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00004_a7dfbddd62d6782b0f0ce809cbf2338ba}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!update\+\_\+curve\+\_\+signal@{update\+\_\+curve\+\_\+signal}}
+\index{update\+\_\+curve\+\_\+signal@{update\+\_\+curve\+\_\+signal}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{update\+\_\+curve\+\_\+signal}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::update\+\_\+curve\+\_\+signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00004_a7dfbddd62d6782b0f0ce809cbf2338ba}
+
+
+Definition at line \hyperlink{a00014_source_l00284}{284} of file \hyperlink{a00014_source}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+\begin{DoxyCode}
+00285 \{
+00286     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 5, 0);
+00287 \}
+\end{DoxyCode}
+\hypertarget{a00004_ad5f20fdbb4731185020ff4e90cd1ead2}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!update\+\_\+value@{update\+\_\+value}}
+\index{update\+\_\+value@{update\+\_\+value}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{update\+\_\+value}]{\setlength{\rightskip}{0pt plus 5cm}void emu\+\_\+data\+\_\+editor\+::update\+\_\+value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{a00004_ad5f20fdbb4731185020ff4e90cd1ead2}
+
+
+Definition at line \hyperlink{a00014_source_l00290}{290} of file \hyperlink{a00014_source}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}.
+
+
+\begin{DoxyCode}
+00291 \{
+00292     QMetaObject::activate(\textcolor{keyword}{this}, &staticMetaObject, 6, 0);
+00293 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{a00004_aa55b7d8008e31fcc971692b493e7cf34}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!dir\+\_\+default@{dir\+\_\+default}}
+\index{dir\+\_\+default@{dir\+\_\+default}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{dir\+\_\+default}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String emu\+\_\+data\+\_\+editor\+::dir\+\_\+default}}\label{a00004_aa55b7d8008e31fcc971692b493e7cf34}
+
+
+Definition at line \hyperlink{a00036_source_l00055}{55} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}.
+
+\hypertarget{a00004_ab093b86d07b4eb96c36878089a7d97df}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!edit\+\_\+point\+\_\+sets@{edit\+\_\+point\+\_\+sets}}
+\index{edit\+\_\+point\+\_\+sets@{edit\+\_\+point\+\_\+sets}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{edit\+\_\+point\+\_\+sets}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<${\bf emu\+\_\+data\+\_\+edit\+\_\+point\+\_\+t}$>$ emu\+\_\+data\+\_\+editor\+::edit\+\_\+point\+\_\+sets}}\label{a00004_ab093b86d07b4eb96c36878089a7d97df}
+
+
+Definition at line \hyperlink{a00036_source_l00043}{43} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+\hypertarget{a00004_a62129d59e218ab857cd50cb202205129}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!emu\+\_\+data\+\_\+freq\+\_\+value@{emu\+\_\+data\+\_\+freq\+\_\+value}}
+\index{emu\+\_\+data\+\_\+freq\+\_\+value@{emu\+\_\+data\+\_\+freq\+\_\+value}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{emu\+\_\+data\+\_\+freq\+\_\+value}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<$double$>$ emu\+\_\+data\+\_\+editor\+::emu\+\_\+data\+\_\+freq\+\_\+value}}\label{a00004_a62129d59e218ab857cd50cb202205129}
+
+
+Definition at line \hyperlink{a00036_source_l00051}{51} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_ac3c515466f79ab8e60a58e8d15a3b991}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!emu\+\_\+data\+\_\+spectrum\+\_\+magnitude@{emu\+\_\+data\+\_\+spectrum\+\_\+magnitude}}
+\index{emu\+\_\+data\+\_\+spectrum\+\_\+magnitude@{emu\+\_\+data\+\_\+spectrum\+\_\+magnitude}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{emu\+\_\+data\+\_\+spectrum\+\_\+magnitude}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<$double$>$ emu\+\_\+data\+\_\+editor\+::emu\+\_\+data\+\_\+spectrum\+\_\+magnitude}}\label{a00004_ac3c515466f79ab8e60a58e8d15a3b991}
+
+
+Definition at line \hyperlink{a00036_source_l00052}{52} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_a66d07ec51f26cd9b84994548faa336d6}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!emu\+\_\+data\+\_\+xvalue@{emu\+\_\+data\+\_\+xvalue}}
+\index{emu\+\_\+data\+\_\+xvalue@{emu\+\_\+data\+\_\+xvalue}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{emu\+\_\+data\+\_\+xvalue}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<$double$>$ emu\+\_\+data\+\_\+editor\+::emu\+\_\+data\+\_\+xvalue}}\label{a00004_a66d07ec51f26cd9b84994548faa336d6}
+
+
+Definition at line \hyperlink{a00036_source_l00046}{46} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_ad922d05d1e988d84f404c115fe909f72}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!emu\+\_\+data\+\_\+yvalue@{emu\+\_\+data\+\_\+yvalue}}
+\index{emu\+\_\+data\+\_\+yvalue@{emu\+\_\+data\+\_\+yvalue}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{emu\+\_\+data\+\_\+yvalue}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Vector$<$double$>$ emu\+\_\+data\+\_\+editor\+::emu\+\_\+data\+\_\+yvalue}}\label{a00004_ad922d05d1e988d84f404c115fe909f72}
+
+
+Definition at line \hyperlink{a00036_source_l00045}{45} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, \hyperlink{a00046_source_l00102}{Slider\+::set\+\_\+value()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_a8782fc20094d65d56c04869b9692902e}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!fft\+\_\+inputs@{fft\+\_\+inputs}}
+\index{fft\+\_\+inputs@{fft\+\_\+inputs}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{fft\+\_\+inputs}]{\setlength{\rightskip}{0pt plus 5cm}float emu\+\_\+data\+\_\+editor\+::fft\+\_\+inputs\mbox{[}{\bf F\+F\+T\+\_\+\+S\+I\+Z\+E}\mbox{]}}}\label{a00004_a8782fc20094d65d56c04869b9692902e}
+
+
+Definition at line \hyperlink{a00036_source_l00050}{50} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_a63b6150bfbba86ba943877a2f547ddd8}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!fft\+\_\+result@{fft\+\_\+result}}
+\index{fft\+\_\+result@{fft\+\_\+result}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{fft\+\_\+result}]{\setlength{\rightskip}{0pt plus 5cm}float emu\+\_\+data\+\_\+editor\+::fft\+\_\+result\mbox{[}{\bf F\+F\+T\+\_\+\+S\+I\+Z\+E}\mbox{]}}}\label{a00004_a63b6150bfbba86ba943877a2f547ddd8}
+
+
+Definition at line \hyperlink{a00036_source_l00049}{49} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_a73dabe63bd74afe2776e8136211dc36e}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!signal\+\_\+amplitude@{signal\+\_\+amplitude}}
+\index{signal\+\_\+amplitude@{signal\+\_\+amplitude}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{signal\+\_\+amplitude}]{\setlength{\rightskip}{0pt plus 5cm}double emu\+\_\+data\+\_\+editor\+::signal\+\_\+amplitude}}\label{a00004_a73dabe63bd74afe2776e8136211dc36e}
+
+
+Definition at line \hyperlink{a00036_source_l00042}{42} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00046_source_l00102}{Slider\+::set\+\_\+value()}.
+
+\hypertarget{a00004_a67039999d520fc483fab521fae5ddde4}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!signal\+\_\+freq@{signal\+\_\+freq}}
+\index{signal\+\_\+freq@{signal\+\_\+freq}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{signal\+\_\+freq}]{\setlength{\rightskip}{0pt plus 5cm}double emu\+\_\+data\+\_\+editor\+::signal\+\_\+freq}}\label{a00004_a67039999d520fc483fab521fae5ddde4}
+
+
+Definition at line \hyperlink{a00036_source_l00040}{40} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00046_source_l00102}{Slider\+::set\+\_\+value()}.
+
+\hypertarget{a00004_af08de88fdfe283086e3cca97a2965678}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!signal\+\_\+phase@{signal\+\_\+phase}}
+\index{signal\+\_\+phase@{signal\+\_\+phase}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{signal\+\_\+phase}]{\setlength{\rightskip}{0pt plus 5cm}double emu\+\_\+data\+\_\+editor\+::signal\+\_\+phase}}\label{a00004_af08de88fdfe283086e3cca97a2965678}
+
+
+Definition at line \hyperlink{a00036_source_l00041}{41} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00046_source_l00102}{Slider\+::set\+\_\+value()}.
+
+\hypertarget{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!signal\+\_\+type@{signal\+\_\+type}}
+\index{signal\+\_\+type@{signal\+\_\+type}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{signal\+\_\+type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Uint8} emu\+\_\+data\+\_\+editor\+::signal\+\_\+type}}\label{a00004_a070edaec5aee6ba1f5a6866bc32c8ce4}
+
+
+Definition at line \hyperlink{a00036_source_l00039}{39} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00046_source_l00309}{Slider\+::context\+Menu\+Event()}, \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, \hyperlink{a00046_source_l00219}{Slider\+::key\+Press\+Event()}, and \hyperlink{a00046_source_l00102}{Slider\+::set\+\_\+value()}.
+
+\hypertarget{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!spectrum\+\_\+magnitude\+\_\+max@{spectrum\+\_\+magnitude\+\_\+max}}
+\index{spectrum\+\_\+magnitude\+\_\+max@{spectrum\+\_\+magnitude\+\_\+max}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{spectrum\+\_\+magnitude\+\_\+max}]{\setlength{\rightskip}{0pt plus 5cm}float emu\+\_\+data\+\_\+editor\+::spectrum\+\_\+magnitude\+\_\+max}}\label{a00004_ae0119c7dd2179cdcb3ea37adbefdc289}
+
+
+Definition at line \hyperlink{a00036_source_l00053}{53} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_afb692cc49c350d4bf120ca1e3dd61e93}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!spectrum\+\_\+magnitude\+\_\+min@{spectrum\+\_\+magnitude\+\_\+min}}
+\index{spectrum\+\_\+magnitude\+\_\+min@{spectrum\+\_\+magnitude\+\_\+min}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{spectrum\+\_\+magnitude\+\_\+min}]{\setlength{\rightskip}{0pt plus 5cm}float emu\+\_\+data\+\_\+editor\+::spectrum\+\_\+magnitude\+\_\+min}}\label{a00004_afb692cc49c350d4bf120ca1e3dd61e93}
+
+
+Definition at line \hyperlink{a00036_source_l00054}{54} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_a0d6e12337ef942452edea37827e58cd4}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!transformer@{transformer}}
+\index{transformer@{transformer}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{transformer}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Fourier\+Transformer emu\+\_\+data\+\_\+editor\+::transformer}}\label{a00004_a0d6e12337ef942452edea37827e58cd4}
+
+
+Definition at line \hyperlink{a00036_source_l00044}{44} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}, and \hyperlink{a00035_source_l00284}{update\+\_\+curve()}.
+
+\hypertarget{a00004_a2abdde44f37258778dcc571e8cc7ed1a}{\index{emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}!win\+\_\+title@{win\+\_\+title}}
+\index{win\+\_\+title@{win\+\_\+title}!emu\+\_\+data\+\_\+editor@{emu\+\_\+data\+\_\+editor}}
+\subsubsection[{win\+\_\+title}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String emu\+\_\+data\+\_\+editor\+::win\+\_\+title}}\label{a00004_a2abdde44f37258778dcc571e8cc7ed1a}
+
+
+Definition at line \hyperlink{a00036_source_l00038}{38} of file \hyperlink{a00036_source}{emu\+\_\+data\+\_\+editor.\+h}.
+
+
+
+Referenced by \hyperlink{a00035_source_l00012}{emu\+\_\+data\+\_\+editor()}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00036}{emu\+\_\+data\+\_\+editor.\+h}\item 
+\hyperlink{a00035}{emu\+\_\+data\+\_\+editor.\+cpp}\item 
+\hyperlink{a00014}{moc\+\_\+emu\+\_\+data\+\_\+editor.\+cpp}\end{DoxyCompactItemize}

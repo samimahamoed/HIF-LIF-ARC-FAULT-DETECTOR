@@ -1,0 +1,10 @@
+digraph "li2a"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="li2a",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="uli2a",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dc6/a00037.html#ac8448f6a2ace7b25fc6fbd5561fe5e75"];
+}

@@ -1,0 +1,12 @@
+<map id="mfield_z_sen_data_t" name="mfield_z_sen_data_t">
+<area shape="rect" id="node2" href="$de/d11/a00021.html#d6/d9c/a00352" title="{configured_t\n||}" alt="" coords="914,377,1006,454"/>
+<area shape="rect" id="node10" href="$dd/da2/a00019.html#d6/db2/a00601" title="{module_status_mfield_t\n||}" alt="" coords="1081,377,1240,454"/>
+<area shape="rect" id="node17" href="$dd/da2/a00019.html#d9/dc1/a00388" title="{diagonesis_records\l_mfield_t\n||}" alt="" coords="1424,369,1558,461"/>
+<area shape="rect" id="node18" href="$dd/da2/a00019.html#dc/d41/a00862" title="Notification structure from mfield_sen module to Algorithm module about supervision error..." alt="" coords="1736,369,1872,461"/>
+<area shape="rect" id="node21" href="$d7/de0/a00022.html#d2/d5a/a00792" title="sensor supervission replay status report structure " alt="" coords="1281,377,1400,454"/>
+<area shape="rect" id="node11" href="$dd/da2/a00019.html#df/d0c/a00788" title="{state_data_mfield_t\n||}" alt="" coords="1324,202,1458,279"/>
+<area shape="rect" id="node7" href="$dc/d3c/a00028.html" title="{module_disturbance\l_record_t\n|+ event_data\l|+ __attribute__()\l}" alt="" coords="274,369,412,461"/>
+<area shape="rect" id="node8" href="$d7/de0/a00022.html#da/dc3/a00657" title="{pre_act_record_buffer_t\n||}" alt="" coords="155,202,312,279"/>
+<area shape="rect" id="node14" href="$de/d8c/a00036.html#de/d37/a00849" title="OS event. " alt="" coords="1862,202,1928,279"/>
+<area shape="rect" id="node19" href="$de/d8c/a00036.html#df/d4c/a00851" title="{x_notify\n||}" alt="" coords="1728,202,1795,279"/>
+</map>

@@ -1,0 +1,19 @@
+digraph "Delay5us"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Delay5us",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="hwio_configure_analog_init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/de0/a00050.html#a33a6b6b17536decccd19c7132479c20b",tooltip="Low level analog. "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="hwio_configure_init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/de0/a00050.html#a335d9e8391450a8e88dd4852700d81b7",tooltip="Low level gpio/analog configuration. "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/db6/a00042.html#a840291bc02cba5474a4cb46a9b9566fe",tooltip="System startup function. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="serial_send",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/de2/a00024.html#a17f65cf9dbacdfb97cb2536ed0097ccb",tooltip="Function sending buffers over serial port. "];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="serial_send_response",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/de2/a00024.html#a96a3f016ca5b0736424c2695fe9fbdf8",tooltip="Function sending command responses on serial line. "];
+}

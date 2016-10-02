@@ -1,0 +1,4 @@
+<map id="QCPAbstractLegendItem::font" name="QCPAbstractLegendItem::font">
+<area shape="rect" id="node2" href="$d3/d52/a00023.html#a409c53455d8112f71d70c0c43eb10265" title="Sets the default font of this specific legend item to font. " alt="" coords="220,5,387,47"/>
+<area shape="rect" id="node3" href="$d3/d52/a00023.html#a91db5aee48617a9d3206e61376807365" title="When this legend item is selected, font is used to draw generic text, instead of the normal font set ..." alt="" coords="220,71,387,112"/>
+</map>

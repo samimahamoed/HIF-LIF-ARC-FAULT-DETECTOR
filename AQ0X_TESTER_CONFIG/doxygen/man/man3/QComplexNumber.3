@@ -1,0 +1,238 @@
+.TH "QComplexNumber< T >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QComplexNumber< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcomplexnumber\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQComplexNumber\fP ()"
+.br
+.ti -1c
+.RI "\fBQComplexNumber\fP (T \fBreal\fP, T \fBimaginary\fP)"
+.br
+.ti -1c
+.RI "void \fBsetReal\fP (T \fBreal\fP)"
+.br
+.ti -1c
+.RI "void \fBsetImaginary\fP (T \fBimaginary\fP)"
+.br
+.ti -1c
+.RI "void \fBset\fP (T \fBreal\fP, T \fBimaginary\fP)"
+.br
+.ti -1c
+.RI "void \fBset\fP (\fBQComplexNumber\fP complex)"
+.br
+.ti -1c
+.RI "T \fBreal\fP ()"
+.br
+.ti -1c
+.RI "T \fBimaginary\fP ()"
+.br
+.ti -1c
+.RI "\fBQComplexNumber\fP< T > & \fBoperator+=\fP (const \fBQComplexNumber\fP< T > &number)"
+.br
+.ti -1c
+.RI "\fBQComplexNumber\fP< T > & \fBoperator-=\fP (const \fBQComplexNumber\fP< T > &number)"
+.br
+.ti -1c
+.RI "\fBQComplexNumber\fP< T > & \fBoperator/=\fP (const \fBQComplexNumber\fP< T > &number)"
+.br
+.ti -1c
+.RI "\fBQComplexNumber\fP< T > & \fBoperator*=\fP (const \fBQComplexNumber\fP< T > &number)"
+.br
+.ti -1c
+.RI "\fBQComplexNumber\fP< T > & \fBoperator/=\fP (const T &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "\fBQComplexNumber\fP< T > & \fBoperator*=\fP (const T &\fBvalue\fP)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>class QComplexNumber< T >"
+
+.PP
+Definition at line 46 of file qcomplexnumber\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T > \fBQComplexNumber\fP< T >::\fBQComplexNumber\fP ()"
+
+.PP
+Definition at line 45 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+46 {
+47     mReal = 0;
+48     mImaginary = 0;
+49 }
+.fi
+.SS "template<typename T > \fBQComplexNumber\fP< T >::\fBQComplexNumber\fP (Treal, Timaginary)"
+
+.PP
+Definition at line 52 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+53 {
+54     mReal = real;
+55     mImaginary = imaginary;
+56 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > T \fBQComplexNumber\fP< T >::imaginary ()"
+
+.PP
+Definition at line 91 of file qcomplexnumber\&.cpp\&.
+.PP
+Referenced by QComplexNumber< T >::set()\&.
+.PP
+.nf
+92 {
+93     return mImaginary;
+94 }
+.fi
+.SS "template<typename T > \fBQComplexNumber\fP< T > & \fBQComplexNumber\fP< T >::operator*= (const \fBQComplexNumber\fP< T > &number)"
+
+.PP
+Definition at line 121 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+122 {
+123     mReal *= number\&.mReal;
+124     mImaginary *= number\&.mImaginary;
+125     return *this;
+126 }
+.fi
+.SS "template<typename T > \fBQComplexNumber\fP< T > & \fBQComplexNumber\fP< T >::operator*= (const T &value)"
+
+.PP
+Definition at line 137 of file qcomplexnumber\&.cpp\&.
+.PP
+References value\&.
+.PP
+.nf
+138 {
+139     mReal *= value;
+140     mImaginary *= value;
+141     return *this;
+142 }
+.fi
+.SS "template<typename T > \fBQComplexNumber\fP< T > & \fBQComplexNumber\fP< T >::operator+= (const \fBQComplexNumber\fP< T > &number)"
+
+.PP
+Definition at line 97 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+98 {
+99     mReal += number\&.mReal;
+100     mImaginary += number\&.mImaginary;
+101     return *this;
+102 }
+.fi
+.SS "template<typename T > \fBQComplexNumber\fP< T > & \fBQComplexNumber\fP< T >::operator-= (const \fBQComplexNumber\fP< T > &number)"
+
+.PP
+Definition at line 105 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+106 {
+107     mReal -= number\&.mReal;
+108     mImaginary -= number\&.mImaginary;
+109     return *this;
+110 }
+.fi
+.SS "template<typename T > \fBQComplexNumber\fP< T > & \fBQComplexNumber\fP< T >::operator/= (const \fBQComplexNumber\fP< T > &number)"
+
+.PP
+Definition at line 113 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+114 {
+115     mReal /= number\&.mReal;
+116     mImaginary /= number\&.mImaginary;
+117     return *this;
+118 }
+.fi
+.SS "template<typename T > \fBQComplexNumber\fP< T > & \fBQComplexNumber\fP< T >::operator/= (const T &value)"
+
+.PP
+Definition at line 129 of file qcomplexnumber\&.cpp\&.
+.PP
+References value\&.
+.PP
+.nf
+130 {
+131     mReal /= value;
+132     mImaginary /= value;
+133     return *this;
+134 }
+.fi
+.SS "template<typename T > T \fBQComplexNumber\fP< T >::real ()"
+
+.PP
+Definition at line 85 of file qcomplexnumber\&.cpp\&.
+.PP
+Referenced by QComplexNumber< T >::set()\&.
+.PP
+.nf
+86 {
+87     return mReal;
+88 }
+.fi
+.SS "template<typename T > void \fBQComplexNumber\fP< T >::set (Treal, Timaginary)"
+
+.PP
+Definition at line 71 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+72 {
+73     mReal = real;
+74     mImaginary = imaginary;
+75 }
+.fi
+.SS "template<typename T > void \fBQComplexNumber\fP< T >::set (\fBQComplexNumber\fP< T >complex)"
+
+.PP
+Definition at line 78 of file qcomplexnumber\&.cpp\&.
+.PP
+References QComplexNumber< T >::imaginary(), and QComplexNumber< T >::real()\&.
+.PP
+.nf
+79 {
+80     mReal = complex\&.real();
+81     mImaginary = complex\&.imaginary();
+82 }
+.fi
+.SS "template<typename T > void \fBQComplexNumber\fP< T >::setImaginary (Timaginary)"
+
+.PP
+Definition at line 65 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+66 {
+67     mImaginary = imaginary;
+68 }
+.fi
+.SS "template<typename T > void \fBQComplexNumber\fP< T >::setReal (Treal)"
+
+.PP
+Definition at line 59 of file qcomplexnumber\&.cpp\&.
+.PP
+.nf
+60 {
+61     mReal = real;
+62 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

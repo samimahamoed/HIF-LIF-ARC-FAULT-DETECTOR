@@ -1,0 +1,9 @@
+<map id="x_send_notify" name="x_send_notify">
+<area shape="rect" id="node2" href="$d8/d41/a00038.html#a1d182ae18a9176c2a1e28cc654dc0e43" title="Algorithm task function. " alt="" coords="167,5,282,32"/>
+<area shape="rect" id="node4" href="$d6/d97/a00045.html#a24529100c87dfc257e9b56f7f0bcfa78" title="ir sensor module task function. " alt="" coords="177,56,273,83"/>
+<area shape="rect" id="node5" href="$d6/d2d/a00047.html#ae9aa2f8b8e90a92755efbcd161c67bc0" title="light sensor module task function. " alt="" coords="168,107,281,133"/>
+<area shape="rect" id="node6" href="$d5/de0/a00050.html#a72e9235043dc4a8469143a6eb48bf117" title="module task function. " alt="" coords="156,157,293,184"/>
+<area shape="rect" id="node7" href="$dc/dee/a00053.html#a7ef08302978421a5dc004f06aab80a8a" title="mfield sensor module task function. " alt="" coords="156,208,293,235"/>
+<area shape="rect" id="node8" href="$d1/d6e/a00073.html#ab4e931568892f0b46a2571d3c480f5c8" title="uv sensor module task function. " alt="" coords="174,259,275,285"/>
+<area shape="rect" id="node3" href="$d4/dca/a00048.html#a840291bc02cba5474a4cb46a9b9566fe" title="System startup function. " alt="" coords="341,81,392,108"/>
+</map>

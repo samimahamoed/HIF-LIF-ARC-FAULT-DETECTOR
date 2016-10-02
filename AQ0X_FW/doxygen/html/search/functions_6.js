@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['i2a',['i2a',['../d6/d42/a00043.html#a13e43d9a7f9f5fedcc3889ed0dfe1cad',1,'gprintf.c']]],
+  ['ir_5fcompare',['ir_compare',['../d3/d52/a00023.html#a5c2c051f3b2d6fc8651e0e7750e455c2',1,'ir_compare(Float32 num, Float32 given_num, Float32 tolerance):&#160;ir_sensor.c'],['../d6/d97/a00045.html#a8998900f530ecbf97f17089547a1c953',1,'ir_compare(Float32 num1, Float32 num2, Float32 tolerance):&#160;ir_sensor.c']]],
+  ['ir_5frecord_5freset',['ir_record_reset',['../d4/d51/a00017.html#a1c9872e93491d95a24ab0bc723d39a74',1,'ir_record_reset(Uint8 type):&#160;ir_sensor.c'],['../d6/d97/a00045.html#a1c9872e93491d95a24ab0bc723d39a74',1,'ir_record_reset(Uint8 type):&#160;ir_sensor.c']]],
+  ['ir_5fsen_5fcalc_5fprobablity',['ir_sen_calc_probablity',['../d3/d52/a00023.html#a4a7227cd7b902e9a53daa10ddd05bbbf',1,'ir_sen_calc_probablity(Uint16 event, Uint16 obs):&#160;ir_sensor.c'],['../d6/d97/a00045.html#a4a7227cd7b902e9a53daa10ddd05bbbf',1,'ir_sen_calc_probablity(Uint16 event, Uint16 obs):&#160;ir_sensor.c']]],
+  ['ir_5fsen_5ffirst_5forder_5fderivative',['ir_sen_first_order_derivative',['../d3/d52/a00023.html#a1bff969fa2162ccb9701f6e88e8c912e',1,'ir_sen_first_order_derivative(Uint16 final_val, Uint16 init_val):&#160;ir_sensor.c'],['../d6/d97/a00045.html#a1bff969fa2162ccb9701f6e88e8c912e',1,'ir_sen_first_order_derivative(Uint16 final_val, Uint16 init_val):&#160;ir_sensor.c']]],
+  ['ir_5fsen_5fget_5fstatus',['ir_sen_get_status',['../d4/d51/a00017.html#a5bba51487aeccd791ff56017124da833',1,'ir_sen_get_status(Uint16 adc_value, Bool save_event):&#160;ir_sensor.c'],['../d6/d97/a00045.html#a5bba51487aeccd791ff56017124da833',1,'ir_sen_get_status(Uint16 adc_value, Bool save_event):&#160;ir_sensor.c']]],
+  ['ir_5fsen_5fhif_5fcheck',['ir_sen_hif_check',['../d4/d51/a00017.html#a86870a0e00601a92277e689447739ce9',1,'ir_sen_hif_check(void):&#160;ir_sensor.c'],['../d6/d97/a00045.html#a86870a0e00601a92277e689447739ce9',1,'ir_sen_hif_check(void):&#160;ir_sensor.c']]],
+  ['ir_5fsen_5fnotifyx',['ir_sen_notifyx',['../d4/d51/a00017.html#a36c6c2cdf9aa5844371e742330789dad',1,'ir_sen_notifyx(x_notify *notify):&#160;ir_sensor.c'],['../d6/d97/a00045.html#a36c6c2cdf9aa5844371e742330789dad',1,'ir_sen_notifyx(x_notify *notify):&#160;ir_sensor.c']]],
+  ['ir_5fsen_5ftaskx',['ir_sen_taskx',['../d4/d51/a00017.html#a24529100c87dfc257e9b56f7f0bcfa78',1,'ir_sen_taskx(x_event *event):&#160;ir_sensor.c'],['../d6/d97/a00045.html#a24529100c87dfc257e9b56f7f0bcfa78',1,'ir_sen_taskx(x_event *event):&#160;ir_sensor.c']]]
+];

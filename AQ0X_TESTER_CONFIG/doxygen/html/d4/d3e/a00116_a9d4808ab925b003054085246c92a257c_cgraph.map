@@ -1,0 +1,8 @@
+<map id="deselectAll" name="deselectAll">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#aa6baf867e8beb96ed5bd471f83ece903" title="Returns the axes that currently have selected parts, i.e. " alt="" coords="174,5,275,32"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a3714adb0a26b8cf1bd70740a7ea464c4" title="selectedItems" alt="" coords="173,56,276,83"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a6721b8c689bb7f2f400987e580508fe8" title="Returns a list of the selected plottables. " alt="" coords="160,107,289,133"/>
+<area shape="rect" id="node5" href="$d6/d97/a00045.html#a752c48b30f8ba870b55e79659385f107" title="Sets the selected state of the respective legend parts described by SelectablePart. " alt="" coords="140,157,309,184"/>
+<area shape="rect" id="node7" href="$d4/d3e/a00116.html#aa89e06c04804ff2a0994ccb1aa80d131" title="Sets whether the plot title is selected. " alt="" coords="167,208,282,235"/>
+<area shape="rect" id="node6" href="$d6/d97/a00045.html#a10948e896935ad14f374e6f712afaae9" title="QCPLegend::selected" alt="" coords="357,157,507,184"/>
+</map>

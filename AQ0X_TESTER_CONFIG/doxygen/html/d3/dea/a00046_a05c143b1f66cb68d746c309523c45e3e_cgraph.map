@@ -1,0 +1,8 @@
+<map id="QCPLineEnding::draw" name="QCPLineEnding::draw">
+<area shape="rect" id="node2" href="$d3/dea/a00046.html#ac4b2fa94bd27b2f008b5fc090fcd7c0b" title="QCPLineEnding::draw" alt="" coords="203,31,352,57"/>
+<area shape="rect" id="node3" href="$d6/d2d/a00047.html#a0b4b1b9bd495e182c731774dc800e6e0" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="400,5,551,32"/>
+<area shape="rect" id="node4" href="$d6/d2d/a00047.html#af9c7a4cd1791403901f8c5b82a150195" title="Sets the pen of the painter and applies certain fixes to it, depending on the mode of this QCPPainter..." alt="" coords="405,56,545,83"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a499165f4744b6d22da7b24295910fb2c" title="setPen" alt="" coords="821,31,884,57"/>
+<area shape="rect" id="node6" href="$d6/d2d/a00047.html#a27af07a62c335faf79191b797306b218" title="Provides a workaround for a QPainter bug that prevents scaling of pen widths for pens with width 0..." alt="" coords="599,81,773,108"/>
+<area shape="rect" id="node7" href="$d4/d3e/a00116.html#a1f13fffa0a0faac34ec342973e613a4a" title="pen" alt="" coords="831,81,874,108"/>
+</map>

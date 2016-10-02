@@ -1,0 +1,286 @@
+.TH "QCPPlottableLegendItem" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPPlottableLegendItem \- 
+.PP
+A legend item representing a plottable with an icon and the plottable name\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractLegendItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPPlottableLegendItem\fP (\fBQCPLegend\fP *parent, \fBQCPAbstractPlottable\fP *\fBplottable\fP)"
+.br
+.RI "\fICreates a new legend item associated with \fIplottable\fP\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPPlottableLegendItem\fP ()"
+.br
+.ti -1c
+.RI "\fBQCPAbstractPlottable\fP * \fBplottable\fP ()"
+.br
+.ti -1c
+.RI "bool \fBtextWrap\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetTextWrap\fP (bool wrap)"
+.br
+.RI "\fISets whether the text of the legend item is wrapped at word boundaries to fit the with of the legend\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "QPen \fBgetIconBorderPen\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBgetTextColor\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBgetFont\fP () const "
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter, const QRect &rect) const "
+.br
+.ti -1c
+.RI "virtual QSize \fBsize\fP (const QSize &targetSize) const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPAbstractPlottable\fP * \fBmPlottable\fP"
+.br
+.ti -1c
+.RI "bool \fBmTextWrap\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A legend item representing a plottable with an icon and the plottable name\&. 
+
+This is the standard legend item for plottables\&. It displays an icon of the plottable next to the plottable name\&. The icon is drawn by the respective plottable itself (\fBQCPAbstractPlottable::drawLegendIcon\fP), and tries to give an intuitive symbol for the plottable\&. For example, the \fBQCPGraph\fP draws a centered horizontal line with a single scatter point in the middle and filling (if enabled) below\&.
+.PP
+Legend items of this type are always associated with one plottable (retrievable via the \fBplottable()\fP function and settable with the constructor)\&. You may change the font of the plottable name with \fBsetFont\fP\&. If \fBsetTextWrap\fP is set to true, the plottable name will wrap at the right legend boundary (see \fBQCPLegend::setMinimumSize\fP)\&. Icon padding and border pen is taken from the parent \fBQCPLegend\fP, see \fBQCPLegend::setIconBorderPen\fP and \fBQCPLegend::setIconTextPadding\fP\&.
+.PP
+The function \fBQCPAbstractPlottable::addToLegend\fP/\fBQCPAbstractPlottable::removeFromLegend\fP creates/removes legend items of this type in the default implementation\&. However, these functions may be reimplemented such that a different kind of legend item (e\&.g a direct subclass of \fBQCPAbstractLegendItem\fP) is used for that plottable\&. 
+.PP
+Definition at line 1395 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPPlottableLegendItem::QCPPlottableLegendItem (\fBQCPLegend\fP *parent, \fBQCPAbstractPlottable\fP *plottable)"
+
+.PP
+Creates a new legend item associated with \fIplottable\fP\&. Once it's created, it can be added to the legend via \fBQCPLegend::addItem\fP\&.
+.PP
+A more convenient way of adding/removing a plottable to/from the legend is via the functions \fBQCPAbstractPlottable::addToLegend\fP and \fBQCPAbstractPlottable::removeFromLegend\fP\&. 
+.PP
+Definition at line 9040 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+9040                                                                                                  :
+9041   QCPAbstractLegendItem(parent),
+9042   mPlottable(plottable),
+9043   mTextWrap(false)
+9044 {
+9045 }
+.fi
+.SS "virtual QCPPlottableLegendItem::~QCPPlottableLegendItem ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 1400 of file qcustomplot\&.h\&.
+.PP
+.nf
+1400 {}
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QCPPlottableLegendItem::draw (\fBQCPPainter\fP *painter, const QRect &rect) const\fC [protected]\fP, \fC [virtual]\fP"
+Draws the item with \fIpainter\fP into \fIrect\fP\&.
+.PP
+The width of the passed rect is used as text wrapping width, when \fBsetTextWrap\fP is enabled\&. The height is ignored\&. The rect is not used as a clipping rect (overpainting is not prevented inside this function), so you should set an appropriate clipping rect on the painter before calling this function\&. Ideally, the width of the rect should be the result of a preceding call to \fBsize\fP\&. 
+.PP
+Implements \fBQCPAbstractLegendItem\fP\&.
+.PP
+Definition at line 9100 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::drawLegendIcon(), getFont(), getIconBorderPen(), getTextColor(), QCPLegend::iconSize(), QCPLegend::iconTextPadding(), QCPAbstractLegendItem::mParentLegend, mPlottable, mTextWrap, QCPAbstractPlottable::name(), QCPPainter::restore(), QCPPainter::save(), and QCPPainter::setPen()\&.
+.PP
+.nf
+9101 {
+9102   if (!mPlottable) return;
+9103   painter->setFont(getFont());
+9104   painter->setPen(QPen(getTextColor()));
+9105   int iconTextPadding = mParentLegend->iconTextPadding();
+9106   QSize iconSize = mParentLegend->iconSize();
+9107   QRect textRect;
+9108   QRect iconRect(rect\&.topLeft(), iconSize);
+9109   if (mTextWrap)
+9110   {
+9111     // take width from rect since our text should wrap there (only icon must fit at least):
+9112     textRect = painter->fontMetrics()\&.boundingRect(0, 0, rect\&.width()-iconTextPadding-iconSize\&.width(), rect\&.height(), Qt::TextDontClip | Qt::TextWordWrap, mPlottable->name());
+9113     if (textRect\&.height() < iconSize\&.height()) // text smaller than icon, center text vertically in icon height
+9114     {
+9115       painter->drawText(rect\&.x()+iconSize\&.width()+iconTextPadding, rect\&.y(), rect\&.width()-iconTextPadding-iconSize\&.width(), iconSize\&.height(), Qt::TextDontClip | Qt::TextWordWrap, mPlottable->name());
+9116     } else // text bigger than icon, position top of text with top of icon
+9117     {
+9118       painter->drawText(rect\&.x()+iconSize\&.width()+iconTextPadding, rect\&.y(), rect\&.width()-iconTextPadding-iconSize\&.width(), textRect\&.height(), Qt::TextDontClip | Qt::TextWordWrap, mPlottable->name());
+9119     }
+9120   } else
+9121   {
+9122     // text can't wrap (except with explicit newlines), center at current item size (icon size)
+9123     textRect = painter->fontMetrics()\&.boundingRect(0, 0, 0, rect\&.height(), Qt::TextDontClip, mPlottable->name());
+9124     if (textRect\&.height() < iconSize\&.height()) // text smaller than icon, center text vertically in icon height
+9125     {
+9126       painter->drawText(rect\&.x()+iconSize\&.width()+iconTextPadding, rect\&.y(), rect\&.width(), iconSize\&.height(), Qt::TextDontClip, mPlottable->name());
+9127     } else // text bigger than icon, position top of text with top of icon
+9128     {
+9129       painter->drawText(rect\&.x()+iconSize\&.width()+iconTextPadding, rect\&.y(), rect\&.width(), textRect\&.height(), Qt::TextDontClip, mPlottable->name());
+9130     }
+9131   }
+9132   // draw icon:
+9133   painter->save();
+9134   painter->setClipRect(iconRect, Qt::IntersectClip);
+9135   mPlottable->drawLegendIcon(painter, iconRect);
+9136   painter->restore();
+9137   // draw icon border:
+9138   if (getIconBorderPen()\&.style() != Qt::NoPen)
+9139   {
+9140     painter->setPen(getIconBorderPen());
+9141     painter->setBrush(Qt::NoBrush);
+9142     painter->drawRect(iconRect);
+9143   }
+9144 }
+.fi
+.SS "QFont QCPPlottableLegendItem::getFont () const\fC [protected]\fP"
+Returns the font that shall be used to draw text, taking into account the selection state of this item\&. 
+.PP
+Definition at line 9085 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractLegendItem::mFont, QCPAbstractLegendItem::mSelected, and QCPAbstractLegendItem::mSelectedFont\&.
+.PP
+Referenced by draw(), and size()\&.
+.PP
+.nf
+9086 {
+9087   return mSelected ? mSelectedFont : mFont;
+9088 }
+.fi
+.SS "QPen QCPPlottableLegendItem::getIconBorderPen () const\fC [protected]\fP"
+Returns the pen that shall be used to draw the icon border, taking into account the selection state of this item\&. 
+.PP
+Definition at line 9065 of file qcustomplot\&.cpp\&.
+.PP
+References QCPLegend::iconBorderPen(), QCPAbstractLegendItem::mParentLegend, QCPAbstractLegendItem::mSelected, and QCPLegend::selectedIconBorderPen()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+9066 {
+9067   return mSelected ? mParentLegend->selectedIconBorderPen() : mParentLegend->iconBorderPen();
+9068 }
+.fi
+.SS "QColor QCPPlottableLegendItem::getTextColor () const\fC [protected]\fP"
+Returns the text color that shall be used to draw text, taking into account the selection state of this item\&. 
+.PP
+Definition at line 9075 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractLegendItem::mSelected, QCPAbstractLegendItem::mSelectedTextColor, and QCPAbstractLegendItem::mTextColor\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+9076 {
+9077   return mSelected ? mSelectedTextColor : mTextColor;
+9078 }
+.fi
+.SS "\fBQCPAbstractPlottable\fP* QCPPlottableLegendItem::plottable ()\fC [inline]\fP"
+
+.PP
+Definition at line 1403 of file qcustomplot\&.h\&.
+.PP
+.nf
+1403 { return mPlottable; }
+.fi
+.SS "void QCPPlottableLegendItem::setTextWrap (boolwrap)"
+
+.PP
+Sets whether the text of the legend item is wrapped at word boundaries to fit the with of the legend\&. To prevent the legend autoSize feature (\fBQCPLegend::setAutoSize\fP) from compressing the text too strong by wrapping it very often, set an appropriate minimum width with \fBQCPLegend::setMinimumSize\fP\&. 
+.PP
+Definition at line 9055 of file qcustomplot\&.cpp\&.
+.PP
+References mTextWrap\&.
+.PP
+.nf
+9056 {
+9057   mTextWrap = wrap;
+9058 }
+.fi
+.SS "QSize QCPPlottableLegendItem::size (const QSize &targetSize) const\fC [protected]\fP, \fC [virtual]\fP"
+Calculates and returns the size of this item\&. If \fBsetTextWrap\fP is enabled, the width of \fItargetSize\fP will be used as the text wrapping width\&. This does not guarantee, that the width of the returned QSize is the same as the width of \fItargetSize\fP, since wrapping occurs only at word boundaries\&. So a single word that extends beyond the width of \fItargetSize\fP, will stretch the returned QSize accordingly\&.
+.PP
+The height of \fItargetSize\fP is ignored\&. The height of the returned QSize is either the height of the icon or the height of the text bounding box, whichever is larger\&. 
+.PP
+Implements \fBQCPAbstractLegendItem\fP\&.
+.PP
+Definition at line 9157 of file qcustomplot\&.cpp\&.
+.PP
+References getFont(), QCPLegend::iconSize(), QCPLegend::iconTextPadding(), QCPAbstractLegendItem::mParentLegend, mPlottable, mTextWrap, and QCPAbstractPlottable::name()\&.
+.PP
+.nf
+9158 {
+9159   if (!mPlottable) return QSize();
+9160   QSize result(0, 0);
+9161   QRect textRect;
+9162   QFontMetrics fontMetrics(getFont());
+9163   int iconTextPadding = mParentLegend->iconTextPadding();
+9164   QSize iconSize = mParentLegend->iconSize();
+9165   if (mTextWrap)
+9166   {
+9167     // take width from targetSize since our text can wrap (Only icon must fit at least):
+9168     textRect = fontMetrics\&.boundingRect(0, 0, targetSize\&.width()-iconTextPadding-iconSize\&.width(), iconSize\&.height(), Qt::TextDontClip | Qt::TextWordWrap, mPlottable->name());
+9169   } else
+9170   {
+9171     // text can't wrap (except with explicit newlines), center at current item size (icon size)
+9172     textRect = fontMetrics\&.boundingRect(0, 0, 0, iconSize\&.height(), Qt::TextDontClip, mPlottable->name());
+9173   }
+9174   result\&.setWidth(iconSize\&.width() + mParentLegend->iconTextPadding() + textRect\&.width());
+9175   result\&.setHeight(qMax(textRect\&.height(), iconSize\&.height()));
+9176   return result;
+9177 }
+.fi
+.SS "bool QCPPlottableLegendItem::textWrap () const\fC [inline]\fP"
+
+.PP
+Definition at line 1404 of file qcustomplot\&.h\&.
+.PP
+.nf
+1404 { return mTextWrap; }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBQCPAbstractPlottable\fP* QCPPlottableLegendItem::mPlottable\fC [protected]\fP"
+
+.PP
+Definition at line 1410 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), and size()\&.
+.SS "bool QCPPlottableLegendItem::mTextWrap\fC [protected]\fP"
+
+.PP
+Definition at line 1411 of file qcustomplot\&.h\&.
+.PP
+Referenced by draw(), setTextWrap(), and size()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

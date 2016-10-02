@@ -1,0 +1,379 @@
+.TH "srv_hwio.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srv_hwio.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+\fC#include '\&.\&.\\includes_prv\\aq0X\\srv_hwio_prv\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhwio_configure_init\fP ()"
+.br
+.RI "\fILow level gpio/analog configuration\&. \fP"
+.ti -1c
+.RI "void \fBhwio_configure_analog_init\fP (void)"
+.br
+.RI "\fILow level analog\&. \fP"
+.ti -1c
+.RI "\fBUint16\fP \fBhwio_get_analog\fP (\fBUint16\fP ana_idx)"
+.br
+.RI "\fIRetrives A/D hardware buffer value\&. \fP"
+.ti -1c
+.RI "\fBInt8\fP \fBhwio_execute_gpio_task\fP (\fBUint8\fP cmd)"
+.br
+.RI "\fIgpio port control helper function \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBsrv_hwio_data_t\fP \fBsrv_hwio_data\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void hwio_configure_analog_init (void)"
+
+.PP
+Low level analog\&. 
+.PP
+Definition at line 99 of file srv_hwio\&.c\&.
+.PP
+References ANA_SEL_IR_ANSEL, ANA_SEL_MFIELD_X_ANSEL, ANA_SEL_MFIELD_Y_ANSEL, ANA_SEL_SUPPLY_SV_A_ANSEL, ANA_SEL_SUPPLY_SV_B_ANSEL, ANA_SEL_UV_ANSEL, and Delay5us()\&.
+.PP
+Referenced by hwio_configure_init()\&.
+.PP
+.nf
+100 {
+101 
+102 
+103          /* Set port configuration */
+104         ANSELA = ANSELB = 0x0000;        //
+105         ANA_SEL_MFIELD_X_ANSEL      = 1; 
+106         ANA_SEL_MFIELD_Y_ANSEL      = 1; 
+107         ANA_SEL_IR_ANSEL            = 1; 
+108         ANA_SEL_UV_ANSEL            = 1;
+109         ANA_SEL_SUPPLY_SV_A_ANSEL   = 1;
+110         
+111         
+112         #if(DEVICE == AQ0X_V1)
+113         ANA_SEL_SUPPLY_SV_B_ANSEL   = 1;
+114         #endif
+115 
+116 
+117         /* Initialize and enable ADC module */
+118         AD1CON1bits\&.ADON  = 0;     //ADC is off
+119 
+120 
+121         AD1CON1bits\&.ADDMABM = 0;   //DMA not used
+122         AD1CON1bits\&.AD12B   = 0;   //10-bit mode
+123         AD1CON1bits\&.FORM    = 0;   //Data Output Format integer
+124 
+125 
+126 
+127         AD1CON1bits\&.SSRCG   = 0;   //Sample Clock Source Group bit
+128         AD1CON1bits\&.SSRC    = 7;   //Internal counter ends sampling and starts conversion (auto-convert)
+129         //AD1CON1bits\&.SSRC    = 0; //Clearing the Sample bit (SAMP) ends sampling and starts conversion (Manual mode)
+130         AD1CON1bits\&.SIMSAM  = 1;   //Samples CH0, CH1, CH2, CH3 simultaneously (when CHPS<1:0> = 1x)
+131         AD1CON1bits\&.ASAM    = 1;   //ADC Sample Auto-Start bit, 0 =>Sampling begins when SAMP bit is set
+132         AD1CON1bits\&.SAMP    = 0;   //ADC Sample and Hold amplifiers are holding
+133 
+134 
+135 
+136 
+137         AD1CON2bits\&.VCFG    = 0;    //Vref Vdd = 3\&.3 & Vss = 0
+138         AD1CON2bits\&.CSCNA   = 0;    //Do not scan inputs
+139 
+140         AD1CON2bits\&.CHPS    = 3;    //Channel Selection, Multi-Channel (CH0-CH3)
+141 
+142         AD1CON2bits\&.SMPI    = 0;    // every sample/conversion
+143         AD1CON2bits\&.BUFM    = 0;
+144         AD1CON2bits\&.ALTS    = 0;    //Always uses channel input selects for Sample A
+145 
+146 
+147 
+148         AD1CON3bits\&.ADRC      = 0;    //Clock Derived from System Clock
+149         AD1CON3bits\&.SAMC      = 0;    //Auto Sample Time bits, 0TAD
+150         AD1CON3bits\&.ADCS      = 5;    // ADC Conversion Clock TAD=Tcy*(ADCS+1)= (1/60M)*6 = 100ns
+151         //112 for 90us Ts             // ADC Conversion Time for 10-bit Tc=12*Tad = 1\&.2us
+152 
+153 
+154                                         /*
+155                                         TSMP = SAMC<4:0> * TAD
+156                                         TCONV = 12 * TAD
+157                                         *
+158                                         *
+159                                         TSIM = TSMP + (M · TCONV)
+160                                         Where:
+161                                         TSIM = Total time to sample and convert multiple channels with simultaneous sampling\&.
+162                                         TSMP = Sampling Time = SAMC<4:0>*TAD = 0
+163                                         TCONV = Conversion Time = 12*TAD = (1/60M)*6 = 100ns 
+164                                         M = Number of channels selected by the CHPS<1:0> bits = 4
+165 
+166                                         =>Total time to sample and convert multiple channels with simultaneous sampling\&.
+167                                         TSIM = TSMP + (M · TCONV) = 4*Tc = 48*TAD =  4\&.8us
+168 
+169                                         */
+170 
+171 
+172         AD1CON4  = 0;                  //DMA disabled
+173 
+174 
+175         AD1CSSH               = 0;
+176         AD1CSSL               = 0;    //input scan select register
+177 
+178         AD1CHS0bits\&.CH0SA     = 3;    // MUXA +ve input selection (AIN3) for CH0
+179         AD1CHS0bits\&.CH0NA     = 0;    // MUXA -ve input selection (Vref-) for CH0
+180 
+181         AD1CHS123bits\&.CH123SA = 0;   /* Select AN0 for CH1 +ve input
+182                                         Select AN1 for CH2 +ve input
+183                                         Select AN2 for CH3 +ve input*/
+184         AD1CHS123bits\&.CH123NA = 0;   // Select Vref- for CH1/CH2/CH3 -ve inputs
+185 
+186 
+187           /* Assign MUXB inputs */
+188         AD1CHS0bits\&.CH0SB       = 0;      // Select AN0 for CH0 +ve input
+189         AD1CHS0bits\&.CH0NB       = 0;      // Select VREF- for CH0 -ve input
+190         AD1CHS123bits\&.CH123SB   = 0;      // Select AN3 for CH1 +ve input
+191                                           // Select AN4 for CH2 +ve input
+192                                           // Select AN5 for CH3 +ve input
+193         AD1CHS123bits\&.CH123NB   = 0;        // Select VREF- for CH1/CH2/CH3 -ve inputs
+194 
+195         IFS0bits\&.AD1IF = 0;        // Clear the A/D interrupt flag bit
+196         IEC0bits\&.AD1IE = 0;           // Do Not Enable A/D interrupt
+197         AD1CON1bits\&.ADON = 1;          // Turn on the A/D converter
+198 
+199         AD1CON1bits\&.SAMP = 1;
+200 
+201         Delay5us(4);
+202 
+203 }
+.fi
+.SS "void hwio_configure_init (void)"
+
+.PP
+Low level gpio/analog configuration\&. 
+.PP
+Definition at line 41 of file srv_hwio\&.c\&.
+.PP
+References ANA_INDEX_IR, ANA_INDEX_MFIELD_X, ANA_INDEX_MFIELD_Y, ANA_INDEX_UV, data_non_volatile, Delay5us(), DIG_ALARM_OUTPUT_LAT, DIG_ALARM_OUTPUT_TRIS, DIG_HMC10XX_PULSE_OUTPUT_TRIS, DIG_HMC10XX_SR_PULSE_OUTPUT_LAT, DIG_SUPERVISION_OUTPUT_LAT, DIG_SUPERVISION_OUTPUT_TRIS, DIG_TEST_LED_LAT, DIG_TEST_LED_TRIS, srv_hwio_data_t::emulation_mode, and hwio_configure_analog_init()\&.
+.PP
+Referenced by main()\&.
+.PP
+.nf
+42 {
+43     memset((void*)&srv_hwio_data,0,sizeof(srv_hwio_data));
+44 
+45     //hwio_configure_analog_init();
+46 
+47     // Configuring port outputs and startup value
+48     // All other port signals are inputs by default
+49 
+50 
+51     //self supervision lead
+52       DIG_TEST_LED_TRIS                 = 0;
+53       DIG_TEST_LED_LAT                  = 0;
+54 
+55     // Alarm output
+56       DIG_ALARM_OUTPUT_TRIS             = 0;
+57       DIG_ALARM_OUTPUT_LAT              = 0;
+58 
+59     //relay supervision signal output
+60       DIG_SUPERVISION_OUTPUT_TRIS       = 0;
+61       DIG_SUPERVISION_OUTPUT_LAT        = 0;
+62 
+63 
+64    //HMC10XX set/reset strap operation pulse control
+65       DIG_HMC10XX_PULSE_OUTPUT_TRIS     = 0;
+66       DIG_HMC10XX_SR_PULSE_OUTPUT_LAT   = 1;
+67 
+68   
+69 
+70 
+71     //other used ports are configured by responsible module
+72 
+73      srv_hwio_data\&.emulation_mode\&.data[ANA_INDEX_IR] =
+74              data_non_volatile\&.disturbance_record\&.ir\&.post_act_data\&.buffer\&.data\&.h;
+75      srv_hwio_data\&.emulation_mode\&.data[ANA_INDEX_UV] =
+76              data_non_volatile\&.disturbance_record\&.uv\&.post_act_data\&.buffer\&.data\&.h;
+77      srv_hwio_data\&.emulation_mode\&.data[ANA_INDEX_MFIELD_X] =
+78              data_non_volatile\&.disturbance_record\&.mfield_x\&.post_act_data\&.buffer\&.data\&.h;
+79 #ifdef MFIELD_Y
+80      srv_hwio_data\&.emulation_mode\&.data[ANA_INDEX_MFIELD_Y] =
+81              data_non_volatile\&.disturbance_record\&.mfield_y\&.post_act_data\&.buffer\&.data\&.h;
+82 #endif
+83 #if(DEVICE == AQ0X_V1)
+84      srv_hwio_data\&.emulation_mode\&.data[ANA_INDEX_LIGHT] = 
+85              data_non_volatile\&.disturbance_record\&.light\&.post_act_data\&.buffer\&.data\&.h;
+86 #endif
+87 
+88        // Init A/D
+89     hwio_configure_analog_init();
+90     Delay5us(4);
+91 }
+.fi
+.SS "\fBInt8\fP hwio_execute_gpio_task (\fBUint8\fPcmd)"
+
+.PP
+gpio port control helper function 
+.PP
+Definition at line 272 of file srv_hwio\&.c\&.
+.PP
+References ASSERT, DIG_ALARM_OUTPUT_LAT, DIG_ALARM_OUTPUT_PORT, DIG_HMC10XX_SR_PULSE_OUTPUT_LAT, DIG_HMC10XX_SR_PULSE_OUTPUT_PORT, DIG_TEST_LED_LAT, DIG_TEST_LED_PORT, HWIO_ALARM_OFF, HWIO_ALARM_ON, HWIO_ALARM_PORT_STATUS, HWIO_HMC10XX_PULSE_PORT_STATUS, HWIO_HMC10XX_PULSE_RSET, HWIO_HMC10XX_PULSE_SET, HWIO_SV_LED_OFF, HWIO_SV_LED_ON, and HWIO_SV_LED_PORT_STATUS\&.
+.PP
+Referenced by algorithm_wake(), and main()\&.
+.PP
+.nf
+272                                         {
+273 
+274     Int8 result = -1;
+275         switch(cmd)
+276         {
+277                  case  HWIO_SV_LED_ON:
+278                 {
+279                     DIG_TEST_LED_LAT = 1;
+280                     result = 0;
+281                 }break;
+282 
+283                  case  HWIO_SV_LED_OFF:
+284                 {
+285                     DIG_TEST_LED_LAT = 0;
+286                     result = 0;
+287                 }break;
+288 
+289                  case  HWIO_SV_LED_PORT_STATUS:
+290                 {
+291                     result = DIG_TEST_LED_PORT;
+292                 }break;
+293 
+294                  case  HWIO_ALARM_ON:
+295                 {
+296                     DIG_ALARM_OUTPUT_LAT = 1;
+297                     result = 0;
+298                 }break;
+299 
+300                  case  HWIO_ALARM_OFF:
+301                 {
+302                     DIG_ALARM_OUTPUT_LAT = 0;
+303                     result = 0;
+304                 }break;
+305 
+306                  case  HWIO_ALARM_PORT_STATUS:
+307                 {
+308                     result = DIG_ALARM_OUTPUT_PORT;
+309 
+310                 }break;
+311 
+312                  case  HWIO_HMC10XX_PULSE_SET:
+313                 {
+314                     DIG_HMC10XX_SR_PULSE_OUTPUT_LAT = 1;
+315                
+316                     result = 0;
+317                 }break;
+318 
+319                  case  HWIO_HMC10XX_PULSE_RSET:
+320                 {
+321                     DIG_HMC10XX_SR_PULSE_OUTPUT_LAT = 0;
+322                     result = 0;
+323                 }break;
+324 
+325 
+326                  case  HWIO_HMC10XX_PULSE_PORT_STATUS:
+327                 {
+328                     result = DIG_HMC10XX_SR_PULSE_OUTPUT_PORT;
+329                     result = 0;
+330                 }break;
+331                 
+332                 default:
+333                 {
+334                    ASSERT(0);
+335 
+336                 }break;
+337 
+338         }
+339 
+340         return result;
+341 }
+.fi
+.SS "\fBUint16\fP hwio_get_analog (\fBUint16\fPana_idx)"
+
+.PP
+Retrives A/D hardware buffer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAnIdx\fP A/D buffer index
+.RE
+.PP
+\fBReturn values:\fP
+.RS 4
+\fIA/D\fP buffer value
+.RE
+.PP
+Note: If emulation enabled, returns emulated value instead of real hw value 
+.PP
+Definition at line 223 of file srv_hwio\&.c\&.
+.PP
+References ANALOG_HW_CHANNELS, EMU_MODE_DATA_LENGTH, and srv_hwio_data_t::emulation_mode\&.
+.PP
+Referenced by __attribute__(), and main()\&.
+.PP
+.nf
+224 {
+225     if(ana_idx >=ANALOG_HW_CHANNELS)
+226     {
+227         return 0;
+228     }
+229 
+230 
+231     if((srv_hwio_data\&.emulation_mode\&.enabled\&.all & (1<<ana_idx)) == 0)
+232     {
+233         switch(ana_idx)
+234         {
+235             case  0: return ADC1BUF0;
+236             case  1: return ADC1BUF1;
+237             case  2: return ADC1BUF2;
+238             case  3: return ADC1BUF3;
+239             case  4: return ADC1BUF4;
+240             case  5: return ADC1BUF5;
+241 
+242             default: return (0);
+243         }
+244     }
+245     else
+246     {
+247 
+248        
+249         if(srv_hwio_data\&.emulation_mode\&.data[ana_idx] != 0)
+250         {
+251             Uint16 head_ptr = srv_hwio_data\&.emulation_mode\&.head_ptr[ana_idx];
+252             srv_hwio_data\&.emulation_mode\&.head_ptr[ana_idx] = (srv_hwio_data\&.emulation_mode\&.head_ptr[ana_idx] + 1)%EMU_MODE_DATA_LENGTH;
+253             
+254             
+255             return *(srv_hwio_data\&.emulation_mode\&.data[ana_idx] + head_ptr);
+256         }
+257        
+258     }
+259 
+260     return 0;
+261 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBsrv_hwio_data_t\fP srv_hwio_data"
+
+.PP
+Definition at line 13 of file srv_hwio\&.c\&.
+.PP
+Referenced by algorithm_wake()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

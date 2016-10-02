@@ -1,0 +1,39 @@
+.TH "main.cpp" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+main.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'mainwindow\&.h'\fP
+.br
+\fC#include <QApplication>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP (int argc, char *argv[])"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int main (intargc, char *argv[])"
+
+.PP
+Definition at line 4 of file main\&.cpp\&.
+.PP
+.nf
+5 {
+6     QApplication a(argc, argv);
+7      MainWindow w;
+8     w\&.show();
+9 
+10     return a\&.exec();
+11 }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

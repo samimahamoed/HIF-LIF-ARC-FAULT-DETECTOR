@@ -1,0 +1,4799 @@
+.TH "qcustomplot.h" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+qcustomplot.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <QObject>\fP
+.br
+\fC#include <QWidget>\fP
+.br
+\fC#include <QPainter>\fP
+.br
+\fC#include <QPaintEvent>\fP
+.br
+\fC#include <QPixmap>\fP
+.br
+\fC#include <QVector>\fP
+.br
+\fC#include <QString>\fP
+.br
+\fC#include <QPrinter>\fP
+.br
+\fC#include <QDateTime>\fP
+.br
+\fC#include <QMultiMap>\fP
+.br
+\fC#include <QFlags>\fP
+.br
+\fC#include <QDebug>\fP
+.br
+\fC#include <QVector2D>\fP
+.br
+\fC#include <QStack>\fP
+.br
+\fC#include <qmath\&.h>\fP
+.br
+\fC#include <limits>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCPCurveData\fP"
+.br
+.RI "\fIHolds the data of one single data point for \fBQCPCurve\fP\&. \fP"
+.ti -1c
+.RI "class \fBQCPBarData\fP"
+.br
+.RI "\fIHolds the data of one single data point (one bar) for \fBQCPBars\fP\&. \fP"
+.ti -1c
+.RI "class \fBQCPPainter\fP"
+.br
+.RI "\fI\fBQPainter\fP subclass used internally\&. \fP"
+.ti -1c
+.RI "class \fBQCPLineEnding\fP"
+.br
+.RI "\fIHandles the different ending decorations for line-like items\&. \fP"
+.ti -1c
+.RI "class \fBQCPLayer\fP"
+.br
+.RI "\fIA layer that may contain objects, to control the rendering order\&. \fP"
+.ti -1c
+.RI "class \fBQCPLayerable\fP"
+.br
+.RI "\fIBase class for all objects that can be placed on layers\&. \fP"
+.ti -1c
+.RI "class \fBQCPAbstractPlottable\fP"
+.br
+.RI "\fIThe abstract base class for all data representing objects in a plot\&. \fP"
+.ti -1c
+.RI "class \fBQCPGraph\fP"
+.br
+.RI "\fIA plottable representing a graph in a plot\&. \fP"
+.ti -1c
+.RI "class \fBQCPCurve\fP"
+.br
+.RI "\fIA plottable representing a parametric curve in a plot\&. \fP"
+.ti -1c
+.RI "class \fBQCPBars\fP"
+.br
+.RI "\fIA plottable representing a bar chart in a plot\&. \fP"
+.ti -1c
+.RI "class \fBQCPStatisticalBox\fP"
+.br
+.RI "\fIA plottable representing a single statistical box in a plot\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemAnchor\fP"
+.br
+.RI "\fIAn anchor of an item to which positions can be attached to\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemPosition\fP"
+.br
+.RI "\fIManages the position of an item\&. \fP"
+.ti -1c
+.RI "class \fBQCPAbstractItem\fP"
+.br
+.RI "\fIThe abstract base class for all items in a plot\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemStraightLine\fP"
+.br
+.RI "\fIA straight line that spans infinitely in both directions\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemLine\fP"
+.br
+.RI "\fIA line from one point to another\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemEllipse\fP"
+.br
+.RI "\fIAn ellipse\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemRect\fP"
+.br
+.RI "\fIA rectangle\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemPixmap\fP"
+.br
+.RI "\fIAn arbitrary pixmap\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemText\fP"
+.br
+.RI "\fIA text label\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemCurve\fP"
+.br
+.RI "\fIA curved line from one point to another\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemBracket\fP"
+.br
+.RI "\fIA bracket for referencing/highlighting certain parts in the plot\&. \fP"
+.ti -1c
+.RI "class \fBQCPItemTracer\fP"
+.br
+.RI "\fIItem that sticks to \fBQCPGraph\fP data points\&. \fP"
+.ti -1c
+.RI "class \fBQCPRange\fP"
+.br
+.RI "\fIRepresents the range an axis is encompassing\&. \fP"
+.ti -1c
+.RI "class \fBQCPAbstractLegendItem\fP"
+.br
+.RI "\fIThe abstract base class for all items in a \fBQCPLegend\fP\&. \fP"
+.ti -1c
+.RI "class \fBQCPPlottableLegendItem\fP"
+.br
+.RI "\fIA legend item representing a plottable with an icon and the plottable name\&. \fP"
+.ti -1c
+.RI "class \fBQCPLegend\fP"
+.br
+.RI "\fIManages a legend inside a \fBQCustomPlot\fP\&. \fP"
+.ti -1c
+.RI "class \fBQCPAxis\fP"
+.br
+.RI "\fIManages a single axis inside a \fBQCustomPlot\fP\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBQCP\fP"
+.br
+.RI "\fIThe \fBQCP\fP Namespace contains general enums and QFlags\&. \fP"
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBQCP_LIB_DECL\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef QMap< double, \fBQCPData\fP > \fBQCPDataMap\fP"
+.br
+.RI "\fIContainer for storing \fBQCPData\fP items in a sorted fashion\&. \fP"
+.ti -1c
+.RI "typedef QMapIterator< double, 
+.br
+\fBQCPData\fP > \fBQCPDataMapIterator\fP"
+.br
+.ti -1c
+.RI "typedef QMutableMapIterator
+.br
+< double, \fBQCPData\fP > \fBQCPDataMutableMapIterator\fP"
+.br
+.ti -1c
+.RI "typedef QMap< double, 
+.br
+\fBQCPCurveData\fP > \fBQCPCurveDataMap\fP"
+.br
+.RI "\fIContainer for storing \fBQCPCurveData\fP items in a sorted fashion\&. \fP"
+.ti -1c
+.RI "typedef QMapIterator< double, 
+.br
+\fBQCPCurveData\fP > \fBQCPCurveDataMapIterator\fP"
+.br
+.ti -1c
+.RI "typedef QMutableMapIterator
+.br
+< double, \fBQCPCurveData\fP > \fBQCPCurveDataMutableMapIterator\fP"
+.br
+.ti -1c
+.RI "typedef QMap< double, \fBQCPBarData\fP > \fBQCPBarDataMap\fP"
+.br
+.RI "\fIContainer for storing \fBQCPBarData\fP items in a sorted fashion\&. \fP"
+.ti -1c
+.RI "typedef QMapIterator< double, 
+.br
+\fBQCPBarData\fP > \fBQCPBarDataMapIterator\fP"
+.br
+.ti -1c
+.RI "typedef QMutableMapIterator
+.br
+< double, \fBQCPBarData\fP > \fBQCPBarDataMutableMapIterator\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBQCP::ScatterStyle\fP { \fBQCP::ssNone\fP, \fBQCP::ssDot\fP, \fBQCP::ssCross\fP, \fBQCP::ssPlus\fP, \fBQCP::ssCircle\fP, \fBQCP::ssDisc\fP, \fBQCP::ssSquare\fP, \fBQCP::ssDiamond\fP, \fBQCP::ssStar\fP, \fBQCP::ssTriangle\fP, \fBQCP::ssTriangleInverted\fP, \fBQCP::ssCrossSquare\fP, \fBQCP::ssPlusSquare\fP, \fBQCP::ssCrossCircle\fP, \fBQCP::ssPlusCircle\fP, \fBQCP::ssPeace\fP, \fBQCP::ssPixmap\fP }"
+.br
+.RI "\fIDefines the symbol used for scatter points\&. \fP"
+.ti -1c
+.RI "enum \fBQCP::AntialiasedElement\fP { \fBQCP::aeAxes\fP = 0x0001, \fBQCP::aeGrid\fP = 0x0002, \fBQCP::aeSubGrid\fP = 0x0004, \fBQCP::aeLegend\fP = 0x0008, \fBQCP::aeLegendItems\fP = 0x0010, \fBQCP::aePlottables\fP = 0x0020, \fBQCP::aeItems\fP = 0x0040, \fBQCP::aeScatters\fP = 0x0080, \fBQCP::aeErrorBars\fP = 0x0100, \fBQCP::aeFills\fP = 0x0200, \fBQCP::aeZeroLine\fP = 0x0400, \fBQCP::aeAll\fP = 0xFFFF, \fBQCP::aeNone\fP = 0x0000 }"
+.br
+.RI "\fIDefines what elements of a plot can be forcibly drawn antialiased/not antialiased\&. \fP"
+.ti -1c
+.RI "enum \fBLayerInsertMode\fP { \fBlimBelow\fP, \fBlimAbove\fP }"
+.br
+.RI "\fIDefines how a layer should be inserted relative to a specified other layer\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCP::Q_DECLARE_FLAGS\fP (AntialiasedElements, AntialiasedElement) enum PlottingHint"
+.br
+.RI "\fIDefines plotting hints that control various aspects of the quality and speed of plotting\&. \fP"
+.ti -1c
+.RI "Q_DECLARE_OPERATORS_FOR_FLAGS(QCP::AntialiasedElements) 
+.br
+Q_DECLARE_OPERATORS_FOR_FLAGS(QCP \fBQCPData\fP (double \fBkey\fP, double \fBvalue\fP)"
+.br
+.RI "\fIConstructs a data point with the specified \fIkey\fP and \fIvalue\fP\&. \fP"
+.ti -1c
+.RI "\fBQ_DECLARE_TYPEINFO\fP (\fBQCPData\fP, Q_MOVABLE_TYPE)"
+.br
+.ti -1c
+.RI "\fBQ_DECLARE_TYPEINFO\fP (\fBQCPCurveData\fP, Q_MOVABLE_TYPE)"
+.br
+.ti -1c
+.RI "\fBQ_DECLARE_TYPEINFO\fP (\fBQCPBarData\fP, Q_MOVABLE_TYPE)"
+.br
+.ti -1c
+.RI "\fBQ_DECLARE_TYPEINFO\fP (\fBQCPLineEnding\fP, Q_MOVABLE_TYPE)"
+.br
+.ti -1c
+.RI "\fBQ_DECLARE_TYPEINFO\fP (\fBQCPRange\fP, Q_MOVABLE_TYPE)"
+.br
+.ti -1c
+.RI "Q_DECLARE_OPERATORS_FOR_FLAGS(QCPLegend::SelectableParts) 
+.br
+class \fBQCP_LIB_DECL\fP \fBQCPGrid\fP \fB~QCPGrid\fP ()"
+.br
+.ti -1c
+.RI "bool \fBsubGridVisible\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasedSubGrid\fP () const "
+.br
+.ti -1c
+.RI "bool \fBantialiasedZeroLine\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBsubGridPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBzeroLinePen\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetSubGridVisible\fP (bool visible)"
+.br
+.RI "\fISets whether grid lines at sub tick marks are drawn\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedSubGrid\fP (bool enabled)"
+.br
+.ti -1c
+.RI "void \fBsetAntialiasedZeroLine\fP (bool enabled)"
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &\fBpen\fP)"
+.br
+.ti -1c
+.RI "void \fBsetSubGridPen\fP (const QPen &\fBpen\fP)"
+.br
+.ti -1c
+.RI "void \fBsetZeroLinePen\fP (const QPen &\fBpen\fP)"
+.br
+.ti -1c
+.RI "virtual void \fBapplyDefaultAntialiasingHint\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "void \fBdrawGridLines\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "void \fBdrawSubGridLines\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "Q_DECLARE_OPERATORS_FOR_FLAGS(QCPAxis::SelectableParts) 
+.br
+class \fBQCP_LIB_DECL\fP \fBQCustomPlot\fP \fBQ_ENUMS\fP (Interaction) Q_DECLARE_FLAGS(Interactions"
+.br
+.RI "\fIDefines the mouse interactions possible with \fBQCustomPlot\fP\&. \fP"
+.ti -1c
+.RI "\fBQ_ENUMS\fP (\fBLayerInsertMode\fP) explicit \fBQCustomPlot\fP(QWidget *parent=0)"
+.br
+.ti -1c
+.RI "virtual \fB~QCustomPlot\fP ()"
+.br
+.ti -1c
+.RI "QString \fBtitle\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBtitleFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBtitleColor\fP () const "
+.br
+.ti -1c
+.RI "QRect \fBaxisRect\fP () const "
+.br
+.ti -1c
+.RI "QRect \fBviewport\fP () const "
+.br
+.RI "\fIReturns the viewport rect of this \fBQCustomPlot\fP instance\&. \fP"
+.ti -1c
+.RI "int \fBmarginLeft\fP () const "
+.br
+.ti -1c
+.RI "int \fBmarginRight\fP () const "
+.br
+.ti -1c
+.RI "int \fBmarginTop\fP () const "
+.br
+.ti -1c
+.RI "int \fBmarginBottom\fP () const "
+.br
+.ti -1c
+.RI "bool \fBautoMargin\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBcolor\fP () const "
+.br
+.ti -1c
+.RI "Qt::Orientations \fBrangeDrag\fP () const "
+.br
+.ti -1c
+.RI "Qt::Orientations \fBrangeZoom\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBrangeDragAxis\fP (Qt::Orientation orientation)"
+.br
+.RI "\fIReturns the range drag axis of the \fIorientation\fP provided\&. \fP"
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBrangeZoomAxis\fP (Qt::Orientation orientation)"
+.br
+.RI "\fIReturns the range zoom axis of the \fIorientation\fP provided\&. \fP"
+.ti -1c
+.RI "double \fBrangeZoomFactor\fP (Qt::Orientation orientation)"
+.br
+.RI "\fIReturns the range zoom factor of the \fIorientation\fP provided\&. \fP"
+.ti -1c
+.RI "QCP::AntialiasedElements \fBantialiasedElements\fP () const "
+.br
+.ti -1c
+.RI "QCP::AntialiasedElements \fBnotAntialiasedElements\fP () const "
+.br
+.ti -1c
+.RI "bool \fBautoAddPlottableToLegend\fP () const "
+.br
+.ti -1c
+.RI "QPixmap \fBaxisBackground\fP () const "
+.br
+.ti -1c
+.RI "bool \fBaxisBackgroundScaled\fP () const "
+.br
+.ti -1c
+.RI "Qt::AspectRatioMode \fBaxisBackgroundScaledMode\fP () const "
+.br
+.ti -1c
+.RI "const Interactions \fBinteractions\fP () const "
+.br
+.ti -1c
+.RI "int \fBselectionTolerance\fP () const "
+.br
+.ti -1c
+.RI "QFont \fBselectedTitleFont\fP () const "
+.br
+.ti -1c
+.RI "QColor \fBselectedTitleColor\fP () const "
+.br
+.ti -1c
+.RI "bool \fBtitleSelected\fP () const "
+.br
+.ti -1c
+.RI "bool \fBnoAntialiasingOnDrag\fP () const "
+.br
+.ti -1c
+.RI "QCP::PlottingHints \fBplottingHints\fP () const "
+.br
+.ti -1c
+.RI "Qt::KeyboardModifier \fBmultiSelectModifier\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetTitle\fP (const QString &\fBtitle\fP)"
+.br
+.RI "\fISets the plot title which will be drawn centered at the top of the widget\&. \fP"
+.ti -1c
+.RI "void \fBsetTitleFont\fP (const QFont &font)"
+.br
+.RI "\fISets the font of the plot title\&. \fP"
+.ti -1c
+.RI "void \fBsetTitleColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fISets the text color of the plot title\&. \fP"
+.ti -1c
+.RI "void \fBsetAxisRect\fP (const QRect &arect)"
+.br
+.ti -1c
+.RI "void \fBsetMarginLeft\fP (int margin)"
+.br
+.ti -1c
+.RI "void \fBsetMarginRight\fP (int margin)"
+.br
+.ti -1c
+.RI "void \fBsetMarginTop\fP (int margin)"
+.br
+.ti -1c
+.RI "void \fBsetMarginBottom\fP (int margin)"
+.br
+.ti -1c
+.RI "void \fBsetMargin\fP (int left, int right, int top, int bottom)"
+.br
+.ti -1c
+.RI "void \fBsetAutoMargin\fP (bool enabled)"
+.br
+.RI "\fISets whether the margins are calculated automatically depeding on the sizes of the tick labels, axis labels, paddings etc\&. \fP"
+.ti -1c
+.RI "void \fBsetColor\fP (const QColor &\fBcolor\fP)"
+.br
+.ti -1c
+.RI "void \fBsetRangeDrag\fP (Qt::Orientations orientations)"
+.br
+.RI "\fISets which axis orientation may be range dragged by the user with mouse interaction\&. \fP"
+.ti -1c
+.RI "void \fBsetRangeZoom\fP (Qt::Orientations orientations)"
+.br
+.RI "\fISets which axis orientation may be zoomed by the user with the mouse wheel\&. \fP"
+.ti -1c
+.RI "void \fBsetRangeDragAxes\fP (\fBQCPAxis\fP *horizontal, \fBQCPAxis\fP *vertical)"
+.br
+.RI "\fISets the axes whose range will be dragged when \fBsetRangeDrag\fP enables mouse range dragging on the \fBQCustomPlot\fP widget\&. \fP"
+.ti -1c
+.RI "void \fBsetRangeZoomAxes\fP (\fBQCPAxis\fP *horizontal, \fBQCPAxis\fP *vertical)"
+.br
+.RI "\fISets the axes whose range will be zoomed when \fBsetRangeZoom\fP enables mouse wheel zooming on the \fBQCustomPlot\fP widget\&. \fP"
+.ti -1c
+.RI "void \fBsetRangeZoomFactor\fP (double horizontalFactor, double verticalFactor)"
+.br
+.RI "\fISets how strong one rotation step of the mouse wheel zooms, when range zoom was activated with \fBsetRangeZoom\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetRangeZoomFactor\fP (double factor)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets both the horizontal and vertical zoom \fIfactor\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedElements\fP (const QCP::AntialiasedElements &\fBantialiasedElements\fP)"
+.br
+.RI "\fISets which elements are forcibly drawn antialiased as an or combination of \fBQCP::AntialiasedElement\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetAntialiasedElement\fP (\fBQCP::AntialiasedElement\fP antialiasedElement, bool enabled=true)"
+.br
+.RI "\fISets whether the specified \fIantialiasedElement\fP is forcibly drawn antialiased\&. \fP"
+.ti -1c
+.RI "void \fBsetNotAntialiasedElements\fP (const QCP::AntialiasedElements &\fBnotAntialiasedElements\fP)"
+.br
+.RI "\fISets which elements are forcibly drawn not antialiased as an or combination of \fBQCP::AntialiasedElement\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetNotAntialiasedElement\fP (\fBQCP::AntialiasedElement\fP notAntialiasedElement, bool enabled=true)"
+.br
+.RI "\fISets whether the specified \fInotAntialiasedElement\fP is forcibly drawn not antialiased\&. \fP"
+.ti -1c
+.RI "void \fBsetAutoAddPlottableToLegend\fP (bool on)"
+.br
+.RI "\fIIf set to true, adding a plottable (e\&.g\&. \fP"
+.ti -1c
+.RI "void \fBsetAxisBackground\fP (const QPixmap &pm)"
+.br
+.RI "\fISets \fIpm\fP as the axis background pixmap\&. \fP"
+.ti -1c
+.RI "void \fBsetAxisBackground\fP (const QPixmap &pm, bool scaled, Qt::AspectRatioMode mode=Qt::KeepAspectRatioByExpanding)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Allows setting the background pixmap, whether it shall be scaled and how it shall be scaled in one call\&. \fP"
+.ti -1c
+.RI "void \fBsetAxisBackgroundScaled\fP (bool scaled)"
+.br
+.RI "\fISets whether the axis background pixmap shall be scaled to fit the current axis rect or not\&. \fP"
+.ti -1c
+.RI "void \fBsetAxisBackgroundScaledMode\fP (Qt::AspectRatioMode mode)"
+.br
+.RI "\fIIf scaling of the axis background pixmap is enabled (\fBsetAxisBackgroundScaled\fP), use this function to define whether and how the aspect ratio of the original pixmap passed to \fBsetAxisBackground\fP is preserved\&. \fP"
+.ti -1c
+.RI "void \fBsetInteractions\fP (const Interactions &\fBinteractions\fP)"
+.br
+.RI "\fISets the possible interactions of this \fBQCustomPlot\fP as an or-combination of \fBInteraction\fP enums\&. \fP"
+.ti -1c
+.RI "void \fBsetInteraction\fP (const Interaction &interaction, bool enabled=true)"
+.br
+.ti -1c
+.RI "void \fBsetSelectionTolerance\fP (int pixels)"
+.br
+.RI "\fISets the tolerance that is used when deciding whether a click on the \fBQCustomPlot\fP surface selects an object (e\&.g\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedTitleFont\fP (const QFont &font)"
+.br
+.RI "\fIThis \fIfont\fP is used to draw the title, when it is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetSelectedTitleColor\fP (const QColor &\fBcolor\fP)"
+.br
+.RI "\fIThis \fIcolor\fP is used to draw the title, when it is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetTitleSelected\fP (bool selected)"
+.br
+.RI "\fISets whether the plot title is selected\&. \fP"
+.ti -1c
+.RI "void \fBsetNoAntialiasingOnDrag\fP (bool enabled)"
+.br
+.RI "\fISets whether antialiasing is disabled for all elements while the user is dragging axes ranges\&. \fP"
+.ti -1c
+.RI "void \fBsetPlottingHints\fP (const QCP::PlottingHints &hints)"
+.br
+.RI "\fISets the plotting hints for this \fBQCustomPlot\fP instance\&. \fP"
+.ti -1c
+.RI "void \fBsetPlottingHint\fP (QCP::PlottingHint hint, bool enabled=true)"
+.br
+.RI "\fISets the specified plotting \fIhint\fP to \fIenabled\fP\&. \fP"
+.ti -1c
+.RI "void \fBsetMultiSelectModifier\fP (Qt::KeyboardModifier modifier)"
+.br
+.RI "\fISets the keyboard modifier that will be recognized as multi-select-modifier\&. \fP"
+.ti -1c
+.RI "\fBQCPAbstractPlottable\fP * \fBplottable\fP (int index)"
+.br
+.ti -1c
+.RI "\fBQCPAbstractPlottable\fP * \fBplottable\fP ()"
+.br
+.ti -1c
+.RI "bool \fBaddPlottable\fP (\fBQCPAbstractPlottable\fP *\fBplottable\fP)"
+.br
+.RI "\fIAdds the specified plottable to the plot and, if \fBsetAutoAddPlottableToLegend\fP is enabled, to the legend\&. \fP"
+.ti -1c
+.RI "bool \fBremovePlottable\fP (\fBQCPAbstractPlottable\fP *\fBplottable\fP)"
+.br
+.RI "\fIRemoves the specified plottable from the plot and, if necessary, from the legend\&. \fP"
+.ti -1c
+.RI "bool \fBremovePlottable\fP (int index)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes the plottable by its \fIindex\fP\&. \fP"
+.ti -1c
+.RI "int \fBclearPlottables\fP ()"
+.br
+.RI "\fIRemoves all plottables from the plot (and the legend, if necessary)\&. \fP"
+.ti -1c
+.RI "int \fBplottableCount\fP () const "
+.br
+.RI "\fIReturns the number of currently existing plottables in the plot\&. \fP"
+.ti -1c
+.RI "QList< \fBQCPAbstractPlottable\fP * > \fBselectedPlottables\fP () const "
+.br
+.RI "\fIReturns a list of the selected plottables\&. \fP"
+.ti -1c
+.RI "\fBQCPAbstractPlottable\fP * \fBplottableAt\fP (const QPointF &pos, bool onlySelectable=false) const "
+.br
+.RI "\fIReturns the plottable at the pixel position \fIpos\fP\&. \fP"
+.ti -1c
+.RI "bool \fBhasPlottable\fP (\fBQCPAbstractPlottable\fP *\fBplottable\fP) const "
+.br
+.RI "\fIReturns whether this \fBQCustomPlot\fP instance contains the \fIplottable\fP\&. \fP"
+.ti -1c
+.RI "\fBQCPGraph\fP * \fBgraph\fP (int index) const "
+.br
+.ti -1c
+.RI "\fBQCPGraph\fP * \fBgraph\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPGraph\fP * \fBaddGraph\fP (\fBQCPAxis\fP *keyAxis=0, \fBQCPAxis\fP *valueAxis=0)"
+.br
+.RI "\fICreates a new graph inside the plot\&. \fP"
+.ti -1c
+.RI "bool \fBremoveGraph\fP (\fBQCPGraph\fP *\fBgraph\fP)"
+.br
+.RI "\fIRemoves the specified \fIgraph\fP from the plot and, if necessary, from the legend\&. \fP"
+.ti -1c
+.RI "bool \fBremoveGraph\fP (int index)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes the graph by its \fIindex\fP\&. \fP"
+.ti -1c
+.RI "int \fBclearGraphs\fP ()"
+.br
+.RI "\fIRemoves all graphs from the plot (and the legend, if necessary)\&. \fP"
+.ti -1c
+.RI "int \fBgraphCount\fP () const "
+.br
+.RI "\fIReturns the number of currently existing graphs in the plot\&. \fP"
+.ti -1c
+.RI "QList< \fBQCPGraph\fP * > \fBselectedGraphs\fP () const "
+.br
+.RI "\fIReturns a list of the selected graphs\&. \fP"
+.ti -1c
+.RI "\fBQCPAbstractItem\fP * \fBitem\fP (int index) const "
+.br
+.ti -1c
+.RI "\fBQCPAbstractItem\fP * \fBitem\fP () const "
+.br
+.ti -1c
+.RI "bool \fBaddItem\fP (\fBQCPAbstractItem\fP *\fBitem\fP)"
+.br
+.ti -1c
+.RI "bool \fBremoveItem\fP (\fBQCPAbstractItem\fP *\fBitem\fP)"
+.br
+.ti -1c
+.RI "bool \fBremoveItem\fP (int index)"
+.br
+.ti -1c
+.RI "int \fBclearItems\fP ()"
+.br
+.ti -1c
+.RI "int \fBitemCount\fP () const "
+.br
+.ti -1c
+.RI "QList< \fBQCPAbstractItem\fP * > \fBselectedItems\fP () const "
+.br
+.ti -1c
+.RI "\fBQCPAbstractItem\fP * \fBitemAt\fP (const QPointF &pos, bool onlySelectable=false) const "
+.br
+.RI "\fIReturns the item at the pixel position \fIpos\fP\&. \fP"
+.ti -1c
+.RI "\fBQCPLayer\fP * \fBlayer\fP (const QString &name) const "
+.br
+.ti -1c
+.RI "\fBQCPLayer\fP * \fBlayer\fP (int index) const "
+.br
+.ti -1c
+.RI "\fBQCPLayer\fP * \fBcurrentLayer\fP () const "
+.br
+.RI "\fIReturns the layer that is set as current layer (see \fBsetCurrentLayer\fP)\&. \fP"
+.ti -1c
+.RI "bool \fBsetCurrentLayer\fP (const QString &name)"
+.br
+.RI "\fISets the layer with the specified \fIname\fP to be the current layer\&. \fP"
+.ti -1c
+.RI "bool \fBsetCurrentLayer\fP (\fBQCPLayer\fP *\fBlayer\fP)"
+.br
+.RI "\fIThis is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets the provided \fIlayer\fP to be the current layer\&. \fP"
+.ti -1c
+.RI "int \fBlayerCount\fP () const "
+.br
+.RI "\fIReturns the number of currently existing layers in the plot\&. \fP"
+.ti -1c
+.RI "bool \fBaddLayer\fP (const QString &name, \fBQCPLayer\fP *otherLayer=0, \fBLayerInsertMode\fP insertMode=\fBlimAbove\fP)"
+.br
+.ti -1c
+.RI "bool \fBremoveLayer\fP (\fBQCPLayer\fP *\fBlayer\fP)"
+.br
+.RI "\fIRemoves the specified \fIlayer\fP and returns true on success\&. \fP"
+.ti -1c
+.RI "bool \fBmoveLayer\fP (\fBQCPLayer\fP *\fBlayer\fP, \fBQCPLayer\fP *otherLayer, \fBLayerInsertMode\fP insertMode=\fBlimAbove\fP)"
+.br
+.ti -1c
+.RI "QList< \fBQCPAxis\fP * > \fBselectedAxes\fP () const "
+.br
+.RI "\fIReturns the axes that currently have selected parts, i\&.e\&. \fP"
+.ti -1c
+.RI "QList< \fBQCPLegend\fP * > \fBselectedLegends\fP () const "
+.br
+.RI "\fIReturns the legends (typically one or zero) that currently have selected parts, i\&.e\&. \fP"
+.ti -1c
+.RI "void \fBsetupFullAxesBox\fP ()"
+.br
+.RI "\fIConvenience function to make the top and right axes visible and assign them the following properties from their corresponding bottom/left axes: \fP"
+.ti -1c
+.RI "bool \fBsavePdf\fP (const QString &fileName, bool noCosmeticPen=false, int width=0, int height=0)"
+.br
+.RI "\fISaves a PDF with the vectorized plot to the file \fIfileName\fP\&. \fP"
+.ti -1c
+.RI "bool \fBsavePng\fP (const QString &fileName, int width=0, int height=0, double scale=1\&.0, int quality=-1)"
+.br
+.RI "\fISaves a PNG image file to \fIfileName\fP on disc\&. \fP"
+.ti -1c
+.RI "bool \fBsaveJpg\fP (const QString &fileName, int width=0, int height=0, double scale=1\&.0, int quality=-1)"
+.br
+.RI "\fISaves a JPG image file to \fIfileName\fP on disc\&. \fP"
+.ti -1c
+.RI "bool \fBsaveBmp\fP (const QString &fileName, int width=0, int height=0, double scale=1\&.0)"
+.br
+.RI "\fISaves a BMP image file to \fIfileName\fP on disc\&. \fP"
+.ti -1c
+.RI "bool \fBsaveRastered\fP (const QString &fileName, int width, int height, double scale, const char *format, int quality=-1)"
+.br
+.RI "\fISaves the plot to a rastered image file \fIfileName\fP in the image format \fIformat\fP\&. \fP"
+.ti -1c
+.RI "void \fBdeselectAll\fP ()"
+.br
+.RI "\fIDeselects everything in the \fBQCustomPlot\fP (plottables, items, axes, legend and title)\&. \fP"
+.ti -1c
+.RI "void \fBreplot\fP ()"
+.br
+.RI "\fICauses a complete replot (axes, labels, graphs, etc\&.) into the internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBrescaleAxes\fP ()"
+.br
+.ti -1c
+.RI "void \fBmouseDoubleClick\fP (QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when the \fBQCustomPlot\fP receives a mouse double click event\&. \fP"
+.ti -1c
+.RI "void \fBmousePress\fP (QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when the \fBQCustomPlot\fP receives a mouse press event\&. \fP"
+.ti -1c
+.RI "void \fBmouseMove\fP (QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when the \fBQCustomPlot\fP receives a mouse move event\&. \fP"
+.ti -1c
+.RI "void \fBmouseRelease\fP (QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when the \fBQCustomPlot\fP receives a mouse release event\&. \fP"
+.ti -1c
+.RI "void \fBmouseWheel\fP (QWheelEvent *event)"
+.br
+.ti -1c
+.RI "void \fBplottableClick\fP (\fBQCPAbstractPlottable\fP *\fBplottable\fP, QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when a plottable is clicked\&. \fP"
+.ti -1c
+.RI "void \fBplottableDoubleClick\fP (\fBQCPAbstractPlottable\fP *\fBplottable\fP, QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when a plottable is double clicked\&. \fP"
+.ti -1c
+.RI "void \fBitemClick\fP (\fBQCPAbstractItem\fP *\fBitem\fP, QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when an item is clicked\&. \fP"
+.ti -1c
+.RI "void \fBitemDoubleClick\fP (\fBQCPAbstractItem\fP *\fBitem\fP, QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when an item is double clicked\&. \fP"
+.ti -1c
+.RI "void \fBaxisClick\fP (\fBQCPAxis\fP *axis, QCPAxis::SelectablePart part, QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when an axis is clicked\&. \fP"
+.ti -1c
+.RI "void \fBaxisDoubleClick\fP (\fBQCPAxis\fP *axis, QCPAxis::SelectablePart part, QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when an axis is double clicked\&. \fP"
+.ti -1c
+.RI "void \fBlegendClick\fP (\fBQCPLegend\fP *\fBlegend\fP, \fBQCPAbstractLegendItem\fP *\fBitem\fP, QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when a legend (item) is clicked\&. \fP"
+.ti -1c
+.RI "void \fBlegendDoubleClick\fP (\fBQCPLegend\fP *\fBlegend\fP, \fBQCPAbstractLegendItem\fP *\fBitem\fP, QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when a legend (item) is double clicked\&. \fP"
+.ti -1c
+.RI "void \fBtitleClick\fP (QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when the plot title is clicked\&. \fP"
+.ti -1c
+.RI "void \fBtitleDoubleClick\fP (QMouseEvent *event)"
+.br
+.RI "\fIThis signal is emitted when the plot title is double clicked\&. \fP"
+.ti -1c
+.RI "void \fBselectionChangedByUser\fP ()"
+.br
+.RI "\fIThis signal is emitted after the user has changed the selection in the \fBQCustomPlot\fP, e\&.g\&. \fP"
+.ti -1c
+.RI "void \fBbeforeReplot\fP ()"
+.br
+.RI "\fIThis signal is emitted immediately before a replot takes place (caused by a call to the slot \fBreplot\fP)\&. \fP"
+.ti -1c
+.RI "void \fBafterReplot\fP ()"
+.br
+.RI "\fIThis signal is emitted immediately after a replot has taken place (caused by a call to the slot \fBreplot\fP)\&. \fP"
+.ti -1c
+.RI "virtual QSize \fBminimumSizeHint\fP () const "
+.br
+.ti -1c
+.RI "virtual void \fBpaintEvent\fP (QPaintEvent *event)"
+.br
+.ti -1c
+.RI "virtual void \fBresizeEvent\fP (QResizeEvent *event)"
+.br
+.ti -1c
+.RI "virtual void \fBmouseDoubleClickEvent\fP (QMouseEvent *event)"
+.br
+.ti -1c
+.RI "virtual void \fBmousePressEvent\fP (QMouseEvent *event)"
+.br
+.ti -1c
+.RI "virtual void \fBmouseMoveEvent\fP (QMouseEvent *event)"
+.br
+.ti -1c
+.RI "virtual void \fBmouseReleaseEvent\fP (QMouseEvent *event)"
+.br
+.ti -1c
+.RI "virtual void \fBwheelEvent\fP (QWheelEvent *event)"
+.br
+.ti -1c
+.RI "virtual bool \fBhandlePlottableSelection\fP (QMouseEvent *event, bool additiveSelection, bool &modified)"
+.br
+.ti -1c
+.RI "virtual bool \fBhandleItemSelection\fP (QMouseEvent *event, bool additiveSelection, bool &modified)"
+.br
+.ti -1c
+.RI "virtual bool \fBhandleAxisSelection\fP (QMouseEvent *event, bool additiveSelection, bool &modified)"
+.br
+.ti -1c
+.RI "virtual bool \fBhandleTitleSelection\fP (QMouseEvent *event, bool additiveSelection, bool &modified)"
+.br
+.ti -1c
+.RI "virtual void \fBdrawAxisBackground\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "void \fBupdateAxisRect\fP ()"
+.br
+.ti -1c
+.RI "bool \fBselectTestTitle\fP (const QPointF &pos) const "
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "double \fBkey\fP"
+.br
+.ti -1c
+.RI "double \fBvalue\fP"
+.br
+.ti -1c
+.RI "double \fBkeyErrorPlus\fP"
+.br
+.ti -1c
+.RI "double \fBkeyErrorMinus\fP"
+.br
+.ti -1c
+.RI "double \fBvalueErrorPlus\fP"
+.br
+.ti -1c
+.RI "double \fBvalueErrorMinus\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmParentAxis\fP"
+.br
+.ti -1c
+.RI "bool \fBmSubGridVisible\fP"
+.br
+.ti -1c
+.RI "bool \fBmAntialiasedSubGrid\fP"
+.br
+.ti -1c
+.RI "bool \fBmAntialiasedZeroLine\fP"
+.br
+.ti -1c
+.RI "QPen \fBmPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmSubGridPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmZeroLinePen\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBxAxis\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fByAxis\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBxAxis2\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fByAxis2\fP"
+.br
+.ti -1c
+.RI "\fBQCPLegend\fP * \fBlegend\fP"
+.br
+.ti -1c
+.RI "QString \fBmTitle\fP"
+.br
+.ti -1c
+.RI "QFont \fBmTitleFont\fP"
+.br
+.ti -1c
+.RI "QFont \fBmSelectedTitleFont\fP"
+.br
+.ti -1c
+.RI "QColor \fBmTitleColor\fP"
+.br
+.ti -1c
+.RI "QColor \fBmSelectedTitleColor\fP"
+.br
+.ti -1c
+.RI "QRect \fBmViewport\fP"
+.br
+.ti -1c
+.RI "QRect \fBmAxisRect\fP"
+.br
+.ti -1c
+.RI "int \fBmMarginLeft\fP"
+.br
+.ti -1c
+.RI "int \fBmMarginRight\fP"
+.br
+.ti -1c
+.RI "int \fBmMarginTop\fP"
+.br
+.ti -1c
+.RI "int \fBmMarginBottom\fP"
+.br
+.ti -1c
+.RI "bool \fBmAutoMargin\fP"
+.br
+.ti -1c
+.RI "bool \fBmAutoAddPlottableToLegend\fP"
+.br
+.ti -1c
+.RI "QColor \fBmColor\fP"
+.br
+.ti -1c
+.RI "QList< \fBQCPAbstractPlottable\fP * > \fBmPlottables\fP"
+.br
+.ti -1c
+.RI "QList< \fBQCPGraph\fP * > \fBmGraphs\fP"
+.br
+.ti -1c
+.RI "QList< \fBQCPAbstractItem\fP * > \fBmItems\fP"
+.br
+.ti -1c
+.RI "QList< \fBQCPLayer\fP * > \fBmLayers\fP"
+.br
+.ti -1c
+.RI "Qt::Orientations \fBmRangeDrag\fP"
+.br
+.ti -1c
+.RI "Qt::Orientations \fBmRangeZoom\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmRangeDragHorzAxis\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmRangeDragVertAxis\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmRangeZoomHorzAxis\fP"
+.br
+.ti -1c
+.RI "\fBQCPAxis\fP * \fBmRangeZoomVertAxis\fP"
+.br
+.ti -1c
+.RI "double \fBmRangeZoomFactorHorz\fP"
+.br
+.ti -1c
+.RI "double \fBmRangeZoomFactorVert\fP"
+.br
+.ti -1c
+.RI "bool \fBmDragging\fP"
+.br
+.ti -1c
+.RI "QCP::AntialiasedElements \fBmAntialiasedElements\fP"
+.br
+.ti -1c
+.RI "QCP::AntialiasedElements \fBmNotAntialiasedElements\fP"
+.br
+.ti -1c
+.RI "QPixmap \fBmAxisBackground\fP"
+.br
+.ti -1c
+.RI "bool \fBmAxisBackgroundScaled\fP"
+.br
+.ti -1c
+.RI "Qt::AspectRatioMode \fBmAxisBackgroundScaledMode\fP"
+.br
+.ti -1c
+.RI "Interactions \fBmInteractions\fP"
+.br
+.ti -1c
+.RI "int \fBmSelectionTolerance\fP"
+.br
+.ti -1c
+.RI "bool \fBmTitleSelected\fP"
+.br
+.ti -1c
+.RI "QRect \fBmTitleBoundingBox\fP"
+.br
+.ti -1c
+.RI "bool \fBmNoAntialiasingOnDrag\fP"
+.br
+.ti -1c
+.RI "QPixmap \fBmPaintBuffer\fP"
+.br
+.ti -1c
+.RI "QPoint \fBmDragStart\fP"
+.br
+.ti -1c
+.RI "\fBQCPRange\fP \fBmDragStartHorzRange\fP"
+.br
+.ti -1c
+.RI "\fBQCPRange\fP \fBmDragStartVertRange\fP"
+.br
+.ti -1c
+.RI "QPixmap \fBmScaledAxisBackground\fP"
+.br
+.ti -1c
+.RI "bool \fBmReplotting\fP"
+.br
+.ti -1c
+.RI "QCP::AntialiasedElements \fBmAADragBackup\fP"
+.br
+.ti -1c
+.RI "QCP::AntialiasedElements \fBmNotAADragBackup\fP"
+.br
+.ti -1c
+.RI "\fBQCPLayer\fP * \fBmCurrentLayer\fP"
+.br
+.ti -1c
+.RI "QCP::PlottingHints \fBmPlottingHints\fP"
+.br
+.ti -1c
+.RI "Qt::KeyboardModifier \fBmMultiSelectModifier\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define QCP_LIB_DECL"
+
+.PP
+Definition at line 53 of file qcustomplot\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "\fBQCPBarDataMap\fP"
+
+.PP
+Container for storing \fBQCPBarData\fP items in a sorted fashion\&. The key of the map is the key member of the \fBQCPBarData\fP instance\&.
+.PP
+This is the container in which \fBQCPBars\fP holds its data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBQCPBarData\fP, \fBQCPBars::setData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file qcustomplot\&.h\&.
+.SS "typedef QMapIterator<double, \fBQCPBarData\fP> \fBQCPBarDataMapIterator\fP"
+
+.PP
+Definition at line 200 of file qcustomplot\&.h\&.
+.SS "typedef QMutableMapIterator<double, \fBQCPBarData\fP> \fBQCPBarDataMutableMapIterator\fP"
+
+.PP
+Definition at line 201 of file qcustomplot\&.h\&.
+.SS "\fBQCPCurveDataMap\fP"
+
+.PP
+Container for storing \fBQCPCurveData\fP items in a sorted fashion\&. The key of the map is the t member of the \fBQCPCurveData\fP instance\&.
+.PP
+This is the container in which \fBQCPCurve\fP holds its data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBQCPCurveData\fP, \fBQCPCurve::setData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 179 of file qcustomplot\&.h\&.
+.SS "typedef QMapIterator<double, \fBQCPCurveData\fP> \fBQCPCurveDataMapIterator\fP"
+
+.PP
+Definition at line 180 of file qcustomplot\&.h\&.
+.SS "typedef QMutableMapIterator<double, \fBQCPCurveData\fP> \fBQCPCurveDataMutableMapIterator\fP"
+
+.PP
+Definition at line 181 of file qcustomplot\&.h\&.
+.SS "\fBQCPDataMap\fP"
+
+.PP
+Container for storing \fBQCPData\fP items in a sorted fashion\&. The key of the map is the key member of the \fBQCPData\fP instance\&.
+.PP
+This is the container in which \fBQCPGraph\fP holds its data\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBQCPData\fP, \fBQCPGraph::setData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 158 of file qcustomplot\&.h\&.
+.SS "typedef QMapIterator<double, \fBQCPData\fP> \fBQCPDataMapIterator\fP"
+
+.PP
+Definition at line 159 of file qcustomplot\&.h\&.
+.SS "typedef QMutableMapIterator<double, \fBQCPData\fP> \fBQCPDataMutableMapIterator\fP"
+
+.PP
+Definition at line 160 of file qcustomplot\&.h\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBLayerInsertMode\fP\fC [protected]\fP"
+
+.PP
+Defines how a layer should be inserted relative to a specified other layer\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddLayer\fP, \fBmoveLayer\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIlimBelow \fP\fP
+Layer is inserted below other layer\&. 
+.TP
+\fB\fIlimAbove \fP\fP
+Layer is inserted above other layer\&. 
+.PP
+Definition at line 1944 of file qcustomplot\&.h\&.
+.PP
+.nf
+1944                        { limBelow  
+1945                          ,limAbove 
+1946                    };
+.fi
+.SH "Function Documentation"
+.PP 
+.SS "\fBQCPGraph\fP * QCustomPlot::addGraph (\fBQCPAxis\fP *keyAxis = \fC0\fP, \fBQCPAxis\fP *valueAxis = \fC0\fP)\fC [protected]\fP"
+
+.PP
+Creates a new graph inside the plot\&. If \fIkeyAxis\fP and \fIvalueAxis\fP are left unspecified (0), the bottom (xAxis) is used as key and the left (yAxis) is used as value\&. If specified, \fIkeyAxis\fP and \fIvalueAxis\fP must reside in this \fBQCustomPlot\fP\&.
+.PP
+\fIkeyAxis\fP will be used as key axis (typically 'x') and \fIvalueAxis\fP as value axis (typically 'y') for the graph\&.
+.PP
+Returns a pointer to the newly created graph\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBgraph\fP, \fBgraphCount\fP, \fBremoveGraph\fP, \fBclearGraphs\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6688 of file qcustomplot\&.cpp\&.
+.PP
+References addPlottable(), mGraphs, QCPLayerable::parentPlot(), QCPAbstractPlottable::setName(), xAxis, and yAxis\&.
+.PP
+.nf
+6689 {
+6690   if (!keyAxis) keyAxis = xAxis;
+6691   if (!valueAxis) valueAxis = yAxis;
+6692   if (keyAxis->parentPlot() != this || valueAxis->parentPlot() != this)
+6693   {
+6694     qDebug() << Q_FUNC_INFO << "passed keyAxis or valueAxis doesn't have this QCustomPlot as parent";
+6695     return 0;
+6696   }
+6697   
+6698   QCPGraph *newGraph = new QCPGraph(keyAxis, valueAxis);
+6699   if (addPlottable(newGraph))
+6700   {
+6701     newGraph->setName("Graph "+QString::number(mGraphs\&.size()));
+6702     return newGraph;
+6703   } else
+6704   {
+6705     delete newGraph;
+6706     return 0;
+6707   }
+6708 }
+.fi
+.SS "bool addItem (\fBQCPAbstractItem\fP *item)\fC [protected]\fP"
+
+.SS "bool addLayer (const QString &name, \fBQCPLayer\fP *otherLayer = \fC0\fP, \fBLayerInsertMode\fPinsertMode = \fC\fBlimAbove\fP\fP)\fC [protected]\fP"
+
+.SS "bool QCustomPlot::addPlottable (\fBQCPAbstractPlottable\fP *plottable)\fC [protected]\fP"
+
+.PP
+Adds the specified plottable to the plot and, if \fBsetAutoAddPlottableToLegend\fP is enabled, to the legend\&. \fBQCustomPlot\fP takes ownership of the plottable\&.
+.PP
+Returns true on success, i\&.e\&. when \fIplottable\fP wasn't already added to the plot and the parent plot of \fIplottable\fP is this \fBQCustomPlot\fP (the latter is controlled by what axes the plottable was passed in the constructor)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBplottable\fP, \fBplottableCount\fP, \fBremovePlottable\fP, \fBclearPlottables\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6487 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::addToLegend(), currentLayer(), graph(), QCPLayerable::layer(), mAutoAddPlottableToLegend, mGraphs, mPlottables, QCPLayerable::parentPlot(), plottable(), and QCPLayerable::setLayer()\&.
+.PP
+Referenced by addGraph()\&.
+.PP
+.nf
+6488 {
+6489   if (mPlottables\&.contains(plottable))
+6490   {
+6491     qDebug() << Q_FUNC_INFO << "plottable already added to this QCustomPlot:" << reinterpret_cast<quintptr>(plottable);
+6492     return false;
+6493   }
+6494   if (plottable->parentPlot() != this)
+6495   {
+6496     qDebug() << Q_FUNC_INFO << "plottable not created with this QCustomPlot as parent:" << reinterpret_cast<quintptr>(plottable);
+6497     return false;
+6498   }
+6499   
+6500   mPlottables\&.append(plottable);
+6501   // possibly add plottable to legend:
+6502   if (mAutoAddPlottableToLegend)
+6503     plottable->addToLegend();
+6504   // special handling for QCPGraphs to maintain the simple graph interface:
+6505   if (QCPGraph *graph = qobject_cast<QCPGraph*>(plottable))
+6506     mGraphs\&.append(graph);
+6507   if (!plottable->layer()) // usually the layer is already set in the constructor of the plottable (via QCPLayerable constructor)
+6508     plottable->setLayer(currentLayer());
+6509   return true;
+6510 }
+.fi
+.SS "void QCustomPlot::afterReplot ()"
+
+.PP
+This signal is emitted immediately after a replot has taken place (caused by a call to the slot \fBreplot\fP)\&. It is safe to mutually connect the replot slot with this signal on two QCustomPlots to make them replot synchronously (i\&.e\&. it won't cause an infinite recursion)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBreplot\fP, \fBbeforeReplot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2581 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by replot()\&.
+.PP
+.nf
+2582 {
+2583     QMetaObject::activate(this, &staticMetaObject, 17, 0);
+2584 }
+.fi
+.SS "QCP::AntialiasedElements antialiasedElements () const\fC [protected]\fP"
+
+.PP
+Definition at line 1969 of file qcustomplot\&.h\&.
+.PP
+References mAntialiasedElements\&.
+.PP
+Referenced by setAntialiasedElements()\&.
+.PP
+.nf
+1969 { return mAntialiasedElements; }
+.fi
+.SS "bool antialiasedSubGrid () const"
+
+.PP
+Definition at line 1589 of file qcustomplot\&.h\&.
+.PP
+References mAntialiasedSubGrid\&.
+.PP
+.nf
+1589 { return mAntialiasedSubGrid; }
+.fi
+.SS "bool antialiasedZeroLine () const"
+
+.PP
+Definition at line 1590 of file qcustomplot\&.h\&.
+.PP
+References mAntialiasedZeroLine\&.
+.PP
+.nf
+1590 { return mAntialiasedZeroLine; }
+.fi
+.SS "virtual void applyDefaultAntialiasingHint (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Referenced by drawGridLines()\&.
+.SS "bool autoAddPlottableToLegend () const\fC [protected]\fP"
+
+.PP
+Definition at line 1971 of file qcustomplot\&.h\&.
+.PP
+References mAutoAddPlottableToLegend\&.
+.PP
+.nf
+1971 { return mAutoAddPlottableToLegend; }
+.fi
+.SS "bool autoMargin () const\fC [protected]\fP"
+
+.PP
+Definition at line 1962 of file qcustomplot\&.h\&.
+.PP
+References mAutoMargin\&.
+.PP
+.nf
+1962 { return mAutoMargin; }
+.fi
+.SS "QPixmap axisBackground () const\fC [protected]\fP"
+
+.PP
+Definition at line 1972 of file qcustomplot\&.h\&.
+.PP
+References mAxisBackground\&.
+.PP
+.nf
+1972 { return mAxisBackground; }
+.fi
+.SS "bool axisBackgroundScaled () const\fC [protected]\fP"
+
+.PP
+Definition at line 1973 of file qcustomplot\&.h\&.
+.PP
+References mAxisBackgroundScaled\&.
+.PP
+.nf
+1973 { return mAxisBackgroundScaled; }
+.fi
+.SS "Qt::AspectRatioMode axisBackgroundScaledMode () const\fC [protected]\fP"
+
+.PP
+Definition at line 1974 of file qcustomplot\&.h\&.
+.PP
+References mAxisBackgroundScaledMode\&.
+.PP
+.nf
+1974 { return mAxisBackgroundScaledMode; }
+.fi
+.SS "void QCustomPlot::axisClick (\fBQCPAxis\fP *axis, QCPAxis::SelectablePartpart, QMouseEvent *event)"
+
+.PP
+This signal is emitted when an axis is clicked\&. \fIevent\fP is the mouse event that caused the click, \fIaxis\fP is the axis that received the click and \fIpart\fP indicates the part of the axis that was clicked\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaxisDoubleClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2527 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+2528 {
+2529     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+2530     QMetaObject::activate(this, &staticMetaObject, 9, _a);
+2531 }
+.fi
+.SS "void QCustomPlot::axisDoubleClick (\fBQCPAxis\fP *axis, QCPAxis::SelectablePartpart, QMouseEvent *event)"
+
+.PP
+This signal is emitted when an axis is double clicked\&. \fIevent\fP is the mouse event that caused the click, \fIaxis\fP is the axis that received the click and \fIpart\fP indicates the part of the axis that was clicked\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaxisClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2534 of file moc_qcustomplot\&.cpp\&.
+.PP
+.nf
+2535 {
+2536     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+2537     QMetaObject::activate(this, &staticMetaObject, 10, _a);
+2538 }
+.fi
+.SS "QRect axisRect () const\fC [protected]\fP"
+
+.PP
+Definition at line 1956 of file qcustomplot\&.h\&.
+.PP
+References mAxisRect\&.
+.PP
+Referenced by QCPCurve::outsideCoordsToPixels()\&.
+.PP
+.nf
+1956 { return mAxisRect; }
+.fi
+.SS "void QCustomPlot::beforeReplot ()"
+
+.PP
+This signal is emitted immediately before a replot takes place (caused by a call to the slot \fBreplot\fP)\&. It is safe to mutually connect the replot slot with this signal on two QCustomPlots to make them replot synchronously (i\&.e\&. it won't cause an infinite recursion)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBreplot\fP, \fBafterReplot\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2575 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by replot()\&.
+.PP
+.nf
+2576 {
+2577     QMetaObject::activate(this, &staticMetaObject, 16, 0);
+2578 }
+.fi
+.SS "int QCustomPlot::clearGraphs ()\fC [protected]\fP"
+
+.PP
+Removes all graphs from the plot (and the legend, if necessary)\&. Returns the number of graphs removed\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremoveGraph\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6741 of file qcustomplot\&.cpp\&.
+.PP
+References mGraphs, and removeGraph()\&.
+.PP
+.nf
+6742 {
+6743   int c = mGraphs\&.size();
+6744   for (int i=c-1; i >= 0; --i)
+6745     removeGraph(mGraphs[i]);
+6746   return c;
+6747 }
+.fi
+.SS "int clearItems ()\fC [protected]\fP"
+
+.PP
+Referenced by ~QCustomPlot()\&.
+.SS "int QCustomPlot::clearPlottables ()\fC [protected]\fP"
+
+.PP
+Removes all plottables from the plot (and the legend, if necessary)\&. Returns the number of plottables removed\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBremovePlottable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6560 of file qcustomplot\&.cpp\&.
+.PP
+References mPlottables, and removePlottable()\&.
+.PP
+Referenced by ~QCustomPlot()\&.
+.PP
+.nf
+6561 {
+6562   int c = mPlottables\&.size();
+6563   for (int i=c-1; i >= 0; --i)
+6564     removePlottable(mPlottables[i]);
+6565   return c;
+6566 }
+.fi
+.SS "QColor color () const\fC [protected]\fP"
+
+.PP
+Definition at line 1963 of file qcustomplot\&.h\&.
+.PP
+References mColor\&.
+.PP
+Referenced by QCPCurve::draw(), QCPBars::draw(), QCPItemBracket::draw(), QCPGraph::drawFill(), QCPGraph::drawImpulsePlot(), QCPGraph::drawLinePlot(), QCPPainter::drawScatter(), QCPAxis::setLabelColor(), QCPAxis::setSelectedLabelColor(), QCPAbstractLegendItem::setSelectedTextColor(), QCPLegend::setSelectedTextColor(), QCPAxis::setSelectedTickLabelColor(), setSelectedTitleColor(), QCPAbstractLegendItem::setTextColor(), QCPLegend::setTextColor(), QCPAxis::setTickLabelColor(), and setTitleColor()\&.
+.PP
+.nf
+1963 { return mColor; }
+.fi
+.SS "\fBQCPLayer\fP * QCustomPlot::currentLayer () const\fC [protected]\fP"
+
+.PP
+Returns the layer that is set as current layer (see \fBsetCurrentLayer\fP)\&. 
+.PP
+Definition at line 6984 of file qcustomplot\&.cpp\&.
+.PP
+References mCurrentLayer\&.
+.PP
+Referenced by addPlottable()\&.
+.PP
+.nf
+6985 {
+6986   return mCurrentLayer; 
+6987 }
+.fi
+.SS "void QCustomPlot::deselectAll ()"
+
+.PP
+Deselects everything in the \fBQCustomPlot\fP (plottables, items, axes, legend and title)\&. Since calling this function is not a user interaction, this does not emit the \fBselectionChangedByUser\fP signal\&. The individual selectionChanged signals are emitted though, if the objects were previously selected\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteractions\fP, \fBselectedPlottables\fP, \fBselectedItems\fP, \fBselectedAxes\fP, \fBselectedLegends\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7189 of file qcustomplot\&.cpp\&.
+.PP
+References legend, selectedAxes(), selectedItems(), selectedPlottables(), QCPLegend::setSelected(), and setTitleSelected()\&.
+.PP
+.nf
+7190 {
+7191   // deselect plottables:
+7192   QList<QCPAbstractPlottable*> selPlottables = selectedPlottables();
+7193   for (int i=0; i<selPlottables\&.size(); ++i)
+7194     selPlottables\&.at(i)->setSelected(false);
+7195   
+7196   // deselect items:
+7197   QList<QCPAbstractItem*> selItems = selectedItems();
+7198   for (int i=0; i<selItems\&.size(); ++i)
+7199     selItems\&.at(i)->setSelected(false);
+7200   
+7201   // deselect axes:
+7202   QList<QCPAxis*> selAxes = selectedAxes();
+7203   for (int i=0; i<selAxes\&.size(); ++i)
+7204     selAxes\&.at(i)->setSelected(QCPAxis::spNone);
+7205   
+7206   // deselect legend (and legend items):
+7207   legend->setSelected(QCPLegend::spNone);
+7208   
+7209   // deselect title:
+7210   setTitleSelected(false);
+7211 }
+.fi
+.SS "void draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Referenced by replot(), savePdf(), and saveRastered()\&.
+.SS "void QCustomPlot::drawAxisBackground (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+If an axis background is provided via \fBsetAxisBackground\fP, this function first buffers the scaled version depending on \fBsetAxisBackgroundScaled\fP and \fBsetAxisBackgroundScaledMode\fP and then draws it inside the current axisRect with the provided \fIpainter\fP\&. The scaled version is buffered in mScaledAxisBackground to prevent the need for rescaling at every redraw\&. It is only updated, when the axisRect has changed in a way that requires a rescale of the background pixmap (this is dependant on the \fBsetAxisBackgroundScaledMode\fP), or when a differend axis backgroud was set\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBdraw\fP, \fBsetAxisBackground\fP, \fBsetAxisBackgroundScaled\fP, \fBsetAxisBackgroundScaledMode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8090 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisBackground, mAxisBackgroundScaled, mAxisBackgroundScaledMode, mAxisRect, and mScaledAxisBackground\&.
+.PP
+.nf
+8091 {
+8092   if (!mAxisBackground\&.isNull())
+8093   {
+8094     if (mAxisBackgroundScaled)
+8095     {
+8096       // check whether mScaledAxisBackground needs to be updated:
+8097       QSize scaledSize(mAxisBackground\&.size());
+8098       scaledSize\&.scale(mAxisRect\&.size(), mAxisBackgroundScaledMode);
+8099       if (mScaledAxisBackground\&.size() != scaledSize)
+8100         mScaledAxisBackground = mAxisBackground\&.scaled(mAxisRect\&.size(), mAxisBackgroundScaledMode, Qt::SmoothTransformation);
+8101       painter->drawPixmap(mAxisRect\&.topLeft(), mScaledAxisBackground, QRect(0, 0, mAxisRect\&.width(), mAxisRect\&.height()) & mScaledAxisBackground\&.rect());
+8102     } else
+8103     {
+8104       painter->drawPixmap(mAxisRect\&.topLeft(), mAxisBackground, QRect(0, 0, mAxisRect\&.width(), mAxisRect\&.height()));
+8105     }
+8106   }
+8107 }
+.fi
+.SS "void QCPGrid::drawGridLines (\fBQCPPainter\fP *painter) const\fC [protected]\fP"
+Draws the main grid lines and possibly a zero line with the specified painter\&.
+.PP
+This is a helper function called by \fBdraw\fP\&. 
+.PP
+Definition at line 14260 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeZeroLine, applyDefaultAntialiasingHint(), QCPAxis::coordToPixel(), QCPPainter::drawLine(), QCPRange::lower, mAntialiasedZeroLine, QCPAxis::mAxisRect, QCPAxis::mHighestVisibleTick, QCPAxis::mLowestVisibleTick, mParentAxis, mPen, QCPAxis::mRange, QCPAxis::mTickVector, mZeroLinePen, QCPAxis::orientation(), QCPAxis::range(), QCPPainter::setPen(), QCPRange::size(), and QCPRange::upper\&.
+.PP
+.nf
+14261 {
+14262   int lowTick = mParentAxis->mLowestVisibleTick;
+14263   int highTick = mParentAxis->mHighestVisibleTick;
+14264   double t; // helper variable, result of coordinate-to-pixel transforms
+14265   if (mParentAxis->orientation() == Qt::Horizontal)
+14266   {
+14267     // draw zeroline:
+14268     int zeroLineIndex = -1;
+14269     if (mZeroLinePen\&.style() != Qt::NoPen && mParentAxis->mRange\&.lower < 0 && mParentAxis->mRange\&.upper > 0)
+14270     {
+14271       applyAntialiasingHint(painter, mAntialiasedZeroLine, QCP::aeZeroLine);
+14272       painter->setPen(mZeroLinePen);
+14273       double epsilon = mParentAxis->range()\&.size()*1E-6; // for comparing double to zero
+14274       for (int i=lowTick; i <= highTick; ++i)
+14275       {
+14276         if (qAbs(mParentAxis->mTickVector\&.at(i)) < epsilon)
+14277         {
+14278           zeroLineIndex = i;
+14279           t = mParentAxis->coordToPixel(mParentAxis->mTickVector\&.at(i)); // x
+14280           painter->drawLine(QLineF(t, mParentAxis->mAxisRect\&.bottom(), t, mParentAxis->mAxisRect\&.top()));
+14281           break;
+14282         }
+14283       }
+14284     }
+14285     applyDefaultAntialiasingHint(painter);
+14286     painter->setPen(mPen);
+14287     for (int i=lowTick; i <= highTick; ++i)
+14288     {
+14289       if (i == zeroLineIndex) continue; // don't draw a gridline on top of the zeroline
+14290       t = mParentAxis->coordToPixel(mParentAxis->mTickVector\&.at(i)); // x
+14291       painter->drawLine(QLineF(t, mParentAxis->mAxisRect\&.bottom(), t, mParentAxis->mAxisRect\&.top()));
+14292     }
+14293   } else
+14294   {
+14295     // draw zeroline:
+14296     int zeroLineIndex = -1;
+14297     if (mZeroLinePen\&.style() != Qt::NoPen && mParentAxis->mRange\&.lower < 0 && mParentAxis->mRange\&.upper > 0)
+14298     {
+14299       applyAntialiasingHint(painter, mAntialiasedZeroLine, QCP::aeZeroLine);
+14300       painter->setPen(mZeroLinePen);
+14301       double epsilon = mParentAxis->mRange\&.size()*1E-6; // for comparing double to zero
+14302       for (int i=lowTick; i <= highTick; ++i)
+14303       {
+14304         if (qAbs(mParentAxis->mTickVector\&.at(i)) < epsilon)
+14305         {
+14306           zeroLineIndex = i;
+14307           t = mParentAxis->coordToPixel(mParentAxis->mTickVector\&.at(i)); // y
+14308           painter->drawLine(QLineF(mParentAxis->mAxisRect\&.left(), t, mParentAxis->mAxisRect\&.right(), t));
+14309           break;
+14310         }
+14311       }
+14312     }
+14313     // draw grid lines:
+14314     applyDefaultAntialiasingHint(painter);
+14315     painter->setPen(mPen);
+14316     for (int i=lowTick; i <= highTick; ++i)
+14317     {
+14318       if (i == zeroLineIndex) continue; // don't draw a gridline on top of the zeroline
+14319       t = mParentAxis->coordToPixel(mParentAxis->mTickVector\&.at(i)); // y
+14320       painter->drawLine(QLineF(mParentAxis->mAxisRect\&.left(), t, mParentAxis->mAxisRect\&.right(), t));
+14321     }
+14322   }
+14323 }
+.fi
+.SS "void QCPGrid::drawSubGridLines (\fBQCPPainter\fP *painter) const\fC [protected]\fP"
+Draws the sub grid lines with the specified painter\&.
+.PP
+This is a helper function called by \fBdraw\fP\&. 
+.PP
+Definition at line 14331 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeSubGrid, QCPAxis::coordToPixel(), QCPPainter::drawLine(), mAntialiasedSubGrid, QCPAxis::mAxisRect, mParentAxis, mSubGridPen, QCPAxis::mSubTickVector, QCPAxis::orientation(), and QCPPainter::setPen()\&.
+.PP
+.nf
+14332 {
+14333   applyAntialiasingHint(painter, mAntialiasedSubGrid, QCP::aeSubGrid);
+14334   double t; // helper variable, result of coordinate-to-pixel transforms
+14335   painter->setPen(mSubGridPen);
+14336   if (mParentAxis->orientation() == Qt::Horizontal)
+14337   {
+14338     for (int i=0; i<mParentAxis->mSubTickVector\&.size(); ++i)
+14339     {
+14340       t = mParentAxis->coordToPixel(mParentAxis->mSubTickVector\&.at(i)); // x
+14341       painter->drawLine(QLineF(t, mParentAxis->mAxisRect\&.bottom(), t, mParentAxis->mAxisRect\&.top()));
+14342     }
+14343   } else
+14344   {
+14345     for (int i=0; i<mParentAxis->mSubTickVector\&.size(); ++i)
+14346     {
+14347       t = mParentAxis->coordToPixel(mParentAxis->mSubTickVector\&.at(i)); // y
+14348       painter->drawLine(QLineF(mParentAxis->mAxisRect\&.left(), t, mParentAxis->mAxisRect\&.right(), t));
+14349     }
+14350   }
+14351 }
+.fi
+.SS "\fBQCPGraph\fP* graph (intindex) const\fC [protected]\fP"
+
+.PP
+Referenced by addPlottable(), and removePlottable()\&.
+.SS "\fBQCPGraph\fP* graph () const\fC [protected]\fP"
+
+.SS "int QCustomPlot::graphCount () const\fC [protected]\fP"
+
+.PP
+Returns the number of currently existing graphs in the plot\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBgraph\fP, \fBaddGraph\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6754 of file qcustomplot\&.cpp\&.
+.PP
+References mGraphs\&.
+.PP
+.nf
+6755 {
+6756   return mGraphs\&.size();
+6757 }
+.fi
+.SS "virtual bool handleAxisSelection (QMouseEvent *event, booladditiveSelection, bool &modified)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Referenced by mouseReleaseEvent()\&.
+.SS "bool QCustomPlot::handleItemSelection (QMouseEvent *event, booladditiveSelection, bool &modified)\fC [protected]\fP, \fC [virtual]\fP"
+Handles a mouse \fIevent\fP for the item selection interaction\&. Returns true, when a selectable item was hit by the mouse event\&. The output variable \fImodified\fP is set to true when the selection state of an item has changed\&.
+.PP
+When \fIadditiveSelecton\fP is true, any new selections become selected in addition to the recent selections\&. The recent selections are not cleared\&. Further, clicking on one object multiple times in additive selection mode, toggles the selection of that object on and off\&.
+.PP
+To indicate that all items that are selectable shall be deselected, pass 0 as \fIevent\fP\&.
+.PP
+Unlike for axis and legend selection, this function can't be exported to the respective class itself (i\&.e\&. \fBQCPAbstractItem\fP)\&. The function needs to know the distance of the mouse event to all items in the plot, in order to choose the item with the smallest distance\&. This wouldn't work if it were local to a single item\&. 
+.PP
+Definition at line 7917 of file qcustomplot\&.cpp\&.
+.PP
+References itemAt(), mItems, QCPAbstractItem::selected(), and QCPAbstractItem::setSelected()\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+7918 {
+7919   // Note: This code is basically identical to handlePlottableSelection, only for items
+7920   
+7921   bool selectionFound = false;
+7922   if (event)
+7923   {
+7924     QCPAbstractItem *itemSelection = itemAt(event->pos(), true);
+7925     // handle selection of found plottable:
+7926     if (itemSelection)
+7927     {
+7928       selectionFound = true;
+7929       if (!itemSelection->selected() || additiveSelection)
+7930       {
+7931         itemSelection->setSelected(!itemSelection->selected());
+7932         modified = true;
+7933       }
+7934     }
+7935     // deselect all others (if itemSelection is 0, all items are deselected):
+7936     if (!additiveSelection)
+7937     {
+7938       for (int i=0; i<mItems\&.size(); ++i)
+7939       {
+7940         if (mItems\&.at(i) != itemSelection && mItems\&.at(i)->selected() && mItems\&.at(i)->selectable())
+7941         {
+7942           mItems\&.at(i)->setSelected(false);
+7943           modified = true;
+7944         }
+7945       }
+7946     }
+7947   } else // event == 0, so deselect selectable items
+7948   {
+7949     for (int i=0; i<mItems\&.size(); ++i)
+7950     {
+7951       if (mItems\&.at(i)->selected() && mItems\&.at(i)->selectable())
+7952       {
+7953         mItems\&.at(i)->setSelected(false);
+7954         modified = true;
+7955       }
+7956     }
+7957   }
+7958   return selectionFound;
+7959 }
+.fi
+.SS "bool QCustomPlot::handlePlottableSelection (QMouseEvent *event, booladditiveSelection, bool &modified)\fC [protected]\fP, \fC [virtual]\fP"
+Handles a mouse \fIevent\fP for the plottable selection interaction\&. Returns true, when a selectable plottable was hit by the mouse event\&. The output variable \fImodified\fP is set to true when the selection state of a plottable has changed\&.
+.PP
+When \fIadditiveSelecton\fP is true, any new selections become selected in addition to the recent selections\&. The recent selections are not cleared\&. Further, clicking on one object multiple times in additive selection mode, toggles the selection of that object on and off\&.
+.PP
+To indicate that all plottables that are selectable shall be deselected, pass 0 as \fIevent\fP\&.
+.PP
+Unlike for axis and legend selection, this function can't be exported to the respective class itself (i\&.e\&. \fBQCPAbstractPlottable\fP)\&. The function needs to know the distance of the mouse event to all plottables in the plot, in order to choose the plottable with the smallest distance\&. This wouldn't work if it were local to a single plottable\&. 
+.PP
+Definition at line 7856 of file qcustomplot\&.cpp\&.
+.PP
+References mPlottables, plottableAt(), QCPAbstractPlottable::selected(), and QCPAbstractPlottable::setSelected()\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+7857 {
+7858   // Note: This code is basically identical to handleItemSelection, only for plottables
+7859   
+7860   bool selectionFound = false;
+7861   if (event)
+7862   {
+7863     QCPAbstractPlottable *plottableSelection = plottableAt(event->pos(), true);
+7864     // handle selection of found plottable:
+7865     if (plottableSelection)
+7866     {
+7867       selectionFound = true;
+7868       if (!plottableSelection->selected() || additiveSelection)
+7869       {
+7870         plottableSelection->setSelected(!plottableSelection->selected());
+7871         modified = true;
+7872       }
+7873     }
+7874     // deselect all others (if plottableSelection is 0, all plottables are deselected):
+7875     if (!additiveSelection)
+7876     {
+7877       for (int i=0; i<mPlottables\&.size(); ++i)
+7878       {
+7879         if (mPlottables\&.at(i) != plottableSelection && mPlottables\&.at(i)->selected() && mPlottables\&.at(i)->selectable())
+7880         {
+7881           mPlottables\&.at(i)->setSelected(false);
+7882           modified = true;
+7883         }
+7884       }
+7885     }
+7886   } else // event == 0, so deselect selectable plottables
+7887   {
+7888     for (int i=0; i<mPlottables\&.size(); ++i)
+7889     {
+7890       if (mPlottables\&.at(i)->selected() && mPlottables\&.at(i)->selectable())
+7891       {
+7892         mPlottables\&.at(i)->setSelected(false);
+7893         modified = true;
+7894       }
+7895     }
+7896   }
+7897   return selectionFound;
+7898 }
+.fi
+.SS "bool QCustomPlot::handleTitleSelection (QMouseEvent *event, booladditiveSelection, bool &modified)\fC [protected]\fP, \fC [virtual]\fP"
+Handles a mouse \fIevent\fP for the title selection interaction\&. Returns true, when the title was hit by the mouse event\&. The output variable \fImodified\fP is set to true when the selection state of the title has changed\&.
+.PP
+When \fIadditiveSelecton\fP is true, any new selections become selected in addition to the recent selections\&. The recent selections are not cleared\&. Further, clicking on one object multiple times in additive selection mode, toggles the selection of that object on and off\&.
+.PP
+To indicate that the title shall be deselected, pass 0 as \fIevent\fP\&. 
+.PP
+Definition at line 7994 of file qcustomplot\&.cpp\&.
+.PP
+References selectTestTitle(), setTitleSelected(), and titleSelected()\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+7995 {
+7996   bool selectionFound = false;
+7997   if (event && selectTestTitle(event->pos())) // hit, select title
+7998   {
+7999     selectionFound = true;
+8000     if (!titleSelected() || additiveSelection)
+8001     {
+8002       setTitleSelected(!titleSelected());
+8003       modified = true;
+8004     }
+8005   } else // no hit or event == 0, deselect title
+8006   {
+8007     if (titleSelected() && !additiveSelection)
+8008     {
+8009       setTitleSelected(false);
+8010       modified = true;
+8011     }
+8012   }
+8013   return selectionFound;
+8014 }
+.fi
+.SS "bool QCustomPlot::hasPlottable (\fBQCPAbstractPlottable\fP *plottable) const\fC [protected]\fP"
+
+.PP
+Returns whether this \fBQCustomPlot\fP instance contains the \fIplottable\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddPlottable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6635 of file qcustomplot\&.cpp\&.
+.PP
+References mPlottables\&.
+.PP
+.nf
+6636 {
+6637   return mPlottables\&.contains(plottable);
+6638 }
+.fi
+.SS "const Interactions interactions () const\fC [protected]\fP"
+
+.PP
+Definition at line 1975 of file qcustomplot\&.h\&.
+.PP
+References mInteractions\&.
+.PP
+Referenced by setInteractions()\&.
+.PP
+.nf
+1975 { return mInteractions; }
+.fi
+.SS "\fBQCPAbstractItem\fP* item (intindex) const\fC [protected]\fP"
+
+.SS "\fBQCPAbstractItem\fP* item () const\fC [protected]\fP"
+
+.SS "\fBQCPAbstractItem\fP * QCustomPlot::itemAt (const QPointF &pos, boolonlySelectable = \fCfalse\fP) const\fC [protected]\fP"
+
+.PP
+Returns the item at the pixel position \fIpos\fP\&. Items that only consist of single lines (e\&.g\&. \fBQCPItemLine\fP or \fBQCPItemCurve\fP) have a tolerance band around them, see \fBsetSelectionTolerance\fP\&. If multiple items come into consideration, the one closest to \fIpos\fP is returned\&.
+.PP
+If \fIonlySelectable\fP is true, only items that are selectable (\fBQCPAbstractItem::setSelectable\fP) are considered\&.
+.PP
+If there is no item at \fIpos\fP, the return value is 0\&. 
+.PP
+Definition at line 6924 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractItem::clipRect(), QCPAbstractItem::clipToAxisRect(), mItems, mSelectionTolerance, QCPAbstractItem::selectable(), and QCPAbstractItem::selectTest()\&.
+.PP
+Referenced by handleItemSelection(), and mouseReleaseEvent()\&.
+.PP
+.nf
+6925 {
+6926   QCPAbstractItem *resultItem = 0;
+6927   double resultDistance = mSelectionTolerance; // only regard clicks with distances smaller than mSelectionTolerance as selections, so initialize with that value
+6928   
+6929   for (int i=0; i<mItems\&.size(); ++i)
+6930   {
+6931     QCPAbstractItem *currentItem = mItems[i];
+6932     if (onlySelectable && !currentItem->selectable())
+6933       continue;
+6934     if (!currentItem->clipToAxisRect() || currentItem->clipRect()\&.contains(pos\&.toPoint())) // only consider clicks inside axis cliprect of the item if actually clipped to it
+6935     {
+6936       double currentDistance = currentItem->selectTest(pos);
+6937       if (currentDistance >= 0 && currentDistance < resultDistance)
+6938       {
+6939         resultItem = currentItem;
+6940         resultDistance = currentDistance;
+6941       }
+6942     }
+6943   }
+6944   
+6945   return resultItem;
+6946 }
+.fi
+.SS "void QCustomPlot::itemClick (\fBQCPAbstractItem\fP *item, QMouseEvent *event)"
+
+.PP
+This signal is emitted when an item is clicked\&. \fIevent\fP is the mouse event that caused the click and \fIitem\fP is the item that received the click\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBitemDoubleClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2513 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+2514 {
+2515     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+2516     QMetaObject::activate(this, &staticMetaObject, 7, _a);
+2517 }
+.fi
+.SS "int itemCount () const\fC [protected]\fP"
+
+.SS "void QCustomPlot::itemDoubleClick (\fBQCPAbstractItem\fP *item, QMouseEvent *event)"
+
+.PP
+This signal is emitted when an item is double clicked\&. \fIevent\fP is the mouse event that caused the click and \fIitem\fP is the item that received the click\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBitemClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2520 of file moc_qcustomplot\&.cpp\&.
+.PP
+.nf
+2521 {
+2522     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+2523     QMetaObject::activate(this, &staticMetaObject, 8, _a);
+2524 }
+.fi
+.SS "\fBQCPLayer\fP* layer (const QString &name) const\fC [protected]\fP"
+
+.PP
+Referenced by removeLayer(), and setCurrentLayer()\&.
+.SS "\fBQCPLayer\fP* layer (intindex) const\fC [protected]\fP"
+
+.SS "int QCustomPlot::layerCount () const\fC [protected]\fP"
+
+.PP
+Returns the number of currently existing layers in the plot\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBlayer\fP, \fBaddLayer\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7035 of file qcustomplot\&.cpp\&.
+.PP
+References mLayers\&.
+.PP
+.nf
+7036 {
+7037   return mLayers\&.size();
+7038 }
+.fi
+.SS "void QCustomPlot::legendClick (\fBQCPLegend\fP *legend, \fBQCPAbstractLegendItem\fP *item, QMouseEvent *event)"
+
+.PP
+This signal is emitted when a legend (item) is clicked\&. \fIevent\fP is the mouse event that caused the click, \fIlegend\fP is the legend that received the click and \fIitem\fP is the legend item that received the click\&. If only the legend and no item is clicked, \fIitem\fP is 0 (e\&.g\&. a click inside the legend padding, which is not part of any item)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBlegendDoubleClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2541 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+2542 {
+2543     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+2544     QMetaObject::activate(this, &staticMetaObject, 11, _a);
+2545 }
+.fi
+.SS "void QCustomPlot::legendDoubleClick (\fBQCPLegend\fP *legend, \fBQCPAbstractLegendItem\fP *item, QMouseEvent *event)"
+
+.PP
+This signal is emitted when a legend (item) is double clicked\&. \fIevent\fP is the mouse event that caused the click, \fIlegend\fP is the legend that received the click and \fIitem\fP is the legend item that received the click\&. If only the legend and no item is clicked, \fIitem\fP is 0 (e\&.g\&. a click inside the legend padding, which is not part of any item)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBlegendClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2548 of file moc_qcustomplot\&.cpp\&.
+.PP
+.nf
+2549 {
+2550     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
+2551     QMetaObject::activate(this, &staticMetaObject, 12, _a);
+2552 }
+.fi
+.SS "int marginBottom () const\fC [protected]\fP"
+
+.PP
+Definition at line 1961 of file qcustomplot\&.h\&.
+.PP
+References mMarginBottom\&.
+.PP
+.nf
+1961 { return mMarginBottom; }
+.fi
+.SS "int marginLeft () const\fC [protected]\fP"
+
+.PP
+Definition at line 1958 of file qcustomplot\&.h\&.
+.PP
+References mMarginLeft\&.
+.PP
+.nf
+1958 { return mMarginLeft; }
+.fi
+.SS "int marginRight () const\fC [protected]\fP"
+
+.PP
+Definition at line 1959 of file qcustomplot\&.h\&.
+.PP
+References mMarginRight\&.
+.PP
+.nf
+1959 { return mMarginRight; }
+.fi
+.SS "int marginTop () const\fC [protected]\fP"
+
+.PP
+Definition at line 1960 of file qcustomplot\&.h\&.
+.PP
+References mMarginTop\&.
+.PP
+.nf
+1960 { return mMarginTop; }
+.fi
+.SS "QSize QCustomPlot::minimumSizeHint () const\fC [protected]\fP, \fC [virtual]\fP"
+Returns a minimum size hint of QSize(50, 50)\&. This prevents \fBQCustomPlot\fP from being collapsed to size/width zero when placed in a layout where other components try to take in as much space as possible (e\&.g\&. QMdiArea)\&.
+.PP
+(To overwrite this minimum size hint of \fBQCustomPlot\fP, simply call QWidget::setMinimumSize in the \fBQCustomPlot\fP widget\&.) 
+.PP
+Definition at line 7502 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+7503 {
+7504   return QSize(50, 50);
+7505 }
+.fi
+.SS "void QCustomPlot::mouseDoubleClick (QMouseEvent *event)"
+
+.PP
+This signal is emitted when the \fBQCustomPlot\fP receives a mouse double click event\&. 
+.PP
+Definition at line 2464 of file moc_qcustomplot\&.cpp\&.
+.PP
+.nf
+2465 {
+2466     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+2467     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+2468 }
+.fi
+.SS "virtual void mouseDoubleClickEvent (QMouseEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.SS "void QCustomPlot::mouseMove (QMouseEvent *event)"
+
+.PP
+This signal is emitted when the \fBQCustomPlot\fP receives a mouse move event\&. It is emitted before the \fBQCustomPlot\fP handles its range dragging mechanism, so a slot connected to this signal can still influence the behaviour e\&.g\&. with \fBsetRangeDrag\fP\&.
+.PP
+\fBWarning:\fP
+.RS 4
+It is discouraged to change the drag-axes with \fBsetRangeDragAxes\fP here, because the dragging starting point was saved the moment the mouse was pressed\&. Thus it only has a sensible meaning for the range drag axes that were set at that moment\&. If you want to change the drag axes, consider doing this in the \fBmousePress\fP signal instead\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2478 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by mouseMoveEvent()\&.
+.PP
+.nf
+2479 {
+2480     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+2481     QMetaObject::activate(this, &staticMetaObject, 2, _a);
+2482 }
+.fi
+.SS "void QCustomPlot::mouseMoveEvent (QMouseEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+Event handler for when the cursor is moved\&. This is where the built-in range dragging mechanism is handled\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmousePressEvent\fP, \fBmouseReleaseEvent\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7639 of file qcustomplot\&.cpp\&.
+.PP
+References QCP::aeAll, QCPRange::lower, mDragging, mDragStart, mDragStartHorzRange, mDragStartVertRange, mInteractions, mNoAntialiasingOnDrag, mouseMove(), mRangeDrag, mRangeDragHorzAxis, mRangeDragVertAxis, QCPAxis::mScaleType, QCPAxis::pixelToCoord(), replot(), setNotAntialiasedElements(), QCPAxis::setRange(), and QCPRange::upper\&.
+.PP
+.nf
+7640 {
+7641   emit mouseMove(event);
+7642 
+7643   // Mouse range dragging interaction:
+7644   if (mInteractions\&.testFlag(iRangeDrag))
+7645   {
+7646     if (mDragging)
+7647     {
+7648       if (mRangeDrag\&.testFlag(Qt::Horizontal))
+7649       {
+7650         if (mRangeDragHorzAxis->mScaleType == QCPAxis::stLinear)
+7651         {
+7652           double diff = mRangeDragHorzAxis->pixelToCoord(mDragStart\&.x()) - mRangeDragHorzAxis->pixelToCoord(event->pos()\&.x());
+7653           mRangeDragHorzAxis->setRange(mDragStartHorzRange\&.lower+diff, mDragStartHorzRange\&.upper+diff);
+7654         } else if (mRangeDragHorzAxis->mScaleType == QCPAxis::stLogarithmic)
+7655         {
+7656           double diff = mRangeDragHorzAxis->pixelToCoord(mDragStart\&.x()) / mRangeDragHorzAxis->pixelToCoord(event->pos()\&.x());
+7657           mRangeDragHorzAxis->setRange(mDragStartHorzRange\&.lower*diff, mDragStartHorzRange\&.upper*diff);
+7658         }
+7659       }
+7660       if (mRangeDrag\&.testFlag(Qt::Vertical))
+7661       {
+7662         if (mRangeDragVertAxis->mScaleType == QCPAxis::stLinear)
+7663         {
+7664           double diff = mRangeDragVertAxis->pixelToCoord(mDragStart\&.y()) - mRangeDragVertAxis->pixelToCoord(event->pos()\&.y());
+7665           mRangeDragVertAxis->setRange(mDragStartVertRange\&.lower+diff, mDragStartVertRange\&.upper+diff);
+7666         } else if (mRangeDragVertAxis->mScaleType == QCPAxis::stLogarithmic)
+7667         {
+7668           double diff = mRangeDragVertAxis->pixelToCoord(mDragStart\&.y()) / mRangeDragVertAxis->pixelToCoord(event->pos()\&.y());
+7669           mRangeDragVertAxis->setRange(mDragStartVertRange\&.lower*diff, mDragStartVertRange\&.upper*diff);
+7670         }
+7671       }
+7672       if (mRangeDrag != 0) // if either vertical or horizontal drag was enabled, do a replot
+7673       {
+7674         if (mNoAntialiasingOnDrag)
+7675           setNotAntialiasedElements(QCP::aeAll);
+7676         replot();
+7677       }
+7678     }
+7679   }
+7680   
+7681   QWidget::mouseMoveEvent(event);
+7682 }
+.fi
+.SS "void QCustomPlot::mousePress (QMouseEvent *event)"
+
+.PP
+This signal is emitted when the \fBQCustomPlot\fP receives a mouse press event\&. It is emitted before the \fBQCustomPlot\fP handles its range dragging mechanism, so a slot connected to this signal can still influence the behaviour e\&.g\&. with \fBsetRangeDrag\fP or \fBsetRangeDragAxes\fP\&. 
+.PP
+Definition at line 2471 of file moc_qcustomplot\&.cpp\&.
+.PP
+.nf
+2472 {
+2473     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+2474     QMetaObject::activate(this, &staticMetaObject, 1, _a);
+2475 }
+.fi
+.SS "virtual void mousePressEvent (QMouseEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Referenced by Slider::mousePressEvent()\&.
+.SS "void QCustomPlot::mouseRelease (QMouseEvent *event)"
+
+.PP
+This signal is emitted when the \fBQCustomPlot\fP receives a mouse release event\&. It is emitted before the \fBQCustomPlot\fP handles its selection mechanism, so a slot connected to this signal can still influence the behaviour e\&.g\&. with \fBsetInteractions\fP or \fBQCPAbstractPlottable::setSelectable\fP\&. 
+.PP
+Definition at line 2485 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+2486 {
+2487     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+2488     QMetaObject::activate(this, &staticMetaObject, 3, _a);
+2489 }
+.fi
+.SS "void QCustomPlot::mouseReleaseEvent (QMouseEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+Event handler for when a mouse button is released\&. This is where the selection mechanism is handled\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmousePressEvent\fP, \fBmouseMoveEvent\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7691 of file qcustomplot\&.cpp\&.
+.PP
+References axisClick(), handleAxisSelection(), handleItemSelection(), QCPLegend::handleLegendSelection(), handlePlottableSelection(), handleTitleSelection(), itemAt(), itemClick(), legend, legendClick(), mAADragBackup, mDragging, mDragStart, mInteractions, mMultiSelectModifier, mNoAntialiasingOnDrag, mNotAADragBackup, mouseRelease(), plottableAt(), plottableClick(), replot(), selectionChangedByUser(), QCPAxis::selectTest(), QCPLegend::selectTestItem(), QCPLegend::selectTestLegend(), selectTestTitle(), setAntialiasedElements(), setNotAntialiasedElements(), titleClick(), xAxis, xAxis2, yAxis, and yAxis2\&.
+.PP
+.nf
+7692 {
+7693   emit mouseRelease(event);
+7694   mDragging = false;
+7695   bool doReplot = false;
+7696   if (mNoAntialiasingOnDrag)
+7697   {
+7698     setAntialiasedElements(mAADragBackup);
+7699     setNotAntialiasedElements(mNotAADragBackup);
+7700     doReplot = true;
+7701   }
+7702   
+7703   // determine whether it was a drag or click operation:
+7704   if ((mDragStart-event->pos())\&.manhattanLength() < 5) // was a click
+7705   {
+7706     // Mouse selection interaction:
+7707     if ((mInteractions & (iSelectPlottables|iSelectItems|iSelectAxes|iSelectLegend|iSelectTitle)) > 0 
+7708         && event->button() == Qt::LeftButton)
+7709     {
+7710       bool selectionFound = false;
+7711       bool emitChangedSignal = false;
+7712       bool additiveSelection = mInteractions\&.testFlag(iMultiSelect) && event->modifiers()\&.testFlag(mMultiSelectModifier);
+7713       // Mouse selection of legend:
+7714       if (mInteractions\&.testFlag(iSelectLegend))
+7715         selectionFound |= legend->handleLegendSelection(event, additiveSelection, emitChangedSignal);
+7716       // Mouse selection of plottables:
+7717       if (mInteractions\&.testFlag(iSelectPlottables))
+7718         selectionFound |= handlePlottableSelection((!selectionFound || additiveSelection) ? event : 0, additiveSelection, emitChangedSignal);
+7719       // Mouse selection of items:
+7720       if (mInteractions\&.testFlag(iSelectItems))
+7721         selectionFound |= handleItemSelection((!selectionFound || additiveSelection) ? event : 0, additiveSelection, emitChangedSignal);
+7722       // Mouse selection of axes:
+7723       if (mInteractions\&.testFlag(iSelectAxes))
+7724         selectionFound |= handleAxisSelection((!selectionFound || additiveSelection) ? event : 0, additiveSelection, emitChangedSignal);
+7725       // Mouse selection of title:
+7726       if (mInteractions\&.testFlag(iSelectTitle))
+7727         selectionFound |= handleTitleSelection((!selectionFound || additiveSelection) ? event : 0, additiveSelection, emitChangedSignal);
+7728       
+7729       if (emitChangedSignal)
+7730         emit selectionChangedByUser();
+7731       doReplot = true;
+7732     }
+7733     
+7734     // emit specialized object click signals:
+7735     bool foundHit = false;
+7736     // for legend:
+7737     if (receivers(SIGNAL(legendClick(QCPLegend*,QCPAbstractLegendItem*,QMouseEvent*))) > 0)
+7738     {
+7739       if (legend->selectTestLegend(event->pos()))
+7740       {
+7741         emit legendClick(legend, legend->selectTestItem(event->pos()), event);
+7742         foundHit = true;
+7743       }
+7744     }
+7745     // for plottables:
+7746     if (!foundHit && receivers(SIGNAL(plottableClick(QCPAbstractPlottable*,QMouseEvent*))) > 0)
+7747     {
+7748       if (QCPAbstractPlottable *ap = plottableAt(event->pos(), false))
+7749       {
+7750         emit plottableClick(ap, event);
+7751         foundHit = true;
+7752       }
+7753     }
+7754     // for items:
+7755     if (!foundHit && receivers(SIGNAL(itemClick(QCPAbstractItem*,QMouseEvent*))) > 0)
+7756     {
+7757       if (QCPAbstractItem *ai = itemAt(event->pos(), false))
+7758       {
+7759         emit itemClick(ai, event);
+7760         foundHit = true;
+7761       }
+7762     }
+7763     // for axes:
+7764     if (!foundHit && receivers(SIGNAL(axisClick(QCPAxis*,QCPAxis::SelectablePart,QMouseEvent*))) > 0)
+7765     {
+7766       QVector<QCPAxis*> axes = QVector<QCPAxis*>() << xAxis << yAxis << xAxis2 << yAxis2;
+7767       for (int i=0; i<axes\&.size(); ++i)
+7768       {
+7769         QCPAxis::SelectablePart part = axes\&.at(i)->selectTest(event->pos());
+7770         if (part != QCPAxis::spNone)
+7771         {
+7772           foundHit = true;
+7773           emit axisClick(axes\&.at(i), part, event);
+7774           break;
+7775         }
+7776       }
+7777     }
+7778     // for title:
+7779     if (!foundHit && receivers(SIGNAL(titleClick(QMouseEvent*))) > 0)
+7780     {
+7781       if (selectTestTitle(event->pos()))
+7782       {
+7783         emit titleClick(event);
+7784         foundHit = true;
+7785       }
+7786     }
+7787   } // was a click end
+7788   
+7789   if (doReplot)
+7790     replot();
+7791   
+7792   QWidget::mouseReleaseEvent(event);
+7793 }
+.fi
+.SS "void QCustomPlot::mouseWheel (QWheelEvent *event)"
+
+.PP
+Definition at line 2492 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by wheelEvent()\&.
+.PP
+.nf
+2493 {
+2494     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+2495     QMetaObject::activate(this, &staticMetaObject, 4, _a);
+2496 }
+.fi
+.SS "bool moveLayer (\fBQCPLayer\fP *layer, \fBQCPLayer\fP *otherLayer, \fBLayerInsertMode\fPinsertMode = \fC\fBlimAbove\fP\fP)\fC [protected]\fP"
+
+.SS "Qt::KeyboardModifier multiSelectModifier () const\fC [protected]\fP"
+
+.PP
+Definition at line 1982 of file qcustomplot\&.h\&.
+.PP
+References mMultiSelectModifier\&.
+.PP
+.nf
+1982 { return mMultiSelectModifier; }
+.fi
+.SS "bool noAntialiasingOnDrag () const\fC [protected]\fP"
+
+.PP
+Definition at line 1980 of file qcustomplot\&.h\&.
+.PP
+References mNoAntialiasingOnDrag\&.
+.PP
+.nf
+1980 { return mNoAntialiasingOnDrag; }
+.fi
+.SS "QCP::AntialiasedElements notAntialiasedElements () const\fC [protected]\fP"
+
+.PP
+Definition at line 1970 of file qcustomplot\&.h\&.
+.PP
+References mNotAntialiasedElements\&.
+.PP
+Referenced by setNotAntialiasedElements()\&.
+.PP
+.nf
+1970 { return mNotAntialiasedElements; }
+.fi
+.SS "void QCustomPlot::paintEvent (QPaintEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+Event handler for when the \fBQCustomPlot\fP widget needs repainting\&. This does not cause a replot, but draws the internal buffer on the widget surface\&. 
+.PP
+Definition at line 7512 of file qcustomplot\&.cpp\&.
+.PP
+References mPaintBuffer\&.
+.PP
+.nf
+7513 {
+7514   Q_UNUSED(event);
+7515   QPainter painter(this);
+7516   painter\&.drawPixmap(0, 0, mPaintBuffer);
+7517 }
+.fi
+.SS "QPen pen () const"
+
+.PP
+Definition at line 1591 of file qcustomplot\&.h\&.
+.PP
+References mPen\&.
+.PP
+Referenced by QCPPainter::drawScatter(), QCPPainter::fixScaledPen(), QCPAxis::setBasePen(), QCPLegend::setBorderPen(), QCPLegend::setIconBorderPen(), QCPAxis::setSelectedBasePen(), QCPLegend::setSelectedBorderPen(), QCPLegend::setSelectedIconBorderPen(), QCPAxis::setSelectedSubTickPen(), QCPAxis::setSelectedTickPen(), QCPAxis::setSubTickPen(), and QCPAxis::setTickPen()\&.
+.PP
+.nf
+1591 { return mPen; }
+.fi
+.SS "\fBQCPAbstractPlottable\fP* plottable (intindex)\fC [protected]\fP"
+
+.PP
+Referenced by addPlottable(), QCPLegend::itemWithPlottable(), and removePlottable()\&.
+.SS "\fBQCPAbstractPlottable\fP* plottable ()\fC [protected]\fP"
+
+.SS "\fBQCPAbstractPlottable\fP * QCustomPlot::plottableAt (const QPointF &pos, boolonlySelectable = \fCfalse\fP) const\fC [protected]\fP"
+
+.PP
+Returns the plottable at the pixel position \fIpos\fP\&. Plottables that only consist of single lines (e\&.g\&. graphs) have a tolerance band around them, see \fBsetSelectionTolerance\fP\&. If multiple plottables come into consideration, the one closest to \fIpos\fP is returned\&.
+.PP
+If \fIonlySelectable\fP is true, only plottables that are selectable (\fBQCPAbstractPlottable::setSelectable\fP) are considered\&.
+.PP
+If there is no plottable at \fIpos\fP, the return value is 0\&. 
+.PP
+Definition at line 6606 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::axisRect(), QCPAbstractPlottable::keyAxis(), mPlottables, mSelectionTolerance, QCPAbstractPlottable::selectable(), QCPAbstractPlottable::selectTest(), and QCPAbstractPlottable::valueAxis()\&.
+.PP
+Referenced by handlePlottableSelection(), and mouseReleaseEvent()\&.
+.PP
+.nf
+6607 {
+6608   QCPAbstractPlottable *resultPlottable = 0;
+6609   double resultDistance = mSelectionTolerance; // only regard clicks with distances smaller than mSelectionTolerance as selections, so initialize with that value
+6610   
+6611   for (int i=0; i<mPlottables\&.size(); ++i)
+6612   {
+6613     QCPAbstractPlottable *currentPlottable = mPlottables[i];
+6614     if (onlySelectable && !currentPlottable->selectable())
+6615       continue;
+6616     if ((currentPlottable->keyAxis()->axisRect() | currentPlottable->valueAxis()->axisRect())\&.contains(pos\&.toPoint())) // only consider clicks inside the rect that is spanned by the plottable's key/value axes
+6617     {
+6618       double currentDistance = currentPlottable->selectTest(pos);
+6619       if (currentDistance >= 0 && currentDistance < resultDistance)
+6620       {
+6621         resultPlottable = currentPlottable;
+6622         resultDistance = currentDistance;
+6623       }
+6624     }
+6625   }
+6626   
+6627   return resultPlottable;
+6628 }
+.fi
+.SS "void QCustomPlot::plottableClick (\fBQCPAbstractPlottable\fP *plottable, QMouseEvent *event)"
+
+.PP
+This signal is emitted when a plottable is clicked\&. \fIevent\fP is the mouse event that caused the click and \fIplottable\fP is the plottable that received the click\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBplottableDoubleClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2499 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+2500 {
+2501     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+2502     QMetaObject::activate(this, &staticMetaObject, 5, _a);
+2503 }
+.fi
+.SS "int QCustomPlot::plottableCount () const\fC [protected]\fP"
+
+.PP
+Returns the number of currently existing plottables in the plot\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBplottable\fP, \fBaddPlottable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6573 of file qcustomplot\&.cpp\&.
+.PP
+References mPlottables\&.
+.PP
+.nf
+6574 {
+6575   return mPlottables\&.size();
+6576 }
+.fi
+.SS "void QCustomPlot::plottableDoubleClick (\fBQCPAbstractPlottable\fP *plottable, QMouseEvent *event)"
+
+.PP
+This signal is emitted when a plottable is double clicked\&. \fIevent\fP is the mouse event that caused the click and \fIplottable\fP is the plottable that received the click\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBplottableClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2506 of file moc_qcustomplot\&.cpp\&.
+.PP
+.nf
+2507 {
+2508     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+2509     QMetaObject::activate(this, &staticMetaObject, 6, _a);
+2510 }
+.fi
+.SS "QCP::PlottingHints plottingHints () const\fC [protected]\fP"
+
+.PP
+Definition at line 1981 of file qcustomplot\&.h\&.
+.PP
+References mPlottingHints\&.
+.PP
+.nf
+1981 { return mPlottingHints; }
+.fi
+.SS "Q_DECLARE_TYPEINFO (\fBQCPData\fP, Q_MOVABLE_TYPE)"
+
+.SS "Q_DECLARE_TYPEINFO (\fBQCPCurveData\fP, Q_MOVABLE_TYPE)"
+
+.SS "Q_DECLARE_TYPEINFO (\fBQCPBarData\fP, Q_MOVABLE_TYPE)"
+
+.SS "Q_DECLARE_TYPEINFO (\fBQCPLineEnding\fP, Q_MOVABLE_TYPE)"
+
+.SS "Q_DECLARE_TYPEINFO (\fBQCPRange\fP, Q_MOVABLE_TYPE)"
+
+.SS "Q_DECLARE_OPERATORS_FOR_FLAGS (QCPAxis::SelectableParts) class \fBQCP_LIB_DECL\fP \fBQCustomPlot\fP Q_ENUMS (Interaction)\fC [protected]\fP"
+
+.PP
+Defines the mouse interactions possible with \fBQCustomPlot\fP\&. \fCInteractions\fP is a flag of or-combined elements of this enum type\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteractions\fP, \fBsetInteraction\fP 
+.RE
+.PP
+
+.SS "Q_ENUMS (\fBLayerInsertMode\fP)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.SS "QCPData::QCPData (doublekey, doublevalue)"
+
+.PP
+Constructs a data point with the specified \fIkey\fP and \fIvalue\fP\&. All errors are set to zero\&. 
+.PP
+Definition at line 213 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+213                                          :
+214   key(key),
+215   value(value),
+216   keyErrorPlus(0),
+217   keyErrorMinus(0),
+218   valueErrorPlus(0),
+219   valueErrorMinus(0)
+220 {
+221 }
+.fi
+.SS "Qt::Orientations rangeDrag () const\fC [protected]\fP"
+
+.PP
+Definition at line 1964 of file qcustomplot\&.h\&.
+.PP
+References mRangeDrag\&.
+.PP
+.nf
+1964 { return mRangeDrag; }
+.fi
+.SS "\fBQCPAxis\fP * QCustomPlot::rangeDragAxis (Qt::Orientationorientation)\fC [protected]\fP"
+
+.PP
+Returns the range drag axis of the \fIorientation\fP provided\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRangeDragAxes\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5853 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeDragHorzAxis, and mRangeDragVertAxis\&.
+.PP
+.nf
+5854 {
+5855   return (orientation == Qt::Horizontal ? mRangeDragHorzAxis : mRangeDragVertAxis);
+5856 }
+.fi
+.SS "Qt::Orientations rangeZoom () const\fC [protected]\fP"
+
+.PP
+Definition at line 1965 of file qcustomplot\&.h\&.
+.PP
+References mRangeZoom\&.
+.PP
+.nf
+1965 { return mRangeZoom; }
+.fi
+.SS "\fBQCPAxis\fP * QCustomPlot::rangeZoomAxis (Qt::Orientationorientation)\fC [protected]\fP"
+
+.PP
+Returns the range zoom axis of the \fIorientation\fP provided\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRangeZoomAxes\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5862 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeZoomHorzAxis, and mRangeZoomVertAxis\&.
+.PP
+.nf
+5863 {
+5864   return (orientation == Qt::Horizontal ? mRangeZoomHorzAxis : mRangeZoomVertAxis);
+5865 }
+.fi
+.SS "double QCustomPlot::rangeZoomFactor (Qt::Orientationorientation)\fC [protected]\fP"
+
+.PP
+Returns the range zoom factor of the \fIorientation\fP provided\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRangeZoomFactor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5871 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeZoomFactorHorz, and mRangeZoomFactorVert\&.
+.PP
+.nf
+5872 {
+5873   return (orientation == Qt::Horizontal ? mRangeZoomFactorHorz : mRangeZoomFactorVert);
+5874 }
+.fi
+.SS "bool QCustomPlot::removeGraph (\fBQCPGraph\fP *graph)\fC [protected]\fP"
+
+.PP
+Removes the specified \fIgraph\fP from the plot and, if necessary, from the legend\&. If any other graphs in the plot have a channel fill set towards the removed graph, the channel fill property of those graphs is reset to zero (no channel fill)\&.
+.PP
+Returns true on success\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBclearGraphs\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6719 of file qcustomplot\&.cpp\&.
+.PP
+References removePlottable()\&.
+.PP
+Referenced by clearGraphs(), and removeGraph()\&.
+.PP
+.nf
+6720 {
+6721   return removePlottable(graph);
+6722 }
+.fi
+.SS "bool QCustomPlot::removeGraph (intindex)\fC [protected]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes the graph by its \fIindex\fP\&. 
+.PP
+Definition at line 6728 of file qcustomplot\&.cpp\&.
+.PP
+References mGraphs, and removeGraph()\&.
+.PP
+.nf
+6729 {
+6730   if (index >= 0 && index < mGraphs\&.size())
+6731     return removeGraph(mGraphs[index]);
+6732   else
+6733     return false;
+6734 }
+.fi
+.SS "bool removeItem (\fBQCPAbstractItem\fP *item)\fC [protected]\fP"
+
+.SS "bool removeItem (intindex)\fC [protected]\fP"
+
+.SS "bool QCustomPlot::removeLayer (\fBQCPLayer\fP *layer)\fC [protected]\fP"
+
+.PP
+Removes the specified \fIlayer\fP and returns true on success\&. All layerables (e\&.g\&. plottables and items) on the removed layer will be moved to the layer below \fIlayer\fP\&. If \fIlayer\fP is the bottom layer, the layerables are moved to the layer above\&. In both cases, the total rendering order of all layerables in the \fBQCustomPlot\fP is preserved\&.
+.PP
+If \fIlayer\fP is the current layer (\fBsetCurrentLayer\fP), the layer below (or above, if bottom layer) becomes the new current layer\&.
+.PP
+Note that it is not possible to remove the last layer\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBlayer\fP, \fBaddLayer\fP, \fBmoveLayer\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7087 of file qcustomplot\&.cpp\&.
+.PP
+References QCPLayer::children(), QCPLayer::index(), layer(), mCurrentLayer, mLayers, and setCurrentLayer()\&.
+.PP
+.nf
+7088 {
+7089   if (!mLayers\&.contains(layer))
+7090   {
+7091     qDebug() << Q_FUNC_INFO << "layer not a layer of this QCustomPlot:" << reinterpret_cast<quintptr>(layer);
+7092     return false;
+7093   }
+7094   if (!mLayers\&.size() > 1)
+7095   {
+7096     qDebug() << Q_FUNC_INFO << "can't remove last layer";
+7097     return false;
+7098   }
+7099   
+7100   // append all children of this layer to layer below (if this is lowest layer, prepend to layer above)
+7101   int removedIndex = layer->index();
+7102   bool isFirstLayer = removedIndex==0;
+7103   QCPLayer *targetLayer = isFirstLayer ? mLayers\&.at(removedIndex+1) : mLayers\&.at(removedIndex-1);
+7104   QList<QCPLayerable*> children = layer->children();
+7105   if (isFirstLayer) // prepend in reverse order (so order relative to each other stays the same)
+7106   {
+7107     for (int i=children\&.size()-1; i>=0; --i)
+7108       children\&.at(i)->moveToLayer(targetLayer, true);
+7109   } else  // append normally
+7110   {
+7111     for (int i=0; i<children\&.size(); ++i)
+7112       children\&.at(i)->moveToLayer(targetLayer, false);
+7113   }
+7114   // if removed layer is current layer, change current layer to layer below/above:
+7115   if (layer == mCurrentLayer)
+7116     setCurrentLayer(targetLayer);
+7117   // remove layer:
+7118   delete layer;
+7119   mLayers\&.removeOne(layer);
+7120   return true;
+7121 }
+.fi
+.SS "bool QCustomPlot::removePlottable (\fBQCPAbstractPlottable\fP *plottable)\fC [protected]\fP"
+
+.PP
+Removes the specified plottable from the plot and, if necessary, from the legend\&. Returns true on success\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddPlottable\fP, \fBclearPlottables\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6519 of file qcustomplot\&.cpp\&.
+.PP
+References graph(), mGraphs, mPlottables, plottable(), and QCPAbstractPlottable::removeFromLegend()\&.
+.PP
+Referenced by clearPlottables(), removeGraph(), and removePlottable()\&.
+.PP
+.nf
+6520 {
+6521   if (!mPlottables\&.contains(plottable))
+6522   {
+6523     qDebug() << Q_FUNC_INFO << "plottable not in list:" << reinterpret_cast<quintptr>(plottable);
+6524     return false;
+6525   }
+6526   
+6527   // remove plottable from legend:
+6528   plottable->removeFromLegend();
+6529   // special handling for QCPGraphs to maintain the simple graph interface:
+6530   if (QCPGraph *graph = qobject_cast<QCPGraph*>(plottable))
+6531     mGraphs\&.removeOne(graph);
+6532   // remove plottable:
+6533   delete plottable;
+6534   mPlottables\&.removeOne(plottable);
+6535   return true;
+6536 }
+.fi
+.SS "bool QCustomPlot::removePlottable (intindex)\fC [protected]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Removes the plottable by its \fIindex\fP\&. 
+.PP
+Definition at line 6542 of file qcustomplot\&.cpp\&.
+.PP
+References mPlottables, and removePlottable()\&.
+.PP
+.nf
+6543 {
+6544   if (index >= 0 && index < mPlottables\&.size())
+6545     return removePlottable(mPlottables[index]);
+6546   else
+6547   {
+6548     qDebug() << Q_FUNC_INFO << "index out of bounds:" << index;
+6549     return false;
+6550   }
+6551 }
+.fi
+.SS "void QCustomPlot::replot ()"
+
+.PP
+Causes a complete replot (axes, labels, graphs, etc\&.) into the internal buffer\&. Finally, update() is called, to redraw the buffer on the \fBQCustomPlot\fP widget surface\&.
+.PP
+Before the replot happens, the signal \fBbeforeReplot\fP is emitted\&. After the replot, \fBafterReplot\fP is emitted\&. It is safe to mutually connect the replot slot with any of those two signals on two QCustomPlots to make them replot synchronously (i\&.e\&. it won't cause an infinite recursion)\&. 
+.PP
+Definition at line 7221 of file qcustomplot\&.cpp\&.
+.PP
+References afterReplot(), beforeReplot(), draw(), mColor, mPaintBuffer, mPlottingHints, and mReplotting\&.
+.PP
+Referenced by mouseMoveEvent(), mouseReleaseEvent(), resizeEvent(), and wheelEvent()\&.
+.PP
+.nf
+7222 {
+7223   if (mReplotting) // incase signals loop back to replot slot
+7224     return;
+7225   mReplotting = true;
+7226   emit beforeReplot();
+7227   mPaintBuffer\&.fill(mColor);
+7228   QCPPainter painter;
+7229   painter\&.begin(&mPaintBuffer);
+7230   if (painter\&.isActive()) 
+7231   {
+7232     painter\&.setRenderHint(QPainter::HighQualityAntialiasing);
+7233     draw(&painter);
+7234     if (mPlottingHints\&.testFlag(QCP::phForceRepaint))
+7235       repaint();
+7236     else
+7237       update();
+7238     painter\&.end();
+7239   } else // might happen if QCustomPlot has width or height zero
+7240     qDebug() << Q_FUNC_INFO << "Couldn't activate painter on buffer";
+7241   emit afterReplot();
+7242   mReplotting = false;
+7243 }
+.fi
+.SS "void rescaleAxes ()"
+
+.SS "void QCustomPlot::resizeEvent (QResizeEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+Event handler for a resize of the \fBQCustomPlot\fP widget\&. Causes the internal buffer to be resized to the new size\&. The viewport and the axis rect are resized appropriately\&. Finally a replot is performed\&. 
+.PP
+Definition at line 7525 of file qcustomplot\&.cpp\&.
+.PP
+References mPaintBuffer, mViewport, replot(), and updateAxisRect()\&.
+.PP
+.nf
+7526 {
+7527   // resize and repaint the buffer:
+7528   mPaintBuffer = QPixmap(event->size());
+7529   mViewport = rect();
+7530   updateAxisRect();
+7531   replot();
+7532 }
+.fi
+.SS "bool QCustomPlot::saveBmp (const QString &fileName, intwidth = \fC0\fP, intheight = \fC0\fP, doublescale = \fC1\&.0\fP)\fC [protected]\fP"
+
+.PP
+Saves a BMP image file to \fIfileName\fP on disc\&. The output plot will have the dimensions \fIwidth\fP and \fIheight\fP in pixels\&. If either \fIwidth\fP or \fIheight\fP is zero, the exported image will have the same dimensions as the \fBQCustomPlot\fP widget currently has\&. Line widths and texts etc\&. are not scaled up when larger widths/heights are used\&. If you want that effect, use the \fIscale\fP parameter\&.
+.PP
+For example, if you set both \fIwidth\fP and \fIheight\fP to 100 and \fIscale\fP to 2, you will end up with an image file of size 200*200 in which all graphical elements are scaled up by factor 2 (line widths, texts, etc\&.)\&. This scaling is not done by stretching a 100*100 image, the result will have full 200*200 pixel resolution\&.
+.PP
+\fBWarning:\fP
+.RS 4
+If calling this function inside the constructor of the parent of the \fBQCustomPlot\fP widget (i\&.e\&. the \fBMainWindow\fP constructor, if \fBQCustomPlot\fP is inside the \fBMainWindow\fP), always provide explicit non-zero widths and heights\&. If you leave \fIwidth\fP or \fIheight\fP as 0 (default), this function uses the current width and height of the \fBQCustomPlot\fP widget\&. However, in Qt, these aren't defined yet inside the constructor, so you would get an image that has strange widths/heights\&.
+.RE
+.PP
+The objects of the plot will appear in the current selection state\&. If you don't want any selected objects to be painted in their selected look, deselect everything with \fBdeselectAll\fP before calling this function\&.
+.PP
+Returns true on success\&. If this function fails, most likely the BMP format isn't supported by the system, see Qt docs about QImageWriter::supportedImageFormats()\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsavePdf\fP, \fBsavePng\fP, \fBsaveJpg\fP, \fBsaveRastered\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7488 of file qcustomplot\&.cpp\&.
+.PP
+References saveRastered()\&.
+.PP
+.nf
+7489 {
+7490   return saveRastered(fileName, width, height, scale, "BMP");
+7491 }
+.fi
+.SS "bool QCustomPlot::saveJpg (const QString &fileName, intwidth = \fC0\fP, intheight = \fC0\fP, doublescale = \fC1\&.0\fP, intquality = \fC-1\fP)\fC [protected]\fP"
+
+.PP
+Saves a JPG image file to \fIfileName\fP on disc\&. The output plot will have the dimensions \fIwidth\fP and \fIheight\fP in pixels\&. If either \fIwidth\fP or \fIheight\fP is zero, the exported image will have the same dimensions as the \fBQCustomPlot\fP widget currently has\&. Line widths and texts etc\&. are not scaled up when larger widths/heights are used\&. If you want that effect, use the \fIscale\fP parameter\&.
+.PP
+For example, if you set both \fIwidth\fP and \fIheight\fP to 100 and \fIscale\fP to 2, you will end up with an image file of size 200*200 in which all graphical elements are scaled up by factor 2 (line widths, texts, etc\&.)\&. This scaling is not done by stretching a 100*100 image, the result will have full 200*200 pixel resolution\&.
+.PP
+\fBWarning:\fP
+.RS 4
+If calling this function inside the constructor of the parent of the \fBQCustomPlot\fP widget (i\&.e\&. the \fBMainWindow\fP constructor, if \fBQCustomPlot\fP is inside the \fBMainWindow\fP), always provide explicit non-zero widths and heights\&. If you leave \fIwidth\fP or \fIheight\fP as 0 (default), this function uses the current width and height of the \fBQCustomPlot\fP widget\&. However, in Qt, these aren't defined yet inside the constructor, so you would get an image that has strange widths/heights\&.
+.RE
+.PP
+The objects of the plot will appear in the current selection state\&. If you don't want any selected objects to be painted in their selected look, deselect everything with \fBdeselectAll\fP before calling this function\&.
+.PP
+JPG compression can be controlled with the \fIquality\fP parameter which must be between 0 and 100 or -1 to use the default setting\&.
+.PP
+Returns true on success\&. If this function fails, most likely the JPG format isn't supported by the system, see Qt docs about QImageWriter::supportedImageFormats()\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsavePdf\fP, \fBsavePng\fP, \fBsaveBmp\fP, \fBsaveRastered\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7456 of file qcustomplot\&.cpp\&.
+.PP
+References saveRastered()\&.
+.PP
+.nf
+7457 {
+7458   return saveRastered(fileName, width, height, scale, "JPG", quality);
+7459 }
+.fi
+.SS "bool QCustomPlot::savePdf (const QString &fileName, boolnoCosmeticPen = \fCfalse\fP, intwidth = \fC0\fP, intheight = \fC0\fP)\fC [protected]\fP"
+
+.PP
+Saves a PDF with the vectorized plot to the file \fIfileName\fP\&. The axis ratio as well as the scale of texts and lines will be derived from the specified \fIwidth\fP and \fIheight\fP\&. This means, the output will look like the normal on-screen output of a \fBQCustomPlot\fP widget with the corresponding pixel width and height\&. If either \fIwidth\fP or \fIheight\fP is zero, the exported image will have the same dimensions as the \fBQCustomPlot\fP widget currently has\&.
+.PP
+\fInoCosmeticPen\fP disables the use of cosmetic pens when drawing to the PDF file\&. Cosmetic pens are pens with numerical width 0, which are always drawn as a one pixel wide line, no matter what zoom factor is set in the PDF-Viewer\&. For more information about cosmetic pens, see \fBQPainter\fP and QPen documentation\&.
+.PP
+The objects of the plot will appear in the current selection state\&. So when you don't want e\&.g\&. selected axes to be painted in their selected look, deselect everything with \fBdeselectAll\fP before calling this function\&.
+.PP
+Returns true on success\&.
+.PP
+\fBWarning:\fP
+.RS 4
+.PD 0
+.IP "\(bu" 2
+If you plan on editing the exported PDF file with a vector graphics editor like Inkscape, it is advised to set \fInoCosmeticPen\fP to true to avoid losing those cosmetic lines (which might be quite many, because cosmetic pens are the default for e\&.g\&. axes and tick marks)\&. 
+.IP "\(bu" 2
+If calling this function inside the constructor of the parent of the \fBQCustomPlot\fP widget (i\&.e\&. the \fBMainWindow\fP constructor, if \fBQCustomPlot\fP is inside the \fBMainWindow\fP), always provide explicit non-zero widths and heights\&. If you leave \fIwidth\fP or \fIheight\fP as 0 (default), this function uses the current width and height of the \fBQCustomPlot\fP widget\&. However, in Qt, these aren't defined yet inside the constructor, so you would get an image that has strange widths/heights\&.
+.PP
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsavePng\fP, \fBsaveBmp\fP, \fBsaveJpg\fP, \fBsaveRastered\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7350 of file qcustomplot\&.cpp\&.
+.PP
+References draw(), mColor, mViewport, QCPPainter::setPdfExportMode(), and updateAxisRect()\&.
+.PP
+.nf
+7351 {
+7352   bool success = false;
+7353   int newWidth, newHeight;
+7354   if (width == 0 || height == 0)
+7355   {
+7356     newWidth = this->width();
+7357     newHeight = this->height();
+7358   } else
+7359   {
+7360     newWidth = width;
+7361     newHeight = height;
+7362   }
+7363   
+7364   QPrinter printer(QPrinter::ScreenResolution);
+7365   printer\&.setOutputFileName(fileName);
+7366   printer\&.setFullPage(true);
+7367   QRect oldViewport = mViewport;
+7368   mViewport = QRect(0, 0, newWidth, newHeight);
+7369   updateAxisRect();
+7370   printer\&.setPaperSize(mViewport\&.size(), QPrinter::DevicePixel);
+7371   QCPPainter printpainter;
+7372   if (printpainter\&.begin(&printer))
+7373   {
+7374     printpainter\&.setPdfExportMode(true);
+7375     printpainter\&.setWindow(mViewport);
+7376     printpainter\&.setRenderHint(QPainter::NonCosmeticDefaultPen, noCosmeticPen);
+7377     if (mColor != Qt::white && mColor != Qt::transparent && mColor\&.alpha() > 0) // draw pdf background color if not white/transparent
+7378       printpainter\&.fillRect(mViewport, mColor);
+7379     draw(&printpainter);
+7380     printpainter\&.end();
+7381     success = true;
+7382   }
+7383   mViewport = oldViewport;
+7384   updateAxisRect();
+7385   return success;
+7386 }
+.fi
+.SS "bool QCustomPlot::savePng (const QString &fileName, intwidth = \fC0\fP, intheight = \fC0\fP, doublescale = \fC1\&.0\fP, intquality = \fC-1\fP)\fC [protected]\fP"
+
+.PP
+Saves a PNG image file to \fIfileName\fP on disc\&. The output plot will have the dimensions \fIwidth\fP and \fIheight\fP in pixels\&. If either \fIwidth\fP or \fIheight\fP is zero, the exported image will have the same dimensions as the \fBQCustomPlot\fP widget currently has\&. Line widths and texts etc\&. are not scaled up when larger widths/heights are used\&. If you want that effect, use the \fIscale\fP parameter\&.
+.PP
+For example, if you set both \fIwidth\fP and \fIheight\fP to 100 and \fIscale\fP to 2, you will end up with an image file of size 200*200 in which all graphical elements are scaled up by factor 2 (line widths, texts, etc\&.)\&. This scaling is not done by stretching a 100*100 image, the result will have full 200*200 pixel resolution\&.
+.PP
+\fBWarning:\fP
+.RS 4
+If calling this function inside the constructor of the parent of the \fBQCustomPlot\fP widget (i\&.e\&. the \fBMainWindow\fP constructor, if \fBQCustomPlot\fP is inside the \fBMainWindow\fP), always provide explicit non-zero widths and heights\&. If you leave \fIwidth\fP or \fIheight\fP as 0 (default), this function uses the current width and height of the \fBQCustomPlot\fP widget\&. However, in Qt, these aren't defined yet inside the constructor, so you would get an image that has strange widths/heights\&.
+.RE
+.PP
+The objects of the plot will appear in the current selection state\&. If you don't want any selected objects to be painted in their selected look, deselect everything with \fBdeselectAll\fP before calling this function\&.
+.PP
+If you want the plot to be painted in a PNG with transparent background, call \fBsetColor\fP with a transparent color, e\&.g\&. Qt::transparent, before saving\&.
+.PP
+PNG compression can be controlled with the \fIquality\fP parameter which must be between 0 and 100 or -1 to use the default setting\&.
+.PP
+Returns true on success\&. If this function fails, most likely the PNG format isn't supported by the system, see Qt docs about QImageWriter::supportedImageFormats()\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsavePdf\fP, \fBsaveBmp\fP, \fBsaveJpg\fP, \fBsaveRastered\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7421 of file qcustomplot\&.cpp\&.
+.PP
+References saveRastered()\&.
+.PP
+.nf
+7422 {  
+7423   return saveRastered(fileName, width, height, scale, "PNG", quality);
+7424 }
+.fi
+.SS "bool QCustomPlot::saveRastered (const QString &fileName, intwidth, intheight, doublescale, const char *format, intquality = \fC-1\fP)\fC [protected]\fP"
+
+.PP
+Saves the plot to a rastered image file \fIfileName\fP in the image format \fIformat\fP\&. The plot is sized to \fIwidth\fP and \fIheight\fP in pixels and scaled with \fIscale\fP\&. (width 100 and scale 2\&.0 lead to a full resolution file with width 200) If the \fIformat\fP supports compression, \fIquality\fP may be between 0 and 100 to control it\&.
+.PP
+Returns true on success\&. If this function fails, most likely the given \fIformat\fP isn't supported by the system, see Qt docs about QImageWriter::supportedImageFormats()\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsaveBmp\fP, \fBsaveJpg\fP, \fBsavePng\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8146 of file qcustomplot\&.cpp\&.
+.PP
+References draw(), mColor, mViewport, QCPPainter::setScaledExportMode(), and updateAxisRect()\&.
+.PP
+Referenced by saveBmp(), saveJpg(), and savePng()\&.
+.PP
+.nf
+8147 {
+8148   int newWidth, newHeight;
+8149   if (width == 0 || height == 0)
+8150   {
+8151     newWidth = this->width();
+8152     newHeight = this->height();
+8153   } else
+8154   {
+8155     newWidth = width;
+8156     newHeight = height;
+8157   }
+8158   int scaledWidth = qRound(scale*newWidth);
+8159   int scaledHeight = qRound(scale*newHeight);
+8160 
+8161   QPixmap pngBuffer(scaledWidth, scaledHeight); // use QPixmap instead of QImage (like live painting buffer), because it supports background transparency (of mColor)\&.
+8162   pngBuffer\&.fill(mColor);
+8163   QCPPainter painter(&pngBuffer);
+8164   QRect oldViewport = mViewport;
+8165   mViewport = QRect(0, 0, newWidth, newHeight);
+8166   updateAxisRect();
+8167   if (!qFuzzyCompare(scale, 1\&.0))
+8168   {
+8169     if (scale > 1\&.0) // for scale < 1 we always want cosmetic pens where possible, because else lines would disappear
+8170     {
+8171       painter\&.setScaledExportMode(true);
+8172       painter\&.setRenderHint(QPainter::NonCosmeticDefaultPen);
+8173     }
+8174     painter\&.scale(scale, scale);
+8175   }
+8176   draw(&painter);
+8177   mViewport = oldViewport;
+8178   updateAxisRect();
+8179   return pngBuffer\&.save(fileName, format, quality);
+8180 }
+.fi
+.SS "QList< \fBQCPAxis\fP * > QCustomPlot::selectedAxes () const\fC [protected]\fP"
+
+.PP
+Returns the axes that currently have selected parts, i\&.e\&. whose selection is not \fBQCPAxis::spNone\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBselectedPlottables\fP, \fBselectedLegends\fP, \fBsetInteractions\fP, \fBQCPAxis::setSelected\fP, \fBQCPAxis::setSelectable\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7154 of file qcustomplot\&.cpp\&.
+.PP
+References xAxis, xAxis2, yAxis, and yAxis2\&.
+.PP
+Referenced by deselectAll()\&.
+.PP
+.nf
+7155 {
+7156   QList<QCPAxis*> result = QList<QCPAxis*>() << xAxis << yAxis << xAxis2 << yAxis2;
+7157   for (int i=result\&.size()-1; i>=0; --i)
+7158   {
+7159     if (result\&.at(i)->selected() == QCPAxis::spNone)
+7160       result\&.removeAt(i);
+7161   }
+7162   return result;
+7163 }
+.fi
+.SS "QList< \fBQCPGraph\fP * > QCustomPlot::selectedGraphs () const\fC [protected]\fP"
+
+.PP
+Returns a list of the selected graphs\&. If no graphs are currently selected, the list is empty\&.
+.PP
+\fBNote:\fP
+.RS 4
+Even if the returned list is empty, it might still be, that there are selected plottables in the plot that are not of type \fBQCPGraph\fP (e\&.g\&. \fBQCPCurve\fP, \fBQCPBars\fP, etc\&.), see \fBselectedPlottables\fP\&. Of course, this only applies, if you actually add non-QCPGraph plottables\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteractions\fP, \fBselectedPlottables\fP, \fBQCPAbstractPlottable::setSelectable\fP, \fBQCPAbstractPlottable::setSelected\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6768 of file qcustomplot\&.cpp\&.
+.PP
+References mGraphs\&.
+.PP
+.nf
+6769 {
+6770   QList<QCPGraph*> result;
+6771   for (int i=0; i<mGraphs\&.size(); ++i)
+6772   {
+6773     if (mGraphs\&.at(i)->selected())
+6774       result\&.append(mGraphs\&.at(i));
+6775   }
+6776   return result;
+6777 }
+.fi
+.SS "QList<\fBQCPAbstractItem\fP*> selectedItems () const\fC [protected]\fP"
+
+.PP
+Referenced by deselectAll()\&.
+.SS "QList< \fBQCPLegend\fP * > QCustomPlot::selectedLegends () const\fC [protected]\fP"
+
+.PP
+Returns the legends (typically one or zero) that currently have selected parts, i\&.e\&. whose selection is not \fBQCPLegend::spNone\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBselectedPlottables\fP, \fBselectedAxes\fP, \fBsetInteractions\fP, \fBQCPLegend::setSelected\fP, \fBQCPLegend::setSelectable\fP, \fBQCPLegend::selectedItems\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7171 of file qcustomplot\&.cpp\&.
+.PP
+References legend, and QCPLegend::selected()\&.
+.PP
+.nf
+7172 {
+7173   /* for now, we only have the one legend\&. Maybe later, there will be a mechanism to have more\&. */
+7174   QList<QCPLegend*> result;
+7175   if (legend->selected() != QCPLegend::spNone)
+7176     result\&.append(legend);
+7177   return result;
+7178 }
+.fi
+.SS "QList< \fBQCPAbstractPlottable\fP * > QCustomPlot::selectedPlottables () const\fC [protected]\fP"
+
+.PP
+Returns a list of the selected plottables\&. If no plottables are currently selected, the list is empty\&.
+.PP
+There is a convenience function if you're only interested in selected graphs, see \fBselectedGraphs\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteractions\fP, \fBQCPAbstractPlottable::setSelectable\fP, \fBQCPAbstractPlottable::setSelected\fP, \fBselectedGraphs\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6585 of file qcustomplot\&.cpp\&.
+.PP
+References mPlottables\&.
+.PP
+Referenced by deselectAll()\&.
+.PP
+.nf
+6586 {
+6587   QList<QCPAbstractPlottable*> result;
+6588   for (int i=0; i<mPlottables\&.size(); ++i)
+6589   {
+6590     if (mPlottables\&.at(i)->selected())
+6591       result\&.append(mPlottables\&.at(i));
+6592   }
+6593   return result;
+6594 }
+.fi
+.SS "QColor selectedTitleColor () const\fC [protected]\fP"
+
+.PP
+Definition at line 1978 of file qcustomplot\&.h\&.
+.PP
+References mSelectedTitleColor\&.
+.PP
+.nf
+1978 { return mSelectedTitleColor; }
+.fi
+.SS "QFont selectedTitleFont () const\fC [protected]\fP"
+
+.PP
+Definition at line 1977 of file qcustomplot\&.h\&.
+.PP
+References mSelectedTitleFont\&.
+.PP
+.nf
+1977 { return mSelectedTitleFont; }
+.fi
+.SS "void QCustomPlot::selectionChangedByUser ()"
+
+.PP
+This signal is emitted after the user has changed the selection in the \fBQCustomPlot\fP, e\&.g\&. by clicking\&. It is not emitted, when the selection state of an object has changed programmatically, e\&.g\&. by a direct call to setSelected() on a plottable or by calling \fBdeselectAll\fP\&.
+.PP
+See the documentation of \fBsetInteractions\fP for how to find out which objects are currently selected\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteractions\fP, \fBQCPAbstractPlottable::selectionChanged\fP, \fBQCPAxis::selectionChanged\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2569 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+2570 {
+2571     QMetaObject::activate(this, &staticMetaObject, 15, 0);
+2572 }
+.fi
+.SS "int selectionTolerance () const\fC [protected]\fP"
+
+.PP
+Definition at line 1976 of file qcustomplot\&.h\&.
+.PP
+References mSelectionTolerance\&.
+.PP
+.nf
+1976 { return mSelectionTolerance; }
+.fi
+.SS "bool QCustomPlot::selectTestTitle (const QPointF &pos) const\fC [protected]\fP"
+Returns whether the point \fIpos\fP in pixels hits the plot title\&. 
+.PP
+Definition at line 8129 of file qcustomplot\&.cpp\&.
+.PP
+References mTitleBoundingBox\&.
+.PP
+Referenced by handleTitleSelection(), and mouseReleaseEvent()\&.
+.PP
+.nf
+8130 {
+8131   return mTitleBoundingBox\&.contains(pos\&.toPoint());
+8132 }
+.fi
+.SS "void QCustomPlot::setAntialiasedElement (\fBQCP::AntialiasedElement\fPantialiasedElement, boolenabled = \fCtrue\fP)\fC [protected]\fP"
+
+.PP
+Sets whether the specified \fIantialiasedElement\fP is forcibly drawn antialiased\&. This overrides the antialiasing settings for whole element groups, normally controlled with the \fIsetAntialiasing\fP function on the individual elements\&. If an element is neither specified in \fBsetAntialiasedElements\fP nor in \fBsetNotAntialiasedElements\fP, the antialiasing setting on each individual element instance is used\&.
+.PP
+For example, if \fIenabled\fP is true and \fIantialiasedElement\fP is \fBQCP::aePlottables\fP, all plottables will be drawn antialiased, no matter what the specific \fBQCPAbstractPlottable::setAntialiased\fP value was set to\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetNotAntialiasedElement\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6135 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiasedElements, and mNotAntialiasedElements\&.
+.PP
+.nf
+6136 {
+6137   if (!enabled && mAntialiasedElements\&.testFlag(antialiasedElement))
+6138     mAntialiasedElements &= ~antialiasedElement;
+6139   else if (enabled && !mAntialiasedElements\&.testFlag(antialiasedElement))
+6140     mAntialiasedElements |= antialiasedElement;
+6141   
+6142   // make sure elements aren't in mNotAntialiasedElements and mAntialiasedElements simultaneously:
+6143   if ((mNotAntialiasedElements & mAntialiasedElements) != 0)
+6144     mNotAntialiasedElements |= ~mAntialiasedElements;
+6145 }
+.fi
+.SS "void QCustomPlot::setAntialiasedElements (const QCP::AntialiasedElements &antialiasedElements)\fC [protected]\fP"
+
+.PP
+Sets which elements are forcibly drawn antialiased as an or combination of \fBQCP::AntialiasedElement\fP\&. This overrides the antialiasing settings for whole element groups, normally controlled with the \fIsetAntialiasing\fP function on the individual elements\&. If an element is neither specified in \fBsetAntialiasedElements\fP nor in \fBsetNotAntialiasedElements\fP, the antialiasing setting on each individual element instance is used\&.
+.PP
+For example, if \fIantialiasedElements\fP contains \fBQCP::aePlottables\fP, all plottables will be drawn antialiased, no matter what the specific \fBQCPAbstractPlottable::setAntialiased\fP value was set to\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetNotAntialiasedElements\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6112 of file qcustomplot\&.cpp\&.
+.PP
+References antialiasedElements(), mAntialiasedElements, and mNotAntialiasedElements\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+6113 {
+6114   mAntialiasedElements = antialiasedElements;
+6115   
+6116   // make sure elements aren't in mNotAntialiasedElements and mAntialiasedElements simultaneously:
+6117   if ((mNotAntialiasedElements & mAntialiasedElements) != 0)
+6118     mNotAntialiasedElements |= ~mAntialiasedElements;
+6119 }
+.fi
+.SS "void setAntialiasedSubGrid (boolenabled)"
+
+.SS "void setAntialiasedZeroLine (boolenabled)"
+
+.SS "void QCustomPlot::setAutoAddPlottableToLegend (boolon)\fC [protected]\fP"
+
+.PP
+If set to true, adding a plottable (e\&.g\&. a graph) to the \fBQCustomPlot\fP automatically also adds the newly created plottable to the legend\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddPlottable\fP, \fBaddGraph\fP, \fBQCPLegend::addItem\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6209 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoAddPlottableToLegend\&.
+.PP
+.nf
+6210 {
+6211   mAutoAddPlottableToLegend = on;
+6212 }
+.fi
+.SS "void QCustomPlot::setAutoMargin (boolenabled)\fC [protected]\fP"
+
+.PP
+Sets whether the margins are calculated automatically depeding on the sizes of the tick labels, axis labels, paddings etc\&. If disabled, the margins must be set manually with the \fIsetMargin\fP functions\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetMargin\fP, \fBQCPAxis::setLabelPadding\fP, \fBQCPAxis::setTickLabelPadding\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5989 of file qcustomplot\&.cpp\&.
+.PP
+References mAutoMargin\&.
+.PP
+.nf
+5990 {
+5991   mAutoMargin = enabled;
+5992 }
+.fi
+.SS "void QCustomPlot::setAxisBackground (const QPixmap &pm)\fC [protected]\fP"
+
+.PP
+Sets \fIpm\fP as the axis background pixmap\&. The axis background pixmap will be drawn inside the current axis rect, before anything else (e\&.g\&. the axes themselves, grids, graphs, etc\&.) is drawn\&. If the provided pixmap doesn't have the same size as the axis rect, scaling can be enabled with \fBsetAxisBackgroundScaled\fP and the scaling mode (i\&.e\&. whether and how the aspect ratio is preserved) can be set with \fBsetAxisBackgroundScaledMode\fP\&. To set all these options in one call, consider using the overloaded version of this function\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAxisBackgroundScaled\fP, \fBsetAxisBackgroundScaledMode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6222 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisBackground, and mScaledAxisBackground\&.
+.PP
+.nf
+6223 {
+6224   mAxisBackground = pm;
+6225   mScaledAxisBackground = QPixmap();
+6226 }
+.fi
+.SS "void QCustomPlot::setAxisBackground (const QPixmap &pm, boolscaled, Qt::AspectRatioModemode = \fCQt::KeepAspectRatioByExpanding\fP)\fC [protected]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&. Allows setting the background pixmap, whether it shall be scaled and how it shall be scaled in one call\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAxisBackground(const QPixmap &pm)\fP, \fBsetAxisBackgroundScaled\fP, \fBsetAxisBackgroundScaledMode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6233 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisBackground, mAxisBackgroundScaled, mAxisBackgroundScaledMode, and mScaledAxisBackground\&.
+.PP
+.nf
+6234 {
+6235   mAxisBackground = pm;
+6236   mScaledAxisBackground = QPixmap();
+6237   mAxisBackgroundScaled = scaled;
+6238   mAxisBackgroundScaledMode = mode;
+6239 }
+.fi
+.SS "void QCustomPlot::setAxisBackgroundScaled (boolscaled)\fC [protected]\fP"
+
+.PP
+Sets whether the axis background pixmap shall be scaled to fit the current axis rect or not\&. If \fIscaled\fP is set to true, you may control whether and how the aspect ratio of the original pixmap is preserved with \fBsetAxisBackgroundScaledMode\fP\&.
+.PP
+Note that the scaled version of the original pixmap is buffered, so there is no performance penalty on replots, when enabling the scaling\&. (Except of course, the axis rect is continuously changed, but that's not very likely\&.)
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAxisBackground\fP, \fBsetAxisBackgroundScaledMode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6252 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisBackgroundScaled\&.
+.PP
+.nf
+6253 {
+6254   mAxisBackgroundScaled = scaled;
+6255 }
+.fi
+.SS "void QCustomPlot::setAxisBackgroundScaledMode (Qt::AspectRatioModemode)\fC [protected]\fP"
+
+.PP
+If scaling of the axis background pixmap is enabled (\fBsetAxisBackgroundScaled\fP), use this function to define whether and how the aspect ratio of the original pixmap passed to \fBsetAxisBackground\fP is preserved\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAxisBackground\fP, \fBsetAxisBackgroundScaled\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6262 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisBackgroundScaledMode\&.
+.PP
+.nf
+6263 {
+6264   mAxisBackgroundScaledMode = mode;
+6265 }
+.fi
+.SS "void setAxisRect (const QRect &arect)\fC [protected]\fP"
+
+.SS "void setColor (const QColor &color)\fC [protected]\fP"
+
+.SS "bool QCustomPlot::setCurrentLayer (const QString &name)\fC [protected]\fP"
+
+.PP
+Sets the layer with the specified \fIname\fP to be the current layer\&. All newly created/added layerables (\fBQCPLayerable\fP), e\&.g\&. plottables and items, are initially placed on the current layer\&.
+.PP
+Returns true on success, i\&.e\&. if there is a layer with the specified \fIname\fP in the \fBQCustomPlot\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddLayer\fP, \fBmoveLayer\fP, \fBremoveLayer\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6998 of file qcustomplot\&.cpp\&.
+.PP
+References layer()\&.
+.PP
+Referenced by removeLayer()\&.
+.PP
+.nf
+6999 {
+7000   if (QCPLayer *newCurrentLayer = layer(name))
+7001   {
+7002     return setCurrentLayer(newCurrentLayer);
+7003   } else
+7004   {
+7005     qDebug() << Q_FUNC_INFO << "layer with name doesn't exist:" << name;
+7006     return false;
+7007   }
+7008 }
+.fi
+.SS "bool QCustomPlot::setCurrentLayer (\fBQCPLayer\fP *layer)\fC [protected]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets the provided \fIlayer\fP to be the current layer\&. Returns true on success, i\&.e\&. when \fIlayer\fP is a valid layer in the \fBQCustomPlot\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBaddLayer\fP, \fBmoveLayer\fP, \fBremoveLayer\fP 
+.RE
+.PP
+
+.PP
+Definition at line 7018 of file qcustomplot\&.cpp\&.
+.PP
+References layer(), mCurrentLayer, and mLayers\&.
+.PP
+.nf
+7019 {
+7020   if (!mLayers\&.contains(layer))
+7021   {
+7022     qDebug() << Q_FUNC_INFO << "layer not a layer of this QCustomPlot:" << reinterpret_cast<quintptr>(layer);
+7023     return false;
+7024   }
+7025   
+7026   mCurrentLayer = layer;
+7027   return true;
+7028 }
+.fi
+.SS "void setInteraction (const Interaction &interaction, boolenabled = \fCtrue\fP)\fC [protected]\fP"
+
+.SS "void QCustomPlot::setInteractions (const Interactions &interactions)\fC [protected]\fP"
+
+.PP
+Sets the possible interactions of this \fBQCustomPlot\fP as an or-combination of \fBInteraction\fP enums\&. There are the following types of interactions:
+.PP
+\fBAxis range manipulation\fP is controlled via \fBiRangeDrag\fP and \fBiRangeZoom\fP\&. When the respective interaction is enabled, the user may drag axes ranges and zoom with the mouse wheel\&. For details how to control which axes the user may drag/zoom and in what orientations, see \fBsetRangeDrag\fP, \fBsetRangeZoom\fP, \fBsetRangeDragAxes\fP, \fBsetRangeZoomAxes\fP\&.
+.PP
+\fBPlottable selection\fP is controlled by \fBiSelectPlottables\fP\&. If \fBiSelectPlottables\fP is set, the user may select plottables (e\&.g\&. graphs, curves, bars,\&.\&.\&.) by clicking on them or in their vicinity, see \fBsetSelectionTolerance\fP\&. Whether the user can actually select a plottable can further be restricted with the \fBQCPAbstractPlottable::setSelectable\fP function on the specific plottable\&. To find out whether a specific plottable is selected, call \fBQCPAbstractPlottable::selected()\fP\&. To retrieve a list of all currently selected plottables, call \fBselectedPlottables\fP\&. If you're only interested in QCPGraphs, you may use the convenience function \fBselectedGraphs\fP\&.
+.PP
+\fBItem selection\fP is controlled by \fBiSelectItems\fP\&. If \fBiSelectItems\fP is set, the user may select items (e\&.g\&. \fBQCPItemLine\fP, \fBQCPItemText\fP,\&.\&.\&.) by clicking on them or in their vicinity\&. To find out whether a specific item is selected, call \fBQCPAbstractItem::selected()\fP\&. To retrieve a list of all currently selected items, call \fBselectedItems\fP\&.
+.PP
+\fBAxis selection\fP is controlled with \fBiSelectAxes\fP\&. If \fBiSelectAxes\fP is set, the user may select parts of the axes by clicking on them\&. What parts exactly (e\&.g\&. Axis base line, tick labels, axis label) are selectable can be controlled via \fBQCPAxis::setSelectable\fP for each axis\&. To retrieve a list of all axes that currently contain selected parts, call \fBselectedAxes\fP\&. Which parts of an axis are selected, can be retrieved with \fBQCPAxis::selected()\fP\&.
+.PP
+\fBLegend selection\fP is controlled with \fBiSelectLegend\fP\&. If this is set, the user may select the legend itself or individual items by clicking on them\&. What parts exactly are selectable can be controlled via \fBQCPLegend::setSelectable\fP\&. To find out whether the legend or any child items are selected, check the value of \fBQCPLegend::selected\fP\&. To find out which child items are selected, call \fBQCPLegend::selectedItems\fP\&.
+.PP
+\fBPlot title selection\fP is controlled with \fBiSelectTitle\fP\&. If set, the user may select the plot title by clicking on it\&. To find out whether the title is currently selected, call QCustomPlot::titleSelected()\&.
+.PP
+If the selection state has changed by user interaction, the \fBselectionChangedByUser\fP signal is emitted\&. Each selectable object additionally emits an individual selectionChanged signal whenever their selection state has changed, i\&.e\&. not only by user interaction\&.
+.PP
+To allow multiple objects to be selected by holding the modifier set with \fBsetMultiSelectModifier\fP, set the flag \fBiMultiSelect\fP\&.
+.PP
+\fBNote:\fP
+.RS 4
+In addition to the selection mechanism presented here, \fBQCustomPlot\fP always emits corresponding signals, when an object is clicked or double clicked\&. see \fBplottableClick\fP and \fBplottableDoubleClick\fP for example\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteraction\fP, \fBsetSelectionTolerance\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6319 of file qcustomplot\&.cpp\&.
+.PP
+References interactions(), and mInteractions\&.
+.PP
+.nf
+6320 {
+6321   mInteractions = interactions;
+6322 }
+.fi
+.SS "void setMargin (intleft, intright, inttop, intbottom)\fC [protected]\fP"
+
+.SS "void setMarginBottom (intmargin)\fC [protected]\fP"
+
+.SS "void setMarginLeft (intmargin)\fC [protected]\fP"
+
+.SS "void setMarginRight (intmargin)\fC [protected]\fP"
+
+.SS "void setMarginTop (intmargin)\fC [protected]\fP"
+
+.SS "void QCustomPlot::setMultiSelectModifier (Qt::KeyboardModifiermodifier)\fC [protected]\fP"
+
+.PP
+Sets the keyboard modifier that will be recognized as multi-select-modifier\&. If \fBiMultiSelect\fP is specified in \fBsetInteractions\fP, the user may select multiple objects by clicking on them one after the other while holding down \fImodifier\fP\&.
+.PP
+By default the multi-select-modifier is set to Qt::ControlModifier\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteractions\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6436 of file qcustomplot\&.cpp\&.
+.PP
+References mMultiSelectModifier\&.
+.PP
+.nf
+6437 {
+6438   mMultiSelectModifier = modifier;
+6439 }
+.fi
+.SS "void QCustomPlot::setNoAntialiasingOnDrag (boolenabled)\fC [protected]\fP"
+
+.PP
+Sets whether antialiasing is disabled for all elements while the user is dragging axes ranges\&. If many objects, especially plottables, are normally drawn antialiased, this greatly improves performance during dragging\&. Thus it creates a more responsive user experience\&. As soon as the user stops dragging, the last replot is done with normal antialiasing, to restore high image quality\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiasedElements\fP, \fBsetNotAntialiasedElements\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6396 of file qcustomplot\&.cpp\&.
+.PP
+References mNoAntialiasingOnDrag\&.
+.PP
+.nf
+6397 {
+6398   mNoAntialiasingOnDrag = enabled;
+6399 }
+.fi
+.SS "void QCustomPlot::setNotAntialiasedElement (\fBQCP::AntialiasedElement\fPnotAntialiasedElement, boolenabled = \fCtrue\fP)\fC [protected]\fP"
+
+.PP
+Sets whether the specified \fInotAntialiasedElement\fP is forcibly drawn not antialiased\&. This overrides the antialiasing settings for whole element groups, normally controlled with the \fIsetAntialiasing\fP function on the individual elements\&. If an element is neither specified in \fBsetAntialiasedElements\fP nor in \fBsetNotAntialiasedElements\fP, the antialiasing setting on each individual element instance is used\&.
+.PP
+For example, if \fIenabled\fP is true and \fInotAntialiasedElement\fP is \fBQCP::aePlottables\fP, no plottables will be drawn antialiased, no matter what the specific \fBQCPAbstractPlottable::setAntialiased\fP value was set to\&.
+.PP
+if \fIenabled\fP is true and \fInotAntialiasedElement\fP is already set with \fBsetAntialiasedElement\fP, it is removed from there\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiasedElement\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6191 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiasedElements, and mNotAntialiasedElements\&.
+.PP
+.nf
+6192 {
+6193   if (!enabled && mNotAntialiasedElements\&.testFlag(notAntialiasedElement))
+6194     mNotAntialiasedElements &= ~notAntialiasedElement;
+6195   else if (enabled && !mNotAntialiasedElements\&.testFlag(notAntialiasedElement))
+6196     mNotAntialiasedElements |= notAntialiasedElement;
+6197   
+6198   // make sure elements aren't in mNotAntialiasedElements and mAntialiasedElements simultaneously:
+6199   if ((mNotAntialiasedElements & mAntialiasedElements) != 0)
+6200     mAntialiasedElements |= ~mNotAntialiasedElements;
+6201 }
+.fi
+.SS "void QCustomPlot::setNotAntialiasedElements (const QCP::AntialiasedElements &notAntialiasedElements)\fC [protected]\fP"
+
+.PP
+Sets which elements are forcibly drawn not antialiased as an or combination of \fBQCP::AntialiasedElement\fP\&. This overrides the antialiasing settings for whole element groups, normally controlled with the \fIsetAntialiasing\fP function on the individual elements\&. If an element is neither specified in \fBsetAntialiasedElements\fP nor in \fBsetNotAntialiasedElements\fP, the antialiasing setting on each individual element instance is used\&.
+.PP
+For example, if \fInotAntialiasedElements\fP contains \fBQCP::aePlottables\fP, no plottables will be drawn antialiased, no matter what the specific \fBQCPAbstractPlottable::setAntialiased\fP value was set to\&.
+.PP
+if an element in \fInotAntialiasedElements\fP is already set in \fBsetAntialiasedElements\fP, it is removed from there\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetAntialiasedElements\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6165 of file qcustomplot\&.cpp\&.
+.PP
+References mAntialiasedElements, mNotAntialiasedElements, and notAntialiasedElements()\&.
+.PP
+Referenced by mouseMoveEvent(), and mouseReleaseEvent()\&.
+.PP
+.nf
+6166 {
+6167   mNotAntialiasedElements = notAntialiasedElements;
+6168   
+6169   // make sure elements aren't in mNotAntialiasedElements and mAntialiasedElements simultaneously:
+6170   if ((mNotAntialiasedElements & mAntialiasedElements) != 0)
+6171     mAntialiasedElements |= ~mNotAntialiasedElements;
+6172 }
+.fi
+.SS "void setPen (const QPen &pen)"
+
+.PP
+Referenced by QCPPainter::fixScaledPen(), and QCPPainter::setPen()\&.
+.SS "void QCustomPlot::setPlottingHint (QCP::PlottingHinthint, boolenabled = \fCtrue\fP)\fC [protected]\fP"
+
+.PP
+Sets the specified plotting \fIhint\fP to \fIenabled\fP\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPlottingHints\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6414 of file qcustomplot\&.cpp\&.
+.PP
+References mPlottingHints, and setPlottingHints()\&.
+.PP
+.nf
+6415 {
+6416   QCP::PlottingHints newHints = mPlottingHints;
+6417   if (!enabled)
+6418     newHints &= ~hint;
+6419   else
+6420     newHints |= hint;
+6421   
+6422   if (newHints != mPlottingHints)
+6423     setPlottingHints(newHints);
+6424 }
+.fi
+.SS "void QCustomPlot::setPlottingHints (const QCP::PlottingHints &hints)\fC [protected]\fP"
+
+.PP
+Sets the plotting hints for this \fBQCustomPlot\fP instance\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetPlottingHint\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6405 of file qcustomplot\&.cpp\&.
+.PP
+References mPlottingHints\&.
+.PP
+Referenced by setPlottingHint()\&.
+.PP
+.nf
+6406 {
+6407   mPlottingHints = hints;
+6408 }
+.fi
+.SS "void QCustomPlot::setRangeDrag (Qt::Orientationsorientations)\fC [protected]\fP"
+
+.PP
+Sets which axis orientation may be range dragged by the user with mouse interaction\&. What orientation corresponds to which specific axis can be set with \fBsetRangeDragAxes(QCPAxis *horizontal, QCPAxis *vertical)\fP\&. By default, the horizontal axis is the bottom axis (xAxis) and the vertical axis is the left axis (yAxis)\&.
+.PP
+To disable range dragging entirely, pass 0 as \fIorientations\fP or remove \fBiRangeDrag\fP from \fBsetInteractions\fP\&. To enable range dragging for both directions, pass \fCQt::Horizontal | Qt::Vertical\fP as \fIorientations\fP\&.
+.PP
+In addition to setting \fIorientations\fP to a non-zero value, make sure \fBsetInteractions\fP contains \fBiRangeDrag\fP to enable the range dragging interaction\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRangeZoom\fP, \fBsetRangeDragAxes\fP, \fBsetNoAntialiasingOnDrag\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6018 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeDrag\&.
+.PP
+.nf
+6019 {
+6020   mRangeDrag = orientations;
+6021 }
+.fi
+.SS "void QCustomPlot::setRangeDragAxes (\fBQCPAxis\fP *horizontal, \fBQCPAxis\fP *vertical)\fC [protected]\fP"
+
+.PP
+Sets the axes whose range will be dragged when \fBsetRangeDrag\fP enables mouse range dragging on the \fBQCustomPlot\fP widget\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRangeZoomAxes\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6049 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeDragHorzAxis, and mRangeDragVertAxis\&.
+.PP
+.nf
+6050 {
+6051   if (horizontal)
+6052     mRangeDragHorzAxis = horizontal;
+6053   if (vertical)
+6054     mRangeDragVertAxis = vertical;
+6055 }
+.fi
+.SS "void QCustomPlot::setRangeZoom (Qt::Orientationsorientations)\fC [protected]\fP"
+
+.PP
+Sets which axis orientation may be zoomed by the user with the mouse wheel\&. What orientation corresponds to which specific axis can be set with \fBsetRangeZoomAxes\fP(\fBQCPAxis\fP *horizontal, \fBQCPAxis\fP *vertical)\&. By default, the horizontal axis is the bottom axis (xAxis) and the vertical axis is the left axis (yAxis)\&.
+.PP
+To disable range zooming entirely, pass 0 as \fIorientations\fP or remove \fBiRangeZoom\fP from \fBsetInteractions\fP\&. To enable range zooming for both directions, pass \fCQt::Horizontal | Qt::Vertical\fP as \fIorientations\fP\&.
+.PP
+In addition to setting \fIorientations\fP to a non-zero value, make sure \fBsetInteractions\fP contains \fBiRangeZoom\fP to enable the range zooming interaction\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRangeZoomFactor\fP, \fBsetRangeZoomAxes\fP, \fBsetRangeDrag\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6038 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeZoom\&.
+.PP
+.nf
+6039 {
+6040   mRangeZoom = orientations;
+6041 }
+.fi
+.SS "void QCustomPlot::setRangeZoomAxes (\fBQCPAxis\fP *horizontal, \fBQCPAxis\fP *vertical)\fC [protected]\fP"
+
+.PP
+Sets the axes whose range will be zoomed when \fBsetRangeZoom\fP enables mouse wheel zooming on the \fBQCustomPlot\fP widget\&. The two axes can be zoomed with different strengths, when different factors are passed to \fBsetRangeZoomFactor(double horizontalFactor, double verticalFactor)\fP\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetRangeDragAxes\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6064 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeZoomHorzAxis, and mRangeZoomVertAxis\&.
+.PP
+.nf
+6065 {
+6066   if (horizontal)
+6067     mRangeZoomHorzAxis = horizontal;
+6068   if (vertical)
+6069     mRangeZoomVertAxis = vertical;
+6070 }
+.fi
+.SS "void QCustomPlot::setRangeZoomFactor (doublehorizontalFactor, doubleverticalFactor)\fC [protected]\fP"
+
+.PP
+Sets how strong one rotation step of the mouse wheel zooms, when range zoom was activated with \fBsetRangeZoom\fP\&. The two parameters \fIhorizontalFactor\fP and \fIverticalFactor\fP provide a way to let the horizontal axis zoom at different rates than the vertical axis\&. Which axis is horizontal and which is vertical, can be set with \fBsetRangeZoomAxes\fP\&.
+.PP
+When the zoom factor is greater than one, scrolling the mouse wheel backwards (towards the user) will zoom in (make the currently visible range smaller)\&. For zoom factors smaller than one, the same scrolling direction will zoom out\&. 
+.PP
+Definition at line 6082 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeZoomFactorHorz, and mRangeZoomFactorVert\&.
+.PP
+.nf
+6083 {
+6084   mRangeZoomFactorHorz = horizontalFactor;
+6085   mRangeZoomFactorVert = verticalFactor;
+6086 }
+.fi
+.SS "void QCustomPlot::setRangeZoomFactor (doublefactor)\fC [protected]\fP"
+
+.PP
+This is an overloaded member function, provided for convenience\&. It differs from the above function only in what argument(s) it accepts\&.
+.PP
+Sets both the horizontal and vertical zoom \fIfactor\fP\&. 
+.PP
+Definition at line 6092 of file qcustomplot\&.cpp\&.
+.PP
+References mRangeZoomFactorHorz, and mRangeZoomFactorVert\&.
+.PP
+.nf
+6093 {
+6094   mRangeZoomFactorHorz = factor;
+6095   mRangeZoomFactorVert = factor;
+6096 }
+.fi
+.SS "void QCustomPlot::setSelectedTitleColor (const QColor &color)\fC [protected]\fP"
+
+.PP
+This \fIcolor\fP is used to draw the title, when it is selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTitleSelected\fP, \fBsetTitleColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6372 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mSelectedTitleColor\&.
+.PP
+.nf
+6373 {
+6374   mSelectedTitleColor = color;
+6375 }
+.fi
+.SS "void QCustomPlot::setSelectedTitleFont (const QFont &font)\fC [protected]\fP"
+
+.PP
+This \fIfont\fP is used to draw the title, when it is selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTitleSelected\fP, \fBsetTitleFont\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6362 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectedTitleFont\&.
+.PP
+.nf
+6363 {
+6364   mSelectedTitleFont = font;
+6365 }
+.fi
+.SS "void QCustomPlot::setSelectionTolerance (intpixels)\fC [protected]\fP"
+
+.PP
+Sets the tolerance that is used when deciding whether a click on the \fBQCustomPlot\fP surface selects an object (e\&.g\&. a plottable) or not\&.
+.PP
+If for example the user clicks in the vicinity of the line of a \fBQCPGraph\fP, it's only regarded as a potential selection when the minimum distance between the click position and the graph line is smaller than \fIpixels\fP\&. Objects that are defined by an area (e\&.g\&. \fBQCPBars\fP) only react to clicks directly inside the area and ignore this selection tolerance\&. In other words it only has meaning for parts of objects that are too thin to exactly hit with a click and thus need such a tolerance\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteractions\fP, \fBQCPAbstractPlottable::selectTest\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6352 of file qcustomplot\&.cpp\&.
+.PP
+References mSelectionTolerance\&.
+.PP
+.nf
+6353 {
+6354   mSelectionTolerance = pixels;
+6355 }
+.fi
+.SS "void setSubGridPen (const QPen &pen)"
+
+.SS "void QCPGrid::setSubGridVisible (boolvisible)"
+
+.PP
+Sets whether grid lines at sub tick marks are drawn\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSubGridPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 14173 of file qcustomplot\&.cpp\&.
+.PP
+References mSubGridVisible\&.
+.PP
+.nf
+14174 {
+14175   mSubGridVisible = visible;
+14176 }
+.fi
+.SS "void QCustomPlot::setTitle (const QString &title)\fC [protected]\fP"
+
+.PP
+Sets the plot title which will be drawn centered at the top of the widget\&. The title position is not dependant on the actual position of the axes\&. However, if \fBsetAutoMargin\fP is set to true, the top margin will be adjusted appropriately, so the top axis labels/tick labels will not overlap with the title\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTitleFont\fP, \fBsetTitleColor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5884 of file qcustomplot\&.cpp\&.
+.PP
+References mTitle, and title()\&.
+.PP
+.nf
+5885 {
+5886   mTitle = title;
+5887 }
+.fi
+.SS "void QCustomPlot::setTitleColor (const QColor &color)\fC [protected]\fP"
+
+.PP
+Sets the text color of the plot title\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTitleFont\fP, \fBsetTitle\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5902 of file qcustomplot\&.cpp\&.
+.PP
+References color(), and mTitleColor\&.
+.PP
+.nf
+5903 {
+5904   mTitleColor = color;
+5905 }
+.fi
+.SS "void QCustomPlot::setTitleFont (const QFont &font)\fC [protected]\fP"
+
+.PP
+Sets the font of the plot title\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetTitleColor\fP, \fBsetTitle\fP 
+.RE
+.PP
+
+.PP
+Definition at line 5893 of file qcustomplot\&.cpp\&.
+.PP
+References mTitleFont\&.
+.PP
+.nf
+5894 {
+5895   mTitleFont = font;
+5896 }
+.fi
+.SS "void QCustomPlot::setTitleSelected (boolselected)\fC [protected]\fP"
+
+.PP
+Sets whether the plot title is selected\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetInteractions\fP, \fBsetSelectedTitleFont\fP, \fBsetSelectedTitleColor\fP, \fBsetTitle\fP 
+.RE
+.PP
+
+.PP
+Definition at line 6382 of file qcustomplot\&.cpp\&.
+.PP
+References mTitleSelected\&.
+.PP
+Referenced by deselectAll(), and handleTitleSelection()\&.
+.PP
+.nf
+6383 {
+6384   mTitleSelected = selected;
+6385 }
+.fi
+.SS "void QCustomPlot::setupFullAxesBox ()\fC [protected]\fP"
+
+.PP
+Convenience function to make the top and right axes visible and assign them the following properties from their corresponding bottom/left axes: 
+.PD 0
+
+.IP "\(bu" 2
+range (\fBQCPAxis::setRange\fP) 
+.IP "\(bu" 2
+range reversed (\fBQCPAxis::setRangeReversed\fP) 
+.IP "\(bu" 2
+scale type (\fBQCPAxis::setScaleType\fP) 
+.IP "\(bu" 2
+scale log base (\fBQCPAxis::setScaleLogBase\fP) 
+.IP "\(bu" 2
+ticks (\fBQCPAxis::setTicks\fP) 
+.IP "\(bu" 2
+auto (major) tick count (\fBQCPAxis::setAutoTickCount\fP) 
+.IP "\(bu" 2
+sub tick count (\fBQCPAxis::setSubTickCount\fP) 
+.IP "\(bu" 2
+auto sub ticks (\fBQCPAxis::setAutoSubTicks\fP) 
+.IP "\(bu" 2
+tick step (\fBQCPAxis::setTickStep\fP) 
+.IP "\(bu" 2
+auto tick step (\fBQCPAxis::setAutoTickStep\fP)
+.PP
+Tick labels (\fBQCPAxis::setTickLabels\fP) however, is always set to false\&.
+.PP
+This function does \fInot\fP connect the rangeChanged signals of the bottom and left axes to the \fBQCPAxis::setRange\fP slots of the top and right axes in order to synchronize the ranges permanently\&. 
+.PP
+Definition at line 7265 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAxis::autoSubTicks(), QCPAxis::autoTickCount(), QCPAxis::autoTickStep(), QCPAxis::range(), QCPAxis::rangeReversed(), QCPAxis::scaleLogBase(), QCPAxis::scaleType(), QCPAxis::setAutoSubTicks(), QCPAxis::setAutoTickCount(), QCPAxis::setAutoTickStep(), QCPAxis::setRange(), QCPAxis::setRangeReversed(), QCPAxis::setScaleLogBase(), QCPAxis::setScaleType(), QCPAxis::setSubTickCount(), QCPAxis::setTickLabels(), QCPAxis::setTicks(), QCPAxis::setTickStep(), QCPLayerable::setVisible(), QCPAxis::subTickCount(), QCPAxis::ticks(), QCPAxis::tickStep(), xAxis, xAxis2, yAxis, and yAxis2\&.
+.PP
+.nf
+7266 {
+7267   xAxis2->setVisible(true);
+7268   yAxis2->setVisible(true);
+7269   
+7270   xAxis2->setTickLabels(false);
+7271   yAxis2->setTickLabels(false);
+7272   
+7273   xAxis2->setAutoSubTicks(xAxis->autoSubTicks());
+7274   yAxis2->setAutoSubTicks(yAxis->autoSubTicks());
+7275   
+7276   xAxis2->setAutoTickCount(xAxis->autoTickCount());
+7277   yAxis2->setAutoTickCount(yAxis->autoTickCount());
+7278   
+7279   xAxis2->setAutoTickStep(xAxis->autoTickStep());
+7280   yAxis2->setAutoTickStep(yAxis->autoTickStep());
+7281   
+7282   xAxis2->setScaleType(xAxis->scaleType());
+7283   yAxis2->setScaleType(yAxis->scaleType());
+7284   
+7285   xAxis2->setScaleLogBase(xAxis->scaleLogBase());
+7286   yAxis2->setScaleLogBase(yAxis->scaleLogBase());
+7287   
+7288   xAxis2->setTicks(xAxis->ticks());
+7289   yAxis2->setTicks(yAxis->ticks());
+7290   
+7291   xAxis2->setSubTickCount(xAxis->subTickCount());
+7292   yAxis2->setSubTickCount(yAxis->subTickCount());
+7293   
+7294   xAxis2->setTickStep(xAxis->tickStep());
+7295   yAxis2->setTickStep(yAxis->tickStep());
+7296   
+7297   xAxis2->setRange(xAxis->range());
+7298   yAxis2->setRange(yAxis->range());
+7299   
+7300   xAxis2->setRangeReversed(xAxis->rangeReversed());
+7301   yAxis2->setRangeReversed(yAxis->rangeReversed());
+7302 }
+.fi
+.SS "void setZeroLinePen (const QPen &pen)"
+
+.SS "QPen subGridPen () const"
+
+.PP
+Definition at line 1592 of file qcustomplot\&.h\&.
+.PP
+References mSubGridPen\&.
+.PP
+.nf
+1592 { return mSubGridPen; }
+.fi
+.SS "bool subGridVisible () const"
+
+.PP
+Definition at line 1588 of file qcustomplot\&.h\&.
+.PP
+References mSubGridVisible\&.
+.PP
+.nf
+1588 { return mSubGridVisible; }
+.fi
+.SS "QString title () const\fC [protected]\fP"
+
+.PP
+Definition at line 1953 of file qcustomplot\&.h\&.
+.PP
+References mTitle\&.
+.PP
+Referenced by MainWindow::msg(), and setTitle()\&.
+.PP
+.nf
+1953 { return mTitle; }
+.fi
+.SS "void QCustomPlot::titleClick (QMouseEvent *event)"
+
+.PP
+This signal is emitted when the plot title is clicked\&. \fIevent\fP is the mouse event that caused the click\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBtitleDoubleClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2555 of file moc_qcustomplot\&.cpp\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.PP
+.nf
+2556 {
+2557     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+2558     QMetaObject::activate(this, &staticMetaObject, 13, _a);
+2559 }
+.fi
+.SS "QColor titleColor () const\fC [protected]\fP"
+
+.PP
+Definition at line 1955 of file qcustomplot\&.h\&.
+.PP
+References mTitleColor\&.
+.PP
+.nf
+1955 { return mTitleColor; }
+.fi
+.SS "void QCustomPlot::titleDoubleClick (QMouseEvent *event)"
+
+.PP
+This signal is emitted when the plot title is double clicked\&. \fIevent\fP is the mouse event that caused the click\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBtitleClick\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2562 of file moc_qcustomplot\&.cpp\&.
+.PP
+.nf
+2563 {
+2564     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+2565     QMetaObject::activate(this, &staticMetaObject, 14, _a);
+2566 }
+.fi
+.SS "QFont titleFont () const\fC [protected]\fP"
+
+.PP
+Definition at line 1954 of file qcustomplot\&.h\&.
+.PP
+References mTitleFont\&.
+.PP
+.nf
+1954 { return mTitleFont; }
+.fi
+.SS "bool titleSelected () const\fC [protected]\fP"
+
+.PP
+Definition at line 1979 of file qcustomplot\&.h\&.
+.PP
+References mTitleSelected\&.
+.PP
+Referenced by handleTitleSelection()\&.
+.PP
+.nf
+1979 { return mTitleSelected; }
+.fi
+.SS "void QCustomPlot::updateAxisRect ()\fC [protected]\fP"
+calculates mAxisRect by applying the margins inward to mViewport\&. The axisRect is then passed on to all axes via \fBQCPAxis::setAxisRect\fP
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetMargin\fP, \fBsetAxisRect\fP 
+.RE
+.PP
+
+.PP
+Definition at line 8116 of file qcustomplot\&.cpp\&.
+.PP
+References mAxisRect, mMarginBottom, mMarginLeft, mMarginRight, mMarginTop, mViewport, QCPAxis::setAxisRect(), xAxis, xAxis2, yAxis, and yAxis2\&.
+.PP
+Referenced by resizeEvent(), savePdf(), and saveRastered()\&.
+.PP
+.nf
+8117 {
+8118   mAxisRect = mViewport\&.adjusted(mMarginLeft, mMarginTop, -mMarginRight, -mMarginBottom);
+8119   xAxis->setAxisRect(mAxisRect);
+8120   yAxis->setAxisRect(mAxisRect);
+8121   xAxis2->setAxisRect(mAxisRect);
+8122   yAxis2->setAxisRect(mAxisRect);
+8123 }
+.fi
+.SS "QRect QCustomPlot::viewport () const\fC [protected]\fP"
+
+.PP
+Returns the viewport rect of this \fBQCustomPlot\fP instance\&. The viewport is the area the plot is drawn in, all mechanisms, e\&.g\&. margin caluclation take the viewport to be the outer border of the plot\&. The viewport normally is the rect() of the \fBQCustomPlot\fP widget, i\&.e\&. a rect with top left (0, 0) and size of the \fBQCustomPlot\fP widget\&.
+.PP
+Don't confuse the viewport with the axisRect\&. An axisRect is the rect defined by two axes, where the graphs/plottables are drawn in\&. The viewport is larger and contains also the axes themselves, their tick numbers, their labels, the plot title etc\&.
+.PP
+Only when saving to a file (see \fBsavePng\fP, savePdf etc\&.) the viewport is temporarily modified to allow saving plots with sizes independent of the current widget size\&. 
+.PP
+Definition at line 1957 of file qcustomplot\&.h\&.
+.PP
+References mViewport\&.
+.PP
+.nf
+1957 { return mViewport; }
+.fi
+.SS "void QCustomPlot::wheelEvent (QWheelEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+Event handler for mouse wheel events\&. First, the mouseWheel signal is emitted\&. If rangeZoom is Qt::Horizontal, Qt::Vertical or both, the ranges of the axes defined as rangeZoomHorzAxis and rangeZoomVertAxis are scaled\&. The center of the scaling operation is the current cursor position inside the plot\&. The scaling factor is dependant on the mouse wheel delta (which direction the wheel was rotated) to provide a natural zooming feel\&. The Strength of the zoom can be controlled via \fBsetRangeZoomFactor\fP\&.
+.PP
+Note, that event->delta() is usually +/-120 for single rotation steps\&. However, if the mouse wheel is turned rapidly, many steps may bunch up to one event, so the event->delta() may then be multiples of 120\&. This is taken into account here, by calculating \fIwheelSteps\fP and using it as exponent of the range zoom factor\&. This takes care of the wheel direction automatically, by inverting the factor, when the wheel step is negative (f^-1 = 1/f)\&. 
+.PP
+Definition at line 7811 of file qcustomplot\&.cpp\&.
+.PP
+References mInteractions, mouseWheel(), mRangeZoom, mRangeZoomFactorHorz, mRangeZoomFactorVert, mRangeZoomHorzAxis, mRangeZoomVertAxis, QCPAxis::pixelToCoord(), replot(), and QCPAxis::scaleRange()\&.
+.PP
+.nf
+7812 {
+7813   emit mouseWheel(event);
+7814   
+7815   // Mouse range zooming interaction:
+7816   if (mInteractions\&.testFlag(iRangeZoom))
+7817   {
+7818     if (mRangeZoom != 0)
+7819     {
+7820       double factor;
+7821       double wheelSteps = event->delta()/120\&.0; // a single step delta is +/-120 usually
+7822       if (mRangeZoom\&.testFlag(Qt::Horizontal))
+7823       {
+7824         factor = pow(mRangeZoomFactorHorz, wheelSteps);
+7825         mRangeZoomHorzAxis->scaleRange(factor, mRangeZoomHorzAxis->pixelToCoord(event->pos()\&.x()));
+7826       }
+7827       if (mRangeZoom\&.testFlag(Qt::Vertical))
+7828       {
+7829         factor = pow(mRangeZoomFactorVert, wheelSteps);
+7830         mRangeZoomVertAxis->scaleRange(factor, mRangeZoomVertAxis->pixelToCoord(event->pos()\&.y()));
+7831       }
+7832       replot();
+7833     }
+7834   }
+7835   
+7836   QWidget::wheelEvent(event);
+7837 }
+.fi
+.SS "QPen zeroLinePen () const"
+
+.PP
+Definition at line 1593 of file qcustomplot\&.h\&.
+.PP
+References mZeroLinePen\&.
+.PP
+.nf
+1593 { return mZeroLinePen; }
+.fi
+.SS "QCPGrid::~QCPGrid ()"
+
+.PP
+Definition at line 14164 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+14165 {
+14166 }
+.fi
+.SS "QCustomPlot::~QCustomPlot ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 5836 of file qcustomplot\&.cpp\&.
+.PP
+References clearItems(), clearPlottables(), legend, mLayers, xAxis, xAxis2, yAxis, and yAxis2\&.
+.PP
+.nf
+5837 {
+5838   clearPlottables();
+5839   clearItems();
+5840   delete legend;
+5841   delete xAxis;
+5842   delete yAxis;
+5843   delete xAxis2;
+5844   delete yAxis2;
+5845   qDeleteAll(mLayers);
+5846   mLayers\&.clear();
+5847 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "double key"
+
+.PP
+Definition at line 145 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::addData(), QCPCurve::addData(), QCPBars::addData(), QCPCurve::getCurveData(), QCPGraph::getImpulsePlotData(), QCPGraph::getStepCenterPlotData(), QCPGraph::getStepLeftPlotData(), QCPAbstractPlottable::pixelsToCoords(), QCPGraph::removeDataBefore(), QCPBars::removeDataBefore(), QCPItemTracer::setGraphKey(), and QFourierTransformer::setSize()\&.
+.SS "double keyErrorMinus"
+
+.PP
+Definition at line 146 of file qcustomplot\&.h\&.
+.SS "double keyErrorPlus"
+
+.PP
+Definition at line 146 of file qcustomplot\&.h\&.
+.SS "\fBQCPLegend\fP* legend"
+
+.PP
+Definition at line 2077 of file qcustomplot\&.h\&.
+.PP
+Referenced by deselectAll(), mouseReleaseEvent(), selectedLegends(), and ~QCustomPlot()\&.
+.SS "QCP::AntialiasedElements mAADragBackup"
+
+.PP
+Definition at line 2138 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.SS "QCP::AntialiasedElements mAntialiasedElements"
+
+.PP
+Definition at line 2123 of file qcustomplot\&.h\&.
+.PP
+Referenced by antialiasedElements(), setAntialiasedElement(), setAntialiasedElements(), setNotAntialiasedElement(), and setNotAntialiasedElements()\&.
+.SS "bool mAntialiasedSubGrid"
+
+.PP
+Definition at line 1606 of file qcustomplot\&.h\&.
+.PP
+Referenced by antialiasedSubGrid(), and drawSubGridLines()\&.
+.SS "bool mAntialiasedZeroLine"
+
+.PP
+Definition at line 1606 of file qcustomplot\&.h\&.
+.PP
+Referenced by antialiasedZeroLine(), and drawGridLines()\&.
+.SS "bool mAutoAddPlottableToLegend"
+
+.PP
+Definition at line 2113 of file qcustomplot\&.h\&.
+.PP
+Referenced by addPlottable(), autoAddPlottableToLegend(), and setAutoAddPlottableToLegend()\&.
+.SS "bool mAutoMargin"
+
+.PP
+Definition at line 2113 of file qcustomplot\&.h\&.
+.PP
+Referenced by autoMargin(), and setAutoMargin()\&.
+.SS "QPixmap mAxisBackground"
+
+.PP
+Definition at line 2124 of file qcustomplot\&.h\&.
+.PP
+Referenced by axisBackground(), drawAxisBackground(), and setAxisBackground()\&.
+.SS "bool mAxisBackgroundScaled"
+
+.PP
+Definition at line 2125 of file qcustomplot\&.h\&.
+.PP
+Referenced by axisBackgroundScaled(), drawAxisBackground(), setAxisBackground(), and setAxisBackgroundScaled()\&.
+.SS "Qt::AspectRatioMode mAxisBackgroundScaledMode"
+
+.PP
+Definition at line 2126 of file qcustomplot\&.h\&.
+.PP
+Referenced by axisBackgroundScaledMode(), drawAxisBackground(), setAxisBackground(), and setAxisBackgroundScaledMode()\&.
+.SS "QRect mAxisRect"
+
+.PP
+Definition at line 2111 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPAxis::axisRect(), axisRect(), drawAxisBackground(), and updateAxisRect()\&.
+.SS "QColor mColor"
+
+.PP
+Definition at line 2114 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPItemText::color(), color(), replot(), savePdf(), and saveRastered()\&.
+.SS "\fBQCPLayer\fP* mCurrentLayer"
+
+.PP
+Definition at line 2139 of file qcustomplot\&.h\&.
+.PP
+Referenced by currentLayer(), removeLayer(), and setCurrentLayer()\&.
+.SS "bool mDragging"
+
+.PP
+Definition at line 2122 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseMoveEvent(), and mouseReleaseEvent()\&.
+.SS "QPoint mDragStart"
+
+.PP
+Definition at line 2134 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseMoveEvent(), and mouseReleaseEvent()\&.
+.SS "\fBQCPRange\fP mDragStartHorzRange"
+
+.PP
+Definition at line 2135 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseMoveEvent()\&.
+.SS "\fBQCPRange\fP mDragStartVertRange"
+
+.PP
+Definition at line 2135 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseMoveEvent()\&.
+.SS "QList<\fBQCPGraph\fP*> mGraphs"
+
+.PP
+Definition at line 2116 of file qcustomplot\&.h\&.
+.PP
+Referenced by addGraph(), addPlottable(), clearGraphs(), graphCount(), removeGraph(), removePlottable(), and selectedGraphs()\&.
+.SS "Interactions mInteractions"
+
+.PP
+Definition at line 2127 of file qcustomplot\&.h\&.
+.PP
+Referenced by interactions(), mouseMoveEvent(), mouseReleaseEvent(), setInteractions(), and wheelEvent()\&.
+.SS "QList<\fBQCPAbstractItem\fP*> mItems"
+
+.PP
+Definition at line 2117 of file qcustomplot\&.h\&.
+.PP
+Referenced by handleItemSelection(), and itemAt()\&.
+.SS "QList<\fBQCPLayer\fP*> mLayers"
+
+.PP
+Definition at line 2118 of file qcustomplot\&.h\&.
+.PP
+Referenced by layerCount(), removeLayer(), setCurrentLayer(), and ~QCustomPlot()\&.
+.SS "int mMarginBottom"
+
+.PP
+Definition at line 2112 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPLegend::marginBottom(), marginBottom(), and updateAxisRect()\&.
+.SS "int mMarginLeft"
+
+.PP
+Definition at line 2112 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPLegend::marginLeft(), marginLeft(), and updateAxisRect()\&.
+.SS "int mMarginRight"
+
+.PP
+Definition at line 2112 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPLegend::marginRight(), marginRight(), and updateAxisRect()\&.
+.SS "int mMarginTop"
+
+.PP
+Definition at line 2112 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPLegend::marginTop(), marginTop(), and updateAxisRect()\&.
+.SS "Qt::KeyboardModifier mMultiSelectModifier"
+
+.PP
+Definition at line 2141 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseReleaseEvent(), multiSelectModifier(), and setMultiSelectModifier()\&.
+.SS "bool mNoAntialiasingOnDrag"
+
+.PP
+Definition at line 2131 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseMoveEvent(), mouseReleaseEvent(), noAntialiasingOnDrag(), and setNoAntialiasingOnDrag()\&.
+.SS "QCP::AntialiasedElements mNotAADragBackup"
+
+.PP
+Definition at line 2138 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseReleaseEvent()\&.
+.SS "QCP::AntialiasedElements mNotAntialiasedElements"
+
+.PP
+Definition at line 2123 of file qcustomplot\&.h\&.
+.PP
+Referenced by notAntialiasedElements(), setAntialiasedElement(), setAntialiasedElements(), setNotAntialiasedElement(), and setNotAntialiasedElements()\&.
+.SS "QPixmap mPaintBuffer"
+
+.PP
+Definition at line 2133 of file qcustomplot\&.h\&.
+.PP
+Referenced by paintEvent(), replot(), and resizeEvent()\&.
+.SS "\fBQCPAxis\fP* mParentAxis"
+
+.PP
+Definition at line 1604 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawGridLines(), and drawSubGridLines()\&.
+.SS "QPen mPen"
+
+.PP
+Definition at line 1607 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawGridLines(), QCPAbstractPlottable::pen(), QCPItemStraightLine::pen(), QCPItemLine::pen(), QCPItemEllipse::pen(), QCPItemRect::pen(), QCPItemPixmap::pen(), QCPItemText::pen(), QCPItemCurve::pen(), QCPItemBracket::pen(), QCPItemTracer::pen(), and pen()\&.
+.SS "QList<\fBQCPAbstractPlottable\fP*> mPlottables"
+
+.PP
+Definition at line 2115 of file qcustomplot\&.h\&.
+.PP
+Referenced by addPlottable(), clearPlottables(), handlePlottableSelection(), hasPlottable(), plottableAt(), plottableCount(), removePlottable(), and selectedPlottables()\&.
+.SS "QCP::PlottingHints mPlottingHints"
+
+.PP
+Definition at line 2140 of file qcustomplot\&.h\&.
+.PP
+Referenced by plottingHints(), replot(), setPlottingHint(), and setPlottingHints()\&.
+.SS "Qt::Orientations mRangeDrag"
+
+.PP
+Definition at line 2119 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseMoveEvent(), rangeDrag(), and setRangeDrag()\&.
+.SS "\fBQCPAxis\fP* mRangeDragHorzAxis"
+
+.PP
+Definition at line 2120 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseMoveEvent(), rangeDragAxis(), and setRangeDragAxes()\&.
+.SS "\fBQCPAxis\fP * mRangeDragVertAxis"
+
+.PP
+Definition at line 2120 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseMoveEvent(), rangeDragAxis(), and setRangeDragAxes()\&.
+.SS "Qt::Orientations mRangeZoom"
+
+.PP
+Definition at line 2119 of file qcustomplot\&.h\&.
+.PP
+Referenced by rangeZoom(), setRangeZoom(), and wheelEvent()\&.
+.SS "double mRangeZoomFactorHorz"
+
+.PP
+Definition at line 2121 of file qcustomplot\&.h\&.
+.PP
+Referenced by rangeZoomFactor(), setRangeZoomFactor(), and wheelEvent()\&.
+.SS "double mRangeZoomFactorVert"
+
+.PP
+Definition at line 2121 of file qcustomplot\&.h\&.
+.PP
+Referenced by rangeZoomFactor(), setRangeZoomFactor(), and wheelEvent()\&.
+.SS "\fBQCPAxis\fP * mRangeZoomHorzAxis"
+
+.PP
+Definition at line 2120 of file qcustomplot\&.h\&.
+.PP
+Referenced by rangeZoomAxis(), setRangeZoomAxes(), and wheelEvent()\&.
+.SS "\fBQCPAxis\fP * mRangeZoomVertAxis"
+
+.PP
+Definition at line 2120 of file qcustomplot\&.h\&.
+.PP
+Referenced by rangeZoomAxis(), setRangeZoomAxes(), and wheelEvent()\&.
+.SS "bool mReplotting"
+
+.PP
+Definition at line 2137 of file qcustomplot\&.h\&.
+.PP
+Referenced by replot()\&.
+.SS "QPixmap mScaledAxisBackground"
+
+.PP
+Definition at line 2136 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawAxisBackground(), and setAxisBackground()\&.
+.SS "QColor mSelectedTitleColor"
+
+.PP
+Definition at line 2109 of file qcustomplot\&.h\&.
+.PP
+Referenced by selectedTitleColor(), and setSelectedTitleColor()\&.
+.SS "QFont mSelectedTitleFont"
+
+.PP
+Definition at line 2108 of file qcustomplot\&.h\&.
+.PP
+Referenced by selectedTitleFont(), and setSelectedTitleFont()\&.
+.SS "int mSelectionTolerance"
+
+.PP
+Definition at line 2128 of file qcustomplot\&.h\&.
+.PP
+Referenced by itemAt(), plottableAt(), selectionTolerance(), and setSelectionTolerance()\&.
+.SS "QPen mSubGridPen"
+
+.PP
+Definition at line 1607 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawSubGridLines(), and subGridPen()\&.
+.SS "bool mSubGridVisible"
+
+.PP
+Definition at line 1605 of file qcustomplot\&.h\&.
+.PP
+Referenced by setSubGridVisible(), and subGridVisible()\&.
+.SS "QString mTitle"
+
+.PP
+Definition at line 2107 of file qcustomplot\&.h\&.
+.PP
+Referenced by setTitle(), and title()\&.
+.SS "QRect mTitleBoundingBox"
+
+.PP
+Definition at line 2130 of file qcustomplot\&.h\&.
+.PP
+Referenced by selectTestTitle()\&.
+.SS "QColor mTitleColor"
+
+.PP
+Definition at line 2109 of file qcustomplot\&.h\&.
+.PP
+Referenced by setTitleColor(), and titleColor()\&.
+.SS "QFont mTitleFont"
+
+.PP
+Definition at line 2108 of file qcustomplot\&.h\&.
+.PP
+Referenced by setTitleFont(), and titleFont()\&.
+.SS "bool mTitleSelected"
+
+.PP
+Definition at line 2129 of file qcustomplot\&.h\&.
+.PP
+Referenced by setTitleSelected(), and titleSelected()\&.
+.SS "QRect mViewport"
+
+.PP
+Definition at line 2110 of file qcustomplot\&.h\&.
+.PP
+Referenced by resizeEvent(), savePdf(), saveRastered(), updateAxisRect(), and viewport()\&.
+.SS "QPen mZeroLinePen"
+
+.PP
+Definition at line 1607 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawGridLines(), and zeroLinePen()\&.
+.SS "double value"
+
+.PP
+Definition at line 145 of file qcustomplot\&.h\&.
+.PP
+Referenced by QCPGraph::addData(), QCPCurve::addData(), QCPBars::addData(), Slider::adjust_value(), QCPAxis::coordToPixel(), QCPCurve::getCurveData(), QCPGraph::getStepRightPlotData(), Slider::keyPressEvent(), QComplexNumber< T >::operator*=(), QComplexNumber< T >::operator/=(), QCPAbstractPlottable::pixelsToCoords(), QCPAxis::pixelToCoord(), QCPStatisticalBox::setLowerQuartile(), QCPStatisticalBox::setMaximum(), QCPStatisticalBox::setMedian(), QCPStatisticalBox::setMinimum(), QCPStatisticalBox::setUpperQuartile(), and Slider::update_value()\&.
+.SS "double valueErrorMinus"
+
+.PP
+Definition at line 147 of file qcustomplot\&.h\&.
+.SS "double valueErrorPlus"
+
+.PP
+Definition at line 147 of file qcustomplot\&.h\&.
+.SS "\fBQCPAxis\fP* xAxis"
+
+.PP
+Definition at line 2076 of file qcustomplot\&.h\&.
+.PP
+Referenced by addGraph(), mouseReleaseEvent(), selectedAxes(), setupFullAxesBox(), updateAxisRect(), and ~QCustomPlot()\&.
+.SS "\fBQCPAxis\fP * xAxis2"
+
+.PP
+Definition at line 2076 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseReleaseEvent(), selectedAxes(), setupFullAxesBox(), updateAxisRect(), and ~QCustomPlot()\&.
+.SS "\fBQCPAxis\fP * yAxis"
+
+.PP
+Definition at line 2076 of file qcustomplot\&.h\&.
+.PP
+Referenced by addGraph(), mouseReleaseEvent(), selectedAxes(), setupFullAxesBox(), updateAxisRect(), and ~QCustomPlot()\&.
+.SS "\fBQCPAxis\fP * yAxis2"
+
+.PP
+Definition at line 2076 of file qcustomplot\&.h\&.
+.PP
+Referenced by mouseReleaseEvent(), selectedAxes(), setupFullAxesBox(), updateAxisRect(), and ~QCustomPlot()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

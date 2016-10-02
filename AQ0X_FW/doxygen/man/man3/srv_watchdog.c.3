@@ -1,0 +1,131 @@
+.TH "srv_watchdog.c" 3 "Wed Oct 29 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srv_watchdog.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&.\\includes\\allheaders\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB__attribute__\fP ((__interrupt__, auto_psv))"
+.br
+.RI "\fIWatchdog tunning timeout function\&. \fP"
+.ti -1c
+.RI "void \fBsrv_wdg_init_fn\fP (void)"
+.br
+.RI "\fIWatchdog tunning init function\&. \fP"
+.ti -1c
+.RI "void \fBsrv_wdg_kick_fn\fP (void)"
+.br
+.RI "\fIWatchdog tunning kick function\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBUint32\fP \fBwatchdog_timeout\fP = \fBWATCHDOG_TUNNING_TIMEOUT\fP"
+.br
+.RI "\fITurns off the Watch-Dog Timer in debug mode\&. Turns on the Watch-Dog Timer in release mode\&. Watchdog set to 10ms (2ms x WDTPSA x WDTPSA ) \fP"
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void __attribute__ ((__interrupt__, auto_psv))"
+
+.PP
+Watchdog tunning timeout function\&. Serial port transmit interrupt\&.req REQ-8a: 'Read the sensor inputs ' Sensors and inputs are read and filtered\&.
+.PP
+Definition at line 66 of file srv_watchdog\&.c\&.
+.PP
+References srv_wdg_init_fn(), and watchdog_timeout\&.
+.PP
+.nf
+68 {
+69 
+70     // Ack interrupt
+71     IFS1bits\&.T4IF = 0;
+72 
+73 
+74     // Stop timer
+75     T4CONbits\&.TON = 0;
+76     TMR4          = 0;  
+77     
+78     // Increase watchdog timeout
+79     if(watchdog_timeout< 1000)
+80     {
+81         watchdog_timeout++;
+82     }
+83 
+84     // Reinitialize tunning timer
+85     srv_wdg_init_fn();
+86 
+87     
+88 }
+.fi
+.SS "void srv_wdg_init_fn (void)"
+
+.PP
+Watchdog tunning init function\&. 
+.PP
+Definition at line 96 of file srv_watchdog\&.c\&.
+.PP
+References FOSC_CPU, and watchdog_timeout\&.
+.PP
+Referenced by __attribute__()\&.
+.PP
+.nf
+97 {
+98 
+99     // Setup tunning timer
+100     
+101     T4CON = 0;                    // Clear the register
+102     T4CONbits\&.TCS    = 0;         // Internal clock Fosc/4   
+103     T4CONbits\&.TCKPS = 1;          //    1:8 prescaling    
+104 
+105 
+106 
+107     PR4 = (((FOSC_CPU/2L)/8)*watchdog_timeout)/(1000L); 
+108     
+109     IPC6bits\&.T4IP = 1;            // Set Timer4 Interrupt Priority Level
+110     IFS1bits\&.T4IF = 0;            //Clear the Timer4 Interrupt Flag
+111     IEC1bits\&.T4IE = 1;            //Enable Timer4I nterrupt Service Routine
+112     T4CONbits\&.TON = 1;            //Start Timer 4
+113 
+114 
+115 
+116 
+117     
+118 }
+.fi
+.SS "void srv_wdg_kick_fn (void)"
+
+.PP
+Watchdog tunning kick function\&. 
+.PP
+Definition at line 126 of file srv_watchdog\&.c\&.
+.PP
+.nf
+127 {
+128     T4CONbits\&.TON = 0;
+129     TMR4 = 0;
+130     T4CONbits\&.TON = 1;
+131 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "\fBUint32\fP watchdog_timeout = \fBWATCHDOG_TUNNING_TIMEOUT\fP"
+
+.PP
+Turns off the Watch-Dog Timer in debug mode\&. Turns on the Watch-Dog Timer in release mode\&. Watchdog set to 10ms (2ms x WDTPSA x WDTPSA ) 
+.PP
+Definition at line 55 of file srv_watchdog\&.c\&.
+.PP
+Referenced by __attribute__(), and srv_wdg_init_fn()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

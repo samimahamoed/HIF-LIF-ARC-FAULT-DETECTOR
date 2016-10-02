@@ -1,0 +1,210 @@
+\hypertarget{a00033}{\section{main.\+h File Reference}
+\label{a00033}\index{main.\+h@{main.\+h}}
+}
+
+
+Few useful generic macros.  
+
+
+{\ttfamily \#include \char`\"{}System.\+h\char`\"{}}\\*
+Include dependency graph for main.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=139pt]{d1/db0/a00945}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d40/a00946}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00033_d3/d95/a00779}{sqtp\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T}~int
+\begin{DoxyCompactList}\small\item\em Interrupt save context. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00033_a357168bbe78739811cdb7b5576714ca6}{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E}(save\+\_\+sr)~\hyperlink{a00014_a6e65280d03605e855814536f977b6e8f}{S\+E\+T\+\_\+\+A\+N\+D\+\_\+\+S\+A\+V\+E\+\_\+\+C\+P\+U\+\_\+\+I\+P\+L} (save\+\_\+sr, 7);
+\begin{DoxyCompactList}\small\item\em Global I\+R\+Q disable. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E}(save\+\_\+sr)~\hyperlink{a00014_ae3ee8b9afce2d4e5ed1a3a725afbba04}{R\+E\+S\+T\+O\+R\+E\+\_\+\+C\+P\+U\+\_\+\+I\+P\+L} (save\+\_\+sr);
+\begin{DoxyCompactList}\small\item\em Global I\+R\+Q enable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00033_a3b0017f6ec0e04a6435bba00fe325294}{Delay5us} (int Count)
+\begin{DoxyCompactList}\small\item\em Assembler function -\/ 5us granularity loop delay. \end{DoxyCompactList}\item 
+void \hyperlink{a00033_ac529343dfb6363f115d0f9213fbe4317}{Delay5ms} (int Count)
+\begin{DoxyCompactList}\small\item\em Assembler function -\/ 5ms granularity loop delay. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00033_d3/d95/a00779}{sqtp\+\_\+t} \hyperlink{a00033_a4e1e8b365cce7a6d497671681eb5823c}{sqtp\+\_\+info}
+\begin{DoxyCompactList}\small\item\em Oscilator setting Run this project using an internal F\+R\+C. \end{DoxyCompactList}\item 
+const char \hyperlink{a00033_a9913e6dccd88bd052d3e8e9d73da4ede}{version\+\_\+string} \mbox{[}64\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Few useful generic macros. 
+
+Contains defines for assembler declared functions 
+
+Definition in file \hyperlink{a00033_source}{main.\+h}.
+
+
+
+\subsection{Data Structure Documentation}
+\index{sqtp\+\_\+t@{sqtp\+\_\+t}}\label{d3/d95/a00779}
+\hypertarget{a00033_d3/d95/a00779}{}
+\subsubsection{struct sqtp\+\_\+t}
+
+
+Definition at line \hyperlink{a00033_source_l00029}{29} of file \hyperlink{a00033_source}{main.\+h}.
+
+
+
+Collaboration diagram for sqtp\+\_\+t\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{d3/d29/a00947}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00033_a4ad37aef4f33d79d64179f326666ef07}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00033_a4ad37aef4f33d79d64179f326666ef07}
+&
+device\+\_\+address&
+\\
+\hline
+
+\hypertarget{a00033_a728c5fe7bc16e168a8f93fba18ee5561}{\hyperlink{a00072_aba99025e657f892beb7ff31cecf64653}{Uint32}}\label{a00033_a728c5fe7bc16e168a8f93fba18ee5561}
+&
+serial\+\_\+number&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}{\index{main.\+h@{main.\+h}!I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T@{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T}}
+\index{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T@{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T}!main.\+h@{main.\+h}}
+\subsubsection[{I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+R\+Q\+\_\+\+C\+T\+X\+\_\+\+T~int}}\label{a00033_a6d4f0a7397640f5b011ca9c39d47dc72}
+
+
+Interrupt save context. 
+
+
+
+Definition at line \hyperlink{a00033_source_l00017}{17} of file \hyperlink{a00033_source}{main.\+h}.
+
+
+
+Referenced by \hyperlink{a00041_source_l00025}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00037_source_l00231}{x\+\_\+loop()}, and \hyperlink{a00037_source_l00521}{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync()}.
+
+\hypertarget{a00033_a357168bbe78739811cdb7b5576714ca6}{\index{main.\+h@{main.\+h}!I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E@{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E}}
+\index{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E@{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E}!main.\+h@{main.\+h}}
+\subsubsection[{I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+R\+Q\+\_\+\+D\+I\+S\+A\+B\+L\+E(
+\begin{DoxyParamCaption}
+\item[{}]{save\+\_\+sr}
+\end{DoxyParamCaption}
+)~{\bf S\+E\+T\+\_\+\+A\+N\+D\+\_\+\+S\+A\+V\+E\+\_\+\+C\+P\+U\+\_\+\+I\+P\+L} (save\+\_\+sr, 7);}}\label{a00033_a357168bbe78739811cdb7b5576714ca6}
+
+
+Global I\+R\+Q disable. 
+
+
+
+Definition at line \hyperlink{a00033_source_l00020}{20} of file \hyperlink{a00033_source}{main.\+h}.
+
+
+
+Referenced by \hyperlink{a00041_source_l00025}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00037_source_l00231}{x\+\_\+loop()}, and \hyperlink{a00037_source_l00521}{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync()}.
+
+\hypertarget{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}{\index{main.\+h@{main.\+h}!I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E@{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E}}
+\index{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E@{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E}!main.\+h@{main.\+h}}
+\subsubsection[{I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+R\+Q\+\_\+\+E\+N\+A\+B\+L\+E(
+\begin{DoxyParamCaption}
+\item[{}]{save\+\_\+sr}
+\end{DoxyParamCaption}
+)~{\bf R\+E\+S\+T\+O\+R\+E\+\_\+\+C\+P\+U\+\_\+\+I\+P\+L} (save\+\_\+sr);}}\label{a00033_abc8e0f43382f8b0fdf60d35a93c20c57}
+
+
+Global I\+R\+Q enable. 
+
+
+
+Definition at line \hyperlink{a00033_source_l00025}{25} of file \hyperlink{a00033_source}{main.\+h}.
+
+
+
+Referenced by \hyperlink{a00041_source_l00025}{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}, \hyperlink{a00038_source_l00670}{algorithm\+\_\+wake()}, \hyperlink{a00037_source_l00231}{x\+\_\+loop()}, and \hyperlink{a00037_source_l00521}{x\+\_\+task\+\_\+send\+\_\+irq\+\_\+sync()}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00033_ac529343dfb6363f115d0f9213fbe4317}{\index{main.\+h@{main.\+h}!Delay5ms@{Delay5ms}}
+\index{Delay5ms@{Delay5ms}!main.\+h@{main.\+h}}
+\subsubsection[{Delay5ms}]{\setlength{\rightskip}{0pt plus 5cm}void Delay5ms (
+\begin{DoxyParamCaption}
+\item[{int}]{Count}
+\end{DoxyParamCaption}
+)}}\label{a00033_ac529343dfb6363f115d0f9213fbe4317}
+
+
+Assembler function -\/ 5ms granularity loop delay. 
+
+\hypertarget{a00033_a3b0017f6ec0e04a6435bba00fe325294}{\index{main.\+h@{main.\+h}!Delay5us@{Delay5us}}
+\index{Delay5us@{Delay5us}!main.\+h@{main.\+h}}
+\subsubsection[{Delay5us}]{\setlength{\rightskip}{0pt plus 5cm}void Delay5us (
+\begin{DoxyParamCaption}
+\item[{int}]{Count}
+\end{DoxyParamCaption}
+)}}\label{a00033_a3b0017f6ec0e04a6435bba00fe325294}
+
+
+Assembler function -\/ 5us granularity loop delay. 
+
+
+
+Referenced by \hyperlink{a00056_source_l00099}{hwio\+\_\+configure\+\_\+analog\+\_\+init()}, \hyperlink{a00056_source_l00041}{hwio\+\_\+configure\+\_\+init()}, and \hyperlink{a00030_source_l00577}{serial\+\_\+send()}.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/dc0/a00033_a3b0017f6ec0e04a6435bba00fe325294_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00033_a4e1e8b365cce7a6d497671681eb5823c}{\index{main.\+h@{main.\+h}!sqtp\+\_\+info@{sqtp\+\_\+info}}
+\index{sqtp\+\_\+info@{sqtp\+\_\+info}!main.\+h@{main.\+h}}
+\subsubsection[{sqtp\+\_\+info}]{\setlength{\rightskip}{0pt plus 5cm}{\bf sqtp\+\_\+t} sqtp\+\_\+info}}\label{a00033_a4e1e8b365cce7a6d497671681eb5823c}
+
+
+Oscilator setting Run this project using an internal F\+R\+C. 
+
+Disable Code Protection Select P\+G\+D/\+P\+G\+C as debugging channel Communicate on P\+G\+E\+C2 and P\+G\+E\+D2 Enable M\+C\+L\+R reset pin and turn off the power-\/up timers. Disable memory security 
+
+Definition at line \hyperlink{a00048_source_l00068}{68} of file \hyperlink{a00048_source}{main.\+c}.
+
+\hypertarget{a00033_a9913e6dccd88bd052d3e8e9d73da4ede}{\index{main.\+h@{main.\+h}!version\+\_\+string@{version\+\_\+string}}
+\index{version\+\_\+string@{version\+\_\+string}!main.\+h@{main.\+h}}
+\subsubsection[{version\+\_\+string}]{\setlength{\rightskip}{0pt plus 5cm}const char version\+\_\+string\mbox{[}64\mbox{]}}}\label{a00033_a9913e6dccd88bd052d3e8e9d73da4ede}
+
+
+Definition at line \hyperlink{a00075_source_l00010}{10} of file \hyperlink{a00075_source}{version.\+c}.
+

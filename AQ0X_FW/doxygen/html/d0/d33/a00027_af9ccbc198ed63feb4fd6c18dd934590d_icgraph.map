@@ -1,0 +1,6 @@
+<map id="nov_get_status" name="nov_get_status">
+<area shape="rect" id="node2" href="$d7/df7/a00058.html#a3f47e1f5179297e173ae8508c7185632" title="writes a single byte to the specified eeprom address. " alt="" coords="169,5,275,32"/>
+<area shape="rect" id="node3" href="$d7/df7/a00058.html#aeb021b0e002db120ad733c24f3e179bc" title="Function transfer data from RAM to EEPROM over spi port. " alt="" coords="170,56,274,83"/>
+<area shape="rect" id="node5" href="$d7/df7/a00058.html#a495e93d64734be469f6725de24dd44e1" title="write EEPROM status register. " alt="" coords="163,107,281,133"/>
+<area shape="rect" id="node4" href="$d7/df7/a00058.html#a9aa94b184db1bd55b6a4a61a34c14c8d" title="Stores in EEPROM serial number. " alt="" coords="329,56,467,83"/>
+</map>

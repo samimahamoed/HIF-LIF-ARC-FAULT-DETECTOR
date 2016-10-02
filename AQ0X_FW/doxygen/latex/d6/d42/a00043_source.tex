@@ -1,0 +1,212 @@
+\hypertarget{a00043_source}{\section{gprintf.\+c}
+\label{a00043_source}\index{gprintf.\+c@{gprintf.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00030 \textcolor{preprocessor}{#include "..\(\backslash\)includes\(\backslash\)gprintf.h"}
+00031 
+00032 
+00033 
+\hypertarget{a00043_source_l00034}{}\hyperlink{a00043_aa2de12079c58c63cb0208a0b3df2a0b7}{00034} \textcolor{keyword}{typedef} void (*\hyperlink{a00043_aa2de12079c58c63cb0208a0b3df2a0b7}{putcf}) (\textcolor{keywordtype}{void}*,char);
+00035 
+00036 
+00037 
+\hypertarget{a00043_source_l00038}{}\hyperlink{a00043_ac346309c454e31a36e32039d9575ee3e}{00038} \textcolor{preprocessor}{#define PRINTF\_LONG\_SUPPORT}
+00039 
+00040 
+00041 
+\hypertarget{a00043_source_l00042}{}\hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{00042} \textcolor{preprocessor}{#define STATIC }
+00043 
+00044 
+00045 
+00046 \textcolor{preprocessor}{#ifdef PRINTF\_LONG\_SUPPORT}
+00047 
+\hypertarget{a00043_source_l00048}{}\hyperlink{a00043_ac8448f6a2ace7b25fc6fbd5561fe5e75}{00048} \hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC} \textcolor{keywordtype}{void} \hyperlink{a00043_ac8448f6a2ace7b25fc6fbd5561fe5e75}{uli2a}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} num, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} base, \textcolor{keywordtype}{int} uc,\textcolor{keywordtype}{char} * bf)
+00049     \{
+00050     \textcolor{keywordtype}{int} n=0;
+00051     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int} d=1;
+00052     \textcolor{keywordflow}{while} (num/d >= base)
+00053         d*=base;         
+00054     \textcolor{keywordflow}{while} (d!=0) \{
+00055         \textcolor{keywordtype}{int} dgt = num / d;
+00056         num%=d;
+00057         d/=base;
+00058         \textcolor{keywordflow}{if} (n || dgt>0|| d==0) \{
+00059             *bf++ = dgt+(dgt<10 ? \textcolor{charliteral}{'0'} : (uc ? \textcolor{charliteral}{'A'} : \textcolor{charliteral}{'a'})-10);
+00060             ++n;
+00061             \}
+00062         \}
+00063     *bf=0;
+00064     \}
+00065 
+\hypertarget{a00043_source_l00066}{}\hyperlink{a00043_a3e55a1e7928695ff7713544a808c3fce}{00066} \hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC} \textcolor{keywordtype}{void} \hyperlink{a00043_a3e55a1e7928695ff7713544a808c3fce}{li2a} (\textcolor{keywordtype}{long} num, \textcolor{keywordtype}{char} * bf)
+00067     \{
+00068     \textcolor{keywordflow}{if} (num<0) \{
+00069         num=-num;
+00070         *bf++ = \textcolor{charliteral}{'-'};
+00071         \}
+00072     \hyperlink{a00043_ac8448f6a2ace7b25fc6fbd5561fe5e75}{uli2a}(num,10,0,bf);
+00073     \}
+00074 
+00075 \textcolor{preprocessor}{#endif}
+00076 
+\hypertarget{a00043_source_l00077}{}\hyperlink{a00043_ae17e69308453bdacaa3b6475d441aa7b}{00077} \hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC} \textcolor{keywordtype}{void} \hyperlink{a00043_ae17e69308453bdacaa3b6475d441aa7b}{ui2a}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} num, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} base, \textcolor{keywordtype}{int} uc,\textcolor{keywordtype}{char} * bf)
+00078     \{
+00079     \textcolor{keywordtype}{int} n=0;
+00080     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} d=1;
+00081     \textcolor{keywordflow}{while} (num/d >= base)
+00082         d*=base;        
+00083     \textcolor{keywordflow}{while} (d!=0) \{
+00084         \textcolor{keywordtype}{int} dgt = num / d;
+00085         num%= d;
+00086         d/=base;
+00087         \textcolor{keywordflow}{if} (n || dgt>0 || d==0) \{
+00088             *bf++ = dgt+(dgt<10 ? \textcolor{charliteral}{'0'} : (uc ? \textcolor{charliteral}{'A'} : \textcolor{charliteral}{'a'})-10);
+00089             ++n;
+00090             \}
+00091         \}
+00092     *bf=0;
+00093     \}
+00094 
+\hypertarget{a00043_source_l00095}{}\hyperlink{a00043_a13e43d9a7f9f5fedcc3889ed0dfe1cad}{00095} \hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC} \textcolor{keywordtype}{void} \hyperlink{a00043_a13e43d9a7f9f5fedcc3889ed0dfe1cad}{i2a} (\textcolor{keywordtype}{int} num, \textcolor{keywordtype}{char} * bf)
+00096     \{
+00097     \textcolor{keywordflow}{if} (num<0) \{
+00098         num=-num;
+00099         *bf++ = \textcolor{charliteral}{'-'};
+00100         \}
+00101     \hyperlink{a00043_ae17e69308453bdacaa3b6475d441aa7b}{ui2a}(num,10,0,bf);
+00102     \}
+00103 
+\hypertarget{a00043_source_l00104}{}\hyperlink{a00043_a0f3bca7da68487662b7dff4aa60e2079}{00104} \hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC} \textcolor{keywordtype}{int} \hyperlink{a00043_a0f3bca7da68487662b7dff4aa60e2079}{a2d}(\textcolor{keywordtype}{char} ch)
+00105     \{
+00106     \textcolor{keywordflow}{if} (ch>=\textcolor{charliteral}{'0'} && ch<=\textcolor{charliteral}{'9'}) 
+00107         \textcolor{keywordflow}{return} ch-\textcolor{charliteral}{'0'};
+00108     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ch>=\textcolor{charliteral}{'a'} && ch<=\textcolor{charliteral}{'f'})
+00109         \textcolor{keywordflow}{return} ch-\textcolor{charliteral}{'a'}+10;
+00110     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (ch>=\textcolor{charliteral}{'A'} && ch<=\textcolor{charliteral}{'F'})
+00111         \textcolor{keywordflow}{return} ch-\textcolor{charliteral}{'A'}+10;
+00112     \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} -1;
+00113     \}
+00114 
+\hypertarget{a00043_source_l00115}{}\hyperlink{a00043_aeadd3398ed3a27d05fd6638133feb559}{00115} \hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC} \textcolor{keywordtype}{char} \hyperlink{a00043_aeadd3398ed3a27d05fd6638133feb559}{a2i}(\textcolor{keywordtype}{char} ch, \textcolor{keyword}{const} \textcolor{keywordtype}{char}  ** src,\textcolor{keywordtype}{int} base,\textcolor{keywordtype}{int}* nump)
+00116     \{
+00117     \textcolor{keyword}{const} \textcolor{keywordtype}{char}  * p= *src;
+00118     \textcolor{keywordtype}{int} num=0;
+00119     \textcolor{keywordtype}{int} digit;
+00120     \textcolor{keywordflow}{while} ((digit=\hyperlink{a00043_a0f3bca7da68487662b7dff4aa60e2079}{a2d}(ch))>=0) \{
+00121         \textcolor{keywordflow}{if} (digit>base) \textcolor{keywordflow}{break};
+00122         num=num*base+digit;
+00123         ch=*p++;
+00124         \}
+00125     *src=p;
+00126     *nump=num;
+00127     \textcolor{keywordflow}{return} ch;
+00128     \}
+00129 
+\hypertarget{a00043_source_l00130}{}\hyperlink{a00043_a231c14785d57435ad9cba03d6623c75c}{00130} \hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC} \textcolor{keywordtype}{void} \hyperlink{a00043_a231c14785d57435ad9cba03d6623c75c}{putchw}(\textcolor{keywordtype}{void}* putp,\hyperlink{a00043_aa2de12079c58c63cb0208a0b3df2a0b7}{putcf} putf,\textcolor{keywordtype}{int} n, \textcolor{keywordtype}{char} z, \textcolor{keywordtype}{char}* bf)
+00131     \{
+00132     \textcolor{keywordtype}{char} fc=z? \textcolor{charliteral}{'0'} : \textcolor{charliteral}{' '};
+00133     \textcolor{keywordtype}{char} ch;
+00134     \textcolor{keywordtype}{char}* p=bf;
+00135     \textcolor{keywordflow}{while} (*p++ && n > 0)
+00136         n--;
+00137     \textcolor{keywordflow}{while} (n-- > 0) 
+00138         putf(putp,fc);
+00139     \textcolor{keywordflow}{while} ((ch= *bf++))
+00140         putf(putp,ch);
+00141     \}
+00142 
+\hypertarget{a00043_source_l00143}{}\hyperlink{a00043_a2e6857db4b5af96ebbfa61da86245dc5}{00143} \textcolor{keywordtype}{void} \hyperlink{a00043_a2e6857db4b5af96ebbfa61da86245dc5}{tfp\_format}(\textcolor{keywordtype}{void}* putp,\hyperlink{a00043_aa2de12079c58c63cb0208a0b3df2a0b7}{putcf} putf,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *fmt, va\_list va)
+00144     \{
+00145     \textcolor{keywordtype}{char} bf[12];
+00146     
+00147     \textcolor{keywordtype}{char} ch;
+00148 
+00149 
+00150     \textcolor{keywordflow}{while} ((ch=*(fmt++))) \{
+00151         \textcolor{keywordflow}{if} (ch!=\textcolor{charliteral}{'%'}) 
+00152             putf(putp,ch);
+00153         \textcolor{keywordflow}{else} \{
+00154             \textcolor{keywordtype}{char} lz=0;
+00155 \textcolor{preprocessor}{#ifdef  PRINTF\_LONG\_SUPPORT}
+00156             \textcolor{keywordtype}{char} lng=0;
+00157 \textcolor{preprocessor}{#endif}
+00158             \textcolor{keywordtype}{int} w=0;
+00159             ch=*(fmt++);
+00160             \textcolor{keywordflow}{if} (ch==\textcolor{charliteral}{'0'}) \{
+00161                 ch=*(fmt++);
+00162                 lz=1;
+00163                 \}
+00164             \textcolor{keywordflow}{if} (ch>=\textcolor{charliteral}{'0'} && ch<=\textcolor{charliteral}{'9'}) \{
+00165                 ch=\hyperlink{a00043_aeadd3398ed3a27d05fd6638133feb559}{a2i}(ch,&fmt,10,&w);
+00166                 \}
+00167 \textcolor{preprocessor}{#ifdef  PRINTF\_LONG\_SUPPORT}
+00168             \textcolor{keywordflow}{if} (ch==\textcolor{charliteral}{'l'}) \{
+00169                 ch=*(fmt++);
+00170                 lng=1;
+00171             \}
+00172 \textcolor{preprocessor}{#endif}
+00173             \textcolor{keywordflow}{switch} (ch) \{
+00174                 \textcolor{keywordflow}{case} 0: 
+00175                     \textcolor{keywordflow}{goto} abort;
+00176                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'u'} : \{
+00177 \textcolor{preprocessor}{#ifdef  PRINTF\_LONG\_SUPPORT}
+00178                     \textcolor{keywordflow}{if} (lng)
+00179                         \hyperlink{a00043_ac8448f6a2ace7b25fc6fbd5561fe5e75}{uli2a}(va\_arg(va, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int}),10,0,bf);
+00180                     \textcolor{keywordflow}{else}
+00181 \textcolor{preprocessor}{#endif}
+00182                     \hyperlink{a00043_ae17e69308453bdacaa3b6475d441aa7b}{ui2a}(va\_arg(va, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}),10,0,bf);
+00183                     \hyperlink{a00043_a231c14785d57435ad9cba03d6623c75c}{putchw}(putp,putf,w,lz,bf);
+00184                     \textcolor{keywordflow}{break};
+00185                     \}
+00186                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'} :  \{
+00187 \textcolor{preprocessor}{#ifdef  PRINTF\_LONG\_SUPPORT}
+00188                     \textcolor{keywordflow}{if} (lng)
+00189                         \hyperlink{a00043_a3e55a1e7928695ff7713544a808c3fce}{li2a}(va\_arg(va, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int}),bf);
+00190                     \textcolor{keywordflow}{else}
+00191 \textcolor{preprocessor}{#endif}
+00192                     \hyperlink{a00043_a13e43d9a7f9f5fedcc3889ed0dfe1cad}{i2a}(va\_arg(va, \textcolor{keywordtype}{int}),bf);
+00193                     \hyperlink{a00043_a231c14785d57435ad9cba03d6623c75c}{putchw}(putp,putf,w,lz,bf);
+00194                     \textcolor{keywordflow}{break};
+00195                     \}
+00196                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'x'}: \textcolor{keywordflow}{case} \textcolor{charliteral}{'X'} : 
+00197 \textcolor{preprocessor}{#ifdef  PRINTF\_LONG\_SUPPORT}
+00198                     \textcolor{keywordflow}{if} (lng)
+00199                         \hyperlink{a00043_ac8448f6a2ace7b25fc6fbd5561fe5e75}{uli2a}(va\_arg(va, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \textcolor{keywordtype}{int}),16,(ch==\textcolor{charliteral}{'X'}),bf);
+00200                     \textcolor{keywordflow}{else}
+00201 \textcolor{preprocessor}{#endif}
+00202                     \hyperlink{a00043_ae17e69308453bdacaa3b6475d441aa7b}{ui2a}(va\_arg(va, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}),16,(ch==\textcolor{charliteral}{'X'}),bf);
+00203                     \hyperlink{a00043_a231c14785d57435ad9cba03d6623c75c}{putchw}(putp,putf,w,lz,bf);
+00204                     \textcolor{keywordflow}{break};
+00205                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'} : 
+00206                     putf(putp,(\textcolor{keywordtype}{char})(va\_arg(va, \textcolor{keywordtype}{int})));
+00207                     \textcolor{keywordflow}{break};
+00208                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'s'} : 
+00209                     \hyperlink{a00043_a231c14785d57435ad9cba03d6623c75c}{putchw}(putp,putf,w,0,va\_arg(va, \textcolor{keywordtype}{char}*));
+00210                     \textcolor{keywordflow}{break};
+00211                 \textcolor{keywordflow}{case} \textcolor{charliteral}{'%'} :
+00212                     putf(putp,ch);
+00213                 \textcolor{keywordflow}{default}:
+00214                     \textcolor{keywordflow}{break};
+00215                 \}
+00216             \}
+00217         \}
+00218     abort:;
+00219     \}
+00220 
+00221 
+00222 
+\hypertarget{a00043_source_l00223}{}\hyperlink{a00043_af8c19e7fd316d83ac94d9bed9fccbf76}{00223} \hyperlink{a00043_a10b2d890d871e1489bb02b7e70d9bdfb}{STATIC} \textcolor{keywordtype}{void} \hyperlink{a00043_af8c19e7fd316d83ac94d9bed9fccbf76}{putcp}(\textcolor{keywordtype}{void}* p,\textcolor{keywordtype}{char} c)
+00224     \{
+00225     *(*((\textcolor{keywordtype}{char}**)p))++ = c;
+00226     \}
+00227 
+00228 
+00229 
+\hypertarget{a00043_source_l00230}{}\hyperlink{a00043_aa8dfc5ac91747032198002a008a6aa46}{00230} \textcolor{keywordtype}{void} \hyperlink{a00043_aa8dfc5ac91747032198002a008a6aa46}{tfp\_vsprintf}(\textcolor{keywordtype}{char}* s,\textcolor{keyword}{const} \textcolor{keywordtype}{char} *fmt, va\_list va)
+00231     \{
+00232     \hyperlink{a00043_a2e6857db4b5af96ebbfa61da86245dc5}{tfp\_format}(&s,\hyperlink{a00043_af8c19e7fd316d83ac94d9bed9fccbf76}{putcp},fmt,va);
+00233     \hyperlink{a00043_af8c19e7fd316d83ac94d9bed9fccbf76}{putcp}(&s,0);
+00234     \}
+\end{DoxyCode}

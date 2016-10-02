@@ -1,0 +1,5 @@
+<map id="serial_get_command_ack" name="serial_get_command_ack">
+<area shape="rect" id="node2" href="$d5/d79/a00030.html#a366b2707f4c7d76f0efc1b5cdde8e37e" title="Function for retriving serial message. " alt="" coords="224,5,367,32"/>
+<area shape="rect" id="node3" href="$d5/d79/a00030.html#ad2b461e9e9044364a28a61cfadcacdd8" title="Init function for srv_serial service. " alt="" coords="257,56,334,83"/>
+<area shape="rect" id="node4" href="$d4/dca/a00048.html#a840291bc02cba5474a4cb46a9b9566fe" title="System startup function. " alt="" coords="415,56,465,83"/>
+</map>

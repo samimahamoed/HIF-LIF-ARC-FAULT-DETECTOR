@@ -1,0 +1,287 @@
+\hypertarget{a00035}{\section{uv\+\_\+sensor\+\_\+prv.\+h File Reference}
+\label{a00035}\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+}
+{\ttfamily \#include \char`\"{}..\textbackslash{}..\textbackslash{}includes\textbackslash{}allheaders.\+h\char`\"{}}\\*
+Include dependency graph for uv\+\_\+sensor\+\_\+prv.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/df6/a01716}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/ddb/a01717}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00035_d9/d30/a00848}{uv\+\_\+sen\+\_\+data\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00035_a88ce8cfec1a4d1cf613a890254880e24}{X\+\_\+\+M\+S\+G\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}~(\hyperlink{a00036_a082eb6e82ded25b00f04da4f611c961e}{X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E} + 5)
+\begin{DoxyCompactList}\small\item\em Internal event message, initiates periodic supervision. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00035_a2ab2f7f60fff32ecaf2859625e76a868}{X\+\_\+\+N\+T\+F\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}~(\hyperlink{a00036_ab2eeea4643823a0c7c7731ddb83e3edc}{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E} + 17)
+\begin{DoxyCompactList}\small\item\em Internal supervison timer. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00035_a8a535456285f4602701c814d7b69cc68}{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}~1000
+\begin{DoxyCompactList}\small\item\em Timeout. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00035_a44e4917fdf9d2a3574a3dd34537d97a7}{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+E\+D\+\_\+\+O\+N\+\_\+\+P\+E\+R\+I\+O\+D}~10
+\item 
+\#define \hyperlink{a00035_aa88a423475bb5b13601785eed80fb1b9}{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T}~(2\+E8) -\/ 1
+\item 
+\#define \hyperlink{a00035_a4131fea6179b36b90522dd6a9ecc0a73}{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P}~100
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00035_ae4600a772ff6ca64c4e169e726623058}{uv\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} final\+\_\+val, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} init\+\_\+val)
+\begin{DoxyCompactList}\small\item\em Claculate first order derivative. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} \hyperlink{a00035_a252304c3c6703a4e94f39c17d0be256b}{uv\+\_\+sen\+\_\+calc\+\_\+probablity} (\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} event, \hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16} obs)
+\begin{DoxyCompactList}\small\item\em Claculates the event probablity. \end{DoxyCompactList}\item 
+\hyperlink{a00072_a7e31ca7716b8d85dd473450a5c5e5a97}{Int8} \hyperlink{a00035_a1bf033abd3b69751cc1da740ec06f459}{uv\+\_\+compare} (\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} num, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} given\+\_\+num, \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} tolerance)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00035_d9/d30/a00848}{uv\+\_\+sen\+\_\+data\+\_\+t} \hyperlink{a00035_adb4cffe9b88704fe686a94fe9996fa52}{uv\+\_\+sen\+\_\+data}
+\begin{DoxyCompactList}\small\item\em Internal uv\+\_\+sen module data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Data Structure Documentation}
+\index{uv\+\_\+sen\+\_\+data\+\_\+t@{uv\+\_\+sen\+\_\+data\+\_\+t}}\label{d9/d30/a00848}
+\hypertarget{a00035_d9/d30/a00848}{}
+\subsubsection{struct uv\+\_\+sen\+\_\+data\+\_\+t}
+
+
+Definition at line \hyperlink{a00035_source_l00031}{31} of file \hyperlink{a00035_source}{uv\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+Collaboration diagram for uv\+\_\+sen\+\_\+data\+\_\+t\+:
+% FIG 0
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00035_a94b2d1f6ea4ab334c74d24984dd27843}{\hyperlink{a00021_d6/d9c/a00352}{configured\+\_\+t}}\label{a00035_a94b2d1f6ea4ab334c74d24984dd27843}
+&
+configured&
+stores user configuration details \\
+\hline
+
+\hypertarget{a00035_a7ae905b560513ad201e58c2f63375030}{\hyperlink{a00017_dd/dcb/a00375}{diagonesis\+\_\+records\+\_\+light\+\_\+t}}\label{a00035_a7ae905b560513ad201e58c2f63375030}
+&
+diagonesis\+\_\+records&
+holds diagonesis data on the module operation \\
+\hline
+
+\hypertarget{a00035_ac9b38e2c1d3f1013a88d33506c754152}{\hyperlink{a00028}{module\+\_\+disturbance\+\_\+record\+\_\+t} $\ast$}\label{a00035_ac9b38e2c1d3f1013a88d33506c754152}
+&
+disturbance\+\_\+record&
+disturbance record storage , details starting form the fuvst event detection to the duration of observation record length \\
+\hline
+
+\hypertarget{a00035_a5a53c391562b059eb744ac679f3765ca}{\hyperlink{a00017_de/d94/a00603}{module\+\_\+status\+\_\+t}}\label{a00035_a5a53c391562b059eb744ac679f3765ca}
+&
+module\+\_\+status&
+holds details about the module current state \\
+\hline
+
+\hypertarget{a00035_aaeec6b0609dba31393f337abf1cce3d3}{\hyperlink{a00022_d2/d5a/a00792}{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00035_aaeec6b0609dba31393f337abf1cce3d3}
+&
+sv\+\_\+errors\+\_\+flags&
+supervission error flags \\
+\hline
+
+\hypertarget{a00035_afdc0e2c51e8e301d264700f4f9c10740}{\hyperlink{a00021_d7/d1b/a00864}{x\+\_\+notify\+\_\+module\+\_\+sv\+\_\+status\+\_\+report\+\_\+t}}\label{a00035_afdc0e2c51e8e301d264700f4f9c10740}
+&
+sv\+\_\+status\+\_\+ntf&
+\\
+\hline
+
+\hypertarget{a00035_a43c345f39ea3aefbb60ef1ef57fe5d83}{\hyperlink{a00036_de/d37/a00849}{x\+\_\+event}}\label{a00035_a43c345f39ea3aefbb60ef1ef57fe5d83}
+&
+sv\+\_\+task\+\_\+event&
+Internal event for processing light module suppervission task. \\
+\hline
+
+\hypertarget{a00035_ada91b200053f2d93e3639dc4ee3415b4}{\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify}}\label{a00035_ada91b200053f2d93e3639dc4ee3415b4}
+&
+sv\+\_\+timer\+\_\+ntf&
+Timer notification to initiate light module suppervission task. \\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00035_aa88a423475bb5b13601785eed80fb1b9}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T@{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T}}
+\index{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T@{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+A\+L\+S\+E\+\_\+\+P\+O\+S\+I\+T\+I\+V\+E\+\_\+\+T\+O\+L\+E\+R\+A\+N\+C\+E\+\_\+\+L\+I\+M\+I\+T~(2\+E8) -\/ 1}}\label{a00035_aa88a423475bb5b13601785eed80fb1b9}
+
+
+Definition at line \hyperlink{a00035_source_l00024}{24} of file \hyperlink{a00035_source}{uv\+\_\+sensor\+\_\+prv.\+h}.
+
+\hypertarget{a00035_a4131fea6179b36b90522dd6a9ecc0a73}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P@{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P}}
+\index{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P@{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+T\+O\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+\+G\+A\+P~100}}\label{a00035_a4131fea6179b36b90522dd6a9ecc0a73}
+
+
+Definition at line \hyperlink{a00035_source_l00025}{25} of file \hyperlink{a00035_source}{uv\+\_\+sensor\+\_\+prv.\+h}.
+
+\hypertarget{a00035_a44e4917fdf9d2a3574a3dd34537d97a7}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+E\+D\+\_\+\+O\+N\+\_\+\+P\+E\+R\+I\+O\+D@{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+E\+D\+\_\+\+O\+N\+\_\+\+P\+E\+R\+I\+O\+D}}
+\index{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+E\+D\+\_\+\+O\+N\+\_\+\+P\+E\+R\+I\+O\+D@{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+E\+D\+\_\+\+O\+N\+\_\+\+P\+E\+R\+I\+O\+D}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+E\+D\+\_\+\+O\+N\+\_\+\+P\+E\+R\+I\+O\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+L\+E\+D\+\_\+\+O\+N\+\_\+\+P\+E\+R\+I\+O\+D~10}}\label{a00035_a44e4917fdf9d2a3574a3dd34537d97a7}
+
+
+Definition at line \hyperlink{a00035_source_l00021}{21} of file \hyperlink{a00035_source}{uv\+\_\+sensor\+\_\+prv.\+h}.
+
+\hypertarget{a00035_a8a535456285f4602701c814d7b69cc68}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D@{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}}
+\index{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D@{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D~1000}}\label{a00035_a8a535456285f4602701c814d7b69cc68}
+
+
+Timeout. 
+
+
+
+Definition at line \hyperlink{a00035_source_l00020}{20} of file \hyperlink{a00035_source}{uv\+\_\+sensor\+\_\+prv.\+h}.
+
+\hypertarget{a00035_a88ce8cfec1a4d1cf613a890254880e24}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!X\+\_\+\+M\+S\+G\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V@{X\+\_\+\+M\+S\+G\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}}
+\index{X\+\_\+\+M\+S\+G\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V@{X\+\_\+\+M\+S\+G\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{X\+\_\+\+M\+S\+G\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+M\+S\+G\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V~({\bf X\+\_\+\+M\+S\+G\+\_\+\+F\+R\+E\+E} + 5)}}\label{a00035_a88ce8cfec1a4d1cf613a890254880e24}
+
+
+Internal event message, initiates periodic supervision. 
+
+
+
+Definition at line \hyperlink{a00035_source_l00013}{13} of file \hyperlink{a00035_source}{uv\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+Referenced by \hyperlink{a00073_source_l00069}{uv\+\_\+sen\+\_\+taskx()}.
+
+\hypertarget{a00035_a2ab2f7f60fff32ecaf2859625e76a868}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!X\+\_\+\+N\+T\+F\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R@{X\+\_\+\+N\+T\+F\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}}
+\index{X\+\_\+\+N\+T\+F\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R@{X\+\_\+\+N\+T\+F\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{X\+\_\+\+N\+T\+F\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+N\+T\+F\+\_\+\+U\+V\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R~({\bf X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E} + 17)}}\label{a00035_a2ab2f7f60fff32ecaf2859625e76a868}
+
+
+Internal supervison timer. 
+
+
+
+Definition at line \hyperlink{a00035_source_l00016}{16} of file \hyperlink{a00035_source}{uv\+\_\+sensor\+\_\+prv.\+h}.
+
+
+
+Referenced by \hyperlink{a00073_source_l00141}{uv\+\_\+sen\+\_\+notifyx()}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00035_a1bf033abd3b69751cc1da740ec06f459}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!uv\+\_\+compare@{uv\+\_\+compare}}
+\index{uv\+\_\+compare@{uv\+\_\+compare}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{uv\+\_\+compare}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int8} uv\+\_\+compare (
+\begin{DoxyParamCaption}
+\item[{{\bf Float32}}]{num1, }
+\item[{{\bf Float32}}]{num2, }
+\item[{{\bf Float32}}]{tolerance}
+\end{DoxyParamCaption}
+)}}\label{a00035_a1bf033abd3b69751cc1da740ec06f459}
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00073_source_l00215}{215} of file \hyperlink{a00073_source}{uv\+\_\+sensor.\+c}.
+
+
+\begin{DoxyCode}
+00215                                                                \{
+00216 
+00217 
+00218     \hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32} difference = num1 - num2;
+00219 
+00220    \textcolor{keywordflow}{if}(abs(difference) <= tolerance)
+00221     \textcolor{keywordflow}{return}  0;
+00222 
+00223    \textcolor{keywordflow}{if}(difference > 0\textcolor{comment}{/*num1 > num2*/})
+00224     \textcolor{keywordflow}{return} 1;
+00225 
+00226    \textcolor{keywordflow}{if}(difference < 0\textcolor{comment}{/*num1 < num2*/})
+00227     \textcolor{keywordflow}{return} -1;
+00228 
+00229    \textcolor{keywordflow}{return} -2;
+00230 \}
+\end{DoxyCode}
+\hypertarget{a00035_a252304c3c6703a4e94f39c17d0be256b}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!uv\+\_\+sen\+\_\+calc\+\_\+probablity@{uv\+\_\+sen\+\_\+calc\+\_\+probablity}}
+\index{uv\+\_\+sen\+\_\+calc\+\_\+probablity@{uv\+\_\+sen\+\_\+calc\+\_\+probablity}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{uv\+\_\+sen\+\_\+calc\+\_\+probablity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Float32} uv\+\_\+sen\+\_\+calc\+\_\+probablity (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{event, }
+\item[{{\bf Uint16}}]{obs}
+\end{DoxyParamCaption}
+)}}\label{a00035_a252304c3c6703a4e94f39c17d0be256b}
+
+
+Claculates the event probablity. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event,positive} & event count value \\
+\hline
+\mbox{\tt in}  & {\em obs,total} & number of observation \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00073_source_l00251}{251} of file \hyperlink{a00073_source}{uv\+\_\+sensor.\+c}.
+
+
+\begin{DoxyCode}
+00251                                                        \{
+00252 
+00253     \textcolor{keywordflow}{return} (100L*((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})event/(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})obs));
+00254 \}
+\end{DoxyCode}
+\hypertarget{a00035_ae4600a772ff6ca64c4e169e726623058}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!uv\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative@{uv\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}}
+\index{uv\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative@{uv\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{uv\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Float32} uv\+\_\+sen\+\_\+first\+\_\+order\+\_\+derivative (
+\begin{DoxyParamCaption}
+\item[{{\bf Uint16}}]{final\+\_\+val, }
+\item[{{\bf Uint16}}]{init\+\_\+val}
+\end{DoxyParamCaption}
+)}}\label{a00035_ae4600a772ff6ca64c4e169e726623058}
+
+
+Claculate first order derivative. 
+
+
+
+Definition at line \hyperlink{a00073_source_l00238}{238} of file \hyperlink{a00073_source}{uv\+\_\+sensor.\+c}.
+
+
+\begin{DoxyCode}
+00238                                                                         \{
+00239     \textcolor{keywordflow}{return} ((\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})final\_val-(\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32})init\_val);
+00240 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00035_adb4cffe9b88704fe686a94fe9996fa52}{\index{uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}!uv\+\_\+sen\+\_\+data@{uv\+\_\+sen\+\_\+data}}
+\index{uv\+\_\+sen\+\_\+data@{uv\+\_\+sen\+\_\+data}!uv\+\_\+sensor\+\_\+prv.\+h@{uv\+\_\+sensor\+\_\+prv.\+h}}
+\subsubsection[{uv\+\_\+sen\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uv\+\_\+sen\+\_\+data\+\_\+t} uv\+\_\+sen\+\_\+data}}\label{a00035_adb4cffe9b88704fe686a94fe9996fa52}
+
+
+Internal uv\+\_\+sen module data. 
+
+
+
+Definition at line \hyperlink{a00073_source_l00022}{22} of file \hyperlink{a00073_source}{uv\+\_\+sensor.\+c}.
+

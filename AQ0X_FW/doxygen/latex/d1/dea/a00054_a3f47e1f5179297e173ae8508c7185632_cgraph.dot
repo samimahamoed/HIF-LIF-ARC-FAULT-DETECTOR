@@ -1,0 +1,16 @@
+digraph "nov_byte_write"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="nov_byte_write",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="nov_get_status",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#af9ccbc198ed63feb4fd6c18dd934590d",tooltip="reads status register from EEPROM. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="spi_put_data",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d5e/a00007.html#a19e2dff580e4d1b2198fa9108fca81ac",tooltip="send one byte of data and receive one back at the same time "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="nov_set_write_enable\l_latch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a7b698f4b0088c4e28951c2204b7b821e",tooltip="set or reset write enable latch, the proceedure is drived from the information provided in microchip ..."];
+  Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+}

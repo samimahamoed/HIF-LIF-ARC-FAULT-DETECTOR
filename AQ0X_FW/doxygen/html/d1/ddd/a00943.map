@@ -1,0 +1,12 @@
+<map id="light_sen_data_t" name="light_sen_data_t">
+<area shape="rect" id="node2" href="$de/d11/a00021.html#d6/d9c/a00352" title="{configured_t\n||}" alt="" coords="413,435,505,513"/>
+<area shape="rect" id="node13" href="$d4/d51/a00017.html#de/d94/a00603" title="{module_status_t\n||}" alt="" coords="1568,435,1686,513"/>
+<area shape="rect" id="node19" href="$d7/de0/a00022.html#d2/d5a/a00792" title="sensor supervission replay status report structure " alt="" coords="1085,435,1204,513"/>
+<area shape="rect" id="node20" href="$d4/d51/a00017.html#dd/dcb/a00375" title="{diagonesis_records\l_light_t\n||}" alt="" coords="1250,428,1385,520"/>
+<area shape="rect" id="node21" href="$d1/d2b/a00018.html#d0/d66/a00858" title="Notification structure from light_sen module to Algorithm module about supervision result..." alt="" coords="1410,428,1537,520"/>
+<area shape="rect" id="node7" href="$dc/d3c/a00028.html" title="{module_disturbance\l_record_t\n|+ event_data\l|+ __attribute__()\l}" alt="" coords="858,428,996,520"/>
+<area shape="rect" id="node8" href="$d7/de0/a00022.html#da/dc3/a00657" title="{pre_act_record_buffer_t\n||}" alt="" coords="811,195,968,272"/>
+<area shape="rect" id="node10" href="$de/d8c/a00036.html#de/d37/a00849" title="OS event. " alt="" coords="1955,195,2022,272"/>
+<area shape="rect" id="node14" href="$d4/d51/a00017.html#d8/d7f/a00787" title="{state_data_light_t\n||}" alt="" coords="1462,195,1587,272"/>
+<area shape="rect" id="node17" href="$de/d8c/a00036.html#df/d4c/a00851" title="{x_notify\n||}" alt="" coords="1747,195,1814,272"/>
+</map>

@@ -1,0 +1,236 @@
+\hypertarget{a00053_source}{\section{ui\+\_\+recordpreview.\+h}
+\label{a00053_source}\index{ui\+\_\+recordpreview.\+h@{ui\+\_\+recordpreview.\+h}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/********************************************************************************}
+00002 \textcolor{comment}{** Form generated from reading UI file 'recordpreview.ui'}
+00003 \textcolor{comment}{**}
+00004 \textcolor{comment}{** Created by: Qt User Interface Compiler version 5.2.0}
+00005 \textcolor{comment}{**}
+00006 \textcolor{comment}{** WARNING! All changes made in this file will be lost when recompiling UI file!}
+00007 \textcolor{comment}{********************************************************************************/}
+00008 
+00009 \textcolor{preprocessor}{#ifndef UI\_RECORDPREVIEW\_H}
+00010 \textcolor{preprocessor}{#define UI\_RECORDPREVIEW\_H}
+00011 
+00012 \textcolor{preprocessor}{#include <../qcustomplot.h>}
+00013 \textcolor{preprocessor}{#include <QtCore/QVariant>}
+00014 \textcolor{preprocessor}{#include <QtWidgets/QAction>}
+00015 \textcolor{preprocessor}{#include <QtWidgets/QApplication>}
+00016 \textcolor{preprocessor}{#include <QtWidgets/QButtonGroup>}
+00017 \textcolor{preprocessor}{#include <QtWidgets/QDockWidget>}
+00018 \textcolor{preprocessor}{#include <QtWidgets/QGridLayout>}
+00019 \textcolor{preprocessor}{#include <QtWidgets/QHBoxLayout>}
+00020 \textcolor{preprocessor}{#include <QtWidgets/QHeaderView>}
+00021 \textcolor{preprocessor}{#include <QtWidgets/QMainWindow>}
+00022 \textcolor{preprocessor}{#include <QtWidgets/QMenu>}
+00023 \textcolor{preprocessor}{#include <QtWidgets/QMenuBar>}
+00024 \textcolor{preprocessor}{#include <QtWidgets/QStatusBar>}
+00025 \textcolor{preprocessor}{#include <QtWidgets/QToolBar>}
+00026 \textcolor{preprocessor}{#include <QtWidgets/QWidget>}
+00027 
+00028 QT\_BEGIN\_NAMESPACE
+00029 
+\hypertarget{a00053_source_l00030}{}\hyperlink{a00028}{00030} \textcolor{keyword}{class }\hyperlink{a00028}{Ui\_recordPreview}
+00031 \{
+00032 \textcolor{keyword}{public}:
+\hypertarget{a00053_source_l00033}{}\hyperlink{a00028_ae81b7303db9e9c5d730c59b86ec0e960}{00033}     QAction *\hyperlink{a00028_ae81b7303db9e9c5d730c59b86ec0e960}{actionCreateCSV};
+\hypertarget{a00053_source_l00034}{}\hyperlink{a00028_aa09067a9c96c9cd78f75261a9fcb89f0}{00034}     QAction *\hyperlink{a00028_aa09067a9c96c9cd78f75261a9fcb89f0}{actionWinDataPlot};
+\hypertarget{a00053_source_l00035}{}\hyperlink{a00028_a19203ba5fef3bc68f3d88f1dd3c94777}{00035}     QAction *\hyperlink{a00028_a19203ba5fef3bc68f3d88f1dd3c94777}{actionData\_Plot\_pdf};
+\hypertarget{a00053_source_l00036}{}\hyperlink{a00028_a4369770edbf9cb6131a066ca10b3f863}{00036}     QAction *\hyperlink{a00028_a4369770edbf9cb6131a066ca10b3f863}{actionEvent\_Plot\_pdf};
+\hypertarget{a00053_source_l00037}{}\hyperlink{a00028_ae841c150cf6131bef2e8d12da0401ce2}{00037}     QAction *\hyperlink{a00028_ae841c150cf6131bef2e8d12da0401ce2}{actionData\_plot\_img};
+\hypertarget{a00053_source_l00038}{}\hyperlink{a00028_a789f5466c7f1781c13d4d027e982ca55}{00038}     QAction *\hyperlink{a00028_a789f5466c7f1781c13d4d027e982ca55}{actionEvent\_Plot\_img};
+\hypertarget{a00053_source_l00039}{}\hyperlink{a00028_ac72ec9c8679d46fd43a87f99ee6db893}{00039}     QAction *\hyperlink{a00028_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot};
+\hypertarget{a00053_source_l00040}{}\hyperlink{a00028_ac9ab4609922159e8e4cc45905f76928e}{00040}     QWidget *\hyperlink{a00028_ac9ab4609922159e8e4cc45905f76928e}{centralwidget};
+\hypertarget{a00053_source_l00041}{}\hyperlink{a00028_a2a8f7ee8d4458dd20481c8a1c29ce185}{00041}     QDockWidget *\hyperlink{a00028_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history};
+\hypertarget{a00053_source_l00042}{}\hyperlink{a00028_a538c2b98d6f228a073dea0a3ddb4350e}{00042}     QWidget *\hyperlink{a00028_a538c2b98d6f228a073dea0a3ddb4350e}{dockWidgetContents\_4};
+\hypertarget{a00053_source_l00043}{}\hyperlink{a00028_a21cc18536b3c91200eceb2e5e01d3293}{00043}     QGridLayout *\hyperlink{a00028_a21cc18536b3c91200eceb2e5e01d3293}{gridLayout\_4};
+\hypertarget{a00053_source_l00044}{}\hyperlink{a00028_a0a28f44d5179dd3cd2c84f4a1ac581c8}{00044}     QHBoxLayout *\hyperlink{a00028_a0a28f44d5179dd3cd2c84f4a1ac581c8}{horizontalLayout\_4};
+\hypertarget{a00053_source_l00045}{}\hyperlink{a00028_a43d24fa14d90cc27b310542e39dcdd1b}{00045}     QCustomPlot *\hyperlink{a00028_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt};
+\hypertarget{a00053_source_l00046}{}\hyperlink{a00028_adddc4285028693f10dfd49cd08276e83}{00046}     QMenuBar *\hyperlink{a00028_adddc4285028693f10dfd49cd08276e83}{menubar};
+\hypertarget{a00053_source_l00047}{}\hyperlink{a00028_a5ef77bf8c78c201d83049ee8b40cf345}{00047}     QMenu *\hyperlink{a00028_a5ef77bf8c78c201d83049ee8b40cf345}{menuSave};
+\hypertarget{a00053_source_l00048}{}\hyperlink{a00028_aaf69c873ec3bf0ea397829122ca4a224}{00048}     QMenu *\hyperlink{a00028_aaf69c873ec3bf0ea397829122ca4a224}{menuSave\_As};
+\hypertarget{a00053_source_l00049}{}\hyperlink{a00028_a4cdb6b113583d4ef43a08b5526c13e3a}{00049}     QMenu *\hyperlink{a00028_a4cdb6b113583d4ef43a08b5526c13e3a}{menuPDF};
+\hypertarget{a00053_source_l00050}{}\hyperlink{a00028_af1ff1ecbe6ea007cfeda320cca9865b7}{00050}     QMenu *\hyperlink{a00028_af1ff1ecbe6ea007cfeda320cca9865b7}{menuImage};
+\hypertarget{a00053_source_l00051}{}\hyperlink{a00028_afd93511da273fc2c6a88472d154cb176}{00051}     QMenu *\hyperlink{a00028_afd93511da273fc2c6a88472d154cb176}{menuWindows};
+\hypertarget{a00053_source_l00052}{}\hyperlink{a00028_a5573ce6bc38b919d995ee7927b66c223}{00052}     QStatusBar *\hyperlink{a00028_a5573ce6bc38b919d995ee7927b66c223}{statusbar};
+\hypertarget{a00053_source_l00053}{}\hyperlink{a00028_a07b76f17803ec09e0367b72938bbd097}{00053}     QDockWidget *\hyperlink{a00028_a07b76f17803ec09e0367b72938bbd097}{dockWidgetPlot};
+\hypertarget{a00053_source_l00054}{}\hyperlink{a00028_a26b0f4ae45c1aa0cfd8037f25a2f290f}{00054}     QWidget *\hyperlink{a00028_a26b0f4ae45c1aa0cfd8037f25a2f290f}{dockWidgetContents\_3};
+\hypertarget{a00053_source_l00055}{}\hyperlink{a00028_a4edfeb379ee365973f74b0e422fd9916}{00055}     QGridLayout *\hyperlink{a00028_a4edfeb379ee365973f74b0e422fd9916}{gridLayout\_3};
+\hypertarget{a00053_source_l00056}{}\hyperlink{a00028_a14cf293099dc18a097ecd71460db1701}{00056}     QHBoxLayout *\hyperlink{a00028_a14cf293099dc18a097ecd71460db1701}{horizontalLayout\_3};
+\hypertarget{a00053_source_l00057}{}\hyperlink{a00028_a247d94481323c0bc4f8b6458a8a535dd}{00057}     QCustomPlot *\hyperlink{a00028_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data};
+\hypertarget{a00053_source_l00058}{}\hyperlink{a00028_ac94509c2cd16337592e1634b0f2a6020}{00058}     QToolBar *\hyperlink{a00028_ac94509c2cd16337592e1634b0f2a6020}{toolBar};
+00059 
+\hypertarget{a00053_source_l00060}{}\hyperlink{a00028_afa41dc070a896a5eae476f3c0206825c}{00060}     \textcolor{keywordtype}{void} \hyperlink{a00028_afa41dc070a896a5eae476f3c0206825c}{setupUi}(\hyperlink{a00010}{QMainWindow} *\hyperlink{a00020}{recordPreview})
+00061     \{
+00062         \textcolor{keywordflow}{if} (recordPreview->objectName().isEmpty())
+00063             recordPreview->setObjectName(QStringLiteral(\textcolor{stringliteral}{"recordPreview"}));
+00064         recordPreview->setWindowModality(Qt::NonModal);
+00065         recordPreview->resize(800, 600);
+00066         QIcon icon;
+00067         icon.addFile(QStringLiteral(\textcolor{stringliteral}{":/logo/logo"}), QSize(), QIcon::Normal, QIcon::Off);
+00068         recordPreview->setWindowIcon(icon);
+00069         actionCreateCSV = \textcolor{keyword}{new} QAction(recordPreview);
+00070         actionCreateCSV->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionCreateCSV"}));
+00071         QIcon icon1;
+00072         icon1.addFile(QStringLiteral(\textcolor{stringliteral}{":/logo/icons/csv\_file\_icon.png"}), QSize(), QIcon::Normal, QIcon::Off)
+      ;
+00073         actionCreateCSV->setIcon(icon1);
+00074         actionCreateCSV->setIconVisibleInMenu(\textcolor{keyword}{true});
+00075         actionWinDataPlot = \textcolor{keyword}{new} QAction(recordPreview);
+00076         actionWinDataPlot->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionWinDataPlot"}));
+00077         actionWinDataPlot->setCheckable(\textcolor{keyword}{true});
+00078         actionData\_Plot\_pdf = \textcolor{keyword}{new} QAction(recordPreview);
+00079         actionData\_Plot\_pdf->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionData\_Plot\_pdf"}));
+00080         actionEvent\_Plot\_pdf = \textcolor{keyword}{new} QAction(recordPreview);
+00081         actionEvent\_Plot\_pdf->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionEvent\_Plot\_pdf"}));
+00082         actionData\_plot\_img = \textcolor{keyword}{new} QAction(recordPreview);
+00083         actionData\_plot\_img->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionData\_plot\_img"}));
+00084         actionEvent\_Plot\_img = \textcolor{keyword}{new} QAction(recordPreview);
+00085         actionEvent\_Plot\_img->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionEvent\_Plot\_img"}));
+00086         actionWinEventPlot = \textcolor{keyword}{new} QAction(recordPreview);
+00087         actionWinEventPlot->setObjectName(QStringLiteral(\textcolor{stringliteral}{"actionWinEventPlot"}));
+00088         centralwidget = \textcolor{keyword}{new} QWidget(recordPreview);
+00089         centralwidget->setObjectName(QStringLiteral(\textcolor{stringliteral}{"centralwidget"}));
+00090         dockWidgetPlot\_event\_history = \textcolor{keyword}{new} QDockWidget(centralwidget);
+00091         dockWidgetPlot\_event\_history->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidgetPlot\_event\_history"}));
+00092         dockWidgetPlot\_event\_history->setGeometry(QRect(590, 0, 91, 509));
+00093         QIcon icon2;
+00094         icon2.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/Arcflash"}), QSize(), QIcon::Normal, QIcon::Off);
+00095         dockWidgetPlot\_event\_history->setWindowIcon(icon2);
+00096         dockWidgetPlot\_event\_history->setAllowedAreas(Qt::RightDockWidgetArea);
+00097         dockWidgetContents\_4 = \textcolor{keyword}{new} QWidget();
+00098         dockWidgetContents\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidgetContents\_4"}));
+00099         gridLayout\_4 = \textcolor{keyword}{new} QGridLayout(dockWidgetContents\_4);
+00100         gridLayout\_4->setSpacing(0);
+00101         gridLayout\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_4"}));
+00102         gridLayout\_4->setContentsMargins(0, 0, 0, 0);
+00103         horizontalLayout\_4 = \textcolor{keyword}{new} QHBoxLayout();
+00104         horizontalLayout\_4->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_4"}));
+00105         curve\_dfdt = \textcolor{keyword}{new} QCustomPlot(dockWidgetContents\_4);
+00106         curve\_dfdt->setObjectName(QStringLiteral(\textcolor{stringliteral}{"curve\_dfdt"}));
+00107         curve\_dfdt->setStyleSheet(QLatin1String(\textcolor{stringliteral}{"QWidget\{\(\backslash\)n"}
+00108 \textcolor{stringliteral}{"border: 1px solid   #999999;\(\backslash\)n"}
+00109 \textcolor{stringliteral}{"border-radius:10px;\(\backslash\)n"}
+00110 \textcolor{stringliteral}{"border-style: inset;\(\backslash\)n"}
+00111 \textcolor{stringliteral}{"background-color:#7E7E7E;\(\backslash\)n"}
+00112 \textcolor{stringliteral}{"\}"}));
+00113 
+00114         horizontalLayout\_4->addWidget(curve\_dfdt);
+00115 
+00116 
+00117         gridLayout\_4->addLayout(horizontalLayout\_4, 0, 0, 1, 1);
+00118 
+00119         dockWidgetPlot\_event\_history->setWidget(dockWidgetContents\_4);
+00120         recordPreview->setCentralWidget(centralwidget);
+00121         menubar = \textcolor{keyword}{new} QMenuBar(recordPreview);
+00122         menubar->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menubar"}));
+00123         menubar->setGeometry(QRect(0, 0, 800, 26));
+00124         menuSave = \textcolor{keyword}{new} QMenu(menubar);
+00125         menuSave->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuSave"}));
+00126         menuSave\_As = \textcolor{keyword}{new} QMenu(menuSave);
+00127         menuSave\_As->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuSave\_As"}));
+00128         menuPDF = \textcolor{keyword}{new} QMenu(menuSave\_As);
+00129         menuPDF->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuPDF"}));
+00130         QIcon icon3;
+00131         icon3.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/PDF-icon.png"}), QSize(), QIcon::Normal, QIcon::Off);
+00132         menuPDF->setIcon(icon3);
+00133         menuImage = \textcolor{keyword}{new} QMenu(menuSave\_As);
+00134         menuImage->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuImage"}));
+00135         QIcon icon4;
+00136         icon4.addFile(QStringLiteral(\textcolor{stringliteral}{":/icon/icons/image\_icon.png"}), QSize(), QIcon::Normal, QIcon::Off);
+00137         menuImage->setIcon(icon4);
+00138         menuWindows = \textcolor{keyword}{new} QMenu(menubar);
+00139         menuWindows->setObjectName(QStringLiteral(\textcolor{stringliteral}{"menuWindows"}));
+00140         recordPreview->setMenuBar(menubar);
+00141         statusbar = \textcolor{keyword}{new} QStatusBar(recordPreview);
+00142         statusbar->setObjectName(QStringLiteral(\textcolor{stringliteral}{"statusbar"}));
+00143         recordPreview->setStatusBar(statusbar);
+00144         dockWidgetPlot = \textcolor{keyword}{new} QDockWidget(recordPreview);
+00145         dockWidgetPlot->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidgetPlot"}));
+00146         dockWidgetPlot->setWindowIcon(icon2);
+00147         dockWidgetPlot->setAllowedAreas(Qt::RightDockWidgetArea);
+00148         dockWidgetContents\_3 = \textcolor{keyword}{new} QWidget();
+00149         dockWidgetContents\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"dockWidgetContents\_3"}));
+00150         gridLayout\_3 = \textcolor{keyword}{new} QGridLayout(dockWidgetContents\_3);
+00151         gridLayout\_3->setSpacing(0);
+00152         gridLayout\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"gridLayout\_3"}));
+00153         gridLayout\_3->setContentsMargins(0, 0, 0, 0);
+00154         horizontalLayout\_3 = \textcolor{keyword}{new} QHBoxLayout();
+00155         horizontalLayout\_3->setObjectName(QStringLiteral(\textcolor{stringliteral}{"horizontalLayout\_3"}));
+00156         curve\_data = \textcolor{keyword}{new} QCustomPlot(dockWidgetContents\_3);
+00157         curve\_data->setObjectName(QStringLiteral(\textcolor{stringliteral}{"curve\_data"}));
+00158         curve\_data->setStyleSheet(QLatin1String(\textcolor{stringliteral}{"QWidget\{\(\backslash\)n"}
+00159 \textcolor{stringliteral}{"border: 1px solid   #999999;\(\backslash\)n"}
+00160 \textcolor{stringliteral}{"border-radius:10px;\(\backslash\)n"}
+00161 \textcolor{stringliteral}{"border-style: inset;\(\backslash\)n"}
+00162 \textcolor{stringliteral}{"background-color:#7E7E7E;\(\backslash\)n"}
+00163 \textcolor{stringliteral}{"\}"}));
+00164 
+00165         horizontalLayout\_3->addWidget(curve\_data);
+00166 
+00167 
+00168         gridLayout\_3->addLayout(horizontalLayout\_3, 0, 0, 1, 1);
+00169 
+00170         dockWidgetPlot->setWidget(dockWidgetContents\_3);
+00171         recordPreview->addDockWidget(static\_cast<Qt::DockWidgetArea>(2), dockWidgetPlot);
+00172         toolBar = \textcolor{keyword}{new} QToolBar(recordPreview);
+00173         toolBar->setObjectName(QStringLiteral(\textcolor{stringliteral}{"toolBar"}));
+00174         recordPreview->addToolBar(Qt::TopToolBarArea, toolBar);
+00175 
+00176         menubar->addAction(menuSave->menuAction());
+00177         menubar->addAction(menuWindows->menuAction());
+00178         menuSave->addAction(menuSave\_As->menuAction());
+00179         menuSave\_As->addAction(actionCreateCSV);
+00180         menuSave\_As->addAction(menuPDF->menuAction());
+00181         menuSave\_As->addAction(menuImage->menuAction());
+00182         menuPDF->addAction(actionData\_Plot\_pdf);
+00183         menuPDF->addAction(actionEvent\_Plot\_pdf);
+00184         menuImage->addAction(actionData\_plot\_img);
+00185         menuImage->addAction(actionEvent\_Plot\_img);
+00186         menuWindows->addAction(actionWinDataPlot);
+00187         menuWindows->addAction(actionWinEventPlot);
+00188         toolBar->addAction(actionCreateCSV);
+00189 
+00190         \hyperlink{a00028_ad30b831cfb4b32956fe67a79748ba194}{retranslateUi}(recordPreview);
+00191 
+00192         QMetaObject::connectSlotsByName(recordPreview);
+00193     \} \textcolor{comment}{// setupUi}
+00194 
+\hypertarget{a00053_source_l00195}{}\hyperlink{a00028_ad30b831cfb4b32956fe67a79748ba194}{00195}     \textcolor{keywordtype}{void} \hyperlink{a00028_ad30b831cfb4b32956fe67a79748ba194}{retranslateUi}(\hyperlink{a00010}{QMainWindow} *\hyperlink{a00020}{recordPreview})
+00196     \{
+00197         recordPreview->setWindowTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"MainWindow"}, 0));
+00198         actionCreateCSV->setText(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"CSV"}, 0));
+00199         actionCreateCSV->setIconText(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Create CSV"}, 0));
+00200 \textcolor{preprocessor}{#ifndef QT\_NO\_TOOLTIP}
+00201         actionCreateCSV->setToolTip(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Creates CSV using both light
+       and pressure data"}, 0));
+00202 \textcolor{preprocessor}{#endif // QT\_NO\_TOOLTIP}
+00203         actionWinDataPlot->setText(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Data plot"}, 0));
+00204         actionData\_Plot\_pdf->setText(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Data Plot"}, 0));
+00205         actionEvent\_Plot\_pdf->setText(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Event Plot"}, 0));
+00206         actionData\_plot\_img->setText(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Data plot"}, 0));
+00207         actionEvent\_Plot\_img->setText(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Event plot"}, 0));
+00208         actionWinEventPlot->setText(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Event plot"}, 0));
+00209         dockWidgetPlot\_event\_history->setWindowTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Plot:change
+       per time "}, 0));
+00210         menuSave->setTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"File"}, 0));
+00211         menuSave\_As->setTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Save As"}, 0));
+00212         menuPDF->setTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"PDF"}, 0));
+00213         menuImage->setTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Image"}, 0));
+00214         menuWindows->setTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Windows"}, 0));
+00215         dockWidgetPlot->setWindowTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"Plot:Data"}, 0));
+00216         toolBar->setWindowTitle(QApplication::translate(\textcolor{stringliteral}{"recordPreview"}, \textcolor{stringliteral}{"toolBar"}, 0));
+00217     \} \textcolor{comment}{// retranslateUi}
+00218 
+00219 \};
+00220 
+00221 \textcolor{keyword}{namespace }\hyperlink{a00055}{Ui} \{
+\hypertarget{a00053_source_l00222}{}\hyperlink{a00021}{00222}     \textcolor{keyword}{class }\hyperlink{a00021}{recordPreview}: \textcolor{keyword}{public} \hyperlink{a00028}{Ui\_recordPreview} \{\};
+00223 \} \textcolor{comment}{// namespace Ui}
+00224 
+00225 QT\_END\_NAMESPACE
+00226 
+00227 \textcolor{preprocessor}{#endif // UI\_RECORDPREVIEW\_H}
+\end{DoxyCode}

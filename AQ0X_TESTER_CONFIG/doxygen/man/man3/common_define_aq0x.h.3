@@ -1,0 +1,379 @@
+.TH "common_define_aq0x.h" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+common_define_aq0x.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_FREQ\fP   50"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_RATED_CURRENT\fP   2000"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_SHORT_CKT_CURRENT\fP   45000"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_MIN_INSTALLATION_DISTANCE\fP   1"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_IR_LEVEL_MAX\fP   300"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_UV_LEVEL_MAX\fP   300"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_LUX_LEVEL_MAX\fP   300"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_PROBABLITY_MAX\fP   90"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_PROBABLITY_MIN\fP   10"
+.br
+.ti -1c
+.RI "#define \fBCONFIG_DEFAULT_NO_OF_OBSERVATION\fP   4"
+.br
+.ti -1c
+.RI "#define \fBCONFIG__DEFAULT_MIN_DFDT\fP   3"
+.br
+.ti -1c
+.RI "#define \fBSCAN_FREQ\fP   10000L"
+.br
+.RI "\fISensor/input scan frequency - 8kHz, 125us period\&. \fP"
+.ti -1c
+.RI "#define \fBFAST_TIMER_SAMPLING_RATE\fP   100E-6"
+.br
+.ti -1c
+.RI "#define \fBFAST_TIMER_SAMPLING_RATE_XU\fP   100"
+.br
+.ti -1c
+.RI "#define \fBCMD_CONFIG\fP   0xE000"
+.br
+.ti -1c
+.RI "#define \fBCMD_DEVICE_ADDRESS\fP   0xE101"
+.br
+.ti -1c
+.RI "#define \fBCMD_SIGNAL_THRESHOLDS\fP   0xE203"
+.br
+.ti -1c
+.RI "#define \fBCMD_INSTALLATION_DITAILS\fP   0xE302"
+.br
+.ti -1c
+.RI "#define \fBCMD_EVENT_ANALYSIS\fP   0xE404"
+.br
+.ti -1c
+.RI "#define \fBCMD_RUN_TIME_OPTIONS\fP   0xE505"
+.br
+.ti -1c
+.RI "#define \fBCMD_FACTORY_DEFAULT\fP   0xE106"
+.br
+.ti -1c
+.RI "#define \fBCMD_COMMIT\fP   0xE107"
+.br
+.ti -1c
+.RI "#define \fBCMD_EMULATION_SETTING\fP   0xE008"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_IR_DATA\fP   0xE609"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_UV_DATA\fP   0xE60A"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_MAGNETIC_FIELD_X_DATA\fP   0xE60B"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_MAGNETIC_FIELD_Y_DATA\fP   0xE60C"
+.br
+.ti -1c
+.RI "#define \fBCMD_LOAD_HIF_REFERENCE_DATA\fP   0xE60D"
+.br
+.ti -1c
+.RI "#define \fBCMD_EMU_MODE_SET\fP   0xE10D"
+.br
+.ti -1c
+.RI "#define \fBCMD_EMU_MODE_RESET\fP   0xE10E"
+.br
+.ti -1c
+.RI "#define \fBCMD_CLEAR_EMU_DATA\fP   0xE10F"
+.br
+.ti -1c
+.RI "#define \fBCMD_MISCELLANEOUS\fP   0xE01A"
+.br
+.ti -1c
+.RI "#define \fBCMD_DEVICE_RESET\fP   0xE11B"
+.br
+.ti -1c
+.RI "#define \fBCMD_CLEAR_EEPROM\fP   0xE11C"
+.br
+.ti -1c
+.RI "#define \fBCMD_SUPERVISION_STATUS\fP   0xE11D"
+.br
+.ti -1c
+.RI "#define \fBCMD_GET_DATA\fP   0xE0E0"
+.br
+.ti -1c
+.RI "#define \fBCMD_DEVICE_DATA\fP   0xE1E1"
+.br
+.ti -1c
+.RI "#define \fBCMD_IR_DISTURBANCE_RECORD\fP   0xE1E2"
+.br
+.ti -1c
+.RI "#define \fBCMD_UV_DISTURBANCE_RECORD\fP   0xE1E3"
+.br
+.ti -1c
+.RI "#define \fBCMD_MFIELD_X_DISTURBANCE_RECORD\fP   0xE1E4"
+.br
+.ti -1c
+.RI "#define \fBCMD_MFIELD_Y_DISTURBANCE_RECORD\fP   0xE1E5"
+.br
+.ti -1c
+.RI "#define \fBCMD_IR_CURRENT_RECORD\fP   0xE1E6"
+.br
+.ti -1c
+.RI "#define \fBCMD_UV_CURRENT_RECORD\fP   0xE1E7"
+.br
+.ti -1c
+.RI "#define \fBCMD_MFIELD_X_CURRENT_RECORD\fP   0xE1E8"
+.br
+.ti -1c
+.RI "#define \fBCMD_MFIELD_Y_CURRENT_RECORD\fP   0xE1E9"
+.br
+.ti -1c
+.RI "#define \fBCMD_HIF_DIAGNOSIS_RECORD\fP   0xE1EA"
+.br
+.ti -1c
+.RI "#define \fBADC_RESOLUTION\fP   (1024L)"
+.br
+.RI "\fIfor ten bit adc module \fP"
+.ti -1c
+.RI "#define \fBADC_VAL_MAPPING_FACTOR\fP   ((3\&.3L/*Vref*/)/(ADC_RESOLUTION))"
+.br
+.RI "\fIadc value to real value mapping factor -> Vref/resolution \fP"
+.ti -1c
+.RI "#define \fBMAX_ATTACHMENT_LENGTH\fP   100"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ADC_RESOLUTION   (1024L)"
+
+.PP
+for ten bit adc module 
+.PP
+Definition at line 72 of file common_define_aq0x\&.h\&.
+.SS "#define ADC_VAL_MAPPING_FACTOR   ((3\&.3L/*Vref*/)/(ADC_RESOLUTION))"
+
+.PP
+adc value to real value mapping factor -> Vref/resolution 
+.PP
+Definition at line 75 of file common_define_aq0x\&.h\&.
+.PP
+Referenced by recordPreview::recordPreview(), and Slider::set_value()\&.
+.SS "#define CMD_CLEAR_EEPROM   0xE11C"
+
+.PP
+Definition at line 56 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_CLEAR_EMU_DATA   0xE10F"
+
+.PP
+Definition at line 53 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_COMMIT   0xE107"
+
+.PP
+Definition at line 42 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_CONFIG   0xE000"
+
+.PP
+Definition at line 35 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_DEVICE_ADDRESS   0xE101"
+
+.PP
+Definition at line 36 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_DEVICE_DATA   0xE1E1"
+
+.PP
+Definition at line 60 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_DEVICE_RESET   0xE11B"
+
+.PP
+Definition at line 55 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_EMU_MODE_RESET   0xE10E"
+
+.PP
+Definition at line 52 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_EMU_MODE_SET   0xE10D"
+
+.PP
+Definition at line 51 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_EMULATION_SETTING   0xE008"
+
+.PP
+Definition at line 44 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_EVENT_ANALYSIS   0xE404"
+
+.PP
+Definition at line 39 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_FACTORY_DEFAULT   0xE106"
+
+.PP
+Definition at line 41 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_GET_DATA   0xE0E0"
+
+.PP
+Definition at line 59 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_HIF_DIAGNOSIS_RECORD   0xE1EA"
+
+.PP
+Definition at line 69 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_INSTALLATION_DITAILS   0xE302"
+
+.PP
+Definition at line 38 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_IR_CURRENT_RECORD   0xE1E6"
+
+.PP
+Definition at line 65 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_IR_DISTURBANCE_RECORD   0xE1E2"
+
+.PP
+Definition at line 61 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_LOAD_HIF_REFERENCE_DATA   0xE60D"
+
+.PP
+Definition at line 49 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_LOAD_IR_DATA   0xE609"
+
+.PP
+Definition at line 45 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_LOAD_MAGNETIC_FIELD_X_DATA   0xE60B"
+
+.PP
+Definition at line 47 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_LOAD_MAGNETIC_FIELD_Y_DATA   0xE60C"
+
+.PP
+Definition at line 48 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_LOAD_UV_DATA   0xE60A"
+
+.PP
+Definition at line 46 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_MFIELD_X_CURRENT_RECORD   0xE1E8"
+
+.PP
+Definition at line 67 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_MFIELD_X_DISTURBANCE_RECORD   0xE1E4"
+
+.PP
+Definition at line 63 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_MFIELD_Y_CURRENT_RECORD   0xE1E9"
+
+.PP
+Definition at line 68 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_MFIELD_Y_DISTURBANCE_RECORD   0xE1E5"
+
+.PP
+Definition at line 64 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_MISCELLANEOUS   0xE01A"
+
+.PP
+Definition at line 54 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_RUN_TIME_OPTIONS   0xE505"
+
+.PP
+Definition at line 40 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_SIGNAL_THRESHOLDS   0xE203"
+
+.PP
+Definition at line 37 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_SUPERVISION_STATUS   0xE11D"
+
+.PP
+Definition at line 57 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_UV_CURRENT_RECORD   0xE1E7"
+
+.PP
+Definition at line 66 of file common_define_aq0x\&.h\&.
+.SS "#define CMD_UV_DISTURBANCE_RECORD   0xE1E3"
+
+.PP
+Definition at line 62 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG__DEFAULT_MIN_DFDT   3"
+
+.PP
+Definition at line 16 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_FREQ   50"
+
+.PP
+Definition at line 4 of file common_define_aq0x\&.h\&.
+.PP
+Referenced by emu_data_editor::emu_data_editor()\&.
+.SS "#define CONFIG_DEFAULT_IR_LEVEL_MAX   300"
+
+.PP
+Definition at line 9 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_LUX_LEVEL_MAX   300"
+
+.PP
+Definition at line 11 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_MIN_INSTALLATION_DISTANCE   1"
+
+.PP
+Definition at line 7 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_NO_OF_OBSERVATION   4"
+
+.PP
+Definition at line 14 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_PROBABLITY_MAX   90"
+
+.PP
+Definition at line 12 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_PROBABLITY_MIN   10"
+
+.PP
+Definition at line 13 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_RATED_CURRENT   2000"
+
+.PP
+Definition at line 5 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_SHORT_CKT_CURRENT   45000"
+
+.PP
+Definition at line 6 of file common_define_aq0x\&.h\&.
+.SS "#define CONFIG_DEFAULT_UV_LEVEL_MAX   300"
+
+.PP
+Definition at line 10 of file common_define_aq0x\&.h\&.
+.SS "#define FAST_TIMER_SAMPLING_RATE   100E-6"
+
+.PP
+Definition at line 24 of file common_define_aq0x\&.h\&.
+.PP
+Referenced by Slider::set_value()\&.
+.SS "#define FAST_TIMER_SAMPLING_RATE_XU   100"
+
+.PP
+Definition at line 26 of file common_define_aq0x\&.h\&.
+.SS "#define MAX_ATTACHMENT_LENGTH   100"
+
+.PP
+Definition at line 77 of file common_define_aq0x\&.h\&.
+.PP
+Referenced by MainWindow::srv_cmds_data_download_msg_handler(), and MainWindow::srv_cmds_data_transfer_msg_handler()\&.
+.SS "#define SCAN_FREQ   10000L"
+
+.PP
+Sensor/input scan frequency - 8kHz, 125us period\&. 
+.PP
+Definition at line 22 of file common_define_aq0x\&.h\&.
+.PP
+Referenced by Slider::set_value()\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

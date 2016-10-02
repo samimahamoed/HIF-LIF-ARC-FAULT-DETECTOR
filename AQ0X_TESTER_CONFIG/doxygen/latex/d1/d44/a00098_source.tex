@@ -1,0 +1,337 @@
+\hypertarget{a00098_source}{\section{F\+F\+T\+Real\+Fix\+Len.\+hpp}
+\label{a00098_source}\index{F\+F\+T\+Real\+Fix\+Len.\+hpp@{F\+F\+T\+Real\+Fix\+Len.\+hpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/*****************************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{        FFTRealFixLen.hpp}
+00004 \textcolor{comment}{        By Laurent de Soras}
+00005 \textcolor{comment}{}
+00006 \textcolor{comment}{--- Legal stuff ---}
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{This program is free software. It comes without any warranty, to}
+00009 \textcolor{comment}{the extent permitted by applicable law. You can redistribute it}
+00010 \textcolor{comment}{and/or modify it under the terms of the Do What The Fuck You Want}
+00011 \textcolor{comment}{To Public License, Version 2, as published by Sam Hocevar. See}
+00012 \textcolor{comment}{http://sam.zoy.org/wtfpl/COPYING for more details.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{*Tab=3***********************************************************************/}
+00015 
+00016 
+00017 
+00018 \textcolor{preprocessor}{#if defined (ffft\_FFTRealFixLen\_CURRENT\_CODEHEADER)}
+00019 \textcolor{preprocessor}{    #error Recursive inclusion of FFTRealFixLen code header.}
+00020 \textcolor{preprocessor}{#endif}
+\hypertarget{a00098_source_l00021}{}\hyperlink{a00098_a149bda8b8afc272892194eefd93297ad}{00021} \textcolor{preprocessor}{#define ffft\_FFTRealFixLen\_CURRENT\_CODEHEADER}
+00022 
+00023 \textcolor{preprocessor}{#if ! defined (ffft\_FFTRealFixLen\_CODEHEADER\_INCLUDED)}
+\hypertarget{a00098_source_l00024}{}\hyperlink{a00098_a67b6298694b98d1c4b1ebdae45f15904}{00024} \textcolor{preprocessor}{#define ffft\_FFTRealFixLen\_CODEHEADER\_INCLUDED}
+00025 
+00026 
+00027 
+00028 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) INCLUDE FILES \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00029 
+00030 \textcolor{preprocessor}{#include    "\hyperlink{a00089}{def.h}"}
+00031 \textcolor{preprocessor}{#include    "\hyperlink{a00100}{FFTRealPassDirect.h}"}
+00032 \textcolor{preprocessor}{#include    "\hyperlink{a00102}{FFTRealPassInverse.h}"}
+00033 \textcolor{preprocessor}{#include    "\hyperlink{a00104}{FFTRealSelect.h}"}
+00034 
+00035 \textcolor{preprocessor}{#include    <cassert>}
+00036 \textcolor{preprocessor}{#include    <cmath>}
+00037 
+\hypertarget{a00098_source_l00038}{}\hyperlink{a00144}{00038} \textcolor{keyword}{namespace }\hyperlink{a00144}{std} \{ \}
+00039 
+00040 
+00041 
+00042 \textcolor{keyword}{namespace }\hyperlink{a00142}{ffft}
+00043 \{
+00044 
+00045 
+00046 
+00047 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PUBLIC \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00048 
+00049 
+00050 
+00051 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} LL2>
+\hypertarget{a00098_source_l00052}{}\hyperlink{a00011_ac94c40796b1e5211383357a65738319d}{00052} \hyperlink{a00011}{FFTRealFixLen <LL2>::FFTRealFixLen} ()
+00053 :   \_buffer (FFT\_LEN)
+00054 ,   \_br\_data (BR\_ARR\_SIZE)
+00055 ,   \_trigo\_data (TRIGO\_TABLE\_ARR\_SIZE)
+00056 ,   \_trigo\_osc ()
+00057 \{
+00058     build\_br\_lut ();
+00059     build\_trigo\_lut ();
+00060     build\_trigo\_osc ();
+00061 \}
+00062 
+00063 
+00064 
+00065 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} LL2>
+\hypertarget{a00098_source_l00066}{}\hyperlink{a00011_a73770aaf1fb19877d116adfcfcd69e26}{00066} \textcolor{keywordtype}{long}    \hyperlink{a00011}{FFTRealFixLen <LL2>::get\_length} () \textcolor{keyword}{const}
+00067 \{
+00068     \textcolor{keywordflow}{return} (FFT\_LEN);
+00069 \}
+00070 
+00071 
+00072 
+00073 \textcolor{comment}{// General case}
+00074 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} LL2>
+\hypertarget{a00098_source_l00075}{}\hyperlink{a00011_a4dac6eeb56e818d668ba9dcec456751c}{00075} \textcolor{keywordtype}{void}    \hyperlink{a00011}{FFTRealFixLen <LL2>::do\_fft} (\hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} f [], \textcolor{keyword}{const} 
+      \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x [])
+00076 \{
+00077     assert (f != 0);
+00078     assert (x != 0);
+00079     assert (x != f);
+00080     assert (FFT\_LEN\_L2 >= 3);
+00081 
+00082     \textcolor{comment}{// Do the transform in several passes}
+00083     \textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType}  *   cos\_ptr = &\_trigo\_data [0];
+00084     \textcolor{keyword}{const} \textcolor{keywordtype}{long} *    br\_ptr = &\_br\_data [0];
+00085 
+00086     \hyperlink{a00013}{FFTRealPassDirect} <FFT\_LEN\_L2 - 1>::process (
+00087         FFT\_LEN,
+00088         f,
+00089         &\_buffer [0],
+00090         x,
+00091         cos\_ptr,
+00092         TRIGO\_TABLE\_ARR\_SIZE,
+00093         br\_ptr,
+00094         &\_trigo\_osc [0]
+00095     );
+00096 \}
+00097 
+00098 \textcolor{comment}{// 4-point FFT}
+00099 \textcolor{keyword}{template} <>
+\hypertarget{a00098_source_l00100}{}\hyperlink{a00011_a436ff687a3bc42453bec760d6f1603e6}{00100} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{a00011}{FFTRealFixLen <2>::do\_fft} (\hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} f [], \textcolor{keyword}{const} 
+      \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x [])
+00101 \{
+00102     assert (f != 0);
+00103     assert (x != 0);
+00104     assert (x != f);
+00105 
+00106     f [1] = x [0] - x [2];
+00107     f [3] = x [1] - x [3];
+00108 
+00109     \textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType}  b\_0 = x [0] + x [2];
+00110     \textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType}  b\_2 = x [1] + x [3];
+00111     
+00112     f [0] = b\_0 + b\_2;
+00113     f [2] = b\_0 - b\_2;
+00114 \}
+00115 
+00116 \textcolor{comment}{// 2-point FFT}
+00117 \textcolor{keyword}{template} <>
+\hypertarget{a00098_source_l00118}{}\hyperlink{a00011_ac13fd7827a9a590c2de1a749ad325492}{00118} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{a00011}{FFTRealFixLen <1>::do\_fft} (\hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} f [], \textcolor{keyword}{const} 
+      \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x [])
+00119 \{
+00120     assert (f != 0);
+00121     assert (x != 0);
+00122     assert (x != f);
+00123 
+00124     f [0] = x [0] + x [1];
+00125     f [1] = x [0] - x [1];
+00126 \}
+00127 
+00128 \textcolor{comment}{// 1-point FFT}
+00129 \textcolor{keyword}{template} <>
+\hypertarget{a00098_source_l00130}{}\hyperlink{a00011_ab4f7a74138b51d987a4da24b7328a324}{00130} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{a00011}{FFTRealFixLen <0>::do\_fft} (\hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} f [], \textcolor{keyword}{const} 
+      \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x [])
+00131 \{
+00132     assert (f != 0);
+00133     assert (x != 0);
+00134 
+00135     f [0] = x [0];
+00136 \}
+00137 
+00138 
+00139 
+00140 \textcolor{comment}{// General case}
+00141 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} LL2>
+\hypertarget{a00098_source_l00142}{}\hyperlink{a00011_a8c91704fcb63e105c7e9e31e5ab6d304}{00142} \textcolor{keywordtype}{void}    \hyperlink{a00011}{FFTRealFixLen <LL2>::do\_ifft} (\textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} f [], 
+      \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x [])
+00143 \{
+00144     assert (f != 0);
+00145     assert (x != 0);
+00146     assert (x != f);
+00147     assert (FFT\_LEN\_L2 >= 3);
+00148 
+00149     \textcolor{comment}{// Do the transform in several passes}
+00150     \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} *      s\_ptr =
+00151         \hyperlink{a00015}{FFTRealSelect <FFT\_LEN\_L2 & 1>::sel\_bin} (&\_buffer [0], x);
+00152     \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} *      d\_ptr =
+00153         \hyperlink{a00015}{FFTRealSelect <FFT\_LEN\_L2 & 1>::sel\_bin} (x, &\_buffer [0]);
+00154     \textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType}  *   cos\_ptr = &\_trigo\_data [0];
+00155     \textcolor{keyword}{const} \textcolor{keywordtype}{long} *    br\_ptr = &\_br\_data [0];
+00156 
+00157     \hyperlink{a00014}{FFTRealPassInverse} <FFT\_LEN\_L2 - 1>::process (
+00158         FFT\_LEN,
+00159         d\_ptr,
+00160         s\_ptr,
+00161         f,
+00162         cos\_ptr,
+00163         TRIGO\_TABLE\_ARR\_SIZE,
+00164         br\_ptr,
+00165         &\_trigo\_osc [0]
+00166     );
+00167 \}
+00168 
+00169 \textcolor{comment}{// 4-point IFFT}
+00170 \textcolor{keyword}{template} <>
+\hypertarget{a00098_source_l00171}{}\hyperlink{a00011_ad1f5e8624888aaf3d8414350b0298015}{00171} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{a00011}{FFTRealFixLen <2>::do\_ifft} (\textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} f [], 
+      \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x [])
+00172 \{
+00173     assert (f != 0);
+00174     assert (x != 0);
+00175     assert (x != f);
+00176 
+00177     \textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType}  b\_0 = f [0] + f [2];
+00178     \textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType}  b\_2 = f [0] - f [2];
+00179 
+00180     x [0] = b\_0 + f [1] * 2;
+00181     x [2] = b\_0 - f [1] * 2;
+00182     x [1] = b\_2 + f [3] * 2;
+00183     x [3] = b\_2 - f [3] * 2;
+00184 \}
+00185 
+00186 \textcolor{comment}{// 2-point IFFT}
+00187 \textcolor{keyword}{template} <>
+\hypertarget{a00098_source_l00188}{}\hyperlink{a00011_a66a7bc1e12f6301effb5c08e91ded8ec}{00188} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{a00011}{FFTRealFixLen <1>::do\_ifft} (\textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} f [], 
+      \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x [])
+00189 \{
+00190     assert (f != 0);
+00191     assert (x != 0);
+00192     assert (x != f);
+00193 
+00194     x [0] = f [0] + f [1];
+00195     x [1] = f [0] - f [1];
+00196 \}
+00197 
+00198 \textcolor{comment}{// 1-point IFFT}
+00199 \textcolor{keyword}{template} <>
+\hypertarget{a00098_source_l00200}{}\hyperlink{a00011_ad0a8e8d871a7ee9b7a254e925b21c943}{00200} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \hyperlink{a00011}{FFTRealFixLen <0>::do\_ifft} (\textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} f [], 
+      \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x [])
+00201 \{
+00202     assert (f != 0);
+00203     assert (x != 0);
+00204     assert (x != f);
+00205 
+00206     x [0] = f [0];
+00207 \}
+00208 
+00209 
+00210 
+00211 
+00212 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} LL2>
+\hypertarget{a00098_source_l00213}{}\hyperlink{a00011_aa37f8f1a55863abc72e4de647ce427fb}{00213} \textcolor{keywordtype}{void}    \hyperlink{a00011}{FFTRealFixLen <LL2>::rescale} (\hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} x []) \textcolor{keyword}{const}
+00214 \{
+00215     assert (x != 0);
+00216 
+00217     \textcolor{keyword}{const} \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType}  mul = \hyperlink{a00011_a1aee47aa93a19226faec1c1bf91a6bd4}{DataType} (1.0 / FFT\_LEN);
+00218 
+00219     \textcolor{keywordflow}{if} (FFT\_LEN < 4)
+00220     \{
+00221         \textcolor{keywordtype}{long}                i = FFT\_LEN - 1;
+00222         \textcolor{keywordflow}{do}
+00223         \{
+00224             x [i] *= mul;
+00225             --i;
+00226         \}
+00227         \textcolor{keywordflow}{while} (i >= 0);
+00228     \}
+00229 
+00230     \textcolor{keywordflow}{else}
+00231     \{
+00232         assert ((FFT\_LEN & 3) == 0);
+00233 
+00234         \textcolor{comment}{// Could be optimized with SIMD instruction sets (needs alignment check)}
+00235         \textcolor{keywordtype}{long}                i = FFT\_LEN - 4;
+00236         \textcolor{keywordflow}{do}
+00237         \{
+00238             x [i + 0] *= mul;
+00239             x [i + 1] *= mul;
+00240             x [i + 2] *= mul;
+00241             x [i + 3] *= mul;
+00242             i -= 4;
+00243         \}
+00244         \textcolor{keywordflow}{while} (i >= 0);
+00245     \}
+00246 \}
+00247 
+00248 
+00249 
+00250 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PROTECTED \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00251 
+00252 
+00253 
+00254 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) PRIVATE \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+00255 
+00256 
+00257 
+00258 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} LL2>
+00259 \textcolor{keywordtype}{void}    \hyperlink{a00011}{FFTRealFixLen <LL2>::build\_br\_lut} ()
+00260 \{
+00261     \_br\_data [0] = 0;
+00262     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} cnt = 1; cnt < BR\_ARR\_SIZE; ++cnt)
+00263     \{
+00264         \textcolor{keywordtype}{long}                index = cnt << 2;
+00265         \textcolor{keywordtype}{long}                br\_index = 0;
+00266 
+00267         \textcolor{keywordtype}{int}             bit\_cnt = FFT\_LEN\_L2;
+00268         \textcolor{keywordflow}{do}
+00269         \{
+00270             br\_index <<= 1;
+00271             br\_index += (index & 1);
+00272             index >>= 1;
+00273 
+00274             -- bit\_cnt;
+00275         \}
+00276         \textcolor{keywordflow}{while} (bit\_cnt > 0);
+00277 
+00278         \_br\_data [cnt] = br\_index;
+00279     \}
+00280 \}
+00281 
+00282 
+00283 
+00284 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} LL2>
+00285 \textcolor{keywordtype}{void}    FFTRealFixLen <LL2>::build\_trigo\_lut ()
+00286 \{
+00287     \textcolor{keyword}{const} \textcolor{keywordtype}{double}    mul = (0.5 * \hyperlink{a00142_a74ffcd4c90202b5240bbca7374dfd6fa}{PI}) / TRIGO\_TABLE\_ARR\_SIZE;
+00288     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} i = 0; i < TRIGO\_TABLE\_ARR\_SIZE; ++ i)
+00289     \{
+00290         \textcolor{keyword}{using namespace }\hyperlink{a00144}{std};
+00291 
+00292         \_trigo\_data [i] = DataType (cos (i * mul));
+00293     \}
+00294 \}
+00295 
+00296 
+00297 
+00298 \textcolor{keyword}{template} <\textcolor{keywordtype}{int} LL2>
+00299 \textcolor{keywordtype}{void}    FFTRealFixLen <LL2>::build\_trigo\_osc ()
+00300 \{
+00301     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NBR\_TRIGO\_OSC; ++i)
+00302     \{
+00303         OscType &       osc = \_trigo\_osc [i];
+00304 
+00305         \textcolor{keyword}{const} \textcolor{keywordtype}{long}      len = static\_cast <\textcolor{keywordtype}{long}> (TRIGO\_TABLE\_ARR\_SIZE) << (i + 1);
+00306         \textcolor{keyword}{const} \textcolor{keywordtype}{double}    mul = (0.5 * \hyperlink{a00142_a74ffcd4c90202b5240bbca7374dfd6fa}{PI}) / len;
+00307         osc.set\_step (mul);
+00308     \}
+00309 \}
+00310 
+00311 
+00312 
+00313 \}   \textcolor{comment}{// namespace ffft}
+00314 
+00315 
+00316 
+00317 \textcolor{preprocessor}{#endif  // ffft\_FFTRealFixLen\_CODEHEADER\_INCLUDED}
+00318 
+00319 \textcolor{preprocessor}{#undef ffft\_FFTRealFixLen\_CURRENT\_CODEHEADER}
+00320 
+00321 
+00322 
+00323 \textcolor{comment}{/*\(\backslash\)\(\backslash\)\(\backslash\) EOF \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)*/}
+\end{DoxyCode}

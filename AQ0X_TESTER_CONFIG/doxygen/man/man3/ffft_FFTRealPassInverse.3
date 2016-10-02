@@ -1,0 +1,263 @@
+.TH "ffft::FFTRealPassInverse< PASS >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::FFTRealPassInverse< PASS > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <FFTRealPassInverse\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef 
+.br
+\fBFFTRealFixLenParam::DataType\fP \fBDataType\fP"
+.br
+.ti -1c
+.RI "typedef \fBOscSinCos\fP< \fBDataType\fP > \fBOscType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<> void \fBprocess_rec\fP (long len, \fBDataType\fP dest_ptr[], \fBDataType\fP src_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.ti -1c
+.RI "template<> void \fBprocess_internal\fP (long len, \fBDataType\fP dest_ptr[], const \fBDataType\fP src_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.ti -1c
+.RI "template<> void \fBprocess_internal\fP (long len, \fBDataType\fP dest_ptr[], const \fBDataType\fP src_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBffft_FORCEINLINE\fP void \fBprocess\fP (long len, \fBDataType\fP dest_ptr[], \fBDataType\fP src_ptr[], const \fBDataType\fP f_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.ti -1c
+.RI "static \fBffft_FORCEINLINE\fP void \fBprocess_rec\fP (long len, \fBDataType\fP dest_ptr[], \fBDataType\fP src_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.ti -1c
+.RI "static \fBffft_FORCEINLINE\fP void \fBprocess_internal\fP (long len, \fBDataType\fP dest_ptr[], const \fBDataType\fP src_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<int PASS>class ffft::FFTRealPassInverse< PASS >"
+
+.PP
+Definition at line 43 of file FFTRealPassInverse\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<int PASS> typedef \fBFFTRealFixLenParam::DataType\fP \fBffft::FFTRealPassInverse\fP< PASS >::\fBDataType\fP"
+
+.PP
+Definition at line 50 of file FFTRealPassInverse\&.h\&.
+.SS "template<int PASS> typedef \fBOscSinCos\fP<\fBDataType\fP> \fBffft::FFTRealPassInverse\fP< PASS >::\fBOscType\fP"
+
+.PP
+Definition at line 51 of file FFTRealPassInverse\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<int PASS> void \fBffft::FFTRealPassInverse\fP< PASS >::process (longlen, \fBDataType\fPdest_ptr[], \fBDataType\fPsrc_ptr[], const \fBDataType\fPf_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [static]\fP"
+
+.PP
+Definition at line 44 of file FFTRealPassInverse\&.hpp\&.
+.PP
+.nf
+45 {
+46     process_internal (
+47         len,
+48         dest_ptr,
+49         f_ptr,
+50         cos_ptr,
+51         cos_len,
+52         br_ptr,
+53         osc_list
+54     );
+55     FFTRealPassInverse <PASS - 1>::process_rec (
+56         len,
+57         src_ptr,
+58         dest_ptr,
+59         cos_ptr,
+60         cos_len,
+61         br_ptr,
+62         osc_list
+63     );
+64 }
+.fi
+.SS "template<int PASS> void \fBffft::FFTRealPassInverse\fP< PASS >::process_internal (longlen, \fBDataType\fPdest_ptr[], const \fBDataType\fPsrc_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [static]\fP"
+
+.PP
+Definition at line 100 of file FFTRealPassInverse\&.hpp\&.
+.PP
+References ffft::FFTRealFixLenParam::TRIGO_BD_LIMIT\&.
+.PP
+.nf
+101 {
+102     const long      dist = 1L << (PASS - 1);
+103     const long      c1_r = 0;
+104     const long      c1_i = dist;
+105     const long      c2_r = dist * 2;
+106     const long      c2_i = dist * 3;
+107     const long      cend = dist * 4;
+108     const long      table_step = cos_len >> (PASS - 1);
+109 
+110    enum {   TRIGO_OSC       = PASS - FFTRealFixLenParam::TRIGO_BD_LIMIT };
+111     enum {  TRIGO_DIRECT    = (TRIGO_OSC >= 0) ? 1 : 0  };
+112 
+113     long                coef_index = 0;
+114     do
+115     {
+116         const DataType  * const sf = src_ptr + coef_index;
+117         DataType            * const df = dest_ptr + coef_index;
+118 
+119         // Extreme coefficients are always real
+120         df [c1_r] = sf [c1_r] + sf [c2_r];
+121         df [c2_r] = sf [c1_r] - sf [c2_r];
+122         df [c1_i] = sf [c1_i] * 2;
+123         df [c2_i] = sf [c2_i] * 2;
+124 
+125         FFTRealUseTrigo <TRIGO_DIRECT>::prepare (osc_list [TRIGO_OSC]);
+126 
+127         // Others are conjugate complex numbers
+128         for (long i = 1; i < dist; ++ i)
+129         {
+130             df [c1_r + i] = sf [c1_r + i] + sf [c2_r - i];
+131             df [c1_i + i] = sf [c2_r + i] - sf [cend - i];
+132 
+133             DataType            c;
+134             DataType            s;
+135             FFTRealUseTrigo <TRIGO_DIRECT>::iterate (
+136                 osc_list [TRIGO_OSC],
+137                 c,
+138                 s,
+139                 cos_ptr,
+140                 i * table_step,
+141                 (dist - i) * table_step
+142             );
+143 
+144             const DataType  vr = sf [c1_r + i] - sf [c2_r - i];
+145             const DataType  vi = sf [c2_r + i] + sf [cend - i];
+146 
+147             df [c2_r + i] = vr * c + vi * s;
+148             df [c2_i + i] = vi * c - vr * s;
+149         }
+150 
+151         coef_index += cend;
+152     }
+153     while (coef_index < len);
+154 }
+.fi
+.SS "template<> void \fBffft::FFTRealPassInverse\fP< 2 >::process_internal (longlen, \fBDataType\fPdest_ptr[], const \fBDataType\fPsrc_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [inline]\fP"
+
+.PP
+Definition at line 157 of file FFTRealPassInverse\&.hpp\&.
+.PP
+References ffft::SQRT2\&.
+.PP
+.nf
+158 {
+159     // Antepenultimate pass
+160     const DataType  sqrt2_2 = DataType (SQRT2 * 0\&.5);
+161 
+162     long                coef_index = 0;
+163     do
+164     {
+165         dest_ptr [coef_index    ] = src_ptr [coef_index] + src_ptr [coef_index + 4];
+166         dest_ptr [coef_index + 4] = src_ptr [coef_index] - src_ptr [coef_index + 4];
+167         dest_ptr [coef_index + 2] = src_ptr [coef_index + 2] * 2;
+168         dest_ptr [coef_index + 6] = src_ptr [coef_index + 6] * 2;
+169 
+170         dest_ptr [coef_index + 1] = src_ptr [coef_index + 1] + src_ptr [coef_index + 3];
+171         dest_ptr [coef_index + 3] = src_ptr [coef_index + 5] - src_ptr [coef_index + 7];
+172 
+173         const DataType  vr = src_ptr [coef_index + 1] - src_ptr [coef_index + 3];
+174         const DataType  vi = src_ptr [coef_index + 5] + src_ptr [coef_index + 7];
+175 
+176         dest_ptr [coef_index + 5] = (vr + vi) * sqrt2_2;
+177         dest_ptr [coef_index + 7] = (vi - vr) * sqrt2_2;
+178 
+179         coef_index += 8;
+180     }
+181     while (coef_index < len);
+182 }
+.fi
+.SS "template<> void \fBffft::FFTRealPassInverse\fP< 1 >::process_internal (longlen, \fBDataType\fPdest_ptr[], const \fBDataType\fPsrc_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [inline]\fP"
+
+.PP
+Definition at line 185 of file FFTRealPassInverse\&.hpp\&.
+.PP
+.nf
+186 {
+187     // Penultimate and last pass at once
+188     const long      qlen = len >> 2;
+189 
+190     long                coef_index = 0;
+191     do
+192     {
+193         const long      ri_0 = br_ptr [coef_index >> 2];
+194 
+195         const DataType  b_0 = src_ptr [coef_index    ] + src_ptr [coef_index + 2];
+196         const DataType  b_2 = src_ptr [coef_index    ] - src_ptr [coef_index + 2];
+197         const DataType  b_1 = src_ptr [coef_index + 1] * 2;
+198         const DataType  b_3 = src_ptr [coef_index + 3] * 2;
+199 
+200         dest_ptr [ri_0           ] = b_0 + b_1;
+201         dest_ptr [ri_0 + 2 * qlen] = b_0 - b_1;
+202         dest_ptr [ri_0 + 1 * qlen] = b_2 + b_3;
+203         dest_ptr [ri_0 + 3 * qlen] = b_2 - b_3;
+204 
+205         coef_index += 4;
+206     }
+207     while (coef_index < len);
+208 }
+.fi
+.SS "template<int PASS> void \fBffft::FFTRealPassInverse\fP< PASS >::process_rec (longlen, \fBDataType\fPdest_ptr[], \fBDataType\fPsrc_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [static]\fP"
+
+.PP
+Definition at line 69 of file FFTRealPassInverse\&.hpp\&.
+.PP
+.nf
+70 {
+71     process_internal (
+72         len,
+73         dest_ptr,
+74         src_ptr,
+75         cos_ptr,
+76         cos_len,
+77         br_ptr,
+78         osc_list
+79     );
+80     FFTRealPassInverse <PASS - 1>::process_rec (
+81         len,
+82         src_ptr,
+83         dest_ptr,
+84         cos_ptr,
+85         cos_len,
+86         br_ptr,
+87         osc_list
+88     );
+89 }
+.fi
+.SS "template<> void \fBffft::FFTRealPassInverse\fP< 0 >::process_rec (longlen, \fBDataType\fPdest_ptr[], \fBDataType\fPsrc_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [inline]\fP"
+
+.PP
+Definition at line 92 of file FFTRealPassInverse\&.hpp\&.
+.PP
+.nf
+93 {
+94     // Stops recursion
+95 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

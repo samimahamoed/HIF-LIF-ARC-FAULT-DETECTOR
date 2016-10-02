@@ -1,0 +1,39 @@
+digraph "spi_put_data"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="spi_put_data",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="nov_byte_read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#adf5af9eb34f1cd301648dfa3c71fe392",tooltip="reads single from the specified eeprom address. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="nov_byte_write",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a3f47e1f5179297e173ae8508c7185632",tooltip="writes a single byte to the specified eeprom address. "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="nov_get_status",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#af9ccbc198ed63feb4fd6c18dd934590d",tooltip="reads status register from EEPROM. "];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="nov_page_cpy",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#aeb021b0e002db120ad733c24f3e179bc",tooltip="Function transfer data from RAM to EEPROM over spi port. "];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="nov_store_device_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a9aa94b184db1bd55b6a4a61a34c14c8d",tooltip="Stores in EEPROM serial number. "];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="nov_write_status",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a495e93d64734be469f6725de24dd44e1",tooltip="write EEPROM status register. "];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="nov_memcpy",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a3ff681f3af83ec441535611dac6ada16",tooltip="Standard library memcpy() replacement function to copy data from serial EEPROM to the specified RAM m..."];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="nov_get_device_address",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a1a59d5ac1c5e9a022c19d8c333bf3b60",tooltip="Reads from EEPROM device serial number. "];
+  Node8 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="nov_get_serial_number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a86b863ea185628aff5a00b4defbbb6e1",tooltip="Reads from EEPROM device serial number. "];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/db6/a00042.html#a840291bc02cba5474a4cb46a9b9566fe",tooltip="System startup function. "];
+  Node8 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="nov_init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a8ad2f815848f1668763c01ff9d45a01b",tooltip="Reads NOV storage from EEPROM. "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="nov_set_write_enable\l_latch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d1/dea/a00054.html#a7b698f4b0088c4e28951c2204b7b821e",tooltip="set or reset write enable latch, the proceedure is drived from the information provided in microchip ..."];
+  Node13 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

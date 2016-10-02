@@ -1,0 +1,223 @@
+\hypertarget{a00110_source}{\section{mainwindow.\+h}
+\label{a00110_source}\index{mainwindow.\+h@{mainwindow.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00002 \textcolor{preprocessor}{#ifndef MAINWINDOW\_H}
+00003 \textcolor{preprocessor}{#define MAINWINDOW\_H}
+00004 
+00005 \textcolor{preprocessor}{#include <QtCore/QtGlobal>}
+00006 
+00007 \textcolor{preprocessor}{#include <QMainWindow>}
+00008 
+00009 \textcolor{preprocessor}{#include <QtSerialPort/QSerialPort>}
+00010 \textcolor{preprocessor}{#include <QStringListModel>}
+00011 \textcolor{preprocessor}{#include <QTreeWidgetItem>}
+00012 \textcolor{preprocessor}{#include "\hyperlink{a00004}{typedef.h}"}
+00013 \textcolor{preprocessor}{#include "\hyperlink{a00094}{emu\_data\_editor.h}"}
+00014 \textcolor{preprocessor}{#include "\hyperlink{a00006}{storage\_structure.h}"}
+00015 
+\hypertarget{a00110_source_l00016}{}\hyperlink{a00110_a56c4aa163f5d0c550eeb89fdb3f08996}{00016} \textcolor{preprocessor}{#define PRESSURE\_DATA\_INDEX 104}
+\hypertarget{a00110_source_l00017}{}\hyperlink{a00110_a61d054f24da5242788747ba3db5dfa11}{00017} \textcolor{preprocessor}{#define DATA\_END\_INDEX 204}
+\hypertarget{a00110_source_l00018}{}\hyperlink{a00110_af55149bc1f05cf18af067a302e31e3f9}{00018} \textcolor{preprocessor}{#define DATA\_SIZE 100}
+\hypertarget{a00110_source_l00019}{}\hyperlink{a00110_a58055d345f4a971dad22c043135fb214}{00019} \textcolor{preprocessor}{#define RESOLUTION\_MAPING\_FACTOR  (5.0/255.0)}
+\hypertarget{a00110_source_l00020}{}\hyperlink{a00110_a63ec0cea9c1f0ca8a7893c2c53d2fd81}{00020} \textcolor{preprocessor}{#define DEFAULT\_DIR             "../DEFAULT\_DIR/"}
+\hypertarget{a00110_source_l00021}{}\hyperlink{a00110_a8d4ad2cd60e024f6e0f37dbac40768a1}{00021} \textcolor{preprocessor}{#define EVENT\_RECORD\_FILE       "event\_records.txt"}
+00022 
+00023 QT\_BEGIN\_NAMESPACE
+00024 
+00025 \textcolor{keyword}{namespace }\hyperlink{a00145}{Ui} \{
+00026 \textcolor{keyword}{class }\hyperlink{a00017}{MainWindow};
+00027 \}
+00028 
+00029 QT\_END\_NAMESPACE
+00030 
+00031 \textcolor{keyword}{class }\hyperlink{a00005}{Console};
+00032 \textcolor{keyword}{class }\hyperlink{a00075}{SettingsDialog};
+00033 
+\hypertarget{a00110_source_l00034}{}\hyperlink{a00017}{00034} \textcolor{keyword}{class }\hyperlink{a00017}{MainWindow} : \textcolor{keyword}{public} \hyperlink{a00058}{QMainWindow}
+00035 \{
+00036     Q\_OBJECT
+00037 
+00038 
+00039 \textcolor{keyword}{public}:
+00040     \textcolor{keyword}{explicit} \hyperlink{a00017_a8b244be8b7b7db1b08de2a2acb9409db}{MainWindow}(QWidget *parent = 0);
+00041     \hyperlink{a00017_ae98d00a93bc118200eeef9f9bba1dba7}{~MainWindow}();
+00042     \textcolor{keywordtype}{void} \hyperlink{a00017_a6134b74dbfffbaf333e169bd09597b53}{msg}(\hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} type, QString \hyperlink{a00017_a6134b74dbfffbaf333e169bd09597b53}{msg});
+00043     QString \hyperlink{a00017_a8821556476f5a88c107f21d7db14e49c}{uint8\_to\_str}(\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} val);
+00044 
+00045     \textcolor{keywordtype}{void} \hyperlink{a00017_a61e2ba77e381cae572eec854b6510b81}{ListFiles}();
+00046 
+00047     qint8 \hyperlink{a00017_aebce94d5e6af7afff661daf74b208de1}{make8}(QString buf, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} idx);
+00048 
+00049     qint16 \hyperlink{a00017_afcb06d9f3a6a555df9355af1dfbb4e21}{make16}(QString buf, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} idx);
+00050 
+00051 
+00052     \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} \hyperlink{a00017_a09ae3cafdd3692fb9fb93bb90a0348d2}{crc16}(\hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8} *puchMsg, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} usDataLen);
+00053 
+00054     \textcolor{keywordtype}{void} \hyperlink{a00017_ae9bed0c4d2f2c63c95a68f53f65f4359}{set\_emu\_data}(\hyperlink{a00008}{emu\_data\_editor} *editor, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} * data, 
+      \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} size);
+00055 
+00056 
+00057     QString \hyperlink{a00017_a0114355b9f626345cf77d6f714f51468}{save\_to\_file}(QString dir, QString type, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} offset, QVector<double> *data1
+      ,
+00058                       QVector<double> *data2=NULL, QVector<double> *data3=NULL);
+00059 
+00060 
+\hypertarget{a00110_source_l00061}{}\hyperlink{a00017_a773de5ed6b1b522f94b0347ef556137d}{00061}     QString \hyperlink{a00017_a773de5ed6b1b522f94b0347ef556137d}{eventRecoredList};
+00062 
+\hypertarget{a00110_source_l00063}{}\hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{00063}     QString \hyperlink{a00017_a2e107e43aeaccaf4c9a42254f13122c8}{dir\_default};
+00064 
+00065 signals:
+00066     \textcolor{keywordtype}{void} \hyperlink{a00017_a3f6396874778799cf07a7a0149e54977}{response\_ready}(QString);
+00067 
+00068 
+00069 
+00070 \textcolor{keyword}{public} slots:
+00071     \textcolor{keywordtype}{void} \hyperlink{a00017_a35b895072769864ac42f8cd732267e4b}{data\_open}(\textcolor{keywordtype}{bool} checked);
+00072 
+00073     \textcolor{keywordtype}{void} \hyperlink{a00017_ac84167866950dd1eb9a29a5293546c1a}{srv\_cmds\_data\_download\_msg\_handler}(QString data);
+00074 
+00075     \textcolor{keywordtype}{void} \hyperlink{a00017_ae19ec21c1009c81700a8ad2e1f81be07}{srv\_cmds\_data\_transfer\_msg\_handler}(QString data);
+00076 
+00077     \textcolor{keywordtype}{void} \hyperlink{a00017_a8a8cd34488e8ee213350afb5b2261677}{srv\_cmds\_general\_msg\_handler}(QString data);
+00078 
+00079 
+00080 
+00081 
+00082 \textcolor{keyword}{private} slots:
+00083     \textcolor{keywordtype}{void} about();
+00084 
+00085     \textcolor{keywordtype}{void} openSerialPort();
+00086 
+00087     \textcolor{keywordtype}{void} closeSerialPort();
+00088 
+00089     \textcolor{keywordtype}{void} serial\_supervisor();
+00090 
+00091     \textcolor{keywordtype}{void} incoming\_data\_listener();
+00092 
+00093     \textcolor{keywordtype}{void} handleError(QSerialPort::SerialPortError error);
+00094 
+00095     \textcolor{keywordtype}{void} on\_actionClear\_triggered();
+00096 
+00097     \textcolor{keywordtype}{void} on\_actionOpen\_triggered();
+00098 
+00099     \textcolor{keywordtype}{void} on\_actionCommands\_triggered(\textcolor{keywordtype}{bool} checked);
+00100 
+00101     \textcolor{keywordtype}{void} on\_dockWidget\_sen\_cmd\_visibilityChanged(\textcolor{keywordtype}{bool} visible);
+00102 
+00103     \textcolor{keywordtype}{void} on\_btn\_execute\_cmd\_clicked(\textcolor{keywordtype}{bool} checked);
+00104 
+00105     \textcolor{keywordtype}{void} on\_combo\_Sen\_activated(\textcolor{keyword}{const} QString &arg1);
+00106 
+00107     \textcolor{keywordtype}{void} on\_dockWidget\_sen\_cmd\_destroyed(\hyperlink{a00059}{QObject} *arg1);
+00108 
+00109     \textcolor{keywordtype}{void} on\_cmd\_list\_itemSelectionChanged();
+00110 
+00111     \textcolor{keywordtype}{void} on\_btn\_save\_sys\_info\_clicked();
+00112 
+00113     \textcolor{keywordtype}{void} on\_stacked\_widget\_views\_currentChanged(\textcolor{keywordtype}{int} arg1);
+00114 
+00115     \textcolor{keywordtype}{void} on\_btn\_set\_emu\_data\_clicked();
+00116 
+00117     \textcolor{keywordtype}{void} on\_btn\_back\_emu\_data\_clicked();
+00118 
+00119     \textcolor{keywordtype}{void} on\_btn\_nxt\_emu\_data\_clicked();
+00120 
+00121     \textcolor{keywordtype}{void} on\_btn\_cancel\_clicked();
+00122 
+00123     \textcolor{keywordtype}{void} on\_btn\_back\_thresholds\_clicked();
+00124 
+00125     \textcolor{keywordtype}{void} on\_btn\_cancel\_sys\_info\_clicked();
+00126 
+00127     \textcolor{keywordtype}{void} on\_btn\_back\_analisis\_clicked();
+00128 
+00129     \textcolor{keywordtype}{void} on\_btn\_cancel\_options\_clicked();
+00130 
+00131     \textcolor{keywordtype}{void} on\_btn\_save\_thresholds\_clicked();
+00132 
+00133     \textcolor{keywordtype}{void} on\_btn\_save\_analisis\_clicked();
+00134 
+00135     \textcolor{keywordtype}{void} on\_btn\_save\_options\_clicked();
+00136 
+00137 
+00138 \textcolor{keyword}{private}:
+00139     \textcolor{keywordtype}{void} initActionsConnections();
+00140 
+00141     \textcolor{keywordtype}{void} updateDeviceStatus();
+00142 
+00143     \textcolor{keywordtype}{void} map\_keys();
+00144 
+00145 \textcolor{keyword}{protected}:
+00146 
+00147 
+00148 \textcolor{keyword}{protected} slots:
+00149     \textcolor{keywordtype}{bool} \hyperlink{a00017_a91df90bb5045775882c062cefdf903e9}{eventFilter}(\hyperlink{a00059}{QObject} *\textcolor{keywordtype}{object}, QEvent *event);
+00150 \textcolor{keyword}{private}:
+00151     \hyperlink{a00018}{Ui::MainWindow} *ui;
+00152     \hyperlink{a00005}{Console} *console;
+00153     \hyperlink{a00075}{SettingsDialog} *settings;
+00154     QSerialPort *serial;
+00155     \textcolor{keywordtype}{int} state;
+00156     \textcolor{keywordtype}{int} countRx;
+00157     QString deviceID;
+00158 
+00159     \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}  error;
+00160     \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}  eepromUsageUpper;
+00161     \hyperlink{a00004_a979e3e23b9a449e69ab6a8a83b6042f8}{Uint8}  eepromUsageLower;
+00162     \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} eepromUsage;
+00163 
+00164     QByteArray          rc\_buffer;
+00165 
+00166     \textcolor{keyword}{struct}\{
+00167     \hyperlink{a00008}{emu\_data\_editor} *   current\_editor;
+00168     QString             sen\_type;
+00169     \textcolor{keywordtype}{bool}                valid;
+00170     \textcolor{keywordtype}{bool}                processed;
+00171     \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16}              cmd;
+00172     \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16}              data[\hyperlink{a00006_af4c3a8ad94feb4d7bda7f107f34baf41}{EMU\_MODE\_DATA\_LENGTH}] 
+      \hyperlink{a00006_ad8187eb7fe09751a387e3dcb11c51565}{\_\_attribute\_\_}((packed, aligned(2)));
+00173     \}emu\_data\_buffer;
+00174 
+00175     QString EventRecordFileName;
+00176     QByteArray cmd\_line\_separator;
+00177 
+00178     QStringListModel *model;
+00179 
+00180     QMap<QString, Uint16> map\_cmd;
+00181 
+00182     QMap<Uint16, Uint16> map\_size;
+00183 
+00184     QMap<QString, Uint8> map\_trip\_criterion;
+00185     
+00186     \hyperlink{a00004_d3/dd5/a00215}{serial\_msg\_t}     last\_cmd;
+00187 
+00188     QVector<mult\_sen\_t> multi\_cmds;
+00189     qint8 vPos;
+00190 
+00191 
+00192 
+00193     \textcolor{keywordtype}{void} display\_data(QByteArray rc\_data);
+00194     \textcolor{keywordtype}{bool} comm\_Write(\textcolor{keywordtype}{char} *msg);
+00195     \hyperlink{a00004_aafb609548b1aa0152c46f9205b79d0f0}{Int8} protocol\_send\_cmd(\hyperlink{a00004_d3/dd5/a00215}{serial\_msg\_t} current\_cmd, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} *resp, 
+      \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} wait\_resp);
+00196 
+00197     \textcolor{keywordtype}{void} Success(...);
+00198     \textcolor{keywordtype}{void} Failure(...);
+00199 
+00200     \textcolor{keywordtype}{bool} srv\_cmds\_execute(\hyperlink{a00004_d3/dd5/a00215}{serial\_msg\_t} current\_cmd, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} *resp=NULL, 
+      \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} wait\_resp=0);
+00201 
+00202     \textcolor{comment}{//bool save\_record(sen\_nov\_data\_u data, mult\_sen\_t *det);}
+00203     \textcolor{keywordtype}{void} loadFile(QString file\_name);
+00204     \textcolor{keywordtype}{void} reset\_form();
+00205     \textcolor{keywordtype}{void} cancel\_processing\_cmd(\textcolor{keywordtype}{bool} checked);
+00206     \textcolor{keywordtype}{void} cmd\_cancel();
+00207     \textcolor{keywordtype}{void} retransmission(QString error);
+00208     \textcolor{keywordtype}{void} record\_preview(\hyperlink{a00004_d3/dd5/a00215}{serial\_msg\_t} current\_cmd);
+00209     \textcolor{keywordtype}{bool} msg\_to\_mem(\textcolor{keywordtype}{char} *msg, \textcolor{keywordtype}{void} *dest, \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} size);
+00210 \};
+00211 
+00212 \textcolor{preprocessor}{#endif // MAINWINDOW\_H}
+\end{DoxyCode}

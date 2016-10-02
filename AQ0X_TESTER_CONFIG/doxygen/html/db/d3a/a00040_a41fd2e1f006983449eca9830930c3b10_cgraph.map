@@ -1,0 +1,8 @@
+<map id="QCPItemStraightLine::QCPItemStraightLine" name="QCPItemStraightLine::QCPItemStraightLine">
+<area shape="rect" id="node2" href="$d8/d41/a00038.html#aa988ba4e87ab684c9021017dcaba945f" title="Sets the coordinates of this QCPItemPosition. " alt="" coords="205,31,395,57"/>
+<area shape="rect" id="node5" href="$db/d3a/a00040.html#a9f36c9c9e60d7d9ac084c80380ac8601" title="Sets the pen that will be used to draw the line. " alt="" coords="228,82,372,123"/>
+<area shape="rect" id="node7" href="$db/d3a/a00040.html#a5c33559498d33543fa95cf0a36e851ff" title="Sets the pen that will be used to draw the line when selected. " alt="" coords="228,147,372,189"/>
+<area shape="rect" id="node3" href="$d8/d41/a00038.html#ac3cb2bddf5f89e5181830be30b93d090" title="QCPItemPosition::key" alt="" coords="454,5,605,32"/>
+<area shape="rect" id="node4" href="$d8/d41/a00038.html#a6817f7356d3a2b63e8446c6b6106dae1" title="QCPItemPosition::value" alt="" coords="450,56,609,83"/>
+<area shape="rect" id="node6" href="$db/d3a/a00040.html#ad858ab1a444391aab778f765453ea222" title="QCPItemStraightLine::pen" alt="" coords="443,117,616,144"/>
+</map>

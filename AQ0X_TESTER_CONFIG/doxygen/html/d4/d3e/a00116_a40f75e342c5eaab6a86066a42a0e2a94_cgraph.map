@@ -1,0 +1,6 @@
+<map id="removeLayer" name="removeLayer">
+<area shape="rect" id="node2" href="$d6/d42/a00043.html#a94c2f0100e48cefad2de8fe0fbb03c27" title="Returns a list of all layerables on this layer. " alt="" coords="148,5,283,32"/>
+<area shape="rect" id="node3" href="$d6/d42/a00043.html#ad5d7010829a6b99f326b07d7e37c8c99" title="Returns the index this layer has in the QCustomPlot. " alt="" coords="155,56,276,83"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#ae576ada60c1133318e29348d43d3cf10" title="layer" alt="" coords="331,132,381,159"/>
+<area shape="rect" id="node5" href="$d4/d3e/a00116.html#a73a6dc47c653bb6f8f030abca5a11852" title="Sets the layer with the specified name to be the current layer. " alt="" coords="158,157,273,184"/>
+</map>

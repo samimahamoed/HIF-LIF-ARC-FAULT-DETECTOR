@@ -1,0 +1,5 @@
+<map id="serial_send_response" name="serial_send_response">
+<area shape="rect" id="node2" href="$de/d11/a00021.html#a6553827687db2137ee550ad6e1d2f316" title="Standard CRC16 routine. " alt="" coords="218,5,273,32"/>
+<area shape="rect" id="node3" href="$d5/d79/a00030.html#a17f65cf9dbacdfb97cb2536ed0097ccb" title="Function sending buffers over serial port. " alt="" coords="201,56,289,83"/>
+<area shape="rect" id="node4" href="$d0/dc0/a00033.html#a3b0017f6ec0e04a6435bba00fe325294" title="Assembler function &#45; 5us granularity loop delay. " alt="" coords="337,56,413,83"/>
+</map>

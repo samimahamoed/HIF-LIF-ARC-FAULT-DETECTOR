@@ -1,0 +1,625 @@
+\hypertarget{a00129_source}{\section{recordpreview.\+cpp}
+\label{a00129_source}\index{recordpreview.\+cpp@{recordpreview.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{a00110}{mainwindow.h}"}
+00002 \textcolor{preprocessor}{#include "\hyperlink{a00130}{recordpreview.h}"}
+00003 \textcolor{preprocessor}{#include "\hyperlink{a00140}{ui\_recordpreview.h}"}
+00004 \textcolor{preprocessor}{#include <QFileDialog>}
+00005 \textcolor{preprocessor}{#include <QDesktopServices>}
+00006 \textcolor{preprocessor}{#include <QDateTime>}
+00007 \textcolor{preprocessor}{#include <QMessageBox>}
+00008 \textcolor{preprocessor}{#include <\hyperlink{a00004}{typedef.h}>}
+00009 \textcolor{preprocessor}{#include <math.h>}
+00010 
+\hypertarget{a00129_source_l00011}{}\hyperlink{a00073_a03ad4ae83a5594f6dc337c7b71873edd}{00011} \hyperlink{a00073_a03ad4ae83a5594f6dc337c7b71873edd}{recordPreview::recordPreview}(QString type, QVector<Uint16> data, QWidget *
+      parent) :
+00012     \hyperlink{a00058}{QMainWindow}(parent),
+00013     ui(new \hyperlink{a00145}{Ui}::\hyperlink{a00073}{recordPreview})
+00014 \{
+00015     ui->\hyperlink{a00081_afa41dc070a896a5eae476f3c0206825c}{setupUi}(\textcolor{keyword}{this});
+00016     this->setWindowTitle(type);
+00017 
+00018     dir\_default = ((\hyperlink{a00017}{MainWindow} *)parent)->dir\_default;
+00019 
+00020     ui->\hyperlink{a00081_ac9ab4609922159e8e4cc45905f76928e}{centralwidget}->setVisible(\textcolor{keyword}{false});
+00021     ui->\hyperlink{a00081_a07b76f17803ec09e0367b72938bbd097}{dockWidgetPlot}->setWidget(ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data});
+00022 
+00023     ui->\hyperlink{a00081_aa09067a9c96c9cd78f75261a9fcb89f0}{actionWinDataPlot}->setChecked(\textcolor{keyword}{true});
+00024 
+00025     ui->\hyperlink{a00081_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(\textcolor{keyword}{false});
+00026     ui->\hyperlink{a00081_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setEnabled(\textcolor{keyword}{false});
+00027 
+00028     ui->\hyperlink{a00081_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setVisible(\textcolor{keyword}{false});
+00029 
+00030     this->rc\_data = data;
+00031 
+00032 
+00033     measured\_values.resize(data.length());
+00034     time.resize(data.length());
+00035     history\_dfdt.resize(data.length());
+00036 
+00037     
+00038     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data.length(); ++var) \{
+00039         time[var]=var;
+00040         measured\_values[var]=(rc\_data[var]*\hyperlink{a00086_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR}) - (type.contains(\textcolor{stringliteral}{"
+      MFIELD"})?1.65:0);
+00041 
+00042         \textcolor{keywordflow}{if}(var > 0)
+00043             history\_dfdt[var] = abs(measured\_values[var])- abs(measured\_values[var-1]);
+00044     \}
+00045 
+00046     plot\_curve(time,measured\_values,
+00047               (type.contains(\textcolor{stringliteral}{"MFIELD"})?\hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65}:
+      \hyperlink{a00090_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3}));
+00048 
+00049 \}
+00050 
+00051 
+\hypertarget{a00129_source_l00052}{}\hyperlink{a00073_a3415d6b4da7b24b0bf8674a20f4c65cf}{00052} \hyperlink{a00073_a03ad4ae83a5594f6dc337c7b71873edd}{recordPreview::recordPreview}(QString type,QVector<Uint16> data, 
+      \hyperlink{a00006_d6/d7d/a00161}{event\_data\_t} event\_data, QWidget *parent) :
+00053     \hyperlink{a00058}{QMainWindow}(parent),
+00054     ui(new \hyperlink{a00145}{Ui}::\hyperlink{a00073}{recordPreview})
+00055 \{
+00056     ui->\hyperlink{a00081_afa41dc070a896a5eae476f3c0206825c}{setupUi}(\textcolor{keyword}{this});
+00057     this->setWindowTitle(type);
+00058 
+00059     ui->\hyperlink{a00081_ac9ab4609922159e8e4cc45905f76928e}{centralwidget}->setVisible(\textcolor{keyword}{false});
+00060     ui->\hyperlink{a00081_a07b76f17803ec09e0367b72938bbd097}{dockWidgetPlot}->setWidget(ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data});
+00061     ui->\hyperlink{a00081_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setWidget(ui->
+      \hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt});
+00062 
+00063     ui->\hyperlink{a00081_aa09067a9c96c9cd78f75261a9fcb89f0}{actionWinDataPlot}->setChecked(\textcolor{keyword}{true});
+00064     ui->\hyperlink{a00081_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(\textcolor{keyword}{true});
+00065 
+00066     this->rc\_data       = data;
+00067     this->event\_history  = event\_data;
+00068 
+00069     measured\_values.resize(data.length());
+00070     history\_amp.resize(data.length());
+00071     history\_dfdt.resize(data.length());
+00072     time.resize(data.length());
+00073 
+00074 
+00075 
+00076     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data.length(); ++var) \{
+00077         time[var]=var;
+00078         measured\_values[var]=(rc\_data[var]*\hyperlink{a00086_ada92d3eeeec0cbeee41e76a52d145792}{ADC\_VAL\_MAPPING\_FACTOR})-(type.contains(\textcolor{stringliteral}{"
+      MFIELD"})?1.65:0);
+00079     \}
+00080 
+00081 
+00082 
+00083     \textcolor{comment}{//TODO: history amp shows when the module is activated}
+00084     \textcolor{comment}{/*}
+00085 \textcolor{comment}{    for (int var = 0; var < MAX\_EVENT\_OBSERVATION\_LENGTH; ++var) \{}
+00086 \textcolor{comment}{        history\_amp[var + PRE\_ACT\_RECORD\_BUFF\_SIZE + event\_history.offset]}
+00087 \textcolor{comment}{                =(event\_history.ignal\_level[var]*ADC\_VAL\_MAPPING\_FACTOR) -
+       (type.contains("MFIELD")?1.65:0);}
+00088 \textcolor{comment}{}
+00089 \textcolor{comment}{    \}}
+00090 \textcolor{comment}{}
+00091 \textcolor{comment}{    */}
+00092     plot\_curve(time,measured\_values,
+00093               (type.contains(\textcolor{stringliteral}{"MFIELD"})?\hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65}:
+      \hyperlink{a00090_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3}),
+00094               history\_amp
+00095               );
+00096 
+00097 
+00098 
+00099 \}
+00100 
+00101 
+\hypertarget{a00129_source_l00102}{}\hyperlink{a00073_a3f26cea2101bdab013aa02f1c73e41b9}{00102} \hyperlink{a00073_a03ad4ae83a5594f6dc337c7b71873edd}{recordPreview::recordPreview}(QString type, QVector<double> *data1, 
+      QVector<double> *data2, QVector<double> *data3, QWidget *parent) :
+00103     \hyperlink{a00058}{QMainWindow}(parent),
+00104     ui(new \hyperlink{a00145}{Ui}::\hyperlink{a00073}{recordPreview})
+00105 \{
+00106     ui->\hyperlink{a00081_afa41dc070a896a5eae476f3c0206825c}{setupUi}(\textcolor{keyword}{this});
+00107     this->setWindowTitle(type);
+00108 
+00109     ui->\hyperlink{a00081_ac9ab4609922159e8e4cc45905f76928e}{centralwidget}->setVisible(\textcolor{keyword}{false});
+00110     ui->\hyperlink{a00081_a07b76f17803ec09e0367b72938bbd097}{dockWidgetPlot}->setWidget(ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data});
+00111     ui->\hyperlink{a00081_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setWidget(ui->
+      \hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt});
+00112 
+00113 
+00114     ui->\hyperlink{a00081_aa09067a9c96c9cd78f75261a9fcb89f0}{actionWinDataPlot}->setChecked(\textcolor{keyword}{true});
+00115 
+00116     measured\_values.resize(data1->length());
+00117 
+00118     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data1->length(); ++var)
+00119       measured\_values[var] = data1->at(var);
+00120 
+00121    \textcolor{comment}{// memmove(&measured\_values,data1,sizeof(measured\_values));}
+00122 
+00123     time.resize(data1->length());
+00124     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < data1->length(); ++var)
+00125         time[var]=var;
+00126 
+00127     \textcolor{keywordflow}{if}((data2->length() > 0) && (data3->length()>0))\{
+00128         ui->\hyperlink{a00081_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(\textcolor{keyword}{true});
+00129 
+00130         history\_amp.resize(data2->length());
+00131         memmove(&history\_amp,data2,\textcolor{keyword}{sizeof}(history\_amp));
+00132         history\_dfdt.resize(data3->length());
+00133         memmove(&history\_dfdt,data3,\textcolor{keyword}{sizeof}(history\_dfdt));
+00134 
+00135 
+00136 
+00137 
+00138         plot\_curve(time,measured\_values,
+00139                   (type.contains(\textcolor{stringliteral}{"MFIELD"})?\hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65}:
+      \hyperlink{a00090_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3}),
+00140                   history\_amp
+00141                   );
+00142 
+00143 
+00144 
+00145         plot\_event(time,history\_dfdt,\hyperlink{a00073_ad38222699419e6ac871ce2a23c6d292e}{max}(history\_dfdt));
+00146 
+00147     \}\textcolor{keywordflow}{else}\{
+00148         ui->\hyperlink{a00081_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(\textcolor{keyword}{false});
+00149         ui->\hyperlink{a00081_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setEnabled(\textcolor{keyword}{false});
+00150 
+00151         ui->\hyperlink{a00081_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setVisible(\textcolor{keyword}{false});
+00152 
+00153         plot\_curve(time,measured\_values,
+00154                   type.contains(\textcolor{stringliteral}{"MFIELD"})?\hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65}:
+      \hyperlink{a00090_ae18fed2471b16a8516d721ff60671dd9}{WAVEFORM\_0\_TO\_3\_3});
+00155 
+00156 
+00157     \}
+00158 
+00159 \}
+00160 
+00161 
+\hypertarget{a00129_source_l00162}{}\hyperlink{a00073_ab04c69b9693e7a59a08a5faa6742b71f}{00162} \hyperlink{a00073_ab04c69b9693e7a59a08a5faa6742b71f}{recordPreview::~recordPreview}()
+00163 \{
+00164     \textcolor{keyword}{delete} ui;
+00165 \}
+00166 
+00167 
+\hypertarget{a00129_source_l00168}{}\hyperlink{a00073_ad38222699419e6ac871ce2a23c6d292e}{00168} \textcolor{keywordtype}{double} \hyperlink{a00073_ad38222699419e6ac871ce2a23c6d292e}{recordPreview::max}(QVector<double> val)\{
+00169     \textcolor{keywordtype}{double} result = 0;
+00170     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < val.length(); ++var)
+00171         result = (result > val[var])?result:val[var];
+00172 
+00173     \textcolor{keywordflow}{return} result;
+00174 \}
+00175 
+00176 \textcolor{keywordtype}{void} recordPreview ::plot\_curve(QVector<double> xvalue, QVector<double> yvalue, 
+      \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} yrange)
+00177 \{
+00178 
+00179   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->addGraph();
+00180   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00181 
+00182   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setPen(QPen(Qt::green));
+00183   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setData(xvalue, yvalue);
+00184 
+00185   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setLabel(\textcolor{stringliteral}{"Sampling time (us)"});
+00186   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setLabel(\textcolor{stringliteral}{"Measured value (V)"});
+00187 
+00188   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setLabelColor(QColor(\textcolor{stringliteral}{"black"}));
+00189   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setLabelColor(QColor(\textcolor{stringliteral}{"black"}));
+00190 
+00191   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setGridPen(QPen(Qt::gray));
+00192   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setGridPen(QPen(Qt::gray));
+00193   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis2->setGridPen(QPen(Qt::gray));
+00194   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis2->setGridPen(QPen(Qt::gray));
+00195 
+00196   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setTickPen(QPen(Qt::gray));
+00197   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setTickPen(QPen(Qt::gray));
+00198 
+00199   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setBasePen(QPen(Qt::gray));
+00200   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setBasePen(QPen(Qt::gray));
+00201 
+00202   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00203   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00204 
+00205   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setTicks(\textcolor{keyword}{true});
+00206 
+00207 
+00208 
+00209   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setSubGrid(\textcolor{keyword}{true});
+00210   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setTickStep(1);
+00211 
+00212   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setSubGridPen(QPen(Qt::gray));
+00213   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setSubGridPen(QPen(Qt::gray));
+00214 
+00215   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis2->setVisible(\textcolor{keyword}{true});
+00216   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis2->setTickLabels(\textcolor{keyword}{false});
+00217   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis2->setVisible(\textcolor{keyword}{true});
+00218   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis2->setTickLabels(\textcolor{keyword}{false});
+00219   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis2->setBasePen(QPen(Qt::gray));
+00220   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis2->setBasePen(QPen(Qt::gray));
+00221 
+00222    ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setGrid(\textcolor{keyword}{true});
+00223    ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setGrid(\textcolor{keyword}{true});
+00224 
+00225 
+00226   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setRange(0, xvalue.length());
+00227   \textcolor{keywordflow}{if}(yrange == \hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00228   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setRange(-1.65, 1.65);
+00229   \textcolor{keywordflow}{else}
+00230   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setRange(0, 3.34);
+00231 \}
+00232 
+00233 
+00234 
+00235 \textcolor{keywordtype}{void} recordPreview ::plot\_curve(QVector<double> xvalue,QVector<double> yvalue, 
+      \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} yrange,QVector<double> event\_data)
+00236 \{
+00237     QVector<double> section;
+00238 
+00239     section.clear();
+00240     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} var = 0; var < xvalue.length(); ++var) \{
+00241         \textcolor{keywordflow}{if}(var < \hyperlink{a00006_a18dcecc16ded13fa622e0913e73442e6}{PRE\_ACT\_RECORD\_BUFF\_SIZE})
+00242         section.append(yvalue[var]);
+00243         \textcolor{keywordflow}{else}
+00244         section.append(0);
+00245     \}
+00246 
+00247 
+00248 
+00249     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->addGraph();
+00250     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setPen(QPen(Qt::lightGray));
+00251 
+00252     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setData(xvalue, section);
+00253     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setBrush(QBrush(Qt::yellow));
+00254 
+00255     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->addGraph();
+00256     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(1)->setPen(QPen(Qt::green));
+00257     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(1)->setData(xvalue, yvalue);
+00258 
+00259      ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00260 
+00261     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setLabel(\textcolor{stringliteral}{"time:  t x"}+QString::number(
+      \hyperlink{a00086_a87ea9a0eaa474d8b8f672cfa5cbb091f}{FAST\_TIMER\_SAMPLING\_RATE\_XU})+\textcolor{stringliteral}{"us"});
+00262     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setLabel(\textcolor{stringliteral}{"Measured Value (V)"});
+00263 
+00264     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00265     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00266 
+00267     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setGridPen(QPen(Qt::gray));
+00268     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setGridPen(QPen(Qt::gray));
+00269     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis2->setGridPen(QPen(Qt::gray));
+00270     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis2->setGridPen(QPen(Qt::gray));
+00271 
+00272     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setTickPen(QPen(Qt::gray));
+00273     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setTickPen(QPen(Qt::gray));
+00274 
+00275     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setBasePen(QPen(Qt::gray));
+00276     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setBasePen(QPen(Qt::gray));
+00277 
+00278     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00279     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00280 
+00281     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setTicks(\textcolor{keyword}{true});
+00282 
+00283 
+00284 
+00285     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setSubGrid(\textcolor{keyword}{true});
+00286     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setTickStep(\hyperlink{a00086_a87ea9a0eaa474d8b8f672cfa5cbb091f}{FAST\_TIMER\_SAMPLING\_RATE\_XU});
+00287 
+00288     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setSubGridPen(QPen(Qt::gray));
+00289     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setSubGridPen(QPen(Qt::gray));
+00290 
+00291     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis2->setVisible(\textcolor{keyword}{true});
+00292     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis2->setTickLabels(\textcolor{keyword}{false});
+00293     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis2->setVisible(\textcolor{keyword}{true});
+00294     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis2->setTickLabels(\textcolor{keyword}{false});
+00295     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis2->setBasePen(QPen(Qt::gray));
+00296     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis2->setBasePen(QPen(Qt::gray));
+00297 
+00298      ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setGrid(\textcolor{keyword}{true});
+00299      ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setGrid(\textcolor{keyword}{true});
+00300 
+00301   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->xAxis->setRange(0, xvalue.length());
+00302   \textcolor{keywordflow}{if}(yrange == \hyperlink{a00090_a0923d3b365a36e1e8c401cec964aa36f}{WAVEFORM\_PLUS\_MINUS\_1\_65})
+00303   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setRange(-1.65, 1.65);
+00304   \textcolor{keywordflow}{else}
+00305   ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->yAxis->setRange(0, 3.34);
+00306 \}
+00307 
+00308 
+00309 \textcolor{keywordtype}{void} recordPreview ::plot\_event(QVector<double> xvalue, QVector<double> yvalue, 
+      \hyperlink{a00004_aae7407b021d43f7193a81a58cfb3e297}{Uint16} yrange)
+00310 \{
+00311 
+00312   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->addGraph();
+00313   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00314 
+00315   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->graph(0)->setPen(QPen(Qt::green));
+00316   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->graph(0)->setBrush(QBrush(Qt::yellow));
+00317   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->graph(0)->setData(xvalue, yvalue);
+00318 
+00319   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setLabel(\textcolor{stringliteral}{"Sampling time (us)"});
+00320   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setLabel(\textcolor{stringliteral}{"dv/dt         (v/s)"});
+00321 
+00322   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setLabelColor(QColor(\textcolor{stringliteral}{"black"}));
+00323   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setLabelColor(QColor(\textcolor{stringliteral}{"black"}));
+00324 
+00325   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setGridPen(QPen(Qt::gray));
+00326   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setGridPen(QPen(Qt::gray));
+00327   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis2->setGridPen(QPen(Qt::gray));
+00328   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis2->setGridPen(QPen(Qt::gray));
+00329 
+00330   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setTickPen(QPen(Qt::gray));
+00331   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setTickPen(QPen(Qt::gray));
+00332 
+00333   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setBasePen(QPen(Qt::gray));
+00334   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setBasePen(QPen(Qt::gray));
+00335 
+00336   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00337   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setTickLabelColor(QColor(\textcolor{stringliteral}{"gray"}));
+00338 
+00339   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setTicks(\textcolor{keyword}{true});
+00340 
+00341 
+00342 
+00343   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setSubGrid(\textcolor{keyword}{true});
+00344   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setTickStep(1.0);
+00345 
+00346   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setSubGridPen(QPen(Qt::gray));
+00347   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setSubGridPen(QPen(Qt::gray));
+00348 
+00349   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis2->setVisible(\textcolor{keyword}{true});
+00350   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis2->setTickLabels(\textcolor{keyword}{false});
+00351   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis2->setVisible(\textcolor{keyword}{true});
+00352   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis2->setTickLabels(\textcolor{keyword}{false});
+00353   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis2->setBasePen(QPen(Qt::gray));
+00354   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis2->setBasePen(QPen(Qt::gray));
+00355 
+00356    ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setGrid(\textcolor{keyword}{true});
+00357    ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setGrid(\textcolor{keyword}{true});
+00358 
+00359 
+00360   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->xAxis->setRange(0, xvalue.length());
+00361   ui->\hyperlink{a00081_a43d24fa14d90cc27b310542e39dcdd1b}{curve\_dfdt}->yAxis->setRange(0, yrange);
+00362 \}
+00363 
+00364 
+00365 
+00366 \textcolor{keywordtype}{void} recordPreview::saveEventRecored(QString FileName)\{
+00367 
+00368     QString EventRecordFileName;
+00369 
+00370             QDir default\_dir;
+00371 
+00372             \textcolor{keywordflow}{if}(!default\_dir.exists(default\_dir.toNativeSeparators(dir\_default)))
+00373                 default\_dir.mkdir(default\_dir.toNativeSeparators(dir\_default));
+00374 
+00375             EventRecordFileName = default\_dir.toNativeSeparators(dir\_default)+ 
+      \hyperlink{a00110_a8d4ad2cd60e024f6e0f37dbac40768a1}{EVENT\_RECORD\_FILE};
+00376 
+00377 
+00378        QFile outputFile(EventRecordFileName);
+00379 
+00380        \textcolor{keywordflow}{if}(outputFile.exists())
+00381        outputFile.open(QIODevice::WriteOnly | QIODevice::Append);
+00382        \textcolor{keywordflow}{else}
+00383        outputFile.open(QIODevice::WriteOnly);
+00384 
+00385        \textcolor{keywordflow}{if}(!outputFile.isOpen())\{
+00386            ((\hyperlink{a00017}{MainWindow} *)parent())->msg(1,\textcolor{stringliteral}{"Error, unable to open "} + EventRecordFileName + \textcolor{stringliteral}{" "});
+00387 
+00388             \textcolor{keywordflow}{return};
+00389        \}
+00390 
+00391        QTextStream outStream(&outputFile);
+00392 
+00393        outStream << FileName<<\textcolor{stringliteral}{"\(\backslash\)n"};
+00394        outputFile.close();
+00395 \}
+00396 
+00397 \textcolor{keywordtype}{void} recordPreview::on\_actionCreateCSV\_triggered()
+00398 \{
+00399 
+00400     QDir default\_dir;
+00401 
+00402     \textcolor{keywordflow}{if}(!default\_dir.exists(default\_dir.toNativeSeparators(dir\_default)))
+00403         default\_dir.mkdir(default\_dir.toNativeSeparators(dir\_default));
+00404 
+00405     QString DefaultFileName = this->windowTitle();
+00406 
+00407 
+00408 
+00409     DefaultFileName.replace(\textcolor{charliteral}{':'},\textcolor{stringliteral}{"-"}).replace(\textcolor{charliteral}{' '},\textcolor{stringliteral}{"\_"}).replace(\textcolor{charliteral}{'.'},\textcolor{stringliteral}{"\_"});
+00410 
+00411     DefaultFileName = default\_dir.toNativeSeparators(dir\_default)+ DefaultFileName;
+00412 
+00413     QString SelectedFilesName = QFileDialog::getSaveFileName(
+00414         \textcolor{keyword}{this},
+00415         tr(\textcolor{stringliteral}{"Save As"}),
+00416         DefaultFileName,
+00417         tr(\textcolor{stringliteral}{"Comma Separated Values (*.csv)"}));
+00418 
+00419 
+00420 
+00421     \textcolor{keywordflow}{if} (SelectedFilesName.isEmpty()) \textcolor{keywordflow}{return};
+00422     \textcolor{keywordflow}{else} \{
+00423         QFile file(SelectedFilesName);
+00424         \textcolor{keywordflow}{if} (!file.open(QIODevice::WriteOnly)) \{
+00425             QMessageBox::information(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Unable to open file"}), file.errorString());
+00426             \textcolor{keywordflow}{return};
+00427         \}
+00428 
+00429         QTextStream stream(&file);
+00430 
+00431         stream << \textcolor{stringliteral}{"Title,"}+this->windowTitle()+\textcolor{stringliteral}{"\(\backslash\)n"};
+00432 
+00433         stream << \textcolor{stringliteral}{"Record length,"}+QString::number(measured\_values.length())+\textcolor{stringliteral}{"\(\backslash\)n"};
+00434 
+00435 
+00436         stream << \textcolor{stringliteral}{"TIME, MEASURED DATA\(\backslash\)n"};
+00437 
+00438 
+00439 
+00440         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} ii=0;ii< measured\_values.length();ii++)
+00441            stream << QString::number(ii) +\textcolor{stringliteral}{","}+QString::number(measured\_values[ii])+\textcolor{stringliteral}{"\(\backslash\)n"};
+00442 
+00443 
+00444 
+00445         file.close();
+00446 
+00447 
+00448 
+00449         \textcolor{keywordflow}{try} \{
+00450             QDesktopServices::openUrl(QUrl(\textcolor{stringliteral}{"file:"}+ SelectedFilesName));
+00451 
+00452         \} \textcolor{keywordflow}{catch} (...) \{
+00453 
+00454         \}
+00455     \}
+00456 
+00457 
+00458 \}
+00459 
+00460 \textcolor{keywordtype}{void} recordPreview::on\_actionData\_Plot\_pdf\_triggered()
+00461 \{
+00462     QDir default\_dir;
+00463 
+00464     \textcolor{keywordflow}{if}(!default\_dir.exists(default\_dir.toNativeSeparators(dir\_default)))
+00465         default\_dir.mkdir(default\_dir.toNativeSeparators(dir\_default));
+00466 
+00467     QString DefaultFileName = this->windowTitle();
+00468 
+00469 
+00470 
+00471     DefaultFileName.replace(\textcolor{charliteral}{':'},\textcolor{stringliteral}{"-"}).replace(\textcolor{charliteral}{' '},\textcolor{stringliteral}{"\_"}).replace(\textcolor{charliteral}{'.'},\textcolor{stringliteral}{"\_"});
+00472 
+00473     DefaultFileName = default\_dir.toNativeSeparators(dir\_default)+ DefaultFileName;
+00474 
+00475 
+00476 
+00477     QString SelectedFilesName = QFileDialog::getSaveFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save File"}),
+00478                                                         DefaultFileName,
+00479                                                          tr(\textcolor{stringliteral}{"PDF (*.pdf);"}));
+00480 
+00481 
+00482     \textcolor{keywordflow}{if}(SelectedFilesName == NULL)
+00483         \textcolor{keywordflow}{return};
+00484 
+00485     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setPen(QPen(Qt::black));
+00486     \textcolor{comment}{/*}
+00487 \textcolor{comment}{    ui->curve\_data->graph(1)->setPen(QPen(Qt::black));}
+00488 \textcolor{comment}{    ui->curve\_data->graph(1)->setPen(QPen(Qt::DotLine));}
+00489 \textcolor{comment}{    ui->curve\_data->graph(1)->setBrush(QBrush(Qt::gray));}
+00490 \textcolor{comment}{    */}
+00491     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->setColor(QColor(\textcolor{stringliteral}{"white"}));
+00492     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->replot();
+00493 
+00494       \textcolor{keywordflow}{if}(
+00495         !ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->savePdf(SelectedFilesName
+00496                                 ,\textcolor{keyword}{false},800,600))
+00497             ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Error: Couldn't save data"});
+00498 
+00499        ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setPen(QPen(Qt::green));
+00500       \textcolor{comment}{/*}
+00501 \textcolor{comment}{       ui->curve\_data->graph(1)->setPen(QPen(Qt::yellow));}
+00502 \textcolor{comment}{       ui->curve\_data->graph(1)->setBrush(QBrush(Qt::yellow));}
+00503 \textcolor{comment}{       */}
+00504        ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00505        ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->replot();
+00506 
+00507        \textcolor{keywordflow}{if}(!QDesktopServices::openUrl(QUrl(SelectedFilesName)))
+00508            ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Couldn't open the file"}+
+      SelectedFilesName);
+00509 
+00510 \}
+00511 
+00512 \textcolor{keywordtype}{void} recordPreview::on\_actionData\_plot\_img\_triggered()
+00513 \{
+00514     QDir default\_dir;
+00515 
+00516     \textcolor{keywordflow}{if}(!default\_dir.exists(default\_dir.toNativeSeparators(dir\_default)))
+00517         default\_dir.mkdir(default\_dir.toNativeSeparators(dir\_default));
+00518 
+00519     QString DefaultFileName = this->windowTitle();
+00520 
+00521 
+00522 
+00523     DefaultFileName.replace(\textcolor{charliteral}{':'},\textcolor{stringliteral}{"-"}).replace(\textcolor{charliteral}{' '},\textcolor{stringliteral}{"\_"}).replace(\textcolor{charliteral}{'.'},\textcolor{stringliteral}{"\_"});
+00524 
+00525     DefaultFileName = default\_dir.toNativeSeparators(dir\_default)+ DefaultFileName;
+00526 
+00527     QString SelectedFilesName = QFileDialog::getSaveFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save File"}),
+00528                                                         DefaultFileName,
+00529                                                          tr(\textcolor{stringliteral}{"Images (*.png *.jpg *.bmp)"}));
+00530 
+00531     \textcolor{keywordflow}{if}(SelectedFilesName == NULL)
+00532         \textcolor{keywordflow}{return};
+00533 
+00534     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setPen(QPen(Qt::green));
+00535     \textcolor{comment}{/*}
+00536 \textcolor{comment}{    ui->curve\_data->graph(1)->setPen(QPen(Qt::red));}
+00537 \textcolor{comment}{    ui->curve\_data->graph(1)->setPen(QPen(Qt::DotLine));}
+00538 \textcolor{comment}{    ui->curve\_data->graph(1)->setBrush(QBrush(Qt::gray));}
+00539 \textcolor{comment}{    */}
+00540 
+00541     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->setColor(QColor(\textcolor{stringliteral}{"white"}));
+00542     ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->replot();
+00543 
+00544 
+00545 
+00546 
+00547     \textcolor{keywordflow}{if}(SelectedFilesName.indexOf(\textcolor{charliteral}{'.'})==-1)
+00548         SelectedFilesName.append(\textcolor{stringliteral}{".jpg"});
+00549 
+00550     \textcolor{keywordflow}{if}((SelectedFilesName.indexOf(\textcolor{charliteral}{'.'})==SelectedFilesName.length()-4))\{
+00551     \textcolor{keywordflow}{if}(SelectedFilesName.endsWith(\textcolor{stringliteral}{".jpg"}))\{
+00552        \textcolor{keywordflow}{if}(
+00553         !ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->saveJpg(SelectedFilesName
+00554                                 ,800,600))
+00555             ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Error: Couldn't save data"});
+00556     \}\textcolor{keywordflow}{else}
+00557 
+00558     \textcolor{keywordflow}{if}(SelectedFilesName.endsWith(\textcolor{stringliteral}{".png"}))\{
+00559            \textcolor{keywordflow}{if}(
+00560             !ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->savePng(SelectedFilesName
+00561                                     ,800,600))
+00562                 ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Error: Couldn't save data"});
+00563 
+00564     \}\textcolor{keywordflow}{else}
+00565 
+00566     \textcolor{keywordflow}{if}(SelectedFilesName.endsWith(\textcolor{stringliteral}{".bmp"}))\{
+00567                   \textcolor{keywordflow}{if}(
+00568                    !ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->saveBmp(SelectedFilesName
+00569                                            ,800,600))
+00570                        ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Error: Couldn't save
+       data"});
+00571 
+00572      \}
+00573 
+00574     \}
+00575      ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->graph(0)->setPen(QPen(Qt::green));
+00576 
+00577      \textcolor{comment}{/*}
+00578 \textcolor{comment}{     ui->curve\_data->graph(1)->setPen(QPen(Qt::yellow));}
+00579 \textcolor{comment}{     ui->curve\_data->graph(1)->setBrush(QBrush(Qt::yellow));}
+00580 \textcolor{comment}{     */}
+00581      ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->setColor(QColor(\textcolor{stringliteral}{"black"}));
+00582      ui->\hyperlink{a00081_a247d94481323c0bc4f8b6458a8a535dd}{curve\_data}->replot();
+00583 
+00584        \textcolor{keywordflow}{if}(!QDesktopServices::openUrl(QUrl(SelectedFilesName)))
+00585            ((\hyperlink{a00017}{MainWindow} *)parent())->msg(\hyperlink{a00090_aa8a990825a5a62c89d2fb8b08d8a1070}{MSG\_ERROR},\textcolor{stringliteral}{"Couldn't open the file"}+
+      SelectedFilesName);
+00586 
+00587 \}
+00588 
+00589 \textcolor{keywordtype}{void} recordPreview::on\_actionWinDataPlot\_toggled(\textcolor{keywordtype}{bool} arg1)
+00590 \{
+00591     ui->\hyperlink{a00081_a07b76f17803ec09e0367b72938bbd097}{dockWidgetPlot}->setVisible(arg1);
+00592     ui->\hyperlink{a00081_aa09067a9c96c9cd78f75261a9fcb89f0}{actionWinDataPlot}->setChecked(arg1);
+00593 \}
+00594 
+00595 \textcolor{keywordtype}{void} recordPreview::on\_actionWinEventPlot\_toggled(\textcolor{keywordtype}{bool} arg1)
+00596 \{
+00597     ui->\hyperlink{a00081_a2a8f7ee8d4458dd20481c8a1c29ce185}{dockWidgetPlot\_event\_history}->setVisible(arg1);
+00598     ui->\hyperlink{a00081_ac72ec9c8679d46fd43a87f99ee6db893}{actionWinEventPlot}->setChecked(arg1);
+00599 \}
+\end{DoxyCode}

@@ -1,0 +1,5 @@
+<map id="QCPAxis::selectionChanged" name="QCPAxis::selectionChanged">
+<area shape="rect" id="node2" href="$d3/dfe/a00025.html#a24c13908da2f8d629b1bbbe9cbd63e39" title="Sets the selected state of the respective axis parts described by SelectablePart. ..." alt="" coords="240,31,393,57"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#a5a34dafa051be08d03e89c163c507f90" title="Constructs an Axis instance of Type type inside parentPlot. " alt="" coords="473,5,612,32"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#ac68d1c81004fded1f3c4ca95879a445d" title="QCPAxis::handleAxisSelection" alt="" coords="441,56,644,83"/>
+</map>

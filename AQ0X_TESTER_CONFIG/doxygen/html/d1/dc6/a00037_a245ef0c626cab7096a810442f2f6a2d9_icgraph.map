@@ -1,0 +1,8 @@
+<map id="QCPItemPixmap::getFinalRect" name="QCPItemPixmap::getFinalRect">
+<area shape="rect" id="node2" href="$d1/dc6/a00037.html#a88abce3c1027f371cddcf6dad35ffbb1" title="QCPItemPixmap::anchorPixel\lPoint" alt="" coords="259,5,454,47"/>
+<area shape="rect" id="node3" href="$d1/dc6/a00037.html#a879e8076c2db01a38b34cfa73ec95d2f" title="QCPItemPixmap::draw" alt="" coords="523,101,678,127"/>
+<area shape="rect" id="node4" href="$d1/dc6/a00037.html#ab725f1025891e9284f75bbe1cb4cabfa" title="This function is used to decide whether a click hits an item or not. " alt="" coords="263,122,450,149"/>
+<area shape="rect" id="node5" href="$d1/dc6/a00037.html#a8bced3027b326b290726cd1979c7cfc6" title="QCPItemPixmap::updateScaled\lPixmap" alt="" coords="253,173,460,215"/>
+<area shape="rect" id="node6" href="$d1/dc6/a00037.html#aea813ff1b12163ae5d3ac182593b1d6f" title="Sets whether the pixmap will be scaled to fit the rectangle defined by the topLeft and bottomRight po..." alt="" coords="508,181,693,207"/>
+<area shape="rect" id="node7" href="$d1/dc6/a00037.html#aa6de42a37261b21a5480e7da122345c3" title="Creates a rectangle item and sets default values. " alt="" coords="741,181,965,207"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="QCPLegend::setSelected" name="QCPLegend::setSelected">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#a9d4808ab925b003054085246c92a257c" title="Deselects everything in the QCustomPlot (plottables, items, axes, legend and title). " alt="" coords="297,5,383,32"/>
+<area shape="rect" id="node3" href="$d6/d97/a00045.html#a44cdc6af6cd6e62a2bd827c3236c7261" title="QCPLegend::handleLegendSelection" alt="" coords="223,56,457,83"/>
+<area shape="rect" id="node5" href="$d6/d97/a00045.html#a5dc42d73df80e7294414aee1170c4d2b" title="Constructs a new QCPLegend instance with parentPlot as the containing plot and default values..." alt="" coords="255,107,425,133"/>
+<area shape="rect" id="node4" href="$d4/d3e/a00116.html#a724e97d2e8c03e68adac5f4b6164a1b3" title="mouseReleaseEvent" alt="" coords="505,56,645,83"/>
+</map>

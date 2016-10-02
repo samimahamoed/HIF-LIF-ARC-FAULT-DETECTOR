@@ -1,0 +1,133 @@
+.TH "ffft::OscSinCos< T >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::OscSinCos< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <OscSinCos\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef T \fBDataType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOscSinCos\fP ()"
+.br
+.ti -1c
+.RI "\fBffft_FORCEINLINE\fP void \fBset_step\fP (double angle_rad)"
+.br
+.ti -1c
+.RI "\fBffft_FORCEINLINE\fP \fBDataType\fP \fBget_cos\fP () const "
+.br
+.ti -1c
+.RI "\fBffft_FORCEINLINE\fP \fBDataType\fP \fBget_sin\fP () const "
+.br
+.ti -1c
+.RI "\fBffft_FORCEINLINE\fP void \fBstep\fP ()"
+.br
+.ti -1c
+.RI "\fBffft_FORCEINLINE\fP void \fBclear_buffers\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T>class ffft::OscSinCos< T >"
+
+.PP
+Definition at line 40 of file OscSinCos\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<class T> typedef T \fBffft::OscSinCos\fP< T >::\fBDataType\fP"
+
+.PP
+Definition at line 47 of file OscSinCos\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class T > \fBffft::OscSinCos\fP< T >::\fBOscSinCos\fP ()"
+
+.PP
+Definition at line 46 of file OscSinCos\&.hpp\&.
+.PP
+.nf
+47 :  _pos_cos (1)
+48 ,   _pos_sin (0)
+49 ,   _step_cos (1)
+50 ,   _step_sin (0)
+51 {
+52     // Nothing
+53 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T > void \fBffft::OscSinCos\fP< T >::clear_buffers ()"
+
+.PP
+Definition at line 97 of file OscSinCos\&.hpp\&.
+.PP
+.nf
+98 {
+99     _pos_cos = static_cast <DataType> (1);
+100     _pos_sin = static_cast <DataType> (0);
+101 }
+.fi
+.SS "template<class T > \fBOscSinCos\fP< T >::\fBDataType\fP \fBffft::OscSinCos\fP< T >::get_cos () const"
+
+.PP
+Definition at line 69 of file OscSinCos\&.hpp\&.
+.PP
+.nf
+70 {
+71     return (_pos_cos);
+72 }
+.fi
+.SS "template<class T > \fBOscSinCos\fP< T >::\fBDataType\fP \fBffft::OscSinCos\fP< T >::get_sin () const"
+
+.PP
+Definition at line 77 of file OscSinCos\&.hpp\&.
+.PP
+.nf
+78 {
+79     return (_pos_sin);
+80 }
+.fi
+.SS "template<class T > void \fBffft::OscSinCos\fP< T >::set_step (doubleangle_rad)"
+
+.PP
+Definition at line 58 of file OscSinCos\&.hpp\&.
+.PP
+.nf
+59 {
+60     using namespace std;
+61 
+62     _step_cos = static_cast <DataType> (cos (angle_rad));
+63     _step_sin = static_cast <DataType> (sin (angle_rad));
+64 }
+.fi
+.SS "template<class T > void \fBffft::OscSinCos\fP< T >::step ()"
+
+.PP
+Definition at line 85 of file OscSinCos\&.hpp\&.
+.PP
+.nf
+86 {
+87     const DataType  old_cos = _pos_cos;
+88     const DataType  old_sin = _pos_sin;
+89 
+90     _pos_cos = old_cos * _step_cos - old_sin * _step_sin;
+91     _pos_sin = old_cos * _step_sin + old_sin * _step_cos;
+92 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

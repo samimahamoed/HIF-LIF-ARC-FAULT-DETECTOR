@@ -1,0 +1,7 @@
+<map id="algorithm_message_arrived_ntf_isr" name="algorithm_message_arrived_ntf_isr">
+<area shape="rect" id="node2" href="$d6/d5b/a00026.html#a2068c3c2584547dbc1c8b9bca2d55b18" title="Serial port receive interrupt. " alt="" coords="239,5,337,32"/>
+<area shape="rect" id="node3" href="$db/df3/a00034.html#a42ed16c7ef20e0c0031fe7ba7ae377b3" title="Main processing loop for algorithm module. " alt="" coords="232,56,344,83"/>
+<area shape="rect" id="node4" href="$d1/dc6/a00037.html#a2068c3c2584547dbc1c8b9bca2d55b18" title="Fast timer interrupt to scan sensor element analog values. " alt="" coords="403,31,501,57"/>
+<area shape="rect" id="node5" href="$db/df3/a00034.html#a93269cdec3e21934aa9395440a2de605" title="Algorithm module notification function. " alt="" coords="392,81,512,108"/>
+<area shape="rect" id="node6" href="$d5/df9/a00044.html#a840291bc02cba5474a4cb46a9b9566fe" title="System startup function. " alt="" coords="560,81,611,108"/>
+</map>

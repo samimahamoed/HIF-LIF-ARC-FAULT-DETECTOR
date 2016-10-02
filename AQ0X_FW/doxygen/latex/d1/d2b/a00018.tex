@@ -1,0 +1,437 @@
+\hypertarget{a00018}{\section{light\+\_\+sensor.\+h File Reference}
+\label{a00018}\index{light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00018_dd/d42/a00109}{analog\+\_\+sample\+\_\+light\+\_\+t}
+\item 
+struct \hyperlink{a00018_da/de3/a00856}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure}
+\begin{DoxyCompactList}\small\item\em Notification containing module operation configuration details ( from Algorithm module)  \hyperlink{a00018_da/de3/a00856}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{a00018_d0/d66/a00858}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report}
+\begin{DoxyCompactList}\small\item\em Notification structure from light\+\_\+sen module to Algorithm module about supervision result.  \hyperlink{a00018_d0/d66/a00858}{More...}\end{DoxyCompactList}\item 
+struct \hyperlink{a00018_d0/d82/a00857}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure.\+message}
+\item 
+struct \hyperlink{a00018_dc/d8c/a00859}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report.\+message}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00018_ac8c3accc8173c965137b300542e451e6}{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+C\+O\+N\+F\+I\+G}~(\hyperlink{a00036_ab2eeea4643823a0c7c7731ddb83e3edc}{X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E} + 13)
+\begin{DoxyCompactList}\small\item\em Notification from Algorithm module. \end{DoxyCompactList}\item 
+\#define \hyperlink{a00018_a67d542941eaade236c5f5a224efc7653}{L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+\_\+\+G\+A\+I\+N}~1
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{a00018_ae9aa2f8b8e90a92755efbcd161c67bc0}{light\+\_\+sen\+\_\+taskx} (\hyperlink{a00036_de/d37/a00849}{x\+\_\+event} $\ast$event)
+\begin{DoxyCompactList}\small\item\em light sensor module task function. \end{DoxyCompactList}\item 
+void \hyperlink{a00018_a317b03892739257278fd51ab8003962d}{light\+\_\+sen\+\_\+notifyx} (\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify} $\ast$notify)
+\begin{DoxyCompactList}\small\item\em light module notification function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{a00036_ad5c3c5fbfd3e4aadf22830395484a71d}{x\+\_\+task\+\_\+id} \hyperlink{a00018_a757e7771170ace1d9f8519bd318ec64a}{light\+\_\+sen\+\_\+id}
+\begin{DoxyCompactList}\small\item\em ir\+\_\+sen module handle \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Data Structure Documentation}
+\index{analog\+\_\+sample\+\_\+light\+\_\+t@{analog\+\_\+sample\+\_\+light\+\_\+t}}\label{dd/d42/a00109}
+\hypertarget{a00018_dd/d42/a00109}{}
+\subsubsection{struct analog\+\_\+sample\+\_\+light\+\_\+t}
+
+
+Definition at line \hyperlink{a00018_source_l00020}{20} of file \hyperlink{a00018_source}{light\+\_\+sensor.\+h}.
+
+
+
+Collaboration diagram for analog\+\_\+sample\+\_\+light\+\_\+t\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{dc/d2b/a00936}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00018_a891d4fcb12960785cecc1e688681b748}{\hyperlink{a00072_a59a9f6be4562c327cbfb4f7e8e18f08b}{Uint16}}\label{a00018_a891d4fcb12960785cecc1e688681b748}
+&
+adc\+\_\+val&
+\\
+\hline
+
+\hypertarget{a00018_a053a8ae0e59f7414929cd8ac3feeec7b}{\hyperlink{a00072_a87d38f886e617ced2698fc55afa07637}{Float32}}\label{a00018_a053a8ae0e59f7414929cd8ac3feeec7b}
+&
+ana\+\_\+val&
+\\
+\hline
+
+\end{DoxyFields}
+\index{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure@{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure}}\label{da/de3/a00856}
+\hypertarget{a00018_da/de3/a00856}{}
+\subsubsection{struct x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure}
+Notification containing module operation configuration details ( from Algorithm module) 
+
+Definition at line \hyperlink{a00018_source_l00031}{31} of file \hyperlink{a00018_source}{light\+\_\+sensor.\+h}.
+
+
+
+Collaboration diagram for x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{de/db9/a00937}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00018_a32952acc732e2f16aad59fe0804da5bf}{struct \hyperlink{a00018_d0/d82/a00857}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure}}\label{a00018_a32952acc732e2f16aad59fe0804da5bf}
+&
+message&
+\\
+\hline
+
+\hypertarget{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify}}\label{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}
+&
+notify&
+\\
+\hline
+
+\end{DoxyFields}
+\index{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report@{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report}}\label{d0/d66/a00858}
+\hypertarget{a00018_d0/d66/a00858}{}
+\subsubsection{struct x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report}
+Notification structure from light\+\_\+sen module to Algorithm module about supervision result. 
+
+Definition at line \hyperlink{a00018_source_l00046}{46} of file \hyperlink{a00018_source}{light\+\_\+sensor.\+h}.
+
+
+
+Collaboration diagram for x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{d5/d54/a00938}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00018_a18ed963ee616596e9d500e042f228818}{struct \hyperlink{a00018_dc/d8c/a00859}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report}}\label{a00018_a18ed963ee616596e9d500e042f228818}
+&
+message&
+\\
+\hline
+
+\hypertarget{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{\hyperlink{a00036_df/d4c/a00851}{x\+\_\+notify}}\label{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}
+&
+notify&
+\\
+\hline
+
+\end{DoxyFields}
+\index{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure.\+message@{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure.\+message}}\label{d0/d82/a00857}
+\hypertarget{a00018_d0/d82/a00857}{}
+\subsubsection{struct x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure.\+message}
+
+
+Definition at line \hyperlink{a00018_source_l00035}{35} of file \hyperlink{a00018_source}{light\+\_\+sensor.\+h}.
+
+
+
+Collaboration diagram for x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure.\+message\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{dd/d20/a00939}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00018_a48e54afcf03ca45bfe38f6b7ff58764a}{\hyperlink{a00021_d6/d9c/a00352}{configured\+\_\+t}}\label{a00018_a48e54afcf03ca45bfe38f6b7ff58764a}
+&
+configured&
+\\
+\hline
+
+\hypertarget{a00018_af7361f7710e5f5389134744aaa60254e}{\hyperlink{a00028}{module\+\_\+disturbance\+\_\+record\+\_\+t} $\ast$}\label{a00018_af7361f7710e5f5389134744aaa60254e}
+&
+disturbance\+\_\+record&
+\\
+\hline
+
+\end{DoxyFields}
+\index{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report.\+message@{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report.\+message}}\label{dc/d8c/a00859}
+\hypertarget{a00018_dc/d8c/a00859}{}
+\subsubsection{struct x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report.\+message}
+
+
+Definition at line \hyperlink{a00018_source_l00050}{50} of file \hyperlink{a00018_source}{light\+\_\+sensor.\+h}.
+
+
+
+Collaboration diagram for x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report.\+message\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{d7/db6/a00940}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Data Fields}
+\hypertarget{a00018_a2245023265ae4cf87d02c8b6ba991139}{\hyperlink{a00021_d6/d9c/a00352}{configured\+\_\+t}}\label{a00018_a2245023265ae4cf87d02c8b6ba991139}
+&
+config&
+\\
+\hline
+
+\hypertarget{a00018_a150dd23606edacb55873c2c2cd06807d}{\hyperlink{a00022_d2/d5a/a00792}{sv\+\_\+error\+\_\+flags\+\_\+ut}}\label{a00018_a150dd23606edacb55873c2c2cd06807d}
+&
+error\+\_\+status\+\_\+flags&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00018_a67d542941eaade236c5f5a224efc7653}{\index{light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}!L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+\_\+\+G\+A\+I\+N@{L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+\_\+\+G\+A\+I\+N}}
+\index{L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+\_\+\+G\+A\+I\+N@{L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+\_\+\+G\+A\+I\+N}!light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}}
+\subsubsection[{L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+\_\+\+G\+A\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+\_\+\+G\+A\+I\+N~1}}\label{a00018_a67d542941eaade236c5f5a224efc7653}
+
+
+Definition at line \hyperlink{a00018_source_l00018}{18} of file \hyperlink{a00018_source}{light\+\_\+sensor.\+h}.
+
+\hypertarget{a00018_ac8c3accc8173c965137b300542e451e6}{\index{light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}!X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+C\+O\+N\+F\+I\+G@{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+C\+O\+N\+F\+I\+G}}
+\index{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+C\+O\+N\+F\+I\+G@{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+C\+O\+N\+F\+I\+G}!light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}}
+\subsubsection[{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+C\+O\+N\+F\+I\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+C\+O\+N\+F\+I\+G~({\bf X\+\_\+\+N\+T\+F\+\_\+\+F\+R\+E\+E} + 13)}}\label{a00018_ac8c3accc8173c965137b300542e451e6}
+
+
+Notification from Algorithm module. 
+
+
+
+Definition at line \hyperlink{a00018_source_l00013}{13} of file \hyperlink{a00018_source}{light\+\_\+sensor.\+h}.
+
+
+
+Referenced by \hyperlink{a00047_source_l00106}{light\+\_\+sen\+\_\+notifyx()}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{a00018_a317b03892739257278fd51ab8003962d}{\index{light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}!light\+\_\+sen\+\_\+notifyx@{light\+\_\+sen\+\_\+notifyx}}
+\index{light\+\_\+sen\+\_\+notifyx@{light\+\_\+sen\+\_\+notifyx}!light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}}
+\subsubsection[{light\+\_\+sen\+\_\+notifyx}]{\setlength{\rightskip}{0pt plus 5cm}void light\+\_\+sen\+\_\+notifyx (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+notify} $\ast$}]{notify}
+\end{DoxyParamCaption}
+)}}\label{a00018_a317b03892739257278fd51ab8003962d}
+
+
+light module notification function. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em notify} & -\/ system distributed notification \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00047_source_l00106}{106} of file \hyperlink{a00047_source}{light\+\_\+sensor.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00024_source_l00041}{light\+\_\+sen\+\_\+data\+\_\+t\+::configured}, \hyperlink{a00017_source_l00156}{module\+\_\+status\+\_\+t\+::current}, \hyperlink{a00024_source_l00046}{light\+\_\+sen\+\_\+data\+\_\+t\+::disturbance\+\_\+record}, \hyperlink{a00021_source_l00205}{configured\+\_\+t\+::element\+\_\+status\+\_\+sv\+\_\+en}, \hyperlink{a00022_source_l00044}{sv\+\_\+error\+\_\+flags\+\_\+ut\+::flags\+\_\+all}, \hyperlink{a00047_source_l00491}{light\+\_\+sen\+\_\+mark\+\_\+false\+\_\+postives()}, \hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+configure\+::message}, \hyperlink{a00036_source_l00075}{x\+\_\+notify\+::message}, \hyperlink{a00024_source_l00050}{light\+\_\+sen\+\_\+data\+\_\+t\+::module\+\_\+status}, \hyperlink{a00017_source_l00150}{state\+\_\+data\+\_\+light\+\_\+t\+::state}, \hyperlink{a00021_source_l00149}{S\+T\+A\+T\+E\+\_\+0}, \hyperlink{a00024_source_l00056}{light\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+errors\+\_\+flags}, \hyperlink{a00024_source_l00034}{light\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+task\+\_\+event}, \hyperlink{a00024_source_l00037}{light\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+timer\+\_\+ntf}, \hyperlink{a00023_source_l00020}{S\+V\+\_\+\+T\+I\+M\+E\+R\+\_\+\+P\+E\+R\+I\+O\+D}, \hyperlink{a00037_source_l00482}{x\+\_\+delete\+\_\+timer()}, \hyperlink{a00036_source_l00048}{X\+\_\+\+M\+S2\+T\+I\+C\+K}, \hyperlink{a00036_source_l00030}{X\+\_\+\+N\+T\+F\+\_\+\+I\+N\+I\+T}, \hyperlink{a00018_source_l00013}{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+C\+O\+N\+F\+I\+G}, \hyperlink{a00024_source_l00015}{X\+\_\+\+N\+T\+F\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V\+\_\+\+T\+I\+M\+E\+R}, \hyperlink{a00037_source_l00456}{x\+\_\+schedule\+\_\+timer()}, and \hyperlink{a00037_source_l00381}{x\+\_\+send\+\_\+event()}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00107 \{
+00108 
+00109     
+00110     \textcolor{keywordflow}{switch}(notify->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message})
+00111     \{    
+00112         \textcolor{keywordflow}{case} \hyperlink{a00036_a620b808f2d7b8d2a03c4d026a4c5423c}{X\_NTF\_INIT}:
+00113         \{
+00114             light\_sen\_init();
+00115         \}\textcolor{keywordflow}{break};
+00116 
+00117 
+00118         \textcolor{keywordflow}{case} \hyperlink{a00018_ac8c3accc8173c965137b300542e451e6}{X\_NTF\_LIGHT\_SENSOR\_CONFIG}:
+00119         \{
+00120 
+00121             \textcolor{comment}{// configuration details from algorithm module}
+00122             \hyperlink{a00018_da/de3/a00856}{x\_notify\_light\_sen\_configure} * notify\_configure = (
+      \hyperlink{a00018_da/de3/a00856}{x\_notify\_light\_sen\_configure} *)notify;
+00123 
+00124            
+00125             \hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_a94b2d1f6ea4ab334c74d24984dd27843}{configured} = notify\_configure->
+      \hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.configured;
+00126             \hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_ac9b38e2c1d3f1013a88d33506c754152}{disturbance\_record} = notify\_configure->
+      \hyperlink{a00018_a32952acc732e2f16aad59fe0804da5bf}{message}.disturbance\_record;
+00127 
+00128             \textcolor{comment}{// Clear supervison state ( so errors will be reported if module have internal error )}
+00129              \hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.
+      \hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all} = 0;
+00130 
+00131           \hyperlink{a00036_ab69e9af4cfa717e870d587906283635c}{x\_delete\_timer}(&\hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.
+      \hyperlink{a00024_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf});
+00132 
+00133           \textcolor{keywordflow}{if}(\hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_a94b2d1f6ea4ab334c74d24984dd27843}{configured}.
+      \hyperlink{a00021_afeb3f74725269028a60926f98890c22b}{element\_status\_sv\_en})
+00134           \hyperlink{a00036_a9e3befaa21e83f196f74201deed85346}{x\_schedule\_timer}(&\hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.
+      \hyperlink{a00024_ada91b200053f2d93e3639dc4ee3415b4}{sv\_timer\_ntf},\hyperlink{a00036_a1732cd929c486b3a225824bb2b3dba36}{X\_MS2TICK}(\hyperlink{a00023_a8a535456285f4602701c814d7b69cc68}{SV\_TIMER\_PERIOD}));
+00135 
+00136         \}\textcolor{keywordflow}{break};
+00137 
+00138 
+00139          \textcolor{keywordflow}{case} X\_NTF\_CLR\_ALARM:
+00140         \{
+00141 
+00142            \textcolor{comment}{// Algorithm module alarm reset request}
+00143              \hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_a5a53c391562b059eb744ac679f3765ca}{module\_status}.\hyperlink{a00017_ab8af48cdbba92b3ae39c4470e53af944}{current}.
+      \hyperlink{a00017_a6b8d8e916bc56265a3fd279bd26b6d1b}{state} = \hyperlink{a00021_ad6739dbbe5581cac99b7dc8a5e09949c}{STATE\_0};
+00144              \hyperlink{a00047_acef1622ec5c40fe90bf6184813716e34}{light\_sen\_mark\_false\_postives}();
+00145 
+00146 
+00147         \}\textcolor{keywordflow}{break};
+00148 
+00149         
+00150         \textcolor{keywordflow}{case} \hyperlink{a00024_ad7dfa3ed8d8d926ba462f9e951f1b391}{X\_NTF\_LIGHT\_SENSOR\_SV\_TIMER}:
+00151         \{
+00152            \hyperlink{a00036_a4bc3d03c8d62c8237329ed4e969fbc1b}{x\_send\_event}(&\hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_a43c345f39ea3aefbb60ef1ef57fe5d83}{sv\_task\_event});
+00153         \}\textcolor{keywordflow}{break};
+00154         
+00155        
+00156         \textcolor{keywordflow}{default}:
+00157         \{
+00158             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00159         \}
+00160     \}
+00161 
+00162 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{d1/d2b/a00018_a317b03892739257278fd51ab8003962d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{d1/d2b/a00018_a317b03892739257278fd51ab8003962d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{a00018_ae9aa2f8b8e90a92755efbcd161c67bc0}{\index{light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}!light\+\_\+sen\+\_\+taskx@{light\+\_\+sen\+\_\+taskx}}
+\index{light\+\_\+sen\+\_\+taskx@{light\+\_\+sen\+\_\+taskx}!light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}}
+\subsubsection[{light\+\_\+sen\+\_\+taskx}]{\setlength{\rightskip}{0pt plus 5cm}void light\+\_\+sen\+\_\+taskx (
+\begin{DoxyParamCaption}
+\item[{{\bf x\+\_\+event} $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{a00018_ae9aa2f8b8e90a92755efbcd161c67bc0}
+
+
+light sensor module task function. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em event} & -\/ system distributed event \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{a00047_source_l00065}{65} of file \hyperlink{a00047_source}{light\+\_\+sensor.\+c}.
+
+
+
+References \hyperlink{a00072_source_l00059}{A\+S\+S\+E\+R\+T}, \hyperlink{a00022_source_l00044}{sv\+\_\+error\+\_\+flags\+\_\+ut\+::flags\+\_\+all}, \hyperlink{a00047_source_l00441}{light\+\_\+sen\+\_\+false\+\_\+positive\+\_\+adjustment\+\_\+task()}, \hyperlink{a00047_source_l00426}{light\+\_\+sen\+\_\+sensor\+\_\+element\+\_\+sv\+\_\+task()}, \hyperlink{a00018_a18ed963ee616596e9d500e042f228818}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report\+::message}, \hyperlink{a00036_source_l00064}{x\+\_\+event\+::message}, \hyperlink{a00018_source_l00048}{x\+\_\+notify\+\_\+light\+\_\+sen\+\_\+sv\+\_\+report\+::notify}, \hyperlink{a00024_source_l00056}{light\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+errors\+\_\+flags}, \hyperlink{a00024_source_l00031}{light\+\_\+sen\+\_\+data\+\_\+t\+::sv\+\_\+status\+\_\+ntf}, \hyperlink{a00024_source_l00012}{X\+\_\+\+M\+S\+G\+\_\+\+L\+I\+G\+H\+T\+\_\+\+S\+E\+N\+S\+O\+R\+\_\+\+S\+V}, and \hyperlink{a00037_source_l00435}{x\+\_\+send\+\_\+notify()}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+
+
+\begin{DoxyCode}
+00066 \{
+00067     \textcolor{keywordflow}{switch}(event->\hyperlink{a00036_adf9665938515a20c283eea2c978cf80d}{message})
+00068     \{
+00069 
+00070     
+00071         \textcolor{keywordflow}{case} \hyperlink{a00024_a5877f449ae4b7e77914fedf212c3d01f}{X\_MSG\_LIGHT\_SENSOR\_SV}:
+00072         \{
+00073 
+00074             \hyperlink{a00047_ae68a20cad10654012eae75a1941f53db}{light\_sen\_sensor\_element\_sv\_task}();
+00075 
+00076             \hyperlink{a00047_a05bd338db50fc948cf13db4f250894da}{light\_sen\_false\_positive\_adjustment\_task}();
+00077 
+00078             \textcolor{keywordflow}{if}(\hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.
+      \hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all}!=0)\{
+00079              \hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_a35ce77844e6990e2537b2f11cd2d5cca}{sv\_status\_ntf}.\hyperlink{a00018_a18ed963ee616596e9d500e042f228818}{message}.error\_status\_flags.
+      flags\_all = \hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.\hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all};
+00080              \textcolor{comment}{// Send notification to Algorithm module about detected error}
+00081              \hyperlink{a00036_ae17b0bb16da3c471bb6074bb4c4d0fee}{x\_send\_notify}(&\hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.
+      \hyperlink{a00024_a35ce77844e6990e2537b2f11cd2d5cca}{sv\_status\_ntf}.\hyperlink{a00018_a8e6a04c2283f9fd7b8dcbc62faba5847}{notify});
+00082              \hyperlink{a00047_a53c98c9f84d5cecf0747bbe1f6b83696}{light\_sen\_data}.\hyperlink{a00024_aaeec6b0609dba31393f337abf1cce3d3}{sv\_errors\_flags}.
+      \hyperlink{a00022_a1caa87b00c878186140c3bac9c8acf3b}{flags\_all} =0;
+00083             \}
+00084             
+00085         \}\textcolor{keywordflow}{break};
+00086       
+00087 
+00088         
+00089         \textcolor{keywordflow}{default}:
+00090         \{
+00091             \hyperlink{a00072_abb8ff8e213ac9f6fb21d2b968583b936}{ASSERT}(0);
+00092         \}        
+00093     \}
+00094 \}
+\end{DoxyCode}
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{d1/d2b/a00018_ae9aa2f8b8e90a92755efbcd161c67bc0_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{d1/d2b/a00018_ae9aa2f8b8e90a92755efbcd161c67bc0_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{a00018_a757e7771170ace1d9f8519bd318ec64a}{\index{light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}!light\+\_\+sen\+\_\+id@{light\+\_\+sen\+\_\+id}}
+\index{light\+\_\+sen\+\_\+id@{light\+\_\+sen\+\_\+id}!light\+\_\+sensor.\+h@{light\+\_\+sensor.\+h}}
+\subsubsection[{light\+\_\+sen\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}{\bf x\+\_\+task\+\_\+id} light\+\_\+sen\+\_\+id}}\label{a00018_a757e7771170ace1d9f8519bd318ec64a}
+
+
+ir\+\_\+sen module handle 
+
+
+
+Definition at line \hyperlink{a00047_source_l00015}{15} of file \hyperlink{a00047_source}{light\+\_\+sensor.\+c}.
+
+
+
+Referenced by \hyperlink{a00048_source_l00080}{main()}.
+

@@ -1,0 +1,1248 @@
+.TH "QCPStatisticalBox" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QCPStatisticalBox \- 
+.PP
+A plottable representing a single statistical box in a plot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qcustomplot\&.h>\fP
+.PP
+Inherits \fBQCPAbstractPlottable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQCPStatisticalBox\fP (\fBQCPAxis\fP *\fBkeyAxis\fP, \fBQCPAxis\fP *\fBvalueAxis\fP)"
+.br
+.RI "\fIConstructs a statistical box which uses \fIkeyAxis\fP as its key axis ('x') and \fIvalueAxis\fP as its value axis ('y')\&. \fP"
+.ti -1c
+.RI "virtual \fB~QCPStatisticalBox\fP ()"
+.br
+.ti -1c
+.RI "double \fBkey\fP () const "
+.br
+.ti -1c
+.RI "double \fBminimum\fP () const "
+.br
+.ti -1c
+.RI "double \fBlowerQuartile\fP () const "
+.br
+.ti -1c
+.RI "double \fBmedian\fP () const "
+.br
+.ti -1c
+.RI "double \fBupperQuartile\fP () const "
+.br
+.ti -1c
+.RI "double \fBmaximum\fP () const "
+.br
+.ti -1c
+.RI "QVector< double > \fBoutliers\fP () const "
+.br
+.ti -1c
+.RI "double \fBwidth\fP () const "
+.br
+.ti -1c
+.RI "double \fBwhiskerWidth\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBwhiskerPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBwhiskerBarPen\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBmedianPen\fP () const "
+.br
+.ti -1c
+.RI "double \fBoutlierSize\fP () const "
+.br
+.ti -1c
+.RI "QPen \fBoutlierPen\fP () const "
+.br
+.ti -1c
+.RI "\fBQCP::ScatterStyle\fP \fBoutlierStyle\fP () const "
+.br
+.ti -1c
+.RI "void \fBsetKey\fP (double \fBkey\fP)"
+.br
+.RI "\fISets the key coordinate of the statistical box\&. \fP"
+.ti -1c
+.RI "void \fBsetMinimum\fP (double \fBvalue\fP)"
+.br
+.RI "\fISets the parameter 'minimum' of the statistical box plot\&. \fP"
+.ti -1c
+.RI "void \fBsetLowerQuartile\fP (double \fBvalue\fP)"
+.br
+.RI "\fISets the parameter 'lower Quartile' of the statistical box plot\&. \fP"
+.ti -1c
+.RI "void \fBsetMedian\fP (double \fBvalue\fP)"
+.br
+.RI "\fISets the parameter 'median' of the statistical box plot\&. \fP"
+.ti -1c
+.RI "void \fBsetUpperQuartile\fP (double \fBvalue\fP)"
+.br
+.RI "\fISets the parameter 'upper Quartile' of the statistical box plot\&. \fP"
+.ti -1c
+.RI "void \fBsetMaximum\fP (double \fBvalue\fP)"
+.br
+.RI "\fISets the parameter 'maximum' of the statistical box plot\&. \fP"
+.ti -1c
+.RI "void \fBsetOutliers\fP (const QVector< double > &values)"
+.br
+.RI "\fISets a vector of outlier values that will be drawn as circles\&. \fP"
+.ti -1c
+.RI "void \fBsetData\fP (double \fBkey\fP, double \fBminimum\fP, double \fBlowerQuartile\fP, double \fBmedian\fP, double \fBupperQuartile\fP, double \fBmaximum\fP)"
+.br
+.RI "\fISets all parameters of the statistical box plot at once\&. \fP"
+.ti -1c
+.RI "void \fBsetWidth\fP (double \fBwidth\fP)"
+.br
+.RI "\fISets the width of the box in key coordinates\&. \fP"
+.ti -1c
+.RI "void \fBsetWhiskerWidth\fP (double \fBwidth\fP)"
+.br
+.RI "\fISets the width of the whiskers (\fBsetMinimum\fP, \fBsetMaximum\fP) in key coordinates\&. \fP"
+.ti -1c
+.RI "void \fBsetWhiskerPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen used for drawing the whisker backbone (That's the line parallel to the value axis)\&. \fP"
+.ti -1c
+.RI "void \fBsetWhiskerBarPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen used for drawing the whisker bars (Those are the lines parallel to the key axis at each end of the backbone)\&. \fP"
+.ti -1c
+.RI "void \fBsetMedianPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen used for drawing the median indicator line inside the statistical box\&. \fP"
+.ti -1c
+.RI "void \fBsetOutlierSize\fP (double pixels)"
+.br
+.RI "\fISets the pixel size of the scatter symbols that represent the outlier data points\&. \fP"
+.ti -1c
+.RI "void \fBsetOutlierPen\fP (const QPen &\fBpen\fP)"
+.br
+.RI "\fISets the pen used to draw the outlier data points\&. \fP"
+.ti -1c
+.RI "void \fBsetOutlierStyle\fP (\fBQCP::ScatterStyle\fP style)"
+.br
+.RI "\fISets the scatter style of the outlier data points\&. \fP"
+.ti -1c
+.RI "virtual void \fBclearData\fP ()"
+.br
+.RI "\fIClears all data in the plottable\&. \fP"
+.ti -1c
+.RI "virtual double \fBselectTest\fP (const QPointF &pos) const "
+.br
+.RI "\fIThis function is used to decide whether a click hits a plottable or not\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (\fBQCPPainter\fP *painter)"
+.br
+.ti -1c
+.RI "virtual void \fBdrawLegendIcon\fP (\fBQCPPainter\fP *painter, const QRect &rect) const "
+.br
+.ti -1c
+.RI "virtual void \fBdrawQuartileBox\fP (\fBQCPPainter\fP *painter, QRectF *quartileBox=0) const "
+.br
+.ti -1c
+.RI "virtual void \fBdrawMedian\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "virtual void \fBdrawWhiskers\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "virtual void \fBdrawOutliers\fP (\fBQCPPainter\fP *painter) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetKeyRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const "
+.br
+.ti -1c
+.RI "virtual \fBQCPRange\fP \fBgetValueRange\fP (bool &validRange, \fBSignDomain\fP inSignDomain=\fBsdBoth\fP) const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QVector< double > \fBmOutliers\fP"
+.br
+.ti -1c
+.RI "double \fBmKey\fP"
+.br
+.ti -1c
+.RI "double \fBmMinimum\fP"
+.br
+.ti -1c
+.RI "double \fBmLowerQuartile\fP"
+.br
+.ti -1c
+.RI "double \fBmMedian\fP"
+.br
+.ti -1c
+.RI "double \fBmUpperQuartile\fP"
+.br
+.ti -1c
+.RI "double \fBmMaximum\fP"
+.br
+.ti -1c
+.RI "double \fBmWidth\fP"
+.br
+.ti -1c
+.RI "double \fBmWhiskerWidth\fP"
+.br
+.ti -1c
+.RI "double \fBmOutlierSize\fP"
+.br
+.ti -1c
+.RI "QPen \fBmWhiskerPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmWhiskerBarPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmOutlierPen\fP"
+.br
+.ti -1c
+.RI "QPen \fBmMedianPen\fP"
+.br
+.ti -1c
+.RI "\fBQCP::ScatterStyle\fP \fBmOutlierStyle\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBQCustomPlot\fP"
+.br
+.ti -1c
+.RI "class \fBQCPLegend\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plottable representing a single statistical box in a plot\&. 
+
+To plot data, assign it with the individual parameter functions or use \fBsetData\fP to set all parameters at once\&. The individual funcions are: 
+.PD 0
+
+.IP "\(bu" 2
+\fBsetMinimum\fP 
+.IP "\(bu" 2
+\fBsetLowerQuartile\fP 
+.IP "\(bu" 2
+\fBsetMedian\fP 
+.IP "\(bu" 2
+\fBsetUpperQuartile\fP 
+.IP "\(bu" 2
+\fBsetMaximum\fP
+.PP
+Additionally you can define a list of outliers, drawn as circle datapoints: 
+.PD 0
+
+.IP "\(bu" 2
+\fBsetOutliers\fP
+.PP
+.SH "Changing the appearance"
+.PP
+The appearance of the box itself is controlled via \fBsetPen\fP and \fBsetBrush\fP\&. You may change the width of the box with \fBsetWidth\fP in plot coordinates (not pixels)\&.
+.PP
+Analog functions exist for the minimum/maximum-whiskers: \fBsetWhiskerPen\fP, \fBsetWhiskerBarPen\fP, \fBsetWhiskerWidth\fP\&. The whisker width is the width of the bar at the top (maximum) or bottom (minimum)\&.
+.PP
+The median indicator line has its own pen, \fBsetMedianPen\fP\&.
+.PP
+If the pens are changed, especially the whisker pen, make sure to set the capStyle to Qt::FlatCap\&. Else, e\&.g\&. the whisker line might exceed the bar line by a few pixels due to the pen cap being not perfectly flat\&.
+.PP
+The Outlier data points are drawn normal scatter points\&. Their look can be controlled with \fBsetOutlierStyle\fP and \fBsetOutlierPen\fP\&. The size (diameter) can be set with \fBsetOutlierSize\fP in pixels\&.
+.SH "Usage"
+.PP
+Like all data representing objects in \fBQCustomPlot\fP, the \fBQCPStatisticalBox\fP is a plottable (\fBQCPAbstractPlottable\fP)\&. So the plottable-interface of \fBQCustomPlot\fP applies (QCustomPlot::plottable, QCustomPlot::addPlottable, QCustomPlot::removePlottable, etc\&.)
+.PP
+Usually, you first create an instance: 
+.PP
+.nf
+QCPStatisticalBox *newBox = new QCPStatisticalBox(customPlot->xAxis, customPlot->yAxis);
+
+.fi
+.PP
+ add it to the customPlot with QCustomPlot::addPlottable: 
+.PP
+.nf
+customPlot->addPlottable(newBox);
+
+.fi
+.PP
+ and then modify the properties of the newly created plottable, e\&.g\&.: 
+.PP
+.nf
+newBox->setName("Measurement Series 1");
+newBox->setData(1, 3, 4, 5, 7);
+newBox->setOutliers(QVector<double>() << 0\&.5 << 0\&.64 << 7\&.2 << 7\&.42);
+
+.fi
+.PP
+ 
+.PP
+Definition at line 700 of file qcustomplot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QCPStatisticalBox::QCPStatisticalBox (\fBQCPAxis\fP *keyAxis, \fBQCPAxis\fP *valueAxis)\fC [explicit]\fP"
+
+.PP
+Constructs a statistical box which uses \fIkeyAxis\fP as its key axis ('x') and \fIvalueAxis\fP as its value axis ('y')\&. \fIkeyAxis\fP and \fIvalueAxis\fP must reside in the same \fBQCustomPlot\fP instance and not have the same orientation\&. If either of these restrictions is violated, a corresponding message is printed to the debug output (qDebug), the construction is not aborted, though\&.
+.PP
+The constructed statistical box can be added to the plot with QCustomPlot::addPlottable, \fBQCustomPlot\fP then takes ownership of the statistical box\&. 
+.PP
+Definition at line 10409 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::setBrush(), setMedianPen(), setOutlierPen(), setOutlierSize(), setOutlierStyle(), QCPAbstractPlottable::setPen(), QCPAbstractPlottable::setSelectedBrush(), QCPAbstractPlottable::setSelectedPen(), setWhiskerBarPen(), setWhiskerPen(), setWhiskerWidth(), setWidth(), and QCP::ssCircle\&.
+.PP
+.nf
+10409                                                                          :
+10410   QCPAbstractPlottable(keyAxis, valueAxis),
+10411   mKey(0),
+10412   mMinimum(0),
+10413   mLowerQuartile(0),
+10414   mMedian(0),
+10415   mUpperQuartile(0),
+10416   mMaximum(0)
+10417 {
+10418   setOutlierStyle(QCP::ssCircle);
+10419   setOutlierSize(5);
+10420   setWhiskerWidth(0\&.2);
+10421   setWidth(0\&.5);
+10422   
+10423   setPen(QPen(Qt::black));
+10424   setSelectedPen(QPen(Qt::blue, 2\&.5));
+10425   setMedianPen(QPen(Qt::black, 3, Qt::SolidLine, Qt::FlatCap));
+10426   setWhiskerPen(QPen(Qt::black, 0, Qt::DashLine, Qt::FlatCap));
+10427   setWhiskerBarPen(QPen(Qt::black));
+10428   setOutlierPen(QPen(Qt::blue));
+10429   setBrush(Qt::NoBrush);
+10430   setSelectedBrush(Qt::NoBrush);
+10431 }
+.fi
+.SS "QCPStatisticalBox::~QCPStatisticalBox ()\fC [virtual]\fP"
+
+.PP
+Definition at line 10433 of file qcustomplot\&.cpp\&.
+.PP
+.nf
+10434 {
+10435 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void QCPStatisticalBox::clearData ()\fC [virtual]\fP"
+
+.PP
+Clears all data in the plottable\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10616 of file qcustomplot\&.cpp\&.
+.PP
+References setKey(), setLowerQuartile(), setMaximum(), setMedian(), setMinimum(), setOutliers(), and setUpperQuartile()\&.
+.PP
+.nf
+10617 {
+10618   setOutliers(QVector<double>());
+10619   setKey(0);
+10620   setMinimum(0);
+10621   setLowerQuartile(0);
+10622   setMedian(0);
+10623   setUpperQuartile(0);
+10624   setMaximum(0);
+10625 }
+.fi
+.SS "void QCPStatisticalBox::draw (\fBQCPPainter\fP *painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draws this plottable with the provided \fIpainter\fP\&. Called by \fBQCustomPlot::draw\fP on all its visible plottables\&.
+.PP
+The cliprect of the provided painter is set to the axis rect of the key/value axis of this plottable (what \fBclipRect\fP returns), before this function is called\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10646 of file qcustomplot\&.cpp\&.
+.PP
+References drawMedian(), drawOutliers(), drawQuartileBox(), drawWhiskers(), QCPPainter::restore(), and QCPPainter::save()\&.
+.PP
+.nf
+10647 {
+10648   QRectF quartileBox;
+10649   drawQuartileBox(painter, &quartileBox);
+10650   
+10651   painter->save();
+10652   painter->setClipRect(quartileBox, Qt::IntersectClip);
+10653   drawMedian(painter);
+10654   painter->restore();
+10655   
+10656   drawWhiskers(painter);
+10657   drawOutliers(painter);
+10658 }
+.fi
+.SS "void QCPStatisticalBox::drawLegendIcon (\fBQCPPainter\fP *painter, const QRect &rect) const\fC [protected]\fP, \fC [virtual]\fP"
+called by \fBQCPLegend::draw\fP (via \fBQCPPlottableLegendItem::draw\fP) to create a graphical representation of this plottable inside \fIrect\fP, next to the plottable name\&. 
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10661 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractPlottable::mBrush, QCPAbstractPlottable::mPen, and QCPPainter::setPen()\&.
+.PP
+.nf
+10662 {
+10663   // draw filled rect:
+10664   applyDefaultAntialiasingHint(painter);
+10665   painter->setPen(mPen);
+10666   painter->setBrush(mBrush);
+10667   QRectF r = QRectF(0, 0, rect\&.width()*0\&.67, rect\&.height()*0\&.67);
+10668   r\&.moveCenter(rect\&.center());
+10669   painter->drawRect(r);
+10670 }
+.fi
+.SS "void QCPStatisticalBox::drawMedian (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [virtual]\fP"
+Draws the median line inside the quartile box\&. 
+.PP
+Definition at line 10695 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractPlottable::coordsToPixels(), QCPPainter::drawLine(), mKey, mMedian, mMedianPen, mWidth, and QCPPainter::setPen()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+10696 {
+10697   QLineF medianLine;
+10698   medianLine\&.setP1(coordsToPixels(mKey-mWidth*0\&.5, mMedian));
+10699   medianLine\&.setP2(coordsToPixels(mKey+mWidth*0\&.5, mMedian));
+10700   applyDefaultAntialiasingHint(painter);
+10701   painter->setPen(mMedianPen);
+10702   painter->drawLine(medianLine);
+10703 }
+.fi
+.SS "void QCPStatisticalBox::drawOutliers (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [virtual]\fP"
+Draws the outlier circles\&. 
+.PP
+Definition at line 10729 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyScattersAntialiasingHint(), QCPAbstractPlottable::coordsToPixels(), QCPPainter::drawScatter(), mKey, mOutlierPen, mOutliers, mOutlierSize, mOutlierStyle, and QCPPainter::setPen()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+10730 {
+10731   applyScattersAntialiasingHint(painter);
+10732   painter->setPen(mOutlierPen);
+10733   painter->setBrush(Qt::NoBrush);
+10734   for (int i=0; i<mOutliers\&.size(); ++i)
+10735   {
+10736     QPointF dataPoint = coordsToPixels(mKey, mOutliers\&.at(i));
+10737     painter->drawScatter(dataPoint\&.x(), dataPoint\&.y(), mOutlierSize, mOutlierStyle);
+10738   }
+10739 }
+.fi
+.SS "void QCPStatisticalBox::drawQuartileBox (\fBQCPPainter\fP *painter, QRectF *quartileBox = \fC0\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+Draws the quartile box\&. \fIbox\fP is an output parameter that returns the quartile box (in pixel coordinates) which is used to set the clip rect of the painter before calling \fBdrawMedian\fP (so the median doesn't draw outside the quartile box)\&. 
+.PP
+Definition at line 10678 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyDefaultAntialiasingHint(), QCPAbstractPlottable::coordsToPixels(), QCPAbstractPlottable::mainBrush(), QCPAbstractPlottable::mainPen(), mKey, mLowerQuartile, mUpperQuartile, mWidth, and QCPPainter::setPen()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+10679 {
+10680   QRectF box;
+10681   box\&.setTopLeft(coordsToPixels(mKey-mWidth*0\&.5, mUpperQuartile));
+10682   box\&.setBottomRight(coordsToPixels(mKey+mWidth*0\&.5, mLowerQuartile));
+10683   applyDefaultAntialiasingHint(painter);
+10684   painter->setPen(mainPen());
+10685   painter->setBrush(mainBrush());
+10686   painter->drawRect(box);
+10687   if (quartileBox)
+10688     *quartileBox = box;
+10689 }
+.fi
+.SS "void QCPStatisticalBox::drawWhiskers (\fBQCPPainter\fP *painter) const\fC [protected]\fP, \fC [virtual]\fP"
+Draws both whisker backbones and bars\&. 
+.PP
+Definition at line 10709 of file qcustomplot\&.cpp\&.
+.PP
+References QCPAbstractPlottable::applyErrorBarsAntialiasingHint(), QCPAbstractPlottable::coordsToPixels(), QCPPainter::drawLine(), mKey, mLowerQuartile, mMaximum, mMinimum, mUpperQuartile, mWhiskerBarPen, mWhiskerPen, mWhiskerWidth, and QCPPainter::setPen()\&.
+.PP
+Referenced by draw()\&.
+.PP
+.nf
+10710 {
+10711   QLineF backboneMin, backboneMax, barMin, barMax;
+10712   backboneMax\&.setPoints(coordsToPixels(mKey, mUpperQuartile), coordsToPixels(mKey, mMaximum));
+10713   backboneMin\&.setPoints(coordsToPixels(mKey, mLowerQuartile), coordsToPixels(mKey, mMinimum));
+10714   barMax\&.setPoints(coordsToPixels(mKey-mWhiskerWidth*0\&.5, mMaximum), coordsToPixels(mKey+mWhiskerWidth*0\&.5, mMaximum));
+10715   barMin\&.setPoints(coordsToPixels(mKey-mWhiskerWidth*0\&.5, mMinimum), coordsToPixels(mKey+mWhiskerWidth*0\&.5, mMinimum));
+10716   applyErrorBarsAntialiasingHint(painter);
+10717   painter->setPen(mWhiskerPen);
+10718   painter->drawLine(backboneMin);
+10719   painter->drawLine(backboneMax);
+10720   painter->setPen(mWhiskerBarPen);
+10721   painter->drawLine(barMin);
+10722   painter->drawLine(barMax);
+10723 }
+.fi
+.SS "\fBQCPRange\fP QCPStatisticalBox::getKeyRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+called by rescaleAxes functions to get the full data key bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetValueRange\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10742 of file qcustomplot\&.cpp\&.
+.PP
+References mKey, mWidth, QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, and QCPAbstractPlottable::sdPositive\&.
+.PP
+.nf
+10743 {
+10744   validRange = mWidth > 0;
+10745   if (inSignDomain == sdBoth)
+10746   {
+10747     return QCPRange(mKey-mWidth*0\&.5, mKey+mWidth*0\&.5);
+10748   } else if (inSignDomain == sdNegative)
+10749   {
+10750     if (mKey+mWidth*0\&.5 < 0)
+10751       return QCPRange(mKey-mWidth*0\&.5, mKey+mWidth*0\&.5);
+10752     else if (mKey < 0)
+10753       return QCPRange(mKey-mWidth*0\&.5, mKey);
+10754     else
+10755     {
+10756       validRange = false;
+10757       return QCPRange();
+10758     }
+10759   } else if (inSignDomain == sdPositive)
+10760   {
+10761     if (mKey-mWidth*0\&.5 > 0)
+10762       return QCPRange(mKey-mWidth*0\&.5, mKey+mWidth*0\&.5);
+10763     else if (mKey > 0)
+10764       return QCPRange(mKey, mKey+mWidth*0\&.5);
+10765     else
+10766     {
+10767       validRange = false;
+10768       return QCPRange();
+10769     }
+10770   }
+10771   validRange = false;
+10772   return QCPRange();
+10773 }
+.fi
+.SS "\fBQCPRange\fP QCPStatisticalBox::getValueRange (bool &validRange, \fBSignDomain\fPinSignDomain = \fC\fBsdBoth\fP\fP) const\fC [protected]\fP, \fC [virtual]\fP"
+called by rescaleAxes functions to get the full data value bounds\&. For logarithmic plots, one can set \fIinSignDomain\fP to either \fBsdNegative\fP or \fBsdPositive\fP in order to restrict the returned range to that sign domain\&. E\&.g\&. when only negative range is wanted, set \fIinSignDomain\fP to \fBsdNegative\fP and all positive points will be ignored for range calculation\&. For no restriction, just set \fIinSignDomain\fP to \fBsdBoth\fP (default)\&. \fIvalidRange\fP is an output parameter that indicates whether a proper range could be found or not\&. If this is false, you shouldn't use the returned range (e\&.g\&. no points in data)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBrescaleAxes\fP, \fBgetKeyRange\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10776 of file qcustomplot\&.cpp\&.
+.PP
+References mLowerQuartile, mMaximum, mMedian, mMinimum, mOutliers, mUpperQuartile, QCPAbstractPlottable::sdBoth, QCPAbstractPlottable::sdNegative, and QCPAbstractPlottable::sdPositive\&.
+.PP
+.nf
+10777 {
+10778   if (inSignDomain == sdBoth)
+10779   {
+10780     double lower = qMin(mMinimum, qMin(mMedian, mLowerQuartile));
+10781     double upper = qMax(mMaximum, qMax(mMedian, mUpperQuartile));
+10782     for (int i=0; i<mOutliers\&.size(); ++i)
+10783     {
+10784       if (mOutliers\&.at(i) < lower)
+10785         lower = mOutliers\&.at(i);
+10786       if (mOutliers\&.at(i) > upper)
+10787         upper = mOutliers\&.at(i);
+10788     }
+10789     validRange = upper > lower;
+10790     return QCPRange(lower, upper);
+10791   } else
+10792   {
+10793     QVector<double> values; // values that must be considered (i\&.e\&. all outliers and the five box-parameters)
+10794     values\&.reserve(mOutliers\&.size() + 5);
+10795     values << mMaximum << mUpperQuartile << mMedian << mLowerQuartile << mMinimum;
+10796     values << mOutliers;
+10797     // go through values and find the ones in legal range:
+10798     bool haveUpper = false;
+10799     bool haveLower = false;
+10800     double upper = 0;
+10801     double lower = 0;
+10802     for (int i=0; i<values\&.size(); ++i)
+10803     {
+10804       if ((inSignDomain == sdNegative && values\&.at(i) < 0) ||
+10805           (inSignDomain == sdPositive && values\&.at(i) > 0))
+10806       {
+10807         if (values\&.at(i) > upper || !haveUpper)
+10808         {
+10809           upper = values\&.at(i);
+10810           haveUpper = true;
+10811         }
+10812         if (values\&.at(i) < lower || !haveLower)
+10813         {
+10814           lower = values\&.at(i);
+10815           haveLower = true;
+10816         }
+10817       }
+10818     }
+10819     // return the bounds if we found some sensible values:
+10820     if (haveLower && haveUpper && lower < upper)
+10821     {
+10822       validRange = true;
+10823       return QCPRange(lower, upper);
+10824     } else
+10825     {
+10826       validRange = false;
+10827       return QCPRange();
+10828     }
+10829   }
+10830 }
+.fi
+.SS "double QCPStatisticalBox::key () const\fC [inline]\fP"
+
+.PP
+Definition at line 708 of file qcustomplot\&.h\&.
+.PP
+Referenced by setKey()\&.
+.PP
+.nf
+708 { return mKey; }
+.fi
+.SS "double QCPStatisticalBox::lowerQuartile () const\fC [inline]\fP"
+
+.PP
+Definition at line 710 of file qcustomplot\&.h\&.
+.PP
+.nf
+710 { return mLowerQuartile; }
+.fi
+.SS "double QCPStatisticalBox::maximum () const\fC [inline]\fP"
+
+.PP
+Definition at line 713 of file qcustomplot\&.h\&.
+.PP
+.nf
+713 { return mMaximum; }
+.fi
+.SS "double QCPStatisticalBox::median () const\fC [inline]\fP"
+
+.PP
+Definition at line 711 of file qcustomplot\&.h\&.
+.PP
+.nf
+711 { return mMedian; }
+.fi
+.SS "QPen QCPStatisticalBox::medianPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 719 of file qcustomplot\&.h\&.
+.PP
+.nf
+719 { return mMedianPen; }
+.fi
+.SS "double QCPStatisticalBox::minimum () const\fC [inline]\fP"
+
+.PP
+Definition at line 709 of file qcustomplot\&.h\&.
+.PP
+.nf
+709 { return mMinimum; }
+.fi
+.SS "QPen QCPStatisticalBox::outlierPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 721 of file qcustomplot\&.h\&.
+.PP
+.nf
+721 { return mOutlierPen; }
+.fi
+.SS "QVector<double> QCPStatisticalBox::outliers () const\fC [inline]\fP"
+
+.PP
+Definition at line 714 of file qcustomplot\&.h\&.
+.PP
+.nf
+714 { return mOutliers; }
+.fi
+.SS "double QCPStatisticalBox::outlierSize () const\fC [inline]\fP"
+
+.PP
+Definition at line 720 of file qcustomplot\&.h\&.
+.PP
+.nf
+720 { return mOutlierSize; }
+.fi
+.SS "\fBQCP::ScatterStyle\fP QCPStatisticalBox::outlierStyle () const\fC [inline]\fP"
+
+.PP
+Definition at line 722 of file qcustomplot\&.h\&.
+.PP
+.nf
+722 { return mOutlierStyle; }
+.fi
+.SS "double QCPStatisticalBox::selectTest (const QPointF &pos) const\fC [virtual]\fP"
+
+.PP
+This function is used to decide whether a click hits a plottable or not\&. \fIpos\fP is a point in pixel coordinates on the \fBQCustomPlot\fP surface\&. This function returns the shortest pixel distance of this point to the plottable (e\&.g\&. to the scatters/lines of a graph)\&. If the plottable is either invisible, contains no data or the distance couldn't be determined, -1\&.0 is returned\&. \fBsetSelectable\fP has no influence on the return value of this function\&.
+.PP
+If the plottable is represented not by single lines but by an area like \fBQCPBars\fP or \fBQCPStatisticalBox\fP, a click inside the area returns a constant value greater zero (typically 99% of the selectionTolerance of the parent \fBQCustomPlot\fP)\&. If the click lies outside the area, this function returns -1\&.0\&.
+.PP
+Providing a constant value for area objects allows selecting line objects even when they are obscured by such area objects, by clicking close to the lines (i\&.e\&. closer than 0\&.99*selectionTolerance)\&.
+.PP
+The actual setting of the selection state is not done by this function\&. This is handled by the parent \fBQCustomPlot\fP when the mouseReleaseEvent occurs\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetSelected\fP, QCustomPlot::setInteractions 
+.RE
+.PP
+
+.PP
+Implements \fBQCPAbstractPlottable\fP\&.
+.PP
+Definition at line 10628 of file qcustomplot\&.cpp\&.
+.PP
+References QCPRange::contains(), QCPAxis::coordToPixel(), mKey, QCPAbstractPlottable::mKeyAxis, mLowerQuartile, mMaximum, mMinimum, QCPLayerable::mParentPlot, mUpperQuartile, mWidth, and QCPAbstractPlottable::pixelsToCoords()\&.
+.PP
+.nf
+10629 {
+10630   double posKey, posValue;
+10631   pixelsToCoords(pos, posKey, posValue);
+10632   // quartile box:
+10633   QCPRange keyRange(mKey-mWidth*0\&.5, mKey+mWidth*0\&.5);
+10634   QCPRange valueRange(mLowerQuartile, mUpperQuartile);
+10635   if (keyRange\&.contains(posKey) && valueRange\&.contains(posValue))
+10636     return mParentPlot->selectionTolerance()*0\&.99;
+10637   
+10638   // min/max whiskers:
+10639   if (QCPRange(mMinimum, mMaximum)\&.contains(posValue))
+10640     return qAbs(mKeyAxis->coordToPixel(mKey)-mKeyAxis->coordToPixel(posKey));
+10641   
+10642   return -1;
+10643 }
+.fi
+.SS "void QCPStatisticalBox::setData (doublekey, doubleminimum, doublelowerQuartile, doublemedian, doubleupperQuartile, doublemaximum)"
+
+.PP
+Sets all parameters of the statistical box plot at once\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetKey\fP, \fBsetMinimum\fP, \fBsetLowerQuartile\fP, \fBsetMedian\fP, \fBsetUpperQuartile\fP, \fBsetMaximum\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10520 of file qcustomplot\&.cpp\&.
+.PP
+References setKey(), setLowerQuartile(), setMaximum(), setMedian(), setMinimum(), and setUpperQuartile()\&.
+.PP
+.nf
+10521 {
+10522   setKey(key);
+10523   setMinimum(minimum);
+10524   setLowerQuartile(lowerQuartile);
+10525   setMedian(median);
+10526   setUpperQuartile(upperQuartile);
+10527   setMaximum(maximum);
+10528 }
+.fi
+.SS "void QCPStatisticalBox::setKey (doublekey)"
+
+.PP
+Sets the key coordinate of the statistical box\&. 
+.PP
+Definition at line 10440 of file qcustomplot\&.cpp\&.
+.PP
+References key(), and mKey\&.
+.PP
+Referenced by clearData(), and setData()\&.
+.PP
+.nf
+10441 {
+10442   mKey = key;
+10443 }
+.fi
+.SS "void QCPStatisticalBox::setLowerQuartile (doublevalue)"
+
+.PP
+Sets the parameter 'lower Quartile' of the statistical box plot\&. This is the lower end of the box\&. The lower and the upper quartiles are the two statistical quartiles around the median of the sample, they contain 50% of the sample data\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetUpperQuartile\fP, \fBsetPen\fP, \fBsetBrush\fP, \fBsetWidth\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10463 of file qcustomplot\&.cpp\&.
+.PP
+References mLowerQuartile, and value\&.
+.PP
+Referenced by clearData(), and setData()\&.
+.PP
+.nf
+10464 {
+10465   mLowerQuartile = value;
+10466 }
+.fi
+.SS "void QCPStatisticalBox::setMaximum (doublevalue)"
+
+.PP
+Sets the parameter 'maximum' of the statistical box plot\&. This is the position of the upper whisker, typically the maximum measurement of the sample that's not considered an outlier\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetMinimum\fP, \fBsetWhiskerPen\fP, \fBsetWhiskerBarPen\fP, \fBsetWhiskerWidth\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10498 of file qcustomplot\&.cpp\&.
+.PP
+References mMaximum, and value\&.
+.PP
+Referenced by clearData(), and setData()\&.
+.PP
+.nf
+10499 {
+10500   mMaximum = value;
+10501 }
+.fi
+.SS "void QCPStatisticalBox::setMedian (doublevalue)"
+
+.PP
+Sets the parameter 'median' of the statistical box plot\&. This is the value of the median mark inside the quartile box\&. The median separates the sample data in half (50% of the sample data is below/above the median)\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetMedianPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10475 of file qcustomplot\&.cpp\&.
+.PP
+References mMedian, and value\&.
+.PP
+Referenced by clearData(), and setData()\&.
+.PP
+.nf
+10476 {
+10477   mMedian = value;
+10478 }
+.fi
+.SS "void QCPStatisticalBox::setMedianPen (const QPen &pen)"
+
+.PP
+Sets the pen used for drawing the median indicator line inside the statistical box\&. Make sure to set the \fIpen\fP capStyle to Qt::FlatCap to prevent the median line from reaching a few pixels outside the box, when using a non-zero pen width\&. 
+.PP
+Definition at line 10580 of file qcustomplot\&.cpp\&.
+.PP
+References mMedianPen, and QCPAbstractPlottable::pen()\&.
+.PP
+Referenced by QCPStatisticalBox()\&.
+.PP
+.nf
+10581 {
+10582   mMedianPen = pen;
+10583 }
+.fi
+.SS "void QCPStatisticalBox::setMinimum (doublevalue)"
+
+.PP
+Sets the parameter 'minimum' of the statistical box plot\&. This is the position of the lower whisker, typically the minimum measurement of the sample that's not considered an outlier\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetMaximum\fP, \fBsetWhiskerPen\fP, \fBsetWhiskerBarPen\fP, \fBsetWhiskerWidth\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10451 of file qcustomplot\&.cpp\&.
+.PP
+References mMinimum, and value\&.
+.PP
+Referenced by clearData(), and setData()\&.
+.PP
+.nf
+10452 {
+10453   mMinimum = value;
+10454 }
+.fi
+.SS "void QCPStatisticalBox::setOutlierPen (const QPen &pen)"
+
+.PP
+Sets the pen used to draw the outlier data points\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetOutlierSize\fP, \fBsetOutliers\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10600 of file qcustomplot\&.cpp\&.
+.PP
+References mOutlierPen, and QCPAbstractPlottable::pen()\&.
+.PP
+Referenced by QCPStatisticalBox()\&.
+.PP
+.nf
+10601 {
+10602   mOutlierPen = pen;
+10603 }
+.fi
+.SS "void QCPStatisticalBox::setOutliers (const QVector< double > &values)"
+
+.PP
+Sets a vector of outlier values that will be drawn as circles\&. Any data points in the sample that are not within the whiskers (\fBsetMinimum\fP, \fBsetMaximum\fP) should be considered outliers and displayed as such\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetOutlierPen\fP, setOutlierBrush, \fBsetOutlierSize\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10510 of file qcustomplot\&.cpp\&.
+.PP
+References mOutliers\&.
+.PP
+Referenced by clearData()\&.
+.PP
+.nf
+10511 {
+10512   mOutliers = values;
+10513 }
+.fi
+.SS "void QCPStatisticalBox::setOutlierSize (doublepixels)"
+
+.PP
+Sets the pixel size of the scatter symbols that represent the outlier data points\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetOutlierPen\fP, \fBsetOutliers\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10590 of file qcustomplot\&.cpp\&.
+.PP
+References mOutlierSize\&.
+.PP
+Referenced by QCPStatisticalBox()\&.
+.PP
+.nf
+10591 {
+10592   mOutlierSize = pixels;
+10593 }
+.fi
+.SS "void QCPStatisticalBox::setOutlierStyle (\fBQCP::ScatterStyle\fPstyle)"
+
+.PP
+Sets the scatter style of the outlier data points\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetOutlierSize\fP, \fBsetOutlierPen\fP, \fBsetOutliers\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10610 of file qcustomplot\&.cpp\&.
+.PP
+References mOutlierStyle\&.
+.PP
+Referenced by QCPStatisticalBox()\&.
+.PP
+.nf
+10611 {
+10612   mOutlierStyle = style;
+10613 }
+.fi
+.SS "void QCPStatisticalBox::setUpperQuartile (doublevalue)"
+
+.PP
+Sets the parameter 'upper Quartile' of the statistical box plot\&. This is the upper end of the box\&. The lower and the upper quartiles are the two statistical quartiles around the median of the sample, they contain 50% of the sample data\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetLowerQuartile\fP, \fBsetPen\fP, \fBsetBrush\fP, \fBsetWidth\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10487 of file qcustomplot\&.cpp\&.
+.PP
+References mUpperQuartile, and value\&.
+.PP
+Referenced by clearData(), and setData()\&.
+.PP
+.nf
+10488 {
+10489   mUpperQuartile = value;
+10490 }
+.fi
+.SS "void QCPStatisticalBox::setWhiskerBarPen (const QPen &pen)"
+
+.PP
+Sets the pen used for drawing the whisker bars (Those are the lines parallel to the key axis at each end of the backbone)\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetWhiskerPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10569 of file qcustomplot\&.cpp\&.
+.PP
+References mWhiskerBarPen, and QCPAbstractPlottable::pen()\&.
+.PP
+Referenced by QCPStatisticalBox()\&.
+.PP
+.nf
+10570 {
+10571   mWhiskerBarPen = pen;
+10572 }
+.fi
+.SS "void QCPStatisticalBox::setWhiskerPen (const QPen &pen)"
+
+.PP
+Sets the pen used for drawing the whisker backbone (That's the line parallel to the value axis)\&. Make sure to set the \fIpen\fP capStyle to Qt::FlatCap to prevent the backbone from reaching a few pixels past the bars, when using a non-zero pen width\&.
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetWhiskerBarPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10558 of file qcustomplot\&.cpp\&.
+.PP
+References mWhiskerPen, and QCPAbstractPlottable::pen()\&.
+.PP
+Referenced by QCPStatisticalBox()\&.
+.PP
+.nf
+10559 {
+10560   mWhiskerPen = pen;
+10561 }
+.fi
+.SS "void QCPStatisticalBox::setWhiskerWidth (doublewidth)"
+
+.PP
+Sets the width of the whiskers (\fBsetMinimum\fP, \fBsetMaximum\fP) in key coordinates\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetWidth\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10545 of file qcustomplot\&.cpp\&.
+.PP
+References mWhiskerWidth, and width()\&.
+.PP
+Referenced by QCPStatisticalBox()\&.
+.PP
+.nf
+10546 {
+10547   mWhiskerWidth = width;
+10548 }
+.fi
+.SS "void QCPStatisticalBox::setWidth (doublewidth)"
+
+.PP
+Sets the width of the box in key coordinates\&. 
+.PP
+\fBSee also:\fP
+.RS 4
+\fBsetWhiskerWidth\fP 
+.RE
+.PP
+
+.PP
+Definition at line 10535 of file qcustomplot\&.cpp\&.
+.PP
+References mWidth, and width()\&.
+.PP
+Referenced by QCPStatisticalBox()\&.
+.PP
+.nf
+10536 {
+10537   mWidth = width;
+10538 }
+.fi
+.SS "double QCPStatisticalBox::upperQuartile () const\fC [inline]\fP"
+
+.PP
+Definition at line 712 of file qcustomplot\&.h\&.
+.PP
+.nf
+712 { return mUpperQuartile; }
+.fi
+.SS "QPen QCPStatisticalBox::whiskerBarPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 718 of file qcustomplot\&.h\&.
+.PP
+.nf
+718 { return mWhiskerBarPen; }
+.fi
+.SS "QPen QCPStatisticalBox::whiskerPen () const\fC [inline]\fP"
+
+.PP
+Definition at line 717 of file qcustomplot\&.h\&.
+.PP
+.nf
+717 { return mWhiskerPen; }
+.fi
+.SS "double QCPStatisticalBox::whiskerWidth () const\fC [inline]\fP"
+
+.PP
+Definition at line 716 of file qcustomplot\&.h\&.
+.PP
+.nf
+716 { return mWhiskerWidth; }
+.fi
+.SS "double QCPStatisticalBox::width () const\fC [inline]\fP"
+
+.PP
+Definition at line 715 of file qcustomplot\&.h\&.
+.PP
+Referenced by setWhiskerWidth(), and setWidth()\&.
+.PP
+.nf
+715 { return mWidth; }
+.fi
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBQCPLegend\fP\fC [friend]\fP"
+
+.PP
+Definition at line 766 of file qcustomplot\&.h\&.
+.SS "friend class \fBQCustomPlot\fP\fC [friend]\fP"
+
+.PP
+Definition at line 765 of file qcustomplot\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "double QCPStatisticalBox::mKey\fC [protected]\fP"
+
+.PP
+Definition at line 748 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawMedian(), drawOutliers(), drawQuartileBox(), drawWhiskers(), getKeyRange(), selectTest(), and setKey()\&.
+.SS "double QCPStatisticalBox::mLowerQuartile\fC [protected]\fP"
+
+.PP
+Definition at line 748 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawQuartileBox(), drawWhiskers(), getValueRange(), selectTest(), and setLowerQuartile()\&.
+.SS "double QCPStatisticalBox::mMaximum\fC [protected]\fP"
+
+.PP
+Definition at line 748 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawWhiskers(), getValueRange(), selectTest(), and setMaximum()\&.
+.SS "double QCPStatisticalBox::mMedian\fC [protected]\fP"
+
+.PP
+Definition at line 748 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawMedian(), getValueRange(), and setMedian()\&.
+.SS "QPen QCPStatisticalBox::mMedianPen\fC [protected]\fP"
+
+.PP
+Definition at line 752 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawMedian(), and setMedianPen()\&.
+.SS "double QCPStatisticalBox::mMinimum\fC [protected]\fP"
+
+.PP
+Definition at line 748 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawWhiskers(), getValueRange(), selectTest(), and setMinimum()\&.
+.SS "QPen QCPStatisticalBox::mOutlierPen\fC [protected]\fP"
+
+.PP
+Definition at line 752 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawOutliers(), and setOutlierPen()\&.
+.SS "QVector<double> QCPStatisticalBox::mOutliers\fC [protected]\fP"
+
+.PP
+Definition at line 747 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawOutliers(), getValueRange(), and setOutliers()\&.
+.SS "double QCPStatisticalBox::mOutlierSize\fC [protected]\fP"
+
+.PP
+Definition at line 751 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawOutliers(), and setOutlierSize()\&.
+.SS "\fBQCP::ScatterStyle\fP QCPStatisticalBox::mOutlierStyle\fC [protected]\fP"
+
+.PP
+Definition at line 753 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawOutliers(), and setOutlierStyle()\&.
+.SS "double QCPStatisticalBox::mUpperQuartile\fC [protected]\fP"
+
+.PP
+Definition at line 748 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawQuartileBox(), drawWhiskers(), getValueRange(), selectTest(), and setUpperQuartile()\&.
+.SS "QPen QCPStatisticalBox::mWhiskerBarPen\fC [protected]\fP"
+
+.PP
+Definition at line 752 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawWhiskers(), and setWhiskerBarPen()\&.
+.SS "QPen QCPStatisticalBox::mWhiskerPen\fC [protected]\fP"
+
+.PP
+Definition at line 752 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawWhiskers(), and setWhiskerPen()\&.
+.SS "double QCPStatisticalBox::mWhiskerWidth\fC [protected]\fP"
+
+.PP
+Definition at line 750 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawWhiskers(), and setWhiskerWidth()\&.
+.SS "double QCPStatisticalBox::mWidth\fC [protected]\fP"
+
+.PP
+Definition at line 749 of file qcustomplot\&.h\&.
+.PP
+Referenced by drawMedian(), drawQuartileBox(), getKeyRange(), selectTest(), and setWidth()\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

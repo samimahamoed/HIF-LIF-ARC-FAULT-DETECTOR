@@ -1,0 +1,17 @@
+<map id="QCPStatisticalBox::QCPStatisticalBox" name="QCPStatisticalBox::QCPStatisticalBox">
+<area shape="rect" id="node2" href="$dc/de2/a00024.html#a7a4b92144dca6453a1f0f210e27edc74" title="The brush is used to draw basic fills of the plottable representation in the plot. " alt="" coords="192,5,343,47"/>
+<area shape="rect" id="node4" href="$d5/de0/a00050.html#a7260ac55b669f5d0a74f16d5ca84c52c" title="Sets the pen used for drawing the median indicator line inside the statistical box. " alt="" coords="198,593,337,635"/>
+<area shape="rect" id="node6" href="$d5/de0/a00050.html#ac9079d5e27f1daf4d546f5a21246fc28" title="Sets the pen used to draw the outlier data points. " alt="" coords="198,136,337,177"/>
+<area shape="rect" id="node7" href="$d5/de0/a00050.html#ae784a5ea2da652e24445d36fbc0b0854" title="Sets the pixel size of the scatter symbols that represent the outlier data points. " alt="" coords="198,201,337,243"/>
+<area shape="rect" id="node8" href="$d5/de0/a00050.html#a1cb2469552f6f6615b1f6d7398463e5c" title="Sets the scatter style of the outlier data points. " alt="" coords="198,267,337,308"/>
+<area shape="rect" id="node9" href="$dc/de2/a00024.html#ab74b09ae4c0e7e13142fe4b5bf46cac7" title="The pen is used to draw basic lines that make up the plottable representation in the plot..." alt="" coords="192,397,343,439"/>
+<area shape="rect" id="node10" href="$dc/de2/a00024.html#ae8c816874089f7a44001e8618e81a9dc" title="When the plottable is selected, this brush is used to draw fills instead of the normal brush set via ..." alt="" coords="192,71,343,112"/>
+<area shape="rect" id="node11" href="$dc/de2/a00024.html#a6911603cad23ab0469b108224517516f" title="When the plottable is selected, this pen is used to draw basic lines instead of the normal pen set vi..." alt="" coords="192,463,343,504"/>
+<area shape="rect" id="node12" href="$d5/de0/a00050.html#aa8d3e503897788e1abf68dc74b5f147f" title="Sets the pen used for drawing the whisker bars (Those are the lines parallel to the key axis at each ..." alt="" coords="198,528,337,569"/>
+<area shape="rect" id="node13" href="$d5/de0/a00050.html#a4a5034cb3b9b040444df05ab1684620b" title="Sets the pen used for drawing the whisker backbone (That&#39;s the line parallel to the value axis)..." alt="" coords="198,332,337,373"/>
+<area shape="rect" id="node14" href="$d5/de0/a00050.html#adf378812446bd66f34d1f7f293d991cd" title="Sets the width of the whiskers (setMinimum, setMaximum) in key coordinates. " alt="" coords="198,659,337,700"/>
+<area shape="rect" id="node16" href="$d5/de0/a00050.html#a0b62775bd67301b1eba5c785f2b26f14" title="Sets the width of the box in key coordinates. " alt="" coords="198,724,337,765"/>
+<area shape="rect" id="node3" href="$dc/de2/a00024.html#aa74cdceb9c7286ef116fbfa58e0326e7" title="QCPAbstractPlottable\l::brush" alt="" coords="405,39,555,80"/>
+<area shape="rect" id="node5" href="$dc/de2/a00024.html#a41d060007cc6b3037c9c04d22d0c0398" title="QCPAbstractPlottable::pen" alt="" coords="391,438,569,465"/>
+<area shape="rect" id="node15" href="$d5/de0/a00050.html#a0733a7bd575fc5929ce6d507bcc2a04c" title="QCPStatisticalBox::\lwidth" alt="" coords="411,691,549,732"/>
+</map>

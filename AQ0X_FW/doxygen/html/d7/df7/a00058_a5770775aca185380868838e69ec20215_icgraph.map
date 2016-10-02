@@ -1,0 +1,4 @@
+<map id="hwio_get_analog" name="hwio_get_analog">
+<area shape="rect" id="node2" href="$dd/d32/a00041.html#a2068c3c2584547dbc1c8b9bca2d55b18" title="Fast timer interrupt to scan sensor element analog values. " alt="" coords="172,5,269,32"/>
+<area shape="rect" id="node3" href="$d4/dca/a00048.html#a840291bc02cba5474a4cb46a9b9566fe" title="System startup function. " alt="" coords="195,56,246,83"/>
+</map>

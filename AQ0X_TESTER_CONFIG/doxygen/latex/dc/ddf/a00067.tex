@@ -1,0 +1,1242 @@
+\hypertarget{a00067}{\section{moc\+\_\+qcustomplot.\+cpp File Reference}
+\label{a00067}\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+}
+{\ttfamily \#include \char`\"{}../../qcustomplot.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$Qt\+Core/qbytearray.\+h$>$}\\*
+{\ttfamily \#include $<$Qt\+Core/qmetatype.\+h$>$}\\*
+{\ttfamily \#include $<$Qt\+Core/\+Q\+Vector$>$}\\*
+Include dependency graph for moc\+\_\+qcustomplot.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/ddc/a00288}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{a00067_de/dd2/a00207}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Layerable\+\_\+t}
+\item 
+struct \hyperlink{a00067_dd/da2/a00192}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Plottable\+\_\+t}
+\item 
+struct \hyperlink{a00067_d7/ded/a00196}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Graph\+\_\+t}
+\item 
+struct \hyperlink{a00067_d3/d2a/a00195}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Curve\+\_\+t}
+\item 
+struct \hyperlink{a00067_dc/d57/a00194}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Bars\+\_\+t}
+\item 
+struct \hyperlink{a00067_da/de7/a00210}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Statistical\+Box\+\_\+t}
+\item 
+struct \hyperlink{a00067_d7/d6e/a00190}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Item\+\_\+t}
+\item 
+struct \hyperlink{a00067_d1/d72/a00204}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Straight\+Line\+\_\+t}
+\item 
+struct \hyperlink{a00067_dd/de3/a00201}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Line\+\_\+t}
+\item 
+struct \hyperlink{a00067_d3/db1/a00200}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Ellipse\+\_\+t}
+\item 
+struct \hyperlink{a00067_de/d79/a00203}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Rect\+\_\+t}
+\item 
+struct \hyperlink{a00067_db/d53/a00202}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Pixmap\+\_\+t}
+\item 
+struct \hyperlink{a00067_d5/d13/a00205}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Text\+\_\+t}
+\item 
+struct \hyperlink{a00067_d8/d72/a00199}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Curve\+\_\+t}
+\item 
+struct \hyperlink{a00067_d7/da0/a00198}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Bracket\+\_\+t}
+\item 
+struct \hyperlink{a00067_d5/df1/a00206}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Tracer\+\_\+t}
+\item 
+struct \hyperlink{a00067_d9/dd0/a00191}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Legend\+Item\+\_\+t}
+\item 
+struct \hyperlink{a00067_d3/de5/a00209}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Plottable\+Legend\+Item\+\_\+t}
+\item 
+struct \hyperlink{a00067_dc/d31/a00208}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Legend\+\_\+t}
+\item 
+struct \hyperlink{a00067_de/db1/a00197}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Grid\+\_\+t}
+\item 
+struct \hyperlink{a00067_dd/df4/a00193}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Axis\+\_\+t}
+\item 
+struct \hyperlink{a00067_dd/ded/a00211}{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+Custom\+Plot\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\item 
+\#define \hyperlink{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}(idx, ofs, len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Class Documentation}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Layerable\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Layerable\+\_\+t}}\label{de/dd2/a00207}
+\hypertarget{a00067_de/dd2/a00207}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Layerable\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00022}{22} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Layerable\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d4/d66/a00289}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a08a4a1de23442a83952a11d68453ab4d}{Q\+Byte\+Array\+Data}\label{a00067_a08a4a1de23442a83952a11d68453ab4d}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a4dff397c178a0aa24e1087e6ab89c187}{char}\label{a00067_a4dff397c178a0aa24e1087e6ab89c187}
+&
+stringdata\mbox{[}14\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Plottable\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Plottable\+\_\+t}}\label{dd/da2/a00192}
+\hypertarget{a00067_dd/da2/a00192}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Plottable\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00089}{89} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Plottable\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{de/d25/a00290}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_ac951832cc81d6220c552b96fc4354c89}{Q\+Byte\+Array\+Data}\label{a00067_ac951832cc81d6220c552b96fc4354c89}
+&
+data\mbox{[}4\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_ab78c50bc348c723bab72ef878f28856c}{char}\label{a00067_ab78c50bc348c723bab72ef878f28856c}
+&
+stringdata\mbox{[}49\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Graph\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Graph\+\_\+t}}\label{d7/ded/a00196}
+\hypertarget{a00067_d7/ded/a00196}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Graph\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00194}{194} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Graph\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{da/dd4/a00291}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a52173b02d8396dce2aa3a046123398ea}{Q\+Byte\+Array\+Data}\label{a00067_a52173b02d8396dce2aa3a046123398ea}
+&
+data\mbox{[}13\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a8d599799df5356cb10dc7a790a0e26a2}{char}\label{a00067_a8d599799df5356cb10dc7a790a0e26a2}
+&
+stringdata\mbox{[}118\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Curve\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Curve\+\_\+t}}\label{d3/d2a/a00195}
+\hypertarget{a00067_d3/d2a/a00195}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Curve\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00292}{292} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Curve\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d8/d0a/a00292}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_ac2243b1095d588f9864242ffc67f432f}{Q\+Byte\+Array\+Data}\label{a00067_ac2243b1095d588f9864242ffc67f432f}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_ad141d5092cc25ae43c6c60a782ca04ee}{char}\label{a00067_ad141d5092cc25ae43c6c60a782ca04ee}
+&
+stringdata\mbox{[}10\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Bars\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Bars\+\_\+t}}\label{dc/d57/a00194}
+\hypertarget{a00067_dc/d57/a00194}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Bars\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00359}{359} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Bars\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d6/d82/a00293}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a5237dfd2ea3d5be916ce7c562d734ff4}{Q\+Byte\+Array\+Data}\label{a00067_a5237dfd2ea3d5be916ce7c562d734ff4}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a07ece80e538a4239e2a3b6d4b9782407}{char}\label{a00067_a07ece80e538a4239e2a3b6d4b9782407}
+&
+stringdata\mbox{[}9\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Statistical\+Box\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Statistical\+Box\+\_\+t}}\label{da/de7/a00210}
+\hypertarget{a00067_da/de7/a00210}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Statistical\+Box\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00426}{426} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Statistical\+Box\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d4/d5b/a00294}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a5e26535af2751ed72a5c0a296eff07f6}{Q\+Byte\+Array\+Data}\label{a00067_a5e26535af2751ed72a5c0a296eff07f6}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a69ea5a8754685d08ddf21f3f6478bb52}{char}\label{a00067_a69ea5a8754685d08ddf21f3f6478bb52}
+&
+stringdata\mbox{[}19\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Item\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Item\+\_\+t}}\label{d7/d6e/a00190}
+\hypertarget{a00067_d7/d6e/a00190}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Item\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00493}{493} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Item\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d9/d5e/a00295}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_ab4317fd8db7c91bab9009e558b7cb145}{Q\+Byte\+Array\+Data}\label{a00067_ab4317fd8db7c91bab9009e558b7cb145}
+&
+data\mbox{[}4\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_ade6e562aa7d6defc621f68d53679440b}{char}\label{a00067_ade6e562aa7d6defc621f68d53679440b}
+&
+stringdata\mbox{[}44\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Straight\+Line\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Straight\+Line\+\_\+t}}\label{d1/d72/a00204}
+\hypertarget{a00067_d1/d72/a00204}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Straight\+Line\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00598}{598} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Straight\+Line\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{db/d7b/a00296}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a86cfd75cdbd69fb7bac81f44368368a2}{Q\+Byte\+Array\+Data}\label{a00067_a86cfd75cdbd69fb7bac81f44368368a2}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a4fcd4918ec3f5999a6ee9ce08ebcdb96}{char}\label{a00067_a4fcd4918ec3f5999a6ee9ce08ebcdb96}
+&
+stringdata\mbox{[}21\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Line\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Line\+\_\+t}}\label{dd/de3/a00201}
+\hypertarget{a00067_dd/de3/a00201}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Line\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00665}{665} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Line\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d3/d4a/a00297}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a02b269c84618a73b8cefdb4c4ae888c6}{Q\+Byte\+Array\+Data}\label{a00067_a02b269c84618a73b8cefdb4c4ae888c6}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_ac705c65b9062c112f8ff0dd2a2915160}{char}\label{a00067_ac705c65b9062c112f8ff0dd2a2915160}
+&
+stringdata\mbox{[}13\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Ellipse\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Ellipse\+\_\+t}}\label{d3/db1/a00200}
+\hypertarget{a00067_d3/db1/a00200}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Ellipse\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00732}{732} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Ellipse\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d9/d0d/a00298}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a7efd0687e2b0fbd2c4df25855b74af30}{Q\+Byte\+Array\+Data}\label{a00067_a7efd0687e2b0fbd2c4df25855b74af30}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a35ee014e43cf9f75fa027534df3b222d}{char}\label{a00067_a35ee014e43cf9f75fa027534df3b222d}
+&
+stringdata\mbox{[}16\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Rect\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Rect\+\_\+t}}\label{de/d79/a00203}
+\hypertarget{a00067_de/d79/a00203}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Rect\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00799}{799} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Rect\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{df/d95/a00299}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_abb87c72758ddd18aa3c36a7ee960fa1f}{Q\+Byte\+Array\+Data}\label{a00067_abb87c72758ddd18aa3c36a7ee960fa1f}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a8006d9df79f24f9dc9846ce4485c145a}{char}\label{a00067_a8006d9df79f24f9dc9846ce4485c145a}
+&
+stringdata\mbox{[}13\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Pixmap\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Pixmap\+\_\+t}}\label{db/d53/a00202}
+\hypertarget{a00067_db/d53/a00202}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Pixmap\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00866}{866} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Pixmap\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{db/da2/a00300}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_ac2c2965eddf58c85d34bd6a8bc3608fe}{Q\+Byte\+Array\+Data}\label{a00067_ac2c2965eddf58c85d34bd6a8bc3608fe}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a4cee80f7af4fafbb06fc161890ced10e}{char}\label{a00067_a4cee80f7af4fafbb06fc161890ced10e}
+&
+stringdata\mbox{[}15\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Text\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Text\+\_\+t}}\label{d5/d13/a00205}
+\hypertarget{a00067_d5/d13/a00205}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Text\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l00933}{933} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Text\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{da/d50/a00301}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_ae37b5edc1ab54bceebcfba0fb33002ec}{Q\+Byte\+Array\+Data}\label{a00067_ae37b5edc1ab54bceebcfba0fb33002ec}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_aff2bfa25f79dd85cdbd854d9e51371a9}{char}\label{a00067_aff2bfa25f79dd85cdbd854d9e51371a9}
+&
+stringdata\mbox{[}13\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Curve\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Curve\+\_\+t}}\label{d8/d72/a00199}
+\hypertarget{a00067_d8/d72/a00199}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Curve\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01000}{1000} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Curve\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d0/d61/a00302}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a0424f9a0b87bc8cefa2966874c4c5667}{Q\+Byte\+Array\+Data}\label{a00067_a0424f9a0b87bc8cefa2966874c4c5667}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_af1db92bb182f435f88c938cc13a52a2c}{char}\label{a00067_af1db92bb182f435f88c938cc13a52a2c}
+&
+stringdata\mbox{[}14\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Bracket\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Bracket\+\_\+t}}\label{d7/da0/a00198}
+\hypertarget{a00067_d7/da0/a00198}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Bracket\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01067}{1067} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Bracket\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{dc/d0f/a00303}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a15ff7a0bed3ecf746215a57a076c296b}{Q\+Byte\+Array\+Data}\label{a00067_a15ff7a0bed3ecf746215a57a076c296b}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a2e0cf4afc3bc921fbe6f35930bfbd9af}{char}\label{a00067_a2e0cf4afc3bc921fbe6f35930bfbd9af}
+&
+stringdata\mbox{[}16\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Tracer\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Tracer\+\_\+t}}\label{d5/df1/a00206}
+\hypertarget{a00067_d5/df1/a00206}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Tracer\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01134}{1134} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Item\+Tracer\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d8/d17/a00304}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a87c91fdce2044ef334c2cfd91e38ac00}{Q\+Byte\+Array\+Data}\label{a00067_a87c91fdce2044ef334c2cfd91e38ac00}
+&
+data\mbox{[}7\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a28c4c1cde887cbe6b6af18ce9d6ed867}{char}\label{a00067_a28c4c1cde887cbe6b6af18ce9d6ed867}
+&
+stringdata\mbox{[}71\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Legend\+Item\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Legend\+Item\+\_\+t}}\label{d9/dd0/a00191}
+\hypertarget{a00067_d9/dd0/a00191}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Legend\+Item\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01218}{1218} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Abstract\+Legend\+Item\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{d3/d07/a00305}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a98fcd80c37c93a0b0b71f18405466d42}{Q\+Byte\+Array\+Data}\label{a00067_a98fcd80c37c93a0b0b71f18405466d42}
+&
+data\mbox{[}4\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a007f69edf60f3475c27481b80fb00e7f}{char}\label{a00067_a007f69edf60f3475c27481b80fb00e7f}
+&
+stringdata\mbox{[}50\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Plottable\+Legend\+Item\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Plottable\+Legend\+Item\+\_\+t}}\label{d3/de5/a00209}
+\hypertarget{a00067_d3/de5/a00209}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Plottable\+Legend\+Item\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01323}{1323} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Plottable\+Legend\+Item\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{d1/de3/a00306}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a56d928faacdea012d9b501b879ef98a8}{Q\+Byte\+Array\+Data}\label{a00067_a56d928faacdea012d9b501b879ef98a8}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a25e998eb002b6a9f9e969afa5247748f}{char}\label{a00067_a25e998eb002b6a9f9e969afa5247748f}
+&
+stringdata\mbox{[}24\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Legend\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Legend\+\_\+t}}\label{dc/d31/a00208}
+\hypertarget{a00067_dc/d31/a00208}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Legend\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01390}{1390} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Legend\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d0/da2/a00307}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_abb2a7af4ffa957bddb891b5663c0aa55}{Q\+Byte\+Array\+Data}\label{a00067_abb2a7af4ffa957bddb891b5663c0aa55}
+&
+data\mbox{[}19\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a26b79395b8d9f94641f81b197841ede1}{char}\label{a00067_a26b79395b8d9f94641f81b197841ede1}
+&
+stringdata\mbox{[}209\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Grid\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Grid\+\_\+t}}\label{de/db1/a00197}
+\hypertarget{a00067_de/db1/a00197}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Grid\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01533}{1533} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Grid\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d5/d0f/a00308}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a7e6e5bd7ca3eb3f18073d11e635e5cb9}{Q\+Byte\+Array\+Data}\label{a00067_a7e6e5bd7ca3eb3f18073d11e635e5cb9}
+&
+data\mbox{[}1\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a0bcd248c91a252f9ad93a353181ea07e}{char}\label{a00067_a0bcd248c91a252f9ad93a353181ea07e}
+&
+stringdata\mbox{[}9\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Axis\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Axis\+\_\+t}}\label{dd/df4/a00193}
+\hypertarget{a00067_dd/df4/a00193}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Axis\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01600}{1600} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+C\+P\+Axis\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d2/d71/a00309}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a6de5289a2e23a98b0352a48533dedbd4}{Q\+Byte\+Array\+Data}\label{a00067_a6de5289a2e23a98b0352a48533dedbd4}
+&
+data\mbox{[}64\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a1fe440f64883a266431cf43cff1b5052}{char}\label{a00067_a1fe440f64883a266431cf43cff1b5052}
+&
+stringdata\mbox{[}708\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+\index{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+Custom\+Plot\+\_\+t@{qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+Custom\+Plot\+\_\+t}}\label{dd/ded/a00211}
+\hypertarget{a00067_dd/ded/a00211}{}
+\subsubsection{struct qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+Custom\+Plot\+\_\+t}
+
+
+Definition at line \hyperlink{a00067_source_l01983}{1983} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+
+
+Collaboration diagram for qt\+\_\+meta\+\_\+stringdata\+\_\+\+Q\+Custom\+Plot\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{d1/d67/a00310}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\hypertarget{a00067_a294e0b700c66ea0a3f528f255fa52fff}{Q\+Byte\+Array\+Data}\label{a00067_a294e0b700c66ea0a3f528f255fa52fff}
+&
+data\mbox{[}60\mbox{]}&
+\\
+\hline
+
+\hypertarget{a00067_a06c7bf819765fdc7a40739cfb2bb681c}{char}\label{a00067_a06c7bf819765fdc7a40739cfb2bb681c}
+&
+stringdata\mbox{[}737\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_de/dd2/a00207}{qt\_meta\_stringdata\_QCPLayerable\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_dd/da2/a00192}{qt\_meta\_stringdata\_QCPAbstractPlottable\_t}, stringdata
+      ) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d7/ded/a00196}{qt\_meta\_stringdata\_QCPGraph\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d3/d2a/a00195}{qt\_meta\_stringdata\_QCPCurve\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_dc/d57/a00194}{qt\_meta\_stringdata\_QCPBars\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_da/de7/a00210}{qt\_meta\_stringdata\_QCPStatisticalBox\_t}, stringdata) + 
+      ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d7/d6e/a00190}{qt\_meta\_stringdata\_QCPAbstractItem\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d1/d72/a00204}{qt\_meta\_stringdata\_QCPItemStraightLine\_t}, stringdata) 
+      + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_dd/de3/a00201}{qt\_meta\_stringdata\_QCPItemLine\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d3/db1/a00200}{qt\_meta\_stringdata\_QCPItemEllipse\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_de/d79/a00203}{qt\_meta\_stringdata\_QCPItemRect\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_db/d53/a00202}{qt\_meta\_stringdata\_QCPItemPixmap\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d5/d13/a00205}{qt\_meta\_stringdata\_QCPItemText\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d8/d72/a00199}{qt\_meta\_stringdata\_QCPItemCurve\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d7/da0/a00198}{qt\_meta\_stringdata\_QCPItemBracket\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d5/df1/a00206}{qt\_meta\_stringdata\_QCPItemTracer\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d9/dd0/a00191}{qt\_meta\_stringdata\_QCPAbstractLegendItem\_t}, 
+      stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_d3/de5/a00209}{qt\_meta\_stringdata\_QCPPlottableLegendItem\_t}, 
+      stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_dc/d31/a00208}{qt\_meta\_stringdata\_QCPLegend\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_de/db1/a00197}{qt\_meta\_stringdata\_QCPGrid\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_dd/df4/a00193}{qt\_meta\_stringdata\_QCPAxis\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+
+\hypertarget{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}{\index{moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}!Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}}
+\index{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L@{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}!moc\+\_\+qcustomplot.\+cpp@{moc\+\_\+qcustomplot.\+cpp}}
+\subsubsection[{Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+O\+C\+\_\+\+L\+I\+T\+E\+R\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{idx, }
+\item[{}]{ofs, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}}\label{a00067_a75bb9482d242cde0a06c9dbdc6b83abe}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+Q\_STATIC\_BYTE\_ARRAY\_DATA\_HEADER\_INITIALIZER\_WITH\_OFFSET(len, \(\backslash\)
+    offsetof(\hyperlink{a00067_dd/ded/a00211}{qt\_meta\_stringdata\_QCustomPlot\_t}, stringdata) + ofs \(\backslash\)
+        - idx * \textcolor{keyword}{sizeof}(QByteArrayData) \(\backslash\)
+    )
+\end{DoxyCode}
+
+
+Definition at line \hyperlink{a00067_source_l01987}{1987} of file \hyperlink{a00067_source}{moc\+\_\+qcustomplot.\+cpp}.
+

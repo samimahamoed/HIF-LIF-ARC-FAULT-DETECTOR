@@ -1,0 +1,6 @@
+<map id="QCPLegend" name="QCPLegend">
+<area shape="rect" id="node2" href="$d5/df9/a00044.html" title="Base class for all objects that can be placed on layers. " alt="" coords="409,403,612,685"/>
+<area shape="rect" id="node3" href="$d3/d8b/a00059.html" title="{QObject\n||}" alt="" coords="494,197,565,274"/>
+<area shape="rect" id="node4" href="$d6/d42/a00043.html" title="A layer that may contain objects, to control the rendering order. " alt="" coords="158,145,269,325"/>
+<area shape="rect" id="node6" href="$d5/d79/a00030.html#d8/d00/a00186" title="The central class of the library, the QWidget which displays the plot and interacts with the user..." alt="" coords="313,5,413,83"/>
+</map>

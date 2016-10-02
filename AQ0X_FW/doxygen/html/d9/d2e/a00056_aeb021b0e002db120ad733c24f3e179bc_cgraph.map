@@ -1,0 +1,5 @@
+<map id="nov_page_cpy" name="nov_page_cpy">
+<area shape="rect" id="node2" href="$d9/d2e/a00056.html#af9ccbc198ed63feb4fd6c18dd934590d" title="reads status register from EEPROM. " alt="" coords="175,5,285,32"/>
+<area shape="rect" id="node3" href="$da/da0/a00009.html#a19e2dff580e4d1b2198fa9108fca81ac" title="send one byte of data and receive one back at the same time " alt="" coords="351,56,447,83"/>
+<area shape="rect" id="node4" href="$d9/d2e/a00056.html#a7b698f4b0088c4e28951c2204b7b821e" title="set or reset write enable latch, the proceedure is drived from the information provided in microchip ..." alt="" coords="157,107,303,149"/>
+</map>

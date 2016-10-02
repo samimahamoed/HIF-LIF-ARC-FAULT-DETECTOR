@@ -1,0 +1,221 @@
+.TH "ffft::FFTRealPassDirect< PASS >" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ffft::FFTRealPassDirect< PASS > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <FFTRealPassDirect\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef 
+.br
+\fBFFTRealFixLenParam::DataType\fP \fBDataType\fP"
+.br
+.ti -1c
+.RI "typedef \fBOscSinCos\fP< \fBDataType\fP > \fBOscType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<> void \fBprocess\fP (long len, \fBDataType\fP dest_ptr[], \fBDataType\fP src_ptr[], const \fBDataType\fP x_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.ti -1c
+.RI "template<> void \fBprocess\fP (long len, \fBDataType\fP dest_ptr[], \fBDataType\fP src_ptr[], const \fBDataType\fP x_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBffft_FORCEINLINE\fP void \fBprocess\fP (long len, \fBDataType\fP dest_ptr[], \fBDataType\fP src_ptr[], const \fBDataType\fP x_ptr[], const \fBDataType\fP cos_ptr[], long cos_len, const long br_ptr[], \fBOscType\fP osc_list[])"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<int PASS>class ffft::FFTRealPassDirect< PASS >"
+
+.PP
+Definition at line 42 of file FFTRealPassDirect\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "template<int PASS> typedef \fBFFTRealFixLenParam::DataType\fP \fBffft::FFTRealPassDirect\fP< PASS >::\fBDataType\fP"
+
+.PP
+Definition at line 49 of file FFTRealPassDirect\&.h\&.
+.SS "template<int PASS> typedef \fBOscSinCos\fP<\fBDataType\fP> \fBffft::FFTRealPassDirect\fP< PASS >::\fBOscType\fP"
+
+.PP
+Definition at line 50 of file FFTRealPassDirect\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<> void \fBffft::FFTRealPassDirect\fP< 1 >::process (longlen, \fBDataType\fPdest_ptr[], \fBDataType\fPsrc_ptr[], const \fBDataType\fPx_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [inline]\fP"
+
+.PP
+Definition at line 44 of file FFTRealPassDirect\&.hpp\&.
+.PP
+.nf
+45 {
+46     // First and second pass at once
+47     const long      qlen = len >> 2;
+48 
+49     long                coef_index = 0;
+50     do
+51     {
+52         // To do: unroll the loop (2x)\&.
+53         const long      ri_0 = br_ptr [coef_index >> 2];
+54         const long      ri_1 = ri_0 + 2 * qlen; // bit_rev_lut_ptr [coef_index + 1];
+55         const long      ri_2 = ri_0 + 1 * qlen; // bit_rev_lut_ptr [coef_index + 2];
+56         const long      ri_3 = ri_0 + 3 * qlen; // bit_rev_lut_ptr [coef_index + 3];
+57 
+58         DataType    * const df2 = dest_ptr + coef_index;
+59         df2 [1] = x_ptr [ri_0] - x_ptr [ri_1];
+60         df2 [3] = x_ptr [ri_2] - x_ptr [ri_3];
+61 
+62         const DataType  sf_0 = x_ptr [ri_0] + x_ptr [ri_1];
+63         const DataType  sf_2 = x_ptr [ri_2] + x_ptr [ri_3];
+64 
+65         df2 [0] = sf_0 + sf_2;
+66         df2 [2] = sf_0 - sf_2;
+67 
+68         coef_index += 4;
+69     }
+70     while (coef_index < len);
+71 }
+.fi
+.SS "template<int PASS> void \fBffft::FFTRealPassDirect\fP< PASS >::process (longlen, \fBDataType\fPdest_ptr[], \fBDataType\fPsrc_ptr[], const \fBDataType\fPx_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [static]\fP"
+
+.PP
+Definition at line 115 of file FFTRealPassDirect\&.hpp\&.
+.PP
+References ffft::FFTRealFixLenParam::TRIGO_BD_LIMIT\&.
+.PP
+.nf
+116 {
+117     // Executes "previous" passes first\&. Inverts source and destination buffers
+118     FFTRealPassDirect <PASS - 1>::process (
+119         len,
+120         src_ptr,
+121         dest_ptr,
+122         x_ptr,
+123         cos_ptr,
+124         cos_len,
+125         br_ptr,
+126         osc_list
+127     );
+128 
+129     const long      dist = 1L << (PASS - 1);
+130     const long      c1_r = 0;
+131     const long      c1_i = dist;
+132     const long      c2_r = dist * 2;
+133     const long      c2_i = dist * 3;
+134     const long      cend = dist * 4;
+135     const long      table_step = cos_len >> (PASS - 1);
+136 
+137    enum {   TRIGO_OSC       = PASS - FFTRealFixLenParam::TRIGO_BD_LIMIT };
+138     enum {  TRIGO_DIRECT    = (TRIGO_OSC >= 0) ? 1 : 0  };
+139 
+140     long                coef_index = 0;
+141     do
+142     {
+143         const DataType  * const sf = src_ptr + coef_index;
+144         DataType            * const df = dest_ptr + coef_index;
+145 
+146         // Extreme coefficients are always real
+147         df [c1_r] = sf [c1_r] + sf [c2_r];
+148         df [c2_r] = sf [c1_r] - sf [c2_r];
+149         df [c1_i] = sf [c1_i];
+150         df [c2_i] = sf [c2_i];
+151 
+152         FFTRealUseTrigo <TRIGO_DIRECT>::prepare (osc_list [TRIGO_OSC]);
+153 
+154         // Others are conjugate complex numbers
+155         for (long i = 1; i < dist; ++ i)
+156         {
+157             DataType            c;
+158             DataType            s;
+159             FFTRealUseTrigo <TRIGO_DIRECT>::iterate (
+160                 osc_list [TRIGO_OSC],
+161                 c,
+162                 s,
+163                 cos_ptr,
+164                 i * table_step,
+165                 (dist - i) * table_step
+166             );
+167 
+168             const DataType  sf_r_i = sf [c1_r + i];
+169             const DataType  sf_i_i = sf [c1_i + i];
+170 
+171             const DataType  v1 = sf [c2_r + i] * c - sf [c2_i + i] * s;
+172             df [c1_r + i] = sf_r_i + v1;
+173             df [c2_r - i] = sf_r_i - v1;
+174 
+175             const DataType  v2 = sf [c2_r + i] * s + sf [c2_i + i] * c;
+176             df [c2_r + i] = v2 + sf_i_i;
+177             df [cend - i] = v2 - sf_i_i;
+178         }
+179 
+180         coef_index += cend;
+181     }
+182     while (coef_index < len);
+183 }
+.fi
+.SS "template<> void \fBffft::FFTRealPassDirect\fP< 2 >::process (longlen, \fBDataType\fPdest_ptr[], \fBDataType\fPsrc_ptr[], const \fBDataType\fPx_ptr[], const \fBDataType\fPcos_ptr[], longcos_len, const longbr_ptr[], \fBOscType\fPosc_list[])\fC [inline]\fP"
+
+.PP
+Definition at line 74 of file FFTRealPassDirect\&.hpp\&.
+.PP
+References ffft::SQRT2\&.
+.PP
+.nf
+75 {
+76     // Executes "previous" passes first\&. Inverts source and destination buffers
+77     FFTRealPassDirect <1>::process (
+78         len,
+79         src_ptr,
+80         dest_ptr,
+81         x_ptr,
+82         cos_ptr,
+83         cos_len,
+84         br_ptr,
+85         osc_list
+86     );
+87 
+88     // Third pass
+89     const DataType  sqrt2_2 = DataType (SQRT2 * 0\&.5);
+90 
+91     long                coef_index = 0;
+92     do
+93     {
+94         dest_ptr [coef_index    ] = src_ptr [coef_index] + src_ptr [coef_index + 4];
+95         dest_ptr [coef_index + 4] = src_ptr [coef_index] - src_ptr [coef_index + 4];
+96         dest_ptr [coef_index + 2] = src_ptr [coef_index + 2];
+97         dest_ptr [coef_index + 6] = src_ptr [coef_index + 6];
+98 
+99         DataType            v;
+100 
+101         v = (src_ptr [coef_index + 5] - src_ptr [coef_index + 7]) * sqrt2_2;
+102         dest_ptr [coef_index + 1] = src_ptr [coef_index + 1] + v;
+103         dest_ptr [coef_index + 3] = src_ptr [coef_index + 1] - v;
+104 
+105         v = (src_ptr [coef_index + 5] + src_ptr [coef_index + 7]) * sqrt2_2;
+106         dest_ptr [coef_index + 5] = v + src_ptr [coef_index + 3];
+107         dest_ptr [coef_index + 7] = v - src_ptr [coef_index + 3];
+108 
+109         coef_index += 8;
+110     }
+111     while (coef_index < len);
+112 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

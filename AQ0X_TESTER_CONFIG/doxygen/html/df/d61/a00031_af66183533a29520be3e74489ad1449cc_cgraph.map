@@ -1,0 +1,14 @@
+<map id="QCPGraph::getPlotData" name="QCPGraph::getPlotData">
+<area shape="rect" id="node2" href="$df/d61/a00031.html#a0ff6e856387cc079b28592ead2a81f6c" title="QCPGraph::getImpulsePlotData" alt="" coords="225,276,431,303"/>
+<area shape="rect" id="node9" href="$df/d61/a00031.html#ac76804eb33446181f3e4f708b7639a75" title="QCPGraph::getLinePlotData" alt="" coords="235,225,421,252"/>
+<area shape="rect" id="node10" href="$df/d61/a00031.html#a0899c4d6357aee19a3abff5897c3c8c5" title="QCPGraph::getScatterPlotData" alt="" coords="227,23,429,49"/>
+<area shape="rect" id="node11" href="$df/d61/a00031.html#ac79dc75dd98db9948d9656447b463af5" title="QCPGraph::getStepCenterPlotData" alt="" coords="215,124,441,151"/>
+<area shape="rect" id="node12" href="$df/d61/a00031.html#a6b7c14e04deed69b70d552dbe70c4d28" title="QCPGraph::getStepLeftPlotData" alt="" coords="223,73,433,100"/>
+<area shape="rect" id="node13" href="$df/d61/a00031.html#ab2ad46716889c73ab977cf9280de0788" title="QCPGraph::getStepRightPlotData" alt="" coords="219,175,437,201"/>
+<area shape="rect" id="node3" href="$d3/dfe/a00025.html#a985ae693b842fb0422b4390fe36d299a" title="Transforms value (in coordinates of the axis) to pixel coordinates of the QCustomPlot widget..." alt="" coords="499,225,657,252"/>
+<area shape="rect" id="node5" href="$d3/dfe/a00025.html#a57483f2f60145ddc9e63f3af53959265" title="Returns the orientation of the axis. " alt="" coords="715,175,859,201"/>
+<area shape="rect" id="node7" href="$df/d61/a00031.html#a8963c90087cf53b889b29dd59aa41aad" title="QCPGraph::getVisibleData\lBounds" alt="" coords="489,109,667,150"/>
+<area shape="rect" id="node4" href="$d3/dfe/a00025.html#a1385765db2419ee5fb5505a6cf9130fb" title="QCPAxis::baseLog" alt="" coords="720,225,853,252"/>
+<area shape="rect" id="node6" href="$d2/dee/a00049.html#afa57c13049b965edb6fd1c00ac56338a" title="Returns the size of the range, i.e. " alt="" coords="727,276,846,303"/>
+<area shape="rect" id="node8" href="$d3/dfe/a00025.html#ab1ea79a4f5ea4cf42620f8f51c477ac4" title="QCPAxis::range" alt="" coords="729,116,845,143"/>
+</map>

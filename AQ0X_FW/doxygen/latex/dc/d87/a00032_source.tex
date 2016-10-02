@@ -1,0 +1,98 @@
+\hypertarget{a00032_source}{\section{srv\+\_\+spi.\+c}
+\label{a00032_source}\index{srv\+\_\+spi.\+c@{srv\+\_\+spi.\+c}}
+}
+
+\begin{DoxyCode}
+00001 
+00010 \textcolor{preprocessor}{#include "..\(\backslash\)includes\(\backslash\)allheaders.h"}
+00011 
+00012 
+00013 
+00014 
+00015 
+\hypertarget{a00032_source_l00017}{}\hyperlink{a00032}{00017} \textcolor{keyword}{typedef} \textcolor{keyword}{struct}
+00018 \{
+00019 
+00020 \}\hyperlink{a00032_d6/d17/a00778}{spi\_data\_t};
+00021 
+00022 
+00023 
+\hypertarget{a00032_source_l00030}{}\hyperlink{a00032_ae909944aa85ae98323073c628be541aa}{00030} \textcolor{keywordtype}{void}     \hyperlink{a00032_ae909944aa85ae98323073c628be541aa}{spi\_init}(\textcolor{keywordtype}{void})
+00031 \{
+00032 
+00033 
+00034     \textcolor{comment}{// setup the SPI1 port}
+00035     
+00036             \hyperlink{a00013_a98c4bd0ee0f76eb205e874355bf9cd33}{SPI\_SCK\_TRIS}        = 0;
+00037             \hyperlink{a00013_aa171067a2f57d1555ab4449c78847c72}{SPI\_SDO\_TRIS}        = 0;
+00038             \hyperlink{a00013_a40c85fd42ffb12b326b7cb9ee48f2ffb}{SPI\_SDI\_TRIS}        = 1;
+00039             \hyperlink{a00013_a1424f86a2482cfbcf68f709ce542e262}{SPI\_SS\_TRIS}         = 0;
+00040             \hyperlink{a00013_aa8b53e04161d178ebd9c01edf1584039}{SPI\_SS\_CTRL\_LAT}     = 1;
+00041             \hyperlink{a00013_a11571727bdbc21b0bfb7c701599e759b}{SPI\_SDO\_ANSEL}       = 0;
+00042             
+00043            \hyperlink{a00029_a37dc9980ee3379d4bd3a66f7cf9d761e}{NOV\_HOLD\_CTRL\_TRIS}   = 0;
+00044            \hyperlink{a00029_aa03a6ff293decd7159ed1642ccbac971}{NOV\_HOLD\_CTRL\_LAT}    = 1;
+00045            \hyperlink{a00029_a56fe014653ebdce270aeac664bf86e65}{nov\_wr\_inprogress}    = 0;
+00046 
+00047 
+00048       \textcolor{comment}{//disable SPI module}
+00049        SPI1STATbits.SPIEN       = 0;
+00050        SPI1STATbits.SPISIDL     = 0;
+00051     
+00052 
+00053 \textcolor{comment}{// Configure SPI1CON register}
+00054     
+00055         IFS0bits.SPI1IF         = 0;    \textcolor{comment}{// Clear the Interrupt flag}
+00056         IEC0bits.SPI1IE         = 0;    \textcolor{comment}{// Disable the interrupt}
+00057 
+00058         SPI1CON1bits.MSTEN      = 1;   \textcolor{comment}{//Enable Master mode}
+00059 
+00060         SPI1CON1bits.MODE16     = 0;  \textcolor{comment}{//Communication is byte-wide}
+00061         SPI1CON1bits.CKP        = 0;   \textcolor{comment}{//Idle state for clock is a high level}
+00062         SPI1CON1bits.CKE        = 1;   \textcolor{comment}{//Data out on Active to Idle Edge}
+00063 
+00064         SPI1CON1bits.SMP        = 0;  \textcolor{comment}{/*Master mode => Input data is sampled at}
+00065 \textcolor{comment}{                                        the middle of data output time */}
+00066 
+00067         \textcolor{comment}{//TODO: Fsck = Fp/(Primary Prescaler * Secondary Prescaler)}
+00068         SPI1CON1bits.SPRE       = 6;     \textcolor{comment}{//Set Primary Pre-scalar for 4:1 ratio}
+00069         SPI1CON1bits.PPRE       = 2;     \textcolor{comment}{//Set Secondary Pre-scalar for 2:1 ratio}
+00070 
+00071         SPI1CON1bits.DISSDO     = 0;     \textcolor{comment}{//Internal SPI clock is enabled}
+00072         SPI1CON1bits.DISSCK     = 0;     \textcolor{comment}{//SDOx pin is controlled by the module}
+00073 
+00074         SPI1CON1bits.SSEN       = 0;     \textcolor{comment}{//SSx pin is not used by the module.}
+00075                                          \textcolor{comment}{//Pin is controlled by port function}
+00076 
+00077         SPI1CON2                = 0;     \textcolor{comment}{//Framed SPI modes not used}
+00078 
+00079 
+00080         SPI1STATbits.SPIROV     = 0;
+00081         \textcolor{comment}{//  Enable SPI module}
+00082         SPI1STATbits.SPIEN       = 1;
+00083 
+00084 
+00085 \}
+00086 
+00087 
+00088 
+00089 
+00090 
+00091 
+\hypertarget{a00032_source_l00097}{}\hyperlink{a00032_a19e2dff580e4d1b2198fa9108fca81ac}{00097} \hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} \hyperlink{a00032_a19e2dff580e4d1b2198fa9108fca81ac}{spi\_put\_data}(\hyperlink{a00072_af84840501dec18061d18a68c162a8fa2}{Uint8} data)
+00098 \{
+00099     SPI1BUF = data;                  \textcolor{comment}{// write to buffer for TX}
+00100     \textcolor{keywordflow}{while}(!SPI1STATbits.SPIRBF);             \textcolor{comment}{// wait for transfer to complete}
+00101     \textcolor{keywordflow}{return} SPI1BUF;                  \textcolor{comment}{// read the received value}
+00102 
+00103 \}
+00104 
+00105 
+00106 
+00107 
+00108 
+00109 
+00110 
+00111 
+00112 
+\end{DoxyCode}

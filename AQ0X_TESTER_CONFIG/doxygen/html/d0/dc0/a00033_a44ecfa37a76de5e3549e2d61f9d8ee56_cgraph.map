@@ -1,0 +1,12 @@
+<map id="QCPItemBracket::QCPItemBracket" name="QCPItemBracket::QCPItemBracket">
+<area shape="rect" id="node2" href="$d8/d41/a00038.html#aa988ba4e87ab684c9021017dcaba945f" title="Sets the coordinates of this QCPItemPosition. " alt="" coords="295,56,485,83"/>
+<area shape="rect" id="node5" href="$d0/dc0/a00033.html#ac7cfc3da7da9b5c5ac5dfbe4f0351b2a" title="Sets the length in pixels how far the bracket extends in the direction towards the embraced span of t..." alt="" coords="297,107,483,133"/>
+<area shape="rect" id="node7" href="$d0/dc0/a00033.html#ab13001d9cc5d8f9e56ea15bdda682acb" title="Sets the pen that will be used to draw the bracket. " alt="" coords="305,157,475,184"/>
+<area shape="rect" id="node9" href="$d0/dc0/a00033.html#a349785c31122778a520c64891fa204c5" title="Sets the pen that will be used to draw the bracket when selected. " alt="" coords="280,208,500,235"/>
+<area shape="rect" id="node10" href="$d0/dc0/a00033.html#a612dffa2373422eef8754d690add3703" title="Sets the style of the bracket, i.e. " alt="" coords="302,259,478,285"/>
+<area shape="rect" id="node3" href="$d8/d41/a00038.html#ac3cb2bddf5f89e5181830be30b93d090" title="QCPItemPosition::key" alt="" coords="554,5,705,32"/>
+<area shape="rect" id="node4" href="$d8/d41/a00038.html#a6817f7356d3a2b63e8446c6b6106dae1" title="QCPItemPosition::value" alt="" coords="550,56,709,83"/>
+<area shape="rect" id="node6" href="$d0/dc0/a00033.html#aed5126eafcb1381ee5718499c20ba023" title="QCPItemBracket::length" alt="" coords="548,107,711,133"/>
+<area shape="rect" id="node8" href="$d0/dc0/a00033.html#a8963ff4a232b649c83d2461fd3c30d39" title="QCPItemBracket::pen" alt="" coords="555,183,704,209"/>
+<area shape="rect" id="node11" href="$d0/dc0/a00033.html#afad726f453f70fe77c0e9c2f260fff97" title="QCPItemBracket::style" alt="" coords="551,259,707,285"/>
+</map>

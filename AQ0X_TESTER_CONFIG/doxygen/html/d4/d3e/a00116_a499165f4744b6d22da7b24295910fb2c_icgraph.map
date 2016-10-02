@@ -1,0 +1,37 @@
+<map id="setPen" name="setPen">
+<area shape="rect" id="node2" href="$d6/d2d/a00047.html#a27af07a62c335faf79191b797306b218" title="Provides a workaround for a QPainter bug that prevents scaling of pen widths for pens with width 0..." alt="" coords="116,761,291,788"/>
+<area shape="rect" id="node3" href="$d6/d2d/a00047.html#af9c7a4cd1791403901f8c5b82a150195" title="Sets the pen of the painter and applies certain fixes to it, depending on the mode of this QCPPainter..." alt="" coords="339,787,479,813"/>
+<area shape="rect" id="node4" href="$df/d61/a00031.html#a9a1a3d937a35368c421657860aa5a173" title="QCPGraph::drawLegendIcon" alt="" coords="527,5,714,32"/>
+<area shape="rect" id="node5" href="$df/d61/a00031.html#ad6d07926e6d6b7cfa70258780d47b7a0" title="QCPGraph::drawFill" alt="" coords="552,56,689,83"/>
+<area shape="rect" id="node7" href="$df/d61/a00031.html#af1872a60bed7acb3f3b17bfae3f4764c" title="QCPGraph::drawScatterPlot" alt="" coords="528,107,713,133"/>
+<area shape="rect" id="node8" href="$df/d61/a00031.html#acebc22c3385829b19a87e6281fe6ade2" title="QCPGraph::drawLinePlot" alt="" coords="537,157,704,184"/>
+<area shape="rect" id="node9" href="$df/d61/a00031.html#abc01180629621f1e47e94559227d3d8c" title="QCPGraph::drawImpulsePlot" alt="" coords="527,208,715,235"/>
+<area shape="rect" id="node10" href="$d6/d97/a00045.html#a4462151bf875ca85fa3815457c683fdc" title="QCPLegend::draw" alt="" coords="557,259,684,285"/>
+<area shape="rect" id="node11" href="$d3/dfe/a00025.html#a258b1e783eda5cd14ec5552c696a424e" title="QCPAxis::draw" alt="" coords="565,309,676,336"/>
+<area shape="rect" id="node12" href="$d4/dca/a00048.html#ad5f15d26b1c7e2532455528a4c3c578b" title="QCPPlottableLegendItem\l::draw" alt="" coords="537,361,705,402"/>
+<area shape="rect" id="node13" href="$dc/d3c/a00028.html#a2361302d2fc6ec669849bd3bca00c4b2" title="QCPCurve::draw" alt="" coords="787,477,905,504"/>
+<area shape="rect" id="node14" href="$dc/d3c/a00028.html#a8e9b46de865a9f07cc9d62c904ab8198" title="QCPCurve::drawLegendIcon" alt="" coords="529,477,712,504"/>
+<area shape="rect" id="node15" href="$dc/d3c/a00028.html#a45593f30b81beec4b6130b6b53306087" title="QCPCurve::drawScatterPlot" alt="" coords="529,528,712,555"/>
+<area shape="rect" id="node16" href="$d0/d33/a00027.html#a42b894e34dac799f90ff3700706b31df" title="QCPBars::draw" alt="" coords="565,579,677,605"/>
+<area shape="rect" id="node17" href="$d0/d33/a00027.html#af54543a87581003b3176d8b2931754c5" title="QCPBars::drawLegendIcon" alt="" coords="531,629,710,656"/>
+<area shape="rect" id="node18" href="$d5/de0/a00050.html#af010b2f9e32b8183984486e4d66e46c4" title="QCPStatisticalBox::\ldrawLegendIcon" alt="" coords="551,681,690,722"/>
+<area shape="rect" id="node19" href="$d5/de0/a00050.html#a9ad0abdb154fefb04e9872f0db8e2ec7" title="QCPStatisticalBox::\ldrawQuartileBox" alt="" coords="551,746,690,787"/>
+<area shape="rect" id="node21" href="$d5/de0/a00050.html#a16fef8bc19e5a09d82033edcfe919495" title="QCPStatisticalBox::\ldrawMedian" alt="" coords="551,811,690,853"/>
+<area shape="rect" id="node22" href="$d5/de0/a00050.html#a6f8d093ec7e404529388d02da4c72b34" title="QCPStatisticalBox::\ldrawWhiskers" alt="" coords="551,877,690,918"/>
+<area shape="rect" id="node23" href="$d5/de0/a00050.html#a60ebb332a497f51ace837767db5105b9" title="QCPStatisticalBox::\ldrawOutliers" alt="" coords="551,942,690,983"/>
+<area shape="rect" id="node24" href="$db/d3a/a00040.html#a2daa1e1253216c26565d56a2d5530170" title="QCPItemStraightLine\l::draw" alt="" coords="549,1007,693,1049"/>
+<area shape="rect" id="node25" href="$de/d8c/a00036.html#a1fc045dd33919f8006df0692aeb0e84a" title="QCPItemLine::draw" alt="" coords="779,1175,913,1201"/>
+<area shape="rect" id="node26" href="$d4/d8c/a00035.html#afe97ec827adb05f000fe007783faae3c" title="QCPItemEllipse::draw" alt="" coords="546,1124,695,1151"/>
+<area shape="rect" id="node27" href="$d3/de7/a00039.html#a18cd583638b876cdd50f1a155ec182aa" title="QCPItemRect::draw" alt="" coords="552,1175,689,1201"/>
+<area shape="rect" id="node28" href="$d1/dc6/a00037.html#a879e8076c2db01a38b34cfa73ec95d2f" title="QCPItemPixmap::draw" alt="" coords="543,1225,698,1252"/>
+<area shape="rect" id="node29" href="$dd/d32/a00041.html#a8793adb271ab79b4cf391dc55e9987f1" title="QCPItemText::draw" alt="" coords="553,1276,688,1303"/>
+<area shape="rect" id="node30" href="$d3/dea/a00046.html#ac4b2fa94bd27b2f008b5fc090fcd7c0b" title="QCPLineEnding::draw" alt="" coords="546,1327,695,1353"/>
+<area shape="rect" id="node32" href="$db/df3/a00034.html#a56cb5b72cd02db2eda598274a39839a9" title="QCPItemCurve::draw" alt="" coords="775,1377,917,1404"/>
+<area shape="rect" id="node33" href="$d4/d3e/a00116.html#a3aff10e993f6625e255c19e4f97a09d8" title="drawGridLines" alt="" coords="569,1428,673,1455"/>
+<area shape="rect" id="node34" href="$d4/d3e/a00116.html#afa5d9d12de419e881f381f2ab7cb414d" title="drawSubGridLines" alt="" coords="557,1479,684,1505"/>
+<area shape="rect" id="node35" href="$d0/dc0/a00033.html#a8343cf0559c64886add7aa7f4b22f1a6" title="QCPItemBracket::draw" alt="" coords="543,1529,698,1556"/>
+<area shape="rect" id="node36" href="$d5/db6/a00042.html#aaaf49b48382c730ec9be0e74c2538315" title="QCPItemTracer::draw" alt="" coords="547,1580,694,1607"/>
+<area shape="rect" id="node6" href="$df/d61/a00031.html#a659218cc62c2a7786213d9dd429c1c8d" title="QCPGraph::draw" alt="" coords="786,132,906,159"/>
+<area shape="rect" id="node20" href="$d5/de0/a00050.html#a753b62761217dd6b92f8a29e286a1317" title="QCPStatisticalBox::draw" alt="" coords="763,852,929,879"/>
+<area shape="rect" id="node31" href="$d3/dea/a00046.html#a05c143b1f66cb68d746c309523c45e3e" title="QCPLineEnding::draw" alt="" coords="771,1327,921,1353"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="QCPItemPosition::type" name="QCPItemPosition::type">
+<area shape="rect" id="node2" href="$d8/d41/a00038.html#aa476abf71ed8fa4c537457ebb1a754ad" title="Sets the type of the position. " alt="" coords="208,56,384,83"/>
+<area shape="rect" id="node3" href="$d7/de0/a00022.html#a75036d39c4d4e2e1a7dd145fff915d32" title="QCPAbstractItem::createPosition" alt="" coords="432,5,647,32"/>
+<area shape="rect" id="node4" href="$d5/db6/a00042.html#af5886f4ded8dd68cb4f3388f390790c0" title="Sets the QCPGraph this tracer sticks to. " alt="" coords="453,56,625,83"/>
+<area shape="rect" id="node5" href="$d8/d41/a00038.html#ac094d67a95d2dceafa0d50b9db3a7e51" title="Sets the parent of this QCPItemPosition to parentAnchor. " alt="" coords="446,107,633,149"/>
+</map>

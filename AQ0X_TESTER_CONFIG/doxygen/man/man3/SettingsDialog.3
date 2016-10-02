@@ -1,0 +1,141 @@
+.TH "SettingsDialog" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SettingsDialog \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <settingsdialog\&.h>\fP
+.PP
+Inherits \fBQDialog\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBSettings\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSettingsDialog\fP (QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fB~SettingsDialog\fP ()"
+.br
+.ti -1c
+.RI "\fBSettings\fP \fBsettings\fP () const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 61 of file settingsdialog\&.h\&.
+.SH "Class Documentation"
+.PP 
+.SH "struct SettingsDialog::Settings"
+.PP 
+Definition at line 66 of file settingsdialog\&.h\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+qint32 \fIbaudRate\fP 
+.br
+.PP
+DataBits \fIdataBits\fP 
+.br
+.PP
+FlowControl \fIflowControl\fP 
+.br
+.PP
+bool \fIlocalEchoEnabled\fP 
+.br
+.PP
+QString \fIname\fP 
+.br
+.PP
+Parity \fIparity\fP 
+.br
+.PP
+StopBits \fIstopBits\fP 
+.br
+.PP
+QString \fIstringBaudRate\fP 
+.br
+.PP
+QString \fIstringDataBits\fP 
+.br
+.PP
+QString \fIstringFlowControl\fP 
+.br
+.PP
+QString \fIstringParity\fP 
+.br
+.PP
+QString \fIstringStopBits\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QT_USE_NAMESPACE SettingsDialog::SettingsDialog (QWidget *parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 52 of file settingsdialog\&.cpp\&.
+.PP
+References Ui_SettingsDialog::applyButton, Ui_SettingsDialog::baudRateBox, Ui_SettingsDialog::serialPortInfoListBox, and Ui_SettingsDialog::setupUi()\&.
+.PP
+.nf
+52                                               :
+53     QDialog(parent),
+54     ui(new Ui::SettingsDialog)
+55 {
+56     ui->setupUi(this);
+57 
+58     intValidator = new QIntValidator(0, 4000000, this);
+59 
+60     ui->baudRateBox->setInsertPolicy(QComboBox::NoInsert);
+61 
+62     connect(ui->applyButton, SIGNAL(clicked()),
+63             this, SLOT(apply()));
+64     connect(ui->serialPortInfoListBox, SIGNAL(currentIndexChanged(int)),
+65             this, SLOT(showPortInfo(int)));
+66     connect(ui->baudRateBox, SIGNAL(currentIndexChanged(int)),
+67             this, SLOT(checkCustomBaudRatePolicy(int)));
+68 
+69     fillPortsParameters();
+70     fillPortsInfo();
+71 
+72     updateSettings();
+73 }
+.fi
+.SS "SettingsDialog::~SettingsDialog ()"
+
+.PP
+Definition at line 75 of file settingsdialog\&.cpp\&.
+.PP
+.nf
+76 {
+77     delete ui;
+78 }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSettingsDialog::Settings\fP SettingsDialog::settings () const"
+
+.PP
+Definition at line 80 of file settingsdialog\&.cpp\&.
+.PP
+.nf
+81 {
+82     return currentSettings;
+83 }
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.

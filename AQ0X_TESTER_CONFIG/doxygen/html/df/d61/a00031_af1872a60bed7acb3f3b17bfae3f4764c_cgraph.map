@@ -1,0 +1,22 @@
+<map id="QCPGraph::drawScatterPlot" name="QCPGraph::drawScatterPlot">
+<area shape="rect" id="node2" href="$dc/de2/a00024.html#af687bfe6160255960558eb71f1f81e73" title="QCPAbstractPlottable\l::applyErrorBarsAntialiasingHint" alt="" coords="239,5,445,47"/>
+<area shape="rect" id="node5" href="$dc/de2/a00024.html#a753272ee225a62827e90c3e1e78de4b1" title="QCPAbstractPlottable\l::applyScattersAntialiasingHint" alt="" coords="242,71,442,112"/>
+<area shape="rect" id="node6" href="$d3/dfe/a00025.html#a985ae693b842fb0422b4390fe36d299a" title="Transforms value (in coordinates of the axis) to pixel coordinates of the QCustomPlot widget..." alt="" coords="531,137,690,163"/>
+<area shape="rect" id="node8" href="$d3/dfe/a00025.html#a57483f2f60145ddc9e63f3af53959265" title="Returns the orientation of the axis. " alt="" coords="796,187,940,214"/>
+<area shape="rect" id="node10" href="$df/d61/a00031.html#a4df6807066ce877705e999773e7ffbc4" title="QCPGraph::drawError" alt="" coords="268,289,416,315"/>
+<area shape="rect" id="node13" href="$d6/d2d/a00047.html#a3aa145eb9865752d583c40ef995c5049" title="Draws a single scatter point with the specified style and size in pixels at the pixel position x and ..." alt="" coords="258,339,426,366"/>
+<area shape="rect" id="node16" href="$dc/de2/a00024.html#ae74c123832da180c17e22203e748d9b7" title="QCPAbstractPlottable\l::mainBrush" alt="" coords="267,441,417,483"/>
+<area shape="rect" id="node17" href="$dc/de2/a00024.html#a19276ed2382a3a06464417b8788b1451" title="QCPAbstractPlottable\l::mainPen" alt="" coords="267,507,417,548"/>
+<area shape="rect" id="node18" href="$d6/d2d/a00047.html#af9c7a4cd1791403901f8c5b82a150195" title="Sets the pen of the painter and applies certain fixes to it, depending on the mode of this QCPPainter..." alt="" coords="272,390,412,417"/>
+<area shape="rect" id="node21" href="$d6/d2d/a00047.html#a0f636de68b40d2e169ab15a8ca067107" title="Sets the pixmap that will be used to draw scatters with drawScatter, when the style is QCP::ssPixmap..." alt="" coords="241,573,443,599"/>
+<area shape="rect" id="node3" href="$d5/df9/a00044.html#a62bd552d1a45aa9accb24b310542279e" title="QCPLayerable::applyAntialiasingHint" alt="" coords="493,25,728,51"/>
+<area shape="rect" id="node4" href="$d6/d2d/a00047.html#aaba1deb9188244d9ea65b035112b4d05" title="Sets whether painting uses antialiasing or not. " alt="" coords="776,25,960,51"/>
+<area shape="rect" id="node7" href="$d3/dfe/a00025.html#a1385765db2419ee5fb5505a6cf9130fb" title="QCPAxis::baseLog" alt="" coords="801,86,935,113"/>
+<area shape="rect" id="node9" href="$d2/dee/a00049.html#afa57c13049b965edb6fd1c00ac56338a" title="Returns the size of the range, i.e. " alt="" coords="809,137,927,163"/>
+<area shape="rect" id="node11" href="$d6/d2d/a00047.html#a0b4b1b9bd495e182c731774dc800e6e0" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="535,339,686,366"/>
+<area shape="rect" id="node12" href="$d3/dfe/a00025.html#ade26dc7994ccd8a11f64fd83377ee021" title="QCPAxis::rangeReversed" alt="" coords="526,289,695,315"/>
+<area shape="rect" id="node14" href="$d4/d3e/a00116.html#a1f13fffa0a0faac34ec342973e613a4a" title="pen" alt="" coords="847,466,889,493"/>
+<area shape="rect" id="node15" href="$d4/d3e/a00116.html#ae35093fbf4f645dcefd930ca8c68b622" title="color" alt="" coords="585,441,636,467"/>
+<area shape="rect" id="node19" href="$d4/d3e/a00116.html#a499165f4744b6d22da7b24295910fb2c" title="setPen" alt="" coords="837,517,899,543"/>
+<area shape="rect" id="node20" href="$d6/d2d/a00047.html#a27af07a62c335faf79191b797306b218" title="Provides a workaround for a QPainter bug that prevents scaling of pen widths for pens with width 0..." alt="" coords="523,491,698,518"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="plottable" name="plottable">
+<area shape="rect" id="node2" href="$d4/d3e/a00116.html#ab7ad9174f701f9c6f64e378df77927a6" title="Adds the specified plottable to the plot and, if setAutoAddPlottableToLegend is enabled, to the legend. " alt="" coords="178,5,273,32"/>
+<area shape="rect" id="node4" href="$d6/d97/a00045.html#a5ee80cf83f65e3b6dd386942ee3cc1ee" title="Returns the QCPPlottableLegendItem which is associated with plottable (e.g. " alt="" coords="124,56,327,83"/>
+<area shape="rect" id="node6" href="$d4/d3e/a00116.html#af3dafd56884208474f311d6226513ab2" title="Removes the specified plottable from the plot and, if necessary, from the legend. ..." alt="" coords="168,132,283,159"/>
+<area shape="rect" id="node3" href="$d4/d3e/a00116.html#a6fb2873d35a8a8089842d81a70a54167" title="Creates a new graph inside the plot. " alt="" coords="447,5,526,32"/>
+<area shape="rect" id="node5" href="$d6/d97/a00045.html#a2eb1d24bdf5658e64962a656303fd61a" title="Returns whether the legend contains a QCPPlottableLegendItem which is associated with plottable (e..." alt="" coords="375,56,599,83"/>
+<area shape="rect" id="node7" href="$d4/d3e/a00116.html#afc210e0021480f8119bccf37839dbcc8" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="429,107,544,133"/>
+<area shape="rect" id="node8" href="$d4/d3e/a00116.html#a9a409bb3201878adb7ffba1c89c4e004" title="Removes all plottables from the plot (and the legend, if necessary). " alt="" coords="433,157,541,184"/>
+<area shape="rect" id="node10" href="$d4/d3e/a00116.html#a903561be895fb6528a770d66ac5e6713" title="Removes the specified graph from the plot and, if necessary, from the legend. " alt="" coords="437,208,536,235"/>
+<area shape="rect" id="node9" href="$d4/d3e/a00116.html#a75d9b6f599dcae706e45efd425c5499e" title="~QCustomPlot" alt="" coords="647,157,755,184"/>
+<area shape="rect" id="node11" href="$d4/d3e/a00116.html#a9554b3d2d5b10c0f884bd4010b6c192c" title="This is an overloaded member function, provided for convenience. It differs from the above function o..." alt="" coords="651,208,750,235"/>
+<area shape="rect" id="node12" href="$d4/d3e/a00116.html#ab0f3abff2d2f7df3668b5836f39207fa" title="Removes all graphs from the plot (and the legend, if necessary). " alt="" coords="655,259,747,285"/>
+</map>

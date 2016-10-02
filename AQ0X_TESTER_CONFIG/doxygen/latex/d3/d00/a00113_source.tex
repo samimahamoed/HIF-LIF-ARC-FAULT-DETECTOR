@@ -1,0 +1,160 @@
+\hypertarget{a00113_source}{\section{qcomplexnumber.\+cpp}
+\label{a00113_source}\index{qcomplexnumber.\+cpp@{qcomplexnumber.\+cpp}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{comment}{/***********************************************************************}
+00002 \textcolor{comment}{}
+00003 \textcolor{comment}{qcomplexnumber.cpp - Source file for QComplexNumber}
+00004 \textcolor{comment}{}
+00005 \textcolor{comment}{Template class for handling complex numbers with a real and imaginary}
+00006 \textcolor{comment}{part. }
+00007 \textcolor{comment}{}
+00008 \textcolor{comment}{************************************************************************}
+00009 \textcolor{comment}{}
+00010 \textcolor{comment}{This file is part of QRealFourier.}
+00011 \textcolor{comment}{}
+00012 \textcolor{comment}{QRealFourier is free software: you can redistribute it and/or modify it}
+00013 \textcolor{comment}{under the terms of the Lesser GNU General Public License as published}
+00014 \textcolor{comment}{by the Free Software Foundation, either version 3 of the License, or}
+00015 \textcolor{comment}{(at your option) any later version.}
+00016 \textcolor{comment}{}
+00017 \textcolor{comment}{Foobar is distributed in the hope that it will be useful, but WITHOUT}
+00018 \textcolor{comment}{ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or}
+00019 \textcolor{comment}{FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser GNU General Public}
+00020 \textcolor{comment}{License for more details.}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{You should have received a copy of the Lesser GNU General Public License}
+00023 \textcolor{comment}{along with Foobar.  If not, see <http://www.gnu.org/licenses/>.}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{************************************************************************}
+00026 \textcolor{comment}{}
+00027 \textcolor{comment}{Copyright © 2012 - 2013 Christoph Stallmann, University of Pretoria}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{Developer: Christoph Stallmann}
+00030 \textcolor{comment}{University of Pretoria}
+00031 \textcolor{comment}{Department of Computer Science}
+00032 \textcolor{comment}{}
+00033 \textcolor{comment}{http://www.visore.org}
+00034 \textcolor{comment}{http://sourceforge.net/projects/qrealfourier}
+00035 \textcolor{comment}{http://github.com/visore/QRealFourier}
+00036 \textcolor{comment}{}
+00037 \textcolor{comment}{qrealfourier@visore.org}
+00038 \textcolor{comment}{qrealfourier@gmail.com}
+00039 \textcolor{comment}{}
+00040 \textcolor{comment}{***********************************************************************/}
+00041 
+00042 \textcolor{preprocessor}{#include "../fft/headers/qcomplexnumber.h"}
+00043 
+00044 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00045}{}\hyperlink{a00021_ab6cfaeb5d656fc31d881859071a5573d}{00045} \hyperlink{a00021_ab6cfaeb5d656fc31d881859071a5573d}{QComplexNumber<T>::QComplexNumber}()
+00046 \{
+00047     mReal = 0;
+00048     mImaginary = 0;
+00049 \}
+00050 
+00051 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00052}{}\hyperlink{a00021_a9fce5b1d7905b96634343eec4c9e8ed7}{00052} \hyperlink{a00021_ab6cfaeb5d656fc31d881859071a5573d}{QComplexNumber<T>::QComplexNumber}(T real, T imaginary)
+00053 \{
+00054     mReal = real;
+00055     mImaginary = imaginary;
+00056 \}
+00057 
+00058 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00059}{}\hyperlink{a00021_a14cf134bd211f979baf2f559ae7114f9}{00059} \textcolor{keywordtype}{void} \hyperlink{a00021_a14cf134bd211f979baf2f559ae7114f9}{QComplexNumber<T>::setReal}(T real)
+00060 \{
+00061     mReal = real;
+00062 \}
+00063 
+00064 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00065}{}\hyperlink{a00021_a806177c406d4fbab30385105c70c4655}{00065} \textcolor{keywordtype}{void} \hyperlink{a00021_a806177c406d4fbab30385105c70c4655}{QComplexNumber<T>::setImaginary}(T imaginary)
+00066 \{
+00067     mImaginary = imaginary;
+00068 \}
+00069 
+00070 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00071}{}\hyperlink{a00021_ab038e64285fc23aeae05e987ec9ed9d8}{00071} \textcolor{keywordtype}{void} \hyperlink{a00021_ab038e64285fc23aeae05e987ec9ed9d8}{QComplexNumber<T>::set}(T real, T imaginary)
+00072 \{
+00073     mReal = real;
+00074     mImaginary = imaginary;
+00075 \}
+00076 
+00077 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00078}{}\hyperlink{a00021_a1c6b4228b0849c2a4509056904a134c6}{00078} \textcolor{keywordtype}{void} \hyperlink{a00021_ab038e64285fc23aeae05e987ec9ed9d8}{QComplexNumber<T>::set}(\hyperlink{a00021}{QComplexNumber} complex)
+00079 \{
+00080     mReal = complex.\hyperlink{a00021_a01ca02979072629fdf76770971bff461}{real}();
+00081     mImaginary = complex.\hyperlink{a00021_a9fa649f50f64f9e8d26da107c6f779bb}{imaginary}();
+00082 \}
+00083 
+00084 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00085}{}\hyperlink{a00021_a01ca02979072629fdf76770971bff461}{00085} T \hyperlink{a00021_a01ca02979072629fdf76770971bff461}{QComplexNumber<T>::real}()
+00086 \{
+00087     \textcolor{keywordflow}{return} mReal;
+00088 \}
+00089 
+00090 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00091}{}\hyperlink{a00021_a9fa649f50f64f9e8d26da107c6f779bb}{00091} T \hyperlink{a00021_a9fa649f50f64f9e8d26da107c6f779bb}{QComplexNumber<T>::imaginary}()
+00092 \{
+00093     \textcolor{keywordflow}{return} mImaginary;
+00094 \}
+00095 
+00096 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00097}{}\hyperlink{a00021_a30e8645f1dc443e17849ed65eed5c28f}{00097} \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a30e8645f1dc443e17849ed65eed5c28f}{QComplexNumber<T>::operator+=}(\textcolor{keyword}{const} 
+      \hyperlink{a00021}{QComplexNumber<T>} &number)
+00098 \{
+00099     mReal += number.mReal;
+00100     mImaginary += number.mImaginary;
+00101     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00102 \}
+00103 
+00104 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00105}{}\hyperlink{a00021_a883e0d4ed073f528ac147bb7d792fa99}{00105} \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a883e0d4ed073f528ac147bb7d792fa99}{QComplexNumber<T>::operator-=}(\textcolor{keyword}{const} 
+      \hyperlink{a00021}{QComplexNumber<T>} &number)
+00106 \{
+00107     mReal -= number.mReal;
+00108     mImaginary -= number.mImaginary;
+00109     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00110 \}
+00111 
+00112 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00113}{}\hyperlink{a00021_a070852367a712f7b9dd2dff0ee5c3439}{00113} \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a070852367a712f7b9dd2dff0ee5c3439}{QComplexNumber<T>::operator/=}(\textcolor{keyword}{const} 
+      \hyperlink{a00021}{QComplexNumber<T>} &number)
+00114 \{
+00115     mReal /= number.mReal;
+00116     mImaginary /= number.mImaginary;
+00117     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00118 \}
+00119 
+00120 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00121}{}\hyperlink{a00021_a13c0aad5e700fe92eb9acf5fae669975}{00121} \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a13c0aad5e700fe92eb9acf5fae669975}{QComplexNumber<T>::operator*=}(\textcolor{keyword}{const} 
+      \hyperlink{a00021}{QComplexNumber<T>} &number)
+00122 \{
+00123     mReal *= number.mReal;
+00124     mImaginary *= number.mImaginary;
+00125     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00126 \}
+00127 
+00128 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00129}{}\hyperlink{a00021_aae3b21024de823c87f04e5b86853ce45}{00129} \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a070852367a712f7b9dd2dff0ee5c3439}{QComplexNumber<T>::operator/=}(\textcolor{keyword}{const} T &
+      \hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value})
+00130 \{
+00131     mReal /= \hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value};
+00132     mImaginary /= \hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value};
+00133     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00134 \}
+00135 
+00136 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>
+\hypertarget{a00113_source_l00137}{}\hyperlink{a00021_a128cc004798d636109125374e1549ae0}{00137} \hyperlink{a00021}{QComplexNumber<T>}& \hyperlink{a00021_a13c0aad5e700fe92eb9acf5fae669975}{QComplexNumber<T>::operator*=}(\textcolor{keyword}{const} T &
+      \hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value})
+00138 \{
+00139     mReal *= \hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value};
+00140     mImaginary *= \hyperlink{a00116_aee90379adb0307effb138f4871edbc5c}{value};
+00141     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00142 \}
+00143 
+00144 \textcolor{keyword}{template} \textcolor{keyword}{class }\hyperlink{a00021}{QComplexNumber<short>};
+00145 \textcolor{keyword}{template} \textcolor{keyword}{class }\hyperlink{a00021}{QComplexNumber<int>};
+00146 \textcolor{keyword}{template} \textcolor{keyword}{class }\hyperlink{a00021}{QComplexNumber<long>};
+00147 \textcolor{keyword}{template} \textcolor{keyword}{class }\hyperlink{a00021}{QComplexNumber<float>};
+00148 \textcolor{keyword}{template} \textcolor{keyword}{class }\hyperlink{a00021}{QComplexNumber<double>};
+\end{DoxyCode}

@@ -1,0 +1,8 @@
+<map id="QFourierTransformer::transform" name="QFourierTransformer::transform">
+<area shape="rect" id="node2" href="$d1/dea/a00054.html#a02bee79c9e9f978ed1fb012eda58ed5d" title="QFourierTransformer\l::forwardTransform" alt="" coords="193,57,333,98"/>
+<area shape="rect" id="node6" href="$d1/dea/a00054.html#a5af8ceccf2bbe0a37be994db7181a4ca" title="QFourierTransformer\l::inverseTransform" alt="" coords="193,122,333,163"/>
+<area shape="rect" id="node3" href="$d0/d89/a00071.html#aa4a4f988e1f4b65e4181a0c8c3245a00" title="QWindowFunction::apply" alt="" coords="381,5,548,32"/>
+<area shape="rect" id="node4" href="$d1/d84/a00052.html#a77ef4fb3e16e1727a9d96ef5956c1885" title="QFourierCalculator\l::forward" alt="" coords="399,57,530,98"/>
+<area shape="rect" id="node5" href="$d1/d84/a00052.html#a2d48438c3ee2549f8bf0e1e8fc1c3f1d" title="QFourierCalculator\l::setData" alt="" coords="399,122,530,163"/>
+<area shape="rect" id="node7" href="$d1/d84/a00052.html#a31bf1b0c412519f3e8d0af3cdf0c543b" title="QFourierCalculator\l::inverse" alt="" coords="399,187,530,229"/>
+</map>

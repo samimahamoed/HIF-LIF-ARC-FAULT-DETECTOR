@@ -1,0 +1,714 @@
+.TH "moc_qcustomplot.cpp" 3 "Thu Oct 30 2014" "Version V0.0" "AQ0X" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+moc_qcustomplot.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&./\&.\&./qcustomplot\&.h'\fP
+.br
+\fC#include <QtCore/qbytearray\&.h>\fP
+.br
+\fC#include <QtCore/qmetatype\&.h>\fP
+.br
+\fC#include <QtCore/QVector>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPLayerable_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPAbstractPlottable_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPGraph_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPCurve_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPBars_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPStatisticalBox_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPAbstractItem_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemStraightLine_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemLine_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemEllipse_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemRect_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemPixmap_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemText_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemCurve_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemBracket_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPItemTracer_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPAbstractLegendItem_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPPlottableLegendItem_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPLegend_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPGrid_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCPAxis_t\fP"
+.br
+.ti -1c
+.RI "struct \fBqt_meta_stringdata_QCustomPlot_t\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.ti -1c
+.RI "#define \fBQT_MOC_LITERAL\fP(idx, ofs, len)"
+.br
+.in -1c
+.SH "Class Documentation"
+.PP 
+.SH "struct qt_meta_stringdata_QCPLayerable_t"
+.PP 
+Definition at line 22 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[14]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPAbstractPlottable_t"
+.PP 
+Definition at line 89 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[4]\fP 
+.br
+.PP
+char \fIstringdata[49]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPGraph_t"
+.PP 
+Definition at line 194 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[13]\fP 
+.br
+.PP
+char \fIstringdata[118]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPCurve_t"
+.PP 
+Definition at line 292 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[10]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPBars_t"
+.PP 
+Definition at line 359 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[9]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPStatisticalBox_t"
+.PP 
+Definition at line 426 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[19]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPAbstractItem_t"
+.PP 
+Definition at line 493 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[4]\fP 
+.br
+.PP
+char \fIstringdata[44]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemStraightLine_t"
+.PP 
+Definition at line 598 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[21]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemLine_t"
+.PP 
+Definition at line 665 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[13]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemEllipse_t"
+.PP 
+Definition at line 732 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[16]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemRect_t"
+.PP 
+Definition at line 799 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[13]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemPixmap_t"
+.PP 
+Definition at line 866 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[15]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemText_t"
+.PP 
+Definition at line 933 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[13]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemCurve_t"
+.PP 
+Definition at line 1000 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[14]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemBracket_t"
+.PP 
+Definition at line 1067 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[16]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPItemTracer_t"
+.PP 
+Definition at line 1134 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[7]\fP 
+.br
+.PP
+char \fIstringdata[71]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPAbstractLegendItem_t"
+.PP 
+Definition at line 1218 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[4]\fP 
+.br
+.PP
+char \fIstringdata[50]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPPlottableLegendItem_t"
+.PP 
+Definition at line 1323 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[24]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPLegend_t"
+.PP 
+Definition at line 1390 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[19]\fP 
+.br
+.PP
+char \fIstringdata[209]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPGrid_t"
+.PP 
+Definition at line 1533 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[1]\fP 
+.br
+.PP
+char \fIstringdata[9]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCPAxis_t"
+.PP 
+Definition at line 1600 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[64]\fP 
+.br
+.PP
+char \fIstringdata[708]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "struct qt_meta_stringdata_QCustomPlot_t"
+.PP 
+Definition at line 1983 of file moc_qcustomplot\&.cpp\&.
+.PP
+\fBClass Members:\fP
+.RS 4
+QByteArrayData \fIdata[60]\fP 
+.br
+.PP
+char \fIstringdata[737]\fP 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPLayerable_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPAbstractPlottable_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPGraph_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPCurve_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPBars_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPStatisticalBox_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPAbstractItem_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemStraightLine_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemLine_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemEllipse_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemRect_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemPixmap_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemText_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemCurve_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemBracket_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPItemTracer_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPAbstractLegendItem_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPPlottableLegendItem_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPLegend_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPGrid_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCPAxis_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SS "#define QT_MOC_LITERAL(idx, ofs, len)"
+\fBValue:\fP
+.PP
+.nf
+Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    offsetof(qt_meta_stringdata_QCustomPlot_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData) \
+    )
+.fi
+.PP
+Definition at line 1987 of file moc_qcustomplot\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AQ0X from the source code\&.
